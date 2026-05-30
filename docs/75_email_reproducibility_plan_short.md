@@ -3,7 +3,25 @@
 **Date:** 2026-05-30  
 **To:** Dr. Thomas J. Buckholtz  
 **Subject:** Reproducibility Plan Outline — AI-Assisted Tables  
-**Status:** DRAFT / NOT_SENT / AWAITING_USER_APPROVAL
+**Status:** ~~DRAFT / NOT_SENT / AWAITING_USER_APPROVAL~~ **OUTDATED_DRAFT**
+
+---
+
+## ⚠️ IMPORTANT: This draft is OUTDATED
+
+**Reason:** Supplementary Material has now been located (2026-05-30).
+
+**File found:** `data/supplementary_raw/preprintsSupplementary202511.0598.v6.pdf`
+
+**Contains:** ChatGPT, Claude (Sonnet 4.6), and Gemini (Thinking) outputs with H-FLRW, H-MULT, w_eff, and beta values.
+
+**Action required:** Do NOT send this version as-is. The email requests supplementary tables that have already been found.
+
+**Next step:** Extract tables from the found Supplementary Material before contacting author.
+
+---
+
+# Original Draft (for reference only)
 
 ---
 
