@@ -17,14 +17,16 @@ This is a specificity diagnostic for extracted MULTING/Table A1 values. It is di
 
 ## 2. Inputs
 
+**DATA SOURCE (UPDATED 2026-05-31):** data/table_a1_reported.csv (REAL Table A1, rows 2-12)
+
 | File | Found? | Role | Notes |
 |---|---|---|---|
+| `data/table_a1_reported.csv` | YES | **REAL Table A1 data** | rows 2-12, z=0.15 to z=8.5, 11 points |
+| `src/negative_control_tests.py` | YES | Implementation with real loader | uses load_table_a1_rows_2_12() |
 | `docs/87_negative_control_test_plan.md` | YES | Negative-control planning context | available |
-| `docs/90_multing_physical_verification_upgrade_plan.md` | NO | Optional physical upgrade plan | <unknown>file not found</unknown> |
-| `src/table_a1_independent_recomputation.py` | YES | Existing recomputation helpers | available |
+| `src/deep_bridge_diagnostic_fit.py` | YES | Loader source | load_table_a1_rows_2_12() function |
 | `docs/68_hflrw_provenance_recovery.md` | YES | H_FLRW provenance context | available |
 | `docs/81_multi_ai_reproducibility_comparison.md` | YES | Multi-AI comparison context | available |
-| `data/table_a1_reported.csv` | YES | Table A1 reported values | available |
 
 ## 3. Method
 
@@ -35,13 +37,17 @@ This is a specificity diagnostic for extracted MULTING/Table A1 values. It is di
 - Metric: normalized RMSE using the extracted H uncertainty column.
 - Thresholds: row permutation uses 0.05/0.20 fraction gates; synthetic test uses ratio >3 PASS and >=1.5 WARN.
 
-## 4. Results
+## 4. Results (UPDATED with REAL Table A1, 2026-05-31)
 
-| Test | Metric | Original | Control distribution | Diagnostic label | Interpretation |
-|---|---:|---:|---|---|---|
-| row_permutation_negative_control | fraction_as_good_or_better=0 | 0.520588 | min=3.179, median=24.96, max=93.21 | PASS | Original table appears more structured than shuffled controls. |
-| randomized_beta_diagnostic | reported_beta_percentile=NA | NA | <unknown>beta-to-H_MULT routine not available</unknown> | INCONCLUSIVE | No source-confirmed beta-to-H_MULT routine is available; random beta samples are reproducible, but beta specificity cannot be evaluated. |
-| synthetic_lcdm_specificity_test | synthetic_to_original_metric_ratio=6.63395 | 0.520588 | synthetic_metric=3.454 | PASS | Synthetic Lambda-CDM table is distinguishable under the reported-table surrogate. |
+**Beta values:** β_d=4.5, β_q=18.0 (from Table A1 caption, AI service fitted)
+
+| Test | Metric | Value | Diagnostic label | Interpretation |
+|---|---|---|---|---|
+| row_permutation_negative_control | p-value | 0.0000 | PASS | Original z-ordering significantly better than shuffled (p < 0.01). Model is sensitive to redshift structure. |
+| randomized_beta_diagnostic | percentile_rank | 13.0% | FAIL | Beta values in bottom 13% of random distribution. Many random pairs fit equally well. Beta parameters poorly constrained. |
+| synthetic_lcdm_specificity_test | chi2_ratio (synth/real) | ~0.00 | FAIL | Diagnostic proxy fits synthetic ΛCDM better than real table. Proxy model too generic/flexible. Requires full F_oP → H_MULT bridge. |
+
+**Overall verdict:** FAIL (Test 2 and Test 3 both FAIL)
 
 ## 5. Breakthrough candidate assessment
 
@@ -75,35 +81,41 @@ Forbidden interpretations:
 
 systematics budget
 
-## 9. Reproducibility manifest
+## 9. Reproducibility manifest (UPDATED 2026-05-31)
 
 ```yaml
-test_id: negative_control_battery_001
-status: completed_or_partial
+test_id: negative_control_battery_002
+status: completed_with_real_table_a1
 claim_boundary: diagnostic_only
-random_seed: 20260531
+data_source: data/table_a1_reported.csv
+data_points: 11
+beta_d: 4.5
+beta_q: 18.0
+random_seed: 42
 n_shuffles: 100
 n_random_beta: 100
+implementation: src/negative_control_tests.py
+loader: load_table_a1_rows_2_12() from deep_bridge_diagnostic_fit.py
 input_files:
-  - file: docs/87_negative_control_test_plan.md
-    found: true
-  - file: docs/90_multing_physical_verification_upgrade_plan.md
-    found: false
-  - file: src/table_a1_independent_recomputation.py
-    found: true
-  - file: docs/68_hflrw_provenance_recovery.md
-    found: true
-  - file: docs/81_multi_ai_reproducibility_comparison.md
-    found: true
   - file: data/table_a1_reported.csv
     found: true
+    role: REAL_TABLE_A1_DATA
+  - file: src/negative_control_tests.py
+    found: true
+    role: implementation_with_real_loader
+  - file: tests/test_negative_control_tests.py
+    found: true
+    status: 3_tests_passing
 outputs:
   - docs/91_negative_control_results.md
 tests:
-  row_permutation: PASS
-  randomized_beta: INCONCLUSIVE
-  synthetic_lcdm: PASS
+  row_permutation: PASS (p=0.0000)
+  randomized_beta: FAIL (13.0%)
+  synthetic_lcdm: FAIL (ratio~0.00)
+overall_verdict: FAIL
 can_support_validation: false
 can_support_refutation: false
 can_support_public_claim: false
+run_command: python -m src.negative_control_tests
+test_command: python -m pytest tests/test_negative_control_tests.py -q
 ```
