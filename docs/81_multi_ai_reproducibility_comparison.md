@@ -618,7 +618,7 @@ w_eff(z) = -1 + 0.28 tanh[(z - 0.9)/0.9]
 
 ❌ **Beta parameters are wrong** — They are fitted values, not fundamental constants. Multiple valid fits exist.
 
-❌ **H_MULT is unreliable** — H_MULT varies by ~5% at low z despite 42-95× beta differences, suggesting the framework has some robustness.
+❌ **H_MULT is unreliable** — The extracted H_MULT table values vary less than the fitted beta parameters at nearby low-z rows; this does not establish cross-service robustness of the framework.
 
 **This analysis DOES claim:**
 
