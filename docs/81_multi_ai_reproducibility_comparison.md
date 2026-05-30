@@ -6,13 +6,12 @@
 
 **Safety Labels:**
 ```
-MULTI_AI_REPRODUCIBILITY_COMPARISON
-INTERNAL_ANALYSIS_ONLY
+REVISED_INTERNAL_ANALYSIS
+NOT_AUTHOR_READY
 NO_VALIDATION
 NO_REFUTATION
 NO_MCMC
 NO_PUBLIC_CLAIMS
-AUTHOR_REVIEW_REQUIRED_BEFORE_EXTERNAL_USE
 ```
 
 ---
@@ -21,7 +20,7 @@ AUTHOR_REVIEW_REQUIRED_BEFORE_EXTERNAL_USE
 
 **Main finding:** AI-service outputs differ materially in fitted beta parameters (5.4–5.8× for β_d, 42.6–94.7× for β_q) and some table construction choices (time grids, H₀ anchors, z-value spacing).
 
-**Stable findings:** H-FLRW calculation methods appear consistent across services (same cosmological model).
+**H-FLRW provenance:** H_FLRW calculation method remains unclear from extracted CSV evidence. Numerical values do not confirm a single shared Planck-2018 baseline across services.
 
 **Unstable findings:** H_MULT values, beta parameters, future projection estimates, and time grid choices vary significantly across services.
 
@@ -133,26 +132,31 @@ AUTHOR_REVIEW_REQUIRED_BEFORE_EXTERNAL_USE
 
 ## 3. H-FLRW Comparison
 
-### Cosmological Parameters
+### Metadata Claims vs CSV Evidence
 
-**ChatGPT (page 16):**
-- Ωm = 0.315, ΩΛ = 0.685 (inferred from text)
-- H₀ = 67.4 km/s/Mpc for H_FLRW calculation
-- Method: Standard ΛCDM
+**Recap metadata mentions (from supplementary PDF text):**
+- ChatGPT: Ωm = 0.315, ΩΛ = 0.685, H₀ = 67.4 km/s/Mpc
+- Claude: Ωm = 0.315, ΩΛ = 0.685 (Planck 2018), H₀ = 67.4 km/s/Mpc
+- Gemini: Ωm = 0.315, ΩΛ = 0.685 (Planck 2018), H₀ = 67.4 km/s/Mpc
 
-**Claude (page 22):**
-- Ωm = 0.315, ΩΛ = 0.685 (Planck 2018)
-- H₀ = 67.4 km/s/Mpc
-- Method: Standard ΛCDM
+**CSV spot-check (H_FLRW = H₀ √[Ωm(1+z)³ + ΩΛ] with claimed parameters):**
 
-**Gemini (page 25):**
-- Ωm = 0.315, ΩΛ = 0.685 (Planck 2018)
-- H₀ = 67.4 km/s/Mpc
-- Method: Standard ΛCDM
+| Service | z | CSV H_FLRW | Expected if H₀=67.4 | Match? |
+|---|---:|---:|---:|---|
+| ChatGPT | 0.15 | 75.0 | 72.7 | ❌ (closer to H₀=70) |
+| Claude | 0.14 | 69.3 | 72.3 | ❌ |
+| Gemini | 0.14 | 76.2 | 72.3 | ❌ |
+| Gemini | 2.81 | 425.0 | 287.8 | ❌ (large mismatch) |
 
-**Finding:** ✅ **H_FLRW calculation method is STABLE across all three services.**
+**Finding:** ⚠️ **H_FLRW provenance is NOT YET STABLE from extracted CSV evidence.**
 
-All three use Planck 2018 cosmology (Ωm=0.315, ΩΛ=0.685, H₀=67.4) for H_FLRW baseline.
+Recap metadata mentions Planck-like parameters, but numerical H_FLRW values do not reproduce a single shared Planck-2018 baseline across services. This requires source-level verification.
+
+**Possible explanations:**
+1. Services used different H₀ or Ωm/ΩΛ despite metadata claims
+2. H_FLRW values were manually/AI-estimated rather than formula-generated
+3. Extraction or source labels require verification
+4. H_FLRW column may be internally inconsistent within service outputs
 
 ### H-FLRW Residuals
 
@@ -164,11 +168,9 @@ All three use Planck 2018 cosmology (Ωm=0.315, ΩΛ=0.685, H₀=67.4) for H_FLR
 | Claude | 0.14 | 69.3 | -1.2 | 74.0 | +4.7 km/s/Mpc |
 | Gemini | 0.14 | 76.2 | -0.37 | 77.5 | +1.3 km/s/Mpc |
 
-**Observation:** H_FLRW values differ even at similar z due to:
-1. Different z-value spacing (0.15 vs 0.14 → different H_FLRW from cosmological calculator)
-2. Different H-data choices (normalization to different H₀ anchors)
+**Observation:** H_FLRW values differ significantly even at similar z.
 
-**Stability assessment:** **STABLE methodology, UNSTABLE numerical values** (due to z-grid and H₀ anchor differences).
+**Implication:** Differences are NOT explained only by z-grid spacing or H-data normalization. H_FLRW construction method remains unclear from CSV evidence alone.
 
 ---
 
@@ -220,12 +222,13 @@ All three use Planck 2018 cosmology (Ωm=0.315, ΩΛ=0.685, H₀=67.4) for H_FLR
 
 **Observation:** Despite 94.7× difference in β_q (Claude/ChatGPT = 18.0/0.19), H_MULT values differ by only ~5%.
 
-**Possible explanations:**
-1. **Compensating effects:** β_d and β_q trade off (higher β_q → lower β_d to maintain fit)
-2. **Weak dependence:** H_MULT may be weakly sensitive to β_q at low z
-3. **Different optimization criteria:** Each service minimized different residuals
+**Possible explanations (hypotheses, not CSV-verified):**
+1. Compensating effects between β_d and β_q
+2. Weak sensitivity to β_q at low z
+3. Different optimization criteria across services
+4. H_MULT may be normalized to match each service's own H-data
 
-**Conclusion:** H_MULT is **UNSTABLE across services** but the instability (5% range) is **much smaller** than the beta parameter instability (42-95× range).
+**Conclusion:** H_MULT remains close to each service's own H-data in the extracted tables. Cross-service robustness is not established without a common z-grid, common H-data, and documented H_MULT computation.
 
 ---
 
@@ -242,15 +245,17 @@ All three use Planck 2018 cosmology (Ωm=0.315, ΩΛ=0.685, H₀=67.4) for H_FLR
 ### Variance Analysis
 
 **β_d variance:**
-- Mean: 1.84
+- Mean: 3.18 (arithmetic: (0.78 + 4.5 + 4.25)/3 = 3.1767)
+- Sample standard deviation: 2.08
 - Range: 0.78–4.5
-- Coefficient of variation: 108%
+- Sample coefficient of variation: 65.5%
 - **Classification:** **HIGHLY UNSTABLE**
 
 **β_q variance:**
-- Mean: 8.76
+- Mean: 8.76 (arithmetic: (0.19 + 18.0 + 8.10)/3 = 8.7633)
+- Sample standard deviation: 8.92
 - Range: 0.19–18.0
-- Coefficient of variation: 109%
+- Sample coefficient of variation: 101.8%
 - **Classification:** **HIGHLY UNSTABLE**
 
 ### Provenance
@@ -265,7 +270,7 @@ All three use Planck 2018 cosmology (Ωm=0.315, ΩΛ=0.685, H₀=67.4) for H_FLR
 
 **Root cause of instability:**
 1. **Different optimization algorithms** — Each AI service uses its own optimizer
-2. **Different initial guesses** — May converge to different local minima
+2. **Different initial guesses** — May converge to non-unique fitting, differing service assumptions, or undocumented table-construction choices
 3. **Different cost functions** — May weight residuals differently
 4. **Different cluster parameter ranges** — May use different m_A, r_A ranges (see docs/79)
 
@@ -377,46 +382,51 @@ w_eff(z) = -1 + 0.28 tanh[(z - 0.9)/0.9]
 
 ---
 
-## Stable Findings (Reproducible Across Services)
+## CSV-Level Findings Summary
 
-**The following findings are STABLE across all three AI services:**
+**Note:** The following assessments are based on extracted CSV table values only. Claims about methodology, optimization algorithms, or theoretical behavior require source-text verification beyond CSV evidence.
 
-### 1. H_FLRW Calculation Method ✅
+### 1. H_FLRW Calculation Method ⚠️ **UNCERTAIN**
 
-**All three services use:**
-- Planck 2018 cosmology (Ωm=0.315, ΩΛ=0.685)
-- H₀ = 67.4 km/s/Mpc for H_FLRW calculation
-- Standard ΛCDM metric
+**Metadata claims (from PDF text):**
+- All three mention Planck-like parameters (Ωm=0.315, ΩΛ=0.685, H₀=67.4)
 
-**Variance:** ~0% (methodology identical)
+**CSV spot-check result:**
+- Numerical H_FLRW values do NOT reproduce a single shared Planck-2018 baseline
+- See Section 3 for formula mismatch details
 
-### 2. Beta Parameter Methodology ✅
+**Status:** H_FLRW provenance NOT YET STABLE from CSV evidence. Requires source-level verification.
 
-**All three services:**
-- Fitted β_d and β_q numerically to minimize RMS deviation from H-data
-- Treated beta as phenomenological parameters (not fundamental constants)
-- Used geometric-mean cluster parameter ranges
+### 2. Beta Parameter Methodology ⚠️ **PARTIALLY SUPPORTED**
 
-**Variance:** ~0% (methodology identical, though **fitted values differ drastically**)
+**What CSVs support:**
+- All three contain fitted β_d and β_q values
+- All treat beta as phenomenological (recap text)
 
-### 3. Qualitative Behavior ✅
+**What CSVs do NOT support:**
+- Whether optimization algorithms were equivalent
+- Whether cost functions were the same
+- Whether initial guesses or bounds were documented
 
-**All three services report:**
-- MULTING fits H-data comparably to (or slightly better than) FLRW at low-to-mid z
-- Dipole repulsion dominates at late times (z < 0.7)
-- Quadrupole attraction dominates at early times (z > 2)
-- Future transition predicted (monopole eventually wins over dipole)
+**Status:** Fitted values extracted; methodology claims require protocol disclosure.
 
-**Variance:** ~0% (qualitative picture consistent)
+### 3. Qualitative Behavior ⚠️ **TEXT EXCERPTS, NOT VERIFIED**
 
-### 4. MULTING vs FLRW Residual Patterns ✅
+**Extracted recap fields suggest:**
+- Dipole/quadrupole dominance narratives
+- Future transition mentions
 
-**All three services show:**
-- FLRW systematically underestimates H(z) at intermediate z (0.7 < z < 2)
-- MULTING suppresses high-z expansion (closer to H-data than FLRW at z > 2)
-- Both models match H-data at z ≈ 0 (by construction)
+**Status:** These are AI-output text summaries, not independently verified model behavior. CSV audit treats them as extracted metadata, not analytical findings.
 
-**Variance:** ~10% (pattern consistent, magnitudes vary)
+### 4. MULTING vs FLRW Residual Patterns ⚠️ **WITHIN-TABLE ONLY**
+
+**What CSVs support:**
+- Within each service's table, H_MULT is closer to that table's H-data than H_FLRW
+
+**What CSVs do NOT support:**
+- Cross-service residual pattern stability (different z-grids, H-data, H_FLRW provenance)
+
+**Status:** Within-table pattern observed; cross-service comparability limited.
 
 ---
 
@@ -472,7 +482,7 @@ w_eff(z) = -1 + 0.28 tanh[(z - 0.9)/0.9]
 
 **Status:** **HIGHLY UNSTABLE**
 
-**Implication:** w_eff predictions are AI-service-dependent and should not be treated as unique theoretical predictions.
+**Implication:** w_eff table values are AI-service-dependent and should not be treated as unique theoretical predictions.
 
 ### 6. Future Projections ❌
 
@@ -604,7 +614,7 @@ w_eff(z) = -1 + 0.28 tanh[(z - 0.9)/0.9]
 
 ❌ **MULTING is refuted** — We did not show the framework is internally inconsistent or contradicts data.
 
-❌ **One AI service is "correct" and others are "wrong"** — All three used valid optimization methods; they just converged to different local minima.
+❌ **One AI service is "correct" and others are "wrong"** — All three report fitted beta values, but their optimization procedures are not sufficiently documented to assess whether the procedures were equivalent or valid.
 
 ❌ **Beta parameters are wrong** — They are fitted values, not fundamental constants. Multiple valid fits exist.
 
@@ -677,17 +687,19 @@ w_eff(z) = -1 + 0.28 tanh[(z - 0.9)/0.9]
 
 **Main finding:** AI-service outputs differ materially in fitted beta parameters (5.4-95× range) and some construction choices (time grids, H₀ anchors). These differences motivate explicit provenance tracking before using such tables for model comparison.
 
-**Stable:** H_FLRW methodology, qualitative MULTING behavior, residual patterns.
+**CSV-verified:** Beta values (0.78/0.19, 4.5/18.0, 4.25/8.10), z-grid differences, w_eff row counts, future projection ranges (where explicit).
 
-**Unstable:** Beta parameters (CRITICAL), H₀ anchors, H_MULT values (~5% spread), w_eff(z) (29% spread), future projections (26-50% disagreement).
+**Uncertain from CSV evidence:** H_FLRW methodology (numerical values do not confirm single shared baseline), optimization algorithms, qualitative behavior claims (text excerpts, not verified model output).
 
-**Impact:** Without knowing which AI service was used and which optimization method was employed, H_MULT values from different studies cannot be reliably compared.
+**Unstable:** Beta parameters (CRITICAL: 42.6-94.7× for β_q), H₀ anchors (67.4 vs 70 vs 73.0), H_MULT values (~5% spread at z≈0.14), w_eff table values (16-29% spread), future projections (26-50% disagreement where comparable).
 
-**Recommendation:** Request author clarification on which beta set is primary, disclose optimization protocols, and consider ensemble-averaging across all 3 AI services for uncertainty quantification.
+**Impact:** Without knowing which AI service was used, which optimization method was employed, and which H_FLRW construction was used, H_MULT values from different studies cannot be reliably compared.
 
-**What this does NOT claim:** No validation or refutation of MULTING. No claim that any AI service is "wrong." All three used valid methods — they just found different local minima in parameter space.
+**Recommendation:** Request author clarification on which beta set is primary, disclose optimization protocols, verify H_FLRW construction method, and consider ensemble-averaging across all 3 AI services for uncertainty quantification.
 
-**Data quality:** HIGH — All 3 services have verified, independent data (docs/80). Contamination resolved. Ready for cross-service statistical analysis.
+**What this does NOT claim:** No validation or refutation of MULTING. No claim that any AI service is "wrong." All three report fitted beta values, but their optimization procedures are not sufficiently documented to assess equivalence or validity.
+
+**Extraction completeness:** CSV extraction appears complete enough for internal comparison (docs/80: contamination resolved, provenance verified). Analytical claims require revision and source-level verification beyond CSV evidence.
 
 ---
 
@@ -707,6 +719,23 @@ w_eff(z) = -1 + 0.28 tanh[(z - 0.9)/0.9]
 
 ---
 
-**Last updated:** 2026-05-30
-**Status:** COMPLETED — Internal reproducibility comparison
-**Next action:** Commit document
+**Last updated:** 2026-05-30 (revised after Codex audit)
+**Status:** REVISED_INTERNAL_ANALYSIS — NOT author-ready
+**Codex audit:** docs/82_codex_independent_audit_of_multi_ai_comparison.md
+**Next action:** Source-level verification of H_FLRW provenance before external sharing
+
+---
+
+## Revision History
+
+**2026-05-30 (post-Codex audit):**
+- Downgraded H_FLRW methodology from "stable/identical" to "uncertain from CSV evidence"
+- Corrected beta_d mean: 1.84 → 3.18 (arithmetic mean)
+- Corrected sample CV: beta_d 108% → 65.5%, beta_q 109% → 101.8%
+- Softened H_MULT robustness claims to "close to own H-data, cross-service robustness not established"
+- Replaced "w_eff predictions" with "w_eff table values"
+- Replaced "different local minima" with "non-unique fitting, differing service assumptions, or undocumented table-construction choices"
+- Replaced "all three used valid optimization methods" with "optimization procedures not sufficiently documented"
+- Revised "Stable Findings" section to "CSV-Level Findings Summary" with uncertainty markers
+- Updated Summary to reflect CSV-verified vs uncertain claims
+- Updated status labels: REVISED_INTERNAL_ANALYSIS, NOT_AUTHOR_READY
