@@ -1,0 +1,13 @@
+service,source_page,time_gyr,z,m_a_msun_range,r_a_mpc_range,d_cab_mpc_range,k_a_c2_msun_range,h_data_nominal,h_data_sigma,notes
+Claude,20,13.5,0.00,1e14-1e15,1.0-3.0,20-100,1e11-1e13,73.0,1.0,SH0ES (Riess et al. 2022) H0=73.04±1.04
+Claude,20,13.0,0.06,1e14-1e15,1.0-3.0,20-100,1e11-1e13,69.0,3.0,Cosmic chronometer (Moresco et al. 2022) 69±3
+Claude,20,12.0,0.14,8e13-8e14,0.9-2.8,20-90,9e11-9e12,74.0,4.0,Moresco et al. 2014 cosmic chronometers ~74±4
+Claude,20,11.0,0.25,6e13-6e14,0.8-2.5,18-85,7e11-7e12,79.0,4.5,Combined cosmic chronometer + BAO BOSS ~79±4.5
+Claude,20,10.0,0.40,4e13-4e14,0.7-2.2,15-80,5e11-5e12,82.0,5.0,Cosmic chronometer BAO eBOSS ~82±5
+Claude,20,9.0,0.65,2e13-2e14,0.6-1.8,12-70,3e11-3e12,92.0,7.0,Moresco et al. 2022 ~92±7
+Claude,20,8.0,1.00,1e13-1e14,0.5-1.5,10-60,1e11-1e12,105.0,8.0,Cosmic chronometers (Moresco 2015) ~105±8
+Claude,20,7.0,1.50,5e12-5e13,0.4-1.2,8-50,5e10-5e11,125.0,15.0,Cosmic chronometers + DESI early ~125±15
+Claude,20,6.0,2.10,2e12-2e13,0.3-0.9,6-40,2e10-2e11,150.0,20.0,Cosmic chronometers (Moresco et al. 2016) ~150±20
+Claude,20,5.0,3.20,5e11-5e12,0.2-0.7,5-30,5e9-5e10,195.0,30.0,BAO Lyman-α (BOSS/eBOSS) ~195±3
+Claude,20,4.0,5.00,1e11-1e12,0.15-0.5,4-20,1e9-1e10,270.0,50.0,Sparse estimated from DESI and Lyman-break ~270±50
+Claude,20,3.0,8.50,3e10-3e11,0.10-0.3,3-15,3e8-3e9,420.0,90.0,Very sparse JWST early galaxy velocity ~420±90 (flagged)

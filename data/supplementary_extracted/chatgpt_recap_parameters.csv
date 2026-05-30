@@ -1,0 +1,8 @@
+service,source_page,parameter,value,units,notes
+ChatGPT,22,beta_d,0.78,dimensionless,Best-fit value minimizing RMS deviation from H-data
+ChatGPT,22,beta_q,0.19,dimensionless,Best-fit value minimizing RMS deviation from H-data
+ChatGPT,14,future_transition_gyr,35-60,Gyr,Time range when monopole + quadrupole > dipole
+ChatGPT,14,contraction_onset_gyr,80-140,Gyr,Time range when H_MULT < 0
+ChatGPT,15,w_eff_formula,"-1 + 0.28 tanh[(z - 0.9)/0.9]",dimensionless,Effective equation of state fitting MULTING H(z)
+ChatGPT,12,h0_anchor,73.0,km/s/Mpc,H_MULT normalized to this value at z=0
+ChatGPT,12,h0_flrw_approx,67.4,km/s/Mpc,Approximate H_FLRW at z=0 (Planck-like or WMAP-like)

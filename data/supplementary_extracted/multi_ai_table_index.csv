@@ -1,0 +1,12 @@
+service,table_name,csv_path,source_pages,rows_extracted,contains_h_data,contains_h_flrw,contains_h_mult,contains_w_eff,contains_beta_d,contains_beta_q,contains_future_projection,extraction_status,notes
+ChatGPT,approximate_matches,data/supplementary_extracted/chatgpt_approximate_matches.csv,12,12,YES,YES,YES,NO,YES,YES,NO,COMPLETE,Beta values: 0.78 / 0.19
+ChatGPT,weff_comparison,data/supplementary_extracted/chatgpt_weff_comparison.csv,16,12,YES,YES,YES,YES,YES,YES,NO,COMPLETE,w_eff from analytic formula
+ChatGPT,recap_parameters,data/supplementary_extracted/chatgpt_recap_parameters.csv,14-22,7,NO,NO,NO,YES,YES,YES,YES,COMPLETE,Future transition 35-60 Gyr
+Claude,galaxy_cluster_parameters,data/supplementary_extracted/claude_galaxy_cluster_parameters.csv,20,12,YES,NO,NO,NO,NO,NO,NO,COMPLETE,H-data sources documented
+Claude,approximate_matches,data/supplementary_extracted/claude_approximate_matches.csv,22,12,YES,YES,YES,NO,YES,YES,NO,COMPLETE,Beta values: 4.5 / 18.0
+Claude,weff_comparison,data/supplementary_extracted/claude_weff_comparison.csv,24,11,YES,YES,YES,YES,YES,YES,NO,COMPLETE,w_eff numerical only
+Claude,recap_parameters,data/supplementary_extracted/claude_recap_parameters.csv,19-24,8,NO,NO,NO,YES,YES,YES,PARTIAL,Future projection not explicit
+Gemini,galaxy_cluster_parameters,data/supplementary_extracted/gemini_galaxy_cluster_parameters.csv,26-27,11,YES,NO,NO,NO,NO,NO,NO,COMPLETE,Single-value cluster params
+Gemini,approximate_matches,data/supplementary_extracted/gemini_approximate_matches.csv,27-28,11,YES,YES,YES,NO,YES,YES,NO,COMPLETE,Beta values: 4.25 / 8.10
+Gemini,weff_comparison,data/supplementary_extracted/gemini_weff_comparison.csv,29,4,YES,YES,YES,YES,YES,YES,NO,PARTIAL,Only 4 time bins shown
+Gemini,recap_parameters,data/supplementary_extracted/gemini_recap_parameters.csv,25-29,9,NO,NO,NO,YES,YES,YES,YES,COMPLETE,Future transition 32-38 Gyr
