@@ -41,6 +41,11 @@ This repository is in **WAITING_FOR_AUTHOR_RESPONSE** state.
    - Residuals: 1.27 vs 8.13 km/s/Mpc (mean absolute, β fitted to same data)
 4. ✅ Beta parameters source-confirmed: β_d=4.5, β_q=18.0
 5. ✅ Force law equations documented (SOURCE_CANDIDATE, awaiting verification)
+6. ✅ **Reusable asset extracted:** epi-registry package (2026-05-30)
+   - Parameter provenance framework with use-permission enforcement
+   - 23 tests passing, MOND external validation complete
+   - Status: RESEARCH_PROTOTYPE, frozen until GeoScan Gold complete
+   - See docs/52_reusable_assets_harvest.md for full details
 
 ### Bridge Candidate Generation ✅
 
