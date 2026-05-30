@@ -35,9 +35,9 @@ data/supplementary_raw/preprintsSupplementary202511.0598.v6.pdf
 | Section | Pages | Contains table? | Contains H-FLRW? | Contains H-MULT? | Contains w_eff? | Contains beta values? | Notes |
 |---|---:|---|---|---|---|---|---|
 | **Prompt** | 2-7 | No | Formula only | Formula only | No | Formula only | Full 8-step prompt for AI services |
-| **ChatGPT** | 7-17 | Yes | Yes | Yes | Yes | Yes | ChatGPT results with β_d=0.78, β_q=0.19 |
-| **Claude (Sonnet 4.6)** | 18-20 | Yes (partial) | Yes | No | No | No | Claude methodology + Galaxy Cluster Parameters table |
-| **Gemini (Thinking)** | 21+ | (not read) | Unknown | Unknown | Unknown | Unknown | Section listed in TOC but not extracted |
+| **ChatGPT** | 7-17 | Yes | Yes | Yes | Yes | Yes (β_d=0.78, β_q=0.19) | Complete, 8 steps |
+| **Claude (Sonnet 4.6)** | 18-24 | Yes | Yes | Yes | Yes | No | Complete through Step 7, w_eff table |
+| **Gemini (Thinking)** | 25-29 | Yes | Yes | Yes | Yes | Yes (β_d=4.25, β_q=8.10) | Complete, 8 steps |
 
 ---
 
@@ -138,14 +138,63 @@ data/supplementary_raw/preprintsSupplementary202511.0598.v6.pdf
 
 ---
 
-### 4. Gemini (Thinking) Section (Pages 21+)
+### 4. Gemini (Thinking) Section (Pages 25-29)
 
-**Status:** Not extracted in the first 20 pages read.
+**URL:** https://gemini.google.com/app/972ef3f67a492efa
 
-**Listed in TOC (page 1):**
-> "Gemini (Thinking)...25"
+**Session date:** 2026-05-07
 
-**Next action:** Would require reading pages 21-end to inventory Gemini section.
+**Contains:**
+- ✅ H-data values (cosmic chronometer compilations, $H_s$ data from direct observations)
+- ✅ H-FLRW values (computed using Ωm=0.315, ΩΛ=0.685, H₀=67.4 km/s/Mpc Planck 2018)
+- ✅ H-MULT values (calculated via MULTING with fitted β parameters)
+- ✅ w_eff(z) values (effective equation of state)
+- ✅ Beta parameter best-fit: **β_d = 4.25, β_q = 8.10**
+- ✅ Future transition estimate: **t ~ 32-38 billion years** (monopole + quadrupole > dipole)
+- ✅ Contraction onset estimate: **t ~ 55 billion years** (H < 0)
+- ✅ Comparison table: H-data, H-FLRW, H-MULT, FLRW Dev(σ), MULT Dev(σ)
+- ✅ Galaxy Cluster Parameters table (m_A, r_A, D_C:AB, k_A/c², H-data)
+
+**Evidence snippet (page 27, beta values — highlighted in yellow in source PDF):**
+> "**Determined Values:**
+> - $\beta_d = 4.25$
+> - $\beta_q = 8.10$"
+
+**Evidence snippet (page 29, future transition — highlighted in yellow in source PDF):**
+> "**Estimated Future Time Range:** The sum of monopole plus quadrupole attraction is projected to exceed dipole repulsion at approximately **32 to 38 billion years** after the Big Bang."
+
+**Evidence snippet (page 29, contraction onset — highlighted in yellow in source PDF):**
+> "**Contraction:** The model projects the expansion rate could reach zero at **$t \approx 55$ Gyr**, after which the universe would enter a contraction phase ($H < 0$)."
+
+**Table: Approximate Matches to Rate of Expansion Data (page 27, partial)**
+
+| Time (Gyr) | z | H-data (km/s/Mpc) | H-FLRW | FLRW Dev (σ) | H-MULT | MULT Dev (σ) |
+|---|---|---|---|---|---|---|
+| 13.5 | 0.02 | $70.2 \pm 1.4$ | 69.8 | -0.29 | 70.2 | 0.00 |
+| 13.0 | 0.05 | $72.9 \pm 2.1$ | 71.5 | -0.67 | 72.8 | -0.05 |
+| 12.0 | 0.14 | $77.5 \pm 3.5$ | 76.2 | -0.37 | 77.1 | -0.11 |
+| 11.0 | 0.25 | $83.1 \pm 4.2$ | 82.5 | -0.14 | 82.9 | -0.05 |
+| 10.0 | 0.38 | $90.5 \pm 5.0$ | 91.8 | +0.26 | 91.0 | +0.10 |
+| 9.0 | 0.54 | $101.2 \pm 6.3$ | 104.5 | +0.52 | 102.1 | +0.14 |
+| 8.0 | 0.74 | $115.0 \pm 8.0$ | 123.4 | +1.05 | 116.8 | +0.23 |
+| 7.0 | 1.01 | $134.5 \pm 10.2$ | 151.2 | +1.64 | 138.2 | +0.36 |
+| 6.0 | 1.38 | $162.0 \pm 12.5$ | 196.4 | +2.75 | 169.5 | +0.60 |
+| 5.0 | 1.92 | $202.0 \pm 15.0$ | 278.5 | +5.10 | 218.4 | +1.09 |
+| 4.0 | 2.81 | $265.0 \pm 20.0$ | 425.0 | +8.00 | 294.0 | +1.45 |
+
+**Table: Comparison Including w_eff (page 29, partial)**
+
+| Time | z | H-data | H-FLRW | FLRW Dev | H-MULT | MULT Dev | w_eff | H-w_eff | w_eff Dev |
+|---|---|---|---|---|---|---|---|---|---|
+| 13.5 | 0.02 | 70.2 | 69.8 | -0.29 | 70.2 | 0.00 | -1.05 | 70.2 | 0.00 |
+| 11.0 | 0.25 | 83.1 | 82.5 | -0.14 | 82.9 | -0.05 | -0.98 | 83.0 | -0.02 |
+| 8.0 | 0.74 | 115.0 | 123.4 | +1.05 | 116.8 | +0.23 | -0.75 | 116.5 | +0.19 |
+| 4.0 | 2.81 | 265.0 | 425.0 | +8.00 | 294.0 | +1.45 | -0.30 | 280.0 | +0.75 |
+
+**Discussion (page 28):**
+> "**MULTING Fit:** By allowing the Quadrupole attraction ($F_q$) to dominate at early times (small $z$) and Dipole repulsion ($F_d$) to dominate at late times, the MULTING model maintains a closer alignment with high-redshift data, reducing the deviation at $z=2.81$ from $8\sigma$ to under $1.5\sigma$."
+
+> "**Trends in $r_{dA}$:** Since $r_{dA} = \beta_d r_A$, the dipole parameter grows over time as galaxy clusters virialized and accreted more mass/volume. This implies the repulsive component of gravity 'strengthens' as structures mature."
 
 ---
 
@@ -176,14 +225,24 @@ data/supplementary_raw/preprintsSupplementary202511.0598.v6.pdf
 - ✅ **Contraction onset: t ~ 80-140 Gyr** (when H_MULT < 0)
 - ✅ Comparison table showing MULTING vs FLRW deviation from H-data
 
-### Claude (Sonnet 4.6) Results (Pages 18-20)
+### Claude (Sonnet 4.6) Results (Pages 18-24)
 - ✅ **H-data values** (cosmic chronometers, BAO, SNe Ia)
+- ✅ **H-MULT values** (calculated via MULTING)
+- ✅ **w_eff(z) values** (effective equation of state table, page 24)
 - ✅ Galaxy Cluster Parameters table (mass ranges, radii, separations, kinetic energies)
 - ✅ Conservative choice: t_ROE,min = 3 Gyr (vs ChatGPT's 2 Gyr)
-- ⚠️ **Step 5 section incomplete** (page 20 cuts off)
+- ✅ Comparison table: H-data, H-FLRW, H-MULT, σ_FLRW, σ_MULT, w_eff
 
-### Gemini (Thinking) Results (Pages 21+)
-- ⚠️ **Not yet inventoried** (requires reading pages 21-end)
+### Gemini (Thinking) Results (Pages 25-29)
+- ✅ **H-data values** (cosmic chronometer compilations, $H_s$ data)
+- ✅ **H-FLRW values** (Planck 2018: Ωm=0.315, ΩΛ=0.685, H₀=67.4)
+- ✅ **H-MULT values** (calculated via MULTING)
+- ✅ **w_eff(z) values** (effective equation of state)
+- ✅ **Beta values: β_d = 4.25, β_q = 8.10**
+- ✅ **Future transition: t ~ 32-38 billion years** (monopole + quadrupole > dipole)
+- ✅ **Contraction onset: t ~ 55 Gyr** (H < 0)
+- ✅ Comparison table showing MULTING vs FLRW deviation from H-data
+- ✅ Galaxy Cluster Parameters table (11 time bins)
 
 ---
 
@@ -225,12 +284,14 @@ Yellow-highlighted column "H-MULT dev (σ) w_eff" shows:
 
 ## Important Discrepancies Between Services
 
-| Aspect | ChatGPT | Claude | Implication |
-|---|---|---|---|
-| **t_ROE,min** | 2 Gyr | 3 Gyr | Claude more conservative about data quality at high z |
-| **Beta fitting** | Done (β_d=0.78, β_q=0.19) | Not shown (page cuts off) | Cannot compare fitted values yet |
-| **Future projection** | Explicit (35-60 Gyr transition) | Not shown (page cuts off) | Cannot compare predictions yet |
-| **w_eff(z)** | Explicit formula | Not shown (page cuts off) | Cannot compare equation of state yet |
+| Aspect | ChatGPT | Claude | Gemini | Implication |
+|---|---|---|---|---|
+| **t_ROE,min** | 2 Gyr | 3 Gyr | 3.55 Gyr | Claude & Gemini more conservative |
+| **Beta fitting** | β_d=0.78, β_q=0.19 | Not shown | β_d=4.25, β_q=8.10 | **MAJOR DISCREPANCY** (5.4× difference in β_d, 42.6× in β_q) |
+| **Future transition** | 35-60 Gyr | Not shown | 32-38 Gyr | ChatGPT & Gemini roughly agree (~35 Gyr midpoint) |
+| **Contraction onset** | 80-140 Gyr | Not shown | 55 Gyr | Gemini predicts earlier contraction |
+| **w_eff(z) form** | Explicit tanh formula | Table only | Table only | ChatGPT provides analytic form, others numerical |
+| **H₀ anchor** | 73.0 km/s/Mpc | 73.0 km/s/Mpc | 67.4 km/s/Mpc | Gemini uses Planck, ChatGPT/Claude use SH0ES-like |
 
 ---
 
@@ -263,9 +324,9 @@ docs/77_extract_multi_ai_tables_plan.md
 |---|---|
 | **Raw PDF preserved** | ✅ data/supplementary_raw/preprintsSupplementary202511.0598.v6.pdf |
 | **Inventory created** | ✅ docs/76_supplementary_materials_inventory.md |
-| **ChatGPT section inventoried** | ✅ Pages 7-17, table present, beta values present |
-| **Claude section inventoried** | ⚠️ Pages 18-20 (partial, cuts off at Step 5) |
-| **Gemini section inventoried** | ❌ Not yet (pages 21+ not read) |
+| **ChatGPT section inventoried** | ✅ Pages 7-17, complete, β_d=0.78, β_q=0.19 |
+| **Claude section inventoried** | ✅ Pages 18-24, complete through Step 7, w_eff table present, beta values NOT shown |
+| **Gemini section inventoried** | ✅ Pages 25-29, complete, β_d=4.25, β_q=8.10 |
 | **Analysis performed** | ❌ NO (inventory only) |
 | **Validation claimed** | ❌ NO |
 | **Refutation claimed** | ❌ NO |
@@ -288,9 +349,25 @@ docs/77_extract_multi_ai_tables_plan.md
 ---
 
 **Last updated:** 2026-05-30  
-**Status:** INVENTORY_COMPLETE (ChatGPT + Claude partial)  
-**Next action:** Await approval before extracting tables or reading Gemini section  
+**Status:** INVENTORY_COMPLETE (All 3 AI services inventoried)  
+**Next action:** Await approval before extracting tables to CSV  
+
+**CRITICAL FINDING:** Beta parameters differ dramatically across AI services:
+- ChatGPT: β_d=0.78, β_q=0.19
+- Gemini: β_d=4.25, β_q=8.10
+- Claude: values not shown in output
+
+This is a **5.4× difference in β_d** and **42.6× difference in β_q** — NOT a minor variation.
+
+**Implication:** AI services fitted different beta values to match H-data. This suggests:
+1. Different optimization methods used by each AI
+2. Different initial guesses or convergence criteria
+3. Possibly different cluster parameter ranges
+4. H_MULT is **highly sensitive** to beta choice
+
+**Next step recommendation:** Extract all three tables to CSV with provenance columns, compare H_MULT values directly to see how 42× difference in β_q affects predictions.
+
 **Related docs:**
 - docs/71_author_response_analysis.md (author mentioned Supplementary Materials)
-- docs/73_multi_ai_table_comparison_plan.md (plan to compare ChatGPT/Claude/Gemini)
-- docs/75_email_reproducibility_plan_short.md (email requesting supplementary tables — NOW FOUND)
+- docs/73_multi_ai_table_comparison_plan.md (plan to compare ChatGPT/Claude/Gemini — NOW EXECUTABLE)
+- docs/75_email_reproducibility_plan_short.md (email requesting supplementary tables — NOW FOUND, marked OUTDATED)
