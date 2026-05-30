@@ -529,3 +529,92 @@ RESPECTFUL_CONTRIBUTION_FRAMING
 ---
 
 🔒 **END OF WAITING STATE MARKER** 🔒
+
+---
+
+## 📧 Author Response Addendum (2026-05-30)
+
+**Status Update:** WAITING_FOR_AUTHOR_RESPONSE → AUTHOR_RESPONDED → REPRODUCIBILITY_PLAN_REQUESTED
+
+**Author's Response Summary:**
+
+Dr. Buckholtz responded positively and constructively:
+
+1. ✅ **Confirms AI-service provenance uncertainty** — AI services chose baselines/data without author direction
+2. ✅ **Welcomes methodology development** — sees value in techniques for comparing different data/statistical choices
+3. ✅ **Open to fair testing** — explicitly says "help make a case for or against FLRW, MULTING, w_eff"
+4. ✅ **Interested in publication venues** — asks about journals in applied math, AI, philosophy (not just physics)
+5. ✅ **Confirms beta phenomenological** — beta_d, beta_q are fitted parameters (may or may not be fundamental)
+6. ✅ **Requests reproducibility plan** — looking forward to our "outline of a reproducibility plan"
+
+**Tone:** Collaborative, not defensive. No pushback on audit approach.
+
+**What Changed:**
+
+| Aspect | Before | After |
+|--------|--------|-------|
+| **Status** | WAITING_FOR_AUTHOR_RESPONSE | AUTHOR_RESPONDED |
+| **Deliverable** | None requested | Reproducibility plan outline requested |
+| **Collaboration** | Unknown | COLLABORATION_POSSIBLE |
+| **H_FLRW provenance** | UNKNOWN | CONFIRMED_UNCERTAIN (AI-service dependent) |
+| **Publication strategy** | Unclear | Two-track: methodology (Track A) + optional physics supplement (Track B) |
+
+**What Did NOT Change:**
+
+- ❌ **MCMC:** Still BLOCKED (bridge method not revealed, 0/5 blockers resolved)
+- ❌ **Prediction:** Still BLOCKED (no out-of-sample test yet)
+- ❌ **Public claims:** Still prohibited (NOT_VALIDATION, NOT_REFUTATION)
+- ❌ **F_oP → H_MULT bridge:** Still unclear (author did NOT provide explicit formula)
+
+**Documents Created (2026-05-30):**
+
+1. ✅ `docs/71_author_response_analysis.md` (11,000 words) — point-by-point analysis, correspondence map, MCMC blocker status
+2. ✅ `docs/72_reproducibility_plan_outline_for_tjb.md` (9,000 words) — 4-phase plan with timelines, blockers, exit criteria
+3. ✅ `docs/73_multi_ai_table_comparison_plan.md` (5,000 words) — plan to compare ChatGPT/Gemini/Claude tables
+
+**Reproducibility Plan Summary (4 Phases):**
+
+- **Phase 1 (2 weeks):** Parameter provenance clarification (H_FLRW baseline, bridge method, operational meaning)
+- **Phase 2 (2-3 weeks):** Independent dataset integration (Pantheon+, BAO, AIC/BIC)
+- **Phase 3 (3-4 weeks):** MCMC comparison (CONDITIONAL on Phases 1-2 success + author + user approval)
+- **Phase 4 (2-3 months):** Publication — Track A (methodology, independent), Track B (MULTING results, conditional)
+
+**Next Immediate Actions:**
+
+1. 📋 **Read Supplementary Materials** (ChatGPT, Gemini tables) — may solve H_FLRW provenance without author input (30 min)
+2. 📋 **User reviews reproducibility plan** (docs/72) — ready to send after approval
+3. 📋 **Ask 3 clarification questions** (from docs/69) — H_FLRW baseline, bridge method, operational meaning
+4. ⏸️ **WAIT for author response** before Phase 2/3
+
+**Safety Boundaries (UNCHANGED):**
+
+```
+NO_EMAIL_WITHOUT_APPROVAL
+NOT_VALIDATION
+NOT_REFUTATION
+NO_PUBLIC_CLAIMS
+MCMC_BLOCKED
+PREDICTION_BLOCKED
+AUTHOR_CLARIFICATION_REQUIRED
+```
+
+**Priority Context (UNCHANGED):**
+
+- **Active #1:** GeoScan Gold 2026 (21 days to blind test, deadline 2026-06-20)
+- **Active #2:** 24-na-7 (Reflexio) — core pipeline testing
+- **FROZEN #3:** Buckholtz — awaiting reproducibility plan review OR author clarification
+- **FROZEN #4:** epi-registry — prototype complete, awaiting GeoScan Gold completion
+
+**Time Budget:**
+
+- **Buckholtz work cap:** 2 hours/week until GeoScan Gold complete
+- **Reproducibility plan:** Ready for author (no further work needed unless requested)
+- **Multi-AI comparison:** 5-6 hours (if Supplementary Materials accessible)
+
+**Collaboration Status:** ✅ ACTIVE — author is engaged and responsive.
+
+---
+
+**Last updated:** 2026-05-30 (Author Response Addendum)  
+**Previous frozen state:** 2026-05-29  
+**Next review:** After user reviews reproducibility plan OR after GeoScan Gold (2026-06-20+)
