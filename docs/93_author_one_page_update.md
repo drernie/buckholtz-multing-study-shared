@@ -3,13 +3,15 @@
 **Date:** 2026-05-31  
 **To:** Dr. Thomas J. Buckholtz  
 **From:** Sergey (reproducibility audit work)  
-**Re:** Progress on multi-AI comparison and bridge mapping
+**Re:** Progress on multi-AI comparison and next steps
+
+**Note:** This document supersedes earlier drafts (docs/75, docs/85) unless you decide otherwise.
 
 ---
 
-## Summary (3 sentences)
+## Summary
 
-We extracted supplementary tables from all three AI services (ChatGPT, Claude, Gemini) and compared their outputs. Key finding: fitted beta parameters differ materially across services (β_d: 5.4–5.8×, β_q: 42.6–94.7×), and we cannot yet reproduce Table A1 H_MULT values without understanding the intended F_oP → H_MULT calculation method. This update outlines what we can verify independently, what remains unclear, and 3 critical questions to resolve next steps.
+We extracted and compared supplementary tables from all three AI services (ChatGPT, Claude, Gemini). Key finding: fitted beta parameters differ materially across services (β_d: 5.8× spread, β_q: 94.7× spread). To proceed with Table A1 reproduction, we need to understand how H_MULT should be calculated — either by implementing your existing procedure, or by helping formalize one if the table was generated exploratorily. This update outlines what we verified, two collaboration options, and 2 critical questions.
 
 ---
 
@@ -33,123 +35,150 @@ These observations come directly from the supplementary materials you provided:
 
 ---
 
-## What We Inferred (Diagnostic Work)
+## Two Ways We Can Help
 
-These are our internal observations — **not claims about MULTING correctness**:
+We can assist in one of two ways — **you choose which applies:**
 
-1. **H_FLRW baseline unclear:**  
-   We tested 6 standard cosmological baselines (Planck-2018, WMAP, SH0ES, etc.). None reproduce Table A1 H_FLRW column within numerical precision. Best match: empirical power law H(z) = A(1+z)^0.87 (MAE = 5.8 km/s/Mpc) — but this is a fit, not a physical model.
+### Option A: Reproduce Your Existing Procedure
 
-2. **Bridge candidates cataloged (internal registry only):**  
-   We identified 5 possible routes from F_oP force law to H_MULT(z). Two are testable now as diagnostics (simplified proxy, phenomenological Hamiltonian fit), but we cannot claim any of them represent your intended method without confirmation.
+If you have a documented calculation method for H_MULT (formula, algorithm, or step-by-step procedure):
+- We implement it exactly as specified
+- Run it on all three AI-service inputs (ChatGPT, Claude, Gemini)
+- Compare our output vs. your supplementary tables
+- Document numerical precision and any discrepancies
 
-3. **Negative-control diagnostics run:**  
-   - Row-permutation test: **PASS** (model sensitive to correct z-ordering)  
-   - Randomized beta test: **FAIL** (many random beta pairs fit equally well — parameter constraint weak)  
-   - Synthetic ΛCDM test: **FAIL** (proxy model too generic)  
-   - **Interpretation:** Current diagnostic proxy has limited specificity; full F_oP → H_MULT bridge needed for stronger tests.
+**This verifies reproducibility of your intended method.**
+
+### Option B: Help Formalize Exploratory Work
+
+If Table A1 emerged exploratorily (AI services found patterns without a pre-specified formula):
+- We search for explicit calculation methods that match the table outputs
+- Test candidates against physical constraints and statistical diagnostics
+- Present options for your review and selection
+- You confirm which (if any) captures the intended physics
+
+**This collaboratively formalizes a reproducible procedure.**
+
+**Both approaches are standard practice in computational science.** Neither assumes error or incompleteness on your part.
 
 ---
 
-## What Remains Unresolved (Blocking Table A1 Reproduction)
+## Why This Matters
 
-We cannot proceed to full Table A1 reproduction without clarification on these points:
+**I want to avoid testing my own reconstruction instead of your intended procedure.** Without knowing which calculation method you used (or intended), I cannot distinguish between:
+- Verifying your method works as intended (reproducibility)
+- Testing whether my guessed method happens to match the table (circular reasoning)
 
-### Blocker 1: F_oP → H_MULT Bridge Method
+Clarifying Option A vs. Option B ensures we're testing the right thing.
 
-**Question:** How should H_MULT(z) be computed from the pairwise force law F_oP?
+---
 
-We found references in AI transcripts to:
-- Heuristic scaling: H_MULT²(z) = H_anchor² × [Φ(z) / Φ(z_anchor)]  
-- Discrete lattice + virial pressure → Friedmann equation  
-- Phenomenological Hamiltonian ansatz
+## Critical Questions (2 Required + 1 Optional)
 
-**Without knowing which (if any) is correct, we cannot claim to reproduce your method.**
+To proceed with either Option A or Option B, we need clarity on:
 
-**Specific sub-questions:**
-- **Q1a:** What are H_anchor and z_anchor reference values (if heuristic scaling is used)?
-- **Q1b:** How are amplitude terms A_m(z), A_d(z), A_q(z) defined?
+### Question 1 (REQUIRED): Which Collaboration Mode?
 
-### Blocker 2: Cluster Variables
+**Option A:** Do you have a documented procedure for calculating H_MULT that you'd like us to implement and verify?
 
-**Question:** For each redshift in Table A1 (z = 0.15, 0.25, ..., 8.5), what are the cluster variables m_A(z), r_A(z), k_A(z)?
+**Option B:** Should we work together to formalize an explicit calculation method (searching candidates, testing them, presenting options for your review)?
 
-These appear in force-law expressions but are not tabulated in supplementary materials. If they were computed by AI services, we need the values used to reproduce consistently.
+**Either is fine** — this just determines our next steps.
 
-### Blocker 3: Multi-AI Reconciliation
+### Question 2 (REQUIRED): Which AI Service is Reference?
 
-**Question:** Given that ChatGPT, Claude, and Gemini produced different β_d and β_q values (5.8× and 94.7× spread), which output should be considered the "reference" for reproducibility purposes?
+ChatGPT, Claude, and Gemini produced different beta values (5.8× spread for β_d, 94.7× for β_q). For reproducibility purposes:
 
-**Options:**
-- (a) One service is primary → use that one  
-- (b) All three are valid alternative fits → quantify uncertainty across them  
-- (c) Author has independent β values → use those instead
+**(a)** Should we use one service's output as the reference? If so, which one?  
+**(b)** Should we treat all three as valid alternatives and quantify uncertainty across them?  
+**(c)** Do you have independent beta values we should use instead?
+
+### Question 3 (OPTIONAL): Additional Variables
+
+If you choose **Option A** and your calculation method requires variables beyond (z, H_FLRW, H_MULT, β_d, β_q), could you provide:
+- Cluster-related quantities at each redshift (if used)
+- Reference/anchor values (if used)
+- Any other inputs needed for the calculation
+
+**If you choose Option B,** we can work with the data we already have and search for formulas accordingly.
 
 ---
 
 ## Proposed Next Steps
 
-**If you can clarify Q1a, Q1b, and Blocker 2 above:**
-- We implement the correct F_oP → H_MULT bridge  
-- Rerun Table A1 calculation with specified method  
-- Compare our output vs. supplementary tables (all 3 services)  
-- Document reproducibility status
+**If you choose Option A** (reproduce existing procedure):
+- You provide the calculation method
+- We implement it exactly as specified
+- We compare our output vs. your supplementary tables
+- We document reproducibility status
 
-**If clarification is not feasible at this time:**
-- We can archive the audit work as methodology development (parameter provenance tracking)  
-- Extract diagnostic tools as standalone assets  
-- Document open questions for future work
+**If you choose Option B** (collaborative formalization):
+- We search for calculation methods matching the table outputs
+- We present 2-3 candidates with physical justification
+- You select which (if any) captures your intended physics
+- We document the chosen method
 
-**Either outcome is fine — we respect your time and priorities.**
+**If neither option fits your current priorities:**
+- We can archive the work as methodology development (parameter provenance tracking)
+- We extract reusable diagnostic tools
+- We document open questions for future work
 
----
-
-## Attachments (Internal — Not Sending Unless Requested)
-
-We prepared these documents internally. **Do not send** unless you specifically ask for them:
-
-- ❌ **docs/92_bridge_candidate_registry.md** (468 lines, technical) — catalog of 5 bridge candidates, dimensional analysis, testability assessment  
-- ❌ **docs/81_multi_ai_reproducibility_comparison.md** (318 lines) — full ChatGPT/Claude/Gemini table comparison  
-- ❌ **docs/68_hflrw_provenance_recovery.md** — 6-baseline H_FLRW diagnostic  
-- ❌ **docs/91_negative_control_results.md** — diagnostic test results
-
-**These are available if useful, but we do not assume you need them.**
+**All three outcomes are fine — we respect your time and priorities.**
 
 ---
 
-## Email Draft (Optional — For User Review)
+## Attachments
 
-**Subject:** Brief update — Table A1 reproducibility progress + 3 clarification questions
+**Send initially:** None
+
+**Do not send unless requested:**
+- docs/81 (multi-AI table comparison — detailed technical)
+- docs/91 (diagnostic test results)
+- docs/92 (calculation method candidates — internal registry)
+- docs/94 (collaboration plan — internal)
+- Raw analysis logs
+
+**Available if useful, but not assumed necessary.**
+
+---
+
+## Email Draft (Ready for User Review)
+
+**Subject:** Table A1 reproducibility — two collaboration options
 
 **Body:**
 
 Dear Dr. Buckholtz,
 
-Thank you for your May 30 response and for sharing the supplementary materials with ChatGPT, Claude, and Gemini table outputs.
+Thank you for your May 30 response and for sharing the supplementary materials with ChatGPT, Claude, and Gemini outputs.
 
-We have extracted and compared all three tables. Key observation: fitted beta parameters differ materially across services (β_d: 5.8× spread, β_q: 94.7× spread), which highlights the importance of provenance tracking for reproducibility.
+We extracted and compared all three tables. Key observation: fitted beta parameters differ materially across services (β_d: 5.8× spread, β_q: 94.7× spread).
 
-To proceed with full Table A1 reproduction, we need clarification on three points:
+To proceed with Table A1 reproduction, we can help in one of two ways:
 
-1. **F_oP → H_MULT bridge method:** How should H_MULT(z) be computed from the pairwise force law? Specifically:  
-   - What are H_anchor and z_anchor (if heuristic scaling is used)?  
-   - How are amplitude terms A_m(z), A_d(z), A_q(z) defined?
+**(A) Reproduce your existing procedure:** If you have a documented calculation method for H_MULT, we can implement it exactly as specified and verify reproducibility across the three AI-service outputs.
 
-2. **Cluster variables:** For each z in Table A1, what are m_A(z), r_A(z), k_A(z)?
+**(B) Collaborate to formalize an exploratory method:** If the table emerged exploratorily (AI services found patterns without a pre-specified formula), we can search for explicit calculation methods, test them against physical constraints, and present options for your review.
 
-3. **Multi-AI reconciliation:** Which of the three AI-service outputs (ChatGPT/Claude/Gemini) should be considered the reference for reproducibility?
+Both approaches are standard practice. I want to avoid testing my own reconstruction instead of your intended procedure — clarifying (A) vs. (B) ensures we're verifying the right thing.
 
-We ran internal diagnostic tests (row-permutation, randomized beta, synthetic ΛCDM) to assess current proxy model specificity. Results available if useful, but not included here to keep this brief.
+**Two questions to proceed:**
 
-Happy to discuss next steps at your convenience — either clarification to proceed, or archival if other priorities take precedence. Both outcomes are fine.
+1. Which collaboration mode fits your workflow — Option A or Option B?
+
+2. Which AI-service output (ChatGPT/Claude/Gemini) should we use as the reference for reproducibility, or should we treat all three as valid alternatives?
+
+**Optional:** If Option A and your method requires variables beyond (z, H_FLRW, β_d, β_q), we'd appreciate those inputs. If Option B, we can work with what we have.
+
+Happy to discuss at your convenience. If other priorities take precedence, archival is also fine — we respect your time.
 
 Best regards,  
 Sergey
 
 ---
 
-**Word count:** ~950 words (~1.9 pages)  
-**Questions:** 3 main blockers (Q1a/Q1b, Blocker 2, Blocker 3)  
+**Word count:** ~280 words (~0.6 pages)  
+**Questions:** 2 required + 1 optional  
 **Tone:** Respectful, collaborative, no validation/refutation claims  
 **Status:** DRAFT — ready for user review before sending
 
@@ -160,12 +189,17 @@ Sergey
 - ✅ No validation claims ("MULTING is correct/incorrect")  
 - ✅ No refutation claims  
 - ✅ No words "error", "failed", "wrong" directed at author  
-- ✅ Clear separation: source-confirmed / inferred / diagnostic-only / unresolved  
-- ✅ docs/92 used as internal basis, NOT attached  
-- ✅ ≤ 2 pages  
-- ✅ ≤ 5 questions (3 main blockers with 2 sub-questions under Q1)  
+- ✅ No internal notation in author-facing body (F_oP, Candidate A-E, virial, backreaction, negative-control results removed)
+- ✅ Branch A/B choice framework included ("reproduce existing" vs "formalize exploratory")
+- ✅ Explicit protection: "I want to avoid testing my own reconstruction instead of your intended procedure"
+- ✅ docs/92, docs/94 used as internal basis, NOT attached  
+- ✅ ≤ 2 pages (email draft 0.6 pages, full document 1.5 pages)
+- ✅ 2 required + 1 optional questions (down from 3 blockers)
 - ✅ English, simple, respectful tone  
 - ✅ Subject/body email variant included  
-- ✅ Attachment list with send/do-not-send labels
+- ✅ Attachment list: send none initially, do-not-send unless requested
+- ✅ Note added: supersedes docs/75 and docs/85
 
-**Ready for user review.**
+**Status:** READY for user review before sending  
+**Next step:** User reviews docs/93 → approves → sends to Dr. Buckholtz  
+**Sergey is protected:** His contribution will be labeled separately from author's original model (Option B source labeling if chosen)
