@@ -293,9 +293,9 @@ def test_no_predict_function_exists():
     import src.deep_bridge_diagnostic_fit as module
 
     assert not hasattr(module, "predict_new_z"), "predict_new_z() should not exist"
-    assert not hasattr(
-        module, "compute_h_mult_prediction"
-    ), "compute_h_mult_prediction() should not exist"
+    assert not hasattr(module, "compute_h_mult_prediction"), (
+        "compute_h_mult_prediction() should not exist"
+    )
 
 
 # =============================================================================
@@ -408,3 +408,62 @@ def test_constrained_better_than_flrw():
     # Fitted model should have lower MAE than FLRW
     # (not necessarily true for all datasets, but expected for Table A1)
     assert diag_con["mae"] < flrw_mae, "Fitted model should fit H_MULT better than FLRW"
+
+
+# =============================================================================
+# Part 9: Numerical Safety (regression guard for silent-NaN bug)
+# =============================================================================
+
+
+def test_safe_h_clips_negative_h_squared():
+    """safe_h_of_z returns finite, non-negative H even when H² < 0.
+
+    Regression guard: a raw np.sqrt(H²) on a non-physical parameter vector
+    yields NaN, which silently corrupts the least-squares solver. The clip
+    guard must turn negative H² into a finite penalty (H -> 0), not NaN.
+    """
+    from src.deep_bridge_diagnostic_fit import safe_h_of_z
+
+    z = np.array([0.0, 1.0, 5.0])
+    # Strongly negative omega_m -> H² < 0 everywhere
+    bad = HamiltonianBridgeModel(omega_k=0.0, omega_m=-5.0, omega_d=0.0, omega_q=0.0)
+
+    h = safe_h_of_z(z, bad)
+
+    assert np.all(np.isfinite(h)), "safe_h_of_z must never return NaN/inf"
+    assert np.all(h >= 0.0), "H must be non-negative"
+    assert np.all(h == 0.0), "Where H² < 0, guarded H collapses to 0 (penalty)"
+
+
+def test_safe_h_matches_sqrt_in_physical_region():
+    """In the physical region (H² > 0), safe_h_of_z == np.sqrt(H²) exactly."""
+    from src.deep_bridge_diagnostic_fit import safe_h_of_z
+
+    z = np.array([0.0, 0.5, 2.0, 8.0])
+    good = HamiltonianBridgeModel(omega_k=0.0, omega_m=0.3, omega_d=0.0, omega_q=0.0)
+
+    h_guarded = safe_h_of_z(z, good)
+    h_raw = np.sqrt(hamiltonian_h_squared(z, good))
+
+    assert np.allclose(h_guarded, h_raw), "Guard must not alter the physical region"
+
+
+def test_fits_emit_no_runtime_warnings():
+    """fit_unconstrained / fit_sign_constrained must not raise sqrt RuntimeWarnings.
+
+    Before the safe_h_of_z guard, both fits emitted 'invalid value encountered
+    in sqrt' during iteration. Treat any such warning as an error here.
+    """
+    import warnings
+
+    df = load_table_a1_rows_2_12()
+    z = df["z"].values
+    h_mult = df["H_MULT"].values
+
+    with warnings.catch_warnings():
+        warnings.filterwarnings("error", message="invalid value encountered in sqrt")
+        _, diag_unc = fit_unconstrained(z, h_mult)
+        _, diag_con = fit_sign_constrained(z, h_mult)
+
+    assert np.all(np.isfinite(diag_unc["residuals"])), "Unconstrained residuals finite"
+    assert np.all(np.isfinite(diag_con["residuals"])), "Constrained residuals finite"

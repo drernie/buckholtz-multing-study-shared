@@ -13,9 +13,9 @@ CRITICAL SAFETY RULES:
 
 """
 
+from collections.abc import Callable
 from dataclasses import dataclass
 from enum import Enum
-from typing import Optional, Callable, List
 
 
 class AlgorithmStatus(Enum):
@@ -89,8 +89,8 @@ class AlgorithmCandidate:
     formula_latex: str
     status: AlgorithmStatus
     code_permission: CodePermission
-    source_file: Optional[str]
-    required_inputs: List[str]
+    source_file: str | None
+    required_inputs: list[str]
     dimensional_check_passes: bool
     can_reproduce_table_a1: str  # YES/NO/UNKNOWN
     can_predict_new_z: str  # YES/NO/PARTIAL/UNKNOWN
@@ -98,7 +98,7 @@ class AlgorithmCandidate:
     degrees_of_freedom: int
     overfitting_risk: str  # HIGH/MEDIUM/LOW/NONE
     notes: str
-    implementation: Optional[Callable] = None
+    implementation: Callable | None = None
 
 
 # ============================================================================
@@ -334,12 +334,12 @@ CANDIDATES = [
 # ============================================================================
 
 
-def get_all_candidates() -> List[AlgorithmCandidate]:
+def get_all_candidates() -> list[AlgorithmCandidate]:
     """Return all H_MULT algorithm candidates"""
     return CANDIDATES
 
 
-def get_candidate_by_id(candidate_id: str) -> Optional[AlgorithmCandidate]:
+def get_candidate_by_id(candidate_id: str) -> AlgorithmCandidate | None:
     """Get candidate by ID, return None if not found"""
     for candidate in CANDIDATES:
         if candidate.candidate_id == candidate_id:
@@ -347,17 +347,17 @@ def get_candidate_by_id(candidate_id: str) -> Optional[AlgorithmCandidate]:
     return None
 
 
-def get_candidates_by_status(status: AlgorithmStatus) -> List[AlgorithmCandidate]:
+def get_candidates_by_status(status: AlgorithmStatus) -> list[AlgorithmCandidate]:
     """Get all candidates with given status"""
     return [c for c in CANDIDATES if c.status == status]
 
 
-def get_source_confirmed_candidates() -> List[AlgorithmCandidate]:
+def get_source_confirmed_candidates() -> list[AlgorithmCandidate]:
     """Get only SOURCE_CONFIRMED candidates (should be empty unless manuscript cited)"""
     return get_candidates_by_status(AlgorithmStatus.SOURCE_CONFIRMED)
 
 
-def get_implementable_candidates() -> List[AlgorithmCandidate]:
+def get_implementable_candidates() -> list[AlgorithmCandidate]:
     """Get candidates with non-BLOCKED code permission"""
     return [c for c in CANDIDATES if c.code_permission != CodePermission.BLOCKED]
 
@@ -374,7 +374,7 @@ def count_candidates_by_status() -> dict:
 # ============================================================================
 
 
-def validate_registry() -> List[str]:
+def validate_registry() -> list[str]:
     """Validate registry integrity, return list of issues"""
     issues = []
 
@@ -473,5 +473,6 @@ if _VALIDATION_ISSUES:
 
     warnings.warn(
         f"H_MULT candidate registry has {len(_VALIDATION_ISSUES)} issues:\n"
-        + "\n".join(f"  - {issue}" for issue in _VALIDATION_ISSUES)
+        + "\n".join(f"  - {issue}" for issue in _VALIDATION_ISSUES),
+        stacklevel=2,
     )

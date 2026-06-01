@@ -113,6 +113,22 @@ def hamiltonian_h_squared(
     return h0**2 * h2_normalized
 
 
+def safe_h_of_z(z: NDArray[np.float64], params: HamiltonianBridgeModel) -> NDArray[np.float64]:
+    """H(z) from the Hamiltonian bridge, guarded against non-physical H² < 0.
+
+    WHY: during least-squares iteration the parameter vector can wander into a
+    region where H²(z) < 0. Taking ``np.sqrt`` there yields NaN, which silently
+    corrupts the Levenberg-Marquardt / trust-region solver (NaN residuals break
+    the Jacobian update — the bug surfaced as 16 ``invalid value encountered in
+    sqrt`` RuntimeWarnings). Clipping H² at 0 turns those regions into a finite,
+    large penalty (H_model -> 0, residual -> -H_mult) that pushes the optimizer
+    back toward physical solutions instead of feeding it NaNs. In the physical
+    region (H² > 0) the result is identical to ``np.sqrt(H²)``.
+    """
+    h2 = hamiltonian_h_squared(z, params)
+    return np.sqrt(np.clip(h2, 0.0, None))
+
+
 # =============================================================================
 # Fitting Functions
 # =============================================================================
@@ -170,7 +186,7 @@ def fit_unconstrained(
 
     def residuals(params_vec: NDArray[np.float64]) -> NDArray[np.float64]:
         params = HamiltonianBridgeModel(*params_vec)
-        h_model = np.sqrt(hamiltonian_h_squared(z, params))
+        h_model = safe_h_of_z(z, params)
         return h_model - h_mult
 
     # Initial guess: roughly ΛCDM-like
@@ -181,7 +197,7 @@ def fit_unconstrained(
     best_fit = HamiltonianBridgeModel(*result.x)
 
     # Compute diagnostics
-    h_fit = np.sqrt(hamiltonian_h_squared(z, best_fit))
+    h_fit = safe_h_of_z(z, best_fit)
     residuals_final = h_fit - h_mult
     mae = np.mean(np.abs(residuals_final))
     rmse = np.sqrt(np.mean(residuals_final**2))
@@ -222,7 +238,7 @@ def fit_sign_constrained(
 
     def residuals(params_vec: NDArray[np.float64]) -> NDArray[np.float64]:
         params = HamiltonianBridgeModel(*params_vec)
-        h_model = np.sqrt(hamiltonian_h_squared(z, params))
+        h_model = safe_h_of_z(z, params)
         return h_model - h_mult
 
     # Initial guess: safe guess that guarantees H² > 0
@@ -243,7 +259,7 @@ def fit_sign_constrained(
     best_fit = HamiltonianBridgeModel(*result.x)
 
     # Diagnostics
-    h_fit = np.sqrt(hamiltonian_h_squared(z, best_fit))
+    h_fit = safe_h_of_z(z, best_fit)
     residuals_final = h_fit - h_mult
     mae = np.mean(np.abs(residuals_final))
     rmse = np.sqrt(np.mean(residuals_final**2))
