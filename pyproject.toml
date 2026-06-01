@@ -76,3 +76,14 @@ ignore_missing_imports = true
 [[tool.mypy.overrides]]
 module = "matplotlib.*"
 ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "pandas.*"
+ignore_missing_imports = true
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["*/__pycache__/*"]
+
+[tool.coverage.report]
+show_missing = true
