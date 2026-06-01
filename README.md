@@ -1,5 +1,11 @@
 # Buckholtz IDM/MULTING Study
 
+![tests](https://img.shields.io/badge/tests-533%20passed-brightgreen)
+![coverage](https://img.shields.io/badge/coverage-72%25-yellow)
+![ruff](https://img.shields.io/badge/lint-ruff%20clean-brightgreen)
+![python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue)
+![license](https://img.shields.io/badge/license-MIT-green)
+
 **Personal study notes and reproducibility scaffolding for understanding Thomas J. Buckholtz's IDM/MULTING framework.**
 
 **⚠️ IMPORTANT DISCLAIMERS:**
@@ -8,6 +14,12 @@
 - All interpretations and analyses are my own and may contain errors
 - This work is **not endorsed** by Dr. Buckholtz or any institution
 - The goal is **transparency and learning**, not criticism or validation
+
+> **What this actually reproduces:** an **AI-service-mediated computation** (Table A1
+> and its fitted beta parameters from ChatGPT / Claude / Gemini), **not** Buckholtz's
+> physical theory — the H_MULT(z) formula is under-specified in the source. The candidate
+> beta values {4.25, 0.78, 8.10, 0.19} are **AI-service outputs, not model versions**.
+> Full framing: [`docs/WHAT_THIS_REPRODUCES.md`](docs/WHAT_THIS_REPRODUCES.md).
 
 ---
 
@@ -204,15 +216,18 @@ Core data models: `Claim`, `Parameter`, `EquationRecord`, `SourceRef`.
 Every record MUST have an explicit `status` to prevent silent assumptions.
 
 ### `beta_definitions.py`
-Beta parameter candidates with **explicit allowance for conflicting values**.
+Legacy-but-active candidate registry of beta values, each **attributed to its
+AI-service origin** (source-confirmed, `docs/93`):
 
-Currently includes:
-- `beta_d` candidate 1: 4.25
-- `beta_d` candidate 2: 0.78
-- `beta_q` candidate 1: 8.10
-- `beta_q` candidate 2: 0.19
+- `beta_d` 4.25 — **Gemini** output
+- `beta_d` 0.78 — **ChatGPT** output
+- `beta_q` 8.10 — **Gemini** output
+- `beta_q` 0.19 — **ChatGPT** output
 
-**All marked as `status="unclear"`** pending source clarification.
+**All marked `status="unclear"`** and **NOT Buckholtz model versions**. The actual
+Table A1 caption pair (β_d=4.5, β_q=18.0, Claude) lives in `beta_provenance.py`,
+the **single source of truth** for provenance and use-permission. Always consult
+`beta_provenance.py` before using any value for modeling.
 
 ### `numerology_penalty.py`
 Anti-numerology scoring:
@@ -347,7 +362,7 @@ If you wish to contribute:
 
 ## License
 
-MIT License (or specify your preference)
+[MIT License](LICENSE) © 2026 Sergey Kuts
 
 ---
 

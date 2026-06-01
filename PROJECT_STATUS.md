@@ -1,9 +1,18 @@
 # Project Status — Buckholtz IDM/MULTING Verification MVP
 
-**Version:** v0.2-appendix-a1-forensic  
-**Date:** 2026-05-29  
-**Status:** ✅ FORENSIC EXTRACTION COMPLETE — Appendix A1 Steps 3–7 analyzed  
-**Previous:** v0.1-mvp-complete (2026-05-27)
+**Version:** v0.3.0 (reference-grade hardening)
+**Date:** 2026-06-01
+**Status:** ✅ ENGINEERING-HARDENED — collaboration active, awaiting author response
+**Previous:** v0.2-appendix-a1-forensic (2026-05-29), v0.1-mvp-complete (2026-05-27)
+
+> **Verified counters (this version, [VERIFIED-REAL] via pytest/coverage):**
+> 533 tests pass, 12 skipped, 0 failures · coverage 72% · ruff clean · CI on py3.11–3.13.
+> Earlier "62 tests" figures below are historical (v0.1) and superseded.
+>
+> **Beta framing correction:** the candidate values {4.25, 0.78, 8.10, 0.19} are
+> **AI-service outputs** (Gemini / ChatGPT), NOT Buckholtz model versions. The actual
+> Table A1 caption pair is β_d=4.5, β_q=18.0 (Claude). See `docs/WHAT_THIS_REPRODUCES.md`
+> and `src/beta_provenance.py` (single source of truth).
 
 ---
 
@@ -144,8 +153,8 @@ Epistemic audit of Thomas J. Buckholtz's IDM/MULTING framework completed. All pl
 | Metric | Target | Actual | Status |
 |--------|--------|--------|--------|
 | Documentation files | ≥10 | 12 | ✅ Exceeded |
-| Test pass rate | 100% | 100% (62/62) | ✅ Perfect |
-| Code coverage | ≥80% | TBD | ⏳ Run `pytest --cov` |
+| Test pass rate | 100% | 100% (533 passed, 12 skipped) | ✅ |
+| Code coverage | ≥80% | 72% (measured 2026-06-01) | ⚠️ below target; report.py/rosetta.py/equations.py untested |
 | Time budget | 33–49h | ~40h | ✅ On budget |
 | Blocker clarity | Clear primary blocker | Beta definitions | ✅ Documented |
 | Overclaiming | Zero | Zero | ✅ Clean |
@@ -294,8 +303,13 @@ MIT License (or specify your preference)
 
 ---
 
-**Status:** ✅ **MVP COMPLETE — READY FOR OUTREACH**
+**Status:** ✅ **ENGINEERING-HARDENED (v0.3) — collaboration active**
 
-**Last Updated:** 2026-05-27  
-**Git Tag:** v0.1-mvp-complete  
+Author contact is an active two-way collaboration (reproducibility plan sent
+2026-06-01; see `correspondence/buckholtz-log` in vault). This is NOT a cold
+"ready for outreach" state. No publication is made and none is implied —
+H_MULT(z) remains blocked pending the author's intended calculation procedure.
+
+**Last Updated:** 2026-06-01
+**Git Tag:** v0.3.0 (pending)
 **Commit Hash:** (see git log)

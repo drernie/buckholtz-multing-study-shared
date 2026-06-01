@@ -1,14 +1,15 @@
 # Documentation Index — Buckholtz IDM/MULTING Audit
 
-**Last updated:** 2026-05-30  
-**Total documents:** 63 files  
-**Status:** FROZEN, WAITING_FOR_AUTHOR_RESPONSE
+**Last updated:** 2026-06-01
+**Total documents:** 89 markdown files (+2 CSV)
+**Status:** ENGINEERING-HARDENED (v0.3), collaboration active — awaiting author response
 
 ---
 
 ## Quick Navigation
 
 **Start here:**
+- [WHAT_THIS_REPRODUCES.md](WHAT_THIS_REPRODUCES.md) — **scope clarification**: what the audit does/does not reproduce (read first)
 - [FINAL_WAITING_STATE_MARKER.md](FINAL_WAITING_STATE_MARKER.md) — Main status file, what we accomplished, what's blocked
 - [52_reusable_assets_harvest.md](52_reusable_assets_harvest.md) — 5 reusable assets extracted from audit
 

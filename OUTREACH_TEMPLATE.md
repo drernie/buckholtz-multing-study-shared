@@ -1,8 +1,22 @@
 # Email Template for Dr. Buckholtz
 
-**Status:** Draft template — review and customize before sending
+> ## ⚠️ DEPRECATED (2026-06-01)
+>
+> This template is **superseded** and kept for history only. Do **not** send it.
+> - The beta values quoted below (4.25 / 0.78 / 8.10 / 0.19) are **AI-service outputs
+>   (Gemini / ChatGPT), not the actual Table A1 caption pair** (β_d=4.5, β_q=18.0, Claude).
+> - Author contact is already an **active two-way collaboration**; the current,
+>   source-checked outreach lives in `correspondence/buckholtz-log` (vault) and
+>   `docs/93_author_one_page_update.md`.
+> - Current bottleneck is the **H_MULT(z) procedure**, not beta normalization.
+>
+> Use `docs/93` / the correspondence log instead.
 
-**Purpose:** Request beta_d and beta_q clarification in respectful, non-threatening manner
+---
+
+**Status:** DEPRECATED draft template (historical) — do not send
+
+**Purpose:** (historical) Request beta_d and beta_q clarification in respectful, non-threatening manner
 
 ---
 
