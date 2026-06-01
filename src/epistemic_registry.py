@@ -5,8 +5,7 @@ All records MUST have an explicit status marker to prevent silent assumptions.
 """
 
 from dataclasses import dataclass
-from typing import Literal, Optional
-
+from typing import Literal
 
 # Status taxonomy
 Status = Literal[
@@ -30,7 +29,7 @@ class SourceRef:
     id: str
     title: str
     location: str  # DOI, URL, page number, email date, etc.
-    url: Optional[str] = None
+    url: str | None = None
     note: str = ""
 
 
@@ -41,9 +40,9 @@ class Claim:
     id: str
     text: str
     status: Status
-    source: Optional[SourceRef]
+    source: SourceRef | None
     testable: bool
-    failure_condition: Optional[str]  # What would falsify this claim
+    failure_condition: str | None  # What would falsify this claim
     notes: str = ""
 
     def __post_init__(self):
@@ -61,10 +60,10 @@ class Parameter:
 
     name: str
     symbol: str
-    value: Optional[float]
+    value: float | None
     units: str
     status: Status
-    source: Optional[SourceRef]
+    source: SourceRef | None
     interpretation: str  # What this parameter represents
     notes: str = ""
 
@@ -86,7 +85,7 @@ class EquationRecord:
     expression_text: str  # LaTeX or plain text
     symbols: list[str]  # List of symbols used
     status: Status
-    source: Optional[SourceRef]
+    source: SourceRef | None
     dimensional_status: Literal[
         "not_checked",
         "passed",

@@ -4,15 +4,14 @@ Test assumption dependency graph functionality.
 Purpose: Ensure key dependencies are documented and graph functions work.
 """
 
-import pytest
 
 from src.assumption_graph import (
+    check_circular_dependency,
     get_all_dependencies,
     get_dependencies,
-    get_reverse_dependencies,
-    get_high_risk_dependencies,
-    check_circular_dependency,
     get_dependency_chain,
+    get_high_risk_dependencies,
+    get_reverse_dependencies,
 )
 
 

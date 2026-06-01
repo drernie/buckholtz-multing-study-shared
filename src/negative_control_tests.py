@@ -6,6 +6,7 @@ DATA SOURCE: data/table_a1_reported.csv (REAL Table A1, rows 2-12)
 """
 
 from dataclasses import dataclass
+
 import numpy as np
 import pandas as pd
 
@@ -88,7 +89,7 @@ def main():
     print("="*80)
     df = load_table_a1_rows_2_12()
     z, h_obs, beta_d, beta_q = extract_h_data_and_beta(df)
-    print(f"DATA SOURCE: data/table_a1_reported.csv (rows 2-12)")
+    print("DATA SOURCE: data/table_a1_reported.csv (rows 2-12)")
     print(f"DATA POINTS: {len(z)}")
     print(f"BETA VALUES: beta_d={beta_d}, beta_q={beta_q} (Table A1 caption)")
     print()

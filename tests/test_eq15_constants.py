@@ -7,15 +7,14 @@ WARNING: This test reproduces the numerical relation only.
          It only verifies arithmetic under current interpretation.
 """
 
-import pytest
 
 from src.constants import (
-    ELECTRON_MASS,
-    TAU_MASS,
-    ELEMENTARY_CHARGE,
     COULOMB_CONSTANT,
+    ELECTRON_MASS,
+    ELEMENTARY_CHARGE,
     GRAVITATIONAL_CONSTANT,
     MEV_TO_KG,
+    TAU_MASS,
 )
 
 
@@ -55,7 +54,7 @@ def test_eq15_numerical_reproduction():
     relative_error = abs(lhs - rhs) / rhs
 
     # Report
-    print(f"\n=== Eq.15 Numerical Reproduction ===")
+    print("\n=== Eq.15 Numerical Reproduction ===")
     print(f"LHS = (4/3) * (m_tau^2 / m_e^2)^6 = {lhs:.6e}")
     print(f"RHS = k_e * e^2 / (G * m_e^2) = {rhs:.6e}")
     print(f"Relative error = {relative_error * 100:.2f}%")

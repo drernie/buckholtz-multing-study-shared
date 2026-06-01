@@ -5,7 +5,6 @@ Verify that both interpretations (dimensional vs dimensionless betas) are
 mathematically consistent.
 """
 
-import pytest
 
 
 def test_monopole_units():
@@ -88,6 +87,7 @@ def test_hidden_scale_plausibility():
     Candidate hypothesis: L_ref ~ 2.3–2.6 Mpc
     """
     import math
+
     from src.beta_definitions import (
         BETA_D_CANDIDATE_1,
         BETA_D_CANDIDATE_2,

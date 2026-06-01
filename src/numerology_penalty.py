@@ -6,7 +6,6 @@ Purpose: Detect and penalize arbitrary numerical relations that lack
 """
 
 from dataclasses import dataclass
-from typing import Literal
 
 
 @dataclass(frozen=True)

@@ -287,7 +287,7 @@ def print_ppn_status():
     print()
 
     # Status summary
-    status_counts = {status: 0 for status in CheckStatus}
+    status_counts = dict.fromkeys(CheckStatus, 0)
     for check in checks:
         status_counts[check.status] += 1
 

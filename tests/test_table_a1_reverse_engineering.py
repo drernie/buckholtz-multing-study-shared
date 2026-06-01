@@ -15,11 +15,11 @@ Test Coverage:
 """
 
 import numpy as np
-import pytest
+
 from src.table_a1_reverse_engineering import (
     DiagnosticStatus,
-    ForceRatioTest,
     FLRWRelation,
+    ForceRatioTest,
     PhiInference,
     PolynomialFit,
     ResidualStats,
@@ -36,7 +36,6 @@ from src.table_a1_reverse_engineering import (
     load_table_a1,
     run_all_diagnostics,
 )
-
 
 # ============================================================================
 # Test 1: Data Loading
@@ -537,12 +536,12 @@ def test_diagnostics_integrity_summary():
 
     print("\n✅ All Table A1 reverse engineering diagnostics passed")
     print(f"   - Test A: H_MULT residuals = {results['test_a']['mult'].rms_residual:.2f} km/s/Mpc")
-    print(f"   - Test B: sigma_MULT consistency PASS")
+    print("   - Test B: sigma_MULT consistency PASS")
     print(f"   - Test C: H_MULT vs H_FLRW correlation = {results['test_c'].correlation_h:.4f}")
-    print(f"   - Test D: Phi_relative computed (AI_INTERPRETATION)")
-    print(f"   - Test E: BLOCKED (missing cluster variables)")
+    print("   - Test D: Phi_relative computed (AI_INTERPRETATION)")
+    print("   - Test E: BLOCKED (missing cluster variables)")
     print(
         f"   - Test F: w_eff diagnostic (POST_HOC, "
         f"better than FLRW: {results['test_f'].w_eff_better_than_flrw})"
     )
-    print(f"   - Test G: Polynomial fits (deg 1-3, PHENOMENOLOGICAL)")
+    print("   - Test G: Polynomial fits (deg 1-3, PHENOMENOLOGICAL)")

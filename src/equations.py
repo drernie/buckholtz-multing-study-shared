@@ -7,7 +7,6 @@ Do not implement physics that is not clearly defined.
 
 from .epistemic_registry import EquationRecord, SourceRef
 
-
 # Placeholder source for equations requiring verification
 SOURCE_NEEDS_VERIFICATION = SourceRef(
     id="buckholtz_unverified",

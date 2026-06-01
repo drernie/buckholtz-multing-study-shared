@@ -7,7 +7,6 @@ Safety enforcement:
 - Row 1 marked as outlier
 """
 
-import pytest
 from src.bridge_candidate_math_audit import (
     BRIDGE_CANDIDATES,
     CANDIDATE_B,

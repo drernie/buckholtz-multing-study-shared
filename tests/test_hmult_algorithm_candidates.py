@@ -13,19 +13,19 @@ Test Coverage:
 """
 
 import pytest
+
 from src.hmult_algorithm_candidates import (
     CANDIDATES,
     AlgorithmStatus,
     CodePermission,
+    count_candidates_by_status,
     get_all_candidates,
     get_candidate_by_id,
     get_candidates_by_status,
-    get_source_confirmed_candidates,
     get_implementable_candidates,
-    count_candidates_by_status,
+    get_source_confirmed_candidates,
     validate_registry,
 )
-
 
 # ============================================================================
 # Test 1: Registry Structure

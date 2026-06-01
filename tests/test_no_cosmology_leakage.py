@@ -5,7 +5,6 @@ Purpose: Prevent circular reasoning where H0, Omega_m, etc. are used
          to derive "fundamental" beta parameters.
 """
 
-import pytest
 
 from src.beta_definitions import get_all_beta_definitions
 from src.data_anchoring import get_high_leakage_risk

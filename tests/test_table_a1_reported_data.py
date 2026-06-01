@@ -13,10 +13,10 @@ Test Coverage:
 7. H_MULT provenance (TABLE_REPORTED only, no computation function)
 """
 
-import pytest
-import pandas as pd
 from pathlib import Path
 
+import pandas as pd
+import pytest
 
 # ============================================================================
 # Test Fixtures
@@ -289,8 +289,8 @@ def test_h_mult_is_table_reported_not_computed():
 def test_no_h_mult_computation_in_codebase():
     """No function named compute_H_MULT exists in codebase"""
     # Grep for function definitions
-    from pathlib import Path
     import re
+    from pathlib import Path
 
     src_files = list(Path("src").glob("*.py"))
     for src_file in src_files:
@@ -377,7 +377,7 @@ def test_print_table_a1_summary(table_a1_df):
     # Check for NA columns
     na_counts = (table_a1_df == "NA").sum()
     if na_counts.sum() > 0:
-        print(f"\nColumns with NA values:")
+        print("\nColumns with NA values:")
         for col, count in na_counts[na_counts > 0].items():
             print(f"  {col}: {count} NA values")
 
@@ -442,5 +442,5 @@ def test_table_a1_integrity_summary(table_a1_df, table_a1_raw_text):
     print(f"   - {len(table_a1_df)} rows transcribed")
     print(f"   - z range: {z.min():.2f} to {z.max():.2f}")
     print(f"   - H_MULT range: {h_mult.min():.2f} to {h_mult.max():.2f} km/s/Mpc")
-    print(f"   - Beta metadata: beta_d=4.5, beta_q=18.0")
-    print(f"   - Provenance: TABLE_REPORTED (not computed)")
+    print("   - Beta metadata: beta_d=4.5, beta_q=18.0")
+    print("   - Provenance: TABLE_REPORTED (not computed)")

@@ -4,7 +4,6 @@ Test beta normalization math — verify numerical relations between candidates.
 All discovered relations are marked as candidate_relation (hypothesis, not fact).
 """
 
-import pytest
 from src.beta_definitions import (
     BETA_D_CANDIDATE_1,
     BETA_D_CANDIDATE_2,

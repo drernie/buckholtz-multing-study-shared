@@ -6,7 +6,7 @@ Purpose: Ensure claims, parameters, and equations follow status discipline.
 
 import pytest
 
-from src.epistemic_registry import Claim, Parameter, EquationRecord, SourceRef
+from src.epistemic_registry import Claim, EquationRecord, Parameter, SourceRef
 
 
 def test_claim_marked_fact_requires_source():

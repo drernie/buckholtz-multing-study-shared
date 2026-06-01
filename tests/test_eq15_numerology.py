@@ -5,16 +5,15 @@ Purpose: Check whether Eq.15-style relation is unique or part of
          a large search space of similar numerical coincidences.
 """
 
-import pytest
 
 from src.constants import (
-    ELECTRON_MASS,
-    TAU_MASS,
-    MUON_MASS,
     COULOMB_CONSTANT,
+    ELECTRON_MASS,
     ELEMENTARY_CHARGE,
     GRAVITATIONAL_CONSTANT,
     MEV_TO_KG,
+    MUON_MASS,
+    TAU_MASS,
 )
 from src.numerology_penalty import CandidateRelation, evaluate_relation
 
@@ -43,7 +42,7 @@ def test_eq15_original():
 
     result = evaluate_relation(candidate)
 
-    print(f"\n=== Eq.15 Original ===")
+    print("\n=== Eq.15 Original ===")
     print(f"Relative error: {result['relative_error']*100:.2f}%")
     print(f"Penalized score: {result['penalized_score']:.1f}/10")
     print(f"Verdict: {result['verdict']}")
@@ -75,7 +74,7 @@ def test_alternative_exponent_11():
 
     result = evaluate_relation(candidate)
 
-    print(f"\n=== Alternative: exponent 11 ===")
+    print("\n=== Alternative: exponent 11 ===")
     print(f"Relative error: {result['relative_error']*100:.2f}%")
     print(f"Penalized score: {result['penalized_score']:.1f}/10")
     print(f"Verdict: {result['verdict']}")
@@ -105,7 +104,7 @@ def test_alternative_exponent_13():
 
     result = evaluate_relation(candidate)
 
-    print(f"\n=== Alternative: exponent 13 ===")
+    print("\n=== Alternative: exponent 13 ===")
     print(f"Relative error: {result['relative_error']*100:.2f}%")
     print(f"Penalized score: {result['penalized_score']:.1f}/10")
     print(f"Verdict: {result['verdict']}")
@@ -135,7 +134,7 @@ def test_alternative_muon_based():
 
     result = evaluate_relation(candidate)
 
-    print(f"\n=== Alternative: muon-based ===")
+    print("\n=== Alternative: muon-based ===")
     print(f"Relative error: {result['relative_error']*100:.2f}%")
     print(f"Penalized score: {result['penalized_score']:.1f}/10")
     print(f"Verdict: {result['verdict']}")
@@ -165,7 +164,7 @@ def test_alternative_different_prefactor():
 
     result = evaluate_relation(candidate)
 
-    print(f"\n=== Alternative: no 4/3 prefactor ===")
+    print("\n=== Alternative: no 4/3 prefactor ===")
     print(f"Relative error: {result['relative_error']*100:.2f}%")
     print(f"Penalized score: {result['penalized_score']:.1f}/10")
     print(f"Verdict: {result['verdict']}")
