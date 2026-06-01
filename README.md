@@ -362,7 +362,7 @@ If you wish to contribute:
 
 ## License
 
-[MIT License](LICENSE) © 2026 Sergei Kucherenko
+[MIT License](LICENSE) © 2026 Sergey Boyko ([ORCID 0009-0009-2178-5701](https://orcid.org/0009-0009-2178-5701), Ronin Institute for Independent Scholarship)
 
 ---
 

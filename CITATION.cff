@@ -10,9 +10,11 @@ abstract: >-
   refute the theory.
 type: software
 authors:
-  - given-names: Sergei
-    family-names: Kucherenko
-    email: sergeikuch80@gmail.com
+  - given-names: Sergey
+    family-names: Boyko
+    email: sergey.boyko@ronininstitute.org
+    orcid: "https://orcid.org/0009-0009-2178-5701"
+    affiliation: "Ronin Institute for Independent Scholarship"
 license: MIT
 version: 0.3.0
 date-released: 2026-06-01
