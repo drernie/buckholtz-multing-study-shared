@@ -1,7 +1,7 @@
 # Buckholtz IDM/MULTING Study
 
-![tests](https://img.shields.io/badge/tests-533%20passed-brightgreen)
-![coverage](https://img.shields.io/badge/coverage-72%25-yellow)
+![tests](https://img.shields.io/badge/tests-542%20passed-brightgreen)
+![coverage](https://img.shields.io/badge/coverage-91%25-brightgreen)
 ![ruff](https://img.shields.io/badge/lint-ruff%20clean-brightgreen)
 ![python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)

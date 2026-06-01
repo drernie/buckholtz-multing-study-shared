@@ -6,7 +6,7 @@
 **Previous:** v0.2-appendix-a1-forensic (2026-05-29), v0.1-mvp-complete (2026-05-27)
 
 > **Verified counters (this version, [VERIFIED-REAL] via pytest/coverage):**
-> 533 tests pass, 12 skipped, 0 failures · coverage 72% · ruff clean · CI on py3.11–3.13.
+> 542 tests pass, 12 skipped, 0 failures · coverage 91% · ruff clean · CI on py3.11–3.13.
 > Earlier "62 tests" figures below are historical (v0.1) and superseded.
 >
 > **Beta framing correction:** the candidate values {4.25, 0.78, 8.10, 0.19} are
@@ -153,8 +153,8 @@ Epistemic audit of Thomas J. Buckholtz's IDM/MULTING framework completed. All pl
 | Metric | Target | Actual | Status |
 |--------|--------|--------|--------|
 | Documentation files | ≥10 | 12 | ✅ Exceeded |
-| Test pass rate | 100% | 100% (533 passed, 12 skipped) | ✅ |
-| Code coverage | ≥80% | 72% (measured 2026-06-01) | ⚠️ below target; report.py/rosetta.py/equations.py untested |
+| Test pass rate | 100% | 100% (542 passed, 12 skipped) | ✅ |
+| Code coverage | ≥80% | 91% (measured 2026-06-01) | ✅ above target |
 | Time budget | 33–49h | ~40h | ✅ On budget |
 | Blocker clarity | Clear primary blocker | Beta definitions | ✅ Documented |
 | Overclaiming | Zero | Zero | ✅ Clean |
