@@ -1,9 +1,0 @@
-service,source_page,parameter,value,units,notes
-Claude,21,beta_d,4.5,dimensionless,Best-fit value (from page 21 optimization section)
-Claude,21,beta_q,18.0,dimensionless,Best-fit value (from page 21 optimization section)
-Claude,23,future_transition_gyr,NOT_SHOWN_EXPLICITLY,Gyr,Text mentions monopole wins eventually but no specific time
-Claude,23,contraction_onset_gyr,NOT_SHOWN_EXPLICITLY,Gyr,Text mentions possible contraction but no specific time
-Claude,24,w_eff_formula,NUMERICAL_TABLE_ONLY,dimensionless,No analytic formula provided (unlike ChatGPT tanh form)
-Claude,22,h0_anchor,73.0,km/s/Mpc,H_MULT normalized to this value at z=0
-Claude,22,h0_flrw_planck,67.4,km/s/Mpc,H_FLRW computed using Planck 2018 parameters
-Claude,19,t_roe_min,3.0,Gyr,Conservative choice (vs ChatGPT 2 Gyr) for reliable observational data

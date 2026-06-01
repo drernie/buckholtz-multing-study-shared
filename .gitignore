@@ -50,6 +50,12 @@ desktop.ini
 # Do NOT push large PDFs or manuscript files without permission
 *.pdf
 
+# Supplementary-derived tables (public-safety / publication hygiene).
+# These CSVs are extracted from Dr. Buckholtz's author-provided Supplementary
+# Material and must NOT be redistributed without permission. Local copies are
+# preserved; see data/supplementary_extracted/README.md.
+data/supplementary_extracted/*.csv
+
 # Data files (if large)
 # Uncomment if you have large datasets:
 # data/*.csv

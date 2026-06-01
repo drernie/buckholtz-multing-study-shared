@@ -1,5 +1,0 @@
-service,source_page,time_gyr,z,h_data_nominal,h_data_sigma,h_flrw,flrw_dev_sigma,h_mult,mult_dev_sigma,w_eff,h_weff,weff_dev_sigma,beta_d,beta_q,notes
-Gemini,29,13.5,0.02,70.2,1.4,69.8,-0.29,70.2,0.00,-1.05,70.2,0.00,4.25,8.10,w_eff from MULTING study
-Gemini,29,11.0,0.25,83.1,4.2,82.5,-0.14,82.9,-0.05,-0.98,83.0,-0.02,4.25,8.10,
-Gemini,29,8.0,0.74,115.0,8.0,123.4,1.05,116.8,0.23,-0.75,116.5,0.19,4.25,8.10,
-Gemini,29,4.0,2.81,265.0,20.0,425.0,8.00,294.0,1.45,-0.30,280.0,0.75,4.25,8.10,
