@@ -306,7 +306,7 @@ def leave_one_out_stability(
         stability diagnostics
     """
     n = len(z)
-    loo_params = []
+    loo_rows: list[list[float]] = []
 
     fit_func = fit_sign_constrained if constrained else fit_unconstrained
 
@@ -316,11 +316,11 @@ def leave_one_out_stability(
         h_loo = np.delete(h_mult, i)
 
         model_loo, _ = fit_func(z_loo, h_loo)
-        loo_params.append(
+        loo_rows.append(
             [model_loo.omega_k, model_loo.omega_m, model_loo.omega_d, model_loo.omega_q]
         )
 
-    loo_params = np.array(loo_params)
+    loo_params = np.array(loo_rows)
 
     # Compute coefficient variation
     param_std = np.std(loo_params, axis=0)

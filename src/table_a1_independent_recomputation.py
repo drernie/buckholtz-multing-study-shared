@@ -128,7 +128,7 @@ def compute_h_flrw(
     Omega_m: float = OMEGA_M_DEFAULT,
     Omega_Lambda: float = OMEGA_LAMBDA_DEFAULT,
     Omega_k: float = OMEGA_K_DEFAULT,
-) -> np.ndarray | float:
+) -> np.ndarray:
     """Compute standard ΛCDM expansion rate H_FLRW(z)
 
     Formula: H(z) = H0 * sqrt(Omega_m * (1+z)^3 + Omega_k * (1+z)^2 + Omega_Lambda)
@@ -149,7 +149,9 @@ def compute_h_flrw(
     # Standard Friedmann equation
     E_squared = Omega_m * a**-3 + Omega_k * a**-2 + Omega_Lambda  # E(a)^2 = H(a)^2 / H0^2
 
-    return H0 * np.sqrt(E_squared)
+    # z_arr is always an array (np.asarray above), so the result is always an
+    # ndarray; np.asarray makes that explicit for the type checker (no-op at runtime).
+    return np.asarray(H0 * np.sqrt(E_squared))
 
 
 # ============================================================================
@@ -176,9 +178,9 @@ def compute_residuals(
         Residuals (convention-dependent units)
     """
     if convention == "absolute":
-        return H_obs - H_model
+        return np.asarray(H_obs - H_model)
     elif convention == "normalized":
-        return (H_obs - H_model) / sigma_obs
+        return np.asarray((H_obs - H_model) / sigma_obs)
     else:
         raise ValueError(f"Unknown convention: {convention}")
 
