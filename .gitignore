@@ -56,6 +56,14 @@ desktop.ini
 # preserved; see data/supplementary_extracted/README.md.
 data/supplementary_extracted/*.csv
 
+# Author source material — Dr. Buckholtz's preprint (PDF + markdown conversion).
+# Kept locally for reference use only. The preprint is CC BY 4.0 (redistribution
+# with attribution is permitted), but we do not republish on the author's behalf
+# during active collaboration. Track only the README manifest, not the content.
+# See data/source_material/README.md.
+data/source_material/*
+!data/source_material/README.md
+
 # Data files (if large)
 # Uncomment if you have large datasets:
 # data/*.csv
