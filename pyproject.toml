@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "buckholtz-idm-multing-mvp"
-version = "0.1.0"
+version = "0.3.0"
 description = "Epistemic verification MVP for Buckholtz IDM/MULTING work"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [
-    {name = "Research Engineering Project"}
+    {name = "Sergey Kuts"}
 ]
 keywords = ["physics", "cosmology", "dark-matter", "epistemic-audit", "reproducibility"]
 
