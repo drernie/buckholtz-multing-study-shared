@@ -10,8 +10,9 @@ abstract: >-
   refute the theory.
 type: software
 authors:
-  - given-names: Sergey
-    family-names: Kuts
+  - given-names: Sergei
+    family-names: Kucherenko
+    email: sergeikuch80@gmail.com
 license: MIT
 version: 0.3.0
 date-released: 2026-06-01

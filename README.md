@@ -362,7 +362,7 @@ If you wish to contribute:
 
 ## License
 
-[MIT License](LICENSE) © 2026 Sergey Kuts
+[MIT License](LICENSE) © 2026 Sergei Kucherenko
 
 ---
 

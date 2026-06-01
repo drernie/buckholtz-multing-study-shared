@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [
-    {name = "Sergey Kuts"}
+    {name = "Sergei Kucherenko", email = "sergeikuch80@gmail.com"}
 ]
 keywords = ["physics", "cosmology", "dark-matter", "epistemic-audit", "reproducibility"]
 
