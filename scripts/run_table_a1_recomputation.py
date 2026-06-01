@@ -8,6 +8,12 @@ Outputs:
     - docs/66_table_a1_recomputation_report.md
 """
 
+import sys
+from pathlib import Path
+
+# Allow `python scripts/run_table_a1_recomputation.py` from the project root by
+# putting the repo root (parent of scripts/) on sys.path before importing src.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.table_a1_independent_recomputation import recompute_table_a1, save_results
 

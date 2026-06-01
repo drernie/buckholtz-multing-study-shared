@@ -1,37 +1,21 @@
 # Table A1 Independent Recomputation
 
-**Status:** INTERNAL_CONTRIBUTION_DRAFT | INTERNAL_DIAGNOSTIC_ONLY  
-**Labels:** NOT_SENT | NOT_VALIDATION | NOT_REFUTATION | AUTHOR_CONFIRMATION_REQUIRED  
+**Status:** INTERNAL_CONTRIBUTION_DRAFT | INTERNAL_DIAGNOSTIC_ONLY
+**Labels:** NOT_SENT | NOT_VALIDATION | NOT_REFUTATION | AUTHOR_CONFIRMATION_REQUIRED
 **Classification:** H_FLRW_PROVENANCE_MISMATCH | ASSUMED_BASELINE_ONLY | NOT_AUTHOR_ERROR
 
----
-
-## H_FLRW Provenance Mismatch
-
-Using our assumed Planck-like flat ΛCDM baseline (H0=67.4, Ωm=0.315, ΩΛ=0.685), we do not reproduce the Table A1 H_FLRW column. This indicates a **provenance or assumption mismatch**: the table may use:
-
-1. A different parameter set (H0, Ωm, ΩΛ)
-2. A different FLRW convention or formula
-3. A different cosmology calculator with hidden defaults
-4. A paper-specific formula not yet recovered
-5. An AI service output with undisclosed assumptions
-
-**This is NOT an author-error claim. It is an internal reconstruction mismatch.**
-
-The purpose of this diagnostic is to identify which baseline would allow independent verification of the H_FLRW column, not to question the validity of the table.
+> This is **NOT an author-error claim**. It is an internal reconstruction mismatch under an assumed baseline; the source baseline for the H_FLRW column is not yet recovered.
 
 ---
 
-## Reconstruction Results (Using Assumed Baseline)
+## Summary
 
 - **Total rows:** 12
 - **H_FLRW exact matches (<0.1 km/s/Mpc):** 1/12
 - **H_FLRW close matches (<0.5 km/s/Mpc):** 1/12
 - **Sigma_FLRW exact matches (<0.1):** 0/12
-- **Max H_FLRW difference:** 710.55 km/s/Mpc (at z=8.5)
-- **Max sigma_FLRW difference:** 10.691
-
-**Interpretation:** These differences indicate our baseline assumptions do not match the source used for Table A1 H_FLRW. Further provenance recovery is needed.
+- **Max H_FLRW discrepancy:** 710.55 km/s/Mpc
+- **Max sigma_FLRW discrepancy:** 10.691
 
 ---
 
@@ -53,9 +37,9 @@ The purpose of this diagnostic is to identify which baseline would allow indepen
 
 ---
 
-## Baseline Mismatch Details
+## Discrepancies
 
-Found 11 rows with H_FLRW difference > 0.1 km/s/Mpc under assumed baseline:
+Found 11 rows with H_FLRW difference > 0.1 km/s/Mpc:
 
 - z=0.060: reported=68.1, recomputed=69.4, diff=-1.30 km/s/Mpc
 - z=0.140: reported=69.3, recomputed=72.3, diff=-3.03 km/s/Mpc

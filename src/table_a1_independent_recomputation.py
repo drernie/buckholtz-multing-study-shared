@@ -436,8 +436,12 @@ def generate_markdown_report(result: RecomputationResult) -> str:
     """
     lines = [
         "# Table A1 Independent Recomputation\n",
-        "**Status:** INTERNAL_CONTRIBUTION_DRAFT",
-        "**Labels:** NOT_SENT | NOT_VALIDATION | NOT_REFUTATION | AUTHOR_CONFIRMATION_REQUIRED\n",
+        "**Status:** INTERNAL_CONTRIBUTION_DRAFT | INTERNAL_DIAGNOSTIC_ONLY",
+        "**Labels:** NOT_SENT | NOT_VALIDATION | NOT_REFUTATION | AUTHOR_CONFIRMATION_REQUIRED",
+        "**Classification:** H_FLRW_PROVENANCE_MISMATCH | ASSUMED_BASELINE_ONLY | NOT_AUTHOR_ERROR\n",
+        "> This is **NOT an author-error claim**. It is an internal reconstruction "
+        "mismatch under an assumed baseline; the source baseline for the H_FLRW "
+        "column is not yet recovered.\n",
         "---\n",
         "## Summary\n",
         f"- **Total rows:** {result.summary['total_rows']}",

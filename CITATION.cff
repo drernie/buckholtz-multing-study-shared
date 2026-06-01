@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this reproducibility/provenance audit, please cite it and the underlying preprint."
+title: "Buckholtz IDM/MULTING — Reproducibility & Provenance Audit"
+abstract: >-
+  An epistemic reproducibility and provenance audit scaffold around Thomas J.
+  Buckholtz's IDM/MULTING preprint. It separates source-confirmed, fitted,
+  inferred, and unknown quantities; tracks parameter provenance; quantifies
+  inter-AI-service divergence of fitted beta parameters; and documents the
+  missing F_oP -> H_MULT(z) computational bridge. It does NOT validate or
+  refute the theory.
+type: software
+authors:
+  - given-names: Sergey
+    family-names: Kuts
+license: MIT
+version: 0.3.0
+date-released: 2026-06-01
+keywords:
+  - reproducibility
+  - provenance
+  - epistemic-audit
+  - AI-assisted-science
+  - cosmology
+references:
+  - type: article
+    title: "Gravitational and Dark-Matter Concepts that Can Help Explain and Predict Cosmic Data"
+    authors:
+      - given-names: "Thomas J."
+        family-names: Buckholtz
+    doi: "10.20944/preprints202511.0598.v6"
+    year: 2026
+    notes: "Preprint under CC BY 4.0. This repository audits its reproducibility; it does not endorse, validate, or refute the theory."
