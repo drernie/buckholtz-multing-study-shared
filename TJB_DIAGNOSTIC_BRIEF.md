@@ -15,13 +15,14 @@
 
 ---
 
-## B. NOT DERIVED (missing bridge)
+## B. AUTHOR BRIDGE NOT CONFIRMED (missing forward path)
 
-- No explicit formula mapping `F_total(z) → H_MULT(z)` appears in main paper or Supplementary
-- H_MULT values in Table A1 are **AI-service outputs**, not closed-form derivations
-- The computational path `force law → acceleration ODE → H(z)` is not shown
+- No explicit formula mapping `F_total(z) → H_MULT(z)` appears in main paper or Supplementary that we could independently verify
+- H_MULT values in Table A1 are **AI-service outputs** — their exact computational path is not shown
+- Our reconstructions (Option 1–5 candidates) remain **OUR_RECONSTRUCTION_ONLY** — not author-validated
+- The computational path `force law → acceleration ODE → H(z)` was not confirmed by TJB in available materials
 
-> **Key question:** Can you provide the explicit derivation or code mapping MULTING force terms to H_MULT(z)?
+> **Key question:** Can you provide the explicit derivation or code mapping MULTING force terms to H_MULT(z), so we can confirm which bridge you intended?
 
 ---
 
@@ -34,7 +35,7 @@
 | Gemini    | 4.25 | 8.10  |        |
 | **Range** | **5.8×** | **94.7×** | β_q² range: **8975×** |
 
-β_d and β_q are optimized per AI service. At 94.7× spread in β_q, H_MULT is sensitive to which AI ran Step 5.
+β_d and β_q are a **phenomenological-estimation layer**: each AI service minimized σ against observed H(z) data (Step 5). TJB acknowledged this is a "phenomenological computation" aspect. At 94.7× spread in β_q, the result is sensitive to which AI ran Step 5 — they are not independently derived physical constants.
 
 > **Key question:** Which AI service's β values appear in Table A1 of the main paper?
 
@@ -415,9 +416,9 @@ Using Claude's own cluster params (CSV geometric means) + β_d=4.5, β_q=18.0:
 | Phi(z)/Phi(0) | 1.000000 | 0.001313 | **DECREASES ×762** |
 | H_pred(bridge) | 73.0 | **0.096 km/s/Mpc** | ×762 DROP |
 | H_MULT_reported | 73.0 | **418.1 km/s/Mpc** | ×5.7 RISE |
-| Self-inconsistency gap | — | — | **×4365 at z=8.5** |
+| Reproduction gap (forward path) | — | — | **×4365 at z=8.5** |
 
-[VERIFIED-tool] The bridge formula H²∝Phi(z)/Phi(0) with published cluster params produces H that **falls** to near zero. Table A1 shows H that **rises** to 418 km/s/Mpc. These are incompatible given the same formula.
+[VERIFIED-tool] Using our reconstructed cluster params and Option 3 bridge, the forward path does not reproduce Table A1 H_MULT values: our H_pred **falls** to ~0.1 km/s/Mpc while Table A1 reports **418 km/s/Mpc**. Status: TABLE_A1_FORWARD_PATH_NOT_REPRODUCED from currently reconstructed formulas. [AUTHOR_BRIDGE_NOT_CONFIRMED — OUR_RECONSTRUCTION_ONLY]
 
 **Implication:** The D(z) schedule actually used by the AI service to generate Table A1 must differ substantially from the CSV geometric-mean cluster params.
 
@@ -445,7 +446,7 @@ Using Claude's own cluster params (CSV geometric means) + β_d=4.5, β_q=18.0:
 ### M5. Skeptic gate
 
 [CONFIRMED-REAL] Three independent falsification tests attempted by skeptic agent:
-1. Alternative β values → same self-inconsistency (β cancels in ratio)
+1. Alternative β values → same forward-path reproduction gap (β cancels in ratio)
 2. Gemini params → different failure mode, same conclusion
 3. Real CC data (32 Moresco points) → ΛCDM n≈3 fits well; AI table best fit n≈2
 
