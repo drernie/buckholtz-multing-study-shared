@@ -262,6 +262,70 @@ print(f"  [INFERRED] Bridge with shrinking clusters → H falls, not rises.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# PART F — MULTIVERSE: repr.value sensitivity (T4 guard per hypothesis-red-team 2026-06-09)
+# Q: Does self-inconsistency survive arithmetic mean instead of geometric mean?
+# Documented log-ranges (from CSV comments):
+#   z=0.00: m_A=[1e14,1e15], k_A=[1e11,1e13], r_A=[1,3], D=[20,100]
+#   z=8.50: m_A=[3e10,3e11], k_A=[3e8,3e9], r_A=[0.1,0.3], D=[3,15]
+# Intermediate z: no documented ranges → geom params used; noted as limitation.
+# ─────────────────────────────────────────────────────────────────────────────
+print(f"\n{DIV}")
+print("  PART F — MULTIVERSE: repr.value sensitivity (hypothesis-red-team T4 guard)")
+print("  Tests whether self-inconsistency gap survives arithmetic mean cluster params")
+print(DIV)
+
+# Arithmetic-mean params at documented endpoints
+_z0_ARITH = (0.00, (1e14 + 1e15) / 2, (1e11 + 1e13) / 2, (1.0 + 3.0) / 2, (20.0 + 100.0) / 2)
+_z85_ARITH = (8.50, (3e10 + 3e11) / 2, (3e8 + 3e9) / 2, (0.10 + 0.30) / 2, (3.0 + 15.0) / 2)
+
+# Build ARITH_PARAMS: replace z=0.00 and z=8.50 rows; keep intermediate geom rows
+ARITH_PARAMS = list(CLAUDE_PARAMS)  # copy
+ARITH_PARAMS[0] = _z0_ARITH
+ARITH_PARAMS[-1] = _z85_ARITH
+
+# Compute phi ratio at z=8.5 under each specification
+phi0_geom = phi(*CLAUDE_PARAMS[0][1:], BETA_D_CLAUDE, BETA_Q_CLAUDE)
+phi85_geom = phi(*CLAUDE_PARAMS[-1][1:], BETA_D_CLAUDE, BETA_Q_CLAUDE)
+phi0_arith = phi(*_z0_ARITH[1:], BETA_D_CLAUDE, BETA_Q_CLAUDE)
+phi85_arith = phi(*_z85_ARITH[1:], BETA_D_CLAUDE, BETA_Q_CLAUDE)
+
+ratio_geom = phi85_geom / phi0_geom
+ratio_arith = phi85_arith / phi0_arith
+
+H_pred_arith_z85 = H_ANCHOR * (max(ratio_arith, 0.0) ** 0.5)
+gap_arith = H_mult_z85 / H_pred_arith_z85 if H_pred_arith_z85 > 1e-6 else float("inf")
+
+print(
+    f"\n  {'Spec':>16} {'phi0':>14} {'phi(z=8.5)':>14} {'ratio':>10} {'H_pred z=8.5':>14} {'gap vs rep':>11}"
+)
+print(f"  {'-' * 80}")
+print(
+    f"  {'geom_mean (base)':>16} {phi0_geom:>14.4e} {phi85_geom:>14.4e} "
+    f"{ratio_geom:>10.6f} {float(H_pred[-1]):>14.3f} {H_mult_z85 / float(H_pred[-1]):>11.0f}×"
+)
+print(
+    f"  {'arith_mean (new)':>16} {phi0_arith:>14.4e} {phi85_arith:>14.4e} "
+    f"{ratio_arith:>10.6f} {H_pred_arith_z85:>14.3f} {gap_arith:>11.0f}×"
+)
+
+print(f"\n  ── Multiverse verdict ────────────────────────────────────────────────")
+if ratio_arith < 1.0 and gap_arith > 10:
+    print(f"  [ROBUST] Phi ratio still DECREASES under arith repr. (ratio={ratio_arith:.6f})")
+    print(
+        f"  Self-inconsistency gap under arith_mean = ×{gap_arith:.0f} (vs ×{H_mult_z85 / float(H_pred[-1]):.0f} geom)"
+    )
+    print(f"  Conclusion survives T4 (Garden of Forking Paths) repr.value check.")
+elif ratio_arith >= 1.0:
+    print(f"  [WEAKENED] Phi ratio = {ratio_arith:.4f} (≥1) under arith_mean → H_pred INCREASES")
+    print(f"  Repr.value choice MATTERS — original conclusion may not be robust.")
+else:
+    print(f"  [MARGINAL] Gap ×{gap_arith:.0f} — smaller than geom but still significant.")
+
+print(f"\n  Note: intermediate z rows (0.06–5.00) use geom params (no range data).")
+print(f"  Full multiverse requires documented ranges at all 12 z values (Q for TJB).")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # SUMMARY
 # ─────────────────────────────────────────────────────────────────────────────
 print(f"\n{DIV}")

@@ -394,8 +394,9 @@ The Claude cluster CSV gives D(8.5) = 3–15 Mpc (geom mean 6.7 Mpc). If the AI 
 ## M. SELF-CONSISTENCY AUDIT [VERIFIED-tool — self_consistency_diagnostic.py, 2026-06-09]
 
 **Safety:** NOT_VALIDATION, NOT_REFUTATION, NOT_AUTHOR_ERROR, INTERNAL_DIAGNOSTIC_ONLY
+**Epistemics:** EXPLORATORY_DIAGNOSTIC, NOT_PREREGISTERED — findings discovered during analysis, not predicted in advance. Treat as hypothesis-generating, not confirmatory.
 
-### M1. H_MULT = 1.074 × H_FLRW (bridge decorativeness test)
+### M1. H_MULT = 1.074 × H_FLRW (Option 3 bridge decorativeness test)
 
 | Stat | Value |
 |------|-------|
@@ -403,7 +404,7 @@ The Claude cluster CSV gives D(8.5) = 3–15 Mpc (geom mean 6.7 Mpc). If the AI 
 | Scatter (std/mean) | 2.6% |
 | Pearson corr(H_MULT, H_FLRW) | **0.99993** |
 
-[VERIFIED-tool] Across all 12 Table A1 rows, H_MULT tracks H_FLRW with near-perfect correlation. The Phi(z)/Phi(0) bridge adds no independent H(z) information — it is a ~7% scalar stretch of the FLRW baseline. Cluster physics is decorative in this limit.
+[VERIFIED-tool] Across all 12 Table A1 rows, H_MULT tracks H_FLRW with near-perfect correlation. The **Option 3 bridge** (H²∝Phi/Phi₀ from Claude Supplementary) adds no independent H(z) information for these parameter sets — it is a ~7% scalar stretch of the FLRW baseline. Whether this holds for other bridge variants (Option 1: D̈∝F/M; Option 2: energy balance) is not tested here.
 
 ### M2. Self-consistency failure (bridge formula vs reported values)
 
@@ -419,6 +420,8 @@ Using Claude's own cluster params (CSV geometric means) + β_d=4.5, β_q=18.0:
 [VERIFIED-tool] The bridge formula H²∝Phi(z)/Phi(0) with published cluster params produces H that **falls** to near zero. Table A1 shows H that **rises** to 418 km/s/Mpc. These are incompatible given the same formula.
 
 **Implication:** The D(z) schedule actually used by the AI service to generate Table A1 must differ substantially from the CSV geometric-mean cluster params.
+
+**Repr.value robustness (Part F multiverse):** Gap survives arithmetic-mean params — ×3944 vs ×4365 geom (9.7% change). Inconsistency is repr.value-robust at the documented endpoints [VERIFIED-tool, Part F].
 
 ### M3. Gemini cross-check (dataset independence)
 
