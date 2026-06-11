@@ -1,0 +1,150 @@
+{
+  "test": "M2-G4 Fisher Rank Identifiability",
+  "labels": [
+    "CLAUDE_SPECIFIC_AI_MEDIATED_BRIDGE",
+    "OUR_RECONSTRUCTION",
+    "NOT_AUTHOR_CONFIRMED",
+    "NOT_VALIDATION",
+    "NOT_REFUTATION"
+  ],
+  "data": {
+    "n_rows": 12,
+    "source": "claude_galaxy_cluster_parameters.csv (geom-mean midpoints)",
+    "H_MULT_reported_rows": [
+      71.1,
+      70.2,
+      73.5,
+      78.8,
+      83.1,
+      91.4,
+      104.2,
+      126.5,
+      151.8,
+      197.3,
+      271.5,
+      418.1
+    ],
+    "reconstruction_rms_sigma_at_claude_betas": 14.137599541012014
+  },
+  "scenarios": {
+    "A_beta_only": {
+      "param_names": [
+        "beta_d",
+        "beta_q"
+      ],
+      "n_obs": 12,
+      "n_par": 2,
+      "singular_values": [
+        3.4527047366763973e-09,
+        7.36551105058269e-13
+      ],
+      "rank_numeric": 2,
+      "rank_practical_1e-8": 2,
+      "condition_number": 4687.664865295737,
+      "column_norms_weighted": {
+        "beta_d": 7.376060830475019e-13,
+        "beta_q": 3.452704736451183e-09
+      },
+      "column_cosines": {
+        "beta_d|beta_q": 0.05346494162835061
+      },
+      "fisher_diag": [
+        5.440627337486783e-25,
+        1.1921169997112432e-17
+      ],
+      "max_relative_sensitivity_per_100pct": {
+        "beta_d": 7.214039005373488e-10,
+        "beta_q": 6.564775494889874e-07
+      }
+    },
+    "B_beta_anchor": {
+      "param_names": [
+        "beta_d",
+        "beta_q",
+        "H_anchor"
+      ],
+      "n_obs": 12,
+      "n_par": 3,
+      "singular_values": [
+        1.481859238340625,
+        2.4876254583605045e-09,
+        7.355650289614653e-13
+      ],
+      "rank_numeric": 3,
+      "rank_practical_1e-8": 1,
+      "condition_number": 2014586311196.5,
+      "column_norms_weighted": {
+        "beta_d": 7.376060830475019e-13,
+        "beta_q": 3.452704736451183e-09,
+        "H_anchor": 1.481859238340625
+      },
+      "column_cosines": {
+        "beta_d|beta_q": 0.05346494162835061,
+        "beta_d|H_anchor": -0.00013948880546323607,
+        "beta_q|H_anchor": 0.693469460918406
+      },
+      "fisher_diag": [
+        5.440627337486783e-25,
+        1.1921169997112432e-17,
+        2.1959068022554575
+      ],
+      "max_relative_sensitivity_per_100pct": {
+        "beta_d": 7.214039005373488e-10,
+        "beta_q": 6.564775494889874e-07,
+        "H_anchor": 1.0000000000658344
+      }
+    },
+    "C_beta_alphaD_anchor": {
+      "param_names": [
+        "beta_d",
+        "beta_q",
+        "alpha_D",
+        "H_anchor"
+      ],
+      "n_obs": 12,
+      "n_par": 4,
+      "singular_values": [
+        39.16662039121586,
+        1.1622309616955515,
+        1.8780572507550467e-09,
+        5.139764261701228e-11
+      ],
+      "rank_numeric": 4,
+      "rank_practical_1e-8": 2,
+      "condition_number": 762031455081.7932,
+      "column_norms_weighted": {
+        "beta_d": 5.2641532382695625e-11,
+        "beta_q": 4.0593046126697175e-09,
+        "alpha_D": 39.15153912664005,
+        "H_anchor": 1.5912000795312204
+      },
+      "column_cosines": {
+        "beta_d|beta_q": 0.021861477202248788,
+        "beta_d|alpha_D": -0.09006497051095834,
+        "beta_d|H_anchor": -0.016561647159426356,
+        "beta_q|alpha_D": 0.8606072524303758,
+        "beta_q|H_anchor": 0.7430813473889077,
+        "alpha_D|H_anchor": 0.6827062583577715
+      },
+      "fisher_diag": [
+        2.771130931598392e-21,
+        1.6477953938441642e-17,
+        1532.8430159848267,
+        2.5319176931001626
+      ],
+      "max_relative_sensitivity_per_100pct": {
+        "beta_d": 5.328930903077611e-10,
+        "beta_q": 3.226667661813493e-07,
+        "alpha_D": 4.502582867826456,
+        "H_anchor": 1.000000000049039
+      }
+    },
+    "D_flexible_schedule": {
+      "param_names": "[beta_d, beta_q] + 12 per-row D_i (or k_A_i)",
+      "n_obs": 12,
+      "n_par": 14,
+      "verdict": "FAIL_BY_COUNTING",
+      "note": "params (14) > observations (12); with anchor-ratio normalization one D_i is absorbed, leaving 13 > 11 effective dof. Any H(z) curve is exactly reproducible -> non-predictive, structurally non-identifiable."
+    }
+  }
+}
