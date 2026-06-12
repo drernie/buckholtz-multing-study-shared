@@ -99,6 +99,71 @@ This does not kill M8-C. It creates a **two-way ambiguity** that Q2 can resolve.
 
 ---
 
+## 4b. O6 Status — ε(z) vs Cluster History
+
+**Status: OPEN / PARTIAL_EVIDENCE / SELECTION_AMBIGUITY**
+
+```
+O6 = OPEN — the relationship between ε(z) and cluster formation history
+is ambiguous. The signal survives as a candidate, not a confirmed mechanism.
+```
+
+### Hypothesis map
+
+| Hypothesis | Tested by | Status | r | Notes |
+|------------|-----------|--------|---|-------|
+| H1: Intrinsic PS formation | Candidate A (HD-MAVP-1) | **KILLED** | ≤ 0.076 | PS density monotone; anti-correlated or insufficient for all M_min |
+| H2: Observed selection / schedule | M8-C Model B + Candidate C | **SURVIVES / PARTIAL** | 0.723 / 0.666 | Ambiguous — see r² ratio below |
+| H3: Bridge functional-form artifact | — | **OPEN** | — | Any peaked function fits 11 pts; not tested independently |
+| H4: ΛCDM transition mimicry | Candidate D (HD-MAVP-1) | **WEAK / MISMATCH** | 0.167 | f_DE monotone; z_eq=0.296 proximate but wrong shape |
+
+### The ambiguity — exact numbers
+
+| Signal | r | r² | Share of M8-C variance |
+|--------|---|----|------------------------|
+| M8-C best (observed dN/dz, M_min=5e14) | **0.723** | 0.523 | baseline |
+| f_sel alone — zero physics | **0.666** | 0.444 | **≈ 85%** |
+| Candidate B intrinsic dN/dz (M_min=1e14) | **0.773** | 0.598 | > M8-C (M_min-dependent) |
+
+**Why H2 is not confirmed:**  
+`r(ε, observed dN/dz) = 0.723` is the signal. But `r(ε, f_sel_alone) = 0.666` shows
+that an **instrument model with zero cluster physics** reproduces ≈85% of that variance.
+This does not confirm H2 — it opens H3 (bridge functional-form artifact) as an equally
+valid explanation: any author schedule that peaks near z=0.40 will produce similar r
+regardless of physical mechanism.
+
+**Correct O6 statement:**  
+> Observed-count / selection / schedule layer explains the ε peak **better than intrinsic
+> formation**, but the signal is **ambiguous** because selection-only reproduces most of
+> the M8-C correlation. H2 cannot be confirmed without Q2.
+
+### Forbidden statements
+
+```
+✗ "ε peak proves cluster formation epoch"
+✗ "r=0.723 confirms H2 (observed formation rate)"
+✗ "The selection artifact explains M8-C"
+✗ "This refutes MULTING or the bridge"
+✗ "AI hallucinated the ε peak"
+✗ "H3 bridge artifact is ruled out"
+```
+
+### Next step for O6
+
+```
+Q2 (TJB author cluster schedule) is the ONLY discriminator.
+Specifically: does the author's k_A(z) / D_eff(z) track
+  (a) intrinsic PS density → H1 remains dead
+  (b) observed-survey dN/dz → H2 survives physically
+  (c) a purely functional form → H3 (bridge artifact)
+Without Q2, O6 stays OPEN.
+
+HD-MAVP-2: HOLD — would require Q1+Q2 to be anything but reconstruction.
+Explicit toy-model gate could be approved separately; not on critical path.
+```
+
+---
+
 ## 5. New INSIGHTs (from HD-MAVP-1)
 
 | ID | Insight | Confidence | Gate |
