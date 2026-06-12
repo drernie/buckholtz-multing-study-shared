@@ -12,9 +12,11 @@ Method (model-independent extraction):
 is the "MULTING correction" that any bridge must reproduce.
 We then test whether simple cluster-evolution models can explain ε(z).
 
-Key finding (VERIFIED from Table A1):
-  ε(z) is NON-MONOTONIC — peaks at z≈0.40, falls to minimum at z≈5.0,
-  slightly rises at z=8.5. This cannot be fit by any single power law (1+z)^α.
+Key finding [TRANSCRIBED from Table A1, arithmetic verified]:
+  ε(z) is NON-MONOTONIC — primary peak at z≈0.40, secondary structure
+  near z=1.0–1.5, minimum at z≈5.0, uptick at z=8.5 (single-point leverage).
+  Cannot be fit by any single power law (1+z)^α.
+  Press-Schechter connection: <HYPOTHESIS> numerical coincidence, not verified causal link.
 
 Implication: the bridge requires the full cluster evolution schedule k_A(z)
 (Q2 blocker). This is the central result of this module.
@@ -87,9 +89,14 @@ def candidate_constant_eps(eps_values: list[float]) -> dict:
         "fitted_C": round(mean_eps, 4),
         "rms_residual": round(rms, 4),
         "max_residual": round(max_residual, 4),
+        # WHY threshold=0.05: heuristic — 5% of total ε range (~0.18) is ~0.009; 0.05 is ~28% of range.
+        # Actual max_residual ≈ 0.104 (>2× threshold) so verdict is robust to threshold choice.
+        "threshold_0_05_is_heuristic": True,
         "verdict": "FAILS" if max_residual > 0.05 else "PASS",
         "why_fails": (
-            f"ε(z) varies from {min(eps_values):.3f} to {max(eps_values):.3f} — not constant; span {max(eps_values) - min(eps_values):.3f} >> noise"
+            f"ε(z) varies from {min(eps_values):.3f} to {max(eps_values):.3f} — not constant; "
+            f"span {max(eps_values) - min(eps_values):.3f} >> noise; "
+            f"max_residual={max_residual:.3f} is {max_residual / 0.05:.1f}× the heuristic threshold"
         ),
     }
 
@@ -245,10 +252,13 @@ def analyze_nonmonotonicity(z_arr: list[float], eps_values: list[float]) -> dict
             {"z_center": s[0], "d_log_eps_d_log1pz": s[1], "direction": s[2]} for s in slopes
         ],
         "physical_interpretation": (
-            "ε(z) peaks at z≈0.40 — consistent with galaxy cluster "
-            "number density peak (Press-Schechter: n_cluster peaks at z~0.4-0.6). "
-            "Falls to minimum at z≈5.0 where clusters have not yet formed in ΛCDM. "
-            "Slight uptick at z=8.5 may reflect proto-cluster / AI fitting artifact."
+            "<DESCRIPTIVE_ONLY> ε(z) has primary peak at z≈0.40, secondary structure "
+            "near z=1.0-1.5 (local min z=1.00, local rise z=1.50), global minimum "
+            "at z≈5.0, uptick at z=8.5 (single-point leverage — treat with caution). "
+            "<HYPOTHESIS> peak z≈0.40 numerically coincides with galaxy cluster "
+            "number density peak (Press-Schechter: n_cluster peaks at z~0.4-0.6); "
+            "NO causal link established (descriptive result only, no DAG). "
+            "OUR_RECONSTRUCTION · NOT_AUTHOR_CONFIRMED"
         ),
         "implication_for_bridge": (
             "Any bridge formula must encode cluster formation history, not just "
