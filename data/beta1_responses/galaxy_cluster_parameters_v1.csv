@@ -1,0 +1,27 @@
+# BETA-1 Standardized Galaxy Cluster Parameters — v1
+# Source: geometric/arithmetic means of Claude BETA-0 ranges (data/supplementary_extracted/claude_galaxy_cluster_parameters.csv)
+# Purpose: fixed single-valued input for all AI services in BETA-1 controlled replication
+# Labels: BETA-1 · STANDARDIZED_INPUT · OUR_RECONSTRUCTION · NOT_AUTHOR_CONFIRMED
+# DO NOT MODIFY — changing these values invalidates BETA-1 controlled condition
+#
+# Column definitions (matching Appendix A.1 Step 4 schema):
+#   time_gyr    : time in billions of years after Big Bang
+#   z           : redshift
+#   m_a_msun    : characteristic mass of galaxy cluster (solar masses)
+#   r_a_mpc     : characteristic radius of galaxy cluster (Mpc)
+#   d_cab_mpc   : characteristic distance to neighboring cluster (Mpc)
+#   k_a_c2_msun : total kinetic energies of sub-objects / c² (solar masses)
+#   h_data      : observed Hubble rate (km/s/Mpc)
+#   sigma_h     : observational uncertainty (km/s/Mpc)
+time_gyr,z,m_a_msun,r_a_mpc,d_cab_mpc,k_a_c2_msun,h_data,sigma_h
+13.0,0.06,3.2e14,2.0,45,1.0e12,69.0,3.0
+12.0,0.14,2.5e14,1.9,42,2.8e12,74.0,4.0
+11.0,0.25,1.9e14,1.7,39,2.2e12,79.0,4.5
+10.0,0.40,1.3e14,1.5,35,1.6e12,82.0,5.0
+9.0,0.65,6.3e13,1.2,29,9.5e11,92.0,7.0
+8.0,1.00,3.2e13,1.0,25,3.2e11,105.0,8.0
+7.0,1.50,1.6e13,0.8,20,1.6e11,125.0,15.0
+6.0,2.10,6.3e12,0.6,16,6.3e10,150.0,20.0
+5.0,3.20,1.6e12,0.5,12,1.6e10,195.0,30.0
+4.0,5.00,3.2e11,0.3,9,3.2e9,270.0,50.0
+3.0,8.50,9.5e10,0.2,7,9.5e8,420.0,90.0

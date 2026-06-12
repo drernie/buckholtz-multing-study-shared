@@ -1,0 +1,63 @@
+{
+  "audit": "BETA-1",
+  "gate": "AI_CONVERGENCE_TEST",
+  "protocol_version": "v1",
+  "labels": [
+    "BETA-1",
+    "AI_CONVERGENCE_TEST",
+    "OUR_RECONSTRUCTION",
+    "NOT_VALIDATION",
+    "NOT_REFUTATION",
+    "NOT_MODELING",
+    "NOT_THEORY_FALSE",
+    "NOT_AUTHOR_CONFIRMED"
+  ],
+  "convergence_threshold": 2.0,
+  "min_services_required": 3,
+  "beta0_reference": {
+    "services": [
+      "claude_notebooklm",
+      "gemini",
+      "chatgpt"
+    ],
+    "beta_d_values": {
+      "claude_notebooklm": 4.5,
+      "gemini": 4.25,
+      "chatgpt": 0.78
+    },
+    "beta_q_values": {
+      "claude_notebooklm": 18.0,
+      "gemini": 8.1,
+      "chatgpt": 0.19
+    },
+    "beta_d_spread": 5.769,
+    "beta_q_spread": 94.737,
+    "verdict": "DIVERGE",
+    "note": "UNCONTROLLED \u2014 different prompts and cluster parameters per service"
+  },
+  "beta1": {
+    "status": "AWAITING_RESPONSES",
+    "n_services": 0,
+    "services": [],
+    "beta_d_values": {},
+    "beta_q_values": {},
+    "beta_d_spread": null,
+    "beta_q_spread": null,
+    "verdict": "AWAITING_RESPONSES",
+    "spread_reduction_d": null,
+    "spread_reduction_q": null
+  },
+  "status_implications": {
+    "CONVERGE": "\u03b2 upgrades to AI_CONSENSUS_CANDIDATE \u2014 controlled prompting resolves ambiguity",
+    "DIVERGE": "confirms BETA-0 finding \u2014 ambiguity is intrinsic to underdetermined fitting; \u03b2 remain DO_NOT_USE; Q3 critical",
+    "PARTIAL_D_ONLY": "\u03b2_d robust under controlled prompting; \u03b2_q remains ambiguous",
+    "PARTIAL_Q_ONLY": "\u03b2_q robust under controlled prompting; \u03b2_d remains ambiguous",
+    "AWAITING_RESPONSES": "fill data/beta1_responses/{service}_response.csv and re-run"
+  },
+  "next_step": "Query each AI service with data/beta1_responses/prompt_v1.md. Record \u03b2_d and \u03b2_q in {service}_response.csv. Then re-run this script.",
+  "safety_notes": [
+    "NOT modeling H_MULT(z) \u2014 \u03b2 values are inputs to fitting, not predictive parameters",
+    "NOT validating or refuting MULTING \u2014 this is a convergence test of AI responses",
+    "NOT claiming \u03b2 values are canonical \u2014 all remain AI_MEDIATED_CANDIDATE or DO_NOT_USE"
+  ]
+}

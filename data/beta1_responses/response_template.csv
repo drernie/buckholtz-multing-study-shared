@@ -1,0 +1,12 @@
+# BETA-1 Response Template
+# Instructions:
+#   1. Copy this file, rename to {service}_response.csv (e.g., chatgpt_response.csv)
+#   2. Fill in parameter values from the AI service response
+#   3. Leave confidence=high if value clearly stated; confidence=low if approximated
+#   4. Notes: include verbatim quote of how service stated the value
+#
+# Required files: chatgpt_response.csv, gemini_response.csv, claude_response.csv
+# Optional:       grok_response.csv, mistral_response.csv
+parameter,value,confidence,notes
+beta_d,FILL_IN,high,"[paste verbatim quote from AI response]"
+beta_q,FILL_IN,high,"[paste verbatim quote from AI response]"
