@@ -1,0 +1,109 @@
+{
+  "gate": "M7-C",
+  "date": "2026-06-12",
+  "labels": [
+    "M7_THERMAL_HISTORY_AUDIT",
+    "N_EFF_BLOCKER",
+    "NOT_VALIDATION",
+    "NOT_REFUTATION",
+    "INTERNAL_DIAGNOSTIC_ONLY",
+    "AUTHOR_DERIVATION_NEEDED"
+  ],
+  "verdict": "BLOCKED",
+  "computability": {
+    "computable": false,
+    "required_count": 7,
+    "found_count": 1,
+    "not_found_count": 6,
+    "missing_required": [
+      "I1",
+      "I2",
+      "I3",
+      "I4",
+      "I6",
+      "I7"
+    ],
+    "verdict": "BLOCKED"
+  },
+  "ingredients": [
+    {
+      "id": "I1",
+      "description": "Number of relativistic dark species at BBN/recombination",
+      "status": "NOT_FOUND",
+      "note": "AUTHOR_DERIVATION_NEEDED",
+      "source_line": "preprint line 1063 (context only)"
+    },
+    {
+      "id": "I2",
+      "description": "Dark-to-visible temperature ratio T_dark/T_visible",
+      "status": "NOT_FOUND",
+      "note": "AUTHOR_DERIVATION_NEEDED",
+      "source_line": null
+    },
+    {
+      "id": "I3",
+      "description": "Decoupling temperature of dark sector from SM bath",
+      "status": "NOT_FOUND",
+      "note": "AUTHOR_DERIVATION_NEEDED",
+      "source_line": "preprint lines 2568, 2620 (bibliography only)"
+    },
+    {
+      "id": "I4",
+      "description": "Entropy-transfer history between dark and visible sector",
+      "status": "NOT_FOUND",
+      "note": "AUTHOR_DERIVATION_NEEDED",
+      "source_line": null
+    },
+    {
+      "id": "I5",
+      "description": "Whether dark photons/gluons/neutrinos exist and are relativistic at BBN",
+      "status": "AUTHOR_HINTED",
+      "note": "AUTHOR_HINTED — existence implied, thermal properties absent",
+      "source_line": "preprint lines 1063-1065"
+    },
+    {
+      "id": "I6",
+      "description": "Coupling/thermalization assumptions between dark and SM sectors",
+      "status": "NOT_FOUND",
+      "note": "AUTHOR_DERIVATION_NEEDED",
+      "source_line": null
+    },
+    {
+      "id": "I7",
+      "description": "Explicit calculation or bound for ΔN_eff",
+      "status": "NOT_FOUND",
+      "note": "AUTHOR_DERIVATION_NEEDED · NO_FORMULA_IN_SOURCE",
+      "source_line": null
+    },
+    {
+      "id": "I8",
+      "description": "Standard ΔN_eff formula (external physics — for reference only)",
+      "status": "EXTERNAL_STANDARD_PHYSICS",
+      "note": "EXTERNAL_STANDARD_PHYSICS — cannot compute without IDM inputs I1-I6",
+      "source_line": null
+    }
+  ],
+  "source_scan": {
+    "buckholtz_preprints202511.0598.v6.md": [
+      "line 621: [Neff] distributioneffectscannettorepulsionortoattraction. Forexample,considerthatobject-Aconsistsof",
+      "line 2568: [decoupling] andDiscoveryofaGas-DarkMatterVelocityDecouplingintheMACSJ0018.5+1626Merger,TheAstrophys-"
+    ],
+    "buckholtz_supplementary202511.0598.v6.md": [
+      "NO RELEVANT HITS"
+    ]
+  },
+  "standard_formula": {
+    "formula": "ΔN_eff = (4/7) × (g_D/2) × (T_dark/T_ν)^4",
+    "planck_bound": "N_eff = 2.99 ± 0.17 (Planck 2018); ΔN_eff < 0.4 at 1σ",
+    "applicable_to_IDM": false,
+    "reason": "T_dark, g_D, T_dark/T_ν all NOT_FOUND in preprint"
+  },
+  "questions_for_author": [
+    "Q_TH1: Were the five dark isomers ever thermally populated in the early universe?",
+    "Q_TH2: What is T_dark/T_visible for each dark sector?",
+    "Q_TH3: At what temperature did the dark sector decouple from the SM bath?",
+    "Q_TH4: Which dark-sector particles are relativistic at BBN (T~MeV) and at recombination (T~eV)?",
+    "Q_TH5: What ΔN_eff does IDM predict, and how does it compare to Planck 2018?"
+  ],
+  "safety_footer": "NOT_VALIDATION · NOT_REFUTATION · INTERNAL_DIAGNOSTIC_ONLY · NOT_AUTHOR_CONFIRMED · M7_THERMAL_HISTORY_AUDIT"
+}
