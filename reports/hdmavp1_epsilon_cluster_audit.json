@@ -1,0 +1,130 @@
+{
+  "gate": "HD-MAVP-1",
+  "date": "2026-06-13",
+  "labels": [
+    "HD_MAVP_1",
+    "OUR_RECONSTRUCTION",
+    "NOT_AUTHOR_CONFIRMED",
+    "NOT_VALIDATION",
+    "NOT_REFUTATION",
+    "SELECTION_BIAS_AUDIT",
+    "NOT_CLAIM_PS_FACT"
+  ],
+  "eps_source": "M8-A-R1 [VERIFIED-tool, commit add7cba] — NOT REDEFINED HERE",
+  "eps_values": {
+    "0.06": 0.062625,
+    "0.14": 0.124885,
+    "0.25": 0.21462,
+    "0.4": 0.227664,
+    "0.65": 0.212652,
+    "1.0": 0.185527,
+    "1.5": 0.21422,
+    "2.1": 0.170653,
+    "3.2": 0.106085,
+    "5.0": 0.048076,
+    "8.5": 0.100788
+  },
+  "eps_peak_z": 0.4,
+  "eps_is_non_monotone": true,
+  "candidates_by_m_min": {
+    "1e+14": {
+      "A_ps_density": {
+        "pearson_r": 0.0763,
+        "peak_z": 0.06,
+        "is_monotone_decreasing": true,
+        "verdict": "INSUFFICIENT"
+      },
+      "B_intrinsic_dNdz": {
+        "pearson_r": 0.7728,
+        "peak_z": 0.65,
+        "is_monotone_decreasing": false,
+        "verdict": "SURVIVES"
+      },
+      "C_sz_selection": {
+        "pearson_r": 0.6825,
+        "peak_z": 0.4,
+        "is_monotone_decreasing": false,
+        "verdict": "PARTIAL"
+      }
+    },
+    "5e+14": {
+      "A_ps_density": {
+        "pearson_r": -0.0999,
+        "peak_z": 0.06,
+        "is_monotone_decreasing": true,
+        "verdict": "INSUFFICIENT"
+      },
+      "B_intrinsic_dNdz": {
+        "pearson_r": 0.6992,
+        "peak_z": 0.4,
+        "is_monotone_decreasing": false,
+        "verdict": "PARTIAL"
+      },
+      "C_sz_selection": {
+        "pearson_r": 0.6642,
+        "peak_z": 0.4,
+        "is_monotone_decreasing": false,
+        "verdict": "PARTIAL"
+      }
+    },
+    "2e+15": {
+      "A_ps_density": {
+        "pearson_r": -0.2525,
+        "peak_z": 0.06,
+        "is_monotone_decreasing": true,
+        "verdict": "INSUFFICIENT"
+      },
+      "B_intrinsic_dNdz": {
+        "pearson_r": 0.5598,
+        "peak_z": 0.4,
+        "is_monotone_decreasing": false,
+        "verdict": "PARTIAL"
+      },
+      "C_sz_selection": {
+        "pearson_r": 0.6072,
+        "peak_z": 0.4,
+        "is_monotone_decreasing": false,
+        "verdict": "PARTIAL"
+      }
+    }
+  },
+  "candidate_D_lcdm": {
+    "pearson_r": 0.1673,
+    "is_monotone_decreasing": true,
+    "verdict": "INSUFFICIENT",
+    "z_eq_lambda_matter": 0.2956,
+    "z_eq_proximity_to_eps_peak": 0.1044
+  },
+  "selection_function_alone": {
+    "pearson_r": 0.666,
+    "peak_z": 0.4,
+    "verdict": "PARTIAL",
+    "spurious_correlation_confirmed": true,
+    "interpretation": "f_sel has zero cluster physics. r(ε, f_sel)=0.666 near M8-C r=0.723 → M8-C signal may be selection artifact, not cluster formation."
+  },
+  "intrinsic_formation_verdict": "KILLED",
+  "selection_artifact_verdict": "SURVIVES_AS_ARTIFACT",
+  "b_verdict_m_sensitive": true,
+  "overall_verdict": "PARTIAL-KILL",
+  "conclusions": [
+    "ε(z) peak confirmed at z=0.4 (M8-A-R1 [VERIFIED-tool] — NOT REDEFINED).",
+    "Candidate A (PS density, M_min=5e14): r=-0.0999 → INSUFFICIENT. Monotone decreasing — anti-correlated with ε — KILLED.",
+    "Candidate B (intrinsic dN/dz, M_min=5e14): r=0.6992 → PARTIAL. Peak location M_min-sensitive — not a fixed physics prediction.",
+    "Candidate C (SZ-selection-weighted, M_min=5e14): r=0.6642 → PARTIAL. Selection function artificially anchors peak at z=0.40.",
+    "Selection function ALONE: r(ε, f_sel) = 0.666. SPURIOUS CORRELATION CONFIRMED: instrument model (zero physics) produces correlation similar to M8-C r=0.723.",
+    "Candidate D (ΛCDM transition, f_DE): r=0.1673 → INSUFFICIENT. Monotone; z_eq=0.296 (proximity 0.104 to ε peak). Cannot explain non-monotone ε structure.",
+    "Overall verdict: PARTIAL-KILL.",
+    "PARTIAL-KILL: intrinsic cluster formation history KILLED; selection/schedule artifact SURVIVES as alternative explanation.",
+    "M8-C r=0.723 may be selection-driven (ARTIFACT) not physical cluster formation. Author schedule Q2 still needed to determine which.",
+    "<HYPOTHESIS>: if author schedule tracks observed (SZ-selected) dN/dz, correlation is real by construction — cannot distinguish without Q1+Q2."
+  ],
+  "safety": "HD_MAVP_1 · OUR_RECONSTRUCTION · NOT_AUTHOR_CONFIRMED · NOT_VALIDATION · NOT_REFUTATION · NOT_CLAIM_PS_FACT",
+  "physics_notes": {
+    "ps_treated_as_hypothesis": true,
+    "sz_selection_is_parametric_model": true,
+    "selection_model_not_from_actual_survey": true,
+    "eps_vector_unchanged_from_m8a_r1": true,
+    "no_mcmc": true,
+    "no_new_eps_definition": true
+  }
+}
