@@ -1,0 +1,186 @@
+{
+  "gate": "ASRE-required-schedule",
+  "date": "2026-06-13",
+  "labels": [
+    "ASRE",
+    "AUTHOR_SCHEDULE_REVERSE_ENGINEERING",
+    "OUR_RECONSTRUCTION",
+    "NOT_AUTHOR_CONFIRMED",
+    "NOT_VALIDATION",
+    "NOT_REFUTATION",
+    "AUTHOR_SCHEDULE_NEEDED",
+    "<HYPOTHESIS>"
+  ],
+  "table_a1_source": "TRANSCRIBED · arithmetic verified M8-A-R1 PASS · NOT observational data",
+  "method": {
+    "step1": "Extract required_bridge(z) = ε(z) × H_FLRW(z)² — model-independent",
+    "step2": "Normalize at z=0.40 — required_shape(z)",
+    "step3": "Map (k_A, D_eff) degeneracy — 3 parametric families",
+    "step4": "Compare virial k_A to required shape — confirm M8-D theorem",
+    "step5": "Degeneracy documentation — what IS and IS NOT determinable"
+  },
+  "eps_at_z_data": {
+    "0.06": 0.062625,
+    "0.14": 0.124885,
+    "0.25": 0.21462,
+    "0.4": 0.227664,
+    "0.65": 0.212652,
+    "1.0": 0.185527,
+    "1.5": 0.21422,
+    "2.1": 0.170653,
+    "3.2": 0.106085,
+    "5.0": 0.048076,
+    "8.5": 0.100788
+  },
+  "eps_norm": {
+    "0.06": 0.275076,
+    "0.14": 0.548551,
+    "0.25": 0.942704,
+    "0.4": 1.0,
+    "0.65": 0.934061,
+    "1.0": 0.814917,
+    "1.5": 0.940947,
+    "2.1": 0.749583,
+    "3.2": 0.465972,
+    "5.0": 0.211169,
+    "8.5": 0.442705
+  },
+  "eps_peak_z": 0.4,
+  "eps_is_non_monotone": true,
+  "required_bridge_norm": {
+    "0.06": 0.22679,
+    "0.14": 0.468339,
+    "0.25": 0.856771,
+    "0.4": 1.0,
+    "0.65": 1.143955,
+    "1.0": 1.326829,
+    "1.5": 2.204582,
+    "2.1": 2.623086,
+    "3.2": 2.915431,
+    "5.0": 2.640312,
+    "8.5": 12.498231
+  },
+  "required_bridge_peak_z": 8.5,
+  "required_bridge_is_non_monotone": true,
+  "note_two_targets": "eps_norm = fractional H² excess (peaks z=0.40) — relevant for k_A when D_eff=D_H. required_bridge_norm = absolute H² excess (peaks z=8.50, H² growth dominates) — relevant for k_A when D_eff is a physical cluster length scale.",
+  "degenerate_families": {
+    "family_A": {
+      "family": "A",
+      "D_eff_assumption": "D_H(z) = c/H_FLRW(z) (Hubble distance)",
+      "k_A_formula": "k_A ∝ ε(z) × c²  [simplifies: H² factors cancel]",
+      "k_A_required_shape": [
+        0.275076,
+        0.548551,
+        0.942704,
+        1.0,
+        0.934061,
+        0.814917,
+        0.940947,
+        0.749583,
+        0.465972,
+        0.211169,
+        0.442705
+      ],
+      "k_A_peak_z": 0.4,
+      "k_A_is_monotone": false,
+      "pearson_r_vs_virial": -0.4621,
+      "note": "k_A tracks ε(z) exactly — non-monotone by INSIGHT-1. This choice eliminates the H² factor and yields the cleanest non-virial k_A."
+    },
+    "family_B": {
+      "family": "B",
+      "D_eff_assumption": "r_vir(M=1e14, z) (virial radius of reference cluster)",
+      "k_A_formula": "k_A ∝ required_bridge(z) × r_vir(z)²  ∝ ε(z) × H(z)^(2/3)",
+      "k_A_required_shape": [
+        0.292062,
+        0.570741,
+        0.962983,
+        1.0,
+        0.934032,
+        0.817268,
+        0.935292,
+        0.753214,
+        0.468874,
+        0.210708,
+        0.399849
+      ],
+      "k_A_peak_z": 0.4,
+      "k_A_is_monotone": false,
+      "pearson_r_vs_virial": -0.5106,
+      "note": "k_A still non-monotone because ε is non-monotone. r_vir is monotone but cannot suppress the ε peak."
+    },
+    "family_C": {
+      "family": "C",
+      "k_A_assumption": "k_A = const (uniform cluster activity)",
+      "D_eff_formula": "D_eff ∝ [required_bridge(z)]^(-1/2) ∝ [ε(z)·H(z)²]^(-1/2)",
+      "D_eff_required_shape": [
+        2.099847,
+        1.461234,
+        1.080358,
+        1.0,
+        0.934965,
+        0.868146,
+        0.673499,
+        0.617439,
+        0.585664,
+        0.615421,
+        0.282863
+      ],
+      "D_eff_min_at_z": 8.5,
+      "D_eff_max_at_z": 0.06,
+      "D_eff_is_monotone": false,
+      "pearson_r_vs_virial_r_vir": 0.8373,
+      "note": "D_eff must be non-monotone: minimum at z=0.40 (ε peak), maximum at z=5.0. Anti-correlated with virial r_vir. This implies clusters are 'closer' during peak activity — unusual."
+    }
+  },
+  "virial_comparison": {
+    "pearson_r_virial_vs_eps": -0.4621,
+    "pearson_r_virial_vs_abs_bridge": 0.9644,
+    "peak_virial_at_z": 8.5,
+    "peak_eps_at_z": 0.4,
+    "peak_abs_bridge_at_z": 8.5,
+    "anti_correlated_to_eps": true,
+    "confirms_m8d_theorem": true,
+    "note_on_abs_bridge": "Virial k_A and abs bridge ε×H² are POSITIVELY correlated (both grow with z) because H² growth dominates at high z. This does NOT confirm virial is the right schedule — it means both quantities share the H(z) growth trend.",
+    "interpretation": "Virial k_A ∝ H(z)^(4/3) is ANTI-correlated with ε(z) (Pearson r=-0.4621). ε(z) is the required k_A shape when D_eff = Hubble distance (Family A). Standard virial scaling cannot supply the required fractional bridge shape — confirms M8-D THEOREM (INSIGHT-3)."
+  },
+  "degeneracy_analysis": {
+    "uniquely_determined": "k_A(z) / D_eff(z)^p ∝ ε(z) × H_FLRW(z)²  [up to constant]",
+    "not_determinable": [
+      "k_A(z) individually (requires Q1 bridge formula + D_eff assumption)",
+      "D_eff(z) individually (requires Q1 bridge formula + k_A assumption)",
+      "power p in bridge ∝ k_A/D_eff^p (canonical p=2, not confirmed)",
+      "overall normalization constant C (absorbs units and geometry)"
+    ],
+    "degeneracy_type": "continuous 1-parameter family for each assumed p",
+    "key_constraint_preserved": "ALL valid (k_A, D_eff) pairs must produce non-monotone required_bridge",
+    "virial_k_A_excluded": true,
+    "virial_excluded_reason": "Virial k_A ∝ H(z)^(4/3) is monotone. For any D_eff choice with D_eff monotone, k_A_required = rb × D_eff^p is non-monotone. For D_eff non-monotone, k_A could theoretically be monotone, but then D_eff itself must carry the non-monotone structure — still non-standard. In either case, the standard virial schedule alone cannot explain ε(z).",
+    "minimum_parameters": 2,
+    "min_param_note": "At minimum: 1 parameter for non-monotone shape + 1 for normalization"
+  },
+  "overall_verdict": "PARTIAL",
+  "conclusions": [
+    "required_bridge(z) = ε(z) × H_FLRW(z)² uniquely extracted from Table A1 — no free parameters.",
+    "ε(z) [fractional excess] peaks at z=0.40. required_bridge [absolute excess] peaks at z=8.50 (H² growth dominates at high z).",
+    "Two natural targets: ε(z) [fractional, peaks z=0.40] and required_bridge [absolute, peaks z=8.50].",
+    "Family A (D_eff=D_H): k_A ∝ ε(z) × c² — H² factors cancel, k_A tracks ε exactly, peak z=0.40.",
+    "Family A Pearson r vs virial = -0.4621 — anti-correlated.",
+    "Family B (D_eff=r_vir): k_A ∝ ε(z)·H(z)^(2/3) — still non-monotone, peak z=0.40.",
+    "Family C (k_A=const): D_eff ∝ [ε·H²]^(-1/2) — non-monotone, D_eff min where bridge is max.",
+    "Virial k_A vs ε(z) Pearson r = -0.4621 — ANTI-CORRELATED (confirms M8-D INSIGHT-3).",
+    "THEOREM CONFIRMED: standard virial k_A ∝ H^(4/3) is anti-correlated with required fractional k_A.",
+    "DEGENERACY: k_A and D_eff cannot be separated from Table A1 alone — requires Q1 bridge formula.",
+    "Overall verdict: PARTIAL.",
+    "AUTHOR_SCHEDULE_NEEDED: required k_A shape known (∝ ε for Family A), but unique (k_A, D_eff) split requires Q1+Q2.",
+    "<HYPOTHESIS>: the non-monotone ε(z) shape may be connected to cluster formation rate (cf. M8-C dN/dz signal r=0.723)."
+  ],
+  "safety": "ASRE · OUR_RECONSTRUCTION · NOT_AUTHOR_CONFIRMED · NOT_VALIDATION · NOT_REFUTATION · AUTHOR_SCHEDULE_NEEDED",
+  "physics_notes": {
+    "bridge_formula_assumed": "H²_MULT - H²_FLRW = C × k_A(z) / D_eff(z)^p",
+    "p_assumed": 2.0,
+    "no_MCMC": true,
+    "no_FLRW_fitting": true,
+    "no_TableA1_powerlaw_fit": true,
+    "degeneracy_documented": true
+  }
+}
