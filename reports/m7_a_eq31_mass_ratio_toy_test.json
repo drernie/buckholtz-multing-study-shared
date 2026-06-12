@@ -1,0 +1,168 @@
+{
+  "test": "M7-A Eq31 mass-ratio toy-test",
+  "claim": "(m_W)^2 : (m_Z)^2 : (m_H)^2 :: 7 : 9 : 17  (paper Eq. 31)",
+  "labels": [
+    "NOT_VALIDATION",
+    "NOT_REFUTATION",
+    "M7_NUMEROLOGY_AUDIT",
+    "EQ31_TOY_TEST",
+    "EXTERNAL_STANDARD_PHYSICS"
+  ],
+  "datasets": {
+    "PDG2022": {
+      "masses_GeV": {
+        "W": 80.377,
+        "Z": 91.1876,
+        "H": 125.25
+      },
+      "sigma_GeV": {
+        "W": 0.012,
+        "Z": 0.0021,
+        "H": 0.17
+      },
+      "squared_GeV2": {
+        "W": 6460.462129,
+        "Z": 8315.178393760001,
+        "H": 15687.5625
+      },
+      "ratio_W_normalized_to_7": {
+        "W": 7.0,
+        "Z": 9.009610704943428,
+        "H": 16.997690769994144
+      },
+      "ratio_sum_normalized": {
+        "W": 6.998451544892217,
+        "Z": 9.00761770812697,
+        "H": 16.993930746980812
+      },
+      "lsq_scale_GeV2": 923.0272146702625,
+      "lsq_residuals_GeV2": {
+        "W": -0.7283736918379873,
+        "Z": 7.933461727638132,
+        "H": -3.9001493944633694
+      },
+      "lsq_pct_dev_in_mass": {
+        "W": -0.005636687389022842,
+        "Z": 0.047738862717006975,
+        "H": -0.012428388160896055
+      },
+      "Z_anchored": {
+        "scale_GeV2": 923.9087104177779,
+        "predicted_mass_GeV": {
+          "W": 80.41990408427783,
+          "H": 125.32536884885766
+        },
+        "pull_sigma": {
+          "W": -3.5753403564863597,
+          "H": -0.4433461697509662
+        }
+      }
+    },
+    "PDG2024_avg": {
+      "masses_GeV": {
+        "W": 80.3692,
+        "Z": 91.188,
+        "H": 125.2
+      },
+      "sigma_GeV": {
+        "W": 0.0133,
+        "Z": 0.002,
+        "H": 0.11
+      },
+      "squared_GeV2": {
+        "W": 6459.208308640001,
+        "Z": 8315.251344,
+        "H": 15675.04
+      },
+      "ratio_W_normalized_to_7": {
+        "W": 7.0,
+        "Z": 9.01143865110236,
+        "H": 16.98741931781774
+      },
+      "ratio_sum_normalized": {
+        "W": 7.000242257400751,
+        "Z": 9.011750520774452,
+        "H": 16.988007221824798
+      },
+      "lsq_scale_GeV2": 922.4997619486395,
+      "lsq_residuals_GeV2": {
+        "W": 1.7099749995240927,
+        "Z": 12.753486462244837,
+        "H": -7.455953126871464
+      },
+      "lsq_pct_dev_in_mass": {
+        "W": 0.013239351555924931,
+        "Z": 0.07677564495599945,
+        "H": -0.023774402871510426
+      },
+      "Z_anchored": {
+        "scale_GeV2": 923.916816,
+        "predicted_mass_GeV": {
+          "W": 80.4202568511193,
+          "H": 125.32591859627442
+        },
+        "pull_sigma": {
+          "W": -3.8388609864134278,
+          "H": -1.1447145115856083
+        }
+      }
+    },
+    "CDF2022_W_only": {
+      "masses_GeV": {
+        "W": 80.4335,
+        "Z": 91.1876,
+        "H": 125.25
+      },
+      "sigma_GeV": {
+        "W": 0.0094,
+        "Z": 0.0021,
+        "H": 0.17
+      },
+      "squared_GeV2": {
+        "W": 6469.547922249999,
+        "Z": 8315.178393760001,
+        "H": 15687.5625
+      },
+      "ratio_W_normalized_to_7": {
+        "W": 7.0,
+        "Z": 8.996957663168041,
+        "H": 16.97381931778147
+      },
+      "ratio_sum_normalized": {
+        "W": 7.006204316430626,
+        "Z": 9.004931944918791,
+        "H": 16.988863738650583
+      },
+      "lsq_scale_GeV2": 923.1790059656086,
+      "lsq_residuals_GeV2": {
+        "W": 7.2948804907391605,
+        "Z": 6.567340069525017,
+        "H": -6.480601415345518
+      },
+      "lsq_pct_dev_in_mass": {
+        "W": 0.05642631840522915,
+        "Z": 0.03951348059900348,
+        "H": -0.02064882365407739
+      },
+      "Z_anchored": {
+        "scale_GeV2": 923.9087104177779,
+        "predicted_mass_GeV": {
+          "W": 80.41990408427783,
+          "H": 125.32536884885766
+        },
+        "pull_sigma": {
+          "W": 1.446374012996112,
+          "H": -0.4433461697509662
+        }
+      }
+    }
+  },
+  "verdict_inputs": {
+    "H_pull_PDG2024": -1.1447145115856083,
+    "W_pull_PDG2024": -3.8388609864134278,
+    "W_pull_CDF2022": 1.446374012996112,
+    "mass_level_accuracy_pct": "~0.005-0.05 (lsq fit)"
+  },
+  "verdict": "PARTIAL",
+  "verdict_reason": "Numerically close (mass-level agreement 0.005-0.05% under lsq scale; Z-anchored Higgs prediction within ~0.5 sigma) but NOT exact: Z-anchored W prediction deviates ~3-4 sigma from PDG world average (only ~1.5 sigma from the contested CDF-II 2022 value), deviations exceed current experimental uncertainties for W and Z, and no physical derivation is provided in the paper. Approximate numerical relation / possible coincidence; author's 'W within 1 sigma' holds only against CDF-II-like values, not the PDG average."
+}
