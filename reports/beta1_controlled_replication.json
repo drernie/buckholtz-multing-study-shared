@@ -36,7 +36,8 @@
     "note": "UNCONTROLLED \u2014 different prompts and cluster parameters per service"
   },
   "beta1": {
-    "status": "AWAITING_RESPONSES",
+    "status": "INFRA_READY / AWAITING_RESPONSES / HOLD",
+    "hold_reason": "Not critical path. Main blocker is Q3 (TJB author provenance). Even CONVERGE yields only AI_CONSENSUS_CANDIDATE, not PHYSICAL_CONSTANT. Execute only if Q3 unanswered by ~2026-07-12 or on explicit approval.",
     "n_services": 0,
     "services": [],
     "beta_d_values": {},
