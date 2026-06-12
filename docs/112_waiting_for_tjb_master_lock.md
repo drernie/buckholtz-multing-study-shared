@@ -251,8 +251,10 @@ NEXT_STATE: WAITING_FOR_TJB
 
 SESSION START PROTOCOL (next session):
   Read THIS file first (docs/112).
-  Then: docs/109 Section 10 (EOD-4 verdict).
-  Then: docs/111 Section 8 (BETA-0 evidence block).
+  Then: docs/113 (HD-MAVP-1 selection artifact lock; O6 status).
+  Then: docs/114 (O7 isomer ratio lock; REJECTED_AS_DERIVATION).
+  Then: docs/109 Section 10 (EOD-4 verdict) — only if specific claim lookup needed.
+  Then: docs/111 Section 8 (BETA-0 evidence block) — only if β needed.
   Do NOT re-read docs/107 or 108 unless needed for specific claim lookups.
 ```
 

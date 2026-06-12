@@ -13,6 +13,7 @@
 | NR-003 | 2026-06-12 | ps-comoving-density-model-a | REJECT | PS comoving density monotone; cannot peak at z=0.40 |
 | NR-004 | 2026-06-13 | mavs-virial-ps-insufficient | REJECT | virial k_A monotone ∝H(z)^(4/3); all Pearson r negative |
 | NR-005 | 2026-06-13 | intrinsic-formation-selection-ambiguity | REJECT (partial) | PS density killed; selection f_sel alone r=0.666 survives |
+| NR-007 | 2026-06-13 | sector-count-dm-baryon-ratio | REJECTED_AS_DERIVATION | Author "might suggest" only; 5 required mechanisms all missing |
 
 ---
 
@@ -21,3 +22,4 @@
 - [NR-003: PS comoving density Model A](20260612-ps-comoving-model-a-fail.md)
 - [NR-004: MAVS virial+PS insufficient](20260613-mavs-virial-ps-insufficient.md)
 - [NR-005: Intrinsic formation vs selection ambiguity](20260613-intrinsic-formation-selection-ambiguity.md)
+- [NR-007: Sector count DM/baryon ratio](20260613-nr007-sector-count-dm-baryon-ratio.md)
