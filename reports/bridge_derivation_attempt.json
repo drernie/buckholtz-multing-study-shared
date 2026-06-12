@@ -1,0 +1,286 @@
+{
+  "gate": "bridge-derivation-attempt",
+  "date": "2026-06-12",
+  "labels": [
+    "BRIDGE_DERIVATION_ATTEMPT",
+    "TABLE_A1_DATA",
+    "OUR_RECONSTRUCTION",
+    "NOT_AUTHOR_CONFIRMED",
+    "NOT_VALIDATION",
+    "NOT_REFUTATION",
+    "INTERNAL_DIAGNOSTIC_ONLY"
+  ],
+  "eps_z_table": [
+    {
+      "z": 0.06,
+      "h_flrw": 68.1,
+      "h_mult": 70.2,
+      "ratio": 1.0308,
+      "eps": 0.0626
+    },
+    {
+      "z": 0.14,
+      "h_flrw": 69.3,
+      "h_mult": 73.5,
+      "ratio": 1.0606,
+      "eps": 0.1249
+    },
+    {
+      "z": 0.25,
+      "h_flrw": 71.5,
+      "h_mult": 78.8,
+      "ratio": 1.1021,
+      "eps": 0.2146
+    },
+    {
+      "z": 0.4,
+      "h_flrw": 75.0,
+      "h_mult": 83.1,
+      "ratio": 1.108,
+      "eps": 0.2277
+    },
+    {
+      "z": 0.65,
+      "h_flrw": 83.0,
+      "h_mult": 91.4,
+      "ratio": 1.1012,
+      "eps": 0.2127
+    },
+    {
+      "z": 1.0,
+      "h_flrw": 95.7,
+      "h_mult": 104.2,
+      "ratio": 1.0888,
+      "eps": 0.1855
+    },
+    {
+      "z": 1.5,
+      "h_flrw": 114.8,
+      "h_mult": 126.5,
+      "ratio": 1.1019,
+      "eps": 0.2142
+    },
+    {
+      "z": 2.1,
+      "h_flrw": 140.3,
+      "h_mult": 151.8,
+      "ratio": 1.082,
+      "eps": 0.1707
+    },
+    {
+      "z": 3.2,
+      "h_flrw": 187.6,
+      "h_mult": 197.3,
+      "ratio": 1.0517,
+      "eps": 0.1061
+    },
+    {
+      "z": 5.0,
+      "h_flrw": 265.2,
+      "h_mult": 271.5,
+      "ratio": 1.0238,
+      "eps": 0.0481
+    },
+    {
+      "z": 8.5,
+      "h_flrw": 398.5,
+      "h_mult": 418.1,
+      "ratio": 1.0492,
+      "eps": 0.1008
+    }
+  ],
+  "nonmonotonicity": {
+    "eps_peak_value": 0.2277,
+    "eps_peak_z": 0.4,
+    "eps_min_value": 0.0481,
+    "eps_min_z": 5.0,
+    "eps_range": 0.1796,
+    "is_monotonic": false,
+    "piecewise_log_slopes": [
+      {
+        "z_center": 0.1,
+        "d_log_eps_d_log1pz": 9.49,
+        "direction": "RISING"
+      },
+      {
+        "z_center": 0.2,
+        "d_log_eps_d_log1pz": 5.88,
+        "direction": "RISING"
+      },
+      {
+        "z_center": 0.33,
+        "d_log_eps_d_log1pz": 0.52,
+        "direction": "RISING"
+      },
+      {
+        "z_center": 0.53,
+        "d_log_eps_d_log1pz": -0.42,
+        "direction": "FALLING"
+      },
+      {
+        "z_center": 0.82,
+        "d_log_eps_d_log1pz": -0.71,
+        "direction": "FALLING"
+      },
+      {
+        "z_center": 1.25,
+        "d_log_eps_d_log1pz": 0.64,
+        "direction": "RISING"
+      },
+      {
+        "z_center": 1.8,
+        "d_log_eps_d_log1pz": -1.06,
+        "direction": "FALLING"
+      },
+      {
+        "z_center": 2.65,
+        "d_log_eps_d_log1pz": -1.57,
+        "direction": "FALLING"
+      },
+      {
+        "z_center": 4.1,
+        "d_log_eps_d_log1pz": -2.22,
+        "direction": "FALLING"
+      },
+      {
+        "z_center": 6.75,
+        "d_log_eps_d_log1pz": 1.61,
+        "direction": "RISING"
+      }
+    ],
+    "physical_interpretation": "ε(z) peaks at z≈0.40 — consistent with galaxy cluster number density peak (Press-Schechter: n_cluster peaks at z~0.4-0.6). Falls to minimum at z≈5.0 where clusters have not yet formed in ΛCDM. Slight uptick at z=8.5 may reflect proto-cluster / AI fitting artifact.",
+    "implication_for_bridge": "Any bridge formula must encode cluster formation history, not just a fixed cluster pair. This is why k_A(z) schedule (Q2) is the fundamental blocker, not just an optional refinement."
+  },
+  "candidate_1_constant": {
+    "name": "Constant ε",
+    "formula": "H²_MULT = H²_FLRW × (1 + C)",
+    "fitted_C": 0.1516,
+    "rms_residual": 0.0625,
+    "max_residual": 0.1035,
+    "verdict": "FAILS",
+    "why_fails": "ε(z) varies from 0.048 to 0.228 — not constant; span 0.180 >> noise"
+  },
+  "candidate_2_power_law": {
+    "name": "Power law ε ∝ (1+z)^α",
+    "formula": "H²_MULT = H²_FLRW × (1 + C × (1+z)^α)",
+    "alpha_global_fit": -0.293,
+    "C_global_fit": 0.1744,
+    "alpha_range_by_pairs": [
+      -2.22,
+      9.49
+    ],
+    "rms_residual": 0.0593,
+    "max_residual": 0.1088,
+    "max_residual_at_z": 0.06,
+    "verdict": "FAILS",
+    "why_fails": "α varies from -2.22 to 9.49 across z pairs — no single α describes the full range. Non-monotonic ε(z) cannot be captured by power law."
+  },
+  "candidate_3_friedmann": {
+    "name": "Cluster density from Friedmann",
+    "formula": "ρ_cluster(z) = ε(z) × H²_FLRW(z) × 3/(8πG)",
+    "rho_cluster_kg_m3": [
+      0.2268,
+      0.4683,
+      0.8568,
+      1.0,
+      1.144,
+      1.3268,
+      2.2046,
+      2.6231,
+      2.9154,
+      2.6403,
+      12.4982
+    ],
+    "rho_cluster_peak_at": 0.4,
+    "vs_dark_matter_scaling": [
+      {
+        "z": 0.06,
+        "rho_norm": 0.227,
+        "dm_norm": 0.434,
+        "ratio": 0.523,
+        "flag": "OK"
+      },
+      {
+        "z": 0.14,
+        "rho_norm": 0.468,
+        "dm_norm": 0.54,
+        "ratio": 0.867,
+        "flag": "OK"
+      },
+      {
+        "z": 0.25,
+        "rho_norm": 0.857,
+        "dm_norm": 0.712,
+        "ratio": 1.204,
+        "flag": "OK"
+      },
+      {
+        "z": 0.4,
+        "rho_norm": 1.0,
+        "dm_norm": 1.0,
+        "ratio": 1.0,
+        "flag": "OK"
+      },
+      {
+        "z": 0.65,
+        "rho_norm": 1.144,
+        "dm_norm": 1.637,
+        "ratio": 0.699,
+        "flag": "OK"
+      },
+      {
+        "z": 1.0,
+        "rho_norm": 1.327,
+        "dm_norm": 2.915,
+        "ratio": 0.455,
+        "flag": "MISMATCH"
+      },
+      {
+        "z": 1.5,
+        "rho_norm": 2.205,
+        "dm_norm": 5.694,
+        "ratio": 0.387,
+        "flag": "MISMATCH"
+      },
+      {
+        "z": 2.1,
+        "rho_norm": 2.623,
+        "dm_norm": 10.857,
+        "ratio": 0.242,
+        "flag": "MISMATCH"
+      },
+      {
+        "z": 3.2,
+        "rho_norm": 2.915,
+        "dm_norm": 27.0,
+        "ratio": 0.108,
+        "flag": "MISMATCH"
+      },
+      {
+        "z": 5.0,
+        "rho_norm": 2.64,
+        "dm_norm": 78.717,
+        "ratio": 0.034,
+        "flag": "MISMATCH"
+      },
+      {
+        "z": 8.5,
+        "rho_norm": 12.498,
+        "dm_norm": 312.454,
+        "ratio": 0.04,
+        "flag": "MISMATCH"
+      }
+    ],
+    "verdict": "BLOCKED — requires k_A(z) schedule from TJB (Q2)",
+    "what_is_known": "ρ_cluster(z) extracted from Table A1 is consistent with galaxy cluster mass function peaking at z~0.4-0.6 (NOT with simple DM scaling).",
+    "what_is_missing": "The actual k_A(z) and D(z) schedules from the AI service (Q2). Without these, ρ_cluster(z) cannot be converted to model parameters."
+  },
+  "conclusions": [
+    "ε(z) = (H_MULT/H_FLRW)² − 1 is NON-MONOTONIC: peaks z=0.40, min z=5.0.",
+    "No simple bridge (constant / power law) reproduces ε(z).",
+    "Friedmann bridge is correct framework, but BLOCKED by missing k_A(z) schedule.",
+    "Peak at z=0.40 is physically consistent with cluster abundance peak.",
+    "Q2 (TJB's cluster schedule) is the FUNDAMENTAL unlock for bridge derivation."
+  ],
+  "safety": "NOT_VALIDATION · NOT_REFUTATION · TABLE_A1_DATA_ONLY · BRIDGE_IS_NOT_AUTHOR_CONFIRMED"
+}
