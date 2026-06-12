@@ -1,0 +1,157 @@
+{
+  "gate": "M8-C-closure-schedule",
+  "date": "2026-06-12",
+  "labels": [
+    "OUR_RECONSTRUCTION",
+    "<HYPOTHESIS>",
+    "EXTERNAL_STANDARD_PHYSICS",
+    "TABLE_A1_DATA",
+    "NOT_AUTHOR_CONFIRMED",
+    "NOT_VALIDATION",
+    "NOT_REFUTATION",
+    "INTERNAL_DIAGNOSTIC_ONLY"
+  ],
+  "hypothesis": "ε(z) shape is explained by galaxy cluster formation history (ΛCDM Press-Schechter)",
+  "lcdm_params": {
+    "Omega_m": 0.315,
+    "Omega_Lambda": 0.685,
+    "H0_km_s_mpc": 70.0,
+    "sigma_8": 0.811,
+    "delta_c": 1.686,
+    "gamma_cdm": 0.27
+  },
+  "m8_solar": 267800000000000.0,
+  "eps_profile": [
+    {
+      "z": 0.06,
+      "eps": 0.0626
+    },
+    {
+      "z": 0.14,
+      "eps": 0.1249
+    },
+    {
+      "z": 0.25,
+      "eps": 0.2146
+    },
+    {
+      "z": 0.4,
+      "eps": 0.2277
+    },
+    {
+      "z": 0.65,
+      "eps": 0.2127
+    },
+    {
+      "z": 1.0,
+      "eps": 0.1855
+    },
+    {
+      "z": 1.5,
+      "eps": 0.2142
+    },
+    {
+      "z": 2.1,
+      "eps": 0.1707
+    },
+    {
+      "z": 3.2,
+      "eps": 0.1061
+    },
+    {
+      "z": 5.0,
+      "eps": 0.0481
+    },
+    {
+      "z": 8.5,
+      "eps": 0.1008
+    }
+  ],
+  "eps_peak_z": 0.4,
+  "eps_min_z": 5.0,
+  "results_by_m_min": [
+    {
+      "m_min_solar": 100000000000000.0,
+      "m_min_label": "1×10¹⁴ M☉ — group/cluster boundary",
+      "sigma_at_z0": 1.0581,
+      "nu_at_z0": 1.5934,
+      "model_A_comoving": {
+        "peak_z": 0.06,
+        "pearson_r": -0.0478,
+        "rms_residual": 0.5861,
+        "max_residual": 0.9297,
+        "sign_changes": 0
+      },
+      "model_B_survey": {
+        "peak_z": 0.65,
+        "pearson_r": 0.7227,
+        "rms_residual": 0.4178,
+        "max_residual": 0.8175,
+        "sign_changes": 1
+      },
+      "eps_sign_changes": 4,
+      "best_pearson_r": 0.7227,
+      "best_model": "B",
+      "verdict_m_min": "PARTIAL"
+    },
+    {
+      "m_min_solar": 500000000000000.0,
+      "m_min_label": "5×10¹⁴ M☉ — rich cluster",
+      "sigma_at_z0": 0.6852,
+      "nu_at_z0": 2.4606,
+      "model_A_comoving": {
+        "peak_z": 0.06,
+        "pearson_r": -0.264,
+        "rms_residual": 0.6513,
+        "max_residual": 0.9409,
+        "sign_changes": 0
+      },
+      "model_B_survey": {
+        "peak_z": 0.4,
+        "pearson_r": 0.5407,
+        "rms_residual": 0.4925,
+        "max_residual": 0.9397,
+        "sign_changes": 1
+      },
+      "eps_sign_changes": 4,
+      "best_pearson_r": 0.5407,
+      "best_model": "B",
+      "verdict_m_min": "FAIL"
+    },
+    {
+      "m_min_solar": 2000000000000000.0,
+      "m_min_label": "2×10¹⁵ M☉ — massive cluster",
+      "sigma_at_z0": 0.4713,
+      "nu_at_z0": 3.5777,
+      "model_A_comoving": {
+        "peak_z": 0.06,
+        "pearson_r": -0.4132,
+        "rms_residual": 0.6891,
+        "max_residual": 0.973,
+        "sign_changes": 0
+      },
+      "model_B_survey": {
+        "peak_z": 0.25,
+        "pearson_r": 0.1834,
+        "rms_residual": 0.5846,
+        "max_residual": 0.9409,
+        "sign_changes": 1
+      },
+      "eps_sign_changes": 4,
+      "best_pearson_r": 0.4132,
+      "best_model": "A",
+      "verdict_m_min": "FAIL"
+    }
+  ],
+  "overall_verdict": "PARTIAL",
+  "best_pearson_r": 0.7227,
+  "conclusions": [
+    "Best Pearson r = 0.723 — insufficient to confirm cluster-formation <HYPOTHESIS>.",
+    "Model A (PS comoving density) is MONOTONICALLY DECREASING — cannot explain primary ε peak at z≈0.40 without volume weighting.",
+    "Model B (survey count rate dN/dz) peaks at z=0.65 (M_min=1e+14 M☉) — overlaps ε peak range z=0.40–0.65.",
+    "Standard PS cannot reproduce secondary ε structure at z=1.0–1.5 (not captured by any single mass threshold model).",
+    "Q2 blocker confirmed: k_A(z) schedule required to reproduce ε(z) shape. Only TJB can confirm which cluster schedule was used.",
+    "<HYPOTHESIS> status: WEAKLY SUPPORTED at best. Qualitative peak location may coincide with survey count rate for appropriate M_min, but quantitative agreement and secondary structure are not explained."
+  ],
+  "safety": "NOT_VALIDATION · NOT_REFUTATION · <HYPOTHESIS> · OUR_RECONSTRUCTION · INTERNAL_DIAGNOSTIC_ONLY"
+}
