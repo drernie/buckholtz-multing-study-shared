@@ -53,7 +53,7 @@ From public-source formula-stripping pass (docs/33_public_formula_stripping_repo
 **Status:** Documented as SOURCE_CANDIDATE until I manually verify character-by-character against the PDF. Dimensional analysis passed, but force-law-to-H(z) mapping **not found** in public materials (see section 3 questions below).
 
 **What I will NOT do without your clarification:**
-- Implement H_MULT(z) solver (no formula provided in materials I found)
+- Implement H_MULT(z) solver (bridge F→H(z) not explicit in preprint; force formulas F_m/F_d/F_q present in Step 2 p.33, but F_oP→H mapping absent)
 - Perform MCMC parameter estimation (requires H_MULT forward model)
 - Claim validation or refutation of MULTING (not my goal)
 - Use force law for predictions (closure relations missing)
