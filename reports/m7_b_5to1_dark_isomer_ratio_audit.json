@@ -1,0 +1,49 @@
+{
+  "test": "M7-B 5:1 dark-isomer ratio audit",
+  "labels": [
+    "NOT_VALIDATION",
+    "NOT_REFUTATION",
+    "M7_DARK_ISOMER_AUDIT",
+    "INTEGER_COUNTING_CHECK",
+    "COSMOLOGY_RATIO_CHECK",
+    "AUTHOR_DERIVATION_NEEDED"
+  ],
+  "claim_source_lines": [
+    767,
+    768,
+    769,
+    772,
+    980,
+    981,
+    1340
+  ],
+  "claimed_integer_ratio": 5.0,
+  "observed": {
+    "author_cited_line772": 5.4,
+    "planck2018_crosscheck": {
+      "ratio": 5.364,
+      "sigma": 0.065,
+      "provenance": "EXTERNAL_STANDARD_PHYSICS (Planck 2018 Om_c/Om_b)"
+    }
+  },
+  "comparison": {
+    "abs_diff_vs_author_cited": 0.40000000000000036,
+    "pct_diff_vs_author_cited": 7.407407407407414,
+    "abs_diff_vs_planck": 0.3639999999999999,
+    "pct_diff_vs_planck": 6.785980611483964,
+    "pull_sigma_vs_planck": 5.599999999999998
+  },
+  "derivation_check": {
+    "equal_density_per_isomer_derived": false,
+    "thermal_history_provided": false,
+    "note": "Paper posits 6 isomer particle sets but provides no mechanism fixing EQUAL cosmological density per isomer (no isomer-level baryogenesis/thermal history). Sec 4.5 lists speculative options for the '+' excess (axions, reach-6 energy outflow, non-decaying neutral baryon analogs, neutrino-analog density) without quantitative derivation.",
+    "author_acknowledges_gap": true
+  },
+  "sanity_note_neutron_mass_shift": {
+    "fraction": 0.0008333128280642579,
+    "comment": "Even if every dark isomer is purely neutron-like, equal baryon number gives only ~+0.08% mass density per isomer \u2014 cannot supply the ~7% excess (5.0 -> 5.36)."
+  },
+  "interpretation": "approximate post-hoc integer-counting match",
+  "verdict": "PARTIAL",
+  "verdict_reason": "Integer counting (5 dark isomers) lands ~7% below the observed ratio (5.36-5.4); literal 5.0 is ~5.6 sigma from the Planck cross-check, and the paper's '(5+):1' phrasing absorbs the gap into unquantified 'pluses'. No physical derivation fixes equal density per isomer; thermal history absent (author acknowledges via Sec 4.5 speculative options). Numerical closeness is not a derivation; claim survives only as a candidate counting basis."
+}
