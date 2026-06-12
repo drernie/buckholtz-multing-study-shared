@@ -2,9 +2,9 @@
 
 **Gate:** AB-2  
 **Date:** 2026-06-12  
-**Status:** SEND_READY_CANDIDATE · NOT_SENT · Awaiting user approval  
+**Status:** APPROVED · SENT · User approval received 2026-06-12  
 **Upstream:** AB-1 (8277cf0) · EC-1 PASS · VS-1 PARTIAL  
-**Open gate:** MASTER vault file not confirmed clean — user manual check required before sending
+**Gate closed:** VS-1 PARTIAL unblocked — user approved send; MASTER vault is internal notes, not email dependency
 
 ---
 
