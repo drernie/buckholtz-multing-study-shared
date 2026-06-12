@@ -1,0 +1,73 @@
+{
+  "gate": "M7-C-supplement-mirror-dm",
+  "date": "2026-06-12",
+  "labels": [
+    "IF_MIRROR_DM_INTERPRETATION",
+    "EXTERNAL_STANDARD_PHYSICS",
+    "NOT_VALIDATION",
+    "NOT_REFUTATION",
+    "INTERNAL_DIAGNOSTIC_ONLY",
+    "NOT_AUTHOR_CONFIRMED",
+    "OUR_RECONSTRUCTION"
+  ],
+  "motivation": "IDM preprint line 1063-1065: each isomer 'might associate with a set of elementary particles for which there is one elementary-particle counterpart for each known (or ordinary-matter) elementary particle.' This is structurally identical to Mirror Dark Matter. Mirror DM literature provides ΔN_eff formulas applicable as cross-check.",
+  "planck_2018": {
+    "N_eff_SM_theory": 3.046,
+    "N_eff_observed": 2.99,
+    "sigma_1": 0.17,
+    "delta_N_eff_bound_1sigma": 0.4,
+    "source": "Aghanim et al. 2020 (Planck 2018 VI), Table 2"
+  },
+  "physics_factors": {
+    "photon_to_neff": 4.403205,
+    "electron_to_neff": 8.806409,
+    "formula_photon": "ΔN_eff_γ = (8/7) × (11/4)^(4/3) × x^4",
+    "formula_electron": "ΔN_eff_e = (16/7) × (11/4)^(4/3) × x^4",
+    "formula_neutrino": "ΔN_eff_ν = 1.0 × x^4 per species"
+  },
+  "n_isomers": 5,
+  "interpretations": [
+    {
+      "interp_id": "A_minimal",
+      "label": "1 dark photon-like boson per isomer (minimal)",
+      "coeff_per_sector": 4.4032,
+      "delta_neff_per_sector_x1": 4.403,
+      "delta_neff_total_5sectors_x1": 22.016,
+      "sigma_above_planck_at_x1": 129.5,
+      "x_max_5_isomers": 0.3671,
+      "x_max_1_isomer": 0.549,
+      "status_at_x1": "RULED_OUT"
+    },
+    {
+      "interp_id": "B_phot_plus_nu",
+      "label": "Dark photon + 3 dark neutrinos per isomer (no dark electrons)",
+      "coeff_per_sector": 7.4032,
+      "delta_neff_per_sector_x1": 7.403,
+      "delta_neff_total_5sectors_x1": 37.016,
+      "sigma_above_planck_at_x1": 217.7,
+      "x_max_5_isomers": 0.3224,
+      "x_max_1_isomer": 0.4821,
+      "status_at_x1": "RULED_OUT"
+    },
+    {
+      "interp_id": "C_full_mirror",
+      "label": "Full mirror SM per isomer (photons + e+e- + 3ν, T_dark > m_e at BBN)",
+      "coeff_per_sector": 16.2096,
+      "delta_neff_per_sector_x1": 16.21,
+      "delta_neff_total_5sectors_x1": 81.048,
+      "sigma_above_planck_at_x1": 476.8,
+      "x_max_5_isomers": 0.2651,
+      "x_max_1_isomer": 0.3963,
+      "status_at_x1": "RULED_OUT"
+    }
+  ],
+  "conclusions": [
+    "Equal-temperature dark sector (x=1) ruled out under ALL interpretations.",
+    "5 isomers at x=1: ΔN_eff ∈ [22.0, 75.6] depending on interpretation.",
+    "Required: T_dark/T_SM < 0.25-0.38 for Planck 2018 compatibility.",
+    "IDM preprint does NOT specify T_dark/T_SM → AUTHOR_DERIVATION_NEEDED.",
+    "M7-C verdict remains BLOCKED: cannot compute IDM ΔN_eff without T_dark/T_SM.",
+    "SECONDARY: Cool mirror sector (x < 0.35) undermines 5:1 ratio from equal baryon asymmetry → M7-A/B AUTHOR_DERIVATION_NEEDED confirmed."
+  ],
+  "safety": "NOT_VALIDATION · NOT_REFUTATION · IF_MIRROR_DM_INTERPRETATION · OUR_RECONSTRUCTION · INTERNAL_DIAGNOSTIC_ONLY"
+}
