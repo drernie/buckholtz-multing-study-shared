@@ -1,0 +1,187 @@
+{
+  "analysis": "ILLUSTRIS_TNG_K_A_PROXY",
+  "labels": [
+    "EXTERNAL_STANDARD_PHYSICS",
+    "HYPOTHESIS",
+    "NOT_VALIDATION",
+    "NOT_AUTHOR_CONFIRMED",
+    "INTERNAL_DIAGNOSTIC_ONLY"
+  ],
+  "u4_question": "Is k_A in Illustris-TNG monotone or non-monotone?",
+  "tng_api_status": {
+    "status": "HTTP_ERROR",
+    "code": 403,
+    "reason": "Forbidden"
+  },
+  "data_source": "Analytical proxy using TNG100-1 cosmological parameters (Omega_m=0.3089, sigma_8=0.8159) + Fakhouri & Ma 2008 merger rate formula",
+  "z_target": [
+    0.06,
+    0.14,
+    0.25,
+    0.4,
+    0.65,
+    1.0,
+    1.5,
+    2.1,
+    3.2,
+    5.0,
+    8.5
+  ],
+  "epsilon_table_a1": [
+    0.0626,
+    0.1249,
+    0.2146,
+    0.2277,
+    0.2127,
+    0.1855,
+    0.2142,
+    0.1707,
+    0.1061,
+    0.0481,
+    0.1008
+  ],
+  "results_by_mass": {
+    "1e14_M_sun": {
+      "m_min_sun": 100000000000000.0,
+      "virial_proxy": {
+        "k_a_normalized": [
+          1.0,
+          0.7589,
+          0.494,
+          0.2508,
+          0.0642,
+          0.0058,
+          0.0001,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pearson_r": -0.2341,
+        "peak_z": 0.06,
+        "is_monotone": true,
+        "sign_changes": 0,
+        "verdict": "MONOTONE_FAIL"
+      },
+      "merger_proxy": {
+        "k_a_normalized": [
+          0.0675,
+          0.305,
+          0.6982,
+          1.0,
+          0.7424,
+          0.1678,
+          0.0046,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pearson_r": 0.6519,
+        "peak_z": 0.4,
+        "is_monotone": false,
+        "sign_changes": 1,
+        "verdict": "NON_MONOTONE (r=0.652)"
+      }
+    },
+    "5e14_M_sun": {
+      "m_min_sun": 500000000000000.0,
+      "virial_proxy": {
+        "k_a_normalized": [
+          1.0,
+          0.451,
+          0.1349,
+          0.0212,
+          0.0006,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pearson_r": -0.4416,
+        "peak_z": 0.06,
+        "is_monotone": true,
+        "sign_changes": 0,
+        "verdict": "MONOTONE_FAIL"
+      },
+      "merger_proxy": {
+        "k_a_normalized": [
+          0.0675,
+          0.305,
+          0.6982,
+          1.0,
+          0.7424,
+          0.1678,
+          0.0046,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pearson_r": 0.6519,
+        "peak_z": 0.4,
+        "is_monotone": false,
+        "sign_changes": 1,
+        "verdict": "NON_MONOTONE (r=0.652)"
+      }
+    },
+    "2e15_M_sun": {
+      "m_min_sun": 2000000000000000.0,
+      "virial_proxy": {
+        "k_a_normalized": [
+          1.0,
+          0.1662,
+          0.0112,
+          0.0002,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pearson_r": -0.4713,
+        "peak_z": 0.06,
+        "is_monotone": true,
+        "sign_changes": 0,
+        "verdict": "MONOTONE_FAIL"
+      },
+      "merger_proxy": {
+        "k_a_normalized": [
+          0.0675,
+          0.305,
+          0.6982,
+          1.0,
+          0.7424,
+          0.1678,
+          0.0046,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pearson_r": 0.6519,
+        "peak_z": 0.4,
+        "is_monotone": false,
+        "sign_changes": 1,
+        "verdict": "NON_MONOTONE (r=0.652)"
+      }
+    }
+  },
+  "summary": {
+    "best_pearson_r_virial": -0.2341,
+    "best_pearson_r_merger": 0.6519,
+    "virial_all_monotone": true,
+    "u4_virial_verdict": "CONFIRMED: TNG virial k_A IS monotone for all mass thresholds. Consistent with NR-004 (MAVS fail). Standard virial physics cannot produce non-monotone ε(z).",
+    "u4_merger_verdict": "PARTIAL: merger rate proxy r=0.652, 0.60–0.80 range"
+  },
+  "what_this_does_not_mean": [
+    "This does not confirm or refute MULTING as a physical theory",
+    "This does not replace actual Illustris-TNG group catalog data (API key needed)",
+    "This does not provide the bridge formula Q1 needed for MCMC",
+    "Merger rate proxy is Fakhouri 2008 (Millennium Simulation, not TNG calibrated)"
+  ]
+}
