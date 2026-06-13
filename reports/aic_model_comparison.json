@@ -1,0 +1,174 @@
+{
+  "audit": "AIC_MODEL_COMPARISON",
+  "labels": [
+    "NOT_VALIDATION",
+    "NOT_REFUTATION",
+    "INTERNAL_DIAGNOSTIC_ONLY",
+    "NOT_AUTHOR_CONFIRMED",
+    "OUR_RECONSTRUCTION",
+    "IN_SAMPLE_ONLY",
+    "TABLE_A1_ONLY"
+  ],
+  "N_data_points": 11,
+  "methodology_reference": "arXiv:2504.09054v2 (2025) — AIC/BIC for 2-param dark energy extensions",
+  "chi2_summary": {
+    "LCDM_table_a1": 10.0376,
+    "LCDM_optimized": 16.9144,
+    "MULTING_table_a1": 0.2687,
+    "delta_chi2_table": -9.769,
+    "delta_chi2_optimized": -16.6457,
+    "note_multing_fitted_on_same_data": "H_MULT was fitted to minimize residuals on these same 11 points. This is IN-SAMPLE comparison. Out-of-sample test requires bridge (Q1)."
+  },
+  "lcdm_best_fit": {
+    "H0_best": 72.134,
+    "Omega_m_best": 0.1,
+    "chi2_min": 16.9144,
+    "residuals": [
+      -1.2734,
+      0.0373,
+      0.7791,
+      0.7656,
+      1.1731,
+      1.3685,
+      0.7869,
+      0.3964,
+      -0.4309,
+      -1.4433,
+      -2.7936
+    ],
+    "converged": true
+  },
+  "model_selection_primary": {
+    "comparison": "optimized_ΛCDM vs Table_A1_MULTING",
+    "results": {
+      "A_beta_fixed": {
+        "k_LCDM": 2,
+        "k_MULTING": 2,
+        "AIC_LCDM": 20.914,
+        "AIC_MULTING": 4.269,
+        "BIC_LCDM": 21.71,
+        "BIC_MULTING": 5.064,
+        "AICc_LCDM": 22.414,
+        "AICc_MULTING": 5.769,
+        "delta_AIC": -16.646,
+        "delta_BIC": -16.646,
+        "delta_AICc": -16.646,
+        "AIC_verdict": "decisive (>10 evidence units)",
+        "BIC_verdict": "very strong evidence for MULTING",
+        "AICc_verdict": "decisive (>10 evidence units)"
+      },
+      "B_beta_fitted": {
+        "k_LCDM": 2,
+        "k_MULTING": 4,
+        "AIC_LCDM": 20.914,
+        "AIC_MULTING": 8.269,
+        "BIC_LCDM": 21.71,
+        "BIC_MULTING": 9.86,
+        "AICc_LCDM": 22.414,
+        "AICc_MULTING": 14.935,
+        "delta_AIC": -12.646,
+        "delta_BIC": -11.85,
+        "delta_AICc": -7.479,
+        "AIC_verdict": "decisive (>10 evidence units)",
+        "BIC_verdict": "very strong evidence for MULTING",
+        "AICc_verdict": "strong (6–10 units)"
+      }
+    }
+  },
+  "model_selection_secondary": {
+    "comparison": "Table_A1_ΛCDM vs Table_A1_MULTING (both at same H0)",
+    "results": {
+      "A_beta_fixed": {
+        "k_LCDM": 2,
+        "k_MULTING": 2,
+        "AIC_LCDM": 14.038,
+        "AIC_MULTING": 4.269,
+        "BIC_LCDM": 14.833,
+        "BIC_MULTING": 5.064,
+        "AICc_LCDM": 15.538,
+        "AICc_MULTING": 5.769,
+        "delta_AIC": -9.769,
+        "delta_BIC": -9.769,
+        "delta_AICc": -9.769,
+        "AIC_verdict": "strong (6–10 units)",
+        "BIC_verdict": "strong evidence for MULTING",
+        "AICc_verdict": "strong (6–10 units)"
+      },
+      "B_beta_fitted": {
+        "k_LCDM": 2,
+        "k_MULTING": 4,
+        "AIC_LCDM": 14.038,
+        "AIC_MULTING": 8.269,
+        "BIC_LCDM": 14.833,
+        "BIC_MULTING": 9.86,
+        "AICc_LCDM": 15.538,
+        "AICc_MULTING": 14.935,
+        "delta_AIC": -5.769,
+        "delta_BIC": -4.973,
+        "delta_AICc": -0.602,
+        "AIC_verdict": "substantial (2–6 units)",
+        "BIC_verdict": "positive evidence for MULTING",
+        "AICc_verdict": "equivalent (<2 units, no discrimination)"
+      }
+    }
+  },
+  "epsilon_diagnostics": {
+    "z": [
+      0.06,
+      0.14,
+      0.25,
+      0.4,
+      0.65,
+      1.0,
+      1.5,
+      2.1,
+      3.2,
+      5.0,
+      8.5
+    ],
+    "epsilon_from_table": [
+      0.0626,
+      0.1249,
+      0.2146,
+      0.2277,
+      0.2127,
+      0.1855,
+      0.2142,
+      0.1707,
+      0.1061,
+      0.0481,
+      0.1008
+    ],
+    "epsilon_m8a_r1": [
+      0.063,
+      0.125,
+      0.215,
+      0.228,
+      0.213,
+      0.186,
+      0.214,
+      0.171,
+      0.106,
+      0.048,
+      0.101
+    ],
+    "max_diff": 0.00047,
+    "peak_z": 0.4,
+    "peak_epsilon": 0.2277,
+    "is_non_monotone": true
+  },
+  "key_findings": [
+    "χ²_ΛCDM (optimized) = 16.914, χ²_MULTING = 0.2687",
+    "Δχ² = -16.646 (negative = MULTING fits better)",
+    "Scenario A_beta_fixed: ΔAIC=-16.65 (decisive (>10 evidence units)), ΔBIC=-16.65 (very strong evidence for MULTING), ΔAICc=-16.65 (decisive (>10 evidence units))",
+    "Scenario B_beta_fitted: ΔAIC=-12.65 (decisive (>10 evidence units)), ΔBIC=-11.85 (very strong evidence for MULTING), ΔAICc=-7.48 (strong (6–10 units))"
+  ],
+  "what_this_does_not_mean": [
+    "MULTING is validated or refuted as a physical theory",
+    "MULTING predictions are correct for future/unseen H(z) data",
+    "beta_d=4.5 and beta_q=18.0 are physically motivated constants",
+    "The bridge formula F_oP→H_MULT(z) is known or correct",
+    "This analysis is publishable without author confirmation (Q1, Q2, Q3)"
+  ],
+  "next_step": "Out-of-sample test with DESI 2024 H(z) data requires bridge formula (Q1 from TJB). Current comparison is descriptive: MULTING fits Table A1 data better than ΛCDM, but this is expected since H_MULT was optimized on these data."
+}
