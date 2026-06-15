@@ -13,6 +13,11 @@ the primary source when needed:
 |---|---|
 | `buckholtz_preprints202511.0598.v6.pdf` | Original preprint, verbatim (the 1:1 source) |
 | `buckholtz_preprints202511.0598.v6.md` | Markdown conversion (via `markitdown`) for token-efficient reading |
+| `buckholtz_supplementary202511.0598.v6.md` | **Supplementary Material** — the A.1 prompt + 3 full AI-service transcripts (ChatGPT / Claude / Gemini). Markdown via `markitdown`. **Canonical reference for the bridge-improvisation + β-divergence findings.** Added 2026-06-05. |
+
+**Fidelity verified (2026-06-05):** Table A1 12-row structure + all numeric values
+(67.4 … 398.5, β=4.5/18.0) survived conversion intact. Main `.md` re-converted and
+confirmed byte-identical to the existing copy (2773 lines / 187987 chars).
 
 **Source:**
 > Thomas J. Buckholtz, *Gravitational and Dark-Matter Concepts that Can Help Explain

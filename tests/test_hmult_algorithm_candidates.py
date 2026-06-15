@@ -40,7 +40,7 @@ def test_candidates_list_exists():
 
 def test_candidate_count():
     """Verify expected number of candidates (8 documented in docs/40)"""
-    assert len(CANDIDATES) == 8, f"Expected 8 candidates, found {len(CANDIDATES)}"
+    assert len(CANDIDATES) == 9, f"Expected 9 candidates, found {len(CANDIDATES)}"
 
 
 def test_candidate_ids_unique():
@@ -445,8 +445,8 @@ def test_registry_integrity_summary():
     issues = validate_registry()
     assert len(issues) == 0, f"Registry has {len(issues)} validation issues"
 
-    # Rule 5: 8 candidates documented
-    assert len(CANDIDATES) == 8, f"Expected 8 candidates, found {len(CANDIDATES)}"
+    # Rule 5: 9 candidates documented
+    assert len(CANDIDATES) == 9, f"Expected 9 candidates, found {len(CANDIDATES)}"
 
     print("\n✅ All registry integrity checks passed")
     print(f"   - {len(CANDIDATES)} candidates registered")

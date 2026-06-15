@@ -148,7 +148,7 @@
         "direction": "RISING"
       }
     ],
-    "physical_interpretation": "ε(z) peaks at z≈0.40 — consistent with galaxy cluster number density peak (Press-Schechter: n_cluster peaks at z~0.4-0.6). Falls to minimum at z≈5.0 where clusters have not yet formed in ΛCDM. Slight uptick at z=8.5 may reflect proto-cluster / AI fitting artifact.",
+    "physical_interpretation": "<DESCRIPTIVE_ONLY> ε(z) has primary peak at z≈0.40, secondary structure near z=1.0-1.5 (local min z=1.00, local rise z=1.50), global minimum at z≈5.0, uptick at z=8.5 (single-point leverage — treat with caution). <HYPOTHESIS> peak z≈0.40 numerically coincides with galaxy cluster number density peak (Press-Schechter: n_cluster peaks at z~0.4-0.6); NO causal link established (descriptive result only, no DAG). OUR_RECONSTRUCTION · NOT_AUTHOR_CONFIRMED",
     "implication_for_bridge": "Any bridge formula must encode cluster formation history, not just a fixed cluster pair. This is why k_A(z) schedule (Q2) is the fundamental blocker, not just an optional refinement."
   },
   "candidate_1_constant": {
@@ -157,8 +157,9 @@
     "fitted_C": 0.1516,
     "rms_residual": 0.0625,
     "max_residual": 0.1035,
+    "threshold_0_05_is_heuristic": true,
     "verdict": "FAILS",
-    "why_fails": "ε(z) varies from 0.048 to 0.228 — not constant; span 0.180 >> noise"
+    "why_fails": "ε(z) varies from 0.048 to 0.228 — not constant; span 0.180 >> noise; max_residual=0.104 is 2.1× the heuristic threshold"
   },
   "candidate_2_power_law": {
     "name": "Power law ε ∝ (1+z)^α",

@@ -3,6 +3,27 @@
 All notable changes to this project are documented here.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.4.0] — 2026-06-06 — k_A Closure Test + Double Inversion Diagnostic
+
+k_A independence audit, D_required PoC (γ_req≈2.27), and double-inversion diagnostic
+(isolines + γ/α grid). **No scientific claims changed**: NOT_VALIDATION / MCMC_BLOCKED preserved.
+
+### Added
+- `src/bridge_phi.py`, `src/cluster_schedule.py`, `src/d_required_solver.py`, `src/bridge_gate.py`
+- `src/k_a_independent.py` — Press-Schechter + virial k_A(z), CSV baseline, N-body scaffold
+- `src/k_a_closure_test.py` — PASS/FAIL/INCONCLUSIVE without refit (Arms D_csv / D_eff)
+- `src/double_inversion_isoline.py`, `src/double_inversion_grid.py`, `src/double_inversion_plots.py`
+- `scripts/poc_d_required_brentq.py`, `notebooks/validate_d_required.ipynb`
+- `audit/run_k_a_closure_audit.py`, `audit/run_double_inversion_diagnostic.py`
+- `tests/test_k_a_closure.py`, `tests/test_double_inversion.py`
+- `docs/98_k_a_closure_author_questions.md`, `docs/99_k_a_closure_report.md`
+- `docs/DOUBLE_INVERSION_DIAGNOSTIC.md`, `data/README_nbody_k_a.md`
+- Candidate 9 `k_a_independent_closure` in `hmult_algorithm_candidates.py`
+- Finding 21–22 in `docs/22_discovery_ledger.md`; TJB section L
+
+### Changed
+- `discrete_ode` candidate notes: ODE D-closure → KILLED_EARLY
+
 ## [0.3.0] — 2026-06-01 — Reference-grade hardening
 
 Engineering + epistemic hardening pass. **No scientific claims changed**: all

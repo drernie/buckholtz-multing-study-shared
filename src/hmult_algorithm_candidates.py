@@ -270,7 +270,8 @@ CANDIDATES = [
             "Simplest discrete dynamics candidate. "
             "Analytically tractable in principle. "
             "Risk: ä/a = D̈/D assumes all clusters have same dynamics. "
-            "Needs careful re-derivation to avoid circular logic."
+            "Needs careful re-derivation to avoid circular logic. "
+            "ODE D-closure priority: KILLED_EARLY (2026-06-06) — see k_a_independent_closure."
         ),
     ),
     # ------------------------------------------------------------------------
@@ -324,6 +325,35 @@ CANDIDATES = [
             "Zero physical content. "
             "Useful for testing if MULTING ~ ΛCDM + small correction. "
             "AIC/BIC penalty: 3 extra parameters vs ΛCDM (2 parameters)."
+        ),
+    ),
+    # ------------------------------------------------------------------------
+    # Candidate 9: k_A Independent Closure
+    # ------------------------------------------------------------------------
+    AlgorithmCandidate(
+        candidate_id="k_a_independent_closure",
+        name="k_A Independent Closure (Press-Schechter + Virial)",
+        formula_latex=(
+            r"k_A(z) = \alpha \cdot \frac{3}{2} M_{\mathrm{halo}} \sigma_v^2 / c^2, "
+            r"\quad D(z) = D_0 (1+z)^{-\gamma_{\mathrm{req}}}"
+        ),
+        status=AlgorithmStatus.COMPUTATIONAL_RECONSTRUCTION_CANDIDATE,
+        code_permission=CodePermission.DIAGNOSTIC_ONLY,
+        source_file="src/k_a_closure_test.py",
+        required_inputs=["m_A(z)", "r_A(z)", "D(z)", "beta_d", "beta_q", "alpha@z=0"],
+        dimensional_check_passes=True,
+        can_reproduce_table_a1="PARTIAL",
+        can_predict_new_z="NO",
+        mcmc_allowed=False,
+        degrees_of_freedom=0,
+        overfitting_risk="NONE",
+        notes=(
+            "k_A closure test: independent k_A(z) vs CSV-inferred at fixed beta=4.5/18.0. "
+            "Double-inversion diagnostic (isolines + gamma/alpha grid) in "
+            "src/double_inversion_isoline.py, src/double_inversion_grid.py. "
+            "NOT_VALIDATION — beta fitted to H_obs. "
+            "ODE D-closure route (d_closure_ode): KILLED_EARLY — gamma_req is fit not force-derived. "
+            "See docs/99_k_a_closure_report.md, docs/DOUBLE_INVERSION_DIAGNOSTIC.md."
         ),
     ),
 ]

@@ -857,3 +857,28 @@ assert not hasattr(registry, "compute_Hz")  # No H_MULT function exists
 **Value:** CRITICAL — documents exactly why MCMC is blocked and what must happen to unblock.
 
 **Reference:** docs/54_mcmc_blocker_chain.md (full 16 KB documentation)
+
+---
+
+## Finding 21: k_A(z) Is the Missing Function for Predictive Bridge (2026-06-06)
+
+**Status:** INTERNAL_CLOSURE_TEST | NOT_VALIDATION | AUTHOR_CONFIRMATION_REQUIRED  
+**Impact:** HIGH — constructive path for author correspondence
+
+**Finding:** Independent k_A(z) (Press-Schechter + virial, α@z=0) can replace CSV k_A in the Phi-ratio bridge without refitting β. Closure PASS/FAIL measures implementation self-consistency, not theory validity.
+
+**Evidence:** `src/k_a_closure_test.py`, γ_req≈2.27 in `d_required_solver.py`.
+
+**Safe wording:** "Implementation closure test." **Unsafe:** "MULTING falsified."
+
+---
+
+## Finding 22: Double-Inversion Diagnostic (2026-06-06)
+
+**Status:** VERIFIED_DIAGNOSTIC | NOT_VALIDATION | NOT_REFUTATION | AUTHOR_BRIDGE_NEEDED
+
+**Finding:** Stage 1 isolines + Stage 2 (γ, α) grid test whether physically admissible (D, k_A) trajectories exist that reproduce H_obs — goal is falsification picture, not new fit layer.
+
+**Reference:** `docs/DOUBLE_INVERSION_DIAGNOSTIC.md`
+
+---
