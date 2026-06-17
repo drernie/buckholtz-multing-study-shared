@@ -29,6 +29,20 @@ It provides a small reproducibility and epistemic-audit layer for selected defin
 
 ---
 
+## Key Numerical Results (2026-06-17) — NOT_VALIDATION · OUR_RECONSTRUCTION
+
+| Test | Result | Script |
+|------|--------|--------|
+| Eq.32 fermion-gravity link | **0.17σ** from PDG 2024 | `code/eq32_verify.py` |
+| IDM N=5 vs Planck 2018 ω_DM/ω_b | **6.8σ excluded** | `code/chi2_idm.py` |
+| β_d=4.5 dipole at cluster scale | **ε ≈ 6×10⁻⁶** (negligible) | `code/beta_rescaling.py` |
+| MULTING H(z) ΔAIC vs ΛCDM | **+2.5** (ΛCDM preferred) | `data/pearson_r_test_results.md` |
+| Pearson r MULTING/H_CC | **0.62** (MCXC n=443), **0.70** (XMM n=22) | ibid |
+
+Strong Inference summary: H4 (empirical mass relations) ✅ · H3 (IDM as CDM) ❌ · H1 (full replacement) ⚠ conf=0.12
+
+---
+
 ## Goals
 
 1. **Audit beta_d and beta_q definitions** — clarify values, units, normalizations

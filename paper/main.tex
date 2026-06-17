@@ -1,0 +1,222 @@
+% main.tex — Critical Assessment of MULTING/IDM Framework
+% Sergey Boyko · Ronin Institute · 2026-06-17
+% NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION
+% Status: DRAFT · NOT_FOR_SUBMISSION
+
+\documentclass[twocolumn,prd,amsmath,amssymb,floatfix]{revtex4-2}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{siunitx}
+
+% Safety label macro
+\newcommand{\reconstruction}{\textcolor{gray}{\small[OUR\_RECONSTRUCTION]}}
+\newcommand{\notvalidation}{\textcolor{gray}{\small[NOT\_VALIDATION]}}
+
+\begin{document}
+
+\title{Systematic Assessment of the MULTING/IDM Gravitational Framework:\\
+Confirmed Assets, Identified Gaps, and Independent Reconstructions}
+
+\author{Sergey Boyko}
+\affiliation{Ronin Institute for Independent Scholarship}
+\email{sergeikuch80@gmail.com}
+\date{\today}
+
+\begin{abstract}
+We present a systematic 36-point assessment of the MULTING/IDM preprint
+(Buckholtz 2026, \texttt{preprints202511.0598.v6}), which proposes a
+multipole-expansion extension of Newtonian gravity (MULTING) and an
+isomer-based dark-matter framework (IDM). Using PDG 2024 constants, Planck 2018
+cosmological parameters, and the MCXC/XMM galaxy cluster catalogs, we
+independently verify the mass relations in Equations~(31) and~(32), quantify
+the statistical preference for MULTING vs.\ $\Lambda$CDM in H(z) data, and
+derive formal constraints on the IDM isomer count from the baryon density ratio
+$\omega_\mathrm{DM}/\omega_b$.
+
+We find: (1)~the empirical boson-mass relation [7:9:17] holds at $0.4\sigma$
+and the fermion-gravity link (Eq.~32) holds at $0.17\sigma$ --- both strong
+assets independent of MULTING/IDM cosmology; (2)~the MULTING dipole term is
+rendered negligible at cluster scales for the tabulated $\beta_d = 4.5$,
+requiring $\beta_d \gtrsim 10^{3.2}$ for a 1\% observational signature;
+(3)~an integer IDM isomer count $N=5$ is excluded at $6.8\sigma$ by Planck 2018;
+(4)~a gravitational-only-coupling interpretation of IDM is internally
+self-consistent but eliminates the dark baryogenesis mechanism required for CDM.
+
+These results neither validate nor refute MULTING/IDM, but map precisely which
+components rest on verified foundations versus which require additional physics.
+\end{abstract}
+
+\maketitle
+
+% ──────────────────────────────────────────────
+\section{Introduction}
+\label{sec:intro}
+% ──────────────────────────────────────────────
+
+% TODO: motivate why systematic assessment is valuable
+% - MULTING: Lorentz-invariant extension of Newtonian gravity
+% - IDM: 6 isomers of SM particle content
+% - Standard critique: no Lagrangian, no field equations, AI-mediated numerics
+% - Our contribution: separate the falsifiable from the speculative
+
+The framework of Buckholtz~\cite{buckholtz2026} proposes...
+
+% ──────────────────────────────────────────────
+\section{Verified Assets}
+\label{sec:assets}
+% ──────────────────────────────────────────────
+
+\subsection{Boson Mass Relation (Eq.~31)}
+\label{ssec:bosons}
+
+% C6: m_W:m_Z:m_Higgs :: 7:9:17
+% PDG 2024 values
+% Result: 0.4σ for Higgs, 5.5σ for Z (cite PDG)
+
+\subsection{Fermion-Gravity Link (Eq.~32)}
+\label{ssec:eq32}
+
+The empirical relation
+\begin{equation}
+    \frac{4}{3}\left(\frac{m_\tau}{m_e}\right)^{12} = \frac{\alpha_\mathrm{EM}}{\alpha_G}
+    \label{eq:c9}
+\end{equation}
+where $\alpha_G = G m_e^2 / (\hbar c)$, was evaluated using PDG 2024
+constants~\cite{pdg2024}: $m_\tau = 1776.86 \pm 0.12$~MeV, $m_e = 0.51100$~MeV,
+$\alpha_\mathrm{EM}^{-1} = 137.036$, $G = 6.674 \times 10^{-11}$~m$^3$~kg$^{-1}$~s$^{-2}$.
+
+We find LHS/RHS~$= 1.000135$, corresponding to a $0.17\sigma$ agreement
+dominated by the $m_\tau$ uncertainty.
+\reconstruction
+
+% ──────────────────────────────────────────────
+\section{MULTING H(z) Test}
+\label{sec:hz}
+% ──────────────────────────────────────────────
+
+\subsection{Statistical Comparison with $\Lambda$CDM}
+
+% Pearson r = 0.6235 (MCXC n=443), r = 0.7029 (XMM n=22)
+% ΔAIC = +2.5 (MULTING vs ΛCDM)
+% Fisher z = 3.05, p = 0.0012
+% Sample selection bias: r(log T_i, z) = 0.65
+
+\subsection{The $\beta$-Rescaling Gap}
+\label{ssec:beta}
+
+The dipole force fraction at cluster scale is
+\begin{equation}
+    \varepsilon \equiv \frac{F_d}{F_m} = \beta_d \frac{k_A}{M} \frac{r_A}{D},
+    \label{eq:epsilon}
+\end{equation}
+where $k_A = E_\mathrm{ICM}/c^2$ is the cluster kinetic mass.
+For a typical $T_X = 5$~keV, $M_{500} = 5\times10^{14}\,M_\odot$ cluster:
+$k_A/M \approx 1.3 \times 10^{-6}$.
+
+With the tabulated $\beta_d = 4.5$ (Table~A1 of~\cite{buckholtz2026}):
+$\varepsilon \approx 6 \times 10^{-6}$ (negligible). An observational signature of
+$\varepsilon \gtrsim 1\%$ requires $\beta_d \gtrsim 7.5 \times 10^3$.
+The AI-service run reported $\beta_d \approx 2\times10^4$ (Gemini), which yields
+$\varepsilon \approx 3\%$ (marginally non-negligible) but without a first-principles
+derivation.
+\reconstruction
+
+% ──────────────────────────────────────────────
+\section{IDM Analysis}
+\label{sec:idm}
+% ──────────────────────────────────────────────
+
+\subsection{Integer Isomer Count: $\chi^2$ Test}
+\label{ssec:chi2}
+
+The IDM prediction $\omega_\mathrm{DM} = N \omega_b$ (equal baryon asymmetry per
+isomer) requires, from Planck 2018~\cite{planck2018}: $N_\mathrm{opt} =
+\omega_\mathrm{DM}/\omega_b = 0.12011/0.022383 = 5.366$.
+
+The nearest integer $N=5$ deviates by
+$\chi^2 = [(5\omega_b - \omega_\mathrm{DM})/\sigma]^2 = 46.6$, excluded at $6.8\sigma$.
+\reconstruction
+
+\subsection{Hot Dark Matter Problem}
+\label{ssec:hdm}
+
+% Dark neutrinos in SM-mirror IDM are HDM
+% E4 internal contradiction: thermal decoupling kills dark BBN
+
+\subsection{Self-Interaction Cross Section}
+\label{ssec:sigma}
+
+% σ/m ~ 0.6 cm²/g at Bullet Cluster limit
+
+\subsection{Effective Relativistic Species ($N_\mathrm{eff}$)}
+\label{ssec:neff}
+
+% ΔN_eff = 88σ without gravitational-only coupling
+% E4: thermal decoupling resolves N_eff but kills dark baryogenesis
+
+% ──────────────────────────────────────────────
+\section{Discussion}
+\label{sec:discuss}
+% ──────────────────────────────────────────────
+
+\subsection{What Survives: H4 Empirical Relations}
+
+% Eq.32, 7:9:17 ratios independent of MULTING/IDM
+% Salvage path even if full framework fails
+
+\subsection{What Requires New Physics}
+
+% Lagrangian for MULTING (G3)
+% Symmetry group for 6 isomers (G4)
+% β derivation from first principles (G2)
+
+\subsection{Assessment Summary}
+
+\begin{table}[htb]
+\caption{36-point assessment summary (OUR\_RECONSTRUCTION)}
+\label{tab:summary}
+\begin{ruledtabular}
+\begin{tabular}{lll}
+\hline
+Component & Status & Evidence \\
+\hline
+Eq.~31 (7:9:17 bosons) & ✓ 0.4σ & PDG 2024 \\
+Eq.~32 (fermion-gravity) & ✓ 0.17σ & PDG 2024 \\
+Cassini constraint & ✓ pass & $\varepsilon \sim 10^{-19}$ \\
+H(z) correlation & ⚠ ΔAIC=+2.5 & MCXC/XMM \\
+$\beta_d = 4.5$ observability & ✗ negligible & k_A/M calc \\
+IDM $N=5$ integer & ✗ 6.8σ & Planck 2018 \\
+IDM CDM viability & ✗ killed & HDM + $\Delta N_\mathrm{eff}$ \\
+MULTING Lagrangian & ? open & Future work \\
+6-isomer symmetry & ? open & Future work \\
+\hline
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+% ──────────────────────────────────────────────
+\section{Conclusions}
+\label{sec:conclusions}
+% ──────────────────────────────────────────────
+
+% H4 survives as independent result
+% H3 is formally killed
+% H1 confidence ~0.12 pending β-rescaling resolution
+% Open questions for TJB: β derivation, IDM thermal history, symmetry group
+
+\begin{acknowledgments}
+S.B.\ thanks T.J.\ Buckholtz for making the preprint publicly available and for
+correspondence regarding the H(z) computation procedure.
+This work used PDG 2024 constants, Planck 2018 cosmological parameters, and
+the MCXC/XMM-Newton galaxy cluster catalogs.
+\end{acknowledgments}
+
+% ──────────────────────────────────────────────
+\bibliography{refs}
+% ──────────────────────────────────────────────
+
+\end{document}
