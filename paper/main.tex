@@ -101,9 +101,16 @@ dominated by the $m_\tau$ uncertainty.
 \subsection{Statistical Comparison with $\Lambda$CDM}
 
 % Pearson r = 0.6235 (MCXC n=443), r = 0.7029 (XMM n=22)
-% ΔAIC = +2.5 (MULTING vs ΛCDM)
+% ΔAIC = +2.5 (MULTING vs ΛCDM) on cluster T_X correlation
 % Fisher z = 3.05, p = 0.0012
 % Sample selection bias: r(log T_i, z) = 0.65
+%
+% 5-fold CV on 27 Moresco CC points (OUR_RECONSTRUCTION, code/beta_cv.py):
+%   Sign pattern [+,-,+] STABLE: B < 0 in all 5 folds, CV(B) = 3%
+%   ΔAIC(polynomial MULTING vs flat ΛCDM) = +0.74 — NEUTRAL (< 2)
+%   OOS generalization: MULTING 1.80 vs ΛCDM 1.71 χ²_test — indistinguishable
+%   Consistent with Blanchet & Le Tiec (2008): dipolar fluid degenerate
+%   with ΛCDM at first cosmological perturbation order [cite blanchet2008]
 
 \subsection{The $\beta$-Rescaling Gap}
 \label{ssec:beta}
@@ -175,6 +182,13 @@ propagates uncertainties on both measured quantities ($\chi^2 = 33.5$).
 % Lagrangian for MULTING (G3)
 % Symmetry group for 6 isomers (G4)
 % β derivation from first principles (G2)
+%
+% Note: Blanchet & Le Tiec (2008,2009) demonstrated that a dipolar dark-matter
+% fluid is degenerate with ΛCDM at linear perturbation order. Our 5-fold CV
+% confirms this numerically: 27 Moresco CC points cannot distinguish MULTING
+% polynomial from flat ΛCDM (ΔAIC = 0.74). MULTING would need to make predictions
+% at second order (e.g., non-geodesic cluster motions, lensing anisotropy) to
+% become distinguishable. See ~\cite{blanchet2008, blanchet2009}.
 
 \subsection{Assessment Summary}
 
