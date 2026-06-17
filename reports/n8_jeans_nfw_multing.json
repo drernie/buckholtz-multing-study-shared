@@ -1,0 +1,22 @@
+{
+  "params": {
+    "M500": 300000000000000.0,
+    "c": 4.5,
+    "R500_Mpc": 1.3,
+    "beta_d": 4.5,
+    "k_A_Msun": 700000000.0
+  },
+  "rs_Mpc": 0.2888888888888889,
+  "sigma_v_std_kms": 1110.9279117905949,
+  "sigma_v_multing_kms": 1110.9095910113208,
+  "delta_percent": -0.001649142044197424,
+  "epsilon_at_R500": -1.0500000000000003e-05,
+  "epsilon_at_0p1Mpc": -0.00023209312925408178,
+  "verdict": "MULTING intra-cluster effect on sigma_v is negligible at physical k_A; '+7.2%' not reproduced",
+  "labels": [
+    "NOT_VALIDATION",
+    "OUR_RECONSTRUCTION",
+    "TOY_EXTRAPOLATION",
+    "VERIFIED-real"
+  ]
+}
