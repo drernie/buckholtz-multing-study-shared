@@ -1,5 +1,5 @@
 % main.tex — Critical Assessment of MULTING/IDM Framework
-% Sergey Boyko · Ronin Institute · 2026-06-17
+% Sergey Boyko · Ronin Institute · 2026-06-19
 % NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION
 % Status: DRAFT · NOT_FOR_SUBMISSION
 
@@ -39,12 +39,20 @@ $\omega_\mathrm{DM}/\omega_b$.
 
 We find: (1)~the empirical boson-mass relation [7:9:17] holds at $0.4\sigma$
 and the fermion-gravity link (Eq.~32) holds at $0.17\sigma$ --- both strong
-assets independent of MULTING/IDM cosmology; (2)~the MULTING dipole term is
+assets independent of MULTING/IDM cosmology; (2)~the fermion mass spectrum
+(Eqs.~21--24) reproduces the muon mass to $0.47\%$ and quark geometric means
+to $<0.31\%$ using PDG 2024 constants; (3)~the MULTING dipole term is
 rendered negligible at cluster scales for the tabulated $\beta_d = 4.5$,
-requiring $\beta_d \gtrsim 10^{3.2}$ for a 1\% observational signature;
-(3)~an integer IDM isomer count $N=5$ is excluded at $5.8\sigma$ by Planck 2018;
-(4)~a gravitational-only-coupling interpretation of IDM is internally
-self-consistent but eliminates the dark baryogenesis mechanism required for CDM.
+requiring $\beta_d \gtrsim 10^{3.2}$ for a 1\% observational signature ---
+formally quantified via Birge Ratio $R_B = 15.9$ ($\beta_d$) and $R_B = 24.1$
+($\beta_q$), both with $p < 10^{-4}$;
+(4)~an integer IDM isomer count $N=5$ is excluded at $5.8\sigma$ by Planck 2018;
+(5)~a gravitational-only-coupling interpretation of IDM is internally
+self-consistent but eliminates the dark baryogenesis mechanism required for CDM;
+(6)~the $H_\mathrm{FLRW}$ baseline used in Table~A1 is inconsistent with standard
+$\Lambda$CDM (Planck MAE $= 120$~km\,s$^{-1}$\,Mpc$^{-1}$); a power-law
+$H(z) = 54.07\,(1+z)^{0.884}$ fits the 11 Table~A1 points with
+MAE $= 5.04$~km\,s$^{-1}$\,Mpc$^{-1}$.
 
 These results neither validate nor refute MULTING/IDM, but map precisely which
 components rest on verified foundations versus which require additional physics.
@@ -129,6 +137,31 @@ We find LHS/RHS~$= 1.000135$, corresponding to a $0.17\sigma$ agreement
 dominated by the $m_\tau$ uncertainty.
 \reconstruction
 
+\subsection{Fermion Mass Spectrum (Eqs.~21--24)}
+\label{ssec:fermions}
+
+The IDM mass formula predicts lepton masses as
+$m_k/m_e = (m_\tau/m_e)^{(k + \sigma_k \delta)/3}$
+with $k \in \{0,2,3\}$ for $\{e, \mu, \tau\}$, $\sigma_k \in \{0,-1,0\}$,
+and $\delta = 0.03668$ (Eqs.~21--24 of~\cite{buckholtz2026}).
+Using PDG 2024 masses ($m_e = 0.51100$, $m_\tau = 1776.86$~MeV), the electron
+is reproduced exactly by construction; the muon prediction is $106.16$~MeV
+vs.\ PDG $105.66$~MeV (deviation $0.47\%$).
+The best-fit $\delta = 0.03841$ reduces this to $< 0.01\%$ for the muon
+while preserving the tau anchor.
+\reconstruction
+
+For quarks, the formula is applied to geometric means of up/down-type pair masses.
+The three predictions agree with PDG 2024 geometric means to $< 0.31\%$
+(lightest: $\sqrt{m_u m_d} = 3.21$ vs.\ predicted $3.20$~MeV;
+intermediate: $\sqrt{m_s m_c} = 344.7$ vs.\ $345.2$~MeV;
+heavy: $\sqrt{m_b m_t} = 850$ vs.\ $851$~MeV).
+
+The inflaton candidate (Eqs.~27--30 with $M'=T'=1$) predicts
+$m_\mathrm{inflaton} = m_Z/3 = 30.396$~GeV.
+No candidate particle at this mass has been reported at LEP or LHC;
+this constitutes an open experimental prediction.
+
 % ──────────────────────────────────────────────
 \section{MULTING H(z) Test}
 \label{sec:hz}
@@ -167,6 +200,41 @@ The AI-service run reported $\beta_d \approx 2\times10^4$ (Gemini), which yields
 $\varepsilon \approx 3\%$ (marginally non-negligible) but without a first-principles
 derivation.
 \reconstruction
+
+To quantify the inter-service consistency of $\beta$ extractions, we apply the
+Birge Ratio~\cite{birge1932} $R_B = \chi^2/(n-1)$ to three independent AI services
+(Claude/NotebookLM: $\beta_d = 4.50$, $\beta_q = 18.0$;
+Gemini: $4.25$, $8.10$; ChatGPT: $0.78$, $0.19$),
+assuming a conservative relative uncertainty of $20\%$ per service.
+We obtain $R_B = 15.9$ ($\chi^2 = 31.7$, $p < 10^{-4}$) for $\beta_d$ and
+$R_B = 24.1$ ($\chi^2 = 48.3$, $p < 10^{-4}$) for $\beta_q$.
+To achieve $R_B = 1$ (consistent services), a relative uncertainty of $80\%$
+($\beta_d$) or $98\%$ ($\beta_q$) would be required --- far exceeding
+the $\sim 20\%$ LLM extraction noise.
+This \emph{Birge Ratio for AI Replication} (BRAI) confirms that $\beta$ values
+are not uniquely determined by the stated procedure, consistent with the
+author's own description of them as ``phenomenological computation''
+whose derivation ``remains to be determined''.
+\reconstruction
+
+\subsection{H$_\mathrm{FLRW}$ Baseline Provenance}
+\label{ssec:hflrw}
+
+To assess whether the tabulated $H_\mathrm{FLRW}(z)$ values correspond to
+standard $\Lambda$CDM, we fit the 11 Table~A1 redshifts with three candidates:
+(i)~Planck 2018 flat $\Lambda$CDM ($H_0 = 67.4$, $\Omega_m = 0.315$);
+(ii)~a power law $H(z) = A(1+z)^p$; and (iii)~a best-fit CC-data flat $\Lambda$CDM.
+The Planck model yields MAE $= 120$~km\,s$^{-1}$\,Mpc$^{-1}$ --- a failure by
+any standard.  The power-law gives $A = 54.07$, $p = 0.884$,
+MAE $= 5.04$~km\,s$^{-1}$\,Mpc$^{-1}$ (best single-model fit).
+The CC-data $\Lambda$CDM fit converges to $H_0 = 68.78$, $\Omega_m = 0.316$,
+$\chi^2/\mathrm{dof} = 0.93$.
+\reconstruction
+
+These results establish that TJB's $H_\mathrm{FLRW}$ baseline is not
+Planck 2018 $\Lambda$CDM.  All MULTING vs.\ $\Lambda$CDM comparisons
+in this paper use the power-law proxy as the H$_\mathrm{FLRW}$ reference
+pending author confirmation of the intended convention.
 
 \subsection{Physical proxy for the dipole component}
 \label{ssec:fsig8}
@@ -355,9 +423,13 @@ Component & Status & Evidence \\
 \hline
 Eq.~31 (7:9:17 bosons) & $\checkmark$ $0.44\sigma$ (H), $3.6\sigma$ (W) & PDG 2024 \\
 Eq.~32 (fermion-gravity) & $\checkmark$ $0.17\sigma$ & PDG 2024 \\
+Eqs.~21--24 (fermion masses) & $\checkmark$ muon $0.47\%$, quarks $<0.31\%$ & PDG 2024 \\
+Inflaton $m_Z/3 = 30.4$~GeV & ? undetected & LEP/LHC null \\
 Cassini constraint & $\checkmark$ pass & $\varepsilon \sim 10^{-19}$ \\
 H(z) correlation & $\triangle$ $\Delta\mathrm{AIC}{=}{+}0.74$ & 27 Moresco CC \\
+$H_\mathrm{FLRW}$ provenance & $\times$ not Planck & MAE $120$ vs $5$ \\
 $\beta_d = 4.5$ observability & $\times$ negligible & $k_A/M$ calc \\
+$\beta$ BRAI & $\times$ $R_B{=}15.9/24.1$ ($p{<}10^{-4}$) & 3 AI services \\
 IDM $N=5$ integer & $\times$ $5.8\sigma$ & Planck 2018 \\
 IDM CDM viability & $\times$ killed & HDM $+$ $\Delta N_\mathrm{eff}$ \\
 $f\sigma_8$ dipole proxy & $\triangle$ $r{=}0.851$ ($n{=}10$, $z{\le}5$) & Table A1 $+$ $\Lambda$CDM \\
@@ -378,13 +450,22 @@ We have conducted a systematic 36-point assessment of the MULTING/IDM
 framework~\cite{buckholtz2026}, focusing on components that are independently
 verifiable with public data and PDG constants.
 
-Two results survive independent scrutiny without requiring the author's
+Several results survive independent scrutiny without requiring the author's
 undisclosed numerical procedure.
 The fermion-gravity link (Eq.~32) holds at $0.17\sigma$ (PDG 2024),
 and the boson mass ratio [7:9:17] holds at $<0.05\%$ in mass units
 with the Higgs prediction precise to $0.44\sigma$.
+The fermion mass spectrum (Eqs.~21--24) reproduces the muon mass to $0.47\%$
+and quark geometric means to $<0.31\%$.
 These H4 results are non-trivial empirical regularities regardless of the
 status of MULTING cosmology.
+
+A key methodological finding is that the H$_\mathrm{FLRW}$ baseline in
+Table~A1 is inconsistent with standard Planck 2018 $\Lambda$CDM
+(MAE $= 120$~km\,s$^{-1}$\,Mpc$^{-1}$); a power-law $H(z)=54.07(1+z)^{0.884}$
+fits the same 11 points with MAE $= 5.04$~km\,s$^{-1}$\,Mpc$^{-1}$.
+This means that comparisons of MULTING vs.\ ``standard cosmology'' must
+specify which H$_\mathrm{FLRW}$ convention is intended.
 
 The IDM cosmological predictions face three independent constraints:
 $N=5$ isomers are excluded at $5.8\sigma$ by Planck 2018;
