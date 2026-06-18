@@ -171,8 +171,8 @@ def _vizier_download(catalog_id: str, columns: list[str], row_limit: int) -> pd.
 
 def _sexagesimal_to_deg(ra_col: pd.Series, dec_col: pd.Series) -> tuple[np.ndarray, np.ndarray]:
     """Convert MCXC sexagesimal RA (HH MM SS) and Dec (±DD MM SS) to decimal degrees."""
-    from astropy.coordinates import Angle
     from astropy import units as u
+    from astropy.coordinates import Angle
 
     ra_deg = np.array(
         [
@@ -241,7 +241,7 @@ def step2_psz2(df: pd.DataFrame, row_limit: int) -> pd.DataFrame:
             )
         )
         valid_name = psz_mcxc_norm.str.startswith("MCXC J")
-        name_to_y = dict(zip(psz_mcxc_norm[valid_name], psz_y[valid_name.values]))
+        name_to_y = dict(zip(psz_mcxc_norm[valid_name], psz_y[valid_name.values], strict=False))
 
         def _norm_id(cid: str) -> str:
             cid = cid.strip()
@@ -281,7 +281,7 @@ def step2_psz2(df: pd.DataFrame, row_limit: int) -> pd.DataFrame:
         if mask_b.any():
             df.loc[mask_b, "Ethermal_c2_Msun"] = [
                 e_thermal_path_b(y, z)
-                for y, z in zip(df.loc[mask_b, "Y500_arcmin2"], df.loc[mask_b, "z"])
+                for y, z in zip(df.loc[mask_b, "Y500_arcmin2"], df.loc[mask_b, "z"], strict=False)
             ]
             log.info(f"  → E_thermal (Path B, Y_SZ) for {mask_b.sum()} clusters")
     except Exception as exc:
@@ -443,7 +443,7 @@ def main() -> None:
             "  pip install astropy astroquery requests\n"
             "Then re-run this script."
         )
-        raise SystemExit(1)
+        raise SystemExit(1) from None
 
     df = step1_mcxc(args.data_dir, args.max_rows, args.z_max)
     df = step2_psz2(df, args.max_rows)

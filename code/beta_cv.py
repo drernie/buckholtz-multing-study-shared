@@ -271,13 +271,13 @@ elif cv_B > 0.5:
 else:
     stability = f"STABLE — B consistently {'<' if B_arr.mean() < 0 else '>'}0 (CV={cv_B:.0%})"
 
-print(f"\nβ-coefficient stability:")
+print("\nβ-coefficient stability:")
 print(f"  B across folds: {np.round(B_arr, 2)}")
 print(f"  mean={B_arr.mean():.2f}, std={B_arr.std():.2f}, CV={cv_B:.0%}")
 print(f"  Sign changes: {n_sign_changes}")
 print(f"\n  VERDICT: {stability}")
 
-print(f"\nOut-of-sample χ² comparison:")
+print("\nOut-of-sample χ² comparison:")
 print(f"  MULTING mean χ²_test = {c2m_arr.mean():.2f} ± {c2m_arr.std():.2f}")
 print(f"  ΛCDM    mean χ²_test = {c2l_arr.mean():.2f} ± {c2l_arr.std():.2f}")
 ratio = c2m_arr.mean() / c2l_arr.mean() if c2l_arr.mean() > 0 else np.nan

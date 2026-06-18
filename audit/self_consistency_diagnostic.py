@@ -117,7 +117,7 @@ phi_norm = phi_vals / phi_vals[0]
 
 print(f"\n  {'z':>5} {'H_pred':>9} {'H_MULT_rep':>11} {'ratio_rep/pred':>15} {'Phi(z)/Phi(0)':>14}")
 print(f"  {'-' * 57}")
-for row, hp, hm, pn in zip(CLAUDE_PARAMS, H_pred, H_MULT_REP, phi_norm):
+for row, hp, hm, pn in zip(CLAUDE_PARAMS, H_pred, H_MULT_REP, phi_norm, strict=False):
     z = row[0]
     ratio = float(hm) / float(hp) if float(hp) > 0.01 else float("inf")
     flag = "  ← ANCHOR" if z == 0.00 else ("  ⚠ DIVERGING" if ratio > 100 else "")
@@ -129,7 +129,7 @@ H_pred_z85 = float(H_pred[-1])
 H_mult_z85 = float(H_MULT_REP[-1])
 phi_z85 = float(phi_norm[-1])
 
-print(f"\n  ── z=8.5 summary ─────────────────────────────────────")
+print("\n  ── z=8.5 summary ─────────────────────────────────────")
 print(f"  Phi(z=8.5)/Phi(0) = {phi_z85:.6f}  → Phi DECREASES ×{1 / phi_z85:.0f}")
 print(f"  H_pred(z=8.5)     = {H_pred_z85:.3f} km/s/Mpc  (bridge + CSV params)")
 print(f"  H_MULT_reported   = {H_mult_z85:.1f} km/s/Mpc  (Table A1)")
@@ -140,8 +140,8 @@ print(
     f"  H_MULT trajectory: {H_ANCHOR:.1f} → {H_mult_z85:.1f}  (×{H_mult_z85 / H_ANCHOR:.1f} INCREASE)"
 )
 print(f"  SELF-INCONSISTENCY GAP: ×{H_mult_z85 / H_pred_z85:.0f} at z=8.5")
-print(f"\n  [VERIFIED-tool] Bridge formula + CSV params → H DECREASES.")
-print(f"                  Table A1 H_MULT → H INCREASES. Mutually inconsistent.")
+print("\n  [VERIFIED-tool] Bridge formula + CSV params → H DECREASES.")
+print("                  Table A1 H_MULT → H INCREASES. Mutually inconsistent.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -156,7 +156,7 @@ corr_coef = float(np.corrcoef(H_MULT_REP, H_FLRW_REP)[0, 1])
 
 print(f"\n  {'z':>5} {'H_MULT':>8} {'H_FLRW':>8} {'ratio':>7}")
 print(f"  {'-' * 33}")
-for z, hm, hf, r in zip(Z_VALS, H_MULT_REP, H_FLRW_REP, ratio_arr):
+for z, hm, hf, r in zip(Z_VALS, H_MULT_REP, H_FLRW_REP, ratio_arr, strict=False):
     print(f"  {z:>5.2f} {float(hm):>8.1f} {float(hf):>8.1f} {float(r):>7.4f}")
 
 ratio_mean = float(ratio_arr.mean())
@@ -164,8 +164,8 @@ ratio_std = float(ratio_arr.std())
 print(f"\n  mean ratio  = {ratio_mean:.4f}")
 print(f"  std  ratio  = {ratio_std:.4f}  ({ratio_std / ratio_mean * 100:.1f}% scatter)")
 print(f"  corr(H_MULT, H_FLRW) = {corr_coef:.6f}")
-print(f"\n  [VERIFIED-tool] H_MULT ≈ 1.074 × H_FLRW, scatter 2.6%, corr=0.99993")
-print(f"  IMPLICATION: Bridge adds no independent H(z) information beyond H_FLRW.")
+print("\n  [VERIFIED-tool] H_MULT ≈ 1.074 × H_FLRW, scatter 2.6%, corr=0.99993")
+print("  IMPLICATION: Bridge adds no independent H(z) information beyond H_FLRW.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -182,17 +182,17 @@ phi_gem_norm = phi_gem / phi_gem[0]
 print(f"\n  Gemini β_d={BETA_D_GEMINI}, β_q={BETA_Q_GEMINI}")
 print(f"  {'z':>5} {'H_pred_Gemini':>14} {'Phi(z)/Phi(0)':>14}")
 print(f"  {'-' * 38}")
-for row, hp, pn in zip(GEMINI_PARAMS, H_pred_gem, phi_gem_norm):
+for row, hp, pn in zip(GEMINI_PARAMS, H_pred_gem, phi_gem_norm, strict=False):
     print(f"  {row[0]:>5.2f} {float(hp):>14.3f} {float(pn):>14.6f}")
 
 print(
     f"\n  Gemini H_pred range: {float(H_pred_gem.min()):.1f} – {float(H_pred_gem.max()):.1f} km/s/Mpc"
 )
-print(f"  (Table A1 H_obs range: ~70 – 420+ km/s/Mpc)")
-print(f"\n  [VERIFIED-tool] DATASET-INDEPENDENT VERDICT:")
+print("  (Table A1 H_obs range: ~70 – 420+ km/s/Mpc)")
+print("\n  [VERIFIED-tool] DATASET-INDEPENDENT VERDICT:")
 print(f"    Claude (β_q={BETA_Q_CLAUDE:.1f}): H_pred DECREASES  → trend reversal vs H_obs")
 print(f"    Gemini (β_q={BETA_Q_GEMINI:.2f}): H_pred FLAT/weak → no growth vs H_obs")
-print(f"    Both fail differently — neither bridge reproduces observed H(z) growth.")
+print("    Both fail differently — neither bridge reproduces observed H(z) growth.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -224,14 +224,14 @@ for row in CLAUDE_PARAMS:
     c12 = "YES" if eps_d > 1.0 else "NO "
     print(f"  {z:>5.2f} {eps_d:>12.3e} {eps_q:>12.3e} {dominant:>10} {c11:>11} {c12:>11}")
 
-print(f"\n  CLAIM TABLE UPDATE [VERIFIED-tool]:")
-print(f"    C11 (ε_q >> 1 'at high z'): confirmed, but MISCHARACTERIZED")
-print(f"         True at ALL z — not just high z")
-print(f"    C12 (dipole dominates at late times): REFUTED")
+print("\n  CLAIM TABLE UPDATE [VERIFIED-tool]:")
+print("    C11 (ε_q >> 1 'at high z'): confirmed, but MISCHARACTERIZED")
+print("         True at ALL z — not just high z")
+print("    C12 (dipole dominates at late times): REFUTED")
 print(f"         max ε_d = {eps_d_max:.3e}  (need > 1, never achieved at inter-cluster scales)")
 print(f"         D_crossover for ε_d=1 at z=0: {D_crossover:.3f} Mpc (actual D=44.7 Mpc)")
-print(f"    C14 (bridge formula exists): PARTIAL")
-print(f"         Formula H²∝Phi/Phi₀ exists but gives wrong direction")
+print("    C14 (bridge formula exists): PARTIAL")
+print("         Formula H²∝Phi/Phi₀ exists but gives wrong direction")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -248,7 +248,7 @@ _, m0, k0, r0, D0 = CLAUDE_PARAMS[0]
 phi0_q = (k0 * BETA_Q_CLAUDE * r0) ** 2 / D0**4
 
 D_req_final = float("nan")
-for row, hm in zip(CLAUDE_PARAMS, H_MULT_REP):
+for row, hm in zip(CLAUDE_PARAMS, H_MULT_REP, strict=False):
     z, m, k, r, D = row
     kqr_sq = (k * BETA_Q_CLAUDE * r) ** 2
     target = (float(hm) / H_ANCHOR) ** 2
@@ -257,8 +257,8 @@ for row, hm in zip(CLAUDE_PARAMS, H_MULT_REP):
     print(f"  {z:>5.2f} {float(hm):>11.1f} {D:>8.1f} {D_req:>8.1f} {D_req / D:>8.2f}x")
 
 print(f"\n  CSV D(z): DECREASES {D0:.1f} → {CLAUDE_PARAMS[-1][4]:.1f} Mpc (physically plausible)")
-print(f"  Required D: must stay large — physically implausible schedule.")
-print(f"  [INFERRED] Bridge with shrinking clusters → H falls, not rises.")
+print("  Required D: must stay large — physically implausible schedule.")
+print("  [INFERRED] Bridge with shrinking clusters → H falls, not rises.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -308,21 +308,21 @@ print(
     f"{ratio_arith:>10.6f} {H_pred_arith_z85:>14.3f} {gap_arith:>11.0f}×"
 )
 
-print(f"\n  ── Multiverse verdict ────────────────────────────────────────────────")
+print("\n  ── Multiverse verdict ────────────────────────────────────────────────")
 if ratio_arith < 1.0 and gap_arith > 10:
     print(f"  [ROBUST] Phi ratio still DECREASES under arith repr. (ratio={ratio_arith:.6f})")
     print(
         f"  Self-inconsistency gap under arith_mean = ×{gap_arith:.0f} (vs ×{H_mult_z85 / float(H_pred[-1]):.0f} geom)"
     )
-    print(f"  Conclusion survives T4 (Garden of Forking Paths) repr.value check.")
+    print("  Conclusion survives T4 (Garden of Forking Paths) repr.value check.")
 elif ratio_arith >= 1.0:
     print(f"  [WEAKENED] Phi ratio = {ratio_arith:.4f} (≥1) under arith_mean → H_pred INCREASES")
-    print(f"  Repr.value choice MATTERS — original conclusion may not be robust.")
+    print("  Repr.value choice MATTERS — original conclusion may not be robust.")
 else:
     print(f"  [MARGINAL] Gap ×{gap_arith:.0f} — smaller than geom but still significant.")
 
-print(f"\n  Note: intermediate z rows (0.06–5.00) use geom params (no range data).")
-print(f"  Full multiverse requires documented ranges at all 12 z values (Q for TJB).")
+print("\n  Note: intermediate z rows (0.06–5.00) use geom params (no range data).")
+print("  Full multiverse requires documented ranges at all 12 z values (Q for TJB).")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -334,30 +334,30 @@ print(f"{DIV}")
 print()
 print(f"  M1 [VERIFIED-tool]: H_MULT = {ratio_mean:.3f} x H_FLRW")
 print(f"      scatter {ratio_std / ratio_mean * 100:.1f}%, corr={corr_coef:.5f}")
-print(f"      Bridge is ~7% scalar stretch of H_FLRW — no independent physics.")
+print("      Bridge is ~7% scalar stretch of H_FLRW — no independent physics.")
 print()
-print(f"  M2 [VERIFIED-tool]: Self-consistency FAILURE at z=8.5")
+print("  M2 [VERIFIED-tool]: Self-consistency FAILURE at z=8.5")
 print(f"      Phi DECREASES x{1 / phi_z85:.0f}, H_pred = {H_pred_z85:.3f} km/s/Mpc")
 print(f"      H_MULT_reported = {H_mult_z85:.1f} km/s/Mpc")
 print(f"      Inconsistency gap: x{H_mult_z85 / H_pred_z85:.0f}")
 print()
-print(f"  M3 [VERIFIED-tool]: Dataset-independent failure")
-print(f"      Claude->reversal; Gemini->flat; both fail to generate H(z) growth.")
+print("  M3 [VERIFIED-tool]: Dataset-independent failure")
+print("      Claude->reversal; Gemini->flat; both fail to generate H(z) growth.")
 print()
-print(f"  M4 [VERIFIED-tool]: Claim table update")
-print(f"      C11: true ALL z (corrected from 'high z only')")
-print(f"      C12: REFUTED — dipole never dominates at inter-cluster scales")
-print(f"      C14: exists but wrong direction")
+print("  M4 [VERIFIED-tool]: Claim table update")
+print("      C11: true ALL z (corrected from 'high z only')")
+print("      C12: REFUTED — dipole never dominates at inter-cluster scales")
+print("      C14: exists but wrong direction")
 print()
-print(f"  M5: Skeptic gate CONFIRMED-REAL (3/3 falsification tests passed)")
+print("  M5: Skeptic gate CONFIRMED-REAL (3/3 falsification tests passed)")
 print()
-print(f"  Q15 FOR TJB:")
-print(f"    Phi(z) with CSV cluster params DECREASES x762 from z=0 to z=8.5,")
-print(f"    yet H_MULT in Table A1 INCREASES x5.7. This suggests the D(z)")
-print(f"    schedule used by the AI service differs from CSV geometric means.")
-print(f"    Could you clarify which D(z) values were actually used — physical")
-print(f"    scaling or chosen to match H_obs directly?")
+print("  Q15 FOR TJB:")
+print("    Phi(z) with CSV cluster params DECREASES x762 from z=0 to z=8.5,")
+print("    yet H_MULT in Table A1 INCREASES x5.7. This suggests the D(z)")
+print("    schedule used by the AI service differs from CSV geometric means.")
+print("    Could you clarify which D(z) values were actually used — physical")
+print("    scaling or chosen to match H_obs directly?")
 print()
-print(f"  SAFETY: NOT_VALIDATION  NOT_REFUTATION  NOT_AUTHOR_ERROR")
-print(f"          INTERNAL_DIAGNOSTIC_ONLY  AUTHOR_CLARIFICATION_REQUIRED")
+print("  SAFETY: NOT_VALIDATION  NOT_REFUTATION  NOT_AUTHOR_ERROR")
+print("          INTERNAL_DIAGNOSTIC_ONLY  AUTHOR_CLARIFICATION_REQUIRED")
 print(f"{DIV}\n")

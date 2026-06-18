@@ -83,7 +83,6 @@ def grid_search_pearson(
     H_cc_at_z, valid_cc = _interp_hcc(hz_cc, z)
     if valid_cc.sum() < 5:
         return {"r": np.nan, "n": 0, "label": label}
-    H_cc_vals = H_cc_at_z[valid_cc]
 
     bd_vals = np.logspace(beta_d_log_range[0], beta_d_log_range[1], n_pts)
     bq_vals = np.logspace(beta_q_log_range[0], beta_q_log_range[1], n_pts)
