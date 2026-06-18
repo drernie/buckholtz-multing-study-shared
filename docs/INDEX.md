@@ -1,8 +1,8 @@
 # Documentation Index — Buckholtz IDM/MULTING Audit
 
-**Last updated:** 2026-06-01
-**Total documents:** 89 markdown files (+2 CSV)
-**Status:** ENGINEERING-HARDENED (v0.3), collaboration active — awaiting author response
+**Last updated:** 2026-06-18
+**Total documents:** 119 markdown files
+**Status:** collaboration ACTIVE — author responded 2026-06-14 (call + procedure, docs/117); awaiting β-scale reply (docs/121)
 
 ---
 
@@ -12,6 +12,13 @@
 - [WHAT_THIS_REPRODUCES.md](WHAT_THIS_REPRODUCES.md) — **scope clarification**: what the audit does/does not reproduce (read first)
 - [FINAL_WAITING_STATE_MARKER.md](FINAL_WAITING_STATE_MARKER.md) — Main status file, what we accomplished, what's blocked
 - [52_reusable_assets_harvest.md](52_reusable_assets_harvest.md) — 5 reusable assets extracted from audit
+
+**Current state (2026-06):**
+- [116_claim_status_matrix_v3.md](116_claim_status_matrix_v3.md) — **current claim ledger** (24 confirmed / 12 open / 16 rejected)
+- [117_tjb_authored_procedure.md](117_tjb_authored_procedure.md) ⚠ private — author's verbatim procedure (Q1/Q2/Q3 answered)
+- [119_weaknesses_referee_map.md](119_weaknesses_referee_map.md) — 36 weaknesses, referee-style map
+- [121_letter_to_tjb_draft.md](121_letter_to_tjb_draft.md) ⚠ private — latest letter (SENT, single β question)
+- [GITHUB_SHOWCASE_AUDIT.md](GITHUB_SHOWCASE_AUDIT.md) — repo showcase/health audit
 
 **If Tuesday meeting happens:**
 - [69_tuesday_meeting_pack_private.md](69_tuesday_meeting_pack_private.md) — Full meeting pack (376 lines)
@@ -213,6 +220,49 @@
 
 ---
 
+### Stage 10: Author Collaboration & Claim Status (docs 71–121)
+
+**Author response & reproducibility plans** (⚠ = author-facing/private):
+71 (response analysis), 72 (reproducibility plan outline), 73 (multi-AI comparison plan),
+74 (one-page plan), 75 ⚠ (email short), 84 ⚠ (author-facing summary), 85 ⚠ (email draft),
+93 ⚠ (one-page update), 97 ⚠ (H_FLRW note draft).
+
+**Multi-AI table reproducibility (76–83):** supplementary inventory (76), extraction summary (77),
+CSV integrity (78–80), ChatGPT source resolution (79), multi-AI comparison (81),
+Codex independent audit (82), revision verification (83).
+
+**Verification / controls / adversarial (86–96):** non-obvious physical paths (86),
+negative-control plan+results (87, 91), bridge registry + lab plan (92, 94),
+PEMM adversarial (95), external audit verification (96).
+
+**k_A closure (98–99):** author questions (98 ⚠) + report (99).
+
+**HD-MAVP & sync (100–102):** autopsy (100), error-correction sync (101), vault sync (102).
+
+**Author Q drafts ⚠ (103–105):** clarification draft (103), send-ready candidate (104), readiness report (105).
+
+**Evidence locks & claim matrices (106–116):** waiting/evidence locks (106, 107, 107a, 109, 111–114),
+beta1 hold (115); [108_claim_status_matrix.md](108_claim_status_matrix.md) → superseded by
+**[116_claim_status_matrix_v3.md](116_claim_status_matrix_v3.md) (current)**.
+
+**Latest (117–121):**
+- [117_tjb_authored_procedure.md](117_tjb_authored_procedure.md) ⚠ — author's verbatim AI-procedure (Q1/Q2/Q3 ANSWERED)
+- [118_journal_readiness_section_draft.md](118_journal_readiness_section_draft.md) — journal-readiness section
+- [119_weaknesses_referee_map.md](119_weaknesses_referee_map.md) — 36 weaknesses (7 categories)
+- [120_strong_inference_scout.md](120_strong_inference_scout.md) — strong-inference scan
+- [121_letter_to_tjb_draft.md](121_letter_to_tjb_draft.md) ⚠ — letter to author (SENT, single β question)
+
+**Meta / audit (named docs):** [GITHUB_SHOWCASE_AUDIT.md](GITHUB_SHOWCASE_AUDIT.md) ·
+[PROJECT_AUDIT_2026_05_31.md](PROJECT_AUDIT_2026_05_31.md) ·
+[AUTHOR_VALUE_AUDIT_2026_05_31.md](AUTHOR_VALUE_AUDIT_2026_05_31.md) ·
+[HARVEST_SCAN_2026_05_31.md](HARVEST_SCAN_2026_05_31.md) ·
+[ERROR_CORRECTION_LOG.md](ERROR_CORRECTION_LOG.md) ·
+[DOUBLE_INVERSION_DIAGNOSTIC.md](DOUBLE_INVERSION_DIAGNOSTIC.md) ·
+[mechanism_insights.md](mechanism_insights.md) ·
+[structured_reading_v2_for_tjb.md](structured_reading_v2_for_tjb.md) ⚠
+
+---
+
 ## Documents NOT in Sequence
 
 Some docs are missing numbers (e.g., 19–21, 31, 44–45, 56–57, 59–63). These were either:
@@ -282,5 +332,5 @@ Some docs are missing numbers (e.g., 19–21, 31, 44–45, 56–57, 59–63). Th
 
 ---
 
-**Last updated:** 2026-05-30  
-**Next update:** After author response OR 30 days (2026-06-30)
+**Last updated:** 2026-06-18  
+**Next update:** After TJB β-scale reply (docs/121) OR next major milestone

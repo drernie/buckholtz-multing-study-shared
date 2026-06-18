@@ -1,10 +1,10 @@
 # Buckholtz IDM/MULTING Study
 
-![tests](https://img.shields.io/badge/tests-542%20passed-brightgreen)
-![coverage](https://img.shields.io/badge/coverage-91%25-brightgreen)
-![ruff](https://img.shields.io/badge/lint-ruff%20clean-brightgreen)
+[![CI](https://github.com/sergeeey/buckholtz-idm-multing-study/actions/workflows/ci.yml/badge.svg)](https://github.com/sergeeey/buckholtz-idm-multing-study/actions/workflows/ci.yml)
 ![python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
+
+<sub>Quality snapshot (verified 2026-06-18, local py3.13): **853 tests pass · 12 skipped · 0 failed · coverage 78% · ruff clean**. The CI badge above is the authoritative live status; this line is a dated snapshot, not a self-updating metric.</sub>
 
 **Personal study notes and reproducibility scaffolding for understanding Thomas J. Buckholtz's IDM/MULTING framework.**
 
@@ -101,52 +101,24 @@ pytest tests/test_eq15_constants.py -v
 
 ```
 buckholtz-idm-multing-mvp/
-├── docs/                      # Documentation and audits
-│   ├── 01_beta_definition_audit.md
-│   ├── 02_equation_inventory.md
-│   ├── 03_derived_fitted_assumed_unknown.md
-│   ├── 04_assumption_dependency_graph.md
-│   ├── 05_data_anchoring_map.md
-│   ├── 06_rosetta_stone.md
-│   ├── 07_numerology_audit_eq15.md
-│   ├── 08_supplementary_audit.md
-│   ├── 09_meeting_brief.md
-│   ├── 10_time_budget.md
-│   ├── 11_beta_normalization_math.md
-│   ├── 12_beta_clarification_brief.md
-│   ├── 13_internal_anchor_uniqueness.md
-│   ├── 14_beta_source_trace_audit.md
-│   ├── 15_notebooklm_beta_candidates.md
-│   ├── 16_beta_provenance_reconciliation_summary.md
-│   ├── 17_table_A1_manual_verification_protocol.md
-│   ├── 18_fit_reproduction_requirements.md
-│   ├── 19_sabine_audit.md (from /sabine epistemological review)
-│   └── 22_discovery_ledger.md (10 findings: gold/copper/diamond/fool-gold classification)
-│
-├── notebooks/                 # Jupyter notebooks for exploration
-│   ├── 01_eq15_reproduction.ipynb
-│   ├── 02_beta_candidate_audit.ipynb
-│   └── 03_ppn_constraints.ipynb
-│
-├── src/                       # Core Python modules
-│   ├── __init__.py
-│   ├── constants.py           # Physical constants (PDG, CODATA)
-│   ├── epistemic_registry.py  # Claim/Parameter/Equation data models
-│   ├── beta_definitions.py    # Beta parameter candidates
-│   ├── equations.py           # Equation records
-│   ├── numerology_penalty.py  # Anti-numerology scoring
-│   ├── assumption_graph.py    # Dependency graph
-│   ├── data_anchoring.py      # Observational data registry
-│   └── rosetta.py             # Buckholtz↔mainstream terminology
-│
-└── tests/                     # Pytest test suite
-    ├── test_eq15_constants.py
-    ├── test_eq15_numerology.py
-    ├── test_no_cosmology_leakage.py
-    ├── test_beta_status_required.py
-    ├── test_epistemic_registry.py
-    └── test_assumption_graph.py
+├── src/              # 38 core modules — epistemic registry, beta provenance, bridge candidates, force-law records
+├── tests/            # 46 test files (853 tests) — invariants, controls, dimensional checks, reverse-engineering
+├── code/             # standalone verified scripts — eq32_verify, chi2_idm, beta_cv, beta_rescaling
+├── scripts/          # 22 pipeline/report scripts — recompute_n4_aic, jeans_nfw_multing, build_report_ru
+├── audit/            # self-consistency diagnostics
+├── data/             # PDG/CODATA constants + real catalogs (MCXC, XMM T_X) + Moresco+2022 CC H(z)
+│                     #   ⚠ author preprint PDF & supplementary CSVs are gitignored (local-only)
+├── docs/             # 119 documents — see docs/INDEX.md for the full map
+├── paper/            # LaTeX manuscript skeleton (main.tex, refs.bib)
+├── reports/          # 21 machine-readable result JSONs
+├── notebooks/        # 3 exploration notebooks
+├── null_results/     # falsified-hypothesis records (FL protocol)
+└── pearl_registry/   # tool-verified side-insights (FL protocol)
 ```
+
+> Full per-document navigation: **[`docs/INDEX.md`](docs/INDEX.md)**. Key source modules:
+> `epistemic_registry.py`, `beta_provenance.py` (single source of truth for β), `constants.py`
+> (fundamental constants only — no cosmological fits), `rosetta.py` (terminology mapping).
 
 ---
 
@@ -170,6 +142,9 @@ Every claim, parameter, and equation is marked with one of these statuses:
 ---
 
 ## Test Suite
+
+*The full suite is **46 test files / 853 tests (12 skipped, 0 failed)** — run `pytest`. The six below
+are representative of the core invariants, not the complete list; see `tests/` for all.*
 
 ### Core Tests
 
@@ -343,14 +318,13 @@ Example:
 
 ## Dependencies
 
+Source of truth: [`requirements.txt`](requirements.txt) + [`pyproject.toml`](pyproject.toml).
+
 ```
 python >= 3.11
-pytest
-numpy
-scipy
-sympy
-pandas
-matplotlib
+numpy  scipy  sympy  pandas  matplotlib       # core
+pytest  pytest-cov  ruff  mypy                 # dev / CI
+astropy  astroquery  requests                  # cluster data pipeline (src/cluster_data_pipeline.py)
 ```
 
 Optional:
