@@ -34,7 +34,7 @@ It provides a small reproducibility and epistemic-audit layer for selected defin
 | Test | Result | Script |
 |------|--------|--------|
 | Eq.32 fermion-gravity link | **0.17σ** from PDG 2024 | `code/eq32_verify.py` |
-| IDM N=5 vs Planck 2018 ω_DM/ω_b | **6.8σ excluded** | `code/chi2_idm.py` |
+| IDM N=5 vs Planck 2018 ω_DM/ω_b | **5.8σ excluded** | `code/chi2_idm.py` |
 | β_d=4.5 dipole at cluster scale | **ε ≈ 6×10⁻⁶** (negligible) | `code/beta_rescaling.py` |
 | MULTING H(z) ΔAIC vs ΛCDM | **+2.5** (ΛCDM preferred) | `data/pearson_r_test_results.md` |
 | Pearson r MULTING/H_CC | **0.62** (MCXC n=443), **0.70** (XMM n=22) | ibid |
