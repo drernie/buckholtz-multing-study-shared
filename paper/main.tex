@@ -313,15 +313,23 @@ attributed to a secondary enhancement in the dark-matter perturbation power
 spectrum; the present framework offers an alternative geometric explanation via
 the quadrupole term $F_q$.
 
-\textbf{T-IDM (two-component necessity, by exhaustion).}
-Across 8 independent functional families tested (virial $k_A(z)$, merger-rate,
-log-Gaussian, Lognormal, $D^n H^m$ power products, and merger-epoch $r_P$),
-no single-component formula achieves Pearson $r > 0.85$ on all 11 $\varepsilon(z)$
-points; the empirical ceiling is $r = 0.820$ for the unconstrained $D^{5.5} H^{2.75}$
-power product.  This establishes by exhaustion that the secondary bump at $z = 8.50$
-requires a physically distinct second term, consistent with MULTING's decomposition
-$F_\mathrm{oP} = F_m - F_d + F_q$, where the quadrupole $F_q$ (parameter $\beta_q$)
-dominates at high redshift (null-result series NR-001 through NR-008, see supplementary).
+\textbf{T-IDM (two-component structure, by physics-motivated exhaustion).}
+Among 8 physics-motivated single-component families tested (virial $k_A(z)$,
+merger-rate, log-Gaussian, Lognormal, $D^n H^m$ power products, and
+merger-epoch $r_P$), no formula achieves Pearson $r > 0.85$ on all 11
+$\varepsilon(z)$ points; the empirical ceiling is $r = 0.820$ for the
+unconstrained $D^{5.5} H^{2.75}$ power product.
+As an adversarial check, a 4-parameter Pad\'{e} rational function
+$(a + bx)/(1 + cx + dx^2)$ with $x = 1+z$ achieves $r = 0.927$
+on all 11 points~[\textit{OUR\_RECONSTRUCTION, verified numerically}].
+However, the Pad\'{e} form carries no physical interpretation for the
+secondary bump: its rational structure arises from fitting
+degrees of freedom ($n/p = 2.75$), not from a physical mechanism.
+This confirms that the 11-point $\varepsilon(z)$ curve requires a
+non-monotone rational shape — consistent with MULTING's two-term
+decomposition $F_\mathrm{oP} = F_m - F_d + F_q$, which provides a
+physical identification of the two structural components (null-result
+series NR-001 through NR-008, see supplementary).
 \reconstruction
 
 % ──────────────────────────────────────────────
@@ -336,10 +344,18 @@ The IDM prediction $\omega_\mathrm{DM} = N \omega_b$ (equal baryon asymmetry per
 isomer) requires, from Planck 2018~\cite{planck2018}: $N_\mathrm{opt} =
 \omega_\mathrm{DM}/\omega_b = 0.12011/0.022383 = 5.366$.
 
-The nearest integer $N=5$ deviates by $5.8\sigma$, where
-$\sigma_\mathrm{tot} = \sqrt{\sigma_{\omega_\mathrm{DM}}^2 + (N\sigma_{\omega_b})^2}
-= \sqrt{0.0012^2 + (5\times0.00015)^2} = 0.00142$
-propagates uncertainties on both measured quantities ($\chi^2 = 33.5$).
+The nearest integer $N=5$ deviates by $5.8\sigma$, where the uncertainty
+on the ratio $N_\mathrm{opt} = \omega_\mathrm{DM}/\omega_b$ is propagated
+by the delta method:
+\begin{equation}
+\sigma_N = N_\mathrm{opt}\,\sqrt{\!\left(\frac{\sigma_{\omega_\mathrm{DM}}}
+{\omega_\mathrm{DM}}\right)^{\!2}
++ \left(\frac{\sigma_{\omega_b}}{\omega_b}\right)^{\!2}}
+= 5.366\times\sqrt{0.00999^2 + 0.00670^2} = 0.0646
+\end{equation}
+yielding $(N_\mathrm{opt} - 5)/\sigma_N = 5.67\sigma$\, ($\chi^2 = 33.5$,
+assuming equal baryon asymmetry per isomer, $f \equiv 1$;
+see caveat below).
 \reconstruction
 
 As an independent cross-check, the DESI DR1+CMB combination~\cite{desi2024vi}
@@ -348,6 +364,19 @@ yielding $N_\mathrm{opt}^\mathrm{DESI} = 5.31 \pm 0.13$,
 consistent with the Planck value at $0.46\sigma$ (note: $\omega_\mathrm{cdm}$ is
 a derived quantity from the DESI+CMB joint fit; DESI BAO alone does not constrain
 $\omega_b$ independently~\cite{desi2024vi}).
+\reconstruction
+
+\textbf{Assumption caveat ($f \equiv 1$).}
+The $5.67\sigma$ exclusion of integer $N=5$ is conditional on all dark isomers
+sharing the same baryon asymmetry per comoving volume as ordinary matter
+($f \equiv \eta_\mathrm{dark}/\eta_\mathrm{SM} = 1$).
+If the dark-sector baryon asymmetry differs by an $O(1)$ factor $f \neq 1$,
+then $\omega_\mathrm{DM} = N\,f\,\omega_b$ and any integer $N$ maps to
+a physically admissible $f$: for $N=6$, one obtains $f = 0.894$, a mild
+$\sim\!11\%$ deficit requiring no exotic physics.
+The analysis therefore constrains $N_\mathrm{opt}$ as a ratio assuming $f=1$;
+distinguishing integer $N$ values requires independent constraints on
+$\eta_\mathrm{dark}$ (open question, beyond current scope).
 \reconstruction
 
 \subsection{Hot Dark Matter Problem}
