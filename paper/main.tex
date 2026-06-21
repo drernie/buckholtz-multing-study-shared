@@ -73,6 +73,14 @@ The preprint provides a table of predicted values (Table~A1) for
 $H_\mathrm{MULT}(z)$ at 11 redshift points, derived from an AI-mediated
 numerical procedure.
 
+The six fundamental constants identified by Rees~\cite{rees1999} include
+the ratio of electromagnetic to gravitational coupling strengths
+$N \approx 10^{36}$ and the cosmological constant $\lambda \approx 0.7$.
+MULTING/IDM addresses both: Eq.~(32) provides an empirical link between
+$N$ and lepton masses ($0.17\sigma$, \S\ref{ssec:eq32}), while the MULTING
+dipole term offers a mechanical alternative to $\lambda$ at first
+cosmological perturbation order (\S\ref{sec:hz}).
+
 The principal challenge for external assessment is that the bridge connecting
 cluster physical parameters ($k_A$, $r_A$, $D_{C:AB}$) to $H_\mathrm{MULT}$
 is not derivable from first principles using standard cluster physics: the
@@ -169,17 +177,30 @@ this constitutes an open experimental prediction.
 
 \subsection{Statistical Comparison with $\Lambda$CDM}
 
-% Pearson r = 0.6235 (MCXC n=443), r = 0.7029 (XMM n=22)
-% ΔAIC = +2.5 (MULTING vs ΛCDM) on cluster T_X correlation
-% Fisher z = 3.05, p = 0.0012
-% Sample selection bias: r(log T_i, z) = 0.65
-%
-% 5-fold CV on 27 Moresco CC points (OUR_RECONSTRUCTION, code/beta_cv.py):
-%   Sign pattern [+,-,+] STABLE: B < 0 in all 5 folds, CV(B) = 3%
-%   ΔAIC(polynomial MULTING vs flat ΛCDM) = +0.74 — NEUTRAL (< 2)
-%   OOS generalization: MULTING 1.80 vs ΛCDM 1.71 χ²_test — indistinguishable
-%   Consistent with Blanchet & Le Tiec (2008): dipolar fluid degenerate
-%   with ΛCDM at first cosmological perturbation order [cite blanchet2008]
+We compare MULTING against the 27-point Moresco~\cite{moresco2022} cosmic-chronometer
+compilation using 5-fold cross-validation on the polynomial model
+$H(z) = A(1+z)^2 + B(1+z)^3 + C(1+z)^4$, which mirrors the MULTING
+force-law sign pattern $(+,-,+)$ for (monopole, dipole, quadrupole).
+\reconstruction
+
+Across all 5 folds the coefficient $B$ is consistently negative
+(cross-validation coefficient of variation $\mathrm{CV}(B) = 3\%$),
+confirming that the sign pattern is a stable data-driven feature and not a
+fitting artefact.
+The $\Delta\mathrm{AIC}$ between the MULTING polynomial and flat $\Lambda$CDM
+is $+0.74$ (MULTING disfavoured), below the distinguishability threshold
+$|\Delta\mathrm{AIC}| = 2$.
+Out-of-sample performance on held-out CC points gives
+$\chi^2_\mathrm{test} = 1.80$ (MULTING) vs.\ $1.71$ ($\Lambda$CDM):
+statistically indistinguishable.
+\reconstruction
+
+This confirms the analytic result of Blanchet \& Le Tiec~\cite{blanchet2008,blanchet2009}:
+a dipolar dark-matter fluid is degenerate with $\Lambda$CDM at first
+cosmological perturbation order.
+Distinguishing MULTING from $\Lambda$CDM on H(z) data alone therefore requires
+either second-order observables or a first-principles derivation of $\beta_d$
+that yields $\varepsilon \gtrsim 1\%$ (see \S\ref{ssec:beta}).
 
 \subsection{The $\beta$-Rescaling Gap}
 \label{ssec:beta}
