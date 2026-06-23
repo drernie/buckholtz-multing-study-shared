@@ -1,0 +1,60 @@
+{
+  "constants_source": "PDG2024/CODATA2018/Planck2018",
+  "claims": [
+    {
+      "id": "C9",
+      "name": "Eq.32 lepton-gravity-EM link",
+      "claim": "(4/3)(m_tau/m_e)^12 = alpha_EM/alpha_G at ~0.17 sigma",
+      "computed": "LHS/RHS = 1.00013516 (dev 0.0135%)",
+      "target": "1.0 (exact)",
+      "sigma": "0.17 sigma in m_tau",
+      "verdict": "CONFIRMED",
+      "evidence": "[VERIFIED-BASH]",
+      "note": "alpha_G = G m_e^2/(hbar c)"
+    },
+    {
+      "id": "C9b",
+      "name": "Eq.32 look-elsewhere uniqueness",
+      "claim": "n=12 is the unique hit (not fitted from a range)",
+      "computed": "1 hit(s) within 1% of RHS out of 120 combinations: [('4/3', 12, 'tau/e')]",
+      "target": "exactly 1 (4/3, 12, tau/e)",
+      "sigma": null,
+      "verdict": "CONFIRMED",
+      "evidence": "[VERIFIED-BASH]",
+      "note": "grid = 5 prefactors x 8 exponents x 3 mass pairs"
+    },
+    {
+      "id": "C4",
+      "name": "N_opt = DM:OM ratio non-integer",
+      "claim": "N_opt ~ 5.366, deviation from 5 is 5.67 sigma (delta-method), NOT 259 sigma",
+      "computed": "N_opt = 5.36613; delta-method sigma_N = 0.06456",
+      "target": "5 (integer)",
+      "sigma": "5.67 sigma (naive-wrong method gave 258.7)",
+      "verdict": "CONFIRMED",
+      "evidence": "[VERIFIED-BASH]",
+      "note": "Planck 2018 omega_cdm/omega_b; naive sigma understates correlation -> 259 sigma artifact"
+    },
+    {
+      "id": "C6",
+      "name": "Boson squared-mass ratio 7:9:17",
+      "claim": "7:9:17 holds at ~0.2% by value, but per-boson sigma varies (W ~3.8 sigma, NOT 0.4)",
+      "computed": "W:(m/(mZ/3))^2=6.9912 vs 7 -> 3.81sig; Z:(m/(mZ/3))^2=9.0000 vs 9 -> 0.00sig; H:(m/(mZ/3))^2=16.9660 vs 17 -> 1.14sig",
+      "target": "7 : 9 : 17",
+      "sigma": "worst (W) = 3.81 sigma; Z is the anchor (0 by construction)",
+      "verdict": "CORRECTED",
+      "evidence": "[VERIFIED-BASH]",
+      "note": "'0.4 sigma' was H only (best boson); W deviates ~3.8 sigma. Report all three."
+    },
+    {
+      "id": "C5",
+      "name": "Delta N_eff for IDM dark sectors",
+      "claim": "ANY single number is misleading: not computable from preprint (BLOCKED). Naive SM thermal history gives 22-81 (130-477 sigma); '0.70' is one assumed-dilution scenario.",
+      "computed": "scenarios = {'naive_SM_minimal (x=1)': 22.0, 'naive_SM_full_mirror (x=1)': 81.0, 'MESI_15nu_assumed_dilution': 0.7}; Planck 1-sigma bound ~ 0.4",
+      "target": "depends on T_dark, g_D, T_dark/T_nu -- ALL absent in preprint (6/7 inputs missing)",
+      "sigma": null,
+      "verdict": "BLOCKED",
+      "evidence": "[CONFLICTING]",
+      "note": "m7_c audit = BLOCKED; mirror_dm = 22-81; '0.70' needs assumed g_*S>210. Do not table one value."
+    }
+  ]
+}
