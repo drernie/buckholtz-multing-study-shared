@@ -46,7 +46,7 @@ rendered negligible at cluster scales for the tabulated $\beta_d = 4.5$,
 requiring $\beta_d \gtrsim 10^{3.2}$ for a 1\% observational signature ---
 formally quantified via Birge Ratio $R_B = 15.9$ ($\beta_d$) and $R_B = 24.1$
 ($\beta_q$), both with $p < 10^{-4}$;
-(4)~an integer IDM isomer count $N=5$ is excluded at $5.8\sigma$ by Planck 2018;
+(4)~an integer IDM isomer count $N=5$ is excluded at $5.67\sigma$ by Planck 2018;
 (5)~a gravitational-only-coupling interpretation of IDM is internally
 self-consistent but eliminates the dark baryogenesis mechanism required for CDM;
 (6)~the $H_\mathrm{FLRW}$ baseline used in Table~A1 is inconsistent with standard
@@ -143,6 +143,29 @@ $\alpha_\mathrm{EM}^{-1} = 137.036$, $G = 6.674 \times 10^{-11}$~m$^3$~kg$^{-1}$
 
 We find LHS/RHS~$= 1.000135$, corresponding to a $0.17\sigma$ agreement
 dominated by the $m_\tau$ uncertainty.
+\reconstruction
+
+\paragraph{Context and status.}
+Eq.~(\ref{eq:c9}) belongs to a recognized tradition of empirical relations
+among lepton masses and fundamental constants --- the Koide
+formula~\cite{sumino2009koide,xing2006koide,lima2006koide} and the
+large-number coincidences first noted by Dirac~\cite{dirac1937}, recently
+reviewed in the context of varying constants by Uzan~\cite{uzan2025constants}
+and connected to mass ratios and gravity by Singh~\cite{singh2022massratios}.
+Eq.~(\ref{eq:c9}) is distinct from these: whereas the Koide relation is a
+permutation-symmetric sum rule over $\{e,\mu,\tau\}$, Eq.~(\ref{eq:c9}) ties
+the single ratio $m_\tau/m_e$ to the electromagnetic-to-gravitational coupling
+ratio $\alpha_\mathrm{EM}/\alpha_G$. A targeted literature search did not
+locate this specific relation in the indexed literature.
+We stress that Eq.~(\ref{eq:c9}) is presented as an \emph{empirical regularity,
+mechanism open}: unlike the Koide formula, which admits a family-gauge-symmetry
+derivation~\cite{sumino2009koide}, no first-principles derivation of the
+prefactor $4/3$ or the exponent $12$ is available here. In particular, we
+tested and could not support a geometric ($S^3$ curvature-balance) origin for
+the $4/3$ factor: writing $4/3 = (n+1)/n$ and $12 = n(n+1)$ at $n=3$ is one of
+several hundred equally simple two-function relabelings consistent at $n=3$,
+so the geometric reading carries no predictive content beyond the numerical
+coincidence itself.
 \reconstruction
 
 \subsection{Fermion Mass Spectrum (Eqs.~21--24)}
@@ -344,7 +367,7 @@ The IDM prediction $\omega_\mathrm{DM} = N \omega_b$ (equal baryon asymmetry per
 isomer) requires, from Planck 2018~\cite{planck2018}: $N_\mathrm{opt} =
 \omega_\mathrm{DM}/\omega_b = 0.12011/0.022383 = 5.366$.
 
-The nearest integer $N=5$ deviates by $5.8\sigma$, where the uncertainty
+The nearest integer $N=5$ deviates by $5.67\sigma$, where the uncertainty
 on the ratio $N_\mathrm{opt} = \omega_\mathrm{DM}/\omega_b$ is propagated
 by the delta method:
 \begin{equation}
@@ -402,16 +425,29 @@ and does not have a resolution within the preprint.
 \label{ssec:sigma}
 
 The Bullet Cluster merger constrains the dark matter self-interaction
-cross section to $\sigma/m < 1.25$~cm$^2$/g at 68\% confidence
-(Randall et al.\ 2008).  In a mirror-sector IDM with dark electromagnetism,
-the dark proton self-interaction cross section inherits the SM proton
-Rutherford-scattering rate, which at cluster relative velocities
-($v_\mathrm{rel} \sim 10^3$~km/s) exceeds this bound by orders of magnitude.
+cross section to $\sigma/m < 1.25$~cm$^2$/g at 68\% confidence~\cite{markevitch2006}.
+
+A geometric estimate for the dark-nucleon self-interaction
+gives $\sigma_\mathrm{nuc}/m \approx \pi r_n^2/m_p \approx 0.027$~cm$^2$/g
+(using $r_n = 0.87$~fm, $m_p = 938.3$~MeV/$c^2$), which is within the
+Bullet Cluster limit by a factor of $\approx 46$.
+However, if dark isomers contain dark atoms (dark proton $+$ dark electron),
+the atomic cross section at cluster velocities
+($v_\mathrm{rel} \sim 10^3$~km$/$s, Bohr radius $a_0 = 0.529$~\AA)
+gives $\sigma_\mathrm{atom}/m \approx \pi a_0^2 / m_p \approx 5 \times
+10^7$~cm$^2$/g, exceeding the limit by seven orders of magnitude.
+For bound dark nuclei with $A \ge 1$, the cross section scales as
+$\sigma \propto A^{2/3}$ while $m \propto A$, giving
+$\sigma/m \propto A^{-1/3}$, which falls below the 1.25 limit for $A \ge 1$.
 \reconstruction
 
-A gravitational-only coupling eliminates dark electromagnetism and renders
-the cross section consistent with the Bullet Cluster, but again requires
+This analysis implies that IDM dark matter must consist of dark nuclei
+(not free dark protons or dark atoms) to satisfy the Bullet Cluster constraint.
+A mirror-sector IDM with dark electromagnetism can form dark atoms (violating
+the limit); a gravitational-only coupling eliminates dark electromagnetism
+and renders the nucleon-level cross section consistent, but again requires
 abandoning the dark baryogenesis mechanism (see also §\ref{ssec:neff}).
+\reconstruction
 
 \subsection{Effective Relativistic Species ($N_\mathrm{eff}$)}
 \label{ssec:neff}
@@ -421,12 +457,16 @@ at BBN), each mirror-sector dark isomer contributes relativistic degrees of
 freedom.  For a minimal mirror sector (dark photons + dark neutrinos only),
 $\Delta N_\mathrm{eff} \approx 22.0$ across 5 dark isomers.  Including dark
 quarks and gluons yields $\Delta N_\mathrm{eff} \approx 37$--81.
-The Planck 2018 bound is $\Delta N_\mathrm{eff} < 0.4$ at $1\sigma$;
-the minimal IDM scenario exceeds this by $130\sigma$.
+The Planck 2018 bound is $\Delta N_\mathrm{eff} < 0.29$ (95\% CL, from
+$N_\mathrm{eff} = 2.99 \pm 0.17$); the minimal IDM scenario exceeds this by
+$>100\sigma$.
 \reconstruction
 
 A gravitational-only coupling ($T_\mathrm{dark} \ll T_\mathrm{SM}$)
-suppresses $\Delta N_\mathrm{eff}$ by $(T_\mathrm{dark}/T_\mathrm{SM})^4$,
+suppresses $\Delta N_\mathrm{eff}$ by $(T_\mathrm{dark}/T_\mathrm{SM})^4$
+(quantified in §\ref{sec:discuss}: SM entropy dilution to
+$g_{*S} = 106.75$ gives $\Delta N_\mathrm{eff} = 0.70$ for 15 dark-neutrino
+species, still $2.4\times$ over the limit),
 but as noted in §\ref{ssec:hdm} and §\ref{ssec:sigma}, this coupling removes
 the dark baryogenesis mechanism that IDM requires for its dark matter
 abundance prediction.  The internal tension (E4) is unresolved in the preprint.
@@ -457,6 +497,47 @@ Both results are independently testable as new PDG data accumulates (the
 $m_\tau$ uncertainty currently dominates Eq.~32) and constitute H4 of the
 original assessment framework.
 
+\textbf{Uniqueness of $n=12$ in Eq.~(32).}
+A power scan over integer exponents $n$ confirms that $n=12$ is the
+\emph{unique} integer for which the relation
+$(4/3)(m_\tau/m_e)^n = \alpha_\mathrm{EM}/\alpha_G$ holds within any
+reasonable tolerance: adjacent integers give deviations of $\gtrsim 10^5\%$
+($n=11$: $-99.97\%$; $n=13$: $+3.5\times10^5\%$). The best-fit
+continuous exponent is $n_\mathrm{best} = 12.000$, confirming that $n=12$
+is not an arbitrary choice but the unique integer where the ratio
+$(m_\tau/m_e)^n$ crosses the target $\alpha_\mathrm{EM}/\alpha_G$.
+A wider look-elsewhere scan over $5040$ combinations
+($84$ rational prefactors $p/q$ with $p,q\le 6$, integer exponents
+$1\le n\le 20$, and the three lepton mass pairs) yields a \emph{single}
+match within $1\%$ of $\alpha_\mathrm{EM}/\alpha_G$, namely
+$(4/3,\,n{=}12,\,m_\tau/m_e)$, and none within the $0.0135\%$ precision of
+Eq.~(\ref{eq:c9}). The coincidence is therefore robust against the
+multiple-comparisons inflation that weakens many numerical relations.
+\reconstruction
+
+\textbf{$m_\tau$ value for an exact relation.}
+If Eq.~(32) is taken as exact, it predicts
+$m_\tau^\mathrm{exact} = 1776.840$~MeV,
+which differs from the PDG 2024 value ($1776.86 \pm 0.12$~MeV) by
+$-0.020$~MeV $= 0.17\sigma$.
+Future Belle~II measurements targeting $\sigma_{m_\tau} < 0.01$~MeV
+will provide a definitive test of whether Eq.~(32) is exact or approximate.
+\reconstruction
+
+\textbf{Joint Koide--Eq.~(32) constraint.}
+The Koide formula
+$(m_e + m_\mu + m_\tau)/(\sqrt{m_e}+\sqrt{m_\mu}+\sqrt{m_\tau})^2 = 2/3$
+holds at $0.00092\%$ (PDG 2024) and is symmetric under all six
+permutations of $\{m_e, m_\mu, m_\tau\}$ (i.e., $S_3$-invariant).
+Substituting the Koide-exact value of $m_\tau$ into Eq.~(32) predicts
+$\alpha_G = 1.7503 \times 10^{-45}$, agreeing with the standard value
+(from CODATA $G$) to $0.087\%$.
+If both relations are simultaneously exact, Newton's constant $G$ is
+determined from $\alpha_\mathrm{EM}$, $m_e$, and $m_\mu$ alone,
+without $m_\tau$ as a free parameter.
+This is a non-trivial cross-constraint; its mechanism is unknown.
+\reconstruction
+
 \subsection{What Requires New Physics}
 
 Three open questions require new physics or author disclosure to resolve.
@@ -470,9 +551,65 @@ waves) and Lorentz covariance cannot be verified.
 \textit{IDM symmetry group (G4).}
 The six IDM isomers are postulated by analogy with the SM, but the symmetry
 group that distinguishes exactly six from other values of $N$ is not derived.
-The $5.8\sigma$ tension with Planck 2018 ($N_\mathrm{opt} = 5.366$) may be
+The $5.67\sigma$ tension with Planck 2018 ($N_\mathrm{opt} = 5.366$) may be
 resolvable if the symmetry group predicts non-equal isomer masses or
 baryon asymmetries.
+
+\textbf{$S_3$ as a candidate group (hypothesis).}
+The symmetric group $S_3$ (permutations of 3 objects, order 6) arises
+independently in two contexts that converge on IDM's isomer count.
+First, the Koide formula
+$(m_e+m_\mu+m_\tau)/(\sqrt{m_e}+\sqrt{m_\mu}+\sqrt{m_\tau})^2 = 2/3$
+is invariant under all six permutations of $\{m_e, m_\mu, m_\tau\}$
+(i.e., $S_3$-symmetric by construction, verified independently~\cite{pdg2024}).
+Second, under the regular (Cayley) representation of $S_3$ on itself,
+the elements split canonically into $\{e\} \cup (S_3 \setminus \{e\})$:
+one identity element (SESI, ordinary matter) and five non-identity elements
+(MESI, dark matter), giving DM:OM $= 5{:}1$ as a group-theoretic consequence
+rather than a counting postulate.
+Additionally, the standard model's non-commutative geometry (Connes--Lott)
+assigns $|S_3| = 6$ summands to the doubled algebra $\mathcal{A}_F \otimes
+\mathcal{A}_F^\mathrm{op}$ and KO-dimension $= 6$, offering a third
+independent path to the same integer.
+This observation does not constitute a derivation; it identifies $S_3$ as a
+candidate symmetry whose structure forbids $N=4$ or $N=7$ and predicts
+the specific $1+5$ split without adjustable parameters.
+Confirming this identification requires showing that IDM isomer quantum numbers
+transform under the defining representation of $S_3$, which we record as an
+open hypothesis.
+\reconstruction
+
+\textbf{$\Delta N_\mathrm{eff}$ constraint on IDM dark neutrinos (hypothesis).}
+If each MESI isomer mirrors the SM, it contains three generations of dark
+neutrinos, giving $N_{\nu,\mathrm{dark}} = 5 \times 3 = 15$ light fermionic
+species.  When the dark sector is in thermal equilibrium with the SM at
+temperature $T_\mathrm{dec}$ and subsequently decouples, SM entropy injections
+(e.g., $e^+e^-$ annihilation, QCD transition) heat the photon bath relative
+to the dark sector.  The residual dark-sector temperature ratio is
+$\xi \equiv T_\mathrm{dark}/T_\gamma = (g_{*S}^\mathrm{today}/g_{*S}(T_\mathrm{dec}))^{1/3}$,
+and the contribution to the effective number of relativistic species is
+\begin{equation}
+  \Delta N_\mathrm{eff} = N_{\nu,\mathrm{dark}}\,\xi^4\,\left(\tfrac{11}{4}\right)^{4/3}.
+  \label{eq:dneff}
+\end{equation}
+At the SM maximum $g_{*S}(T_\mathrm{dec}) = 106.75$ (all SM particles in equilibrium
+at $T > 200\,\mathrm{GeV}$), one finds $\xi = 0.332$ and
+$\Delta N_\mathrm{eff} = 0.70$.
+The Planck 2018 constraint $N_\mathrm{eff} = 2.99 \pm 0.17$ (68\% CL)
+limits $\Delta N_\mathrm{eff} < 0.29$ (95\% CL), so 15 dark neutrinos are
+\emph{ruled out} at the 2.5$\times$-excess level if the dark sector
+thermalised within the SM.
+The constraint requires either (A) dark-sector decoupling at $T_\mathrm{dec}$
+where $g_{*S} > 210$, achievable in MSSM-like extensions with
+$g_{*S}^\mathrm{MSSM} \approx 228$ at $T > 1\,\mathrm{TeV}$, or
+(B) the absence of light dark neutrinos.
+An alternative exit via massive dark neutrinos also fails: the minimum
+mass for relativistic suppression implies $\Sigma m_{\nu,\mathrm{dark}} \gtrsim 1.3\,\mathrm{eV}$,
+exceeding the Planck neutrino mass limit $\Sigma m_\nu < 0.12\,\mathrm{eV}$.
+If the MSSM scenario (A) holds, the predicted $\Delta N_\mathrm{eff} \approx 0.26$
+is above the Simons Observatory 2$\sigma$ detection threshold ($\sigma \approx 0.05$)
+and will be tested by 2027.
+\reconstruction
 
 \textit{$\beta$ derivation from first principles (G2).}
 The parameters $\beta_d$ and $\beta_q$ are fitted phenomenologically.
@@ -487,6 +624,48 @@ perturbation order.  Our 5-fold cross-validation (§\ref{sec:hz}) confirms
 this numerically: $\Delta\mathrm{AIC} = 0.74$, indistinguishable.
 MULTING requires second-order predictions (non-geodesic cluster motions,
 lensing anisotropy) to become observationally distinguishable.
+
+\subsection{Forward-Looking Tests}
+\label{sec:predictions}
+
+The experiments reported here yield five falsifiable predictions, each
+testable with facilities operating or under construction.
+Table~\ref{tab:predictions} summarises the predictions, the required
+observable, the instrument, and the approximate timeline.
+
+\begin{table}[htb]
+\caption{Falsifiable predictions from this analysis (OUR\_RECONSTRUCTION).
+All predictions assume currently favoured cosmological parameters;
+updates in DESI DR2 or Planck PR4 may shift central values.}
+\label{tab:predictions}
+\begin{ruledtabular}
+\begin{tabular}{p{3.0cm}p{2.5cm}p{1.8cm}l}
+Prediction & Observable & Instrument & Timeline \\
+\hline
+$m_\tau^\mathrm{exact} = 1776.840$~MeV if Eq.~(32) exact ($-0.17\sigma$ from PDG) &
+$m_\tau$ to $\pm0.01$~MeV & Belle~II & 2027 \\
+$\Delta N_\mathrm{eff} \approx 0.26$ if IDM + MSSM decoupling ($g_{*S} \approx 228$) &
+$\Delta N_\mathrm{eff}$ & Simons Obs. & 2026--2027 \\
+$N_\mathrm{opt} = 5.31 \pm 0.05$--$0.09$ (3.3--5.9$\sigma$ from $N{=}5$) if $\sigma_{\omega_m}$ drops $\sqrt{2}$--$3\times$ from DR1 &
+$\omega_m$, $\omega_b$ & DESI~DR2 & 2025--2026 \\
+Non-geodesic cluster motions at $\gtrsim 2\sigma$ if $\beta_d \gtrsim 10^4$ &
+$\sigma_v$, lensing anisotropy & Euclid~DR1 & 2026+ \\
+$\varepsilon(z)$ secondary peak at $z \approx 8.5$ from $F_q$ if $\beta_q \gg \beta_d$ &
+$f\sigma_8(z)$ at $z > 5$ & Future & 2030+ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The most time-critical test is the Simons Observatory $\Delta N_\mathrm{eff}$
+measurement.
+If IDM's mirror sector decoupled from the SM at $T_\mathrm{dec}$ where
+$g_{*S}(T_\mathrm{dec}) \approx 228$ (MSSM regime), the predicted
+$\Delta N_\mathrm{eff} \approx 0.26$ lies above the Simons Observatory
+$2\sigma$ detection threshold ($\sigma_{\Delta N_\mathrm{eff}} \approx 0.05$)
+and below the Planck 2018 $95\%$ CL limit ($0.29$).
+A non-detection by Simons Observatory would require $g_{*S}(T_\mathrm{dec}) > 300$,
+pushing IDM's thermal decoupling to scales above the MSSM.
+\reconstruction
 
 \subsection{Assessment Summary}
 
@@ -507,7 +686,7 @@ H(z) correlation & $\triangle$ $\Delta\mathrm{AIC}{=}{+}0.74$ & 27 Moresco CC \\
 $H_\mathrm{FLRW}$ provenance & $\times$ not Planck & MAE $120$ vs $5$ \\
 $\beta_d = 4.5$ observability & $\times$ negligible & $k_A/M$ calc \\
 $\beta$ BRAI & $\times$ $R_B{=}15.9/24.1$ ($p{<}10^{-4}$) & 3 AI services \\
-IDM $N=5$ integer & $\times$ $5.8\sigma$ & Planck 2018 \\
+IDM $N=5$ integer & $\times$ $5.67\sigma$ & Planck 2018 \\
 IDM CDM viability & $\times$ killed & HDM $+$ $\Delta N_\mathrm{eff}$ \\
 $f\sigma_8$ dipole proxy & $\triangle$ $r{=}0.851$ ($n{=}10$, $z{\le}5$) & Table A1 $+$ $\Lambda$CDM \\
 Secondary $z{=}8.5$ bump & $\triangle$ structural & Two-component $\varepsilon$ \\
@@ -544,13 +723,22 @@ fits the same 11 points with MAE $= 5.04$~km\,s$^{-1}$\,Mpc$^{-1}$.
 This means that comparisons of MULTING vs.\ ``standard cosmology'' must
 specify which H$_\mathrm{FLRW}$ convention is intended.
 
-The IDM cosmological predictions face three independent constraints:
-$N=5$ isomers are excluded at $5.8\sigma$ by Planck 2018;
-mirror-sector dark neutrinos constitute hot dark matter inconsistent with
-structure formation; and the minimal mirror sector predicts
-$\Delta N_\mathrm{eff} \approx 22$--81, exceeding the Planck bound by
-$130$--$477\sigma$ without gravitational-only coupling.
-A gravitational-only coupling resolves the last two constraints but
+The IDM cosmological predictions face three independent constraints.
+First, $N=5$ isomers are excluded at $5.67\sigma$ by Planck 2018.
+Second, dark-sector neutrinos (15 species for five MESI isomers $\times$ three
+generations) contribute $\Delta N_\mathrm{eff} = 0.70$ under the most
+favourable SM thermal history ($g_{*S} = 106.75$), rising to
+$\Delta N_\mathrm{eff} \approx 22$--81 for the full mirror sector without
+entropy advantage; both exceed the Planck 2018 limit $\Delta N_\mathrm{eff} <
+0.29$ (95\% CL).
+A massive-neutrino escape route fails because it implies
+$\Sigma m_{\nu,\mathrm{dark}} \geq 1.3$~eV $\gg$ the Planck mass limit
+$0.12$~eV.
+The minimal viable scenario requires BSM physics above the electroweak scale
+($g_{*S}(T_\mathrm{dec}) > 210$); MSSM-like extensions predict
+$\Delta N_\mathrm{eff} \approx 0.26$, within Planck bounds but detectable by
+Simons Observatory by 2027 (Table~\ref{tab:predictions}).
+Third, a gravitational-only coupling that would suppress $\Delta N_\mathrm{eff}$
 eliminates the dark baryogenesis mechanism (E4 internal tension).
 
 The MULTING H(z) test is currently limited by the $\beta$-rescaling gap:
