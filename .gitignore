@@ -1,3 +1,7 @@
+# Literature corpus — re-downloadable OA PDFs + regenerable RAG index (keep metadata jsons + artifact)
+literature/papers/
+literature/sci_index/
+
 # Python
 __pycache__/
 *.pyc

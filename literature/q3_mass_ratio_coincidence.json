@@ -1,0 +1,271 @@
+{
+  "timestamp": "20260623_210845",
+  "count": 15,
+  "papers": [
+    {
+      "doi": null,
+      "arxiv_id": "1312.4959",
+      "pmid": null,
+      "title": "Confronting Cosmology and New Physics with Fundamental Constants",
+      "abstract": "The values of the fundamental constants such as $μ= m_P/m_e$, the proton to electron mass ratio and $α$, the fine structure constant, are sensitive to the product $\\sqrt{ζ_x^2(w+1)}$ where $ζ_x$ is a coupling constant between a rolling scalar field responsible for the acceleration of the expansion of the universe and the electromagnetic field with x standing for either $μ$ or $α$. The dark energy equation of state $w$ can assume values different than $-1$ in cosmologies where the acceleration of the expansion is due to a scalar field. In this case the value of both $μ$ and $α$ changes with time. The values of the fundamental constants, therefore, monitor the equation of state and are a valuable tool for determining $w$ as a function of redshift. In fact the rolling of the fundamental constants is one of the few definitive discriminators between acceleration due to a cosmological constant and acceleration due to a quintessence rolling scalar field. $w$ is often given in parameterized form for comparison with observations. In this manuscript the predicted evolution of $μ$, is calculated for a range of parameterized equation of state models and compared to the observational constraints on $Δμ/ μ$. We find that the current limits on $Δμ/ μ$ place significant constraints on linear equation of state models and on thawing models where $w$ deviates from $-1$ at late times. They also constrain non-dynamical models that have a constant $w$ not equal to $-1$. These constraints are an important compliment to geometric tests of $w$ in that geometric tests are sensitive to the evolution of the universe before the epoch of observation while fundamental constants are sensitive to the evolution of the universe after the observational epoch. Abstract truncated.",
+      "year": 2013,
+      "authors": [
+        "Rodger I. Thompson"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1312.4959v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1312.4959"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "physics/0409117",
+      "pmid": null,
+      "title": "The Inconstancy of the Fundamental Physical Constants: Computational Status",
+      "abstract": "It is argued that the CODATA recommended values of the fundamental physical constants could not be used as the reference data in searching the hypothetical space-time variations of the fundamental physical constants. It is shown that the CODATA data permanently suffers a loss of self-consistency of the released data due to unjustified over-rounding of their estimates. The simple estimates of the critical numbers of decimal digits that should be saved in the independently rounded correlation coefficients, the average values and uncertainties to save the self-consistency is obtained. The set of high level quality requirements to the computerized presentation of the numerical data on the jointly measured or estimated physical values are formulated. It is argued (once again) that the common standard for presentation of the numerical values of correlated quantities in publications and sites is urgently needed.",
+      "year": 2004,
+      "authors": [
+        "V. V. Ezhela",
+        "Yu. V. Kuyanov",
+        "V. N. Larin",
+        "A. S. Siver"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/physics/0409117v4",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/physics/0409117"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "1702.07382",
+      "pmid": null,
+      "title": "The Relation Between Fundamental Constants and Particle Physics Parameters",
+      "abstract": "The observed constraints on the variability of the proton to electron mass ratio $μ$ and the fine structure constant $α$ are used to establish constraints on the variability of the Quantum Chromodynamic Scale and a combination of the Higgs Vacuum Expectation Value and the Yukawa couplings. Further model dependent assumptions provide constraints on the Higgs VEV and the Yukawa couplings separately. A primary conclusion is that limits on the variability of dimensionless fundamental constants such as $μ$ and $α$ provide important constraints on the parameter space of new physics and cosmologies.",
+      "year": 2017,
+      "authors": [
+        "Rodger I. Thompson"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1702.07382v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1702.07382"
+    },
+    {
+      "doi": "10.1142/S0217732315020046",
+      "arxiv_id": "1507.02229",
+      "pmid": null,
+      "title": "Fundamental Constants in Physics and Their Time Variation",
+      "abstract": "There is no doubt that the field of Fundamental Constants in Physics and Their Time Variation is one of the hottest subjects in modern theoretical and experimental physics, with potential implications in all fundamental areas of physics research, such as particle physics, gravitation, astrophysics and cosmology. In this Special Issue, the state-of-the-art in the field is presented in detail.",
+      "year": 2015,
+      "authors": [
+        "Joan Solà"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1507.02229v2",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1507.02229"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "1309.7765",
+      "pmid": null,
+      "title": "Constraining fundamental physics with combined variations of fundamental constants",
+      "abstract": "We discuss how existing astrophysical measurements of various combinations of the fine-structure constant $α$, the proton-to-electron mass ratio $μ$ and the proton gyromagnetic ratio g$_{p}$ towards the radio source PKS1413+135 can be used to individually constrain each of these fundamental couplings. While the accuracy of the available measurements is not yet sufficient to test the spatial dipole scenario discussed in this workshop (and elsewhere in this volume), our analysis serves as a proof of concept as new observational facilities will soon allow significantly more robust tests. Importantly, these measurements can also be used to obtain constraints on certain classes of unification scenarios, and we compare the constraints obtained for PKS1413+135 with those previously obtained from local atomic clock measurements (and discussed in the previous contribution).",
+      "year": 2013,
+      "authors": [
+        "A. M. R. V. L. Monteiro",
+        "M. C. Ferreira",
+        "M. D. Julião",
+        "C. J. A. P. Martins"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1309.7765v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1309.7765"
+    },
+    {
+      "doi": "10.1142/S0217732315400283",
+      "arxiv_id": "1410.2765",
+      "pmid": null,
+      "title": "Cosmological Evolution of Fundamental Constants: From Theory to Experiment",
+      "abstract": "In this paper we discuss a possible cosmological time evolution of fundamental constants from the theoretical and experimental point of views. On the theoretical side, we explain that such a cosmological time evolution is actually something very natural which can be described by mechanisms similar to those used to explain cosmic inflation. We then discuss implications for grand unified theories, showing that the unification condition of the gauge coupling could evolve with cosmological time. Measurements of the electron-to-proton mass ratio can test grand unified theories using low energy data. Following the theoretical discussion, we review the current status of precision measurements of fundamental constants and their potential cosmological time dependence.",
+      "year": 2014,
+      "authors": [
+        "Xavier Calmet",
+        "Matthias Keller"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1410.2765v2",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1410.2765"
+    },
+    {
+      "doi": "10.1142/S0217751X07038293",
+      "arxiv_id": "0705.3704",
+      "pmid": null,
+      "title": "Variation of fundamental constants: theory and observations",
+      "abstract": "Review of recent works devoted to the variation of the fundamental constants is presented including atomic clocks, quasar absorption spectra, and Oklo natural nuclear reactor data. Assuming linear variation with time we can compare different results. From the quasar absorption spectra:\n  $\\dotμ/μ=(1 \\pm 3) \\times 10^{-16}$ yr$^{-1}$. A combination of this result and the atomic clock results gives the best limt on variation of $α$: $\\dotα/α=(-0.8 \\pm 0.8) \\times 10^{-16}$ yr$^{-1}$. The Oklo natural reactor gives the best limit on the variation of $m_s/Λ_{QCD}$ where $m_s$ is the strange quark mass.\n  Huge enhancement of the relative variation effects happens in transitions between close atomic, molecular and nuclear energy levels. We suggest several new cases where the levels are very narrow. Large enhancement of the variation effects is also possible in cold atomic and molecular collisions near Feshbach resonance. Massive bodies (stars or galaxies) can also affect physical constants. They have large scalar charge $S$ proportional to number of particles which produces a Coulomb-like scalar field $U=S/r$. This leads to a variation of the fundamental constants proportional to the gravitational potential, e.g. $δα/ α= k_αδ(GM/ r c^2)$. We compare different manifestations of this effect.The strongest limit\n  $k_α+0.17 k_e= (-3.5\\pm 6) \\times 10^{-7}$.",
+      "year": 2007,
+      "authors": [
+        "V. V. Flambaum"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/0705.3704v2",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/0705.3704"
+    },
+    {
+      "doi": "10.1142/S0217732315400349",
+      "arxiv_id": "1502.01411",
+      "pmid": null,
+      "title": "Fundamental constants and cosmic vacuum: the micro and macro connection",
+      "abstract": "The idea that the vacuum energy density $ρ_Λ$ could be time dependent is a most reasonable one in the expanding Universe; in fact, much more reasonable than just a rigid cosmological constant for the entire cosmic history. Being $ρ_Λ=ρ_Λ(t)$ dynamical, it offers a possibility to tackle the cosmological constant problem in its various facets. Furthermore, for a long time (most prominently since Dirac's first proposal on a time variable gravitational coupling) the possibility that the fundamental \"constants\" of Nature are slowly drifting with the cosmic expansion has been continuously investigated. In the last two decades, and specially in recent times, mounting experimental evidence attests that this could be the case. In this paper, we consider the possibility that these two groups of facts might be intimately connected, namely that the observed acceleration of the Universe and the possible time variation of the fundamental constants are two manifestations of the same underlying dynamics. We call it: the \"micro and macro connection\", and on its basis we expect that the cosmological term in Einstein's equations, Newton's coupling and the masses of all the particles in the Universe, both the dark matter particles and the ordinary baryons and leptons, should all drift with the cosmic expansion. Here we discuss specific cosmological models realizing such possibility in a way that preserves the principle of covariance of General Relativity.",
+      "year": 2015,
+      "authors": [
+        "Harald Fritzsch",
+        "Joan Sola"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1502.01411v2",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1502.01411"
+    },
+    {
+      "doi": "10.1134/S1063779622040025",
+      "arxiv_id": "2208.09391",
+      "pmid": null,
+      "title": "Studying the variation of fundamental constants at the Cosmic Ray Extremely Distributed Observatory",
+      "abstract": "The study of the variation of fundamental constants through time or in localized regions of space is one of the goals of the Cosmic Ray Extremely Distributed Observatory which consists of multiple detectors over the Earth. In this paper, the various effects which can be potentially identified through cosmic rays detections by CREDO are presented.",
+      "year": 2022,
+      "authors": [
+        "D. Alvarez-Castillo"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/2208.09391v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2208.09391"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "hep-th/0505137",
+      "pmid": null,
+      "title": "A geometrical meaning to the electron mass from breakdown of Lorentz invariance",
+      "abstract": "We discuss the problem of the electron mass in the framework of Deformed Special Relativity (DSR), a generalization of Special Relativity based on a deformed Minkowski space (i.e. a four-dimensional space-time with metric coefficients depending on the energy). We show that, by such a formalism, it is possible to derive the value of the electron mass from the space-time geometry via the experimental knowledge of the parameter of local Lorentz invariance breakdown, and of the Minkowskian threshold energy $E_{0,em}$ for the electromagnetic interaction. We put forward the suggestion that mass generation can be related, in DSR, to the possible dependence of mass on the metric background (relativity of mass).",
+      "year": 2005,
+      "authors": [
+        "Fabio Cardone",
+        "Alessio Marrani",
+        "Roberto Mignani"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/hep-th/0505137v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/hep-th/0505137"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "2111.04137",
+      "pmid": null,
+      "title": "Varying fundamental constants and dark energy in the ESPRESSO era",
+      "abstract": "The observational evidence for the recent acceleration of the universe shows that canonical theories of cosmology and particle physics are incomplete and that new physics is out there, waiting to be discovered. A compelling task for astrophysical facilities is to search for, identify and ultimately characterize this new physics. I present very recent developments in tests of the stability of nature's fundamental constants, as well as their impact on physics paradigms beyond the standard model. Specifically I discuss new observational constraints at low redshifts and at the BBN epoch, and highlight their different implications for canonical quintessence-type models and for non-canonical string-theory inspired models. Finally I also present new forecasts, based on realistic simulated data, of the gains in sensitivity for these constraints expected from ELT-HIRES, on its own and in combination with Euclid.",
+      "year": 2021,
+      "authors": [
+        "C. J. A. P. Martins"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/2111.04137v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2111.04137"
+    },
+    {
+      "doi": "10.1088/1748-0221/17/07/P07023",
+      "arxiv_id": "2201.08458",
+      "pmid": null,
+      "title": "Identification of hadronic tau lepton decays using a deep neural network",
+      "abstract": "A new algorithm is presented to discriminate reconstructed hadronic decays of tau leptons ($τ_\\mathrm{h}$) that originate from genuine tau leptons in the CMS detector against $τ_\\mathrm{h}$ candidates that originate from quark or gluon jets, electrons, or muons. The algorithm inputs information from all reconstructed particles in the vicinity of a $τ_\\mathrm{h}$ candidate and employs a deep neural network with convolutional layers to efficiently process the inputs. This algorithm leads to a significantly improved performance compared with the previously used one. For example, the efficiency for a genuine $τ_\\mathrm{h}$ to pass the discriminator against jets increases by 10-30% for a given efficiency for quark and gluon jets. Furthermore, a more efficient $τ_\\mathrm{h}$ reconstruction is introduced that incorporates additional hadronic decay modes. The superior performance of the new algorithm to discriminate against jets, electrons, and muons and the improved $τ_\\mathrm{h}$ reconstruction method are validated with LHC proton-proton collision data at $\\sqrt{s} =$ 13 TeV.",
+      "year": 2022,
+      "authors": [
+        "CMS Collaboration"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/2201.08458v3",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2201.08458"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "physics/0701289",
+      "pmid": null,
+      "title": "A fundamental scale of mass for black holes from the cosmological constant",
+      "abstract": "The existence of a positive cosmological constant leads naturally to two fundamental scales of length, being the De Sitter horizon and the radius of the cell associated with a holographic degree of freedom. Associated with each of those scales of length are a macroscopic gravitational mass and a microscopic quantum mechanical mass. Three of those four fundamental masses have been discussed in the literature, and this present work identifies the physical significance of the remaining mass, being the gravitational mass associated with the holographic length. That mass, which is of the order 10^{12}kg and inversely proportional to the sixth root of the cosmological constant, represents the mass of the black hole whose evaporation time is equal to the fundamental cosmic time, which is of the order the current age of the universe. It also represents the minimum mass of a black hole that is capable of accreting a particle whose Compton wavelength is equal to the fundamental holographic length, which is of the order the Compton wavelength of the nucleon.",
+      "year": 2007,
+      "authors": [
+        "Scott Funkhouser"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/physics/0701289v3",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/physics/0701289"
+    },
+    {
+      "doi": "10.1088/1748-0221/21/04/P04002",
+      "arxiv_id": "2602.11359",
+      "pmid": null,
+      "title": "High-level hadronic tau lepton triggers of the CMS experiment in proton-proton collisions at $\\sqrt{s}$ = 13.6 TeV",
+      "abstract": "The trigger system of the CMS detector is pivotal in the acquisition of data for physics measurements and searches. Studies of final states characterized by hadronic decays of tau leptons require the reconstruction and the identification of genuine tau leptons against quark- and gluon-initiated jets at the trigger level. This is a difficult task, particularly as improvements to the LHC have resulted in an increased number of interactions per bunch crossing in recent years. To address this challenge, a series of machine-learning algorithms with high identification efficiency and low computational cost have been incorporated into the high-level trigger for hadronically decaying tau leptons. In this paper, these developments and the trigger performance are summarized using data collected by the CMS experiment in proton-proton collisions at $\\sqrt{s}$ = 13.6 TeV in 2022$-$2023, corresponding to an integrated luminosity of 62 fb$^{-1}$.",
+      "year": 2026,
+      "authors": [
+        "CMS Collaboration"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/2602.11359v2",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2602.11359"
+    },
+    {
+      "doi": "10.1088/1748-0221/20/12/P12032",
+      "arxiv_id": "2511.05468",
+      "pmid": null,
+      "title": "Identification of tau leptons using a convolutional neural network with domain adaptation",
+      "abstract": "A tau lepton identification algorithm, DeepTau, based on convolutional neural network techniques, has been developed in the CMS experiment to discriminate reconstructed hadronic decays of tau leptons ($τ_\\mathrm{h}$) from quark or gluon jets and electrons and muons that are misreconstructed as $τ_\\mathrm{h}$ candidates. The latest version of this algorithm, v2.5, includes domain adaptation by backpropagation, a technique that reduces discrepancies between collision data and simulation in the region with the highest purity of genuine $τ_\\mathrm{h}$ candidates. Additionally, a refined training workflow improves classification performance with respect to the previous version of the algorithm, with a reduction of 30$-$50% in the probability for quark and gluon jets to be misidentified as $τ_\\mathrm{h}$ candidates for given reconstruction and identification efficiencies. This paper presents the novel improvements introduced in the DeepTau algorithm and evaluates its performance in LHC proton-proton collision data at $\\sqrt{s}$ = 13 and 13.6 TeV collected in 2018 and 2022 with integrated luminosities of 60 and 35 fb$^{-1}$, respectively. Techniques to calibrate the performance of the $τ_\\mathrm{h}$ identification algorithm in simulation with respect to its measured performance in real data are presented, together with a subset of results among those measured for use in CMS physics analyses.",
+      "year": 2025,
+      "authors": [
+        "CMS Collaboration"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/2511.05468v2",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2511.05468"
+    }
+  ]
+}

@@ -1,0 +1,523 @@
+{
+  "timestamp": "20260623_210809",
+  "count": 29,
+  "papers": [
+    {
+      "doi": "10.1088/1361-6633/aaae14",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "From hadrons to quarks in neutron stars: a review",
+      "abstract": "In recent years our understanding of neutron stars has advanced remarkably, thanks to research converging from many directions. The importance of understanding neutron star behavior and structure has been underlined by the recent direct detection of gravitational radiation from merging neutron stars. The clean identification of several heavy neutron stars, of order two solar masses, challenges our current understanding of how dense matter can be sufficiently stiff to support such a mass against gravitational collapse. Programs underway to determine simultaneously the mass and radius of neutron stars will continue to constrain and inform theories of neutron star interiors. At the same time, an emerging understanding in quantum chromodynamics (QCD) of how nuclear matter can evolve into deconfined quark matter at high baryon densities is leading to advances in understanding the equation of state of the matter under the extreme conditions in neutron star interiors. We review here the equation of state of matter in neutron stars from the solid crust through the liquid nuclear matter interior to the quark regime at higher densities. We focus in detail on the question of how quark matter appears in neutron stars, and how it affects the equation of state. After discussing the crust and liquid nuclear matter in the core we briefly review aspects of microscopic quark physics relevant to neutron stars, and quark models of dense matter based on the Nambu-Jona-Lasinio framework, in which gluonic processes are replaced by effective quark interactions. We turn then to describing equations of state useful for interpretation of both electromagnetic and gravitational observations, reviewing the emerging picture of hadron-quark continuity in which hadronic matter turns relatively smoothly, with at most only a weak first order transition, into quark matter with increasing density. We review construction of unified equations of state that interpolate between the reasonably well understood nuclear matter regime at low densities and the quark matter regime at higher densities. The utility of such interpolations is driven by the present inability to calculate the dense matter equation of state in QCD from first principles. As we review, the parameters of effective quark models-which have direct relevance to the more general structure of the QCD phase diagram of dense and hot matter-are constrained by neutron star mass and radii measurements, in particular favoring large repulsive density-density and attractive diquark pairing interactions. We describe the structure of neutron stars constructed from the unified equations of states with crossover. Lastly we present the current equations of state-called 'QHC18' for quark-hadron crossover-in a parametrized form practical for neutron star modeling.",
+      "year": 2018,
+      "authors": [
+        "Gordon Baym",
+        "Tetsuo Hatsuda",
+        "Toru Kojo",
+        "Philip D. Powell",
+        "Yifan Song"
+      ],
+      "citations": 745,
+      "oa_pdf_url": "https://arxiv.org/pdf/1707.04966",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Reports on Progress in Physics",
+      "url": "https://doi.org/10.1088/1361-6633/aaae14"
+    },
+    {
+      "doi": "10.1103/physrevd.109.105019",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Quantum duality in electromagnetism and the fine structure constant",
+      "abstract": "We describe the interplay between electric-magnetic duality and higher symmetry in Maxwell theory. When the fine structure constant is rational, the theory admits noninvertible symmetries which can be realized as composites of electric-magnetic duality and gauging a discrete subgroup of the one-form global symmetry. These noninvertible symmetries are approximate quantum invariances of the natural world which emerge in the infrared below the mass scale of charged particles. We construct these symmetries explicitly as topological defects and illustrate their action on local and extended operators. We also describe their action on boundary conditions and illustrate some consequences of the symmetry for Hilbert spaces of the theory defined in finite volume. Published by the American Physical Society 2024",
+      "year": 2024,
+      "authors": [
+        "Clay Córdova",
+        "Kantaro Ohmori"
+      ],
+      "citations": 28,
+      "oa_pdf_url": "http://link.aps.org/pdf/10.1103/PhysRevD.109.105019",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Physical review. D/Physical review. D.",
+      "url": "https://doi.org/10.1103/physrevd.109.105019"
+    },
+    {
+      "doi": "10.1007/jhep11(2018)173",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Spontaneous breaking of SO(3) to finite family symmetries with supersymmetry — an A4 model",
+      "abstract": "A bstract We discuss the breaking of SO(3) down to finite family symmetries such as A 4 , S 4 and A 5 using supersymmetric potentials for the first time. We analyse in detail the case of supersymmetric A 4 and its finite subgroups Z 3 and Z 2 . We then propose a supersymmetric A 4 model of leptons along these lines, originating from SO(3) × U(1), which leads to a phenomenologically acceptable pattern of lepton mixing and masses once subleading corrections are taken into account. We also discuss the phenomenological consequences of having a gauged SO(3), leading to massive gauge bosons, and show that all domain wall problems are resolved in this model.",
+      "year": 2018,
+      "authors": [
+        "Stephen F. King",
+        "Ye-Ling Zhou"
+      ],
+      "citations": 26,
+      "oa_pdf_url": "https://link.springer.com/content/pdf/10.1007/JHEP11(2018)173.pdf",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Journal of High Energy Physics",
+      "url": "https://doi.org/10.1007/jhep11(2018)173"
+    },
+    {
+      "doi": "10.1103/physrevd.97.075019",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Flavor physics without flavor symmetries",
+      "abstract": "We quantitatively analyze a quark-lepton flavor model derived from a six-dimensional supersymmetric theory with $SO(10)\\ifmmode\\times\\else\\texttimes\\fi{}U(1)$ gauge symmetry, compactified on an orbifold with magnetic flux. Two bulk $\\mathbf{16}$-plets charged under the $U(1)$ provide the three quark-lepton generations whereas two uncharged $\\mathbf{10}$-plets yield two Higgs doublets. At the orbifold fixed points mass matrices are generated with rank one or two. Moreover, the zero modes mix with heavy vectorlike split multiplets. The model possesses no flavor symmetries. Nevertheless, there exist a number of relations between Yukawa couplings, remnants of the underlying grand unified theory symmetry and the wave function profiles of the zero modes, which lead to a prediction of the light neutrino mass scale, ${m}_{{\\ensuremath{\\nu}}_{1}}\\ensuremath{\\sim}{10}^{\\ensuremath{-}3}\\text{ }\\text{ }\\mathrm{eV}$ and heavy Majorana neutrino masses in the range from $1{0}^{12}$ to $1{0}^{14}\\text{ }\\text{ }\\mathrm{GeV}$. The model successfully includes thermal leptogenesis.",
+      "year": 2018,
+      "authors": [
+        "W. Buchmüller",
+        "Ketan M. Patel"
+      ],
+      "citations": 24,
+      "oa_pdf_url": "http://link.aps.org/pdf/10.1103/PhysRevD.97.075019",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Physical review. D/Physical review. D.",
+      "url": "https://doi.org/10.1103/physrevd.97.075019"
+    },
+    {
+      "doi": "10.1103/physrevd.108.035022",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Cabibbo angle anomalies and oblique corrections: The remarkable role of the vectorlike quark doublet",
+      "abstract": "The combination of precise determinations of ${V}_{us}$ and ${V}_{ud}$ hints toward a violation of the Cabibbo-Kobayashi-Maskawa matrix first row unitarity at about $3\\ensuremath{\\sigma}$ level. Conversely, the recent measurement of the $W$-boson mass by the CDF Collaboration exhibits significant tension with the Standard Model prediction, intensifying the conflict that may arise in models addressing the unitarity violation. We demonstrate that one vectorlike $SU(2{)}_{L}$ doublet with mass of a few TeV mixing with light quarks and the top quark can simultaneously account for the two anomalies, without conflicting with flavor-changing phenomena and electroweak observables. Moreover, another tension in the value of the Cabibbo angle is also reported at the $3\\ensuremath{\\sigma}$ level, between two determinations of ${V}_{us}$ obtained from semileptonic $K\\ensuremath{\\ell}3$ and leptonic $K\\ensuremath{\\mu}2$ kaon decays. We show that the vectorlike doublet can be at the origin of this discrepancy and the substantial positive shift in the $W$-boson mass. This unique feature of the vectorlike quark doublet may render it a crucial puzzle piece in new physics scenarios addressing the Cabibbo-Kobayashi-Maskawa matrix unitarity problem. The model can be potentially probed in future colliders.",
+      "year": 2023,
+      "authors": [
+        "Benedetta Belfatto",
+        "Sokratis Trifinopoulos"
+      ],
+      "citations": 19,
+      "oa_pdf_url": "http://link.aps.org/pdf/10.1103/PhysRevD.108.035022",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Physical review. D/Physical review. D.",
+      "url": "https://doi.org/10.1103/physrevd.108.035022"
+    },
+    {
+      "doi": "10.1007/jhep04(2022)089",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "The supersymmetry breaking soft terms, and fermion masses and mixings in the supersymmetric Pati-Salam model from intersecting D6-branes",
+      "abstract": "A bstract A supersymmetric Pati-Salam model with wrapping number equal to 5 has been constructed in Type IIA orientifolds on T 6 / ( ℤ 2 × ℤ 2 ) with intersecting D6-branes recently. In particular, the string-scale gauge coupling unification can be achieved due to the intermediate-scale vector-like particles from $$ \\mathcal{N} $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mi>N</mml:mi> </mml:math> = 2 sector. We calculate the supersymmetry breaking soft terms, and study the Standard Model (SM) fermion masses and mixings. There are nine pairs of Higgs doublets from $$ \\mathcal{N} $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mi>N</mml:mi> </mml:math> = 2 sector. Interestingly, we can explain the SM quark masses and mixings, as well as the charged leptons masses from three point and four-point Yukawa interactions. Moreover, we calculate the supersymmetry breaking soft terms in a previous model with gauge coupling unification since we find a typo in the previous study.",
+      "year": 2022,
+      "authors": [
+        "Mudassar Sabir",
+        "Tianjun Li",
+        "Adeel Mansha",
+        "Xiao‐Chuan Wang"
+      ],
+      "citations": 14,
+      "oa_pdf_url": "https://link.springer.com/content/pdf/10.1007/JHEP04(2022)089.pdf",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Journal of High Energy Physics",
+      "url": "https://doi.org/10.1007/jhep04(2022)089"
+    },
+    {
+      "doi": "10.1103/physrevd.103.015021",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Neutrino masses and mixing in models with large extra dimensions and localized fermions",
+      "abstract": "Using a low-energy effective field theory approach, we study some properties of models with large extra dimensions, in which quarks and leptons have localized wave functions in the extra dimensions. We consider models with two types of gauge groups: (i) the Standard-Model gauge group, and (ii) the left-right symmetric gauge group. Our main focus is on the lepton sector of models with $n=2$ extra dimensions, in particular, neutrino masses and mixing. We analyze the requisite conditions that the models must satisfy to be in accord with data and present a solution for lepton wave functions in the extra dimensions that fulfils these conditions. As part of our work, we also present a new solution for quark wave function centers. Issues with flavor-changing neutral-current effects are assessed. Finally, we remark on baryogenesis and dark matter in these models.",
+      "year": 2021,
+      "authors": [
+        "Sudhakantha Girmohanta",
+        "Rabindra N. Mohapatra",
+        "Robert Shrock"
+      ],
+      "citations": 14,
+      "oa_pdf_url": "http://link.aps.org/pdf/10.1103/PhysRevD.103.015021",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Physical review. D/Physical review. D.",
+      "url": "https://doi.org/10.1103/physrevd.103.015021"
+    },
+    {
+      "doi": "10.3390/physics4030063",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Why Do Elementary Particles Have Such Strange Mass Ratios?—The Importance of Quantum Gravity at Low Energies",
+      "abstract": "When gravity is quantum, the point structure of space-time should be replaced by a non-commutative geometry. This is true even for quantum gravity in the infra-red. Using the octonions as space-time coordinates, we construct pre-spacetime, pre-quantum Lagrangian dynamics. We show that the symmetries of this non-commutative space unify the standard model of particle physics with SU(2)R chiral gravity. The algebra of the octonionic space yields spinor states which can be identified with three generations of quarks and leptons. The geometry of the space implies quantisation of electric charge, and leads to a theoretical derivation of the mysterious mass ratios of quarks and the charged leptons. Quantum gravity is quantisation not only of the gravitational field, but also of the point structure of space-time.",
+      "year": 2022,
+      "authors": [
+        "Tejinder P. Singh"
+      ],
+      "citations": 14,
+      "oa_pdf_url": "https://www.mdpi.com/2624-8174/4/3/63/pdf?version=1662693171",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Physics",
+      "url": "https://doi.org/10.3390/physics4030063"
+    },
+    {
+      "doi": "10.1103/physrevd.108.095011",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Resolving <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mi>W</mml:mi></mml:math> boson mass shift and CKM unitarity violation in left-right symmetric models with a universal seesaw mechanism",
+      "abstract": "We explore the possibility of resolving simultaneously the $W$-boson mass shift reported by the CDF Collaboration and the apparent deviation from unitarity in the first row of the CKM mixing matrix in a class of left-right symmetric models. The fermion masses are generated in these models through a universal seesaw mechanism, utilizing vectorlike partners of the usual fermions. We find a unique solution to the two anomalies where the mixing of the down quark with a vectorlike quark (VLQ) resolves the CKM unitarity puzzle, and the mixing of the top quark with a VLQ partner explains the $W$ boson mass shift. The validity of this setup is tested against the stability of the Higgs potential up to higher energies. We find upper bounds of (4, 4) TeV on the masses of the top-partner VLQ, and a neutral scalar associated with $SU(2{)}_{R}$ gauge symmetry breaking, respectively. This class of models can solve the strong $CP$ problem via parity symmetry without the need for an axion.",
+      "year": 2023,
+      "authors": [
+        "Ritu Dcruz",
+        "K. S. Babu"
+      ],
+      "citations": 12,
+      "oa_pdf_url": "http://link.aps.org/pdf/10.1103/PhysRevD.108.095011",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Physical review. D/Physical review. D.",
+      "url": "https://doi.org/10.1103/physrevd.108.095011"
+    },
+    {
+      "doi": "10.1140/epjc/s10052-021-09423-y",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "QCD phase transition and equation of state of stellar strong interaction matter via Dyson–Schwinger equation approach",
+      "abstract": "Abstract We study the phase structure and phase transition of cold dense QCD matter via the Dyson–Schwinger equation approach. We take the rainbow approximation and the Gaussian-type gluon model. In order to guarantee that the quark number density begins to appear at the nuclear liquid-gas phase transition chemical potential, we propose a chemical potential dependent modification factor for the gluon model. We find that for the iso-symmetric quark matter, the modification reduces the chemical potential of the phase coexistence region of the first-order phase transition. We also implement the relativistic mean field theory to describe the hadron matter, and make use of the Maxwell and Gibbs construction method to study the phase transition of $$\\beta $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mi>β</mml:mi> </mml:math> -equilibrium and charge neutral matter in compact stars. The results show that the phase transition will not happen in case of the Gaussian-type gluon model without any modification. The results also indicate that the upper boundary of the coexistence region should be larger than the current Nambu solution existing region. We also calculate the mass-radius relation of the compact stars, and find that the hadron-quark phase transition happens at too high chemical potential so that the maximum mass of the compact star is hardly affected by the hadron-quark phase transition.",
+      "year": 2021,
+      "authors": [
+        "Zhan Bai",
+        "Yu‐xin Liu"
+      ],
+      "citations": 7,
+      "oa_pdf_url": "https://link.springer.com/content/pdf/10.1140/epjc/s10052-021-09423-y.pdf",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "The European Physical Journal C",
+      "url": "https://doi.org/10.1140/epjc/s10052-021-09423-y"
+    },
+    {
+      "doi": "10.1007/jhep10(2024)252",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Fermion masses and mixings in the supersymmetric Pati-Salam landscape from Intersecting D6-Branes",
+      "abstract": "A bstract Recently, the complete landscape of three-family supersymmetric Pati-Salam models from intersecting D6-branes on a type IIA $$ {\\mathbbm{T}}^6/\\left({\\mathbb{Z}}_2\\times {\\mathbb{Z}}_2\\right) $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:msup> <mml:mi>T</mml:mi> <mml:mn>6</mml:mn> </mml:msup> <mml:mo>/</mml:mo> <mml:mfenced> <mml:mrow> <mml:msub> <mml:mi>ℤ</mml:mi> <mml:mn>2</mml:mn> </mml:msub> <mml:mo>×</mml:mo> <mml:msub> <mml:mi>ℤ</mml:mi> <mml:mn>2</mml:mn> </mml:msub> </mml:mrow> </mml:mfenced> </mml:math> orientifold has been enumerated consisting of 33 independent models with distinct gauge coupling relations at the string scale. Here, we study the phenomenology of all such models by providing the detailed particle spectra and the analysis of the possible 3-point and the 4-point Yukawa interactions in order to accommodate all standard-model fermion masses and mixings. We find that only 17 models contain viable Yukawa textures to explain quarks masses, charged-leptons’ masses, neutrino-masses, quarks’ mixings and leptons’ mixings. These viable models split into four classes, viz. a single model with 3 Higgs fields from the bulk and sixteen models with either 6, 9 or 12 Higgs from the $$ \\mathcal{N} $$ <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"> <mml:mi>N</mml:mi> </mml:math> = 2 sector. The models perform successively better with the increasing number of Higgs pairs. Remarkably, the class of models with 12 Higgs naturally predicts the Dirac-type neutrino masses in normal ordering consistent with both the experimental constraints as well as the bounds from the swampland program.",
+      "year": 2024,
+      "authors": [
+        "Mudassar Sabir",
+        "Adeel Mansha",
+        "Tianjun Li",
+        "Zhi-Wei Wang"
+      ],
+      "citations": 6,
+      "oa_pdf_url": "https://link.springer.com/content/pdf/10.1007/JHEP10(2024)252.pdf",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Journal of High Energy Physics",
+      "url": "https://doi.org/10.1007/jhep10(2024)252"
+    },
+    {
+      "doi": "10.22606/tp.2018.31001",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "On the Structural Content of Fundamental Properties of Matter and Universal Constants of Physics",
+      "abstract": "This work presents the equations of motion on the basis of which the clear definition of the concept of mass is obtained and the classification of various variants of mass is revealed. Not only the fundamental equations of mechanics but the equations of electrodynamics and thermodynamics have been obtained with the use of the suggested equations of motion. It is shown that the universal constants of physics are the combinations of special dimensional coefficients introduced to impart the dimensional content to physical parameters, the numerical values of mentioned parameters are practically coinciding with the Planck units of length, time, mass and temperature.",
+      "year": 2018,
+      "authors": [
+        "Khachatur Kirakosyan"
+      ],
+      "citations": 4,
+      "oa_pdf_url": "https://doi.org/10.22606/tp.2018.31001",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Theoretical Physics",
+      "url": "https://doi.org/10.22606/tp.2018.31001"
+    },
+    {
+      "doi": "10.1142/s0219887823500950",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Testing a conjecture on quantum chromodynamics",
+      "abstract": "A Planck-scale model that includes quantum chromodynamics and goes beyond it, is tested against observations. The model is based on a single fundamental principle. Starting with Dirac’s proposal describing spin [Formula: see text] particles as tethered objects, quarks and elementary fermions are conjectured to be fluctuating rational tangles with unobservable tethers. Such tangles obey the free Dirac equation. Classifying rational tangles naturally yields the observed spectrum of elementary fermions, including the six quark types and their quantum numbers. Classifying tangle deformations naturally yields exactly three types of gauge interactions, three types of elementary gauge bosons, and the symmetry groups U(1), broken SU(2) and SU(3). The possible rational tangles for quarks, leptons, Higgs and gauge bosons allow only the observed Feynman diagrams. The complete Lagrangian of the standard model — without any modification and including the Lagrangian of quantum chromodynamics — arises in a natural manner. Over 90 experimental consequences and tests about quark and gluon behavior are deduced from the single fundamental principle. No consequence is in contrast with observations. The consequences of the strand conjecture include the complete quark model for hadrons, the correct sign of hadron quadrupole moments, color flux tubes, confinement, Regge behavior, running quark masses, correctly predicted hadron mass sequences, the lack of CP violation for the strong interaction, asymptotic freedom, and the appearance of glueballs. Two consequences differ from quantum chromodynamics. First, the geometry of the strand process for the strong interaction leads to an ab-initio estimate for the running strong coupling constant. Second, the tangle shapes lead to ab-initio lower and upper limits for the mass values of the quarks.",
+      "year": 2022,
+      "authors": [
+        "Christoph Schiller"
+      ],
+      "citations": 4,
+      "oa_pdf_url": "https://arxiv.org/pdf/2302.10754",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "International Journal of Geometric Methods in Modern Physics",
+      "url": "https://doi.org/10.1142/s0219887823500950"
+    },
+    {
+      "doi": "10.4236/jmp.2018.95057",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Semi-Harmonic Scaling Enables Calculation of Masses of Elementary Particles of the Standard Model",
+      "abstract": "The underlying rules for a natural system describing cellular automata are simple, but produce highly complex behavior. A mathematical basis for the spectra of discrete coherent and non-coherent electromagnetic (EM) frequencies was derived, in which the algorithm exhibits an information distribution according to ratios of 2:3 in 1:2 at a semi-harmonic manner. This generalized music (GM) model shows that energy both in elementary particles and animate systems is semi-harmonic, quantized and discrete. A support for an ontological basis of the Standard Model was found, and indicates that the GM-model underlies the quantum field theory of subatomic particles. The present theory combines quantum mechanics and classical periodic systems, obeys to locality and solves the “hidden variable theory of Bohm”. The discovered pattern of electromagnetic field eigenvalues, within a broad range of discrete frequencies, points at a de Broglie/Bohm type of causal interpretation of quantum mechanics, implying an integral resonant pilot-wave/particle modality. The model has been substantiated by a meta-analysis of measured discrete energies of: 37 different Elementary Particles, 45 different EPR-measurements, zero-point energies of elements and about 450 electromagnetic wave frequencies of cells with a mean accuracy of 0.58%. It has been shown that the GM-scale is frequency-locked with zero-point oscillations, and thereby evidently implies involvement of entanglement.",
+      "year": 2018,
+      "authors": [
+        "Hans J. H. Geesink",
+        "Dirk K. F. Meijer"
+      ],
+      "citations": 4,
+      "oa_pdf_url": "http://www.scirp.org/journal/PaperDownload.aspx?paperID=83685",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Journal of Modern Physics",
+      "url": "https://doi.org/10.4236/jmp.2018.95057"
+    },
+    {
+      "doi": "10.21203/rs.3.rs-8568307/v1",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "A Geometric Origin for Spin, Entanglement, and Gravity from 10-Dimensional Topology",
+      "abstract": "",
+      "year": 2026,
+      "authors": [
+        "Amin Al Yaquob"
+      ],
+      "citations": 3,
+      "oa_pdf_url": "https://www.researchsquare.com/article/rs-8568307/latest.pdf",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Research Square",
+      "url": "https://doi.org/10.21203/rs.3.rs-8568307/v1"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "hep-ph/0506247",
+      "pmid": null,
+      "title": "Challenge to the Mystery of the Charged Lepton Mass Formula",
+      "abstract": "Why the charged lepton mass formula m_e +m_μ+m_τ= {2/3} (\\sqrt{m_e}+\\sqrt{m_μ} +\\sqrt{m_τ})^2 is mysterious is reviewed, and guiding principles to solve the mystery are presented. According to the principles, an example of such a mass generation mechanism is proposed, where the origin of the mass spectrum is attributed not to the structure of the Yukawa coupling constants, but to a structure of vacuum expectation values of flavor-triplet scalars under Z_4 \\times S_3 symmetries.",
+      "year": 2005,
+      "authors": [
+        "Yoshio Koide"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/hep-ph/0506247v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/hep-ph/0506247"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "1201.2067",
+      "pmid": null,
+      "title": "The Koide Lepton Mass Formula and Geometry of Circles",
+      "abstract": "A remarkable formal similarity between Koide's Lepton mass formula and a generalized Descartes circle formula is reported.",
+      "year": 2012,
+      "authors": [
+        "Jerzy Kocik"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1201.2067v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1201.2067"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "hep-ph/9402242",
+      "pmid": null,
+      "title": "A note on Koide's lepton mass relation",
+      "abstract": "Koide has pointed out that the mass relation $m_e + m_μ + m_τ = {2 \\over 3}(\\sqrt{m_e} + \\sqrt{m_μ} + \\sqrt{m_τ})^2 $ is consistent with the most recent measurements of the tau lepton mass. We point out that this relation has a geometric interpretation.",
+      "year": 1994,
+      "authors": [
+        "R. Foot"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/hep-ph/9402242v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/hep-ph/9402242"
+    },
+    {
+      "doi": "10.1016/j.physletb.2007.04.020",
+      "arxiv_id": "hep-ph/0612022",
+      "pmid": null,
+      "title": "Lepton Family Symmetry and Possible Application to the Koide Mass Formula",
+      "abstract": "A finite group generated by four Z_3 transformations is applied to lepton families in a supersymmetric model, resulting in the charged-lepton masses m_i being proportional to v_i^2, where v_i are three vacuum expectation values. This may be relevant in obtaining the Koide formula m_e + m_mu + m_tau = (2/3)(sqrt{m_e} + sqrt{m_mu} + sqrt(m_tau})^2.",
+      "year": 2006,
+      "authors": [
+        "Ernest Ma"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/hep-ph/0612022v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/hep-ph/0612022"
+    },
+    {
+      "doi": "10.1088/1126-6708/2009/05/075",
+      "arxiv_id": "0812.2103",
+      "pmid": null,
+      "title": "Family Gauge Symmetry as an Origin of Koide's Mass Formula and Charged Lepton Spectrum",
+      "abstract": "Koide's mass formula is an empirical relation among the charged lepton masses which holds with a striking precision. We present a model of charged lepton sector within an effective field theory with U(3) \\times SU(2) family gauge symmetry, which predicts Koide's formula within the present experimental accuracy. Radiative corrections as well as other corrections to Koide's mass formula have been taken into account. We adopt a known mechanism, through which the charged lepton spectrum is determined by the vacuum expectation value of a 9-component scalar field Φ. On the basis of this mechanism, we implement the following mechanisms into our model: (1) The radiative correction induced by family gauge interaction cancels the QED radiative correction to Koide's mass formula, assuming a scenario in which the U(3) family gauge symmetry and SU(2)_L weak gauge symmetry are unified at 10^2-10^3 TeV scale; (2) A simple potential of Φinvariant under U(3) \\times SU(2) leads to a realistic charged lepton spectrum, consistent with the experimental values, assuming that Koide's formula is protected; (3) Koide's formula is stabilized by embedding U(3) \\times SU(2) symmetry in a larger symmetry group. Formally fine tuning of parameters in the model is circumvented (apart from two exceptions) by appropriately connecting the charged lepton spectrum to the boundary (initial) conditions of the model at the cut-off scale.",
+      "year": 2008,
+      "authors": [
+        "Y. Sumino"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/0812.2103v2",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/0812.2103"
+    },
+    {
+      "doi": "10.1016/j.physletb.2017.12.004",
+      "arxiv_id": "1711.03221",
+      "pmid": null,
+      "title": "Another Formula for the Charged Lepton Masses",
+      "abstract": "A charged lepton mass formula $(m_e +m_μ+ m_τ)/(\\sqrt{m_e}+\\sqrt{m_μ} + \\sqrt{m_τ})^2 =2/3$ is well-known. Since we can, in general, have two relations for three quantities, we may also expect another relation for the charged lepton masses. Then, the relation will be expressed by a form of $\\sqrt{m_e m_μm_τ}/(\\sqrt{m_e}+\\sqrt{m_μ} + \\sqrt{m_τ})^3$. According to this conjecture, a scalar potential model is speculated.",
+      "year": 2017,
+      "authors": [
+        "Yoshio Koide"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1711.03221v2",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1711.03221"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "1001.2075",
+      "pmid": null,
+      "title": "Yukawaon model and unified description of quark and lepton mass matrices",
+      "abstract": "In the so-called yukawaon model, where effective Yukawa coupling constants Y_f^{eff} (f=e,ν,u,d) are given by vacuum expectation values of gauge singlet scalars (yukawaons) Y_f with 3\\times 3 flavor components, it is tried to give a unified description of quark and lepton mass matrices. Especially, without assuming any discrete symmetry in the lepton sector, nearly tribimaximal mixing is derived by assumed a simple up-quark mass matrix form.",
+      "year": 2010,
+      "authors": [
+        "Yoshio Koide"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1001.2075v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1001.2075"
+    },
+    {
+      "doi": "10.1016/j.physletb.2006.02.051",
+      "arxiv_id": "hep-ph/0602134",
+      "pmid": null,
+      "title": "On the Koide-like Relations for the Running Masses of Charged Leptons, Neutrinos and Quarks",
+      "abstract": "Current experimental data indicate that the Koide relation for the pole masses of charged leptons, which can be parametrized as $Q^{pole}_l = 2/3$, is valid up to the accuracy of $O(10^{-5})$. We show that the running masses of charged leptons fail in satisfying the Koide relation (i.e., $Q_l(μ) \\neq 2/3$), but the discrepancy between $Q_l (μ)$ and $Q^{pole}_l$ is only about 0.2% at $μ=M_Z$. The Koide-like relations for the running masses of neutrinos ($1/3 < Q_ν(M_Z) < 0.6$), up-type quarks ($Q_{U}(M_Z) \\sim 0.89$) and down-type quarks ($Q_{D}(M_Z) \\sim 0.74$) are also examined from $M_Z$ up to the typical seesaw scale $M_R \\sim 10^{14}$ GeV, and they are found to be nearly stable against radiative corrections. The approximate stability of $Q_{U}(μ)$ and $Q_{D}(μ)$ is mainly attributed to the strong mass hierarchy of quarks, while that of $Q_l(μ)$ and $Q_ν(μ)$ is essentially for the reason that the lepton mass ratios are rather insensitive to radiative corrections.",
+      "year": 2006,
+      "authors": [
+        "Zhi-zhong Xing",
+        "He Zhang"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/hep-ph/0602134v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/hep-ph/0602134"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "1809.00425",
+      "pmid": null,
+      "title": "What Physics Does The Charged Lepton Mass Relation Tell Us?",
+      "abstract": "The charged lepton mass relation $K \\equiv (m_e +m_μ+m_τ)/(\\sqrt{m_e} %+\\sqrt{m_μ} +\\sqrt{m_τ})^2= 2/3 $\n  is excellently satisfied by observed masses (pole masses). However, the formula $K=2/3$ should be never satisfied with the observed charged lepton masses. We will review a mechanism by proposed by Sumino and recent related topics.",
+      "year": 2018,
+      "authors": [
+        "Yoshio Koide"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1809.00425v3",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1809.00425"
+    },
+    {
+      "doi": "10.1103/PhysRevD.73.013009",
+      "arxiv_id": "hep-ph/0601031",
+      "pmid": null,
+      "title": "Energy scale independence of Koide's relation for quark and lepton masses",
+      "abstract": "Koide's mass relation of charged leptons has been extended to quarks and neutrinos, and we prove here that this relation is independent of energy scale in a huge energy range from $1 {GeV}$ to $2\\times10^{16} {GeV}$. By using the parameters $k_u$, $k_d$ and $k_ν$ to describe the deviations of quarks and neutrinos from the exact Koide's relation, we also check the quark-lepton complementarity of masses such as $k_{l}+k_{d} \\approx k_ν+k_{u} \\approx 2$, and show that it is also independent (or insensitive) of energy scale.",
+      "year": 2006,
+      "authors": [
+        "Nan Li",
+        "Bo-Qiang Ma"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/hep-ph/0601031v2",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/hep-ph/0601031"
+    },
+    {
+      "doi": "10.1016/j.physletb.2008.12.060",
+      "arxiv_id": "0812.2090",
+      "pmid": null,
+      "title": "Family Gauge Symmetry and Koide's Mass Formula",
+      "abstract": "Koide's mass formula is an empirical relation among the charged lepton masses which holds with a striking precision. We propose a mechanism for cancelling the QED correction to Koide's formula. This is discussed in an effective theory with U(3) family gauge symmetry and a scenario in which this symmetry is unified with SU(2)_L symmetry at 10^2-10^3 TeV scale.",
+      "year": 2008,
+      "authors": [
+        "Y. Sumino"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/0812.2090v2",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/0812.2090"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "hep-ph/0505220",
+      "pmid": null,
+      "title": "The strange formula of Dr. Koide",
+      "abstract": "We present a short historical and bibliographical review of the lepton mass formula of Yoshio Koide, as well as some speculations on its extensions to quark and neutrino masses, and its possible relations to more recent theoretical developments.",
+      "year": 2005,
+      "authors": [
+        "Alejandro Rivero",
+        "Andre Gsponer"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/hep-ph/0505220v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/hep-ph/0505220"
+    },
+    {
+      "doi": "10.1103/PhysRevD.79.033009",
+      "arxiv_id": "0811.3470",
+      "pmid": null,
+      "title": "Charged Lepton Mass Relations in a Supersymmetric Yukawaon Model",
+      "abstract": "According to an idea that effective Yukawa coupling constants Y_f^{eff} are given vacuum expectation values < Y_f> of fields (\"Yukawaons\") Y_f as Y_f^{eff}=y_f < Y_f>/Λ, a possible superpotential form in the charged lepton sector under a U(3) [or O(3)] flavor symmetry is investigated. It is found that a specific form of the superpotential can lead to an empirical charged lepton mass relation without any adjustable parameters.",
+      "year": 2008,
+      "authors": [
+        "Yoshio Koide"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/0811.3470v2",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/0811.3470"
+    },
+    {
+      "doi": "10.1103/PhysRevLett.103.052301",
+      "arxiv_id": "0901.3707",
+      "pmid": null,
+      "title": "Shear viscosity coefficient and relaxation time of causal dissipative hydrodynamics in QCD",
+      "abstract": "The shear viscosity coefficient and the corresponding relaxation time for causal dissipative hydrodynamics are calculated based on the microscopic formula proposed in [T. Koide and T. Kodama, Phys. Rev. \\textbf{E 78}, 051107 (2008)]. Here, the exact formula is transformed into a more compact form and applied it to evaluate these transport coefficients in the chiral perturbation theory and perturbative QCD. It is shown that in the leading order calculation, the causal shear viscosity coefficient $η$ reduces to that of the ordinary Green-Kubo-Nakano formula, and the relaxation time $τ_π$ is related to $η$ and pressure $P$ by a simple relationship, $τ_π=η/P$.",
+      "year": 2009,
+      "authors": [
+        "T. Koide",
+        "E. Nakano",
+        "T. Kodama"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/0901.3707v2",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/0901.3707"
+    }
+  ]
+}

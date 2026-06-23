@@ -1,0 +1,669 @@
+{
+  "timestamp": "20260623_210611",
+  "count": 37,
+  "papers": [
+    {
+      "doi": "10.1140/epjqt/s40507-022-00130-5",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Measuring the stability of fundamental constants with a network of clocks",
+      "abstract": "Abstract The detection of variations of fundamental constants of the Standard Model would provide us with compelling evidence of new physics, and could lift the veil on the nature of dark matter and dark energy. In this work, we discuss how a network of atomic and molecular clocks can be used to look for such variations with unprecedented sensitivity over a wide range of time scales. This is precisely the goal of the recently launched QSNET project: A network of clocks for measuring the stability of fundamental constants. QSNET will include state-of-the-art atomic clocks, but will also develop next-generation molecular and highly charged ion clocks with enhanced sensitivity to variations of fundamental constants. We describe the technological and scientific aims of QSNET and evaluate its expected performance. We show that in the range of parameters probed by QSNET, either we will discover new physics, or we will impose new constraints on violations of fundamental symmetries and a range of theories beyond the Standard Model, including dark matter and dark energy models.",
+      "year": 2022,
+      "authors": [
+        "Giovanni Barontini",
+        "Laura Blackburn",
+        "Vincent Boyer",
+        "Filip Butuc-Mayer",
+        "Xavier Calmet"
+      ],
+      "citations": 58,
+      "oa_pdf_url": "https://epjquantumtechnology.springeropen.com/track/pdf/10.1140/epjqt/s40507-022-00130-5",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "EPJ Quantum Technology",
+      "url": "https://doi.org/10.1140/epjqt/s40507-022-00130-5"
+    },
+    {
+      "doi": "10.1140/epjc/s10052-023-11928-7",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Naturalness: past, present, and future",
+      "abstract": "Abstract We assess the state of naturalness in high-energy physics and summarize recent approaches to the three major naturalness problems: the cosmological constant problem, the electroweak hierarchy problem, and the strong CP problem.",
+      "year": 2023,
+      "authors": [
+        "Nathaniel Craig"
+      ],
+      "citations": 39,
+      "oa_pdf_url": "https://link.springer.com/content/pdf/10.1140/epjc/s10052-023-11928-7.pdf",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "The European Physical Journal C",
+      "url": "https://doi.org/10.1140/epjc/s10052-023-11928-7"
+    },
+    {
+      "doi": "10.1007/s41114-025-00059-y",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Fundamental constants: from measurement to the universe, a window on gravitation and cosmology",
+      "abstract": "Abstract Fundamental constants are a cornerstone of our physical laws. Any constant varying in space and/or time would signal a violation of local position invariance and be associated with a violation of the universality of free fall, and hence of the weak equivalence principle at the heart of the geometrisation of gravity. It will also reflect the existence of new degrees of freedom that couple to standard matter fields. Thus, testing for the stability of fundamental constants is of utmost importance for our understanding of gravity and for characterizing the domain of validity of general relativity. Besides, it opens an independent window on the dark matter and dark energy components. As a consequence, thanks to the active developments of experiments, fundamental constants have become a key player in our search for physics beyond the standard model of particle physics and general relativity. This review details the various roles of the fundamental constants in the laws of physics and in the construction of the international system of units, which now depends strongly on them. This requires to distinguish the concepts of fundamental units and fundamental parameters . Then, the relations between constants, the tests of the local position invariance and of the universality of free fall are presented, as well as the construction of field theories that account for “varying constants” and the motivations arising from high-energy physics and string theory. From a theoretical perspective any varying fundamental parameter is related to a dynamical field, the dynamics of which is dictated from the whole theory so that it remains fully consistent: no arbitrary law of variation has to be postulated. Then, the main experimental and observational constraints that have been obtained from atomic clocks, the Oklo phenomenon, solar system observations, meteorite dating, quasar absorption spectra, stellar physics, pulsar timing, the cosmic microwave background and Big Bang nucleosynthesis are described. It details the basics of each system, its dependence with respect to the primary parameters the variation of which can be constrained from observations, the known systematic effects and the most recent constraints. It also describes how these primary parameters can be related to the fundamental constants and the model-dependencies that is involved. Both time and space variations are considered. To finish, it contains a short discussion on the more speculative possibility of understanding the numerical values of the fundamental parameters in view of the apparent fine-tuning that they confront us with, by invoking anthropic arguments. Given the huge increase of data and constraints and the difficulty to standardize them, a general scheme to present experimental and observational results and to construct a collaborative data base that will be more efficient for the community and allow us for better traceability, is proposed.",
+      "year": 2025,
+      "authors": [
+        "Jean–Philippe Uzan"
+      ],
+      "citations": 21,
+      "oa_pdf_url": "https://link.springer.com/content/pdf/10.1007/s41114-025-00059-y.pdf",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Living Reviews in Relativity",
+      "url": "https://doi.org/10.1007/s41114-025-00059-y"
+    },
+    {
+      "doi": "10.3390/sym15020259",
+      "arxiv_id": "2301.09795",
+      "pmid": null,
+      "title": "Constraining Coupling Constants' Variation with Supernovae, Quasars, and GRBs",
+      "abstract": "Dirac, in 1937, proposed the potential variation of coupling constants derived from his large numbers hypothesis. Efforts have continued since then to constrain their variation by various methods, including astrophysical and cosmological observations. We briefly discuss several methods used for the purpose while focusing primarily on the use of supernovae type 1a, quasars, and gamma-ray bursts as cosmological probes for determining cosmological distances. Supernovae type Ia (SNeIa) are considered the best standard candles since their intrinsic luminosity can be determined precisely from their light curves. However, they have only been observed up to about redshift z = 2.3, mostly at z ≤ 1.5. Quasars are the brightest non-transient cosmic sources in the Universe. They have been observed up to z = 7.5. Certain types of quasars can be calibrated well enough for their use as standard candles but with a higher degree of uncertainty in their intrinsic luminosity than SNeIa. Gamma-ray bursts (GRBs) are even brighter than quasars, and they have been observed up to z = 9.4. They are sources of highly transient radiation lasting from tens of milliseconds to several minutes and, in rare cases, a few hours. However, they are even more challenging to calibrate as standard candles than quasars. Both quasars and GRBs use SNeIa for distance calibration. What if the standard candles’ intrinsic luminosities are affected when the coupling constants become dynamic and depend on measured distances? Assuming it to be constant at all cosmic distances leads to the wrong constraint on the data-fitted model parameters. This paper uses our earlier finding that the speed of light c, the gravitational constant G, the Planck constant h, and the Boltzmann constant k vary in such a way that their variation is interrelated as  \\({G \\sim c^{3} \\sim h^{3} \\sim k^{3/2}}\\)  with  \\({\\overset{.}{G}/G = 3\\overset{.}{c}/c = 3\\overset{.}{h}/h = 1.5\\overset{.}{k}/k}\\) = 3.90(±0.04) × \\({10^{-10}}\\) yr\\({^{-1}}\\) and corroborates it with SNeIa, quasars, and GRBs observational data. Additionally, we show that this covarying coupling constant model may be better than the standard \\({\\Lambda}\\)CDM model for using quasars and GRBs as standard candles and predict that the mass of the GRBs scales with z as  \\({((1+z)^{1/3}-1)}\\). Noether’s symmetry on the coupling constants is now transferred effectively to the constant in the function relating to their variation.",
+      "year": 2023,
+      "authors": [
+        "Rajendra P. Gupta"
+      ],
+      "citations": 10,
+      "oa_pdf_url": "https://www.mdpi.com/2073-8994/15/2/259/pdf?version=1675157510",
+      "local_pdf": null,
+      "source": "semantic_scholar",
+      "journal": "Symmetry",
+      "url": "https://www.semanticscholar.org/paper/35a2f11563f2b7745918d970c287d6469cd3b55c"
+    },
+    {
+      "doi": "10.1140/epjc/s10052-018-5719-y",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Does space-time torsion determine the minimum mass of gravitating particles?",
+      "abstract": "We derive upper and lower limits for the mass-radius ratio of spin-fluid spheres in Einstein-Cartan theory, with matter satisfying a linear barotropic equation of state, and in the presence of a cosmological constant. Adopting a spherically symmetric interior geometry, we obtain the generalized continuity and Tolman-Oppenheimer-Volkoff equations for a Weyssenhoff spin fluid in hydrostatic equilibrium, expressed in terms of the effective mass, density and pressure, all of which contain additional contributions from the spin. The generalized Buchdahl inequality, which remains valid at any point in the interior, is obtained, and general theoretical limits for the maximum and minimum mass-radius ratios are derived. As an application of our results we obtain gravitational red shift bounds for compact spin-fluid objects, which may (in principle) be used for observational tests of Einstein-Cartan theory in an astrophysical context. We also briefly consider applications of the torsion-induced minimum mass to the spin-generalized strong gravity model for baryons/mesons, and show that the existence of quantum spin imposes a lower bound for spinning particles, which almost exactly reproduces the electron mass.",
+      "year": 2018,
+      "authors": [
+        "Christian G. Böhmer",
+        "Piyabut Burikham",
+        "Tiberiu Harko",
+        "Matthew J. Lake"
+      ],
+      "citations": 9,
+      "oa_pdf_url": "https://link.springer.com/content/pdf/10.1140%2Fepjc%2Fs10052-018-5719-y.pdf",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "The European Physical Journal C",
+      "url": "https://doi.org/10.1140/epjc/s10052-018-5719-y"
+    },
+    {
+      "doi": "10.4236/jhepgc.2021.72042",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Hypersphere World-Universe Model",
+      "abstract": "Dirac's themes were the unity and beauty of Nature. He identified three revolutions in modern physics: Relativity, Quantum Mechanics and Cosmology.",
+      "year": 2021,
+      "authors": [
+        "Vladimir S. Netchitailo"
+      ],
+      "citations": 7,
+      "oa_pdf_url": "http://www.scirp.org/journal/PaperDownload.aspx?paperID=108877",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Journal of High Energy Physics Gravitation and Cosmology",
+      "url": "https://doi.org/10.4236/jhepgc.2021.72042"
+    },
+    {
+      "doi": "10.4236/jhepgc.2020.64049",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Hypersphere World-Universe Model: Basic Ideas",
+      "abstract": "Hypersphere World-Universe Model (WUM) envisions Matter carried from the Universe into the World from the fourth spatial dimension by Dark Matter Particles (DMPs). Luminous Matter is a byproduct of Dark Matter (DM) self-annihilation. WUM introduces Dark Epoch (spanning from the Beginning of the World for 0.45 billion years) and Luminous Epoch (ever since for 13.77 billion years). Big Bang discussed in Standard Cosmology (SC) is, in our view, transition from Dark Epoch to Luminous Epoch due to Rotational Fission of Overspinning DM Supercluster’s Cores and self-annihilation of DMPs. WUM solves a number of physical problems in SC and Astrophysics through DMPs and their interactions: Angular Momentum problem in birth and subsequent evolution of Galaxies and Extrasolar systems; Fermi Bubbles – two large structures in gamma-rays and X-rays above and below Galactic center; Coronal Heating problem in solar physics – temperature of Sun's corona exceeding that of photosphere by millions of degrees; Cores of Sun and Earth rotating faster than their surfaces; Diversity of Gravitationally-Rounded Objects in Solar system and their Internal Heating. Model makes predictions pertaining to Rest Energies of DMPs, proposes New Type of their Interactions. WUM reveals Inter-Connectivity of Primary Cosmological Parameters and calculates their values, which are in good agreement with the latest results of their measurements.",
+      "year": 2020,
+      "authors": [
+        "Vladimir S. Netchitailo"
+      ],
+      "citations": 4,
+      "oa_pdf_url": "http://www.scirp.org/journal/PaperDownload.aspx?paperID=103451",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Journal of High Energy Physics Gravitation and Cosmology",
+      "url": "https://doi.org/10.4236/jhepgc.2020.64049"
+    },
+    {
+      "doi": "10.3390/astronomy2040017",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "The Upgraded Planck System of Units That Reaches from the Known Planck Scale All the Way Down to Subatomic Scales",
+      "abstract": "Natural systems of units {Ui} need to be overhauled to include the dimensionless coupling constants {αUi} of the natural forces. Otherwise, they cannot quantify all the forces of nature in a unified manner. Thus, each force must furnish a system of units with at least one dimensional and one dimensionless constant. We revisit three natural systems of units (atomic, cosmological, and Planck). The Planck system is easier to rectify, and we do so in this work. The atomic system discounts {G,αG}, thus it cannot account for gravitation. The cosmological system discounts {h,αh}, thus it cannot account for quantum physics. Here, the symbols have their usual meanings; in particular, αG is the gravitational coupling constant and αh is Dirac’s fine-structure constant. The speed of light c and the impedance of free space Z0 are resistive properties imposed by the vacuum itself; thus, they must be present in all systems of units. The upgraded Planck system with fundamental units UPS:={c,Z0,G,αG,h,αh,…} describes all physical scales in the universe—it is nature’s system of units. As such, it reveals a number of properties, most of which have been encountered previously in seemingly disjoint parts of physics and some of which have been designated as mere coincidences. Based on the UPS results, which relate (sub)atomic scales to the Planck scale and the fine-structure constant to the Higgs field, we can state with confidence that no observed or measured physical properties are coincidental in this universe. Furthermore, we derive from first principles Koide’s K=2/3 enigmatic constant and additional analogous quark and vector boson constants. These are formal mathematical proofs that justify a posteriori the use of geometric means in deriving the quark/boson mass ladder. This ladder allows us to also calculate the Higgs couplings to the vector bosons and the Weinberg angle in terms of K only, and many of the “free” parameters of the Standard Model of particle physics were previously expected to be determined only from experiments.",
+      "year": 2023,
+      "authors": [
+        "Dimitris M. Christodoulou",
+        "D. Kazanas"
+      ],
+      "citations": 3,
+      "oa_pdf_url": "https://www.mdpi.com/2674-0346/2/4/17/pdf?version=1698741700",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Astronomy",
+      "url": "https://doi.org/10.3390/astronomy2040017"
+    },
+    {
+      "doi": "10.20944/preprints201911.0398.v2",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Hypothetical Role of Large Nuclear Gravity in Understanding the Significance and Applications of the Strong Coupling Constant in the Light of Up and Down Quark Clusters",
+      "abstract": "As there exist no repulsive forces in strong interaction, in a hypothetical approach, strong interaction can be assumed to be equivalent to a large gravitational coupling. Based on this concept, strong coupling constant can be defined as a ratio of the electromagnetic force and the gravitational force associated with proton, neutron, up quark and down quark. With respect to the product of strong coupling constant and fine structure ratio, we review our recently proposed two semi empirical relations and coefficients 0.00189 and 0.00642 connected with nuclear stability and binding energy. We wish to emphasize that- by classifying nucleons as ‘free nucleons’ and ‘active nucleons’, nuclear binding energy can be fitted with a new class of ‘three term’ formula having one unique energy coefficient. Based on the geometry and quantum nature, currently believed harmonic oscillator and spin orbit magic numbers can be considered as the lower and upper “mass limits” of quark clusters.",
+      "year": 2019,
+      "authors": [
+        "U. Seshavatharam",
+        "S. Lakshminarayana"
+      ],
+      "citations": 2,
+      "oa_pdf_url": "https://www.preprints.org/manuscript/201911.0398/v2/download",
+      "local_pdf": null,
+      "source": "semantic_scholar",
+      "journal": "",
+      "url": "https://www.semanticscholar.org/paper/aab65d442383244e5191d99f39f4dfcc19b02cee"
+    },
+    {
+      "doi": "10.20944/preprints202210.0001.v1",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "The Upgraded Planck System of Units",
+      "abstract": "Natural systems of units $\\{U_i\\}$ need to be overhauled to include the dimensionless coupling constants $\\{\\upalpha_{U_i}\\}$ of the natural forces. Otherwise, they cannot quantify all forces in a unified manner. Thus, each force must furnish a system with at least one dimensional and one dimensionless constant. We revisit three natural systems of units (atomic, cosmological, and Planck). The Planck system is easier to rectify, and we do so in this work. The atomic system discounts $\\{ G, \\upalpha_G \\}$, thus it cannot account for gravitation. The cosmological system discounts $\\{ \\slashed{h}, \\upalpha_\\slashed{h} \\}$, thus it cannot account for quantum physics. Here, the symbols have their usual meanings; in particular, $\\upalpha_G$ is the gravitational coupling constant and $\\upalpha_\\slashed{h}$ is the fine-structure constant. The speed of light $c$ and the impedance of free space $Z_0$ are resistive properties of the vacuum, thus they must be present in all systems of units. The upgraded Planck system $${\\rm UPS} \\,:=\\,\\{ c, Z_0, G, \\upalpha_G, \\slashed{h}, \\upalpha_\\slashed{h}, \\,\\dots\\,\\!\\},$$ describes all physical scales in the universe---it is nature's system of units. As such, it reveals a number of properties, most of which have been encountered previously in seemingly disjoint parts of physics, and some of which have been designated as mere coincidences. Based on the UPS results, that relate (sub)atomic scales to the Planck scale and the fine-structure constant to the Higgs field, we can state with confidence that no observed/measured physical properties are coincidental in this universe.",
+      "year": 2022,
+      "authors": [
+        "Dimitris M. Christodoulou",
+        "D. Kazanas"
+      ],
+      "citations": 2,
+      "oa_pdf_url": "https://www.preprints.org/manuscript/202210.0001/v1/download",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Preprints.org",
+      "url": "https://doi.org/10.20944/preprints202210.0001.v1"
+    },
+    {
+      "doi": "10.20944/preprints201911.0398.v1",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Hypothetical Role of Large Nuclear Gravity in Understanding the Significance and Applications of the Strong Coupling Constant",
+      "abstract": "As there exist no repulsive forces in strong interaction, in a hypothetical approach, strong interaction can be assumed to be equivalent to a large gravitational coupling. Based on this concept, strong coupling constant can be defined as a ratio of the electromagnetic force and the gravitational force associated with proton, neutron, up quark and down quark. With respect to the product of strong coupling constant and fine structure ratio, we review our recently proposed two semi empirical relations and coefficients 0.00189 and 0.00642 connected with nuclear stability and binding energy. We wish to emphasize thatby classifying nucleons as ‘free nucleons’ and ‘active nucleons’, nuclear binding energy can be fitted with a new class of ‘three term’ formula having one unique energy coefficient. Based on the geometry and quantum nature, currently believed harmonic oscillator and spin orbit magic numbers can be considered as the lower and upper “mass limits” of quark clusters.",
+      "year": 2019,
+      "authors": [
+        "U. Seshavatharam",
+        "S. Lakshminarayana"
+      ],
+      "citations": 1,
+      "oa_pdf_url": "https://www.preprints.org/manuscript/201911.0398/v1/download",
+      "local_pdf": null,
+      "source": "semantic_scholar",
+      "journal": "",
+      "url": "https://www.semanticscholar.org/paper/970dff1284603f45c448d80be83b3cdf0fe81a4e"
+    },
+    {
+      "doi": "10.1515/zna-2021-0147",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Gravity beyond Einstein? Part III: numbers and coupling constants, contradictory experiments, hypercomplex gravity like-fields, propellantless space propulsion",
+      "abstract": "Abstract This article, the last in a series of three articles, attempts to unravel the underlying physics of recent experiments regarding the contradictory properties of the neutron lifetime that has been a complete riddle for quite some time. So far, none of the advanced theories beyond the Standard Models (SMs) of particle physics and cosmology have shown sufficient potential to resolve this mystery. We also try to explain the blatant contradiction between the predictions of particle physics and experiments concerning the nature and properties of the (so far undetected) dark matter and dark energy particles. To this end the novel concepts of both negative and hypercomplex matter (giving rise to the concept of matter flavor) are introduced, replacing the field of real numbers by hypercomplex numbers. This extension of the number system in physics leads to both novel internal symmetries requiring new elementary particles – as outlined in Part I and II, and to novel types of matter. Hypercomplex numbers are employed in place of the widely accepted (but never observed) concept of extra space dimensions – and, hence, also to question the corresponding concept of supersymmetry. To corroborate this claim, we report on the latest experimental searches for novel and supersymmetric elementary particles by direct searches at the Large Hadron Collider (LHC) and other colliders as well as numerous other dedicated experiments that all have come up empty handed. The same holds true for the dark matter search at European Council for Nuclear Research (CERN) [CERN Courier Team, “Funky physics at KIT,” in CERN Courier, 2020, p. 11]. In addition, new experiments looking for dark or hidden photons (e.g., FUNK at Karlsruhe Institute of Technology, CAST at CERN, and ALPS at Desy, Hamburg) are discussed that all produced negative results for the existence of the hitherto unseen but nevertheless gravitationally noticeably dark matter. In view of this contradicting outcome, we suggest a four-dimensional Minkowski spacetime, assumed to be a quasi de Sitter space, dS 1,3, complemented by a dual spacetime, denoted by DdS 1,3, in which the dark matter particles that are supposed to be of negative mass reside. This space is endowed with an imaginary time coordinate, −it and an imaginary speed of light, ic. This means that time is considered a complex quantity, but energy m(ic)2 > 0. With this construction visible and dark matter both represent positive energies, and hence gravitation makes no distinction between these two types of matter. As dark matter is supposed to reside in dual space DdS 1,3, it is principally undetectable in our spacetime. That this is evident has been confirmed by numerous astrophysical observations. As the concept of matter flavor may possibly resolve the contradictory experimental results concerning the lifetime of the neutron [J. T. Wilson, “Space based measurement of the neutron lifetime using data from the neutron spectrometer on NASA’s messenger mission,” Phys. Rev. Res., vol. 2, p. 023216, 2020] this fact could be considered as a first experimental hint for the actual existence of hypercomplex matter. In canonical gravity the conversion of electromagnetic into gravity-like fields (as surmised by Faraday and Einstein) should be possible, but not in cosmological gravity (hence these attempts did not succeed), and thus these conversion fields are outside general relativity. In addition, the concept of hypercomplex mass in conjunction with magnetic monopoles emerging from spin ice materials is discussed that may provide the enabling technology for long sought propellantless space propulsion.",
+      "year": 2021,
+      "authors": [
+        "Jochem Hauser",
+        "Walter Dröscher"
+      ],
+      "citations": 1,
+      "oa_pdf_url": "",
+      "local_pdf": null,
+      "source": "semantic_scholar",
+      "journal": "Zeitschrift für Naturforschung A",
+      "url": "https://www.semanticscholar.org/paper/692e794923dfb74da25862931fc857dee85c13b3"
+    },
+    {
+      "doi": "10.4236/jhepgc.2022.81003",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Hypersphere World-Universe Model: Centre of Our Galaxy",
+      "abstract": "In 1937, Paul Dirac proposed: the Large Number Hypothesis and the Hypothesis of the variable gravitational “constant”; and later added the notion of continuous creation of Matter in the World. The developed Hypersphere World-Universe Model (WUM) follows these ideas, albeit introducing a different mechanism of matter creation. In this paper, we show that WUM is a natural continuation of Classical Physics and it can already serve as a basis for a New Cosmology proposed by Paul Dirac. In 2013, WUM predicted the values of the following Cosmological parameters: gravitational, concentration of intergalactic plasma, and the minimum energy of photons, which were experimentally confirmed in 2015 – 2018. “The Discovery of a Supermassive Compact Object at the Centre of Our Galaxy” (Nobel Prize in Physics 2020) made by Prof. R. Genzel and A. Ghez is a confirmation of one of the most important predictions of WUM in 2013: “Macroobjects of the World have cores made up of the discussed DM particles. Other particles, including DM and baryonic matter, form shells surrounding the cores”.",
+      "year": 2021,
+      "authors": [
+        "Vladimir S. Netchitailo"
+      ],
+      "citations": 1,
+      "oa_pdf_url": "http://www.scirp.org/journal/PaperDownload.aspx?paperID=113327",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Journal of High Energy Physics Gravitation and Cosmology",
+      "url": "https://doi.org/10.4236/jhepgc.2022.81003"
+    },
+    {
+      "doi": null,
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "A Strong Zero-Energy Hypothesis (Zeh) Applied on Virtual Particle-Antiparticle Pairs (Vpaps) Predicting a New Type of Boson-Fermion Symmetry/”mass-Conjugation”, Two Distinct Types of Massless Neutral Fermions and a Strong Gravity Field (SGF)",
+      "abstract": "",
+      "year": 2020,
+      "authors": [
+        "A. Drăgoi"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "",
+      "local_pdf": null,
+      "source": "semantic_scholar",
+      "journal": "",
+      "url": "https://www.semanticscholar.org/paper/c9553acb46cfbe220594e3315555156dd0a5d582"
+    },
+    {
+      "doi": "10.20944/preprints202001.0020.v1",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "4G Model of Final Unification - A Very Brief Report",
+      "abstract": "With our long experience in the field of unification of gravity and quantum mechanics, we understood that, when mass of any elementary is extremely small/negligible compared to macroscopic bodies, highly curved microscopic space-time can be addressed with large gravitational constants and magnitude of elementary gravitational constant seems to increase with decreasing mass and increasing interaction range. In our earlier publications, we proposed that, 1) There exist three atomic gravitational constants associated with electroweak, strong and electromagnetic interactions; 2) There exists a strong interaction elementary charge in such a way that, it's squared ratio with normal elementary charge is close to inverse of the strong coupling constant; and 3) Considering a fermion-boson mass ratio of 2.27, quarks can be split into quark fermions and quark bosons. Further, we noticed that, electroweak field seems to be operated by a primordial massive fermion of rest energy 584.725 GeV and hadron masses seem to be generated by a new hadronic fermion of rest energy 103.4 GeV. In this context, starting from lepton rest masses to stellar masses, we have developed many interesting and workable relations. With further study, a workable model of final unification can be developed.",
+      "year": 2020,
+      "authors": [
+        "U. Seshavatharam",
+        "S. Lakshminarayana"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://doi.org/10.20944/preprints202001.0020.v1",
+      "local_pdf": null,
+      "source": "semantic_scholar",
+      "journal": "",
+      "url": "https://www.semanticscholar.org/paper/2ac14e35574ee1923a4ffa479b7d149329920f47"
+    },
+    {
+      "doi": null,
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Search for First Generation Scalar Leptoquarks with the CMS Experiment",
+      "abstract": "",
+      "year": 2018,
+      "authors": [
+        "M. A. Bhat"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "",
+      "local_pdf": null,
+      "source": "semantic_scholar",
+      "journal": "",
+      "url": "https://www.semanticscholar.org/paper/c48e4f091412ba39a1385bfbacca6743b9ced6ea"
+    },
+    {
+      "doi": null,
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Evidence for Unique Steady-State Tachyonic Determinist Cyclic Computing Simple Cosmos",
+      "abstract": "",
+      "year": 2019,
+      "authors": [
+        "F. Sanchez"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "",
+      "local_pdf": null,
+      "source": "semantic_scholar",
+      "journal": "",
+      "url": "https://www.semanticscholar.org/paper/2dbd620f016e108b614dc6720179d91f766c4919"
+    },
+    {
+      "doi": null,
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "RETOUR AU COSMOS Simple , Unique , Éternel , Calculateur , Déterministe , Super-Topologique , Cyclique , Anthropique Inverse",
+      "abstract": "",
+      "year": 2019,
+      "authors": [
+        "F. Sanchez",
+        "M. Grosmann",
+        "D. Veigel",
+        "R. Veysseyre",
+        "C. Bizouard"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "",
+      "local_pdf": null,
+      "source": "semantic_scholar",
+      "journal": "",
+      "url": "https://www.semanticscholar.org/paper/9708c53ebe2f6cbabab965be2fdc9fe1005fac7d"
+    },
+    {
+      "doi": "10.7907/Z9RB72TQ.",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "The Primordial Origin and Dynamical Sculpting of Close-In Planetary System Architectures",
+      "abstract": "",
+      "year": 2018,
+      "authors": [
+        "C. Spalding"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "",
+      "local_pdf": null,
+      "source": "semantic_scholar",
+      "journal": "",
+      "url": "https://www.semanticscholar.org/paper/46066cd43c58f6b99c7f9347a15ca04f985337d8"
+    },
+    {
+      "doi": "10.1002/lary.27519",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Table of contents",
+      "abstract": "algebra absurdity of nature addition of velocities algebra, abstract algebra Anderson, Carl D. angular momentum, conservation of antimatter discovery of lack of matter-antimatter asymmetry antineutrinos astrophysics dark energy dark matter and Standard Model asymptotic freedom atomic bomb project. See Manhattan Project atomic hypothesis atomic model of gases, probabilities atoms periodic table of elements splitting structure of. See also nuclear force axions Bacon, Francis Bardeen, William baryons Eightfold Way in quark model Bell, John S. beryllium, atomic structure beta decay beta rays big bang model and dark matter quark-gluon plasma and string theory Bohr, Niels BooNE (Booster Neutrino Experiment) Born, Max boron, atomic structure bosons bottom quarks bound states of quarks and gluons Boyle, Robert buckyballs, wave nature of Cabibbo angle Capra, Fritjof (The Tao of Physics) CDF detector at Fermilab Cerenkov radiation charge. See electric charge charge conjugation charm quarks charmonium chemical elements periodic table spectral analysis chemical reactions, fixed proportions of chemistry, physical chemistry circle, symmetry of classical physics atomic hypothesis fields in harmonic oscillator local approach versus global approach particles in predictions of the future worldview of cloud chambers, detection of positrons color confinement color of quarks asymptotic freedom conservation of color symmetry computer analogy (Standard Model) conservation. See also mass-energy equivalence of angular momentum of energy of leptons of mass of momentum of quark color and symmetry constant velocity equation continuous symmetry. See also rotational invariance; space shift invariance; time shirt invariance Conversi, Marcello cosmic rays cosmological constant (in general relativity equations) coupling constants CP symmetry Cronin,J.W. curvature of spacetime cyclotrons Dalton, John dark energy dark matter Davis, Raymond Davisson, Clinton De Broglie, Luis-Victor Pierre-Raymond decay of kaons of protons definite proportions, law of delta particles (Eightfold Way) delta-zero particles in quark model Democritus destructive interference detectors in particle accelerators dice-rolling, randomness of diffraction dimensions of string theory, hiding Dirac equation electron precession pair production Dirac, P.A.M. discrete symmetry dodecahedron, symmetry of down quarks dynamics Dyson, Freeman E=mc2 equation Eightfold Way Einstein, Albert cosmological constant general relativity incompleteness of quantum mechanics photoelectric effect special relativity elastic scattering electric charge conservation during beta decay of electrons negative electric charge positive electric charge of protons of quarks and SO( 10) symmetry symmetry electric fields electric force electricity as branch of physics combining with magnetism interactions law of universal electricity photoelectric effect static electricity electromagnetic field theory electromagnetic waves electron-positron annihilation in QED electron-volts electrons. See also energy levels; QED accelerating atomic structure beta decay beta rays charge “death spiral,” Dirac equation electric charge symmetry Feynman diagrams for interactions Feynman’s electron path theory long-distance correlations between mass pair production Pauli exclusion principle as positrons traveling forward in time precession properties of spin as waves Wheeler’s theory elementary particles. See particles energy in beta decay conservation of creating particles from dark energy and lifetime and mass particle-antiparticle annihilation Planck energy solar energy vacuum energy energy levels and periodic table of elements in quantum mechanics energy-time uncertainty principle eta particles in quark model exclusion principle. See Pauli exclusion principle expansion of the universe experimental evidence glueballs Higgs particles muon magentic moment neutrino oscillations nuclear force pentaquarks QCD QED quark-gluon plasma quarks string theory W particles Z° particles families Faraday, Michael Fermat, Pierre de Fermi, Enrico beta decay beta radiation Manhattan Project neutron decay fermions mass of in Standard Model symmetry with bosons Feynman diagrams asymptotic freedom for QCD and Lagrangian function for Standard Model Feynman, Richard absurdity of nature electron path theory incomprehensibility of quantum mechanics least action principle Manhattan Project personality of Pocono conference QED: The Strange Theory of Light and Matter scaling Wheeler’s electron theory field picture (electric interactions) fields. See also quantum fields; quantum mechanics; waves in classical physics electric fields magnetic fields in quantum mechanics and symmetry versus particles fine structure fine-structure constant Finnegan’s Wake (Joyce) Fitch. flavors of quarks force picture (electric interactions) fractional electron charges frame of reference Franklin, Benjamin free particles, quarks as free will Fritsch, Harold Fuller, Buckminster fundamental particles. See also partides future predictions Galileo gallium, discovery of gamma rays gauge theories Gell-Mann, Murray Eightfold Way personality of quark model strange particles general relativity cosmological constant limits of and string theory geometrical invariance. See invariance Georgi, Howard germanium, discovery of Glashow, Sheldon global approach (classical physics) versus local approach glueballs gluon-exchange interaction gluons color conservation color symmetry of quarks Feynman diagrams glueballs as massless intermediate particles quark-gluon plasma grand unified theories. See GUTs gravitons gravity law of universal grativation omission from Standard Model and string theory and supersymmetry as weakest force Greek atomic theory Grimaldi, Francesco Gross, David ground state Guth, Alan GUTs (grand unified theories) matter-antimatter asymmetry supersymmetric GUTs symmetry of handedness of particles harmonic oscillators quantum fields as and quantum mechanics and spontaneous symmetry breaking Hartle, James Hawking, Stephen Heisenberg uncertainty principle Heisenberg, Werner helium, atomic structure Helmholtz, Herman von Hertz, Heinrich Higgs bosons, Feynman diagrams for interactions Higgs fields and dark matter Higgs particles experimental evidence in inflationary universe model in Standard Model Higgs, Peter Higgsinos Hilbert, David history of nuclear force of strong nuclear force of weak force theory Hooft, Gerard ’t Hubble, Edwin Huygens, Christian hydrogen, atomic structure ideal gas law ignorance is strength principle inelastic scattering infinities inflationary universe model inflatons information wave, quantum field as infrared radiation interactions coupling constants in Standard Model interference, electrons as waves intermediate particles, Feynman diagrams for interactions invariance. See also symmetry isospin isotopes J/psi particles, discovery of Joyce, James (Finnegan’s Wake) kaons kinetic theory of thermodynamics knowledge, limitations on Lagrangian function for Standard Model Lagrangian values lambda-zero particles Large Electron Positron Collider (LEP) lattice QCD Lawrence, Ernest O. laws conservation of energy definite proportions ideal gases Lorentz force universal electricity universal gravitation least action principle Lederman, Leon Lee, Tsung-Dao left-handed neutrinos left-right symmetry in Standard Model LEP (Large Electron Positron Collider) lepton number, conservation in beta radiation leptons conservation of preon models quark model in Standard Model Leucippus Lewis. S. (Perelandra) Lie groups Lie, Sophus lifetime and energy and particle decay of protons light. See also speed of light as electromagnetic wave nature of as particles photoelectric effect Snell’s law spectral analysis as waves Linde, Andrei line spectrum linear accelerators Liquid Scintillation Neutrino Detector (LSND) lithium, atomic structure local approach (classical physics) versus global approach local conditions Lorentz force law LSND (Liquid Scintillation Neutrino Detector) M-theory magnetic fields in cyclotrons and electromagnetic waves in synchrotrons Zeeman effect magnetic force, importance of magnetic moment magnetic monopoles magnetic ratio for electrons and protons magnetism as branch of physics combining with electricity Main Injector Neutrino Oscillation Search (MINOS) Manhattan Project mass changes in spontaneous symmetry breaking conservation of of electrons and energy of fermions of Higgs particles of neutrinos particle classification by mass-energy equivalence massive neutrinos, as dark matter massless particles mathematical equations, correlating with physical realities matter-antimatter asymmetry Maxwell’s electromagnetic theory, and wave model of light Maxwell’s equations Maxwell, James Clerk Mendeleev, Dmitri mesons Eightfold Way quark model Mexican hat potential Michelson, Albert microwaves Millikan, Robert Mini-BooNE (Mini Booster Neutrino Experiment) minimal supersymmetric standard model (MSSM) Minkowski, Herman MINOS (Main Injector Neutrino Oscillation Search) mirror symmetry molecules as waves momentum motion of light principle of relativity special relativity, formulation of MSSM (minimal supersymmetric standard model) multiple universes, and quantum mechanics muons discovery of Feynman diagrams for interactions magnetic moment reclassification of weak force nature, absurdity of Ne’eman, Yuval negative electric charge negative energy in Dirac equation neutralinos neutrinos beyond Standard Model as dark matter Feynman diagrams for interactions left-handed neutrinos mass of right-handed neutrinos spin versus antineutrinos neutrons. See also nuclear force atomic structure beta decay decay of in quark model Newton, Isaac nodes Noether, Amalie Emmy Noether’s theorem November Revolution of 1974 nuclear force. See also particles;strong force; weak force experimental evidence history of pion role in nucleons Oersted, Hans Christian omega-minus particles Oppenheimer, Robert ",
+      "year": 2018,
+      "authors": [
+        "A. Plume",
+        "R. Oerter"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/lary.27519",
+      "local_pdf": null,
+      "source": "semantic_scholar",
+      "journal": "The Laryngoscope",
+      "url": "https://www.semanticscholar.org/paper/30b5be0d148a43c9b910f706ebf898eb4d03065f"
+    },
+    {
+      "doi": null,
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "Virtual Conference on Applications of Statistical Methods and Machine Learning",
+      "abstract": "",
+      "year": 2021,
+      "authors": [
+        "Laura A. Balmaceda",
+        "George Mason",
+        "Shreya Bhattacharya"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "",
+      "local_pdf": null,
+      "source": "semantic_scholar",
+      "journal": "",
+      "url": "https://www.semanticscholar.org/paper/d247a4b5bcf3136956b69db495fc1c8349791ccb"
+    },
+    {
+      "doi": "10.4236/jhepgc.2022.83040",
+      "arxiv_id": null,
+      "pmid": null,
+      "title": "A Study in the Variation of &amp;lt;i&amp;gt;G&amp;lt;/i&amp;gt;",
+      "abstract": "There are indications that the Newtonian gravitational constant may not be a constant but may vary with respect to some other physical parameter. Various possible characterizations of Newton’s gravitational parameter as a function of the cosmic scale parameter are proposed and studied within the framework of classical Newtonian cosmology. A number of toy cosmologies with varying Newtonian gravitational parameters are developed and analyzed. The numerical solutions to the temporal evolution of the universe from the Friedmann equation are examined and discussed as well as kinematic observables. Finally, other avenues of research are addressed.",
+      "year": 2022,
+      "authors": [
+        "Armando Vega-Colon",
+        "J. A. Secrest"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "http://www.scirp.org/journal/PaperDownload.aspx?paperID=118395",
+      "local_pdf": null,
+      "source": "openalex",
+      "journal": "Journal of High Energy Physics Gravitation and Cosmology",
+      "url": "https://doi.org/10.4236/jhepgc.2022.83040"
+    },
+    {
+      "doi": "10.3847/1538-4357/adea3e",
+      "arxiv_id": "1907.08312",
+      "pmid": null,
+      "title": "Signatures of electromagnetic and sound radiation produced by gravitational waves in core-collapse supernovae",
+      "abstract": "This paper presents the scenario that gravitational waves, generated in core-collapse of a pre-supernova star, can produce both electromagnetic radiation and sound radiation as gravitational waves propagate outward from the collapsing core. While the energy of this co-produced electromagnetic and sound radiation is orders of magnitude smaller than the initiating gravitational radiation, the power may be sufficient to re-ignite fusion outside the collapsing core. The non-equilibrium re-ignition of fusion, in roughly the same time frame as the strongest neutrino emissions, would change the configuration of the pre-supernova star and subsequently the ejecta and the evolution of the stellar expansion of the supernova remnant. Although the co-produced electromagnetic or sound radiation could not contribute directly to the supernova explosion, the associated non-equilibrium re-ignition of fusion would alter the state outside the core leaving an observable signature in the ejecta of the supernova remnant. The aim of this paper is to argue that including this hypothesized co-produced radiation in computational models of core collapse supernovae would contribute to the evolution of the stellar expansion and consequently should be observable in the supernovae remnant, providing a confirmation of the conversion processes for gravitational radiation to electromagnetic and sound radiation.",
+      "year": 2019,
+      "authors": [
+        "Preston Jones",
+        "Douglas Singleton",
+        "Pragati Pradhan"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1907.08312v3",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1907.08312"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "astro-ph/0007308",
+      "pmid": null,
+      "title": "First search for gravitational wave bursts with a network of detectors",
+      "abstract": "We report the initial results from a search for bursts of gravitational radiation by a network of five cryogenic resonant detectors during 1997 and 1998. This is the first significant search with more than two detectors observing simultaneously. No gravitational wave burst was detected. The false alarm rate was lower than 1 per 10^4 years when three or more detectors were operating simultaneously. The typical threshold was H ~ 4 10^-21 Hz^-1 on the Fourier component at ~ 10^3 Hz of the gravitational wave strain amplitude. New upper limits for amplitude and rate of g.w. bursts have been set.",
+      "year": 2000,
+      "authors": [
+        "International Gravitational Event Collaboration"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/astro-ph/0007308v2",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/astro-ph/0007308"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "2511.17261",
+      "pmid": null,
+      "title": "Performance of the front-end electronics of the CMS electromagnetic calorimeter barrel for the High-Luminosity LHC",
+      "abstract": "The performance of the CMS electromagnetic calorimeter upgraded readout electronics, developed for the High-Luminosity phase of the LHC, is discussed. Data collected in two beam test campaigns conducted in 2018 and 2021 at the H4 and H2 beam lines of the CERN SPS are analyzed. Time and energy resolutions are measured on a $5\\times 5$ matrix of lead tungstate crystals equipped with prototypes of the new front end readout electronics, using electron and pion beams of energies spanning from 25 to 250 GeV. In both campaigns the constant term of the energy resolution is measured to be better than 0.6% and the time resolution for electrons with energies above 50 GeV is measured to be better than 30 ps, fulfilling the design requirements.",
+      "year": 2025,
+      "authors": [
+        "The CMS Electromagnetic Calorimeter Group"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/2511.17261v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2511.17261"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "astro-ph/0302482",
+      "pmid": null,
+      "title": "Methods and results of the IGEC search for burst gravitational waves in the years 1997--2000",
+      "abstract": "This paper presents the results of the observations of the detectors participating in the International Gravitational Event Collaboration (IGEC) from 1997 to 2000 and reviews the data analysis methods. The analysis is designed to search for coincident excitations in multiple detectors. The data set analysed in this article covers a longer period and is more complete than that given in previous reports. The current analysis is more accurate for determining the false dismissal probability for a time coincidence search and it optimizes the search with respect to a target amplitude and direction of the signal. The statistics of the accidental coincidences agrees with the model used for drawing the results. The observations of this IGEC search are consistent with no detection of gravitational wave burst events. A new conservative upper limit has been set on the rate of gravitational wave bursts with Fourier component H > 2 10^{-21}Hz^{-1}, both for searches with and without a filter for the Galactic Center direction. This study confirms that the false alarm rate of the observation can be negligible when at least three detectors are operating simultaneously.",
+      "year": 2003,
+      "authors": [
+        "International Gravitational Event Collaboration"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/astro-ph/0302482v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/astro-ph/0302482"
+    },
+    {
+      "doi": "10.1016/j.nima.2006.07.053",
+      "arxiv_id": "physics/0608012",
+      "pmid": null,
+      "title": "Energy Linearity and Resolution of the ATLAS Electromagnetic Barrel Calorimeter in an Electron Test-Beam",
+      "abstract": "A module of the ATLAS electromagnetic barrel liquid argon calorimeter was exposed to the CERN electron test-beam at the H8 beam line upgraded for precision momentum measurement. The available energies of the electron beam ranged from 10 to 245 GeV. The electron beam impinged at one point corresponding to a pseudo-rapidity of eta=0.687 and an azimuthal angle of phi=0.28 in the ATLAS coordinate system. A detailed study of several effects biasing the electron energy measurement allowed an energy reconstruction procedure to be developed that ensures a good linearity and a good resolution. Use is made of detailed Monte Carlo simulations based on Geant which describe the longitudinal and transverse shower profiles as well as the energy distributions. For electron energies between 15 GeV and 180 GeV the deviation of the measured incident electron energy over the beam energy is within 0.1%. The systematic uncertainty of the measurement is about 0.1% at low energies and negligible at high energies. The energy resolution is found to be about 10% sqrt(E) for the sampling term and about 0.2% for the local constant term.",
+      "year": 2006,
+      "authors": [
+        "M. Aharrouche",
+        "ATLAS Electromagnetic Barrel Calorimeter Collaboration"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/physics/0608012v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/physics/0608012"
+    },
+    {
+      "doi": "10.1088/0256-307X/40/10/100401",
+      "arxiv_id": "2310.14920",
+      "pmid": null,
+      "title": "Resonant Scattering of Gravitational Waves With Electromagnetic Waves",
+      "abstract": "A certain class of exact solutions of Einstein Maxwell spacetime in general relativity is discussed which demonstrates at the level of theory that, when certain parametric resonance condition is met, the interaction of electromagnetic field with a gravitational wave will display certain Liapounov instability and lead to exponential amplification of a gravitational wave train described by certain Newman-Penrose component of the Weyl curvature. In some way akin to a free electron laser in electromagnetic theory, by the conversion of electromagnetic energy into gravitational energy in a coherent way, the feasibility of generating a pulsed laser like intense beam of gravitational wave is displayed.",
+      "year": 2023,
+      "authors": [
+        "Ruodi Yan",
+        "Yun Kau Lau"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/2310.14920v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/2310.14920"
+    },
+    {
+      "doi": "10.1007/978-90-481-3015-3",
+      "arxiv_id": "0812.3936",
+      "pmid": null,
+      "title": "Mass, inertia and gravitation",
+      "abstract": "We discuss some effects induced by quantum field fluctuations on mass, inertia and gravitation. Recalling the problem raised by vacuum field fluctuations with respect to inertia and gravitation, we show that vacuum energy differences, such as Casimir energy, do contribute to inertia. Mass behaves as a quantum observable and in particular possesses quantum fluctuations. We show that the compatibility of the quantum nature of mass with gravitation can be ensured by conformal symmetries, which allow one to formulate a quantum version of the equivalence principle. Finally, we consider some corrections to the coupling between metric fields and energy-momentum tensors induced by radiative corrections. Newton gravitation constant is replaced by two different running coupling constants in the sectors of traceless and traced tensors. There result metric extensions of general relativity, which can be characterized by modified Ricci curvatures or by two gravitation potentials. The corresponding phenomenological framework extends the usual Parametrized Post-Newtonian one, with the ability to remain compatible with classical tests of gravity while accounting for new features, such as Pioneer like anomalies or anomalous light deflection.",
+      "year": 2008,
+      "authors": [
+        "Marc-Thierry Jaekel",
+        "Serge Reynaud"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/0812.3936v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/0812.3936"
+    },
+    {
+      "doi": "10.1007/JHEP04(2019)005",
+      "arxiv_id": "1811.04933",
+      "pmid": null,
+      "title": "Modular $S_4$ Models of Lepton Masses and Mixing",
+      "abstract": "We investigate models of charged lepton and neutrino masses and lepton mixing based on broken modular symmetry. The matter fields in these models are assumed to transform in irreducible representations of the finite modular group $Γ_4 \\simeq S_4$. We analyse the minimal scenario in which the only source of symmetry breaking is the vacuum expectation value of the modulus field. In this scenario there is no need to introduce flavon fields. Using the basis for the lowest weight modular forms found earlier, we build minimal phenomenologically viable models in which the neutrino masses are generated via the type I seesaw mechanism. While successfully accommodating charged lepton masses, neutrino mixing angles and mass-squared differences, these models predict the values of the lightest neutrino mass (i.e., the absolute neutrino mass scale), of the Dirac and Majorana CP violation (CPV) phases, as well as specific correlations between the values of the atmospheric neutrino mixing parameter $\\sin^2θ_{23}$ and i) the Dirac CPV phase $δ$, ii) the sum of the neutrino masses, and iii) the effective Majorana mass in neutrinoless double beta decay. We consider also the case of residual symmetries $\\mathbb{Z}^{ST}_3$ and $\\mathbb{Z}^S_2$ respectively in the charged lepton and neutrino sectors, corresponding to specific vacuum expectation values of the modulus.",
+      "year": 2018,
+      "authors": [
+        "P. P. Novichkov",
+        "J. T. Penedo",
+        "S. T. Petcov",
+        "A. V. Titov"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1811.04933v3",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1811.04933"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "1111.4228",
+      "pmid": null,
+      "title": "The gravitational mechanism to generate mass II",
+      "abstract": "With the eminent confirmation or disproof of the existence of Higgs boson by experiments on the LHC it is time to analyze in a non-dogmatic way the suggestions to understand the origin of the mass. Here we analyze the recent proposal according to which gravity is what is really responsible for the generation of mass of all bodies. The great novelty of such mechanism is that the gravitational field acts merely as a catalyst, once the final expression of the mass does not depend either on the intensity or on the particular characteristics of the gravitational field.",
+      "year": 2011,
+      "authors": [
+        "M. Novello",
+        "E. Bittencourt"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1111.4228v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1111.4228"
+    },
+    {
+      "doi": "10.1007/s10509-013-1434-1",
+      "arxiv_id": "1406.3041",
+      "pmid": null,
+      "title": "The Number of Information Bits Related to the Minimum Quantum and Gravitational Masses in a Vacuum Dominated Universe",
+      "abstract": "Wesson obtained a limit on quantum and gravitational mass in the universe by combining the cosmological constant Lambda, Planck constant, the speed of light c, and also the gravitational constant G. The corresponding masses are 2.0x10E-62 kg and 2.3E+54 kg respectively, and in general can be obtained with the help of a generic dimensional analysis, or from an analysis where the cosmological constant appears in a four dimensional space-time and as a result of a higher dimensional reduction. In this paper our goal is to establish a relation for both quantum and gravitational mass as function of the information number bit N. For this reason, we first derive an expression for the cosmological constant as a function of information bit, since both masses depend on it, and then various resulting relations are explored, in relation to information number of bits N. Fractional information bits imply no information extraction is possible. We see, that the order of magnitude of the various parameters as well as their ratios involve the large number 10E+122, that is produced naturally from the fundamental parameters of modern cosmology. Finally, we propose that in a complete quantum gravity theory the idea of information the might have to be included, with the quantum bits of information (q-bits) as one of its fundamental parameters, resulting thus to a more complete understanding of the universe, its laws, and its evolution.",
+      "year": 2014,
+      "authors": [
+        "Ioannis Haranas",
+        "Ioannis Gkigkitzis"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1406.3041v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1406.3041"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "gr-qc/9910062",
+      "pmid": null,
+      "title": "On the Equivalence Principle and a Unified Description of Gravitation and Electromagnetism",
+      "abstract": "We first investigate the form the General Relativity Theory would have taken had the gravitational mass and the inertial mass of material objects been different. We then extend this analysis to electromagnetism and postulate an equivalence principle for the electromagnetic field. We argue that to each particle with a different electric charge-to-mass ratio in superimposed gravitational and electromagnetic fields there corresponds a spacetime manifold whose metric tensor $g_{μν}$ describes the dynamical actions of gravitation and electromagnetism. The electric field outside a charged sphere asserts itself independently rather than contributing to the gravitational field. The contribution of the electric field to the spacetime metric outside the charged sphere is shown to be similar to the gravitational one in the Schwartzschild metric but with a charge-to-mass ratio dependence of the test particle instead of the Reissner - Nordström metric, resulting in a unified description of gravitation and electromagnetism. We point out that there are existing experiments whose results can be explained by the equivalence principle for the electromagnetic field presented here. Additional experimental predictions of the theory are mentioned.",
+      "year": 1999,
+      "authors": [
+        "Murat Özer"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/gr-qc/9910062v5",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/gr-qc/9910062"
+    },
+    {
+      "doi": "10.1017/S1743921318000169",
+      "arxiv_id": "1712.02986",
+      "pmid": null,
+      "title": "Revealing Short GRB Jet Structure and Dynamics with Gravitational Wave Electromagnetic Counterparts",
+      "abstract": "Compact object mergers are promising candidates for the progenitor system of short gamma-ray bursts (GRBs). Using gravitational wave (GW) triggers to identify a merger, any electromagnetic (EM) counterparts from the jet can be used to constrain the dynamics and structure of short GRB jets. GW triggered searches could reveal a hidden population of optical transients associated with the short-lived jets from the merger object. If the population of merger-jets is dominated by low-Lorentz-factors, then a GW triggered search will reveal the on-axis orphan afterglows from these failed GRBs. By considering the EM counterparts from a jet, with or without the prompt GRB, the jet structure and dynamics can be constrained. By modelling the afterglow of various jet structures with viewing angle, we provide observable predictions for the on- and off- axis EM jet counterparts. The predictions provide an indication for the various features expected from the proposed jet structure models.",
+      "year": 2017,
+      "authors": [
+        "Gavin P. Lamb",
+        "Shiho Kobayashi"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1712.02986v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1712.02986"
+    },
+    {
+      "doi": "10.1103/PhysRevD.93.113002",
+      "arxiv_id": "1602.03191",
+      "pmid": null,
+      "title": "Small neutrino masses from gravitational $θ$-term",
+      "abstract": "We present how a neutrino condensate and small neutrino masses emerge from a topological formulation of gravitational anomaly. We first recapitulate how a gravitational $θ$-term leads to the emergence of a new bound neutrino state analogous to the $η'$ meson of QCD. Then we show the consequent formation of a neutrino vacuum condensate, which effectively generates small neutrino masses. Afterwards we outline several phenomenological consequences of our neutrino mass generation model. The cosmological neutrino mass bound vanishes since we predict the neutrinos to be massless until the phase transition in the late Universe, $T\\sim {\\rm meV}$. Deviations from an equal flavor rate due to enhanced neutrino decays in extraterrestrial neutrino fluxes can be observed in future IceCube data. The current cosmological neutrino background only consists of the lightest neutrinos, which, due to enhanced neutrino-neutrino interactions, either bind up, form a superfluid, or completely annihilate into massless bosons. Strongly coupled relic neutrinos could provide a contribution to cold dark matter in the late Universe, together with the new proposed particles and topological defects, which may have formed during neutrino condensation. These enhanced interactions could also be a source of relic neutrino clustering in our Galaxy, which possibly makes the overdense cosmic neutrino background detectable in the KATRIN experiment. The neutrino condensate provides a mass for the hypothetical $B-L$ gauge boson, leading to a gravity-competing force detectable in short-distance measurements. Gravitational waves detections have the potential to probe our neutrino mass generation mechanism.",
+      "year": 2016,
+      "authors": [
+        "Gia Dvali",
+        "Lena Funcke"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1602.03191v4",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1602.03191"
+    },
+    {
+      "doi": null,
+      "arxiv_id": "1609.07600",
+      "pmid": null,
+      "title": "Effective Medium Theory of Electromagnetic and Quantum Metamaterials",
+      "abstract": "Here, we present an overview of recent developments in the characterization of electromagnetic and quantum metamaterials using effective medium methods. It is highlighted that both electromagnetic and electronic systems can be homogenized in a unified manner based on the introduction of an effective Hamiltonian operator that describes the time evolution of the macroscopic initial states as well as the stationary states of the relevant system. Furthermore, it is shown that in some circumstances quadratic forms of the fields, such as the energy, can be exactly determined using the effective medium theory.",
+      "year": 2016,
+      "authors": [
+        "Mario G. Silveirinha"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1609.07600v1",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1609.07600"
+    },
+    {
+      "doi": "10.1109/MAP.2021.3099714",
+      "arxiv_id": "1912.11851",
+      "pmid": null,
+      "title": "Electromagnetism in Curved Spacetimes: Coupling of the Doppler and Gravitational Redshifts",
+      "abstract": "We present the basic prerequisites of electromagnetism in flat spacetime and provide the description of electromagnetism in terms of the Faraday tensor. We generalise electromagnetic theory to a general relativistic setting, introducing the Einstein field equations to describe the propagation of electromagnetic radiation in curved space-time. We investigate gravitational redshift and derive formulae for the combined effect of gravitational redshift and the Doppler shift in curved spacetime.",
+      "year": 2019,
+      "authors": [
+        "Cameron R. D. Bunney",
+        "Gabriele Gradoni"
+      ],
+      "citations": 0,
+      "oa_pdf_url": "https://arxiv.org/pdf/1912.11851v4",
+      "local_pdf": null,
+      "source": "arxiv",
+      "journal": "arXiv preprint",
+      "url": "https://arxiv.org/abs/1912.11851"
+    }
+  ]
+}
