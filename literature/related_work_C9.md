@@ -72,11 +72,28 @@ PDFs: `literature/papers/` (13 OA). Index: `literature/sci_index`.
 
 ---
 
+## Manual web pass — 2026-06-24 (closes the open novelty debt)
+
+Two independent search channels now both return the specific relation as absent:
+1. **OA index** (81 papers, 3 queries): RAG probe on exact form scored 0.007.
+2. **Open web / Scholar-style search** for `(4/3)(m_tau/m_e)^12 = alpha_EM/alpha_G`:
+   no hit for the Buckholtz relation. Adjacent results only (fine-structure-constant
+   formulas; Koide; lepton mass-hierarchy Lagrangians, e.g. arXiv:1903.12081;
+   tauon-mass predictions arXiv:hep-ph/0509043). `[VERIFIED-WEB-ABSENT]` across two channels
+   (still not exhaustive: paywalled venues + books not fully covered).
+
+**Singh 2022 obtained** (was HTTP 403 on MDPI; open at arXiv:2209.03205): it derives the
+mass ratios of quarks and charged leptons from an octonionic non-commutative pre-spacetime
+Lagrangian unifying the SM with SU(2)_R chiral gravity, and explains the Koide value 2/3 and
+its departure via left--right symmetry breaking. It is the closest *mechanism-providing*
+neighbor --- the kind of derivation C9 lacks. Cite as the contrast: others attempt to derive
+mass ratios from deeper structure (Singh, octonions); we present C9 as empirical pending such
+a mechanism. Novelty verdict therefore stands: category established, specific relation novel.
+
 ## Caveats / honesty
 
-- `[INFERRED-ABSENT]`, not `[VERIFIED-ABSENT]`: only indexed OA literature searched; not exhaustive.
-- The single closest conceptual paper (strange mass ratios + quantum gravity, 2022) returned HTTP 403
-  — abstract read, full text NOT obtained. Get it manually before relying on it.
-- This corpus is now persisted (`literature/`) — re-runnable, not search-and-discard.
+- Novelty now `[VERIFIED-WEB-ABSENT]` across OA index + open web (was `[INFERRED-ABSENT]`); still
+  not a proof of absence (paywalled/book literature not exhaustively covered).
+- This corpus is persisted (`literature/`) --- re-runnable, not search-and-discard.
 
 *Companion: C9 is PROMISING (Sabine); S³ mechanism REJECTED (NR-009); proof harness = verify_all_claims.py.*
