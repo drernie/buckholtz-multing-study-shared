@@ -149,7 +149,9 @@ record(
     f"{sig_delta:.2f} sigma (naive-wrong method gave {sig_naive:.1f})",
     "CONFIRMED" if abs(sig_delta - 5.67) < 0.3 else "CORRECTED",
     "[VERIFIED-BASH]",
-    "Planck 2018 omega_cdm/omega_b; naive sigma understates correlation -> 259 sigma artifact",
+    "Planck omega_cdm/omega_b. The ~259 sigma is a UNIT-MISMATCH artifact "
+    "(dimensionless DeltaN over omega-space sigma). Done right, BOTH methods agree: "
+    "delta-method N-space = 5.67 sigma; correct omega-space (omega_cdm-5 omega_b)/s_tot = 5.79 sigma.",
 )
 
 # ======================================================================
