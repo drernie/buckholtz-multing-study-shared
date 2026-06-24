@@ -35,8 +35,8 @@ M_E_MEV = 0.51099895000  # electron mass, MeV  (CODATA/PDG)
 M_MU_MEV = 105.6583755  # muon mass, MeV (PDG 2024)
 M_TAU_MEV = 1776.86  # tau mass, MeV (PDG 2024); sigma = 0.12
 M_TAU_SIG = 0.12
-M_W = 80.377  # W mass, GeV — matches paper ssec:bosons input (standard PDG avg, excl. CDF-II 2022).
-M_W_SIG = 0.012  # NOTE: W mass is contested; confirm vs PDG 2024 booklet before submission (may be ~80.369).
+M_W = 80.3692  # W mass, GeV — PDG 2024 average (CDF-II 2022 excluded; verified vs PDG W-mass review 2024/2025).
+M_W_SIG = 0.0133
 M_Z = 91.1876  # Z mass, GeV (PDG 2024); sigma 0.0021
 M_Z_SIG = 0.0021
 M_H = 125.20  # Higgs mass, GeV (PDG 2024); sigma ~0.11
@@ -170,13 +170,13 @@ for name, m, s, target in [("W", M_W, M_W_SIG, 7), ("Z", M_Z, M_Z_SIG, 9), ("H",
 record(
     "C6",
     "Boson squared-mass ratio 7:9:17",
-    "7:9:17 holds at ~0.2% by value, but per-boson sigma varies (W ~3.6 sigma, NOT 0.4)",
+    "7:9:17 holds at ~0.2% by value, but per-boson sigma varies (W ~3.8 sigma, NOT 0.4)",
     "; ".join(boson_rows),
     "7 : 9 : 17",
     f"worst (W) = {worst_sig:.2f} sigma; Z is the anchor (0 by construction)",
     "CORRECTED",
     "[VERIFIED-BASH]",
-    "'0.4 sigma' was H only (best boson); W deviates ~3.6 sigma. Report all three.",
+    "'0.4 sigma' was H only (best boson); W deviates ~3.8 sigma. Report all three.",
 )
 
 # ======================================================================

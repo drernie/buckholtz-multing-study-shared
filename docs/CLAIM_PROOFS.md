@@ -23,7 +23,7 @@ python scripts/verify_all_claims.py        # prints proof per atom, writes repor
 | **C9** | (4/3)(m_τ/m_e)¹² = α_EM/α_G at **0.17σ** | LHS/RHS = 1.00013516 (0.0135%) | ✅ CONFIRMED | `[VERIFIED-BASH]` | `python scripts/verify_all_claims.py` → [C9] |
 | **C9b** | n=12 is the **unique** hit (not range-fitted) | 1 of 120 combinations within 1% → only (4/3, 12, τ/e) | ✅ CONFIRMED | `[VERIFIED-BASH]` | `python scripts/verify_all_claims.py` → [C9b] |
 | **C4** | N_opt = 5.366, **5.67σ** from integer 5 (delta-method) | N_opt=5.36613, σ_N=0.06456 | ✅ CONFIRMED | `[VERIFIED-BASH]` | `python scripts/verify_all_claims.py` → [C4] |
-| **C6** | 7:9:17 holds to ~0.2% by value, but **W = 3.6σ**, H = 1.1σ, Z = anchor | W²=6.993, Z²=9.000, H²=16.966 (units (m_Z/3)²) | ⚠️ CORRECTED | `[VERIFIED-BASH]` | `python scripts/verify_all_claims.py` → [C6] |
+| **C6** | 7:9:17 holds to ~0.2% by value, but **W = 3.8σ**, H = 1.1σ, Z = anchor | W²=6.991, Z²=9.000, H²=16.966 (units (m_Z/3)²) | ⚠️ CORRECTED | `[VERIFIED-BASH]` | `python scripts/verify_all_claims.py` → [C6] |
 | **C5** | ΔN_eff is **BLOCKED** — not computable from preprint; "0.70" is one assumed scenario | naive SM = 22–81 (130–477σ); 0.70 needs g_*S>210 | 🔴 BLOCKED | `[CONFLICTING]` | `python scripts/m7_c_thermal_history_neff_audit.py` + `mirror_dm_neff_constraint.py` |
 
 ---
@@ -36,8 +36,8 @@ reports the honest value so a critic cannot use it against the strong atoms.
 ### C6 — "✅ 0.4σ" → per-boson σ varies (anchor bias)
 - 7:9:17 are ratios of **squared** masses in units `(m_Z/3)²`, not direct mass ratios.
 - Anchoring Z makes Z trivially 0σ; the remaining fit is carried by W and H.
-- **W = 3.58σ**, H = 1.14σ (PDG m_W=80.377±0.012, matching paper). The headline "0.4σ" was the best single boson (H).
-- **Honest statement:** "7:9:17 holds to ~0.2% in value; the W boson deviates ~3.6σ in PDG mass units."
+- **W = 3.81σ**, H = 1.14σ (PDG 2024 m_W=80.3692±0.0133, CDF-II excluded; matches paper). The headline "0.4σ" was the best single boson (H).
+- **Honest statement:** "7:9:17 holds to ~0.2% in value; the W boson deviates ~3.8σ in PDG mass units."
 
 ### C5 — "ΔN_eff=0.70" → BLOCKED (three conflicting scenarios)
 - `m7_c_thermal_history_neff_audit.py`: **BLOCKED** — 6 of 7 thermal inputs (T_dark, g_D, T_dark/T_ν) absent from the preprint.
