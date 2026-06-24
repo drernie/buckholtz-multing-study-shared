@@ -54,6 +54,21 @@ for label, mw, sw, mh, sh in SCENARIOS:
     results.append((label, chi2, pval))
     print(f"{label:28s} {chi2:10.2f} {z_wz:7.2f} {z_hz:7.2f} {pval:9.4f}")
 
+# --- Boundary check: does the integer ladder extend to the top quark? ---
+# (No: it is specific to the three EW bosons. Pre-empts "why only 3 bosons?")
+U2 = (M_Z / 3.0) ** 2
+M_TOP, S_TOP = 172.69, 0.30  # PDG 2024 top pole mass
+top_units = (M_TOP**2) / U2
+nearest = round(top_units)
+top_dev_pct = abs(top_units - nearest) / nearest * 100
+d_units = 2 * M_TOP / U2 * S_TOP
+top_sig = abs(top_units - nearest) / d_units
+print(
+    f"\nBoundary: top quark (m_t/(m_Z/3))^2 = {top_units:.2f} vs nearest int {nearest} "
+    f"-> {top_dev_pct:.2f}% ({top_sig:.1f}sigma); W/Z/H fit to 0.13-0.20%. "
+    f"Ladder is EW-boson-specific; the top does NOT fit."
+)
+
 best = min(results, key=lambda r: r[1])
 worst = max(results, key=lambda r: r[1])
 print(f"\nPREFERRED (lowest chi2): {best[0]}  chi2={best[1]:.2f}")
