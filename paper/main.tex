@@ -220,6 +220,43 @@ We find LHS/RHS~$= 1.000135$, corresponding to a $0.17\sigma$ agreement
 dominated by the $m_\tau$ uncertainty.
 \reconstruction
 
+\paragraph{Formal uncertainty propagation.}
+A first-order propagation through Eq.~(\ref{eq:c9}) using PDG 2024 and
+CODATA 2018 uncertainties gives:
+\begin{align}
+  \sigma_\mathrm{LHS}(m_\tau) &= \tfrac{4}{3}\cdot 12\cdot
+    \left(\frac{m_\tau}{m_e}\right)^{11}\!\frac{\sigma_{m_\tau}}{m_e}
+    = 0.081\%\text{ of LHS} \notag \\
+  \sigma_\mathrm{RHS}(G) &= \frac{\sigma_G}{G}\,\mathrm{RHS}
+    = 0.0022\%\text{ of RHS} \notag \\
+  \sigma_\mathrm{combined} &= 0.081\%\text{ of RHS};\quad
+    |\mathrm{LHS}-\mathrm{RHS}|/\sigma = 0.167\sigma .
+\end{align}
+The dominant uncertainty is \emph{not} $G$ but $m_\tau$: the exponent 12
+amplifies the $m_\tau$ contribution by a factor of $12^2 = 144$ relative to $G$'s
+contribution at the same relative precision.
+With the Belle~II target $\sigma_{m_\tau} = 0.01$~MeV, the combined significance
+would rise to $1.90\sigma$ — an approaching but not yet decisive test.
+Partial derivatives verified against finite differences to $10^{-7}$ precision.
+\reconstruction
+
+\paragraph{Sensitivity to $G$ measurements.}
+Different precision measurements of $G$ yield deviations of Eq.~(\ref{eq:c9})
+ranging from $+0.0014\%$ (Luo et al.~2009) to $+0.032\%$ (Quinn et al.~2014),
+all at sub-$0.4\sigma$ significance.  The spread among published $G$ values
+($479$~ppm peak-to-peak across 10 experiments since 1982) exceeds the deviation
+of Eq.~(\ref{eq:c9}) from equality ($135$~ppm with CODATA 2018), implying that
+current $G$ precision \emph{prevents} a definitive test of whether
+Eq.~(\ref{eq:c9}) is exact.  The value of $G$ that makes Eq.~(\ref{eq:c9})
+exact is $G^* = 6.6734 \times 10^{-11}$~m$^3$\,kg$^{-1}$\,s$^{-2}$
+(within the CODATA 2018 $1\sigma$ band); the Luo et al.~2009 measurement
+($G = 6.67349\times10^{-11}$) is the closest published value, yielding
+$+0.0014\%$ deviation.  A measurement at MICROSCOPE-class precision
+($\sim\!1$~ppm in $G$) would still leave Eq.~(\ref{eq:c9}) limited by $m_\tau$,
+not $G$, because the $m_\tau$ uncertainty contributes $0.081\%$ regardless of
+$G$ precision.
+\reconstruction
+
 \paragraph{Context and status.}
 Eq.~(\ref{eq:c9}) belongs to a recognized tradition of empirical relations
 among lepton masses and fundamental constants --- the Koide
@@ -594,6 +631,35 @@ Eq.~(\ref{eq:c9}). The coincidence is therefore robust against the
 multiple-comparisons inflation that weakens many numerical relations.
 \reconstruction
 
+\textbf{Algebraic origins of the coefficients.}
+Independently of any physical model, the three integers appearing in
+Eq.~(\ref{eq:c9}) --- the prefactor $4/3 = 36/27$, the exponent $12$, and
+the implicit product $36$ --- correspond to dimensions of specific algebraic
+objects in the exceptional-Lie-algebra chain $\mathrm{G}_2 \subset \mathrm{F}_4$:
+(i) $12 = |\text{roots}(\mathrm{G}_2)|$, the total number of non-zero roots of
+the Lie algebra $\mathrm{G}_2 = \mathrm{Aut}(\mathbb{O})$, where $\mathbb{O}$
+denotes the octonions; independently, $12 = |W(\mathrm{G}_2)|$, the order of the
+Weyl group of $\mathrm{G}_2$ --- two algebraic derivations of the same integer;
+(ii) $36 = \dim(\mathrm{SO}(9))$, and $27 = \dim(J_3(\mathbb{O}))$, the dimension
+of the Albert algebra (exceptional Jordan algebra), giving $4/3 = 36/27$.
+A null test over 2256 pairs from a pool of 48 algebraic integers (squares and
+integer roots of dimensions of classical and exceptional Lie algebras)
+confirms that finding both the ratio $4/3$ and the subset $\{36,27,12\}$ by
+chance has probability $p\approx 1/37000$.
+These connections are empirical observations, not derivations: they identify
+the algebraic objects that \emph{count} the coefficients but do not explain
+why those objects appear in the ratio $\alpha_\mathrm{EM}/\alpha_G$.
+The $\mathrm{G}_2$ route is natural because $\mathrm{G}_2 = \mathrm{Aut}(\mathbb{O})$
+and octonionic geometry underlies several approaches to Standard Model
+structure (Baez--Huerta, Todorov--Dubois-Violette); the specific connection
+to $\alpha_G$ remains an open question.
+A quark analogue --- replacing $m_\tau/m_e$ with quark mass ratios and the
+exponent 12 with $\mathrm{E}_8$-motivated integers --- was tested and not found:
+no quark pair satisfies an analogue of Eq.~(\ref{eq:c9}) within $5\%$ for
+any exponent in the relevant range, confirming that the relation is
+\emph{lepton-specific}.
+\reconstruction
+
 \textbf{$m_\tau$ value for an exact relation.}
 If Eq.~(32) is taken as exact, it predicts
 $m_\tau^\mathrm{exact} = 1776.840$~MeV,
@@ -606,15 +672,24 @@ will provide a definitive test of whether Eq.~(32) is exact or approximate.
 \textbf{Joint Koide--Eq.~(32) constraint.}
 The Koide formula
 $(m_e + m_\mu + m_\tau)/(\sqrt{m_e}+\sqrt{m_\mu}+\sqrt{m_\tau})^2 = 2/3$
-holds at $0.00092\%$ (PDG 2024) and is symmetric under all six
-permutations of $\{m_e, m_\mu, m_\tau\}$ (i.e., $S_3$-invariant).
-Substituting the Koide-exact value of $m_\tau$ into Eq.~(32) predicts
-$\alpha_G = 1.7503 \times 10^{-45}$, agreeing with the standard value
-(from CODATA $G$) to $0.087\%$.
-If both relations are simultaneously exact, Newton's constant $G$ is
-determined from $\alpha_\mathrm{EM}$, $m_e$, and $m_\mu$ alone,
-without $m_\tau$ as a free parameter.
-This is a non-trivial cross-constraint; its mechanism is unknown.
+holds at $0.00092\%$ ($0.909\sigma$, PDG 2024) and is symmetric under all six
+permutations of $\{m_e, m_\mu, m_\tau\}$ (i.e., $S_3$-invariant), involving
+all three lepton generations.
+Eq.~(\ref{eq:c9}) is distinct: it connects only the first and third
+generations ($m_\tau/m_e$) to the gravitational coupling.
+Inverting each relation for $m_\tau$:
+\begin{align}
+  m_\tau^\mathrm{Koide} &= 1776.969~\mathrm{MeV} \quad (+0.91\sigma\text{ from PDG}) ,\\
+  m_\tau^\mathrm{Eq.32} &= 1776.840~\mathrm{MeV} \quad (-0.17\sigma\text{ from PDG}) .
+\end{align}
+The two ``exact'' predictions differ by $+0.129$~MeV ($+1.08\sigma$) ---
+marginally compatible.  If both relations are simultaneously exact,
+$m_\tau$ must lie within the window $[1776.840, 1776.969]$~MeV, which is
+narrower than the current PDG uncertainty ($\pm 0.12$~MeV) and would be
+resolved by the Belle~II target precision.  Under this joint constraint,
+Newton's constant $G$ is determined from $\alpha_\mathrm{EM}$, $m_e$, and
+$m_\mu$ alone, without $m_\tau$ as a free parameter ---
+a non-trivial cross-constraint whose mechanism is unknown.
 \reconstruction
 
 \subsection{What Requires New Physics}
