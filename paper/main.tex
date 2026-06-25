@@ -51,9 +51,12 @@ rendered negligible at cluster scales for the tabulated $\beta_d = 4.5$,
 requiring $\beta_d \gtrsim 10^{3.2}$ for a 1\% observational signature ---
 formally quantified via Birge Ratio $R_B = 15.9$ ($\beta_d$) and $R_B = 24.1$
 ($\beta_q$), both with $p < 10^{-4}$;
-(4)~an integer IDM isomer count $N=5$ is excluded at $5.67\sigma$ by Planck 2018;
-(5)~a gravitational-only-coupling interpretation of IDM is internally
-self-consistent but eliminates the dark baryogenesis mechanism required for CDM;
+(4)~equal-mass $N=5$ IDM isomers are excluded at $5.67\sigma$ by Planck 2018,
+but five isomers with $\bar{m} = 1.074\,m_p$ are Planck-compatible (EXP-N);
+(5)~the $\Delta N_\mathrm{eff} > 100\sigma$ claim applies to a thermalized
+mirror sector only; gravitational-only IDM gives $\Delta N_\mathrm{eff}
+\lesssim 10^{-40}$, trivially within Planck bounds, though this eliminates
+the dark baryogenesis mechanism (EXP-O);
 (6)~the $H_\mathrm{FLRW}$ baseline used in Table~A1 is inconsistent with standard
 $\Lambda$CDM (Planck MAE $= 120$~km\,s$^{-1}$\,Mpc$^{-1}$); a power-law
 $H(z) = 54.07\,(1+z)^{0.884}$ fits the 11 Table~A1 points with
@@ -517,6 +520,19 @@ distinguishing integer $N$ values requires independent constraints on
 $\eta_\mathrm{dark}$ (open question, beyond current scope).
 \reconstruction
 
+\textbf{Mass-spectrum resolution (EXP-N).}
+A second resolution arises if the five IDM isomers carry unequal masses.
+Under equal baryon number per isomer ($f \equiv 1$), the IDM prediction
+becomes $\omega_\mathrm{DM}/\omega_b = \sum_i (m_i/m_p)$.  The Planck 2018
+central value $N_\mathrm{opt} = 5.369$ is reproduced exactly by five isomers
+with common mass $\bar{m} = 1.074\,m_p$ --- a $7.4\%$ enhancement over the
+proton mass, or by any five-isomer spectrum whose masses sum to
+$5.369\,m_p$~\cite{rosa2022}.  Such a mass splitting is within the
+$O(1)$ range expected for a dark QCD analogue; it does not require exotic
+physics.  Distinguishing this scenario from $f \neq 1$ requires
+independent measurement of the dark-sector baryon asymmetry.
+\reconstruction
+
 \subsection{Hot Dark Matter Problem}
 \label{ssec:hdm}
 
@@ -567,24 +583,44 @@ abandoning the dark baryogenesis mechanism (see also §\ref{ssec:neff}).
 \subsection{Effective Relativistic Species ($N_\mathrm{eff}$)}
 \label{ssec:neff}
 
-If the dark sector thermalizes with the SM bath ($T_\mathrm{dark} = T_\mathrm{SM}$
-at BBN), each mirror-sector dark isomer contributes relativistic degrees of
-freedom.  For a minimal mirror sector (dark photons + dark neutrinos only),
-$\Delta N_\mathrm{eff} \approx 22.0$ across 5 dark isomers.  Including dark
-quarks and gluons yields $\Delta N_\mathrm{eff} \approx 37$--81.
-The Planck 2018 bound is $\Delta N_\mathrm{eff} < 0.29$ (95\% CL, from
-$N_\mathrm{eff} = 2.99 \pm 0.17$); the minimal IDM scenario exceeds this by
-$>100\sigma$.
+Three regimes must be distinguished; they differ by tens of orders of magnitude
+in $\Delta N_\mathrm{eff}$ (EXP-O \reconstruction).
+
+\textbf{(i) Thermalized mirror sector.}
+If the dark sector was in full thermal equilibrium with the SM bath
+($T_\mathrm{dark} = T_\mathrm{SM}$ at BBN), each mirror-sector isomer
+contributes relativistic degrees of freedom.  For a minimal mirror sector
+(dark photons + dark neutrinos) $\Delta N_\mathrm{eff} \approx 22$;
+including dark quarks and gluons yields $\Delta N_\mathrm{eff} \approx 37$--81;
+for the full mirror SM ($g_\mathrm{eff} = 106.75$), $\Delta N_\mathrm{eff} = 106.8$.
+The Planck 2018 bound $\Delta N_\mathrm{eff} < 0.284$ (95\% CL,
+$N_\mathrm{eff} = 2.99 \pm 0.17$) is violated at $>100\sigma$ in all three
+sub-cases.  This is the regime implicitly assumed by the $>100\sigma$ claim.
+
+\textbf{(ii) Early-decoupling hidden sector.}
+If the dark sector decoupled from the SM at temperature $T_\mathrm{dec}$,
+subsequent SM entropy production dilutes the dark temperature.  The ratio today
+satisfies $\xi \equiv T_\mathrm{dark}/T_{\nu} = (10.75/g_{*S}(T_\mathrm{dec}))^{1/3}$.
+For $T_\mathrm{dec} \gtrsim 100$~GeV, $g_{*S} = 106.75$, $\xi = 0.465$, and
+$\Delta N_\mathrm{eff} = g_\mathrm{eff,dark}\,\xi^4 \approx 0.047\,g_\mathrm{eff,dark}$:
+Planck 2018 allows $g_\mathrm{dark} \lesssim 6$ at 95\% CL~\cite{chacko2015}.
+
+\textbf{(iii) Gravitational-only production (IDM as stated).}
+For a sector that \emph{never} thermalizes with the SM, production is via
+gravitational particle production during reheating.  The effective temperature
+scales as $T_\mathrm{dark}/T_\mathrm{SM} \sim (T_\mathrm{reh}/M_\mathrm{Pl})^{4/3}$
+\cite{clery2021}, giving $T_\mathrm{dark}/T_\mathrm{SM} \lesssim 10^{-11}$ for
+$T_\mathrm{reh} \lesssim 10^{10}$~GeV.  The resulting
+$\Delta N_\mathrm{eff} \sim g_\mathrm{dark}(T_\mathrm{dark}/T_\nu)^4 \lesssim 10^{-40}$
+is entirely negligible~\cite{clery2021,farina2018}.
+The $>100\sigma$ exclusion therefore applies exclusively to the thermalized
+mirror-sector interpretation (\textbf{i}), not to gravitational-only IDM.
 \reconstruction
 
-A gravitational-only coupling ($T_\mathrm{dark} \ll T_\mathrm{SM}$)
-suppresses $\Delta N_\mathrm{eff}$ by $(T_\mathrm{dark}/T_\mathrm{SM})^4$
-(quantified in §\ref{sec:discuss}: SM entropy dilution to
-$g_{*S} = 106.75$ gives $\Delta N_\mathrm{eff} = 0.70$ for 15 dark-neutrino
-species, still $2.4\times$ over the limit),
-but as noted in §\ref{ssec:hdm} and §\ref{ssec:sigma}, this coupling removes
-the dark baryogenesis mechanism that IDM requires for its dark matter
-abundance prediction.  The internal tension (E4) is unresolved in the preprint.
+The binding tension for IDM is thus \emph{not} $\Delta N_\mathrm{eff}$
+(trivially satisfied in regime~iii), but the internal conflict that
+grav-only coupling removes the dark baryogenesis mechanism IDM requires
+to predict its dark abundance (E4 tension, §\ref{ssec:hdm}).
 
 % ──────────────────────────────────────────────
 \section{Discussion}
@@ -842,8 +878,9 @@ H(z) correlation & $\triangle$ $\Delta\mathrm{AIC}{=}{+}0.74$ & 27 Moresco CC \\
 $H_\mathrm{FLRW}$ provenance & $\times$ not Planck & MAE $120$ vs $5$ \\
 $\beta_d = 4.5$ observability & $\times$ negligible & $k_A/M$ calc \\
 $\beta$ BRAI & $\times$ $R_B{=}15.9/24.1$ ($p{<}10^{-4}$) & 3 AI services \\
-IDM $N=5$ integer & $\times$ $5.67\sigma$ & Planck 2018 \\
-IDM CDM viability & $\times$ killed & HDM $+$ $\Delta N_\mathrm{eff}$ \\
+IDM $N=5$ equal-mass & $\times$ $5.67\sigma$ & Planck 2018 (EXP-N) \\
+IDM $N=5$ unequal-mass & $\triangle$ $\bar{m}=1.074\,m_p$ & mass-spectrum resolution \\
+IDM CDM viability & $\times$ killed & HDM $+$ E4 tension \\
 $f\sigma_8$ dipole proxy & $\triangle$ $r{=}0.851$ ($n{=}10$, $z{\le}5$) & Table A1 $+$ $\Lambda$CDM \\
 Secondary $z{=}8.5$ bump & $\triangle$ structural & Two-component $\varepsilon$ \\
 MULTING Lagrangian & ? open & Future work \\
@@ -879,15 +916,19 @@ fits the same 11 points with MAE $= 5.04$~km\,s$^{-1}$\,Mpc$^{-1}$.
 This means that comparisons of MULTING vs.\ ``standard cosmology'' must
 specify which H$_\mathrm{FLRW}$ convention is intended.
 
-The IDM cosmological predictions face three independent constraints.
-First, $N=5$ isomers are excluded at $5.67\sigma$ by Planck 2018.
-Second, dark-sector neutrinos (15 species for five MESI isomers $\times$ three
-generations) contribute $\Delta N_\mathrm{eff} = 0.70$ under the most
-favourable SM thermal history ($g_{*S} = 106.75$), rising to
-$\Delta N_\mathrm{eff} \approx 22$--81 for the full mirror sector without
-entropy advantage; both exceed the Planck 2018 limit $\Delta N_\mathrm{eff} <
-0.29$ (95\% CL).
-A massive-neutrino escape route fails because it implies
+The IDM cosmological predictions face two structural constraints, with a
+third that depends on the coupling assumption.
+First, $N=5$ \emph{equal-mass} isomers are excluded at $5.67\sigma$ by Planck
+2018; however, five isomers with a common mass $\bar{m} = 1.074\,m_p$ exactly
+reproduce the observed $\omega_\mathrm{DM}/\omega_b = 5.369$, converting the
+exclusion into a mass-spectrum constraint (EXP-N).
+Second, the $\Delta N_\mathrm{eff}$ bound depends critically on the dark-sector
+coupling: a fully thermalized mirror sector gives $\Delta N_\mathrm{eff} = 106.8$,
+excluded at $>100\sigma$; a gravitational-only sector (IDM as stated) gives
+$\Delta N_\mathrm{eff} \lesssim 10^{-40}$, entirely within Planck bounds (EXP-O).
+The ``$>100\sigma$'' characterization applies only to the thermalized regime
+and is a \emph{misclassification} when applied to grav-only IDM~\cite{clery2021}.
+A massive-neutrino escape route for the thermalized case fails because it implies
 $\Sigma m_{\nu,\mathrm{dark}} \geq 1.3$~eV $\gg$ the Planck mass limit
 $0.12$~eV.
 The minimal viable scenario requires BSM physics above the electroweak scale
