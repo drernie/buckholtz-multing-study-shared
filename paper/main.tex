@@ -398,6 +398,33 @@ Planck 2018 $\Lambda$CDM.  All MULTING vs.\ $\Lambda$CDM comparisons
 in this paper use the power-law proxy as the H$_\mathrm{FLRW}$ reference
 pending author confirmation of the intended convention.
 
+\textbf{Effect on $\varepsilon(z)$ claims (EXP-G).}
+To quantify the impact of the baseline choice on the MULTING expansion claims,
+we compute $\varepsilon_\mathrm{Planck}(z) \equiv (H_\mathrm{MULT}/H_\mathrm{Planck})^2 - 1$
+using the Planck 2018 flat $\Lambda$CDM baseline ($H_0 = 67.4$, $\Omega_m = 0.315$,
+arXiv:1807.06209 Table~2).
+The $H_\mathrm{FLRW}$ values fall progressively below Planck: $-1.9\%$ at $z=0.06$,
+$-10.6\%$ at $z=0.40$, $-15.0\%$ at $z=0.65$, $-20.7\%$ at $z=1.00$,
+and $-64.1\%$ at $z=8.50$.
+As a consequence, $\varepsilon_\mathrm{Planck}(z)$ changes sign near $z \approx 0.33$:
+\begin{itemize}
+  \item $z < 0.33$: $\varepsilon_\mathrm{Planck} > 0$ --- MULTING predicts \emph{more}
+        expansion than Planck $\Lambda$CDM.  This low-$z$ excess is
+        baseline-independent: it survives rebasing from the power-law proxy
+        to true Planck $\Lambda$CDM (e.g.\ $\varepsilon_\mathrm{Planck}(0) =
+        \varepsilon_\mathrm{FLRW}(0) = +0.113$ at $z=0$, where both baselines
+        share the same $H_0$).
+  \item $z > 0.33$: $\varepsilon_\mathrm{Planck} < 0$ --- MULTING predicts
+        \emph{less} expansion than Planck $\Lambda$CDM.
+        At $z = 0.65$: $\varepsilon_\mathrm{FLRW} = +0.213$ vs
+        $\varepsilon_\mathrm{Planck} = -0.124$ (sign reversal of $0.337$).
+        The positive $\varepsilon$ in Table~A1 at $z \ge 0.40$ reflects
+        the below-Planck $H_\mathrm{FLRW}$ baseline, not an independent signal.
+        Claims based on $\varepsilon(z)$ for $z > 0.4$ should be interpreted
+        relative to the stated baseline.
+\end{itemize}
+\reconstruction
+
 \subsection{Physical proxy for the dipole component}
 \label{ssec:fsig8}
 
@@ -418,10 +445,12 @@ $r \in [0.82, 0.87]$ on a $4\times4$ grid of
 $\Omega_m \in [0.28, 0.32]$ and $\sigma_8 \in [0.77, 0.83]$.
 \reconstruction
 
-When tested against $n=11$ observed RSD f$\sigma_8$ measurements
-(Beutler+2012, Blake+2011, Samushia+2012, Howlett+2015, de la Torre+2013,
-Okumura+2016; $z \in [0.07, 1.40]$), the correlation drops to $r = -0.086$
-(not significant).
+When tested against $n=11$ observed RSD $f\sigma_8$ measurements
+(Beutler+2012, Blake+2012 WiggleZ, Samushia+2012 SDSS-LRG,
+Howlett+2015 BOSS, de la Torre+2013 VIPERS, Okumura+2016 FastSound;
+$z \in [0.07, 1.40]$; compiled from Kazantzidis \&\ Perivolaropoulos 2018,
+arXiv:1803.01368, gold dataset), the correlation drops to $r = -0.084$
+(EXP-D, [VERIFIED-REAL]), not significant ($p = 0.81$, $n=11$).
 At the same $z$ values, the $\Lambda$CDM model gives $r = 0.778$ with $\varepsilon(z)$,
 confirming that the gap is not a failure of the $\varepsilon$ shape but a
 consequence of the $\sigma_8$ tension: observed $f\sigma_8$ values are
