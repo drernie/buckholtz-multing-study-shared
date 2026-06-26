@@ -46,12 +46,15 @@ FSIG8_OBSERVED = [
     (0.78, 0.380, 0.040, "Blake+2012 WiggleZ", "1104.2948"),
     (0.80, 0.470, 0.080, "de la Torre+2013 VIPERS", "1303.2622"),
     (1.36, 0.482, 0.116, "Okumura+2016 FastSound", "1511.08083"),
-    # DESI 2024 Y1 Full-Shape (arXiv:2411.12021) — add when paper confirmed:
-    # (0.295, 0.427, 0.041, "DESI 2024 BGS", "2411.12021"),
-    # (0.510, 0.455, 0.028, "DESI 2024 LRG1", "2411.12021"),
-    # (0.706, 0.449, 0.021, "DESI 2024 LRG2", "2411.12021"),
-    # (0.930, 0.424, 0.021, "DESI 2024 LRG3+ELG1", "2411.12021"),
-    # [NEEDS-VERIFICATION: confirm fσ8 values vs published DESI Y1 paper]
+    # DESI 2024 Y1 Full-Shape (arXiv:2411.12021) [VERIFIED-REAL]
+    # Source: Appendix A, eqs.(A.1)-(A.9) — MAP values of fσ_s8 = fσ_8 (q_iso=1 assumption,
+    # see Fig.14 caption). σ from diagonal of covariance matrices (A.2),(A.4),(A.6),(A.8),(A.10).
+    # ELG1 excluded from analysis; ELG2 is 1.1<z<1.6 (z_eff=1.32).
+    (0.295, 0.377, 0.094, "DESI 2024 BGS", "2411.12021"),
+    (0.510, 0.514, 0.064, "DESI 2024 LRG1", "2411.12021"),
+    (0.706, 0.484, 0.053, "DESI 2024 LRG2", "2411.12021"),
+    (0.930, 0.422, 0.047, "DESI 2024 LRG3", "2411.12021"),
+    (1.320, 0.377, 0.037, "DESI 2024 ELG2", "2411.12021"),
 ]
 
 z_obs = np.array([d[0] for d in FSIG8_OBSERVED])
@@ -151,6 +154,6 @@ print("EVIDENCE STATUS")
 print("─" * 70)
 print("  fσ8 values:    [VERIFIED-REAL] — from cited RSD publications")
 print("  ε(z) values:   [VERIFIED-tool] — from Table A1 via M8-A-R1 definition")
-print("  DESI 2024 pts: [NEEDS-VERIFICATION] — commented out, verify arXiv:2411.12021")
+print("  DESI 2024 pts: [VERIFIED-REAL] — Appendix A eqs.(A.1)-(A.10) of arXiv:2411.12021")
 print("  Previous CHECK 3 in fsig8_robustness.py was [INFERRED]; this script is")
 print("  EXP-D [VERIFIED-REAL] replacement.")
