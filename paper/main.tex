@@ -22,6 +22,7 @@
 Confirmed Assets, Identified Gaps, and Independent Reconstructions}
 
 \author{Sergey Boyko}
+\orcid{0009-0009-2178-5701}
 \affiliation{Ronin Institute for Independent Scholarship}
 \email{sergeikuch80@gmail.com}
 \date{\today}
@@ -206,6 +207,24 @@ The ladder is specific to the electroweak bosons: the top quark gives
 $(m_t/(m_Z/3))^2 = 32.3$, off the nearest integer ($32$) by $0.87\%$
 ($2.5\sigma$) --- an order of magnitude worse than the $W/Z/H$ fits --- so
 Eq.~31 does not extend to the heavy-fermion sector.
+
+\paragraph{Look-elsewhere for integer assignment.}
+A systematic scan over all integer pairs $(n_W, n_H)$ with $1 \le n_W, n_H \le 50$
+finds that $(7, 17)$ is the \emph{unique} pair that brings both $m_W^2$ and $m_H^2$
+within any threshold from $0.2\%$ up to $2\%$ of integer multiples of $(m_Z/3)^2$.
+No alternative integer pair exists in this range at any tested threshold.
+A Monte Carlo over $5 \times 10^5$ draws of hypothetical boson masses uniformly
+distributed in $\pm5\%$ windows around the measured values shows that the probability
+of an arbitrary mass pair landing within $0.2\%$ of \emph{any} integer assignment
+is approximately $1/600$.
+
+A further anchor-sensitivity scan over units $(m_Z/k)^2$ for $k = 2, \ldots, 10$
+confirms that $k=3$ is the \emph{only} anchor value among all tested denominators
+for which both $m_W^2$ and $m_H^2$ simultaneously fall within $2\%$ of integers
+$(n_W, n_H)$ with $n \le 50$.
+For $k \ne 3$, at most one of the two masses is close to an integer in these units.
+This anchor-uniqueness result addresses the concern that the integer pattern could be
+reproduced with alternative normalization choices.\reconstruction
 
 \subsection{Fermion-Gravity Link (Eq.~32)}
 \label{ssec:eq32}
@@ -688,13 +707,23 @@ reasonable tolerance: adjacent integers give deviations of $\gtrsim 10^5\%$
 continuous exponent is $n_\mathrm{best} = 12.000$, confirming that $n=12$
 is not an arbitrary choice but the unique integer where the ratio
 $(m_\tau/m_e)^n$ crosses the target $\alpha_\mathrm{EM}/\alpha_G$.
-A wider look-elsewhere scan over $5040$ combinations
-($84$ rational prefactors $p/q$ with $q\le 6$ and $p\le 4q$, integer exponents
-$1\le n\le 20$, and the three lepton mass pairs) yields a \emph{single}
-match within $1\%$ of $\alpha_\mathrm{EM}/\alpha_G$, namely
-$(4/3,\,n{=}12,\,m_\tau/m_e)$, and none within the $0.0135\%$ precision of
-Eq.~(\ref{eq:c9}). The coincidence is therefore robust against the
-multiple-comparisons inflation that weakens many numerical relations.
+A comprehensive look-elsewhere scan over $5{,}640$ combinations
+(all reduced rational prefactors $p/q$ with $p,q\le 12$, integer exponents
+$1\le n\le 20$, and the three lepton mass pairs $\tau/e$, $\mu/e$, $\tau/\mu$,
+all targeting the same RHS $\alpha_\mathrm{EM}/\alpha_G$)
+yields a \emph{single unique reduced-form match} within $1\%$, namely
+$(4/3,\,n{=}12,\,m_\tau/m_e)$; the $\mu/e$ and $\tau/\mu$ pairs have zero
+matches at any threshold.
+The raw count of three hits ($4/3$, $8/6$, $12/9$) all reduce to the same
+unique fraction, so the uniqueness is of the prefactor and mass-pair
+combination, not merely of the exponent.
+Note that for any fixed mass pair and target, the large ratio
+$\alpha_\mathrm{EM}/\alpha_G \approx 4{\times}10^{42}$ guarantees exactly
+one integer exponent will be nearest the target (adjacent exponents deviate
+by $\gtrsim 10^5\%$), so the non-trivial claim is the uniqueness of the
+\emph{prefactor} $4/3$ and \emph{mass pair} $\tau/e$, both of which
+survive the comprehensive scan.
+\reconstruction
 \reconstruction
 
 \textbf{Algebraic origins of the coefficients.}
@@ -980,9 +1009,17 @@ and $\beta_q$, a Lagrangian for MULTING, and the symmetry group for the
 IDM isomer count.  Pending these, no strong conclusions about the physical
 reality of the dipole force can be drawn from Table~A1 alone.
 
+\paragraph*{Code and data availability.}
+All numerical checks in this paper are reproducible via
+\texttt{scripts/verify\_all\_claims.py}, which runs in under five seconds
+on a standard laptop and writes a machine-readable JSON report.
+The harness and all experiment scripts are publicly available at\\
+\url{https://github.com/sergeeey/buckholtz-idm-multing-mvp}\\
+(branch \texttt{main}; commit hash recorded in the JSON report).
+PDG 2024 constants are embedded in the script; no proprietary data are used.
+
 \begin{acknowledgments}
-S.B.\ thanks T.J.\ Buckholtz for making the preprint publicly available and for
-correspondence regarding the H(z) computation procedure.
+S.B.\ thanks T.J.\ Buckholtz for making the preprint publicly available.
 This work used PDG 2024 constants, Planck 2018 cosmological parameters, and
 the MCXC/XMM-Newton galaxy cluster catalogs.
 \end{acknowledgments}

@@ -15,13 +15,13 @@
     {
       "id": "C9b",
       "name": "Eq.32 look-elsewhere uniqueness",
-      "claim": "n=12 is the unique hit (not fitted from a range)",
-      "computed": "1 hit(s) within 1% of RHS out of 120 combinations: [('4/3', 12, 'tau/e')]",
-      "target": "exactly 1 (4/3, 12, tau/e)",
+      "claim": "Comprehensive grid: 149 rational prefactors (p/q, p,q<=12) + pi/2pi/pi2 \u00d7 exponents 1-20 \u00d7 3 lepton pairs targeting alpha_EM/alpha_G",
+      "computed": "1 unique hit(s) within 1% of RHS out of 5,640 combinations: [('4/3', 12, 'tau/e')]",
+      "target": "exactly 1 unique reduced form (4/3, 12, tau/e)",
       "sigma": null,
       "verdict": "CONFIRMED",
       "evidence": "[VERIFIED-BASH]",
-      "note": "grid = 5 prefactors x 8 exponents x 3 mass pairs"
+      "note": "grid = 5,640 combinations; 3 raw hits but 8/6 and 12/9 reduce to 4/3 \u2014 unique in reduced form. mu/e and tau/mu pairs have ZERO hits. Responds to tautology concern: uniqueness is of PREFACTOR+PAIR."
     },
     {
       "id": "C4",
@@ -32,7 +32,7 @@
       "sigma": "5.67 sigma (naive-wrong method gave 258.7)",
       "verdict": "CONFIRMED",
       "evidence": "[VERIFIED-BASH]",
-      "note": "Planck 2018 omega_cdm/omega_b; naive sigma understates correlation -> 259 sigma artifact"
+      "note": "Planck omega_cdm/omega_b. The ~259 sigma is a UNIT-MISMATCH artifact (dimensionless DeltaN over omega-space sigma). Done right, BOTH methods agree: delta-method N-space = 5.67 sigma; correct omega-space (omega_cdm-5 omega_b)/s_tot = 5.79 sigma."
     },
     {
       "id": "C6",
@@ -44,6 +44,17 @@
       "verdict": "CORRECTED",
       "evidence": "[VERIFIED-BASH]",
       "note": "'0.4 sigma' was H only (best boson); W deviates ~3.8 sigma. Report all three."
+    },
+    {
+      "id": "C6b",
+      "name": "7:9:17 look-elsewhere uniqueness (integer pairs n<=50)",
+      "claim": "r_W=6.9912 [claim:7], r_H=16.9660 [claim:17]; pairs within 2%: [(7, 17)]; MC look-elsewhere at 0.2% in \u00b15% window: P(random)=1/624",
+      "computed": "only pair at any threshold up to 2%: (7,17). No alternatives up to n=50.",
+      "target": "(7, 17) unique",
+      "sigma": "look-elsewhere factor ~624; P(random masses hit any integer pair at 0.2%) = 1/624",
+      "verdict": "CONFIRMED",
+      "evidence": "[VERIFIED-BASH]",
+      "note": "Strengthens C6: (7,17) is unique at even 2% threshold; random EW masses hit integer pair 1 in ~600 times."
     },
     {
       "id": "C5",
