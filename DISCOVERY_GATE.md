@@ -34,6 +34,43 @@ Missing: mechanism(4/3) | mechanism(α_G) | blind prediction | external review
 | + blind prediction       | theory predicts something new            | scientific discovery candidate |
 | + independent check      | external physicist confirms              | claimable discovery            |
 
+## Session 10 Update (2026-06-27)
+
+### Atom A — α_G mechanism
+Status: PARTIALLY STRENGTHENED
+Findings:
+- e→μ replacement everywhere kills the relation by ~23 orders (x7399 gap). m_e is NOT a post-hoc choice.
+- α_G(e) = G·m_e²/(ħc) is Dirac 1937 standard definition, not circular.
+- m_e appears on BOTH sides of Eq.32 simultaneously (denominator LHS + α_G RHS).
+- J₃(O) base-state hypothesis (H2) remains alive — strongest surviving mechanism.
+- F₄ Casimir specificity: n=6,8 give nothing for α_EM/α_G; only n=12 (max degree) works.
+Open:
+- No derivation of α_G from F₄/J₃(O).
+- Need Singh 2022 (arXiv:2209.03205) §3 check: does J₃(O) canonically select m_e?
+
+### Atom B — 4/3
+Status: STRUCTURAL CLUE, NOT DERIVATION
+Findings:
+- 4/3 = 36/27 = dim(Spin(9))/dim(J₃(O)) appears inside F₄/B₄ decomposition.
+- Multiple F₄ ratios exist (52/36, 52/27, 16/9, 36/27). Selection of 36/27 requires justification.
+- Retrofit risk: REDUCED not eliminated.
+Open:
+- Need independent pre-Eq.32 derivation of 4/3.
+- Check Buckholtz preprint §2-3 for S³ / κ²=(n+1)/n=4/3 geometric origin.
+
+### Blind prediction n=8
+Status: WEAKLY_CONSISTENT, NOT PROMOTED
+Reason:
+- Best hit: (6/1)(μ/s)^8 = α_S/α_EM at 0.40% — registered BEFORE scan, hit found AFTER.
+- But: 30× weaker than Eq.32, α_S is scale-dependent, m_s has 5% uncertainty > hit precision,
+  n=8 has 15 hits in 5% vs 2 for n=12 → NOT pair-specific.
+- Useful as negative control demonstrating methodology.
+
+### Overall
+Eq.32 remains **STRUCTURAL PEARL CANDIDATE** (not yet DISCOVERY).
+Stronger than before: post-hoc objection weakened, 4/3 has structural footing, n=8 weak control done.
+Missing: mechanism for α_G, mechanism for 4/3, strong blind prediction.
+
 ## Rules
 
 1. Do NOT use Eq.32 as evidence for itself (circular)
