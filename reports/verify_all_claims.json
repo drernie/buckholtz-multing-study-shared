@@ -15,13 +15,13 @@
     {
       "id": "C9b",
       "name": "Eq.32 look-elsewhere uniqueness",
-      "claim": "n=12 is the unique hit (not fitted from a range)",
-      "computed": "1 hit(s) within 1% of RHS out of 120 combinations: [('4/3', 12, 'tau/e')]",
-      "target": "exactly 1 (4/3, 12, tau/e)",
+      "claim": "Comprehensive grid: 149 rational prefactors (p/q, p,q<=12) + pi/2pi/pi2 \u00d7 exponents 1-20 \u00d7 3 lepton pairs targeting alpha_EM/alpha_G",
+      "computed": "1 unique hit(s) within 1% of RHS out of 5,640 combinations: [('4/3', 12, 'tau/e')]",
+      "target": "exactly 1 unique reduced form (4/3, 12, tau/e)",
       "sigma": null,
       "verdict": "CONFIRMED",
       "evidence": "[VERIFIED-BASH]",
-      "note": "grid = 5 prefactors x 8 exponents x 3 mass pairs"
+      "note": "grid = 5,640 combinations; 3 raw hits but 8/6 and 12/9 reduce to 4/3 \u2014 unique in reduced form. mu/e and tau/mu pairs have ZERO hits. Responds to tautology concern: uniqueness is of PREFACTOR+PAIR."
     },
     {
       "id": "C4",

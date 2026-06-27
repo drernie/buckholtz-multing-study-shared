@@ -22,6 +22,7 @@
 Confirmed Assets, Identified Gaps, and Independent Reconstructions}
 
 \author{Sergey Boyko}
+\orcid{0009-0009-2178-5701}
 \affiliation{Ronin Institute for Independent Scholarship}
 \email{sergeikuch80@gmail.com}
 \date{\today}
@@ -1008,9 +1009,17 @@ and $\beta_q$, a Lagrangian for MULTING, and the symmetry group for the
 IDM isomer count.  Pending these, no strong conclusions about the physical
 reality of the dipole force can be drawn from Table~A1 alone.
 
+\paragraph*{Code and data availability.}
+All numerical checks in this paper are reproducible via
+\texttt{scripts/verify\_all\_claims.py}, which runs in under five seconds
+on a standard laptop and writes a machine-readable JSON report.
+The harness and all experiment scripts are publicly available at\\
+\url{https://github.com/sergeeey/buckholtz-idm-multing-mvp}\\
+(branch \texttt{main}; commit hash recorded in the JSON report).
+PDG 2024 constants are embedded in the script; no proprietary data are used.
+
 \begin{acknowledgments}
-S.B.\ thanks T.J.\ Buckholtz for making the preprint publicly available and for
-correspondence regarding the H(z) computation procedure.
+S.B.\ thanks T.J.\ Buckholtz for making the preprint publicly available.
 This work used PDG 2024 constants, Planck 2018 cosmological parameters, and
 the MCXC/XMM-Newton galaxy cluster catalogs.
 \end{acknowledgments}
