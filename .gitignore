@@ -78,3 +78,27 @@ data/source_material/*
 # - Email drafts with author
 # - Private notes
 # - Unpublished materials from Buckholtz
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.out
+paper/*.fls
+paper/*.fdb_latexmk
+paper/mainNotes.bib
+
+# Experiment output directories
+outputs/
+
+# Session-dated scratch experiment scripts (canonical experiments/ is tracked)
+experiments/*_2026-*.py
+
+# Author preprint markdown + search result caches (large, re-downloadable)
+literature/buckholtz_preprint_v6.md
+literature/mech_q*.json
+literature/related_work_IDM.md
+
+# Claude internal state (auto-generated)
+.claude/state/
+.claude/memory/_auto/
