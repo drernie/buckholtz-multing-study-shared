@@ -42,7 +42,22 @@ r > 0.30 required for H1b to be considered practically significant.
 motivated proxy for TJB's mechanism.)
 
 ## ICE (Intercurrent Events)
-None — observational correlation study, no time-varying events.
+**ICE strategy: treatment-policy**
+
+Potential ICEs in simulation context:
+- Major merger event (mass ratio > 1:3) occurring between snapshots → include cluster
+  as-is at snapshot time; do not remove. Merging state is part of the real-world
+  variation we are testing.
+- Gas shell below density threshold (no gas cells in R_200–3R_200 shell) → treat as
+  E_WHIM = 0; include in analysis. Absence of WHIM is a valid physical state.
+
+Rationale: treatment-policy strategy preserves the full heterogeneity of cluster
+environments, consistent with a real-world observational interpretation. Excluding
+merging clusters would bias toward relaxed systems and underestimate variance.
+
+**Significance threshold (for MCID confirmation):**
+p < 0.10 required alongside r > 0.30 for PROMOTE verdict.
+(One-tailed test; H1b predicts positive correlation.)
 
 ## Natural Language Statement
 
