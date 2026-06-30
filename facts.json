@@ -3,7 +3,7 @@
     "project": "Buckholtz IDM/MULTING — numerical audit scaffold",
     "author": "Sergey Boyko",
     "orcid": "0009-0009-2178-5701",
-    "last_updated": "2026-06-30",
+    "last_updated": "2026-07-01",
     "status": "RESULTS_SENT_AWAITING_TJB_FEEDBACK",
     "how_to_update": "edit this file + git commit after every new verified fact",
     "constraints": [
@@ -14,7 +14,6 @@
       "OUR_RECONSTRUCTION: all numerical results are our reconstruction, not TJB derivations"
     ]
   },
-
   "discovery_gate": {
     "status": "STRUCTURAL_PEARL_CANDIDATE",
     "verdict": "Not a discovery. Not random. Mechanism unknown.",
@@ -34,7 +33,6 @@
       "external_review: peer review or TJB endorsement"
     ]
   },
-
   "results": [
     {
       "id": "R001",
@@ -46,8 +44,8 @@
       "numbers": {
         "deviation_percent": 0.0135,
         "deviation_sigma": 0.17,
-        "lhs": 2.2883e35,
-        "rhs": 2.2880e35,
+        "lhs": 2.2883e+35,
+        "rhs": 2.288e+35,
         "look_elsewhere_rank": "1 of 83160",
         "look_elsewhere_p": "<2e-5",
         "n12_gap_to_neighbors": "263x worse at n=11 and n=13"
@@ -105,7 +103,10 @@
         "n_points": 10,
         "r_rise": 0.903,
         "r_fall": 0.958,
-        "CI_95": [0.48, 0.96]
+        "CI_95": [
+          0.48,
+          0.96
+        ]
       },
       "date_verified": "2026-06-19",
       "significance": "MEDIUM",
@@ -121,7 +122,7 @@
       "numbers": {
         "delta_Neff_min": 15,
         "delta_Neff_max": 81,
-        "planck_limit_Neff": 3.00,
+        "planck_limit_Neff": 3.0,
         "planck_uncertainty": 0.06,
         "deviation_sigma_min": 130,
         "deviation_sigma_max": 477
@@ -207,11 +208,11 @@
       "evidence_marker": "VERIFIED-inline",
       "tool": "/hypothesis-arbiter (Chamberlin 1890 + Platt 1964), 5 stages",
       "numbers": {
-        "H0_null_confidence": 0.40,
+        "H0_null_confidence": 0.4,
         "H1_TJB_confidence": 0.45,
-        "H2_Verlinde_confidence": 0.30,
+        "H2_Verlinde_confidence": 0.3,
         "H3_MOND_confidence": 0.35,
-        "H4_unknown_confidence": 0.30,
+        "H4_unknown_confidence": 0.3,
         "survivors": 2,
         "killed": 3
       },
@@ -242,7 +243,7 @@
         "r_spearman_main": -0.019,
         "p_spearman_main": 0.897,
         "r_pearson_T_x_only": -0.169,
-        "p_pearson_T_x_only": 0.240,
+        "p_pearson_T_x_only": 0.24,
         "partial_r_controlling_M_WL": -0.701,
         "partial_p": 0.0001,
         "mean_delta_M": 0.86,
@@ -254,9 +255,36 @@
       "date_verified": "2026-07-01",
       "significance": "HIGH",
       "notes": "H1a KILLED: r=0.021 << 0.20 pre-registered kill threshold. Direction is slightly NEGATIVE — opposite to H1 prediction. HOT clusters (T_x>8 keV, N=13) show LESS mass bias than cool clusters. Partial correlation controlling for M_WL is strongly negative r=-0.701. KEY CAVEAT: This tests cluster ICM thermal energy, NOT the cosmic web IGM (filaments/WHIM) that TJB's mechanism operates on. H1 (broad) remains inconclusive. Next test: H1b using WHIM thermal pressure from eROSITA or Planck tSZ filaments. SCOPE: H1a is a necessary-but-not-sufficient condition for H1. The kill is narrow. experiment folder: experiments/20260701-cluster-mass-bias-test/"
+    },
+    {
+      "id": "R012",
+      "label": "H1b literature survey — WHIM thermal energy vs cluster mass bias: NOVEL, no prior test",
+      "formula": "H1b: r(M_true - M_HE, E_WHIM[R_200..3R_200]) = ?",
+      "status": "NEEDS-DATA",
+      "evidence_marker": "VERIFIED-REAL (literature survey)",
+      "date_verified": "2026-07-01",
+      "significance": "HIGH",
+      "literature_findings": {
+        "Three_Hundred_2024": "CONNECTIVITY (filament count) NOT correlated with mass bias [VERIFIED-REAL]; arXiv:2405.17239; N=3000 clusters; BUT tests count, not E_WHIM",
+        "FLAMINGO_2024": "External pressure relevant ('sub-virial when external pressure accounted for'); non-thermal internal motions DOMINATE mass bias; arXiv:2409.07849",
+        "Vladutescu_Zopp_2025": "WHIM soft X-ray excess = cluster dynamical state proxy; unrelaxed clusters show more WHIM excess; N=138 TNG clusters; arXiv:2506.18459",
+        "H1b_novelty": "NO PAPER directly tests E_WHIM (filament thermal energy) vs cluster mass bias [VERIFIED-ABSENT from lit survey]"
+      },
+      "data_options": {
+        "Option_A": "IllustrisTNG-300 API (requires registration at tng-project.org); ~4-8h analysis",
+        "Option_B": "Barnes et al. 2021 Mock-X mass bias table + TNG API for WHIM; ~2-4h",
+        "Option_C": "Vladutescu-Zopp 2025 (BLOCKED: no per-cluster mass bias, stacked only)"
+      },
+      "blocker": "TNG API key registration required (user action: register at tng-project.org → free account)",
+      "next_action": "Register TNG API → run Python analysis for N~200 clusters at z=0.2",
+      "pre_registered_criteria": {
+        "PROMOTE": "r > 0.30 AND p < 0.10",
+        "INCONCLUSIVE": "0.15 <= r <= 0.30",
+        "KILL": "r < 0.15 AND p > 0.20"
+      },
+      "notes": "H1b is the correct test of TJB mechanism: WHIM gas (T=10^5-10^7 K) in cluster outskirts (R_200 to 3xR_200) is the actual cosmic web IGM TJB refers to, not the cluster ICM tested in H1a. Test is novel — no prior literature. Weak negative indicator: Three Hundred connectivity null result suggests WHIM-related quantities may also null, but connectivity ≠ thermal energy. experiment folder: experiments/20260701-h1b-whim-thermal-mass-bias/"
     }
   ],
-
   "open_questions": [
     {
       "id": "Q001",
@@ -295,7 +323,6 @@
       "note": "TJB confirmed k_A = E_ICM/c^2. Kinematic route: force -> acceleration -> H(z). GR analog is future work. BETA-1 HOLD blocks numerical bridge computation."
     }
   ],
-
   "tjb_contact": {
     "channel": "Discord DM (preferred)",
     "email_backup": "[private email redacted]",
@@ -327,14 +354,22 @@
         "date": "2026-06-30",
         "event": "Results sent to TJB via Discord DM",
         "status": "DONE",
-        "content": ["R001: Eq.32 0.0135% / rank #1/83160", "R002: 7:9:17 chi2=2.0", "R003: N_opt 0.46 sigma from DESI DR1"]
+        "content": [
+          "R001: Eq.32 0.0135% / rank #1/83160",
+          "R002: 7:9:17 chi2=2.0",
+          "R003: N_opt 0.46 sigma from DESI DR1"
+        ]
       }
     ],
     "next_action": "Await TJB response. Ask about K^2 (Q003) when he replies."
   },
-
   "code_status": {
-    "tests": {"passing": 858, "failed": 0, "skipped": 12, "skip_reason": "known"},
+    "tests": {
+      "passing": 858,
+      "failed": 0,
+      "skipped": 12,
+      "skip_reason": "known"
+    },
     "lint": "ruff 0 errors",
     "coverage_percent": 78,
     "coverage_target": 80,
@@ -344,14 +379,12 @@
     "paper_pages": 9,
     "latex_fatal_errors": 0
   },
-
   "git_debt": [
     "paper/main.bbl tracked in git — should be in .gitignore + git rm --cached",
     "4 untracked files: .claude/memory/goals.md, .claude/memory/referee_intelligence.md, docs/TJB_call_outline_2026-06-23.md, .claude/checkpoints/2026-06-27_pre-merge-desi.md",
     "~30 stale feature branches",
     "PROJECT_STATUS.md stale: says 853 tests, actual 858"
   ],
-
   "blockers": {
     "BETA-1": {
       "status": "ACTIVE",
