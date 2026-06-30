@@ -100,7 +100,17 @@ Independent changes needed for H1c to be false (and H1 to be supported):
 All three would need to fail simultaneously for H1c to be definitively killed.
 
 ## Status
-[NEEDS-DATA] Centroid shift w500 required for CCCP clusters.
+**KILLED (2026-07-01).** See decision.md.
+
+Data source corrected: w500/wX came from Mahdavi et al. 2013 Table 2 (the same paper as
+H1a/H1d), NOT Mann & Ebeling 2012 as originally planned (that paper uses a different
+metric — BCG-to-X-ray-peak separation, not centroid shift). Coverage: 47/50 CCCP
+clusters.
+
+**Result:** partial r(delta_M, E_proxy | M_WL, wX) = −0.726, p=7.7e-9 — essentially
+unchanged from baseline (−0.714), and well above the |r|>0.40 KILL threshold.
+Secondary checks confirm wX is uncorrelated with both delta_M and E_proxy at fixed M_WL
+(both r≈−0.08, p>0.5). Morphology is NOT a confounder for this partial correlation.
 
 ## Relationship to H1
 
@@ -109,3 +119,8 @@ correlation finding. It is part of H1's falsification cycle:
 
 - H1c PROMOTE → partial r explained; H1 not supported by CCCP data
 - H1c KILL → partial r unexplained by morphology; H1 remains viable; proceed to H1b, H1d
+
+**OUTCOME: H1c KILLED.** Standard cluster morphology does not explain the partial
+correlation. This removes the leading standard-physics alternative explanation,
+narrowing (but not closing) the space of competing accounts. H1b (WHIM/filament test)
+is now the highest-priority remaining test.
