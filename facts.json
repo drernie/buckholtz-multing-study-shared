@@ -226,6 +226,34 @@
         "cost_hours": "4-8",
         "data_available": true
       }
+    },
+    {
+      "id": "R011",
+      "label": "Crucial experiment EXECUTED — H1a (cluster ICM thermal energy → mass bias) KILLED",
+      "formula": "r(M_WL - M_HE, M_gas*T_x) = 0.021, p = 0.883",
+      "status": "KILL-H1a",
+      "evidence_marker": "VERIFIED-REAL",
+      "source": "Mahdavi et al. 2013, ApJ 767, 116, arXiv:1210.3689 (Table 1 + Table 2)",
+      "tool": "cluster_mass_bias_test.py (scipy.stats.pearsonr + spearmanr)",
+      "numbers": {
+        "N_clusters": 50,
+        "r_pearson_main": 0.021,
+        "p_pearson_main": 0.883,
+        "r_spearman_main": -0.019,
+        "p_spearman_main": 0.897,
+        "r_pearson_T_x_only": -0.169,
+        "p_pearson_T_x_only": 0.240,
+        "partial_r_controlling_M_WL": -0.701,
+        "partial_p": 0.0001,
+        "mean_delta_M": 0.86,
+        "std_delta_M": 2.77,
+        "mean_delta_frac": 0.223,
+        "hot_clusters_delta_frac": -0.005,
+        "cool_clusters_delta_frac": 0.359
+      },
+      "date_verified": "2026-07-01",
+      "significance": "HIGH",
+      "notes": "H1a KILLED: r=0.021 << 0.20 pre-registered kill threshold. Direction is slightly NEGATIVE — opposite to H1 prediction. HOT clusters (T_x>8 keV, N=13) show LESS mass bias than cool clusters. Partial correlation controlling for M_WL is strongly negative r=-0.701. KEY CAVEAT: This tests cluster ICM thermal energy, NOT the cosmic web IGM (filaments/WHIM) that TJB's mechanism operates on. H1 (broad) remains inconclusive. Next test: H1b using WHIM thermal pressure from eROSITA or Planck tSZ filaments. SCOPE: H1a is a necessary-but-not-sufficient condition for H1. The kill is narrow. experiment folder: experiments/20260701-cluster-mass-bias-test/"
     }
   ],
 
