@@ -1,0 +1,406 @@
+{
+  "_meta": {
+    "project": "Buckholtz IDM/MULTING — numerical audit scaffold",
+    "author": "Sergey Boyko",
+    "orcid": "0009-0009-2178-5701",
+    "last_updated": "2026-07-01",
+    "status": "RESULTS_SENT_AWAITING_TJB_FEEDBACK",
+    "how_to_update": "edit this file + git commit after every new verified fact",
+    "constraints": [
+      "NO_AUTHOR_ERROR: never imply TJB made errors — frame as gaps/open questions",
+      "NOT_VALIDATION: paper does not validate TJB theory",
+      "NOT_REFUTATION: paper does not refute TJB theory",
+      "NO_PUBLIC_CLAIMS: no public statements beyond paper text",
+      "OUR_RECONSTRUCTION: all numerical results are our reconstruction, not TJB derivations"
+    ]
+  },
+  "discovery_gate": {
+    "status": "STRUCTURAL_PEARL_CANDIDATE",
+    "verdict": "Not a discovery. Not random. Mechanism unknown.",
+    "gates_passed": 4,
+    "gates_total": 9,
+    "passed": [
+      "arithmetic: Eq.32 verified numerically to 0.0135%",
+      "koide_null: Eq.32 is NOT an extension of Koide formula",
+      "look_elsewhere: rank #1 of 83160 formulas, p<2e-5",
+      "n12_degeneracy: gap to n=11 and n=13 is 263x"
+    ],
+    "remaining": [
+      "4_3_derivation: coefficient 4/3 not derived in any source",
+      "alpha_g_mechanism: why m_e in denominator of alpha_G?",
+      "blind_prediction_v2: independent prediction beyond Table A1",
+      "look_elsewhere_v2: broader formula space search",
+      "external_review: peer review or TJB endorsement"
+    ]
+  },
+  "results": [
+    {
+      "id": "R001",
+      "label": "Eq.32 — lepton mass ratio to gravitational-EM coupling",
+      "formula": "(4/3) * (m_tau / m_e)^12 = alpha_EM / alpha_G",
+      "status": "VERIFIED",
+      "evidence_marker": "VERIFIED",
+      "tool": "python buckholtz-idm-multing-mvp/scripts/chi2_idm.py",
+      "numbers": {
+        "deviation_percent": 0.0135,
+        "deviation_sigma": 0.17,
+        "lhs": 2.2883e+35,
+        "rhs": 2.288e+35,
+        "look_elsewhere_rank": "1 of 83160",
+        "look_elsewhere_p": "<2e-5",
+        "n12_gap_to_neighbors": "263x worse at n=11 and n=13"
+      },
+      "date_verified": "2026-06-27",
+      "significance": "HIGH",
+      "notes": "4/3 coefficient is UNDERIVED — absent as a derived result in all 83160 formulas tested. alpha_G uses m_e (Dirac 1937 standard definition).",
+      "open": "Why 4/3? Why m_e? These are UNKNOWN — probability of finding derivation in 5yr: 5-8% (4/3) and 10-15% (alpha_G)."
+    },
+    {
+      "id": "R002",
+      "label": "Boson mass ratios 7:9:17",
+      "formula": "m_W^2 : m_Z^2 : m_H^2 = 7 : 9 : 17",
+      "status": "VERIFIED",
+      "evidence_marker": "VERIFIED",
+      "tool": "PDG 2024 masses + chi2_idm.py",
+      "numbers": {
+        "chi2_light_boson": 2.0,
+        "chi2_heavy_boson": 39.0,
+        "higgs_deviation_sigma": 0.4,
+        "Z_deviation_sigma": 5.5
+      },
+      "date_verified": "2026-06-01",
+      "significance": "MEDIUM",
+      "notes": "Higgs ratio confirmed at 0.4 sigma. Z boson shows 5.5 sigma tension — open question. TJB formula selects correct (light) boson variant."
+    },
+    {
+      "id": "R003",
+      "label": "IDM N_opt vs DESI DR1",
+      "formula": "N_opt = Omega_cdm / Omega_b = 5.364 (Planck 2018)",
+      "status": "VERIFIED",
+      "evidence_marker": "VERIFIED",
+      "tool": "python buckholtz-idm-multing-mvp/scripts/idm_masses.py",
+      "numbers": {
+        "N_opt_planck": 5.364,
+        "N_opt_uncertainty": 0.065,
+        "N_eff_DESI_DR1": 5.31,
+        "N_eff_DESI_uncertainty": 0.13,
+        "deviation_sigma": 0.46
+      },
+      "date_verified": "2026-06-27",
+      "significance": "HIGH",
+      "notes": "TJB postulated 5 dark isomers before DESI DR1 data. 0.46 sigma agreement. NOT a derivation — postulate is consistent with DESI data."
+    },
+    {
+      "id": "R004",
+      "label": "f*sigma8 bell-shape correlation",
+      "formula": "r(eps(z), f*sigma8(z)) = 0.851",
+      "status": "VERIFIED",
+      "evidence_marker": "VERIFIED-inline",
+      "tool": "scripts/fsig8_robustness.py",
+      "numbers": {
+        "r_overall": 0.851,
+        "p_value": 0.0018,
+        "n_points": 10,
+        "r_rise": 0.903,
+        "r_fall": 0.958,
+        "CI_95": [
+          0.48,
+          0.96
+        ]
+      },
+      "date_verified": "2026-06-19",
+      "significance": "MEDIUM",
+      "notes": "Both curves bell-shaped (eps peak z=0.40, f*sigma8 peak z=0.65). Structural correspondence, not monotone decay. DAIC=+0.74 (monopole not worse than full formula on CC data)."
+    },
+    {
+      "id": "R005",
+      "label": "Delta N_eff from IDM dark neutrinos",
+      "formula": "Delta_N_eff = N_isomers * N_nu = 5 * 2.99 ~ 15 (minimum)",
+      "status": "VERIFIED",
+      "evidence_marker": "VERIFIED-inline",
+      "tool": "paper/main.tex section 4.4",
+      "numbers": {
+        "delta_Neff_min": 15,
+        "delta_Neff_max": 81,
+        "planck_limit_Neff": 3.0,
+        "planck_uncertainty": 0.06,
+        "deviation_sigma_min": 130,
+        "deviation_sigma_max": 477
+      },
+      "date_verified": "2026-06-19",
+      "significance": "MEDIUM",
+      "notes": "IDM dark neutrinos would violate Planck CMB Neff limit by 130-477 sigma if fully decoupled. Interpretations: (a) IDM BBN chemistry different, (b) dark neutrinos hidden by some mechanism, (c) open question for TJB."
+    },
+    {
+      "id": "R006",
+      "label": "H-FLRW power law fit",
+      "formula": "H(z) = 54.07 * (1+z)^0.884",
+      "status": "VERIFIED",
+      "evidence_marker": "VERIFIED-inline",
+      "tool": "scripts/hflrw_grid.py",
+      "numbers": {
+        "MAE_power_law": 5.04,
+        "MAE_planck_LCDM": 120,
+        "H0_CC_fit": 68.78,
+        "Omega_m_CC": 0.316,
+        "chi2_dof": 0.93
+      },
+      "date_verified": "2026-06-19",
+      "significance": "MEDIUM",
+      "notes": "TJB H_FLRW baseline is NOT Planck 2018. Power-law fits CC data 24x better than Planck LCDM. Use power-law for bridge computation until TJB confirms convention."
+    },
+    {
+      "id": "R007",
+      "label": "BRAI: beta parameters are underdetermined",
+      "formula": "Birge Ratio R_B(beta_d) = 15.9, R_B(beta_q) = 24.1",
+      "status": "VERIFIED",
+      "evidence_marker": "VERIFIED-tool",
+      "tool": "scripts/brai_beta.py",
+      "numbers": {
+        "beta_d_spread": "5.8x across ChatGPT/Claude/Gemini",
+        "beta_q_spread": "95x across ChatGPT/Claude/Gemini",
+        "R_B_beta_d": 15.9,
+        "R_B_beta_q": 24.1,
+        "sigma_rel_needed_beta_d": "80%",
+        "sigma_rel_needed_beta_q": "98%"
+      },
+      "date_verified": "2026-06-19",
+      "significance": "MEDIUM",
+      "notes": "AI divergence is NOT LLM noise (20%). beta is genuinely underdetermined from preprint. Supports TJB's 'phenomenological computation' statement."
+    },
+    {
+      "id": "R008",
+      "label": "NR-008 FALSIFIED: merger-epoch rP hypothesis",
+      "formula": "r_P(z) ~ D(z) * H(z)^(1/3)",
+      "status": "FALSIFIED",
+      "evidence_marker": "VERIFIED-inline",
+      "tool": "scripts/test_rP_merger_hypothesis.py",
+      "numbers": {
+        "r_achieved": 0.682,
+        "r_threshold": 0.75,
+        "families_tested": 11
+      },
+      "date_verified": "2026-06-19",
+      "significance": "LOW",
+      "notes": "Documented in null_results/NR-008.md. D*H^(1/3) is a physical proxy (Pearl NR-5 registry), not a correlation signal."
+    },
+    {
+      "id": "R009",
+      "label": "Verlinde 2016 — closest literature analog to TJB second gravitational property",
+      "formula": "Verlinde: extra scalar force from dark energy entropy (arXiv:1611.02269)",
+      "status": "RESEARCH-COMPLETE",
+      "evidence_marker": "VERIFIED-ABSENT",
+      "tool": "Agent(academic-research) literature search 2026-06-30",
+      "numbers": {
+        "second_gravitational_charge_hits": 0,
+        "thermal_gravitational_mass_hits": 0,
+        "verlinde_fails_at": "galaxy cluster scales (Hossenfelder 2017, Ettori 2016)"
+      },
+      "date_verified": "2026-06-30",
+      "significance": "HIGH",
+      "notes": "TJB's 'second gravitational property = IGM thermal energy' is NOVEL — absent from mainstream literature. Verlinde uses vacuum entropy (not IGM thermal energy directly). TJB occupies exactly the gap where Verlinde fails (cluster scales). MULTING multipole expansion provides basis absent from all entropic gravity approaches."
+    },
+    {
+      "id": "R010",
+      "label": "Hypothesis Arbiter Cycle 1 — H1(TJB) vs H2(Verlinde) vs H0(ΛCDM) vs H3(MOND)",
+      "formula": "H1: E_ICM/c^2 = second gravitational source | H2: vacuum entropy displacement",
+      "status": "ARBITER-COMPLETE",
+      "evidence_marker": "VERIFIED-inline",
+      "tool": "/hypothesis-arbiter (Chamberlin 1890 + Platt 1964), 5 stages",
+      "numbers": {
+        "H0_null_confidence": 0.4,
+        "H1_TJB_confidence": 0.45,
+        "H2_Verlinde_confidence": 0.3,
+        "H3_MOND_confidence": 0.35,
+        "H4_unknown_confidence": 0.3,
+        "survivors": 2,
+        "killed": 3
+      },
+      "date_verified": "2026-06-30",
+      "significance": "HIGH",
+      "notes": "H2 (Verlinde) KILLED — fails at cluster scales (Hossenfelder 2017, Ettori 2016), Bullet Cluster. H3 (MOND) KILLED — Bullet Cluster, CMB BAO. H4 (unknown) KILLED — unfalsifiable as stated. SURVIVORS: H0(0.40) and H1-TJB(0.45). Crucial experiment: archival regression (M_lensing - M_hydrostatic) ~ E_ICM/c^2 on Weighing the Giants / Planck PSZ2 + Chandra data. Cost: ~4-8h Python, no new observations. H1 sub-hypotheses for cycle 2: H1a(additive mass), H1b(modified G_eff), H1c(threshold T_x > 5keV).",
+      "crucial_experiment": {
+        "dataset": "Weighing the Giants (von der Linden 2014) or Planck PSZ2 + Chandra/XMM",
+        "test": "r(M_lensing - M_hydrostatic, E_ICM/c^2)",
+        "H1_passes_if": "r > 0.4, p < 0.05",
+        "H1_dies_if": "r < 0.2 or p > 0.3",
+        "cost_hours": "4-8",
+        "data_available": true
+      }
+    },
+    {
+      "id": "R011",
+      "label": "Crucial experiment EXECUTED — H1a (cluster ICM thermal energy → mass bias) KILLED",
+      "formula": "r(M_WL - M_HE, M_gas*T_x) = 0.021, p = 0.883",
+      "status": "KILL-H1a",
+      "evidence_marker": "VERIFIED-REAL",
+      "source": "Mahdavi et al. 2013, ApJ 767, 116, arXiv:1210.3689 (Table 1 + Table 2)",
+      "tool": "cluster_mass_bias_test.py (scipy.stats.pearsonr + spearmanr)",
+      "numbers": {
+        "N_clusters": 50,
+        "r_pearson_main": 0.021,
+        "p_pearson_main": 0.883,
+        "r_spearman_main": -0.019,
+        "p_spearman_main": 0.897,
+        "r_pearson_T_x_only": -0.169,
+        "p_pearson_T_x_only": 0.24,
+        "partial_r_controlling_M_WL": -0.701,
+        "partial_p": 0.0001,
+        "mean_delta_M": 0.86,
+        "std_delta_M": 2.77,
+        "mean_delta_frac": 0.223,
+        "hot_clusters_delta_frac": -0.005,
+        "cool_clusters_delta_frac": 0.359
+      },
+      "date_verified": "2026-07-01",
+      "significance": "HIGH",
+      "notes": "H1a KILLED: r=0.021 << 0.20 pre-registered kill threshold. Direction is slightly NEGATIVE — opposite to H1 prediction. HOT clusters (T_x>8 keV, N=13) show LESS mass bias than cool clusters. Partial correlation controlling for M_WL is strongly negative r=-0.701. KEY CAVEAT: This tests cluster ICM thermal energy, NOT the cosmic web IGM (filaments/WHIM) that TJB's mechanism operates on. H1 (broad) remains inconclusive. Next test: H1b using WHIM thermal pressure from eROSITA or Planck tSZ filaments. SCOPE: H1a is a necessary-but-not-sufficient condition for H1. The kill is narrow. experiment folder: experiments/20260701-cluster-mass-bias-test/"
+    },
+    {
+      "id": "R012",
+      "label": "H1b literature survey — WHIM thermal energy vs cluster mass bias: NOVEL, no prior test",
+      "formula": "H1b: r(M_true - M_HE, E_WHIM[R_200..3R_200]) = ?",
+      "status": "NEEDS-DATA",
+      "evidence_marker": "VERIFIED-REAL (literature survey)",
+      "date_verified": "2026-07-01",
+      "significance": "HIGH",
+      "literature_findings": {
+        "Three_Hundred_2024": "CONNECTIVITY (filament count) NOT correlated with mass bias [VERIFIED-REAL]; arXiv:2405.17239; N=3000 clusters; BUT tests count, not E_WHIM",
+        "FLAMINGO_2024": "External pressure relevant ('sub-virial when external pressure accounted for'); non-thermal internal motions DOMINATE mass bias; arXiv:2409.07849",
+        "Vladutescu_Zopp_2025": "WHIM soft X-ray excess = cluster dynamical state proxy; unrelaxed clusters show more WHIM excess; N=138 TNG clusters; arXiv:2506.18459",
+        "H1b_novelty": "NO PAPER directly tests E_WHIM (filament thermal energy) vs cluster mass bias [VERIFIED-ABSENT from lit survey]"
+      },
+      "data_options": {
+        "Option_A": "IllustrisTNG-300 API (requires registration at tng-project.org); ~4-8h analysis",
+        "Option_B": "Barnes et al. 2021 Mock-X mass bias table + TNG API for WHIM; ~2-4h",
+        "Option_C": "Vladutescu-Zopp 2025 (BLOCKED: no per-cluster mass bias, stacked only)"
+      },
+      "blocker": "TNG API key registration required (user action: register at tng-project.org → free account)",
+      "next_action": "Register TNG API → run Python analysis for N~200 clusters at z=0.2",
+      "pre_registered_criteria": {
+        "PROMOTE": "r > 0.30 AND p < 0.10",
+        "INCONCLUSIVE": "0.15 <= r <= 0.30",
+        "KILL": "r < 0.15 AND p > 0.20"
+      },
+      "notes": "H1b is the correct test of TJB mechanism: WHIM gas (T=10^5-10^7 K) in cluster outskirts (R_200 to 3xR_200) is the actual cosmic web IGM TJB refers to, not the cluster ICM tested in H1a. Test is novel — no prior literature. Weak negative indicator: Three Hundred connectivity null result suggests WHIM-related quantities may also null, but connectivity ≠ thermal energy. experiment folder: experiments/20260701-h1b-whim-thermal-mass-bias/"
+    }
+  ],
+  "open_questions": [
+    {
+      "id": "Q001",
+      "question": "What is the derivation of the 4/3 coefficient in Eq.32?",
+      "status": "UNKNOWN",
+      "probability_5yr": "5-8%",
+      "calibrator": "Koide formula (1982) — 44 years without accepted derivation",
+      "note": "Cross-domain insight: 4/3 = (n+1)/n at n=3 (S3 geometry). See cross_domain_insights.md."
+    },
+    {
+      "id": "Q002",
+      "question": "Why m_e (electron) in denominator of alpha_G in Eq.32?",
+      "status": "UNKNOWN",
+      "probability_5yr": "10-15%",
+      "note": "alpha_G(e) = G*m_e^2/(hbar*c) — Dirac 1937 standard. k=0 framing: electron as natural reference in Buckholtz k-scheme."
+    },
+    {
+      "id": "Q003",
+      "question": "What is 'K square' mentioned by TJB in Discord call 2026-06-30?",
+      "status": "UNKNOWN",
+      "source": "TJB Discord voice call 2026-06-30",
+      "note": "TJB mentioned K^2 as new confirming asset for his theory. Possibly k-indices of isomers or k_A/k_P. Ask at next contact."
+    },
+    {
+      "id": "Q004",
+      "question": "What are the first-principles values of beta_d and beta_q?",
+      "status": "HOLD",
+      "blocker": "BETA-1 HOLD active — waiting for TJB response to docs/121 (sent 2026-06-17)",
+      "note": "AI services give: ChatGPT 0.78/0.19, Claude 4.5/18.0, Gemini 4.25/8.10. Spread 5.8x and 95x respectively."
+    },
+    {
+      "id": "Q005",
+      "question": "How to bridge F_oP force to H_MULT(z) (the computational bridge)?",
+      "status": "IN-PROGRESS",
+      "confirmed_by_tjb": "2026-06-14 voice call",
+      "note": "TJB confirmed k_A = E_ICM/c^2. Kinematic route: force -> acceleration -> H(z). GR analog is future work. BETA-1 HOLD blocks numerical bridge computation."
+    }
+  ],
+  "tjb_contact": {
+    "channel": "Discord DM (preferred)",
+    "email_backup": "[private email redacted]",
+    "timeline": [
+      {
+        "date": "2026-06-12",
+        "event": "Q1-Q3 email sent (commit 9513289)",
+        "status": "DONE"
+      },
+      {
+        "date": "2026-06-14",
+        "event": "Voice call — k_A and bridge confirmed",
+        "status": "DONE",
+        "outcome": "k_A = E_ICM/c^2 confirmed. TJB: reproducibility > publication. Bridge delegated."
+      },
+      {
+        "date": "2026-06-17",
+        "event": "docs/121 sent — request for beta_d/beta_q first-principles derivation",
+        "status": "AWAITING_RESPONSE"
+      },
+      {
+        "date": "2026-06-30",
+        "event": "TJB initiated Discord contact at ~22:15",
+        "status": "DONE",
+        "quote": "are you there? ... Thanks. Send the results. Hopefully I learn something.",
+        "significance": "TJB wrote FIRST — strong signal of active interest"
+      },
+      {
+        "date": "2026-06-30",
+        "event": "Results sent to TJB via Discord DM",
+        "status": "DONE",
+        "content": [
+          "R001: Eq.32 0.0135% / rank #1/83160",
+          "R002: 7:9:17 chi2=2.0",
+          "R003: N_opt 0.46 sigma from DESI DR1"
+        ]
+      }
+    ],
+    "next_action": "Await TJB response. Ask about K^2 (Q003) when he replies."
+  },
+  "code_status": {
+    "tests": {
+      "passing": 858,
+      "failed": 0,
+      "skipped": 12,
+      "skip_reason": "known"
+    },
+    "lint": "ruff 0 errors",
+    "coverage_percent": 78,
+    "coverage_target": 80,
+    "ci": "py3.11-py3.13",
+    "arxiv_tarball": "paper/buckholtz-multing-idm-arxiv-submission.tar.gz (25KB)",
+    "paper_lines": 1048,
+    "paper_pages": 9,
+    "latex_fatal_errors": 0
+  },
+  "git_debt": [
+    "paper/main.bbl tracked in git — should be in .gitignore + git rm --cached",
+    "4 untracked files: .claude/memory/goals.md, .claude/memory/referee_intelligence.md, docs/TJB_call_outline_2026-06-23.md, .claude/checkpoints/2026-06-27_pre-merge-desi.md",
+    "~30 stale feature branches",
+    "PROJECT_STATUS.md stale: says 853 tests, actual 858"
+  ],
+  "blockers": {
+    "BETA-1": {
+      "status": "ACTIVE",
+      "description": "beta_d and beta_q not fixed from first principles",
+      "effect": "H_MULT(z) bridge computation frozen",
+      "unblock": "TJB response to docs/121"
+    },
+    "MCMC": {
+      "status": "BLOCKED",
+      "description": "MCMC blocked until bridge formula known",
+      "unblock": "Bridge formula + beta values"
+    },
+    "PREDICTION": {
+      "status": "BLOCKED",
+      "description": "No cosmological predictions beyond Table A1",
+      "unblock": "Bridge formula completion"
+    }
+  }
+}

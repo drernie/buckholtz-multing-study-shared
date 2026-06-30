@@ -6,7 +6,7 @@
 **Previous:** v0.2-appendix-a1-forensic (2026-05-29), v0.1-mvp-complete (2026-05-27)
 
 > **Verified counters (this version, [VERIFIED-REAL] via pytest/coverage):**
-> 853 tests pass, 12 skipped, 0 failures · coverage 78% · ruff clean · CI on py3.11–3.13. (verified 2026-06-18)
+> 858 tests pass, 12 skipped, 0 failures · coverage 78% · ruff clean · CI on py3.11–3.13. (updated 2026-06-30)
 > Earlier "62 tests" figures below are historical (v0.1) and superseded.
 >
 > **Beta framing correction:** the candidate values {4.25, 0.78, 8.10, 0.19} are
