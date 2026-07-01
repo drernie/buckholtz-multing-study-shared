@@ -102,3 +102,7 @@ literature/related_work_IDM.md
 # Claude internal state (auto-generated)
 .claude/state/
 .claude/memory/_auto/
+paper/.claude/
+
+# /graphify skill output cache (regenerable AST cache, not source)
+graphify-out/
