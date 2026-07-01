@@ -17,6 +17,8 @@
 | NR-008 | 2026-06-18 | merger-epoch-rP-falsified | REJECT | r_P merger correction r=0.682 < 0.75; secondary z=8.5 bump unsolvable by single component |
 | NR-009 | 2026-06-23 | s3-geometry-eq32-mechanism | REJECT | (4/3)=(n+1)/n & 12=n(n+1) at n=3 = post-hoc relabeling; ~456 simple (p,h) families coincide |
 | NR-010 | 2026-07-01 | cluster-mass-bias-test | KILL | r(delta_M, M_gas×T_x)=0.021 p=0.88; correlation absent; direction reversed (hot clusters show LESS bias) |
+| NR-011 | 2026-07-01 | h1d-mass-threshold | KILL | partial r identical high/low mass (−0.732 vs −0.731); Fisher z p=0.498; no mass-threshold effect |
+| NR-012 | 2026-07-01 | h1c-morphology-mediator | KILL | partial r unchanged after controlling wX (−0.726 vs −0.714 baseline); morphology does not mediate |
 
 ---
 
@@ -28,3 +30,6 @@
 - [NR-005: Intrinsic formation vs selection ambiguity](20260613-intrinsic-formation-selection-ambiguity.md)
 - [NR-007: Sector count DM/baryon ratio](20260613-nr007-sector-count-dm-baryon-ratio.md)
 - [NR-008: Merger-epoch r_P falsified](20260618-nr008-merger-epoch-rP-falsified.md)
+- [NR-010: H1a cluster ICM thermal energy — killed](20260701-nr010-cluster-mass-bias-test.md)
+- [NR-011: H1d mass-threshold — killed](20260701-nr011-h1d-mass-threshold.md)
+- [NR-012: H1c morphology mediator — killed](20260701-nr012-h1c-morphology-mediator.md)
