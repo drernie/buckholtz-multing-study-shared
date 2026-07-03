@@ -59,5 +59,31 @@ MULTING residuals correlate with large-scale-structure topology rather than pair
 
 ---
 
+## Addendum (2026-07-01, boyko-method atomization of H1b)
+
+**Data-pull overlap noted, NOT a revival.** H1b (`experiments/20260701-h1b-whim-thermal-mass-bias/`)
+requires the same TNG API access and the same per-cluster catalog this experiment needs.
+When TNG API access is obtained for H1b, the same query session can cheaply also pull
+per-cluster network/topology metrics (DisPerSE/NEXUS/graph centrality inputs) — avoiding
+a second API round-trip later.
+
+**Important distinction — this does NOT satisfy the Revival Condition as originally
+written.** NW-001's φ_i is a per-cluster residual of the GLOBAL MULTING ε(z) function
+(H_MULT/H_FLRW)²−1, a cosmological quantity. H1b's `delta_M` (mass bias, M_true−M_HE) is a
+different observable — cluster-scale, not tied to ε(z). Using delta_M as a stand-in for
+φ_i would repeat the exact unit-of-analysis mismatch this file already flags as fatal
+(hole #1 above).
+
+**What this addendum actually opens:** a narrower, honestly-scoped sibling experiment —
+"does cosmic-web topology correlate with cluster mass bias (delta_M), controlling for
+M500" — using H1b's own data pull. This is NOT the original NW-001 proposal (which was
+about ε(z)), but reuses its epistemic-hygiene lessons (partial correlation by mass FIRST,
+pre-register one network metric, avoid 5-metric hunting) directly. If pursued, it should
+be a new experiment ID, not a revival of this one.
+
+---
+
 *ARCHIVE — not a null result. Revisit only when Revival Condition is met.*
 *Cross-ref: this is the same confounder lesson as the dipole hypothesis-lab (D(z)/mass proxy).*
+*Cross-ref: H1b data pull (2026-07-01) creates a piggyback opportunity for a narrower
+sibling experiment (topology vs delta_M, not topology vs ε(z)) — see Addendum above.*
