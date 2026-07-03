@@ -22,13 +22,20 @@ embedded in denser/hotter WHIM show a larger true-to-hydrostatic mass gap.
 **Pre-registered PROMOTE criterion:** r > 0.30 AND p < 0.10 → H1b PROMOTED
 
 ## Source for data
-[OPTION A — recommended] IllustrisTNG-300, snapshot 67 (z≈0.2) or 99 (z=0):
+[OPTION A — only remaining path] IllustrisTNG-300, snapshot 67 (z≈0.2) or 99 (z=0):
   API: https://www.tng-project.org/api/TNG300-1/
   Reference: Springel et al. 2018, MNRAS 475, 676
+  Status: registration submitted 2026-07-01, pending approval as of 2026-07-04
 
-[OPTION C — fastest] Vladutescu-Zopp et al. 2025, arXiv:2506.18459:
-  138 TNG clusters with soft X-ray excess (WHIM proxy) + dynamical state
-  Check if mass bias b_HSE is tabulated → direct correlation possible
+[OPTION C — CHECKED, DEAD 2026-07-01] Vladutescu-Zopp et al. 2025, arXiv:2506.18459:
+  138 TNG clusters with soft X-ray excess (WHIM proxy) + dynamical state.
+  Paper states verbatim: "we do not discuss hydrostatic masses." No mass
+  bias data of any kind — cannot bypass Option A. (Radial-annulus design
+  and WHIM T-range definition were still useful and adopted, see estimand.md.)
+
+[OPTION B — CHECKED, PARTIAL 2026-07-01] Barnes et al. 2020, arXiv:2001.11508
+  ("Characterizing hydrostatic mass bias with Mock-X"): has b_HSE for TNG
+  clusters, but confirmed ZERO WHIM/IGM data — does not bypass Option A either.
 
 ## Counterfactual Frame
 In what world is H1b true?
