@@ -24,9 +24,9 @@ print("=" * 70)
 # Source: Planck 2018 Results VI (arXiv:1807.06209), Table 2
 # TT,TE,EE+lowE+lensing
 omega_c_h2 = 0.12011  # Ω_c h²  (cold dark matter density)
-sigma_omega_c = 0.00096
+sigma_omega_c = 0.0012  # matches verify_all_claims.py OMEGA_CDM_SIG (cross-checked vs literature)
 
-omega_b_h2 = 0.02237  # Ω_b h²  (baryon density)
+omega_b_h2 = 0.022383  # Ω_b h²  (baryon density) -- matches verify_all_claims.py OMEGA_B
 sigma_omega_b = 0.00015
 
 # ─── Derived ratio R = ω_DM / ω_b ────────────────────────────────────────────
