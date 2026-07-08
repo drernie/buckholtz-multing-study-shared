@@ -162,6 +162,31 @@ ar5iv, direct quote confirmed].
   masses." No mass bias of any kind is measured. Cannot be used to bypass
   TNG API access.
 
+**Observational cross-check catalog (for the REAL-DATA promotion step, NOT a
+TNG bypass) — CHEX-MATE:** [VERIFIED-REAL via WebFetch of arXiv:2010.11972,
+2026-07-08]
+- What it is: "Cluster HEritage project with XMM-Newton — Mass Assembly and
+  Thermodynamics at the Endpoint of structure formation", a 3 Ms XMM Heritage
+  programme. 118 galaxy clusters, Planck-SZ selected, **minimally-biased /
+  S/N-limited** (a real improvement over the flux-limited, Malmquist-biased
+  MCXC catalog we used for the earlier H1a-style Pearson test).
+- Two tiers: Tier-1 0.05<z<0.2, M ≈ 2–9×10^14 M_sun; Tier-2 z<0.6,
+  M500 > 7.25×10^14 M_sun.
+- Provides: individual hydrostatic masses (M_HE) to 15–20% accuracy + gas
+  thermodynamics (T_X, density → M_gas) — exactly the ingredients for the
+  cluster-interior side of delta_M = M_WL − M_HE (M_WL to be cross-matched
+  from a weak-lensing survey, not in CHEX-MATE itself).
+- **Honest limitation for H1b specifically:** CHEX-MATE outskirt coverage
+  BEYOND R500 (the R200–3R200 WHIM zone H1b actually targets) is NOT confirmed
+  in the overview paper, and X-ray outskirts are photon-starved. So CHEX-MATE
+  is a strong real-data anchor for the mass-bias / interior-thermodynamics side
+  and for an H1a-style re-test on a less-biased sample, but the WHIM-filament
+  proxy itself still leans on the TNG simulation (Option A) or on SZ/filament
+  data. It is the OBSERVATIONAL cross-check for a TNG-derived result
+  ([VERIFIED-SYNTHETIC] → [VERIFIED-REAL] promotion), not a replacement for it.
+- Source of this lead: consolidated-map review 2026-07-08 (CHEX-MATE was the
+  one net-new item in an otherwise-already-covered project map).
+
 ## Status
 [BLOCKED — Option A only] Claim defined. Estimand refined (5-ring binning,
 T-covariate prohibition added). Options B and C both checked and confirmed
