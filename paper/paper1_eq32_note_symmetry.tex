@@ -1,0 +1,300 @@
+\documentclass[aps,prd,preprint,amsmath,amssymb,nofootinbib]{revtex4-2}
+
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\begin{document}
+
+\title{A precise numerical relation linking the tau--electron mass ratio
+to the electromagnetic and gravitational coupling strengths}
+
+\author{Thomas J.\ Buckholtz}
+\affiliation{National Coalition of Independent Scholars, Brattleboro, Vermont 05301, USA}
+\affiliation{Ronin Institute for Independent Scholarship, Montclair, New Jersey 07043, USA}
+\email{tjb@alumni.caltech.edu}
+
+\date{\today}
+
+\begin{abstract}
+We report a numerical relation among measured quantities,
+$(4/3)\,(m_\tau/m_e)^{12} = \alpha_{\mathrm{EM}}/\alpha_G$,
+in which $\alpha_{\mathrm{EM}}$ is the fine-structure constant and
+$\alpha_G \equiv G m_e^2/(\hbar c)$ is the gravitational coupling strength
+referred to the electron mass. Using current Particle Data Group and CODATA
+inputs, the two sides agree to $0.0135\%$, which corresponds to
+$0.17\,\sigma$ of the present tau-mass uncertainty. To assess whether such
+agreement is likely to arise by chance, we search all relations of the form
+$(p/q)(m_i/m_j)^n$ with $p,q\le 10$, $1\le n\le 24$, and $m_i,m_j$ drawn from
+the eleven charged fermion, proton and neutron masses; among the resulting
+$83\,160$ candidates the present relation ranks first, the next-best candidate
+being a factor of $22$ less accurate. The empirical probability of a chance
+match at the one-percent level is below $10^{-4}$. We present the relation,
+its statistical significance, the algebraic structure of its integer
+coefficients, and the questions it leaves open---foremost the derivation of
+the coefficient $4/3$, which we find is not supplied by any adjacent
+theoretical tradition. We suggest the relation belongs, in a static
+(non-time-varying) form, to the tradition of large-number coincidences that
+involve the gravitational coupling.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Empirical relations among the masses of the elementary particles, and between
+those masses and the fundamental coupling strengths, have long been used as
+signposts toward a deeper theory~\cite{koide1983,dirac1938,wesson1980}. The
+best known such relation among the charged leptons is Koide's
+formula~\cite{koide1983}, which involves the three charged-lepton masses alone
+and makes no reference to gravitation. Separately, P.~A.~M.~Dirac's
+large-numbers hypothesis~\cite{dirac1938} drew attention to the enormous
+dimensionless ratio between the electromagnetic and gravitational coupling
+strengths, and to its apparent coincidence with cosmological quantities.
+
+Here we report a relation that connects these two themes: it links a
+charged-lepton mass ratio to the ratio of the electromagnetic and
+gravitational coupling strengths. We state the relation, quantify how unlikely
+it is to be an accident, examine the arithmetic of its coefficients, and---in
+the interest of full disclosure---set out plainly what the relation does and
+does not establish. Our intent is to place a single, checkable numerical fact
+on the record, not to claim a mechanism for it.
+
+\section{The relation}
+
+We define the gravitational coupling strength referred to the electron mass,
+in the manner introduced by Dirac~\cite{dirac1938},
+\begin{equation}
+\alpha_G \equiv \frac{G\,m_e^2}{\hbar c},
+\label{eq:alphaG}
+\end{equation}
+which is the gravitational analogue of the fine-structure constant
+$\alpha_{\mathrm{EM}} = e^2/(4\pi\varepsilon_0\hbar c)$. The choice of the
+electron mass as the reference is a convention; we return to it in
+Sec.~\ref{sec:discussion}.
+
+The relation we report is
+\begin{equation}
+\frac{4}{3}\left(\frac{m_\tau}{m_e}\right)^{\!12}
+= \frac{\alpha_{\mathrm{EM}}}{\alpha_G}.
+\label{eq:main}
+\end{equation}
+With the inputs listed in Table~\ref{tab:inputs}, the two sides evaluate to
+\begin{align}
+\text{LHS} &= 4.16617\times 10^{42}, \nonumber\\
+\text{RHS} &= 4.16561\times 10^{42},
+\end{align}
+so that
+\begin{equation}
+\frac{\text{LHS}}{\text{RHS}} = 1.000135,
+\end{equation}
+a fractional discrepancy of $0.0135\%$. Because the left-hand side scales as
+$m_\tau^{12}$, the present tau-mass uncertainty
+$\sigma_{m_\tau}=0.12~\mathrm{MeV}$ propagates to a one-standard-deviation band
+of $12\,\sigma_{m_\tau}/m_\tau = 0.081\%$ on the left-hand side. The observed
+discrepancy is therefore $0.17\,\sigma$. Equivalently, Eq.~(\ref{eq:main})
+holds exactly for
+\begin{equation}
+m_\tau = 1776.840~\mathrm{MeV},
+\end{equation}
+which lies within the current experimental window
+$1776.86\pm 0.12~\mathrm{MeV}$~\cite{pdg2024}. A measurement of the tau mass at
+the $0.01~\mathrm{MeV}$ precision anticipated at Belle~II~\cite{belleii} would
+sharpen this test by an order of magnitude.
+
+\begin{table}[t]
+\caption{Input quantities and their sources. Masses are in
+$\mathrm{MeV}/c^2$.}
+\label{tab:inputs}
+\begin{ruledtabular}
+\begin{tabular}{lll}
+Quantity & Value & Source \\
+\hline
+$m_e$ & $0.51099895000$ & CODATA~2018~\cite{codata2018} \\
+$m_\tau$ & $1776.86\pm 0.12$ & PDG~2024~\cite{pdg2024} \\
+$\alpha_{\mathrm{EM}}$ & $1/137.035999084$ & CODATA~2018~\cite{codata2018} \\
+$G$ & $6.67430\times 10^{-11}$ & CODATA~2018~\cite{codata2018} \\
+$\alpha_G$ & $1.75181\times 10^{-45}$ & from Eq.~(\ref{eq:alphaG}) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\section{Statistical significance}
+\label{sec:lookelsewhere}
+
+A single close numerical coincidence is not, by itself, evidence of anything:
+with enough freedom in choosing masses, exponents and rational prefactors, one
+can approximate almost any target. The relevant question is therefore a
+look-elsewhere question---how special is Eq.~(\ref{eq:main}) within the family
+of relations one might have written down instead?
+
+To answer it we enumerate every relation of the form
+\begin{equation}
+\frac{p}{q}\left(\frac{m_i}{m_j}\right)^{\!n},
+\qquad
+1\le p,q \le 10,\quad
+1\le n \le 24,\quad
+i\neq j,
+\label{eq:family}
+\end{equation}
+with $m_i,m_j$ drawn from the set
+$\{e,\mu,\tau,u,d,s,c,b,t,p,n\}$, and compare each to the target
+$\alpha_{\mathrm{EM}}/\alpha_G$. This defines a search space of $83\,160$
+candidates. The results are summarized in Table~\ref{tab:lookelsewhere}.
+
+\begin{table}[t]
+\caption{Look-elsewhere audit of Eq.~(\ref{eq:main}) over the
+$83\,160$-member family~(\ref{eq:family}). ``Hits'' counts candidates matching
+the target to better than the stated tolerance.}
+\label{tab:lookelsewhere}
+\begin{ruledtabular}
+\begin{tabular}{lr}
+Quantity & Value \\
+\hline
+Total candidates & $83\,160$ \\
+Hits within $5\%$ & $26$ \\
+Hits within $1\%$ & $5$ \\
+Hits within $0.1\%$ & $1$ \\
+Rank of Eq.~(\ref{eq:main}) & $1$ \\
+Error of Eq.~(\ref{eq:main}) & $0.0135\%$ \\
+Second-best candidate & $(7/5)(m_t/m_s)^{13}$, $0.30\%$ \\
+Empirical $p$ (within $1\%$) & $<10^{-4}$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+Eq.~(\ref{eq:main}) is the unique candidate that matches the target to better
+than $0.1\%$; it ranks first overall, and the next-best relation,
+$(7/5)(m_t/m_s)^{13}$, is a factor of $22$ less accurate. Only five of the
+$83\,160$ candidates match to better than $1\%$, giving an empirical
+probability below $10^{-4}$ that a match of this quality would arise by chance
+within this family. We emphasize that this analysis quantifies non-randomness;
+it does not by itself supply a mechanism.
+
+\section{Algebraic structure of the coefficients}
+
+The integers that appear in Eq.~(\ref{eq:main})---the prefactor $4/3$ and the
+exponent $12$---admit suggestive algebraic readings, which we record as
+observations, not as derivations.
+
+The exponent $12$ coincides with two independent invariants of the exceptional
+Lie algebras: it is the number of nonzero roots of
+$\mathrm{G}_2 = \mathrm{Aut}(\mathbb{O})$, the automorphism group of the
+octonions, and it is the highest of the four Casimir degrees $(2,6,8,12)$ of
+$\mathrm{F}_4$~\cite{bincer1993}. The prefactor may be written
+$4/3 = 36/27$, where $27 = \dim J_3(\mathbb{O})$ is the dimension of the
+exceptional (Albert) Jordan algebra and $36 = \dim \mathrm{SO}(9)$. A search
+over rational combinations of dimensions of classical and exceptional Lie
+algebras finds both the ratio $4/3$ and the specific triple
+$\{36,27,12\}$ with an estimated chance probability of order $1/37000$.
+
+These connections identify the algebraic objects that \emph{count} the
+coefficients, but they do not explain \emph{why} those objects should govern
+the ratio $\alpha_{\mathrm{EM}}/\alpha_G$. In particular we have been unable to
+derive the coefficient $4/3$ from first principles, and---as discussed in
+Sec.~\ref{sec:discussion}---we have not found such a derivation in any adjacent
+theoretical tradition.
+
+\section{Relation to prior work}
+
+Eq.~(\ref{eq:main}) is distinct from the charged-lepton relations of the
+Koide--Sumino type~\cite{koide1983,sumino2009} and from the exceptional-Jordan
+mass-ratio programme~\cite{singh2021}. Those constructions predict ratios among
+the fermion masses from flavour symmetry or algebra alone, and involve no
+gravitational quantity; the present relation, by contrast, is characterized
+precisely by the appearance of the gravitational coupling $\alpha_G$. We have
+verified that the integer $12$ enters the algebra of Ref.~\cite{singh2021} as a
+count of eigenvalues rather than as an exponent, so that the numerical
+agreement of the two occurrences does not amount to a shared derivation.
+
+The natural home for a relation between a particle-mass combination and
+$\alpha_G$ is instead the tradition of large-number
+coincidences~\cite{dirac1938,wesson1980}. Unlike Dirac's original hypothesis,
+Eq.~(\ref{eq:main}) is \emph{static}: it relates present-epoch quantities and
+carries no implication that $G$ varies with cosmic time. It therefore does not
+inherit the observational difficulties that constrain a time-varying $G$.
+
+\section{Discussion: what this does and does not establish}
+\label{sec:discussion}
+
+We regard the following distinctions as essential.
+
+\emph{What we report.} A numerical relation among measured quantities,
+Eq.~(\ref{eq:main}), which holds to $0.0135\%$ ($0.17\,\sigma$) and which is
+the unique sub-$0.1\%$ member of an $83\,160$-candidate family, with an
+empirical chance probability below $10^{-4}$.
+
+\emph{What we do not claim.} We do not claim a derivation of
+Eq.~(\ref{eq:main}) from an underlying dynamics, nor a mechanism that fixes its
+coefficients. The prefactor $4/3$ and the exponent $12$ are not derived here.
+We have surveyed the three adjacent traditions in which one might expect the
+coefficient $4/3$ to originate---SU(3) flavour symmetry, the geometric reading
+of the Koide relation, and the large-number tradition---and in none of them is
+$4/3$ produced as a derived quantity. We therefore present the origin of the
+coefficient as a genuinely open problem, of a difficulty comparable to the
+four-decade-old problem of deriving the Koide relation.
+
+\emph{On the choice of $m_e$.} The reference mass in $\alpha_G$ is
+conventional. Its role here is self-consistent rather than fundamental: the
+same electron mass appears in the ratio $m_\tau/m_e$ and in $\alpha_G$, so that
+both sides of Eq.~(\ref{eq:main}) are expressed in electron units.
+
+\section{Reproducibility}
+
+All quantities reported here are computed from the published constants of
+Table~\ref{tab:inputs} by elementary arithmetic. The look-elsewhere enumeration
+of Sec.~\ref{sec:lookelsewhere} is a deterministic scan; a script that
+regenerates Table~\ref{tab:lookelsewhere} in full, together with the evaluation
+of Eq.~(\ref{eq:main}), is available from the author on request and is intended
+for public deposit alongside this note.
+
+\section{Conclusion}
+
+We have placed on the record a single, checkable relation,
+$(4/3)(m_\tau/m_e)^{12} = \alpha_{\mathrm{EM}}/\alpha_G$, that agrees with
+measurement to $0.0135\%$, that is uniquely accurate within a large family of
+comparable relations, and whose coefficients admit an exceptional-algebra
+reading whose origin remains to be explained. Whether the relation reflects a
+deep connection between the lepton mass hierarchy and the gravitational
+coupling, or an as-yet-unexplained coincidence, is a question we leave open;
+the forthcoming Belle~II tau-mass measurement will test it decisively.
+
+\begin{acknowledgments}
+The author thanks S.~Boyko for performing the independent look-elsewhere
+analysis of Sec.~\ref{sec:lookelsewhere} and for a critical reading of the
+manuscript.
+\end{acknowledgments}
+
+\begin{thebibliography}{99}
+
+\bibitem{koide1983} Y.~Koide,
+\textit{Phys.\ Lett.\ B} \textbf{120}, 161 (1983).
+
+\bibitem{dirac1938} P.~A.~M.~Dirac,
+\textit{Proc.\ R.\ Soc.\ Lond.\ A} \textbf{165}, 199 (1938).
+
+\bibitem{wesson1980} P.~S.~Wesson,
+\textit{Gravity, Particles, and Astrophysics} (Reidel, Dordrecht, 1980).
+
+\bibitem{pdg2024} R.~L.~Workman \textit{et al.} (Particle Data Group),
+\textit{Prog.\ Theor.\ Exp.\ Phys.} \textbf{2024}, 083C01 (2024).
+
+\bibitem{codata2018} E.~Tiesinga, P.~J.~Mohr, D.~B.~Newell, and B.~N.~Taylor,
+\textit{Rev.\ Mod.\ Phys.} \textbf{93}, 025010 (2021) [CODATA~2018].
+
+\bibitem{belleii} W.~Altmannshofer \textit{et al.} (Belle~II),
+\textit{Prog.\ Theor.\ Exp.\ Phys.} \textbf{2019}, 123C01 (2019).
+
+\bibitem{bincer1993} A.~M.~Bincer and K.~Riesselmann,
+\textit{J.\ Math.\ Phys.} \textbf{34}, 5935 (1993).
+
+\bibitem{sumino2009} Y.~Sumino,
+\textit{J.\ High Energy Phys.} \textbf{05} (2009) 075.
+
+\bibitem{singh2021} V.~Bhatta, R.~Mondal, V.~Vaibhav, and T.~P.~Singh,
+arXiv:2108.05787 [hep-ph] (2021).
+
+\end{thebibliography}
+
+\end{document}
