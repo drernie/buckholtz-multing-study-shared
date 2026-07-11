@@ -456,6 +456,96 @@ author's own description of them as ``phenomenological computation''
 whose derivation ``remains to be determined''.
 \reconstruction
 
+\subsection{Correlation with Real Cluster Catalogs: MULTING vs.\ Trivial Baselines}
+\label{ssec:pearson}
+
+The BRAI inconsistency quantified above is not merely a matter of differing
+point estimates: the three AI-service $\beta$ pairs yield materially
+different observational outcomes when the full MULTING force law is tested
+against real cluster catalogs, independent of Table~A1.
+
+\textbf{Method.} We compute
+$\phi(z) = M_{500}/D^2 - 2\beta_d k_A r_{500}/D^3 + (\beta_q k_A r_{500})^2/D^4$,
+$D \equiv D_0/(1+z)$ ($D_0 = 100$~Mpc; $D(z)$ is a phenomenological hypothesis,
+not a derivation --- the same open bridge problem noted for $\beta_d,\beta_q$
+in \S\ref{ssec:beta}), and $H_\mathrm{MULT}(z) = H_\mathrm{anchor}
+\sqrt{\phi(z)/\phi(z_\mathrm{ref})}$, then correlate against 27
+Moresco~\cite{moresco2022} cosmic-chronometer $H_\mathrm{CC}(z)$ points.
+Cluster masses $M_{500}$ and radii $r_{500}$ are drawn from the
+MCXC~\cite{mcxc2011} meta-catalogue; the kinetic-energy proxy $k_A = E_\mathrm{ICM}/c^2$
+is estimated via PSZ2 $Y_\mathrm{SZ}$ under a $\Lambda$CDM angular-diameter
+distance (Path~B).
+\reconstruction
+
+\textbf{Full-sample result.} On the flux-limited MCXC$+$PSZ2 sample ($n=443$
+cluster--CC pairs after merger exclusion), the tabulated $\beta_d=4.5,
+\beta_q=18.0$ gives $r=0.62$; a $\beta_d,\beta_q$ grid search
+($\beta_d,\beta_q \in [10^2,10^8]$) finds no better fit than $r=0.6235$.
+Both are beaten by a \emph{zero-parameter} monopole-only baseline
+($\beta_d=\beta_q=0$, i.e.\ plain Newtonian $M_{500}/D^2$ scaling, no
+MULTING-specific structure at all): $r = 0.7334$. This is in turn beaten by
+a naive trivial model $H = H_0(1+z)^\alpha$ ($r=0.8904$) and by Planck-2018
+$\Lambda$CDM~\cite{planck2018} ($r=0.8795$). The gap between monopole-only
+and the $\beta_d=4.5,\beta_q=18.0$ fit is significant
+(Fisher $z=3.05$, $p=0.0012$, one-tailed); AIC moderately favors $\Lambda$CDM
+over the full MULTING formula ($\Delta\mathrm{AIC}=+2.5$ on the 27-point CC
+compilation).
+\reconstruction
+
+\textbf{Mechanism.} Scanning $\beta_d$ and $\beta_q$ independently reveals
+why: $r$ is essentially insensitive to $\beta_d$ across
+$\beta_d \in [0, 10^6]$ at fixed $\beta_q$ (the dipole term is numerically
+negligible for real cluster masses and radii at any tested magnitude), while
+$r$ falls monotonically from $0.7334$ at $\beta_q=0$ to a hard floor of
+$0.6234$--$0.6235$ by $\beta_q \sim 10$, remaining flat thereafter up to
+$\beta_q=10^8$. Correlating each term's shape with $H_\mathrm{CC}(z)$ in
+isolation gives a clean ranking: monopole alone $r=0.7334$ $>$ dipole-shape
+alone $r=0.6655$ $>$ quadrupole-shape alone $r=0.6235$. The three AI-service
+$\beta_q$ values from \S\ref{ssec:beta} sit on opposite sides of this
+saturation threshold and land accordingly: ChatGPT ($\beta_q=0.19$, pre-saturation)
+gives $r=0.7317$, near the zero-parameter optimum; Gemini ($\beta_q=8.10$)
+and Claude/Table~A1 ($\beta_q=18.0$), both past threshold, give the same
+degraded $r=0.6234$--$0.6235$ despite a $6\%$ difference in $\beta_d$ ---
+consistent with $\beta_d$'s established inertness. This indicates the three
+``AI thought-experiment'' fits did not converge toward a shared best fit;
+their observational outcome is set almost entirely by which side of the
+$\beta_q \sim 10$ saturation threshold each service happened to land on.
+\reconstruction
+
+\textbf{Cross-check on an unbiased subsample.} The MCXC test above is
+flux-limited: a spurious $T_i$--$z$ correlation from Malmquist bias
+($r(\log T_i, z) = 0.65$ on the full sample) is a priori indistinguishable
+from a genuine MULTING signal. We repeat the test on the CHEX-MATE
+combined catalogue (Planck-SZ--selected, closer to volume-limited), using
+real XMM spectroscopic temperatures where available~\cite{rossetti2024} and
+velocity-dispersion dynamical masses otherwise~\cite{sereno2025}. On the
+$n=22$ subsample with real XMM $T_X$ (near-zero residual selection bias,
+$r(\log M_{500}, z) = 0.094$), the trivial baseline still wins:
+$r_\mathrm{trivial} = 0.9142$ vs.\ $r_\mathrm{MULT} = 0.7029$. On the full
+$n=100$ CHEX-MATE sample the pattern repeats: $r_\mathrm{trivial}=0.9321$
+vs.\ $r_\mathrm{MULT}=0.6269$. Because the unbiased subsample shows the same
+gap as the flux-limited one, Malmquist bias is not the sole explanation for
+MULTING underperforming the trivial baseline.
+\reconstruction
+
+\textbf{Interpretation.} The positive correlation ($r>0$ throughout)
+confirms the correct qualitative sign of the MULTING prediction and is not,
+by itself, contradicted. What is established is narrower: on every tested
+sample (flux-limited MCXC, unbiased XMM, and full CHEX-MATE), adding the
+dipole and quadrupole terms to the monopole never improves, and typically
+degrades, the correlation with real $H(z)$ data relative to a
+zero-parameter Newtonian baseline. Two explanations remain open and are not
+distinguished by this test: (a) the quadrupole structure is genuinely
+disfavored by cluster data at these scales, or (b) the $Y_\mathrm{SZ}$- and
+$\sigma_v$-derived $T_i$ proxies used here are intrinsically noisier
+tracers of the cosmic expansion trend than $M_{500}$ alone, so that any
+nonlinear combination involving them --- MULTING-specific or not --- would
+underperform mass-only scaling regardless of whether MULTING is correct.
+Resolving this requires either a volume-limited sample with uniformly
+high-quality $T_X$ across the full redshift range, or an independent
+proxy-noise characterization not attempted here.
+\reconstruction
+
 \subsection{H$_\mathrm{FLRW}$ Baseline Provenance}
 \label{ssec:hflrw}
 
