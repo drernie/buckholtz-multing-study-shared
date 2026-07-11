@@ -16,18 +16,18 @@ import json
 import math
 from pathlib import Path
 
-# ── PDG 2022/2024 constants ───────────────────────────────────────────────────
+# ── PDG 2024 constants (pdg.lbl.gov/2024 summary tables, verified 2026-07-11) ──
 # Masses in MeV
 MASSES = {
     "e": 0.51099895,  # electron
     "mu": 105.6583755,  # muon
-    "tau": 1776.86,  # tau
+    "tau": 1776.93,  # tau, PDG 2024 (supersedes 2022's 1776.86)
     "u": 2.16,  # up quark (MS-bar 2 GeV)
     "d": 4.67,  # down quark
     "s": 93.4,  # strange quark
     "c": 1270.0,  # charm quark
     "b": 4180.0,  # bottom quark
-    "t": 172760.0,  # top quark
+    "t": 172570.0,  # top quark, PDG 2024 direct measurement (supersedes 172760.0)
     "p": 938.27208816,  # proton
     "n": 939.56542052,  # neutron
 }

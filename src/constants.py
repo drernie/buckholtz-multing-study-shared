@@ -27,16 +27,16 @@ ELECTRON_MASS = Constant(
     symbol="m_e",
     value=0.51099895000,  # MeV/c²
     unit="MeV/c²",
-    source="PDG 2022",
+    source="PDG 2024",
     note="Rest mass energy",
 )
 
 TAU_MASS = Constant(
     name="Tau lepton mass",
     symbol="m_tau",
-    value=1776.86,  # MeV/c²
+    value=1776.93,  # MeV/c², uncertainty ±0.09 MeV (PDG 2024; supersedes 2022's 1776.86±0.12)
     unit="MeV/c²",
-    source="PDG 2022",
+    source="PDG 2024",
     note="Rest mass energy",
 )
 
@@ -45,7 +45,7 @@ MUON_MASS = Constant(
     symbol="m_mu",
     value=105.6583755,  # MeV/c²
     unit="MeV/c²",
-    source="PDG 2022",
+    source="PDG 2024",
     note="Rest mass energy",
 )
 

@@ -4,10 +4,10 @@
     {
       "id": "C9",
       "name": "Eq.32 lepton-gravity-EM link",
-      "claim": "(4/3)(m_tau/m_e)^12 = alpha_EM/alpha_G at ~0.17 sigma",
-      "computed": "LHS/RHS = 1.00013516 (dev 0.0135%)",
+      "claim": "(4/3)(m_tau/m_e)^12 = alpha_EM/alpha_G at ~1.0 sigma (PDG 2024: m_tau=1776.93+-0.09 MeV; corrected 2026-07-11 from a PDG-2022-era m_tau=1776.86+-0.12 mislabeled PDG 2024)",
+      "computed": "LHS/RHS = 1.00060807 (dev 0.0608%)",
       "target": "1.0 (exact)",
-      "sigma": "0.17 sigma in m_tau",
+      "sigma": "1.00 sigma in m_tau",
       "verdict": "CONFIRMED",
       "evidence": "[VERIFIED-BASH]",
       "note": "alpha_G = G m_e^2/(hbar c)"
