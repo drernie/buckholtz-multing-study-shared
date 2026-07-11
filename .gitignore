@@ -1,6 +1,8 @@
 # Literature corpus — re-downloadable OA PDFs + regenerable RAG index (keep metadata jsons + artifact)
 literature/papers/
 literature/sci_index/
+# Digitized full-text of third-party arXiv papers (kept local: licensing + repo bloat; re-extractable from PDFs)
+literature/refs_digitized/
 
 # Python
 __pycache__/
