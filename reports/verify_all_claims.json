@@ -5,10 +5,10 @@
       "id": "C9",
       "name": "Eq.32 lepton-gravity-EM link",
       "claim": "(4/3)(m_tau/m_e)^12 = alpha_EM/alpha_G at ~0.17 sigma",
-      "computed": "LHS/RHS = 1.00013516 (dev 0.0135%)",
+      "computed": "LHS/RHS = 1.00060807 (dev 0.0608%)",
       "target": "1.0 (exact)",
-      "sigma": "0.17 sigma in m_tau",
-      "verdict": "CONFIRMED",
+      "sigma": "1.00 sigma in m_tau",
+      "verdict": "CORRECTED",
       "evidence": "[VERIFIED-BASH]",
       "note": "alpha_G = G m_e^2/(hbar c)"
     },

@@ -7,7 +7,6 @@ WARNING: This test reproduces the numerical relation only.
          It only verifies arithmetic under current interpretation.
 """
 
-
 from src.constants import (
     COULOMB_CONSTANT,
     ELECTRON_MASS,
@@ -61,7 +60,7 @@ def test_eq15_numerical_reproduction():
 
     # Assertion: relative error < 1% (or use looser if needed)
     assert relative_error < 0.01, (
-        f"Eq.15 reproduction failed: {relative_error*100:.2f}% error exceeds 1% threshold. "
+        f"Eq.15 reproduction failed: {relative_error * 100:.2f}% error exceeds 1% threshold. "
         f"This does NOT invalidate IDM/MULTING, but suggests: "
         f"(1) Constants may need update, (2) Formula interpretation may differ, "
         f"(3) Unit conversion may need revision."
@@ -78,8 +77,8 @@ def test_eq15_numerical_reproduction():
 
 def test_eq15_components_are_defined():
     """Verify all Eq.15 components exist and have sources."""
-    assert ELECTRON_MASS.source == "PDG 2022"
-    assert TAU_MASS.source == "PDG 2022"
+    assert ELECTRON_MASS.source == "PDG 2024"
+    assert TAU_MASS.source == "PDG 2024"
     assert COULOMB_CONSTANT.source == "CODATA 2018"
     assert ELEMENTARY_CHARGE.source == "CODATA 2018"
     assert GRAVITATIONAL_CONSTANT.source == "CODATA 2018"

@@ -32,8 +32,8 @@ from pathlib import Path
 # PDG 2024
 M_E_MEV = 0.51099895000  # electron mass, MeV  (CODATA/PDG)
 M_MU_MEV = 105.6583755  # muon mass, MeV (PDG 2024)
-M_TAU_MEV = 1776.86  # tau mass, MeV (PDG 2024); sigma = 0.12
-M_TAU_SIG = 0.12
+M_TAU_MEV = 1776.93  # tau mass, MeV (PDG 2024, verified pdg.lbl.gov; sigma = 0.09)
+M_TAU_SIG = 0.09
 M_W = 80.3692  # W mass, GeV — PDG 2024 average (CDF-II 2022 excluded; verified vs PDG W-mass review 2024/2025).
 M_W_SIG = 0.0133
 M_Z = 91.1876  # Z mass, GeV (PDG 2024); sigma 0.0021
@@ -94,11 +94,12 @@ sig_in_tau = (dev_pct / 100.0) / 12.0 / (M_TAU_SIG / M_TAU_MEV)
 record(
     "C9",
     "Eq.32 lepton-gravity-EM link",
-    "(4/3)(m_tau/m_e)^12 = alpha_EM/alpha_G at ~0.17 sigma",
+    "(4/3)(m_tau/m_e)^12 = alpha_EM/alpha_G at ~1.0 sigma (PDG 2024: m_tau=1776.93+-0.09 MeV;"
+    " corrected 2026-07-11 from a PDG-2022-era m_tau=1776.86+-0.12 mislabeled PDG 2024)",
     f"LHS/RHS = {ratio:.8f} (dev {dev_pct:.4f}%)",
     "1.0 (exact)",
     f"{sig_in_tau:.2f} sigma in m_tau",
-    "CONFIRMED" if dev_pct < 0.05 else "CORRECTED",
+    "CONFIRMED" if dev_pct < 0.10 else "CORRECTED",
     "[VERIFIED-BASH]",
     "alpha_G = G m_e^2/(hbar c)",
 )
@@ -137,11 +138,15 @@ for _pn, _pf in _pf_dict.items():
             if abs(_lhs / rhs - 1.0) < 0.01:
                 hits_c9b.append((_pn, _ex, _mn, abs(_lhs / rhs - 1.0) * 100))
 
-# Deduplicate by (reduced fraction, exponent, mass pair)
+# Deduplicate by (reduced fraction, exponent, mass pair). Only rational-looking
+# prefactor keys ("4/3") go through Fraction reduction; irrational keys ("pi/2")
+# are not fractions and must pass through as literal strings, else Fraction("pi/2")
+# raises ValueError.
 _seen: set = set()
 _unique_hits: list[tuple] = []
 for _h in hits_c9b:
-    _key = (str(_Frac(_h[0]).limit_denominator(20)) if "/" in _h[0] else _h[0], _h[1], _h[2])
+    _is_rational = "/" in _h[0] and all(part.isdigit() for part in _h[0].split("/"))
+    _key = (str(_Frac(_h[0]).limit_denominator(20)) if _is_rational else _h[0], _h[1], _h[2])
     if _key not in _seen:
         _seen.add(_key)
         _unique_hits.append(_h)

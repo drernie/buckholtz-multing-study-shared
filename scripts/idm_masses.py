@@ -17,7 +17,7 @@ import numpy as np
 # ── PDG 2024 physical constants ───────────────────────────────────────────────
 M_E = 0.51099895  # MeV  electron mass
 M_MU = 105.6583755  # MeV  muon mass
-M_TAU = 1776.86  # MeV  tau mass
+M_TAU = 1776.93  # MeV  tau mass (PDG 2024, verified pdg.lbl.gov; supersedes 1776.86)
 M_W = 80.3692  # GeV  W boson (PDG 2024)
 M_Z = 91.1876  # GeV  Z boson
 M_H = 125.20  # GeV  Higgs (PDG 2024)

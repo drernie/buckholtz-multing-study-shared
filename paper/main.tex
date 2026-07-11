@@ -44,7 +44,7 @@ though per-boson the $W$ deviates by $3.8\sigma$ and $H$ by $1.1\sigma$ when
 $Z$-anchored); stated parameter-free, the relation is consistent only with the
 heavier (CDF-II/CMS) boson masses ($\chi^2 = 2.0$, $p = 0.36$) and excludes the
 light/Standard-Model set ($\chi^2 = 39$), making it a falsifiable discriminant
-on the $W$-mass anomaly. The fermion-gravity link (Eq.~32) holds at $0.17\sigma$
+on the $W$-mass anomaly. The fermion-gravity link (Eq.~32) holds at $1.0\sigma$
 --- both empirical assets independent of MULTING/IDM cosmology; (2)~the fermion mass spectrum
 (Eqs.~21--24) reproduces the muon mass to $0.47\%$ and quark geometric means
 to $<0.31\%$ using PDG 2024 constants; (3)~the MULTING dipole term is
@@ -86,7 +86,7 @@ The six fundamental constants identified by Rees~\cite{rees1999} include
 the ratio of electromagnetic to gravitational coupling strengths
 $N \approx 10^{36}$ and the cosmological constant $\lambda \approx 0.7$.
 MULTING/IDM addresses both: Eq.~(32) provides an empirical link between
-$N$ and lepton masses ($0.17\sigma$, \S\ref{ssec:eq32}), while the MULTING
+$N$ and lepton masses ($1.0\sigma$, \S\ref{ssec:eq32}), while the MULTING
 dipole term offers a mechanical alternative to $\lambda$ at first
 cosmological perturbation order (\S\ref{sec:hz}).
 
@@ -274,10 +274,14 @@ The empirical relation
     \label{eq:c9}
 \end{equation}
 where $\alpha_G = G m_e^2 / (\hbar c)$, was evaluated using PDG 2024
-constants~\cite{pdg2024}: $m_\tau = 1776.86 \pm 0.12$~MeV, $m_e = 0.51100$~MeV,
+constants~\cite{pdg2024}: $m_\tau = 1776.93 \pm 0.09$~MeV, $m_e = 0.51100$~MeV,
 $\alpha_\mathrm{EM}^{-1} = 137.036$, $G = 6.674 \times 10^{-11}$~m$^3$~kg$^{-1}$~s$^{-2}$.
+(Corrected 2026-07-11: an earlier version of this subsection used
+$m_\tau = 1776.86 \pm 0.12$~MeV mislabeled ``PDG 2024''; that is the
+PDG-2022-era value. The relation survives the correction, now at
+$1.0\sigma$ rather than $0.17\sigma$.)
 
-We find LHS/RHS~$= 1.000135$, corresponding to a $0.17\sigma$ agreement
+We find LHS/RHS~$= 1.000608$, corresponding to a $1.0\sigma$ agreement
 dominated by the $m_\tau$ uncertainty.
 \reconstruction
 
@@ -287,36 +291,43 @@ CODATA 2018 uncertainties gives:
 \begin{align}
   \sigma_\mathrm{LHS}(m_\tau) &= \tfrac{4}{3}\cdot 12\cdot
     \left(\frac{m_\tau}{m_e}\right)^{11}\!\frac{\sigma_{m_\tau}}{m_e}
-    = 0.081\%\text{ of LHS} \notag \\
+    = 0.061\%\text{ of LHS} \notag \\
   \sigma_\mathrm{RHS}(G) &= \frac{\sigma_G}{G}\,\mathrm{RHS}
     = 0.0022\%\text{ of RHS} \notag \\
-  \sigma_\mathrm{combined} &= 0.081\%\text{ of RHS};\quad
-    |\mathrm{LHS}-\mathrm{RHS}|/\sigma = 0.167\sigma .
+  \sigma_\mathrm{combined} &= 0.061\%\text{ of RHS};\quad
+    |\mathrm{LHS}-\mathrm{RHS}|/\sigma = 1.00\sigma .
 \end{align}
 The dominant uncertainty is \emph{not} $G$ but $m_\tau$: the exponent 12
 amplifies the $m_\tau$ contribution by a factor of $12^2 = 144$ relative to $G$'s
 contribution at the same relative precision.
 With the Belle~II target $\sigma_{m_\tau} = 0.01$~MeV~\cite{belleii2019},
-the combined significance would rise to $1.90\sigma$ — an approaching but
-not yet decisive test.
+the combined significance would rise to $8.54\sigma$ — at the current
+central value, a Belle~II-precision measurement would decisively
+\emph{disfavor} exact equality unless the tau mass itself shifts toward
+$1776.840$~MeV (Sec.~\ref{ssec:eq32}'s companion note gives the two-sided
+reading of this test in full).
 Partial derivatives verified against finite differences to $10^{-7}$ precision.
 \reconstruction
 
 \paragraph{Sensitivity to $G$ measurements.}
 Different precision measurements of $G$ yield deviations of Eq.~(\ref{eq:c9})
-ranging from $+0.0014\%$ \cite{luo2009} to $+0.032\%$ \cite{quinn2013},
-all at sub-$0.4\sigma$ significance.  The spread among published $G$ values
-($479$~ppm peak-to-peak across 10 experiments since 1982) exceeds the deviation
-of Eq.~(\ref{eq:c9}) from equality ($135$~ppm with CODATA 2018~\cite{codata2018}),
-implying that current $G$ precision \emph{prevents} a definitive test of whether
-Eq.~(\ref{eq:c9}) is exact.  The value of $G$ that makes Eq.~(\ref{eq:c9})
-exact is $G^* = 6.6734 \times 10^{-11}$~m$^3$\,kg$^{-1}$\,s$^{-2}$
-(within the CODATA 2018 $1\sigma$ band); the Luo et al.~\cite{luo2009} measurement
-($G = 6.67349\times10^{-11}$) is the closest published value, yielding
-$+0.0014\%$ deviation.  A measurement at MICROSCOPE-class precision
-($\sim\!1$~ppm in $G$) would still leave Eq.~(\ref{eq:c9}) limited by $m_\tau$,
-not $G$, because the $m_\tau$ uncertainty contributes $0.081\%$ regardless of
-$G$ precision.
+ranging from $+0.049\%$ \cite{luo2009} to $+0.079\%$ \cite{quinn2013},
+now at $0.8$--$1.3\sigma$ significance (versus the combined uncertainty of
+Sec.~\ref{ssec:eq32} above). The spread among published $G$ values
+($479$~ppm peak-to-peak across 10 experiments since 1982) is now smaller
+than the deviation of Eq.~(\ref{eq:c9}) from equality ($608$~ppm with
+CODATA 2018~\cite{codata2018}): unlike in the earlier, PDG-2022-era
+analysis, no published $G$ determination renders Eq.~(\ref{eq:c9}) exact to
+within its own quoted precision, and the tau-mass uncertainty is now
+unambiguously the limiting factor for this test, consistent with the
+amplification-factor argument above. The value of $G$ that makes
+Eq.~(\ref{eq:c9}) exact is $G^* = 6.6702 \times 10^{-11}$~m$^3$\,kg$^{-1}$\,s$^{-2}$,
+about $27\,\sigma_G$ from the CODATA 2018 central value using $G$'s own
+(22~ppm) precision alone --- unsurprising, since the actual gap between the
+two sides is set by the far looser tau-mass uncertainty, not by $G$. A
+measurement at MICROSCOPE-class precision ($\sim\!1$~ppm in $G$) would
+still leave Eq.~(\ref{eq:c9}) limited by $m_\tau$, not $G$, because the
+$m_\tau$ uncertainty contributes $0.061\%$ regardless of $G$ precision.
 \reconstruction
 
 \paragraph{Context and status.}
@@ -359,7 +370,7 @@ The IDM mass formula predicts lepton masses as
 $m_k/m_e = (m_\tau/m_e)^{(k + \sigma_k \delta)/3}$
 with $k \in \{0,2,3\}$ for $\{e, \mu, \tau\}$, $\sigma_k \in \{0,-1,0\}$,
 and $\delta = 0.03668$ (Eqs.~21--24 of~\cite{buckholtz2026}).
-Using PDG 2024 masses ($m_e = 0.51100$, $m_\tau = 1776.86$~MeV), the electron
+Using PDG 2024 masses ($m_e = 0.51100$, $m_\tau = 1776.93$~MeV), the electron
 is reproduced exactly by construction; the muon prediction is $106.16$~MeV
 vs.\ PDG $105.66$~MeV (deviation $0.47\%$).
 The best-fit $\delta = 0.03841$ reduces this to $< 0.01\%$ for the muon
@@ -728,7 +739,7 @@ Two results from this assessment are independent of the MULTING/IDM
 cosmological framework and survive even if the framework itself is not
 confirmed.
 
-First, the fermion-gravity link (Eq.~32) holds at $0.17\sigma$ using PDG 2024
+First, the fermion-gravity link (Eq.~32) holds at $1.0\sigma$ using PDG 2024
 constants.  The relation $(4/3)(m_\tau/m_e)^{12} = \alpha_\mathrm{EM}/\alpha_G$
 connects the strong gravitational coupling to the electromagnetic fine-structure
 constant through lepton masses.  Its mechanism is unknown, but its numerical
@@ -815,8 +826,8 @@ any exponent in the relevant range, confirming that the relation is
 \textbf{$m_\tau$ value for an exact relation.}
 If Eq.~(32) is taken as exact, it predicts
 $m_\tau^\mathrm{exact} = 1776.840$~MeV,
-which differs from the PDG 2024 value ($1776.86 \pm 0.12$~MeV) by
-$-0.020$~MeV $= 0.17\sigma$.
+which differs from the PDG 2024 value ($1776.93 \pm 0.09$~MeV) by
+$-0.090$~MeV $= 1.00\sigma$.
 Future Belle~II measurements targeting $\sigma_{m_\tau} < 0.01$~MeV
 will provide a definitive test of whether Eq.~(32) is exact or approximate.
 \reconstruction
@@ -824,24 +835,25 @@ will provide a definitive test of whether Eq.~(32) is exact or approximate.
 \textbf{Joint Koide--Eq.~(32) constraint.}
 The Koide formula
 $(m_e + m_\mu + m_\tau)/(\sqrt{m_e}+\sqrt{m_\mu}+\sqrt{m_\tau})^2 = 2/3$
-holds at $0.00092\%$ ($0.909\sigma$, PDG 2024) and is symmetric under all six
+holds at $0.00033\%$ ($0.43\sigma$, PDG 2024) and is symmetric under all six
 permutations of $\{m_e, m_\mu, m_\tau\}$ (i.e., $S_3$-invariant), involving
 all three lepton generations.
 Eq.~(\ref{eq:c9}) is distinct: it connects only the first and third
 generations ($m_\tau/m_e$) to the gravitational coupling.
-Inverting each relation for $m_\tau$:
+Inverting each relation for $m_\tau$ (the Koide prediction depends only on
+$m_e,m_\mu$ and is unaffected by the PDG-2024 tau-mass correction above):
 \begin{align}
-  m_\tau^\mathrm{Koide} &= 1776.969~\mathrm{MeV} \quad (+0.91\sigma\text{ from PDG}) ,\\
-  m_\tau^\mathrm{Eq.32} &= 1776.840~\mathrm{MeV} \quad (-0.17\sigma\text{ from PDG}) .
+  m_\tau^\mathrm{Koide} &= 1776.969~\mathrm{MeV} \quad (+0.43\sigma\text{ from PDG}) ,\\
+  m_\tau^\mathrm{Eq.32} &= 1776.840~\mathrm{MeV} \quad (-1.00\sigma\text{ from PDG}) .
 \end{align}
-The two ``exact'' predictions differ by $+0.129$~MeV ($+1.08\sigma$) ---
+The two ``exact'' predictions differ by $+0.129$~MeV ($+1.43\sigma$) ---
 marginally compatible.  If both relations are simultaneously exact,
 $m_\tau$ must lie within the window $[1776.840, 1776.969]$~MeV, which is
-narrower than the current PDG uncertainty ($\pm 0.12$~MeV) and would be
-resolved by the Belle~II target precision.  Under this joint constraint,
-Newton's constant $G$ is determined from $\alpha_\mathrm{EM}$, $m_e$, and
-$m_\mu$ alone, without $m_\tau$ as a free parameter ---
-a non-trivial cross-constraint whose mechanism is unknown.
+narrower than the current PDG uncertainty ($\pm 0.09$~MeV, full $1\sigma$
+band $0.18$~MeV) and would be resolved by the Belle~II target precision.
+Under this joint constraint, Newton's constant $G$ is determined from
+$\alpha_\mathrm{EM}$, $m_e$, and $m_\mu$ alone, without $m_\tau$ as a free
+parameter --- a non-trivial cross-constraint whose mechanism is unknown.
 \reconstruction
 
 \subsection{What Requires New Physics}
@@ -948,7 +960,7 @@ updates in DESI DR2 or Planck PR4 may shift central values.}
 \begin{tabular}{p{5.5cm}p{3.5cm}p{2.5cm}l}
 Prediction & Observable & Instrument & Timeline \\
 \hline
-$m_\tau^\mathrm{exact} = 1776.840$~MeV if Eq.~(32) exact ($-0.17\sigma$ from PDG) &
+$m_\tau^\mathrm{exact} = 1776.840$~MeV if Eq.~(32) exact ($-1.00\sigma$ from PDG) &
 $m_\tau$ to $\pm0.01$~MeV & Belle~II~\cite{belleii2019} & 2027 \\
 $\Delta N_\mathrm{eff} \approx 0.26$ if IDM + MSSM decoupling ($g_{*S} \approx 228$) &
 $\Delta N_\mathrm{eff}$ & Simons Obs. & 2026--2027 \\
@@ -987,7 +999,7 @@ input and are not endorsed here as fixes.}
 Component & Status & Evidence & Path to resolution / next test \\
 \hline
 Eq.~31 (7:9:17 bosons) & $\triangle$ $m_W/m_H$ at $0.04\%$; $1.14\sigma$ (H), $3.8\sigma$ (W) & PDG 2024 & $W$-mass world average (LHC Run~3) is the discriminant \\
-Eq.~32 (fermion-gravity) & $\checkmark$ $0.17\sigma$ & PDG 2024 & Belle~II $m_\tau$ (2027) sharpens exact vs.\ approximate \\
+Eq.~32 (fermion-gravity) & $\checkmark$ $1.0\sigma$ & PDG 2024 & Belle~II $m_\tau$ (2027) sharpens exact vs.\ approximate \\
 Eqs.~21--24 (fermion masses) & $\checkmark$ muon $0.47\%$, quarks $<0.31\%$ & PDG 2024 & confirmed asset \\
 Inflaton $m_Z/3 = 30.4$~GeV & ? undetected & LEP/LHC null & precision/collider search \\
 Cassini constraint & $\checkmark$ pass & $\varepsilon \sim 10^{-19}$ & satisfied \\
@@ -1018,7 +1030,7 @@ verifiable with public data and PDG constants.
 
 Several results survive independent scrutiny without requiring the author's
 undisclosed numerical procedure.
-The fermion-gravity link (Eq.~32) holds at $0.17\sigma$ (PDG 2024),
+The fermion-gravity link (Eq.~32) holds at $1.0\sigma$ (PDG 2024),
 and the boson mass ratio [7:9:17] holds at $<0.05\%$ in mass units
 with the scale-free ratio $m_W/m_H = \sqrt{7/17}$ precise to $0.04\%$.
 The fermion mass spectrum (Eqs.~21--24) reproduces the muon mass to $0.47\%$
