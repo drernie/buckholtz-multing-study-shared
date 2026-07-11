@@ -101,7 +101,14 @@ m_\tau = 1776.840~\mathrm{MeV},
 which lies within the current experimental window
 $1776.86\pm 0.12~\mathrm{MeV}$~\cite{pdg2024}. A measurement of the tau mass at
 the $0.01~\mathrm{MeV}$ precision anticipated at Belle~II~\cite{belleii} would
-sharpen this test by an order of magnitude.
+sharpen the test on Eq.~(\ref{eq:main}) by an order of magnitude, to
+$\mathrm{LHS/RHS} = 1.0000 \pm 0.0001$. We note this is a genuine two-sided
+test, not a foregone confirmation: propagated at Belle~II precision, the
+\emph{present} PDG central value $m_\tau=1776.86$~MeV already sits at
+$2.0\,\sigma_{\mathrm{Belle\,II}}$ from Eq.~(\ref{eq:main}); a Belle~II
+measurement consistent with the current central value, at its anticipated
+precision, would in fact mildly disfavor the exact relation, while a shift
+toward $1776.840$~MeV would confirm it.
 
 \begin{table}[t]
 \caption{Input quantities and their sources. Masses are in
@@ -206,11 +213,32 @@ curiosity in its own right, not as a derivation of, or an argument against,
 Eq.~(\ref{eq:main}); we take no position on whether it reflects anything
 beyond coincidence.
 
-\section{Algebraic structure of the coefficients}
+We note one further asymmetry between the two relations, not as grounds for
+dismissing Eq.~(\ref{eq:tau-alt}) but as a genuine difference in how testable
+each is: Eq.~(\ref{eq:tau-alt}) depends on the top-quark mass raised to the
+18th power, and the top-quark mass, unlike the lepton masses entering
+Eq.~(\ref{eq:main}), carries an intrinsic renormalization-scheme ambiguity of
+order several GeV between the pole-mass and $\overline{\mathrm{MS}}$
+conventions. Using the PDG~2024 pole mass, $M_t=172.76$~GeV, gives the quoted
+$0.0070\%$; using the PDG~2024 $\overline{\mathrm{MS}}$ mass,
+$\overline{m}_t(\overline{m}_t)=162.77$~GeV~\cite{pdg2024}, in its place
+raises the error to $65.8\%$---a factor of roughly $9\times 10^3$
+worse---because an $18$th power amplifies an $O(6\%)$ mass shift into an
+$O(1)$ change in the predicted ratio. Eq.~(\ref{eq:main}) has no analogous
+exposure: $m_e$ and $m_\tau$ are on-shell lepton masses with no comparable
+scheme freedom. We read this as evidence that Eq.~(\ref{eq:tau-alt}) is the
+more fragile of the two coincidences, not as a reason to discount it
+entirely, since a preferred scheme (the pole mass) is the conventional choice
+in this context.
+
+\section{A conjectural algebraic interpretation of the coefficients}
 
 The integers that appear in Eq.~(\ref{eq:main})---the prefactor $4/3$ and the
 exponent $12$---admit suggestive algebraic readings, which we record as
-observations, not as derivations.
+observations, not as derivations. We do not claim that $\mathrm{G}_2$,
+$\mathrm{F}_4$, or the exceptional Jordan algebra \emph{cause}
+Eq.~(\ref{eq:main}); we merely note that if a future derivation of the
+coefficients exists, these are natural objects it might involve.
 
 The exponent $12$ coincides with two independent invariants of the exceptional
 Lie algebras: it is the number of nonzero roots of

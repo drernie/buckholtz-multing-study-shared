@@ -138,6 +138,44 @@ def main() -> int:
         print("     regenerate via: python scripts/scan_reference_mass_robustness.py")
         _failures += 1
 
+    print("\n[5] Scheme-ambiguity robustness of the competing (tau-referenced) relation")
+    # PDG 2024 top-quark masses, MeV. MSbar value verified via WebSearch (arXiv:2209.10777 / PDG).
+    m_top_pole = 172760.0
+    m_top_msbar = 162770.0
+
+    def tau_alt_err(m_top: float) -> float:
+        target_tau = (ALPHA_EM / alpha_g) * (M_E / M_TAU) ** 2
+        val = (4 / 7) * (m_top / M_TAU) ** 18
+        return abs(val / target_tau - 1) * 100
+
+    err_pole = tau_alt_err(m_top_pole)
+    err_msbar = tau_alt_err(m_top_msbar)
+    check("tau-alt error, pole mass [%]", err_pole, 0.0070, 3e-2)
+    check("tau-alt error, MSbar mass [%]", err_msbar, 65.8, 3e-2)
+    ratio_ok = 5000 < (err_msbar / err_pole) < 15000
+    if not ratio_ok:
+        _failures += 1
+    print(
+        f"  [{'OK ' if ratio_ok else '!! '}] scheme flip ratio = {err_msbar / err_pole:.0f}x worse "
+        "(note states ~9e3x)"
+    )
+
+    print("\n[6] Belle II two-sided prediction")
+    belle_sigma = 0.010
+    belle_band = 12 * belle_sigma / M_TAU
+    # paper rounds this to 4 decimal places (0.0001) to match the "1.0000" display
+    # precision; compare by absolute tolerance (half the last displayed digit), not
+    # relative, since a tight relative check on a rounded low-sig-fig value is unfair.
+    band_ok = abs(belle_band - 0.0001) < 5e-5
+    if not band_ok:
+        _failures += 1
+    print(
+        f"  [{'OK ' if band_ok else '!! '}] Belle II band on LHS/RHS         "
+        f"paper=0.0001         computed={belle_band:.6g}  (rounds to 0.0001)"
+    )
+    current_dev_in_belle_sigma = abs(lhs / rhs - 1) / belle_band
+    check("current PDG deviation, in Belle-II sigma units", current_dev_in_belle_sigma, 2.0, 0.1)
+
     print("\n" + "=" * 68)
     if _failures == 0:
         print("RESULT: ALL CHECKS PASSED — the note's numbers are reproducible.")
