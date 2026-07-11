@@ -8,8 +8,10 @@ note fails here.
 
 Covers: Eq.32 arithmetic, the 1-sigma band and sigma-deviation, the exact
 tau mass, the algebraic dimensions (4/3=36/27, dim SO(9), dim J3(O), G2 roots,
-F4 Casimir degrees), and the look-elsewhere scan summary (loaded from the
-saved JSON produced by scan_mass_ratio_formulas.py).
+F4 Casimir degrees), the single-reference look-elsewhere scan summary (from
+scan_mass_ratio_formulas.py), and the pooled reference-mass robustness scan
+(from scan_reference_mass_robustness.py) — including the honest fact that
+Eq.32 is rank #2, not #1, once the reference mass itself is allowed to vary.
 
 Run:  python scripts/verify_eq32_note.py
 Exit: 0 if all checks pass, 1 otherwise.
@@ -24,6 +26,9 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 LOOK_ELSEWHERE_JSON = (
     REPO / "experiments" / "20260627-f4-eq32-synthesis" / "look_elsewhere_result.json"
+)
+REFMASS_JSON = (
+    REPO / "experiments" / "20260627-f4-eq32-synthesis" / "reference_mass_scan_result.json"
 )
 
 # --- Independently entered constants (CODATA 2018 / PDG 2024) ---
@@ -108,6 +113,29 @@ def main() -> int:
     else:
         print(f"  !! JSON not found: {LOOK_ELSEWHERE_JSON}")
         print("     regenerate via: python scripts/scan_mass_ratio_formulas.py")
+        _failures += 1
+
+    print("\n[4] Reference-mass robustness (pooled, from saved JSON)")
+    if REFMASS_JSON.exists():
+        d = json.loads(REFMASS_JSON.read_text(encoding="utf-8"))
+        check_int("total pooled trials (11 references)", int(d["total_trials_combined"]), 132000)
+        check_int("Eq.32 rank in pooled sample", int(d["eq32_rank_combined"]), 2)
+        check("Eq.32 rel_err (pooled)", float(d["eq32_rel_err"]) * 100, 0.0135, 2e-2)
+        p2 = float(d["p_empirical_combined"])
+        ok_p2 = abs(p2 - 2.3e-5) / 2.3e-5 < 0.1
+        if not ok_p2:
+            _failures += 1
+        print(
+            f"  [{'OK ' if ok_p2 else '!! '}] pooled empirical p = {p2:.2e}  (note states 2.3e-5)"
+        )
+        second = d["second_coincidence"]
+        print(
+            f"        second coincidence: {second['formula']} (ref={second['reference_mass']}), "
+            f"err={float(second['rel_err']) * 100:.4f}% — genuinely beats Eq.32, reported honestly as rank #1"
+        )
+    else:
+        print(f"  !! JSON not found: {REFMASS_JSON}")
+        print("     regenerate via: python scripts/scan_reference_mass_robustness.py")
         _failures += 1
 
     print("\n" + "=" * 68)

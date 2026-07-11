@@ -1,0 +1,76 @@
+{
+  "total_trials_combined": 132000,
+  "n_references_tested": 11,
+  "eq32_rank_combined": 2,
+  "eq32_rel_err": 0.00013493337047942866,
+  "n_candidates_at_least_as_good": 3,
+  "p_empirical_combined": 2.2727272727272726e-05,
+  "second_coincidence": {
+    "formula": "(4/7)(m_t/m_tau)^18",
+    "reference_mass": "tau",
+    "rel_err": 7.021837919929386e-05,
+    "note": "distinct mass pair and coefficient from Eq.32; recorded as an independent curiosity, not evidence against Eq.32"
+  },
+  "top10": [
+    {
+      "rank": 1,
+      "rel_err": 7.021837919929386e-05,
+      "reference": "tau",
+      "formula": "(4/7)(m_t/m_tau)^18"
+    },
+    {
+      "rank": 2,
+      "rel_err": 0.00013493337047942866,
+      "reference": "e",
+      "formula": "(4/3)(m_tau/m_e)^12"
+    },
+    {
+      "rank": 3,
+      "rel_err": 0.00013493337047942866,
+      "reference": "e",
+      "formula": "(8/6)(m_tau/m_e)^12"
+    },
+    {
+      "rank": 4,
+      "rel_err": 0.004158490905281198,
+      "reference": "s",
+      "formula": "(4/3)(m_b/m_s)^23"
+    },
+    {
+      "rank": 5,
+      "rel_err": 0.004158490905281198,
+      "reference": "s",
+      "formula": "(8/6)(m_b/m_s)^23"
+    },
+    {
+      "rank": 6,
+      "rel_err": 0.006614653353232747,
+      "reference": "u",
+      "formula": "(1/7)(m_n/m_u)^16"
+    },
+    {
+      "rank": 7,
+      "rel_err": 0.007918848698456715,
+      "reference": "u",
+      "formula": "(2/3)(m_c/m_u)^15"
+    },
+    {
+      "rank": 8,
+      "rel_err": 0.007918848698456715,
+      "reference": "u",
+      "formula": "(4/6)(m_c/m_u)^15"
+    },
+    {
+      "rank": 9,
+      "rel_err": 0.007918848698456715,
+      "reference": "u",
+      "formula": "(6/9)(m_c/m_u)^15"
+    },
+    {
+      "rank": 10,
+      "rel_err": 0.008884243822317561,
+      "reference": "p",
+      "formula": "(5/7)(m_t/m_p)^16"
+    }
+  ]
+}
