@@ -88,7 +88,7 @@ paper/*.blg
 paper/*.out
 paper/*.fls
 paper/*.fdb_latexmk
-paper/mainNotes.bib
+paper/*Notes.bib
 
 # Experiment output directories
 outputs/
