@@ -8,14 +8,16 @@ does the apparent precision of Eq.32 partly reflect the size of the search
 space rather than something special about the electron?
 
 For each of the 11 reference-mass choices, this scans the SAME family used in
-scan_mass_ratio_formulas.py, (p/q)(m_i/m_ref)^n with coprime p,q<=10, n<=24,
-over all other masses m_i (only pairs with m_i > m_ref are scanned, so the
-per-reference trial count is NOT uniform: 24,000 for m_e down to 0 for m_t,
-since a mass can only serve as reference when at least one candidate mass
-exceeds it). All reference pools are combined into one ranked list of
-132,000 candidates (55 unordered mass pairs x 2400 coprime-prefactor/exponent
-combinations) to give a properly pooled (not per-reference-best) significance
-estimate for Eq.32.
+scan_mass_ratio_formulas.py, (p/q)(m_i/m_ref)^n with coprime p,q<=10 (63
+distinct reduced fractions), n<=24, over all other masses m_i (only pairs
+with m_i > m_ref are scanned, so the per-reference trial count is NOT
+uniform: 15,120 for m_e down to 0 for m_t, since a mass can only serve as
+reference when at least one candidate mass exceeds it). All reference pools
+are combined into one ranked list of 83,160 candidates (55 unordered mass
+pairs x 24 exponents x 63 coprime fractions -- the same total size as
+scan_mass_ratio_formulas.py's fixed-reference scan, by construction: each
+pair is scanned exactly once, with its lighter member as reference) to give
+a properly pooled (not per-reference-best) significance estimate for Eq.32.
 
 Run:  python scripts/scan_reference_mass_robustness.py
 Output: experiments/20260627-f4-eq32-synthesis/reference_mass_scan_result.json

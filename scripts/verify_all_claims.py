@@ -99,7 +99,10 @@ record(
     f"LHS/RHS = {ratio:.8f} (dev {dev_pct:.4f}%)",
     "1.0 (exact)",
     f"{sig_in_tau:.2f} sigma in m_tau",
-    "CONFIRMED" if dev_pct < 0.10 else "CORRECTED",
+    # Verdict keyed to sigma (matches the "~1.0 sigma" stated in the claim
+    # above), not to a raw percent threshold -- avoids re-tuning a percent
+    # cutoff by hand every time the reference PDG mass revision changes dev_pct.
+    "CONFIRMED" if abs(sig_in_tau - 1.0) < 0.5 else "CORRECTED",
     "[VERIFIED-BASH]",
     "alpha_G = G m_e^2/(hbar c)",
 )
