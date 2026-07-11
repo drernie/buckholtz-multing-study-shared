@@ -5,7 +5,6 @@ Purpose: Prevent circular reasoning where H0, Omega_m, etc. are used
          to derive "fundamental" beta parameters.
 """
 
-
 from src.beta_definitions import get_all_beta_definitions
 from src.data_anchoring import get_high_leakage_risk
 
@@ -102,9 +101,9 @@ def test_high_leakage_datasets_are_documented():
     names = {anchor.name for anchor in high_risk}
 
     assert "Planck CMB" in names, "Planck CMB should be marked as high leakage risk"
-    assert "Cosmic chronometers H(z)" in names or any(
-        "H(z)" in n for n in names
-    ), "H(z) measurements should be marked as high leakage risk"
+    assert "Cosmic chronometers H(z)" in names or any("H(z)" in n for n in names), (
+        "H(z) measurements should be marked as high leakage risk"
+    )
 
 
 def test_candidate_beta_formulas_marked_if_using_observations():
@@ -134,10 +133,6 @@ def test_candidate_beta_formulas_marked_if_using_observations():
         notes="Circular reasoning: deriving beta from H0",
     )
 
-    assert (
-        bad_formula.uses_cosmological_observations is True
-    ), "Example formula using H0 must be flagged"
-
     # Penalized score should be low due to leakage
     from src.numerology_penalty import penalized_score
 
@@ -146,4 +141,24 @@ def test_candidate_beta_formulas_marked_if_using_observations():
     assert score <= 5, (
         f"Formula using cosmological observations should score ≤5, got {score}. "
         f"Data leakage penalty should reduce score significantly."
+    )
+
+    # Real logic check (not a self-assertion of the field we just set two
+    # lines above): the SAME formula, differing only in the leakage flag,
+    # must score meaningfully higher when not flagged. This exercises
+    # data_leakage_penalty()'s actual effect on the outcome, not just that
+    # a dataclass stores the value it was constructed with.
+    from dataclasses import replace
+
+    clean_formula = replace(bad_formula, uses_cosmological_observations=False)
+    clean_score = penalized_score(clean_formula)
+
+    assert clean_score > score, (
+        f"Flagging uses_cosmological_observations did not lower the score "
+        f"(flagged={score}, unflagged={clean_score}) -- data_leakage_penalty "
+        f"may not be wired into penalized_score correctly"
+    )
+    assert clean_score - score == 5.0, (
+        f"Leakage penalty magnitude changed: expected exactly 5.0 point "
+        f"difference, got {clean_score - score}"
     )
