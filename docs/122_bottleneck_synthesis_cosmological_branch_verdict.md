@@ -544,30 +544,47 @@ Correction: the previously reported r=0.6235 "optimum" (R011) came from a restri
 beta_d grid [1e2, 1e8] that excluded the nested baseline point (0,0); it was a
 box-constrained local optimum, not a global one.
 
-Scope: a strong empirical result for the implemented mapping and dataset, now backed
-by one exact closed-form limit; not a formal proof over the complete continuous
-parameter space, and not a test of every possible MULTING formulation (different
-F->H(z) mapping, relativistic closure, or N-body treatment are all out of scope here).
+Scope: not exceeded in any scanned or analytically examined region of parameter
+space (the nested point, the dense near-zero grid, the full scanned 2D grid, and the
+eta_q->infinity closed-form limit) -- a strong empirical result for the implemented
+mapping and dataset, backed by one exact closed-form limit. This is weaker than "no
+point on the full continuous domain beats the baseline": a narrow interior maximum
+between the scanned grid and the asymptote is not excluded by proof, only by every
+scan and limit computed so far. Not a test of every possible MULTING formulation
+(different F->H(z) mapping, relativistic closure, or N-body treatment are all out of
+scope here).
 ```
 
 ### v6 Verdict (extends v5; nothing in v5 retracted)
 
+**Terminology correction (post-v6 review):** the status line "Global continuous
+dominance" was ambiguous — unclear whose dominance over what. Renamed to "Global
+monopole optimality," and the quadrupole-plateau line renamed to "Quadrupole
+asymptotic plateau" to name it as what it is: a limit, not a search result.
+
 | Status line | Verdict |
 |---|---|
 | Parameter degeneracy eta_d=beta_d/D0 | VERIFIED IN IMPLEMENTATION |
-| Old grid "global optimum" claim (r=0.6235) | FALSE — corrected; was a box-constrained local optimum |
+| Old grid "global optimum" claim (r=0.6235) | FALSE / CORRECTED — was a box-constrained local optimum |
 | v3 collapse claim | FALSE / SUPERSEDED (v4) |
-| Quadrupole-saturation plateau | VERIFIED NUMERICALLY (v5) **and now VERIFIED ANALYTICALLY, closed form (v6)** |
+| Quadrupole asymptotic plateau | VERIFIED ANALYTICALLY, closed form (v6); numerically confirmed to 7 sig figs (v5) |
 | Dipole empirical added value | NOT DEMONSTRATED |
 | Monopole baseline | SURVIVES all v2-v6 tests, including the finer near-zero grid |
-| Global continuous dominance (`sup r <= Q(0,0)` over the full continuous domain) | STRONGLY SUPPORTED, NOT FORMALLY PROVEN — would need a certified/interval-arithmetic bound or a monotonicity proof of the profile function |
+| Global monopole optimality (`sup r = r(0,0)` over the full continuous domain) | STRONGLY SUPPORTED, NOT PROVEN — would need a certified/interval-arithmetic bound or a monotonicity proof of the profile function |
 | All possible MULTING theories | NOT FALSIFIED — only this implementation's beta_d/beta_q rescue strategy is disfavored |
 
-**What this gives the practical next step:** in this reproducible reconstruction,
-neither varying `beta_d`, nor freeing `beta_q`, nor pushing into quadrupole saturation
-improves on the monopole baseline — and the saturation plateau's value is now derived,
-not just measured. Further progress on the cosmological branch requires a new physical
-derivation of the dynamics (bottleneck #1: the `F->H(z)` bridge itself), not another
-round of coefficient-fitting in the existing pipeline. This is not a refutation of
-MULTING as a theory; it is a strong STOP specifically for the strategy of rescuing the
-cosmological mechanism by fitting `(beta_d, beta_q)` inside the current pipeline.
+**Defensible statement (tightened per review):** in every scanned or analytically
+examined region of parameter space — the point (0,0), the dense near-zero grid, the
+full scanned 2D (eta_d, eta_q) region, the eta_q -> infinity asymptotic limit, and
+multiple eta_d scales — the monopole baseline was not exceeded, and the quadrupole
+asymptotic limit converges strictly to a fixed template that is worse than it. This is
+**not** the same as "no configuration on the full continuous domain beats the
+baseline" — a narrow interior maximum between the scanned grid and the asymptote
+remains theoretically possible and has not been excluded by proof; it is excluded by
+every scan and every closed-form limit computed so far. The saturation plateau's value
+is now derived, not just measured. Further progress on the cosmological branch
+requires a new physical derivation of the dynamics (bottleneck #1: the `F->H(z)`
+bridge itself), not another round of coefficient-fitting in the existing pipeline.
+This is not a refutation of MULTING as a theory; it is a strong STOP specifically for
+the strategy of rescuing the cosmological mechanism by fitting `(beta_d, beta_q)`
+inside the current pipeline.
