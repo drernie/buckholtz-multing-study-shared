@@ -1,8 +1,13 @@
 # Documentation Index — Buckholtz IDM/MULTING Audit
 
-**Last updated:** 2026-06-18
-**Total documents:** 119 markdown files
-**Status:** collaboration ACTIVE — author responded 2026-06-14 (call + procedure, docs/117); awaiting β-scale reply (docs/121)
+**Last updated:** 2026-07-12
+**Total documents:** 96 markdown files
+
+**Note:** This index was regenerated 2026-07-12 after removing author-facing correspondence,
+meeting notes, and communication-strategy documents from the public repo (letters, email drafts,
+call outlines, send-readiness reviews — kept locally, not tracked here). Only technical/scientific
+audit content remains indexed below. Some cross-references in older docs may point to files that
+no longer exist in this repo; that is expected and not a bug.
 
 ---
 
@@ -10,23 +15,17 @@
 
 **Start here:**
 - [WHAT_THIS_REPRODUCES.md](WHAT_THIS_REPRODUCES.md) — **scope clarification**: what the audit does/does not reproduce (read first)
-- [FINAL_WAITING_STATE_MARKER.md](FINAL_WAITING_STATE_MARKER.md) — Main status file, what we accomplished, what's blocked
 - [52_reusable_assets_harvest.md](52_reusable_assets_harvest.md) — 5 reusable assets extracted from audit
 
-**Current state (2026-06):**
-- [116_claim_status_matrix_v3.md](116_claim_status_matrix_v3.md) — **current claim ledger** (24 confirmed / 12 open / 16 rejected)
-- [117_tjb_authored_procedure.md](117_tjb_authored_procedure.md) ⚠ private — author's verbatim procedure (Q1/Q2/Q3 answered)
+**Current state:**
+- [116_claim_status_matrix_v3.md](116_claim_status_matrix_v3.md) — current claim ledger (24 confirmed / 12 open / 16 rejected, as of 2026-06)
 - [119_weaknesses_referee_map.md](119_weaknesses_referee_map.md) — 36 weaknesses, referee-style map
-- [121_letter_to_tjb_draft.md](121_letter_to_tjb_draft.md) ⚠ private — latest letter (SENT, single β question)
-- [GITHUB_SHOWCASE_AUDIT.md](GITHUB_SHOWCASE_AUDIT.md) — repo showcase/health audit
-
-**If Tuesday meeting happens:**
-- [69_tuesday_meeting_pack_private.md](69_tuesday_meeting_pack_private.md) — Full meeting pack (376 lines)
-- [70_tuesday_meeting_one_page_personal_cheatsheet.md](70_tuesday_meeting_one_page_personal_cheatsheet.md) — Quick reference (129 lines)
+- [GITHUB_SHOWCASE_AUDIT.md](GITHUB_SHOWCASE_AUDIT.md) — repo showcase/health audit (most current status)
+- [../.claude/memory/facts.json](../.claude/memory/facts.json) — live results/open-questions ledger (most current)
 
 **If resuming work:**
-- [.claude/memory/activeContext.md](../.claude/memory/activeContext.md) — Current project state
-- [54_mcmc_blocker_chain.md](54_mcmc_blocker_chain.md) — Why MCMC is blocked (5 blockers, 0 resolved)
+- [.claude/memory/activeContext.md](../.claude/memory/activeContext.md) — current project state
+- [54_mcmc_blocker_chain.md](54_mcmc_blocker_chain.md) — why MCMC is blocked
 
 ---
 
@@ -59,7 +58,7 @@
 
 ---
 
-### Stage 2: Table A1 Forensics (docs 17, 39, 41–42, 65–66)
+### Stage 2: Table A1 Forensics (docs 17, 39, 41–42, 65–66, 68)
 
 **Table A1 Extraction:**
 - [17_table_A1_manual_verification_protocol.md](17_table_A1_manual_verification_protocol.md) — Verification protocol
@@ -68,18 +67,17 @@
 - [42_table_a1_reverse_engineering_results.md](42_table_a1_reverse_engineering_results.md) — Reverse engineering results
 
 **Table A1 Recomputation:**
-- [65_private_artifact_plan_table_a1_recomputation.md](65_private_artifact_plan_table_a1_recomputation.md) — Recomputation plan
-- [66_table_a1_recomputation_report.md](66_table_a1_recomputation_report.md) — Internal diagnostic report
+- [65_private_artifact_plan_table_a1_recomputation.md](65_private_artifact_plan_table_a1_recomputation.md) — Recomputation plan (technical methodology, not correspondence)
+- [66_table_a1_recomputation_report.md](66_table_a1_recomputation_report.md) — H_FLRW provenance mismatch finding — **load-bearing: read by `tests/test_hflrw_provenance_safety.py`, do not remove**
 
 **H_FLRW Provenance Recovery:**
-- [68_hflrw_provenance_recovery.md](68_hflrw_provenance_recovery.md) — H_FLRW mismatch diagnosis (p≈0.87 best fit)
+- [68_hflrw_provenance_recovery.md](68_hflrw_provenance_recovery.md) — H_FLRW mismatch diagnosis (p≈0.87 best fit) — also read by the same safety test
 
 ---
 
-### Stage 3: Bridge Candidate Generation (docs 32–33, 36–38, 40, 43, 46–48, 50, 53)
+### Stage 3: Bridge Candidate Generation (docs 33, 36–38, 40, 43, 46–48, 50, 53, 73, 92)
 
 **Bridge Strategy:**
-- [32_computational_bridge_strategy.md](32_computational_bridge_strategy.md) — 3 paths: phenomenological, Hamiltonian, lattice
 - [36_force_to_expansion_bridge_triage.md](36_force_to_expansion_bridge_triage.md) — F_oP → H_MULT bridge triage
 - [38_one_page_buckholtz_computational_bridge_summary.md](38_one_page_buckholtz_computational_bridge_summary.md) — One-page summary
 - [53_three_path_hmult_roadmap_safe_memo.md](53_three_path_hmult_roadmap_safe_memo.md) — 3-path roadmap (SAFE memo)
@@ -88,6 +86,7 @@
 - [40_hmult_algorithm_recovery_and_brainstorm.md](40_hmult_algorithm_recovery_and_brainstorm.md) — H_MULT algorithm recovery
 - [43_bridge_candidate_math_stress_test.md](43_bridge_candidate_math_stress_test.md) — Mathematical stress test
 - [37_discrete_lattice_mvb_hypothesis.md](37_discrete_lattice_mvb_hypothesis.md) — Lattice QFT hypothesis
+- [92_bridge_candidate_registry.md](92_bridge_candidate_registry.md) — Catalog of all candidate bridges (F_oP → H_MULT)
 
 **Deep Bridge Research:**
 - [46_deep_bridge_research_sprint.md](46_deep_bridge_research_sprint.md) — Research sprint results
@@ -95,44 +94,15 @@
 - [48_deep_bridge_independent_verification.md](48_deep_bridge_independent_verification.md) — Independent verification
 - [50_deep_bridge_diagnostic_fit_rows_2_12.md](50_deep_bridge_diagnostic_fit_rows_2_12.md) — Diagnostic fit rows 2–12
 
+**AI-Table Methodology:**
+- [73_multi_ai_table_comparison_plan.md](73_multi_ai_table_comparison_plan.md) — Plan to compare Table A1 variants across AI services
+
 **Public Formula Stripping:**
 - [33_public_formula_stripping_report.md](33_public_formula_stripping_report.md) — What's public vs derived
 
 ---
 
-### Stage 4: Meeting Preparation (docs 09, 12, 26, 49, 69–70)
-
-**Author Clarification:**
-- [26_author_clarification_brief.md](26_author_clarification_brief.md) — Q14–Q19 prepared
-- [26_email_status.md](26_email_status.md) — Email status (NO_NEW_EMAIL_SENT)
-- [12_beta_clarification_brief.md](12_beta_clarification_brief.md) — Beta clarification questions
-
-**Meeting Packs:**
-- [69_tuesday_meeting_pack_private.md](69_tuesday_meeting_pack_private.md) — **PRIVATE**, 376 lines, meeting-safe questions
-- [70_tuesday_meeting_one_page_personal_cheatsheet.md](70_tuesday_meeting_one_page_personal_cheatsheet.md) — **PRIVATE**, 129 lines, quick reference
-- [09_meeting_brief.md](09_meeting_brief.md) — Early meeting brief
-- [49_one_page_meeting_note_buckholtz.md](49_one_page_meeting_note_buckholtz.md) — One-page meeting note
-
----
-
-### Stage 5: Contribution Strategy (docs 64–66, 68)
-
-**Audit → Contribution:**
-- [64_from_audit_to_contribution_strategy.md](64_from_audit_to_contribution_strategy.md) — Pattern: audit → respectful artifacts
-
-**Internal Contribution Drafts:**
-- [65_private_artifact_plan_table_a1_recomputation.md](65_private_artifact_plan_table_a1_recomputation.md) — Table A1 recomputation (INTERNAL_CONTRIBUTION_DRAFT)
-- [66_table_a1_recomputation_report.md](66_table_a1_recomputation_report.md) — Recomputation report (INTERNAL)
-- [68_hflrw_provenance_recovery.md](68_hflrw_provenance_recovery.md) — H_FLRW provenance recovery (INTERNAL)
-
-**Labels enforced:**
-- `INTERNAL_CONTRIBUTION_DRAFT` — not validation, not refutation
-- `NOT_AUTHOR_ERROR` — respectful framing
-- `NOT_VALIDATION` — no claims of model validation
-
----
-
-### Stage 6: MCMC Blockers & Diagnostics (docs 54–55, 30)
+### Stage 4: MCMC Blockers & Diagnostics (docs 30, 54–55)
 
 **MCMC Status:**
 - [54_mcmc_blocker_chain.md](54_mcmc_blocker_chain.md) — 5 blockers, 0 resolved, MCMC BLOCKED
@@ -145,23 +115,19 @@
 
 ---
 
-### Stage 7: Reusable Assets (docs 52)
+### Stage 5: Reusable Assets (docs 52)
 
-**Extraction Summary:**
-- [52_reusable_assets_harvest.md](52_reusable_assets_harvest.md) — 5 assets extracted from "failed" audit
-
-**Assets:**
-1. **epi-registry** (extracted 2026-05-30, score 19/20) — Parameter provenance framework
-2. **table-auditor** (ready to extract, score 18/20) — Table reverse engineering
-3. **bridge-auditor** (ready to extract, score 19/20) — Bridge candidate stress test
-4. **Respectful clarification template** (extracted, score 18/20) — docs/26
-5. **Contribution strategy pattern** (documented, score 16/20) — docs/64
+- [52_reusable_assets_harvest.md](52_reusable_assets_harvest.md) — 5 assets extracted from the audit:
+  1. **epi-registry** (score 19/20) — Parameter provenance framework
+  2. **table-auditor** (score 18/20) — Table reverse engineering
+  3. **bridge-auditor** (score 19/20) — Bridge candidate stress test
+  4. Respectful clarification template
+  5. Contribution strategy pattern
 
 ---
 
-### Stage 8: Safety & Audit (docs 08, CODE_AUDIT, PARANOID, SCI_EVIDENCE)
+### Stage 6: Safety & Audit (docs 08, CODE_AUDIT, PARANOID, SCI_EVIDENCE)
 
-**Safety Audits:**
 - [08_supplementary_audit.md](08_supplementary_audit.md) — Supplementary audit
 - [CODE_AUDIT_HARDENING.md](CODE_AUDIT_HARDENING.md) — Code audit hardening
 - [PARANOID_MODE_FINAL_AUDIT.md](PARANOID_MODE_FINAL_AUDIT.md) — Paranoid mode final audit
@@ -169,32 +135,23 @@
 
 ---
 
-### Stage 9: Repo Status & Waiting State (docs 51, 58, FINAL_WAITING_STATE_MARKER)
+### Stage 7: Repo Status Checklists (docs 51, 58)
 
-**Status Files:**
-- [FINAL_WAITING_STATE_MARKER.md](FINAL_WAITING_STATE_MARKER.md) — **MAIN STATUS FILE**, what accomplished, what blocked
-- [51_repo_waiting_state_checklist.md](51_repo_waiting_state_checklist.md) — Waiting state checklist
+- [51_repo_waiting_state_checklist.md](51_repo_waiting_state_checklist.md) — Repo state checklist
 - [58_repo_sanity_check.md](58_repo_sanity_check.md) — Repo sanity check
 
 ---
 
-### Discovery Ledger & Logs (docs 22, 27, 34)
+### Discovery Logs & Conflict Resolution (docs 27–28, 34)
 
-**Discovery Tracking:**
-- [22_discovery_ledger.md](22_discovery_ledger.md) — Discovery log
-
-**Conflict Resolution:**
 - [27_source_conflict_log.md](27_source_conflict_log.md) — Source conflicts
 - [28_value_reconciliation_protocol.md](28_value_reconciliation_protocol.md) — Value reconciliation
-
-**Force Law Verification:**
 - [34_force_law_manual_verification_checklist.md](34_force_law_manual_verification_checklist.md) — F_oP verification
 
 ---
 
 ### Gold Candidates & Source Checks (docs 23–25)
 
-**Source Verification:**
 - [23_gold_candidate_bbn_neff_source_check.md](23_gold_candidate_bbn_neff_source_check.md) — BBN N_eff candidate
 - [24_gold_candidate_sidm_bullet_cluster_source_check.md](24_gold_candidate_sidm_bullet_cluster_source_check.md) — SIDM Bullet Cluster candidate
 - [25_gold_candidate_dark_disk_gaia_source_check.md](25_gold_candidate_dark_disk_gaia_source_check.md) — Dark Disk Gaia candidate
@@ -203,79 +160,79 @@
 
 ### Miscellaneous (docs 10, 11, 15, 29, 35)
 
-**Time & Budget:**
 - [10_time_budget.md](10_time_budget.md) — Time budget
-
-**Beta Normalization:**
 - [11_beta_normalization_math.md](11_beta_normalization_math.md) — Beta normalization math
-
-**NotebookLM:**
 - [15_notebooklm_beta_candidates.md](15_notebooklm_beta_candidates.md) — NotebookLM beta candidates
-
-**PPN Quick Check:**
 - [29_ppn_quick_check_requirements.md](29_ppn_quick_check_requirements.md) — PPN quick check requirements
-
-**AI Transcript:**
 - [35_ai_transcript_closure_candidate.md](35_ai_transcript_closure_candidate.md) — AI transcript closure
 
 ---
 
-### Stage 10: Author Collaboration & Claim Status (docs 71–121)
+### Multi-AI Table Reproducibility (docs 76–83)
 
-**Author response & reproducibility plans** (⚠ = author-facing/private):
-71 (response analysis), 72 (reproducibility plan outline), 73 (multi-AI comparison plan),
-74 (one-page plan), 75 ⚠ (email short), 84 ⚠ (author-facing summary), 85 ⚠ (email draft),
-93 ⚠ (one-page update), 97 ⚠ (H_FLRW note draft).
+Supplementary inventory (76), extraction summary (77), CSV integrity (78–80),
+ChatGPT source resolution (79), multi-AI comparison (81), Codex independent audit (82),
+revision verification (83).
 
-**Multi-AI table reproducibility (76–83):** supplementary inventory (76), extraction summary (77),
-CSV integrity (78–80), ChatGPT source resolution (79), multi-AI comparison (81),
-Codex independent audit (82), revision verification (83).
+---
 
-**Verification / controls / adversarial (86–96):** non-obvious physical paths (86),
-negative-control plan+results (87, 91), bridge registry + lab plan (92, 94),
-PEMM adversarial (95), external audit verification (96).
+### Verification / Controls / Adversarial (docs 86–96)
 
-**k_A closure (98–99):** author questions (98 ⚠) + report (99).
+Non-obvious physical paths (86), negative-control plan+results (87, 91),
+bridge registry + lab plan (92, 94), PEMM adversarial (95), external audit verification (96).
 
-**HD-MAVP & sync (100–102):** autopsy (100), error-correction sync (101), vault sync (102).
+---
 
-**Author Q drafts ⚠ (103–105):** clarification draft (103), send-ready candidate (104), readiness report (105).
+### k_A Closure (doc 99)
 
-**Evidence locks & claim matrices (106–116):** waiting/evidence locks (106, 107, 107a, 109, 111–114),
-beta1 hold (115); [108_claim_status_matrix.md](108_claim_status_matrix.md) → superseded by
-**[116_claim_status_matrix_v3.md](116_claim_status_matrix_v3.md) (current)**.
+- [99_k_a_closure_report.md](99_k_a_closure_report.md) — k_A closure report
 
-**Latest (117–121):**
-- [117_tjb_authored_procedure.md](117_tjb_authored_procedure.md) ⚠ — author's verbatim AI-procedure (Q1/Q2/Q3 ANSWERED)
-- [118_journal_readiness_section_draft.md](118_journal_readiness_section_draft.md) — journal-readiness section
+---
+
+### HD-MAVP & Sync (docs 100–102)
+
+Autopsy (100), error-correction sync (101), vault sync (102).
+
+---
+
+### Evidence Locks & Claim Matrices (docs 107, 109, 111–116)
+
+Technical evidence-lock checkpoints — pending/resolved status of specific verified claims, not correspondence:
+- [111_beta_provenance_evidence_lock.md](111_beta_provenance_evidence_lock.md) — β provenance lock (cited elsewhere in this project's memory)
+- 107, 107a, 109, 112–114 — further evidence locks
+- 115: beta1 hold status
+- [108_claim_status_matrix.md](108_claim_status_matrix.md) → superseded by **[116_claim_status_matrix_v3.md](116_claim_status_matrix_v3.md) (current)**
+
+---
+
+### Latest Technical Docs (docs 118–120)
+
+- [118_journal_readiness_section_draft.md](118_journal_readiness_section_draft.md) — journal-readiness section draft
 - [119_weaknesses_referee_map.md](119_weaknesses_referee_map.md) — 36 weaknesses (7 categories)
 - [120_strong_inference_scout.md](120_strong_inference_scout.md) — strong-inference scan
-- [121_letter_to_tjb_draft.md](121_letter_to_tjb_draft.md) ⚠ — letter to author (SENT, single β question)
 
-**Meta / audit (named docs):** [GITHUB_SHOWCASE_AUDIT.md](GITHUB_SHOWCASE_AUDIT.md) ·
-[PROJECT_AUDIT_2026_05_31.md](PROJECT_AUDIT_2026_05_31.md) ·
-[AUTHOR_VALUE_AUDIT_2026_05_31.md](AUTHOR_VALUE_AUDIT_2026_05_31.md) ·
-[HARVEST_SCAN_2026_05_31.md](HARVEST_SCAN_2026_05_31.md) ·
-[ERROR_CORRECTION_LOG.md](ERROR_CORRECTION_LOG.md) ·
-[DOUBLE_INVERSION_DIAGNOSTIC.md](DOUBLE_INVERSION_DIAGNOSTIC.md) ·
-[mechanism_insights.md](mechanism_insights.md) ·
-[structured_reading_v2_for_tjb.md](structured_reading_v2_for_tjb.md) ⚠
+---
+
+### Meta / Audit (named docs)
+
+- [GITHUB_SHOWCASE_AUDIT.md](GITHUB_SHOWCASE_AUDIT.md)
+- [PROJECT_AUDIT_2026_05_31.md](PROJECT_AUDIT_2026_05_31.md)
+- [AUTHOR_VALUE_AUDIT_2026_05_31.md](AUTHOR_VALUE_AUDIT_2026_05_31.md)
+- [HARVEST_SCAN_2026_05_31.md](HARVEST_SCAN_2026_05_31.md)
+- [ERROR_CORRECTION_LOG.md](ERROR_CORRECTION_LOG.md)
+- [DOUBLE_INVERSION_DIAGNOSTIC.md](DOUBLE_INVERSION_DIAGNOSTIC.md)
+- [mechanism_insights.md](mechanism_insights.md)
+- [meta/60_hypothesis_revival_engine_relevance.md](meta/60_hypothesis_revival_engine_relevance.md)
+- [meta/63_chamberlin_platt_multi_hypothesis_protocol.md](meta/63_chamberlin_platt_multi_hypothesis_protocol.md)
 
 ---
 
 ## Documents NOT in Sequence
 
-Some docs are missing numbers (e.g., 19–21, 31, 44–45, 56–57, 59–63). These were either:
+Some doc numbers are missing (e.g., 09, 12, 19–22, 26, 31, 44–45, 49, 56–57, 59–64, 69–72, 74–75, 84–85, 93, 97–98, 103–106, 117, 121). These were either:
+- Author-facing correspondence / meeting notes / communication-strategy documents, removed from this public repo 2026-07-12 (kept locally)
 - Never created (planning gaps)
-- Created and deleted (superseded by later docs)
 - Merged into other docs
-
-**Known gaps:**
-- 19–21: Unknown
-- 31: Unknown
-- 44–45: Unknown
-- 56–57: Unknown
-- 59–63: Unknown
 
 ---
 
@@ -286,8 +243,7 @@ Some docs are missing numbers (e.g., 19–21, 31, 44–45, 56–57, 59–63). Th
 ```
 
 **Special files (no number):**
-- `FINAL_WAITING_STATE_MARKER.md` — Main status
-- `CODE_AUDIT_HARDENING.md` — Code audit
+- `CODE_AUDIT_HARDENING.md` — Code audit hardening
 - `PARANOID_MODE_FINAL_AUDIT.md` — Paranoid audit
 - `SCI_EVIDENCE_AUDIT.md` — Evidence audit
 - `INDEX.md` — This file
@@ -297,22 +253,16 @@ Some docs are missing numbers (e.g., 19–21, 31, 44–45, 56–57, 59–63). Th
 ## How to Navigate
 
 **If you're new to this project:**
-1. Read [FINAL_WAITING_STATE_MARKER.md](FINAL_WAITING_STATE_MARKER.md)
+1. Read [WHAT_THIS_REPRODUCES.md](WHAT_THIS_REPRODUCES.md)
 2. Read [52_reusable_assets_harvest.md](52_reusable_assets_harvest.md)
 3. Read [.claude/memory/activeContext.md](../.claude/memory/activeContext.md)
 
-**If Tuesday meeting happens:**
-1. Read [70_tuesday_meeting_one_page_personal_cheatsheet.md](70_tuesday_meeting_one_page_personal_cheatsheet.md)
-2. Use [69_tuesday_meeting_pack_private.md](69_tuesday_meeting_pack_private.md) as reference
-
-**If resuming work after author response:**
-1. Read [26_author_clarification_brief.md](26_author_clarification_brief.md) — update with answers
-2. Read [54_mcmc_blocker_chain.md](54_mcmc_blocker_chain.md) — check which blockers resolved
-3. Read [66_table_a1_recomputation_report.md](66_table_a1_recomputation_report.md) — rerun with correct params
+**If resuming physics work:**
+1. Read [54_mcmc_blocker_chain.md](54_mcmc_blocker_chain.md) — check which blockers resolved
+2. Read [66_table_a1_recomputation_report.md](66_table_a1_recomputation_report.md) — H_FLRW provenance finding
 
 **If extracting remaining assets:**
 1. Read [52_reusable_assets_harvest.md](52_reusable_assets_harvest.md) — Asset 2 (table-auditor), Asset 3 (bridge-auditor)
-2. Read [64_from_audit_to_contribution_strategy.md](64_from_audit_to_contribution_strategy.md) — extraction pattern
 
 ---
 
@@ -325,12 +275,10 @@ Some docs are missing numbers (e.g., 19–21, 31, 44–45, 56–57, 59–63). Th
 - Public claims about physics (`NO_PUBLIC_CLAIMS`)
 
 **All artifacts labeled:**
-- `INTERNAL_CONTRIBUTION_DRAFT` — respectful contribution offers
 - `OUR_RECONSTRUCTION` — our interpretations, not author's
 - `SOURCE_CONFIRMED` — explicitly stated in manuscript
 - `AUDIT_RECONSTRUCTION` — derived by us during audit
 
 ---
 
-**Last updated:** 2026-06-18  
-**Next update:** After TJB β-scale reply (docs/121) OR next major milestone
+**Last updated:** 2026-07-12

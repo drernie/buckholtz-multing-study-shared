@@ -125,7 +125,7 @@ buckholtz-idm-multing-mvp/
 ├── audit/            # self-consistency diagnostics
 ├── data/             # PDG/CODATA constants + real catalogs (MCXC, XMM T_X) + Moresco+2022 CC H(z)
 │                     #   ⚠ author preprint PDF & supplementary CSVs are gitignored (local-only)
-├── docs/             # 113 documents — see docs/INDEX.md for the full map
+├── docs/             # 96 documents — see docs/INDEX.md for the full map
 ├── paper/            # LaTeX manuscript skeleton (main.tex, refs.bib)
 ├── reports/          # 21 machine-readable result JSONs
 ├── notebooks/        # 3 exploration notebooks
@@ -290,46 +290,6 @@ Example:
 ❓ **PPN constraints** — Do dipole/quadrupole terms violate Solar System tests?  
 ❓ **6 isomers structure** — What defines an "isomer" in this context?  
 ❓ **Derived vs fitted** — Are beta values phenomenological fits or derivable from IDM structure?
-
----
-
-## Safe Questions for Dr. Buckholtz
-
-> **Preamble:**  
-> "Dr. Buckholtz, I am trying to build a small reproducibility notebook for my own understanding. My goal is not to validate or challenge the model, but to separate definitions, fitted quantities, derived quantities, and testable predictions."
-
-**Questions:**
-
-1. Are beta_d and beta_q currently intended as **fitted phenomenological parameters**, or do you see a path toward **deriving them** from the internal IDM/MULTING structure?
-
-2. The values beta_d = {4.25, 0.78} and beta_q = {8.10, 0.19} appear in different contexts. Do these represent:
-   - Different normalizations?
-   - Different versions of the model?
-   - Supplementary calculations vs main predictions?
-
-3. For MULTING dipole and quadrupole terms: do you have explicit functional forms H(z, beta_d, beta_q) that I could implement?
-
-4. Have the MULTING dipole/quadrupole modifications been checked against Solar System PPN constraints (gamma, beta parameters from light deflection, perihelion precession)?
-
----
-
-## Communication Protocol
-
-### Do ✅
-
-- Start with what was reproduced or organized
-- Frame the project as **strengthening reproducibility**
-- Ask clarification questions
-- Use "I may have misunderstood..." when raising issues
-- Avoid claims of validation or refutation
-
-### Do NOT ❌
-
-- ❌ Do not say "your model is wrong"
-- ❌ Do not say "AI proved the relation"
-- ❌ Do not say "this validates IDM"
-- ❌ Do not say "this disproves ΛCDM"
-- ❌ Do not lead with accusations about GR violation
 
 ---
 
