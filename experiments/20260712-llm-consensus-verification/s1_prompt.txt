@@ -1,0 +1,30 @@
+You are given a modified gravity model and real astrophysical data. Your task: propose values for two free parameters, beta_d and beta_q, that make the model's predicted H(z) curve match the observed H(z) data as closely as possible. State your reasoning, your final beta_d and beta_q values, AND explicitly list any additional assumptions or choices you had to make that were NOT specified in this prompt (if any).
+
+MODEL:
+phi(z) = M500/D^2 - 2*beta_d*k_A*R500/D^3 + (beta_q*k_A*R500)^2/D^4
+D = D0/(1+z)
+H_MULT(z) is proportional to sqrt(phi(z))
+
+CLUSTER DATA (real, from MCXC X-ray catalog):
+cluster_id | z | M500 [Msun] | R500 [Mpc] | k_A=Ethermal/c^2 [Msun]
+J0001.9+1204 | 0.2033 | 2.6927e14 | 0.9178 | 4.5931e8
+J0003.1-0605 | 0.232 | 5.2188e14 | 1.1326 | 1.5167e9
+J0003.8+0203 | 0.0924 | 1.7342e14 | 0.8233 | 7.7698e7
+J0006.0-3443 | 0.1147 | 2.7122e14 | 0.9486 | 6.2777e8
+J0006.3+1052 | 0.1698 | 2.9941e14 | 0.9621 | 5.3277e8
+J0008.9+4110 | 0.1537 | 2.8963e14 | 0.9569 | 4.6438e8
+
+TARGET H(z) DATA (real cosmic chronometers, Moresco et al. 2022):
+z | H(z) [km/s/Mpc] | sigma
+0.07 | 69.0 | 19.6
+0.09 | 69.0 | 12.0
+0.12 | 68.6 | 26.2
+0.17 | 83.0 | 8.0
+0.179 | 75.0 | 4.0
+0.199 | 75.0 | 5.0
+0.2 | 72.9 | 29.6
+0.27 | 77.0 | 14.0
+
+Give your final answer as: beta_d = ..., beta_q = ..., then list ADDITIONAL_ASSUMPTIONS: [...]
+
+Do not search the web. Answer from first-principles reasoning and computation only, using only the data given above.
