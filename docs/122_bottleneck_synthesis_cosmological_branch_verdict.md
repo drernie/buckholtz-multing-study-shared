@@ -1,8 +1,10 @@
 # docs/122 — Bottleneck Synthesis & Cosmological-Branch Verdict
 
 **Date:** 2026-07-12 (v1), **corrected 2026-07-12 (v2)**, **strengthened 2026-07-13 (v3)**
-via a full invariant beta_d/D0 parameterization protocol (user-specified) — see "v3:
-Invariant Parameterization Protocol" at the end of this document for the decisive result.
+via a full invariant beta_d/D0 parameterization protocol (user-specified), **corrected
+2026-07-13 (v4)** after external review caught an unstated eta_q=0 restriction in v3's
+own Step 4/5 numerics — see "v4: Correction — eta_q Must Be Profiled, Not Fixed" at the
+end of this document for the current, defensible result.
 **Status:** SYNTHESIS — cross-checks an external "top-10 bottleneck" adversarial audit
 against this project's own accumulated evidence (facts.json, R001-R011, Q001-Q006),
 then resolves a genuine internal contradiction the review surfaced using the project's
@@ -234,3 +236,123 @@ dipole/quadrupole cosmic-acceleration mechanism, in this project's specific form
 formalization; still open pending bottleneck #1). It replaces the v2 argument ("nobody
 has proposed a working beta yet") with a stronger one ("no eta_d makes it work, proven
 by direct sweep, independent of what anyone proposes").
+
+**This v3 verdict was corrected in v4 below — the "wall" claim in Step 4/5 was an
+artifact of an unstated eta_q=0 restriction, not a property of the model.**
+
+## v4: Correction — eta_q Must Be Profiled, Not Fixed (2026-07-13)
+
+External review of v3 raised four points. Three were legitimate methodological
+tightening (wording precision, grouped-holdout verification, freezing the noise
+threshold) and are addressed below without changing v3's numerical conclusions. The
+fourth — **"was eta_q profiled (re-optimized) at every eta_d, or fixed?"** — turned out
+to be a real bug, not a methodological nicety: it falsifies the specific Step 4/5
+numbers reported in v3.
+
+**What the review caught, verified by re-reading the actual code executed for v3
+Step 4:** the sweep computed `r_for(beta_d, beta_q=0.0)` at every eta_d — i.e.
+**eta_q was silently fixed at zero**, not profiled. The v3 table ("eta_d=2.46e5 ->
+r=0.145, n=188/443") is the correct result *for that specific, narrow question*
+("what happens if the dipole is turned on and the quadrupole is left off entirely") —
+but v3's prose generalized it into "no eta_d on the entire continuous axis works,"
+which is a claim about the *profiled* model (dipole + best-available quadrupole), not
+the dipole-only model actually tested. That generalization is false.
+
+**Corrected Step 4 — eta_q profiled at the minimum value required for full feasibility
+(phi_i>0 for all 443 real clusters) at each eta_d:**
+
+| eta_d | eta_q (min-feasible) | r (real H_CC) | valid clusters (of 443) | F_d/F_m | F_q/F_m |
+|---|---|---|---|---|---|
+| 0 (monopole) | ~0 | 0.7334 | 443 | 0 | ~0 |
+| 1.0e3 | ~0 | 0.7327 | 443 | 4.1e-3 | ~0 |
+| 1.0e4 | ~0 | 0.7252 | 443 | 4.1e-2 | ~0 |
+| 2.46e4 | ~0 | 0.7040 | 443 | 0.10 | ~0 |
+| 1.0e5 | 7.77e-3 | 0.6299 | 443 | 0.41 | 0.082 |
+| 1.23e5 | 1.02e-2 | 0.6177 | 443 | 0.50 | 0.14 |
+| 2.46e5 | 2.11e-2 | 0.6042 | 443 | 1.00 | 0.61 |
+| 4.92e5 | 4.87e-2 | 0.6162 | 443 | 2.00 | 3.23 |
+| 1.0e6 | 9.65e-2 | 0.6204 | 443 | 4.06 | 12.7 |
+| 2.46e6 | 1.90e-1 | 0.6219 | 443 | 10.0 | 49.0 |
+| 1.0e7 | 5.52e-1 | 0.6227 | 443 | 40.6 | 415 |
+
+**This directly contradicts the v3 "wall": with the quadrupole set to the smallest
+value that keeps the model mathematically valid (not fixed at zero, not left free to
+run away), the model stays fully defined for all 443 real clusters across the entire
+swept eta_d range, and r never collapses toward noise — it stays in a 0.60-0.73 band.**
+At the F_d/F_m~1 crossover (eta_d=2.46e5), the dipole is still the larger of the two
+non-monopole terms (F_d/F_m=1.00 > F_q/F_m=0.61) and r=0.604, close to R011's own
+previously-established full-grid optimum (r=0.6235) — not noise-level.
+
+**A third, separate branch was also checked — eta_q left completely free (unconstrained
+profile search) — and it reproduces R011's already-known beta_q-saturation degeneracy:**
+past eta_d~1.2e5, the profile-optimal eta_q jumps to ~3e5 (F_q/F_m ~ 1e14-1e15), i.e.
+the quadrupole term completely swamps both monopole and dipole and r plateaus at
+exactly 0.6235 regardless of eta_d. This is not a genuine dipole-driven rescue; it is
+the same degenerate quadrupole-saturation attractor R011 already flagged
+(`beta_q_saturation_threshold_approx` in facts.json), now confirmed to persist under
+profiling. It is excluded from the "does the dipole mechanism work" question because
+in this regime the dipole term is numerically irrelevant to the fit.
+
+**Corrected Step 5 — train(70%)/holdout(30%, seed=42), grouped by unique cluster_id**
+(verified: 443/443 unique cluster_id in the filtered set, 0 duplicates in the raw
+1740-row catalog — a random row-level split cannot leak the same physical cluster
+across train/holdout in this dataset, so the grouping concern is structurally moot
+here, not merely assumed) at the corrected pivot point (eta_d=2.46e5, eta_q=2.11e-2,
+the minimal-feasibility F_d/F_m~1 point):
+
+| Split | n | dipole+min-quadrupole r | monopole-only r |
+|---|---|---|---|
+| train (70%, n=310) | 310/310 valid | 0.5699 | 0.7292 |
+| holdout (30%, n=133) | 132/133 valid | 0.7024 | 0.7667 |
+
+The dipole+minimal-quadrupole model underperforms the monopole baseline in both splits
+(by ~0.06-0.16 in r) — consistently, not as a single-sample artifact — but it does
+**not** collapse toward zero/noise in either split, contradicting the v3 Step 5 numbers
+(train r=0.010), which were downstream of the same eta_q=0 bug.
+
+### v4 Verdict (supersedes v3 Verdict)
+
+**PASS-A stands, unchanged and unaffected by this correction**: beta_d, beta_q
+individually are not physical observables; only eta_d=beta_d/D0, eta_q=beta_q/D0 are.
+This was proven analytically and confirmed to 14 digits — the eta_q profiling bug is
+entirely a v3 Step 4/5 numerics issue, not a PASS-A issue.
+
+**PASS-B is retracted as stated in v3.** The corrected, properly-profiled result is
+weaker than v3 claimed, and closer to — not stronger than — the original v2/R011
+picture:
+
+> Across the eta_d range examined, with eta_q set to the minimum value required to
+> keep the model mathematically valid on all 443 real clusters (not fixed at zero, not
+> left free to run away into the known quadrupole-saturation degeneracy), the model
+> remains well-defined throughout and never collapses to noise (r stays in a 0.60-0.73
+> band). It also never exceeds the pure-monopole baseline (r=0.7334) at any point
+> tested; at best it converges toward R011's own already-established full-grid optimum
+> (r~0.6235). No point examined shows the dipole mechanism *improving* the fit to real
+> H(z) data over a simple monopole model — which is the substantive claim the
+> cosmological branch would need. But the v3 framing ("the dipole makes the model
+> progressively worse and eventually breaks it entirely") was an artifact of an
+> unstated eta_q=0 restriction, not a property of the profiled model, and is withdrawn.
+
+**Corrected Kill Analysis (supersedes both v2 and v3 tables):**
+
+| Claim | Status |
+|---|---|
+| Raw beta_d values from different pipelines are directly comparable | **KILLED** (PASS-A) |
+| Only eta_d=beta_d/D0 is observable | **CONFIRMED**, exact, 14-digit |
+| S2's beta_d=1.368e8 is a physical rescue | **KILLED** (phi<0 for all 443 real clusters) |
+| Source-attributed beta_d~O(1-10) gives dipole dominance | **KILLED** (F_d/F_m~1.8e-7 at reported values) |
+| Dipole-only (eta_q=0), increasing eta_d, breaks the model | **CONFIRMED** — true, but a narrow claim (v3's error was over-generalizing this) |
+| Profiled dipole+minimal-quadrupole breaks the model / collapses to noise | **KILLED** (v4 correction — model stays well-defined, r stays 0.60-0.73) |
+| Profiled dipole+minimal-quadrupole beats the monopole baseline anywhere tested | **NOT ESTABLISHED** — no point examined shows this |
+| Free-eta_q "rescue" to r=0.6235 is a genuine dipole effect | **KILLED** — reproduces the known quadrupole-saturation degeneracy, dipole numerically irrelevant there |
+| A dipole-dominant regime exists that is both feasible and improves on monopole | **NOT FOUND**, in the range examined |
+| Cosmological branch of this implementation is viable as currently formalized | **STOP still supported**, on the original (v2/R011) grounds — not on the stronger v3 "wall" grounds, which are withdrawn |
+| The whole MULTING theoretical framework is refuted | **NO** — scope stays limited to this implementation's dipole/quadrupole cosmic-acceleration mechanism |
+
+**Methodological lesson (recorded as a pearl below):** a nuisance parameter fixed at
+its boundary value (eta_q=0) while sweeping the parameter of interest (eta_d) produces
+a *profile-shaped-looking* table that is not actually a profile. It looks like exactly
+the right sweep to answer "does any eta_d work," and the resulting collapse looks like
+strong, clean evidence — which is precisely why it wasn't caught before external
+review. The fix cost about 20 minutes of code once flagged; the false conclusion had
+already been written into facts.json and the pearl registry as `[VERIFIED-BASH]`.
