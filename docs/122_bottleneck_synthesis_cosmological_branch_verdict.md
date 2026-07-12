@@ -3,8 +3,11 @@
 **Date:** 2026-07-12 (v1), **corrected 2026-07-12 (v2)**, **strengthened 2026-07-13 (v3)**
 via a full invariant beta_d/D0 parameterization protocol (user-specified), **corrected
 2026-07-13 (v4)** after external review caught an unstated eta_q=0 restriction in v3's
-own Step 4/5 numerics — see "v4: Correction — eta_q Must Be Profiled, Not Fixed" at the
-end of this document for the current, defensible result.
+own Step 4/5 numerics, **gate-checked 2026-07-13 (v5)** after external review caught
+that v4 never explicitly verified the nested-model inequality (max r over the full
+model must be >= the monopole-only r, since eta_d=eta_q=0 is a valid point in the
+search space) — see "v5: Nesting-Inequality Gate & True Profile" at the end of this
+document for the current, gate-passed result.
 **Status:** SYNTHESIS — cross-checks an external "top-10 bottleneck" adversarial audit
 against this project's own accumulated evidence (facts.json, R001-R011, Q001-Q006),
 then resolves a genuine internal contradiction the review surfaced using the project's
@@ -356,3 +359,118 @@ the right sweep to answer "does any eta_d work," and the resulting collapse look
 strong, clean evidence — which is precisely why it wasn't caught before external
 review. The fix cost about 20 minutes of code once flagged; the false conclusion had
 already been written into facts.json and the pearl registry as `[VERIFIED-BASH]`.
+
+## v5: Nesting-Inequality Gate & True Profile (2026-07-13)
+
+External review of v4 raised a sharp, correct objection: if `eta_d=eta_q=0` is a valid
+point in the searched space, then for the *same* dataset, objective, and valid-point
+policy, `max(r) >= r(0,0) = 0.7334` is a mathematical necessity — any reported
+"optimum" below that value is a red flag that the box was restricted, the objective
+differs, or the optimizer missed the real maximum. v4 never checked this explicitly
+and used the phrase "R011's own already-established full-grid optimum (r~0.6235)" in
+a way that could be misread as a global ceiling the model converges *up* toward,
+without ever confirming it against `r(0,0)`.
+
+**Provenance / metadata (fixed before any of the checks below):**
+`data/clusters_clean.csv` hash `5fdda91fbc30482c`, `data/hz_cc.csv` hash
+`9a3af5f845c2f4a4`; 1740 raw rows -> 548 with `Ethermal_c2_Msun` not null -> 443 with
+`z` inside the cosmic-chronometer interpolation range (this is "the 443" used
+throughout docs/122); `H_anchor=73.0`; objective = `scipy.stats.pearsonr(H_MULT,
+H_CC)`, maximize; valid-point policy = `phi>0 AND finite AND 0<H_MULT<1e6 AND z` in
+`hz_cc` range.
+
+**Gate 1 — nesting inequality, checked directly:** `Q(eta_d=0, eta_q=0) = 0.733359`
+(n=443). `Q` at R011's own reported grid-search optimum (`beta_d=100, beta_q=3.24e7`,
+i.e. `eta_d=1, eta_q=3.24e5` at D0=100) `= 0.623517` (n=443) — **below** `Q(0,0)`, as
+required, not above it. **No violation.** The apparent tension in the review's question
+was caused by imprecise v4 prose, not a computational error: `grid_search_pearson`'s
+own default `beta_d_log_range=(2.0, 8.0)` means `beta_d` is sampled log-uniformly from
+`1e2` to `1e8` and **structurally never includes anything below 100** — so R011's
+"grid-search optimal r=0.6235" was always the optimum of a *box excluding near-zero
+beta*, not a claimed global optimum. This should have been stated explicitly when
+that number was first cited as a reference point; it is stated explicitly now.
+
+**Gate 2 — true profile, not the feasibility boundary:** the v4 table ("minimal eta_q
+keeping phi_i>0 for all i") answers "what is the smallest quadrupole that keeps the
+model defined," not "what is the best-fitting quadrupole at this dipole." It is
+relabeled below as a **feasibility-boundary sweep**, and a real profile —
+`r_prof(eta_d) = max_{eta_q: phi_i>0 for all i} r(eta_d, eta_q)`, dense log-grid of
+2000 eta_q points per eta_d — was computed to replace it as the load-bearing table:
+
+| eta_d | r_prof (true max over eta_q) | valid (of 443) | eta_q at max | <= Q(0,0)? |
+|---|---|---|---|---|
+| 0 | 0.7334 | 443 | ~0 | = (exact) |
+| 1.0e3 | 0.7327 | 443 | ~0 | yes |
+| 1.0e4 | 0.7258 | 443 | 1.51e-3 | yes |
+| 2.46e4 | 0.7125 | 443 | 2.84e-3 | yes |
+| 1.0e5 | 0.6333 | 443 | 9.41e-3 | yes |
+| 1.23e5 | 0.6235 | 443 | 2.23e5 | yes |
+| 2.46e5 | 0.6235 | 443 | 3.01e5 | yes |
+| 4.92e5 | 0.6235 | 443 | 4.31e5 | yes |
+| 1.0e6 | 0.6235 | 443 | 5.31e5 | yes |
+| 2.46e6 | 0.6235 | 443 | 7.17e5 | yes |
+| 1.0e7 | 0.6235 | 443 | 1.59e6 | yes |
+
+**No violation anywhere on this grid: `r_prof(eta_d) <= Q(0,0)` holds at every tested
+point, with equality only at eta_d=0.** For `eta_d` up to ~1e5 the true profile
+declines smoothly from the feasibility-boundary sweep's numbers (they nearly coincide
+here — the minimal quadrupole *is* close to the best quadrupole in this range). Past
+`eta_d~1.2e5` the profile locks onto the same `0.623517` plateau found by R011's own
+grid search — confirming that value is a genuine, real (if narrow-box) local optimum
+of this model, reachable at any large-enough eta_d via a correspondingly large eta_q,
+not a resolution artifact of either sweep.
+
+**Gate 3 — is the large-eta_q plateau fine-tuned cancellation, or a stable regime?**
+Perturbed eta_q by ±0.1%, ±1%, ±10% around the profile-optimal point at eta_d=2.46e5
+(eta_q*=3.008e5): `r` stayed at `0.623517` to 6 decimal places at every perturbation
+level, while `F_d/F_m` stayed ~1.1 and `F_q/F_m` moved from 1.31e14 to 1.96e14. **This
+is not fine-tuned cancellation — it is a robust, stable plateau.** But it is also
+physically empty for the dipole question: at `F_q/F_m ~ 1e14`, the quadrupole term is
+14 orders of magnitude larger than monopole and dipole combined, so `phi` and hence
+`H_MULT(z)` is set entirely by the quadrupole's own `(k_A r_A)^2(1+z)^4` shape — the
+dipole term (`F_d/F_m~1.1`) is numerically inert there, not "compensating" anything in
+a way that lets it do physical work. This resolves the review's open question ("is the
+compensation physically meaningful or fine-tuned?") as neither: it is real and stable,
+but it is a **quadrupole-only fit in disguise**, the same degenerate regime R011 had
+already flagged as `beta_q_saturation_threshold_approx`.
+
+**Holdout — precision correction accepted verbatim:** "443/443 unique cluster_id, 0
+duplicates" rules out identity leakage of the same physical cluster across train and
+holdout. It does **not** establish independence of the target observations from shared
+systematics — every cluster's `H_MULT(z)` is compared against the same small set of
+interpolated cosmic-chronometer `H(z)` anchors (8 points, `data/hz_cc.csv`), and all
+clusters share the same MCXC/PSZ2 mass-radius calibration pipeline. Corrected
+statement: **cluster-identity leakage is excluded; independence from shared H(z)
+anchors and catalog-level systematics is not separately established** and would
+require a different test (e.g. jackknifing by H(z) anchor bin, or comparing against
+an independently-calibrated mass proxy) — out of scope for this pass, noted as an open
+caveat rather than claimed resolved.
+
+### v5 Verdict (supersedes v4 Verdict)
+
+The nesting-inequality gate **passes**: no configuration examined — feasibility
+boundary, true profile, or the free/quadrupole-saturated branch — beats the
+monopole-only baseline. This was checked explicitly this round, not assumed.
+
+| Claim | Status |
+|---|---|
+| beta_d observable separately from D0 | **FALSE** (unchanged from v3/v4) |
+| eta_d=beta_d/D0 is the observable combination | **PASS**, exact, unaffected by this round |
+| v3's "wall" is a property of the full model | **FALSE / SUPERSEDED** (v4, unaffected by this round) |
+| Large dipole necessarily forces phi<0 | **FALSE at nonzero eta_q** (v4, unaffected) |
+| A dipole regime beats the monopole baseline | **NOT FOUND** — now checked against the explicit nesting bound, not just described |
+| Full (eta_d, eta_q) model is globally optimized over the tested grid | **YES, gate-checked**: max(r) over every point examined = Q(0,0) exactly, achieved only at (0,0); numeric grid search, not a certified/interval-arithmetic global bound |
+| Quadrupole "compensates" a large dipole | **PASS numerically, and stable (not fine-tuned)** |
+| That compensation is physically meaningful for the dipole mechanism | **NO** — it is a quadrupole-only fit in disguise (F_q/F_m~1e14); the dipole is numerically inert there |
+| R011's reported grid-search optimum (0.6235) is the model's global optimum | **FALSE, corrected here** — it is the optimum of `grid_search_pearson`'s default box (`beta in [1e2,1e8]`), which structurally excludes near-zero beta; the true global optimum on the tested grid is `Q(0,0)=0.7334` |
+| Holdout excludes cluster-identity leakage | **YES** |
+| Holdout establishes full statistical independence | **NO** — shared H(z) anchors/systematics not separately tested, noted as open |
+| Cosmological branch of this implementation is viable as currently formalized | **STOP still supported** — monopole-only baseline is undefeated everywhere checked; no version of this synthesis (v2 through v5) has found a configuration that improves on it |
+
+**Plain-language summary:** monopole baseline survives; dipole added value not
+demonstrated; v3's collapse claim was falsified (v4); the model's parameter space has
+a real, stable degeneracy where quadrupole saturation reproduces a fixed sub-monopole
+correlation regardless of dipole strength (now confirmed non-fine-tuned, and confirmed
+to still sit below the monopole baseline); the global-optimum question raised by this
+round's review is answered — checked directly, not re-described — and the nesting
+inequality holds with no exceptions found.
