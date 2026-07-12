@@ -39,7 +39,7 @@ Epistemic audit of Thomas J. Buckholtz's IDM/MULTING framework completed. All pl
 - ✅ `docs/12_beta_clarification_brief.md` — **KEY DOCUMENT** for author outreach
 
 ### Code (9 Python modules)
-- ✅ `src/constants.py` — PDG 2022 + CODATA 2018 constants
+- ✅ `src/constants.py` — PDG 2024/2025 + CODATA 2018 constants
 - ✅ `src/epistemic_registry.py` — Core data models (Claim, Parameter, Equation)
 - ✅ `src/beta_definitions.py` — 4 beta candidates (all status="unclear")
 - ✅ `src/equations.py` — 7 equation records
@@ -77,7 +77,7 @@ Epistemic audit of Thomas J. Buckholtz's IDM/MULTING framework completed. All pl
 ### ✅ Reproduced
 **Eq.15 numerical relation:** `(4/3) × (m_tau² / m_e²)⁶ ≈ k_e × e² / (G × m_e²)`
 - **Status:** Arithmetic confirmed to ~1% relative error
-- **Source:** PDG 2022 + CODATA 2018 constants
+- **Source:** PDG 2024/2025 + CODATA 2018 constants
 - **Caveat:** Physical mechanism unknown
 
 ### 🔍 Discovered
@@ -287,7 +287,7 @@ for beta in get_all_beta_definitions():
 
 **Framework Inspiration:** Epistemic verification principles from reproducibility crisis literature
 
-**Physics Constants:** PDG 2022, CODATA 2018
+**Physics Constants:** PDG 2024/2025, CODATA 2018
 
 **Original Work:** Dr. Thomas J. Buckholtz (IDM/MULTING framework)
 

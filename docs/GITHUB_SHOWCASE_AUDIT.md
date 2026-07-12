@@ -1,5 +1,37 @@
 # GitHub Showcase Audit — buckholtz-idm-multing-mvp
 
+## UPDATE 2026-07-12 (re-audit, both original blockers now closed)
+
+**Both original blockers from the 2026-06-18 audit are RESOLVED:**
+- Blocker #1 (fake static badges) — README now uses a live GitHub Actions CI badge
+  (`.../actions/workflows/ci.yml/badge.svg`), not hand-set shields.io. `[VERIFIED]` by reading README.md:3.
+- Blocker #2 (tracked private correspondence) — 18 files removed this session (email drafts, letters,
+  outreach templates, generator scripts, a stale `facts.json` duplicate leaking a personal email) +
+  3 more leak points redacted (script comment, session memory, checkpoint file). Commit `8a2d304`.
+  **Caveat:** removed from current tree only, NOT from git history — see §11 below (new finding).
+
+**New findings this pass (NOT present in the 06-18 audit):**
+1. **Critical accuracy bug:** README:36 shows `0.17σ` for Eq.32 — this is the PDG-2022-mislabeled-as-2024
+   value that this project's own audit found and corrected to `1.00σ` (0.0608%) on 2026-07-11, everywhere
+   *except* README.md. A careful reader who checks this against `paper/main.tex` will find a mismatch.
+2. **No path from README to the actual preprint being audited** — no DOI, no link, no author context.
+   A visitor cannot verify what is being audited without already knowing where to look.
+3. **Count-drift (Stage 10.1), re-run:** `scripts/` claims 22, actual 54 (+32, largest drift found in
+   either audit); `tests/` claims 46 files, actual 49; `docs/` claims 119, actual 113 (post-cleanup);
+   test snapshot claims `853 passed · 12 skipped`, actual `867 passed · 0 skipped` (verified live).
+4. Stale "PDG 2022" constants-source label in README.md + PROJECT_STATUS.md (4 occurrences) — should be
+   "PDG 2024/2025" per the same 2026-07-11 correction.
+
+**Full findings, sourced bio draft, and prioritized fixes:** see §11 onward (appended below the original
+2026-06-18 audit, which is kept intact as the baseline record per this skill's own convention).
+
+**Revised score: 6.4/10** (was 5.9 baseline / ~8/10 per the 06-18 post-fix note — badges+correspondence
+fixed, but the newly-found stale-number bug and missing orientation content pull it back down).
+**Target after §14 fixes: 8.5/10.** Implementation status: **read-only audit, no README changes applied
+yet** — awaiting approval (see §14).
+
+---
+
 **Date:** 2026-06-18 · **Mode:** read-only audit (no fixes applied, no push, not made public)
 **Auditor evidence policy:** every metric below is `[VERIFIED]` by a tool run on this machine
 (py3.13, branch `feature/appendix-a1-doc-updates`). CI numbers may differ slightly by environment.
@@ -213,3 +245,116 @@ README "Project Structure" section is **stale**:
   ruff 49 errors `[VERIFIED]`; sensitive-data scan clean except tracked correspondence `[VERIFIED]`.
 - **Final score:** 5.9/10 (target ~8.5 after the 30-min + 2-hr fixes).
 - **Public release readiness:** **BLOCKED** — fix badges, handle correspondence, get author approval.
+
+---
+
+## 11. Re-Audit 2026-07-12 — Full Findings
+
+### 11.1 Count-drift (Stage 10.1), re-verified live
+
+| Item | README claims | Actual (`ls`/`pytest`, 2026-07-12) | Drift |
+|---|---|---|---|
+| `src/` modules | 38 | 38 | ✅ none |
+| `tests/` files | 46 | 49 | +3 |
+| `tests/` results | 853 passed, 12 skipped | 867 passed, 0 skipped | stale (the 12 skips were closed in this session's earlier validation-theater cleanup) |
+| `scripts/` | 22 | 54 | **+32, largest drift found in either audit** |
+| `docs/` | 119 | 113 | −6 (this session removed 12 correspondence docs; a few others added since June) |
+
+### 11.2 Critical accuracy bug
+
+`README.md:36` — `Eq.32 fermion-gravity link | 0.17σ from PDG 2024`. This is the **PDG-2022-value
+mislabeled-as-2024** that this project's own 2026-07-11 audit found and corrected to `1.00σ` (0.0608%
+deviation) in `paper/main.tex`, all 3 `paper1_eq32_note*.tex` variants, 7 scripts, and `facts.json` —
+but README.md was never touched. `[VERIFIED]` — read `paper/main.tex` §Eq.32 and `.claude/memory/facts.json`
+R001 `_pdg_correction_2026_07_11` field directly, both show 1.00σ / 0.0608%, both post-date the README's
+last edit (README.md file mtime: 2026-06-18, correction date: 2026-07-11).
+
+Same staleness: `README.md:197` and `PROJECT_STATUS.md` (3 occurrences) say "PDG 2022" for the constants
+source; should read "PDG 2024/2025" per the same correction.
+
+### 11.3 Missing orientation content
+
+No link anywhere in README to Buckholtz's actual preprint. A visitor auditing "an audit of X" cannot find
+X. Confirmed DOIs (already in `CITATION.cff`, just not surfaced in README body):
+- Preprints.org: `10.20944/preprints202511.0598.v6`
+- ResearchGate mirror: `10.13140/RG.2.2.34270.19523`
+
+No author/context section either — "who is Dr. Buckholtz" is answerable only by leaving the repo.
+
+### 11.4 Public-safety re-scan (Stage 7, re-run)
+
+Grep for `.env`/`*_KEY`/`*_SECRET`/`*.pem` across tracked files: **clean, none found.**
+Grep for personal email/thread-ID patterns (same patterns checked earlier this session): **clean** in the
+current tree, except `tjb@alumni.caltech.edu` in `paper1_eq32_note*.tex`, which is Buckholtz's own
+institutional contact as printed in his own already-published preprint byline — not a leak.
+
+**New finding not in the 06-18 audit:** removing files from HEAD does not purge them from git history.
+The commits that originally added the now-removed correspondence files are still fetchable from the
+public GitHub remote (`git log`, per-commit history view) even after today's cleanup is pushed. Full
+removal requires a history rewrite (`git filter-repo` + force-push) — flagged as a separate, more
+invasive decision requiring its own explicit approval; not attempted in this audit.
+
+## 12. Sourced "About Dr. Thomas J. Buckholtz" Draft
+
+For insertion into README as a new section. Every fact below is sourced, not from memory:
+
+> Dr. Thomas J. Buckholtz is an independent researcher affiliated with the
+> [Ronin Institute for Independent Scholarship](https://ronininstitute.org/) (Montclair, NJ) and the
+> National Coalition of Independent Scholars. His recent work proposes Isomeric Dark Matter (IDM) and
+> MULTING (multipole gravity), a framework in which most elementary particles have six "isomers," five
+> of which associate with dark matter. The framework is described in his preprint,
+> *["Gravitational and Dark-Matter Concepts that Can Help Explain and Predict Cosmic Data"](https://doi.org/10.20944/preprints202511.0598.v6)*
+> (Preprints.org, mirrored on [ResearchGate](https://doi.org/10.13140/RG.2.2.34270.19523)). This repository
+> is an independent, non-affiliated audit of that work's numerical claims — it does not represent
+> Dr. Buckholtz's own code, endorsement, or conclusions.
+
+Sources (fetched/confirmed 2026-07-12, not from training memory):
+- [LinkedIn](https://www.linkedin.com/in/thomasjbuckholtz/) — "Research Scholar, Ronin Institute"
+- [ResearchGate profile](https://www.researchgate.net/profile/Thomas-Buckholtz)
+- [Caltech academia.edu profile](https://caltech.academia.edu/ThomasJBuckholtz) — consistent with his
+  `@alumni.caltech.edu` contact already cited in the paper
+- The preprint's own byline: "National Coalition of Independent Scholars, Brattleboro, Vermont" +
+  "Ronin Institute for Independent Scholarship, Montclair, New Jersey"
+
+**Deliberately omitted:** a specific PhD-granting university. A search snippet implied one exists but the
+source page (ResearchGate) returned HTTP 403 and could not be independently confirmed — per this project's
+own integrity rules, `[UNKNOWN]` beats a guessed `[INFERRED]` for a factual claim about a named person.
+
+## 13. Updated Score Table (2026-07-12)
+
+| Dimension | 06-18 baseline | 07-12 current | Target |
+|---|---|---|---|
+| First impression | 6/10 | 6/10 | 8/10 |
+| Truthfulness | 6/10 | 5/10 (new: live wrong number found) | 9/10 |
+| Reproducibility | 8/10 | 8/10 | 8/10 |
+| Engineering hygiene | 6/10 | 7/10 (ruff/badges fixed since 06-18) | 8/10 |
+| Visual clarity | 6/10 | 4/10 (no change made) | 6/10 |
+| Documentation structure | 6/10 | 7/10 | 8/10 |
+| Public-safety readiness | 4/10 | 8/10 (correspondence removed this session) | 9/10 |
+| Portfolio value | 7/10 | 6/10 (undersold by staleness) | 8/10 |
+| Reviewer confidence | 6/10 | 6/10 | 8/10 |
+| Adversarial robustness | 4/10 | 5/10 (drift found, smaller than 06-18's) | 8/10 |
+| **Weighted average** | **5.9/10** | **6.4/10** | **8.5/10** |
+
+## 14. Prioritized Fixes (this pass)
+
+### 30-minute fixes (do first, high ROI)
+1. `README.md:36` — `0.17σ` → `1.00σ` (0.0608%), fix "PDG 2024" → "PDG 2024/2025"
+2. `README.md:197` + `PROJECT_STATUS.md` (3×) — "PDG 2022" → "PDG 2024/2025"
+3. `README.md:7` quality snapshot — `853 tests pass · 12 skipped` → `867 tests pass · 0 skipped`, redate to 2026-07-12
+4. `README.md` Project Structure counts — scripts 22→54, tests 46 files→49 files, docs 119→113
+5. Add "The Source" section — both preprint DOIs (§11.3)
+6. Add "About Dr. Thomas J. Buckholtz" section — text in §12, **pending approval** (third-party biographical content)
+
+### Not done this pass
+- Architecture diagram / social preview image (2-hour tier, deferred)
+- `docs/INDEX.md` regeneration to drop the 12 removed correspondence docs
+- Git history rewrite for full correspondence removal (§11.4 — separate decision)
+
+## Final Report (2026-07-12 re-audit)
+
+- **Files changed by this audit:** 1 (this document, appended). No README/PROJECT_STATUS.md edits applied yet.
+- **Tool results:** 867 passed / 0 skipped / 0 failed `[VERIFIED]`; ruff clean `[VERIFIED]`; secrets scan clean `[VERIFIED]`.
+- **Final score:** 6.4/10 (target 8.5/10 after the 6 fixes in §14).
+- **Public release readiness:** current-tree content is clean; git-history correspondence removal is a separate, unaddressed decision (§11.4).
+- **Awaiting:** approval to apply the 6 fixes in §14, specifically #6 (author bio) given it's third-party content.
