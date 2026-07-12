@@ -534,16 +534,24 @@ by itself, contradicted. What is established is narrower: on every tested
 sample (flux-limited MCXC, unbiased XMM, and full CHEX-MATE), adding the
 dipole and quadrupole terms to the monopole never improves, and typically
 degrades, the correlation with real $H(z)$ data relative to a
-zero-parameter Newtonian baseline. Two explanations remain open and are not
-distinguished by this test: (a) the quadrupole structure is genuinely
-disfavored by cluster data at these scales, or (b) the $Y_\mathrm{SZ}$- and
-$\sigma_v$-derived $T_i$ proxies used here are intrinsically noisier
-tracers of the cosmic expansion trend than $M_{500}$ alone, so that any
-nonlinear combination involving them --- MULTING-specific or not --- would
-underperform mass-only scaling regardless of whether MULTING is correct.
-Resolving this requires either a volume-limited sample with uniformly
-high-quality $T_X$ across the full redshift range, or an independent
-proxy-noise characterization not attempted here.
+zero-parameter Newtonian baseline. Two explanations were considered: (a)
+the quadrupole structure is genuinely disfavored by cluster data at these
+scales, or (b) the $Y_\mathrm{SZ}$- and $\sigma_v$-derived $T_i$ proxies
+used here are intrinsically noisier tracers of the cosmic expansion trend
+than $M_{500}$ alone. A direct test partially distinguishes them: reshuffling
+which cluster's $(k_A, r_{500})$ pair is attached to which $(z, M_{500})$
+over 200 trials, holding the formula and $\beta_q=18$ fixed, shows the true
+pairing beats every one of the 200 shuffled trials ($r=0.6234$ vs.\
+shuffled mean $r^2=0.032$, maximum shuffled $r=0.341$; $p<1/200$). $T_i$
+and $r_{500}$ are therefore not noise-dominated: they carry cluster-specific
+information correlated with the CC-derived $H_\mathrm{CC}(z)$ values
+\emph{through this specific quadrupole formula}. This disfavors explanation
+(b) and tilts toward (a) --- the quadrupole functional form itself, not
+proxy noise, drives the underperformance. This does not validate the fitted
+$\beta_d,\beta_q$ coefficients (still phenomenological, \S\ref{ssec:beta}),
+nor does it explain \emph{why} this particular combination of $k_A,
+r_{500}, D$ underperforms mass-only scaling for real clusters --- both
+remain open.
 \reconstruction
 
 \subsection{H$_\mathrm{FLRW}$ Baseline Provenance}
