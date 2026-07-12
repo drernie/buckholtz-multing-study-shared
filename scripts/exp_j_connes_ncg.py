@@ -165,10 +165,10 @@ print("=" * 70)
 print("=== GAP G3 RESOLUTION SUMMARY (All 6 Routes) ===")
 print("=" * 70)
 print("""
-Route 1 (TJB email):
+Route 1 (author contact):
   STATUS: Drafted, not sent.
   Target: Ask if E=12 and 4/3 are derived or empirical in IDM framework.
-  Action needed: Send email to tjbuckholtz@gmail.com (or via ResearchGate).
+  Action needed: contact author directly (see local correspondence log, not tracked here).
 
 Route 2 (EXP-H0 null test): [COMPLETED]
   STATUS: UNUSUAL, not trivially expected
