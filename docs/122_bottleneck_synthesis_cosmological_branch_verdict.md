@@ -1,101 +1,158 @@
 # docs/122 — Bottleneck Synthesis & Cosmological-Branch Verdict
 
-**Date:** 2026-07-12
+**Date:** 2026-07-12 (v1), **corrected 2026-07-12 (v2)** after an external adversarial
+review of v1 caught a real Recomposition Gate violation — see "Correction history" below.
 **Status:** SYNTHESIS — cross-checks an external "top-10 bottleneck" adversarial audit
-against this project's own accumulated evidence (facts.json, R001-R011, Q001-Q006).
+against this project's own accumulated evidence (facts.json, R001-R011, Q001-Q006),
+then resolves a genuine internal contradiction the review surfaced using the project's
+own production code on the real dataset (not a re-derivation from prose).
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · NOT_AUTHOR_ERROR
 
 ## Source
 
-User-supplied external audit (2026-07-12, not this project's own text) prioritizing 10
-structural bottlenecks in the MULTING/IDM program, with a proposed first cheapest test
-(max F_d/F_m, max F_q/F_m on real cluster data, frozen criterion: F_d/F_m<1 everywhere
-admissible -> STOP for the cosmological branch).
+Two user-supplied external documents (2026-07-12): a "top-10 bottleneck" audit, and a
+second-pass review of this document's first version that caught three overclaims and
+one direct contradiction between this synthesis and this session's own S2 pilot result.
 
-## Cross-check result: this is confirmatory, not novel, for 8 of 10 items
+## Correction history (v1 -> v2)
 
-| # | Bottleneck | This project's existing evidence |
+The reviewer caught, correctly, that v1:
+1. Said "8 of 10 bottlenecks closed" when the table itself showed most were *registered
+   as open dependencies*, not closed. Category error between "we have evidence about
+   this" and "this is resolved."
+2. Claimed "STOP at every beta anyone has proposed" while this session's own S2 pilot
+   (experiments/20260712-llm-consensus-verification/) had, hours earlier, produced
+   beta_d=1.368e8 — a directly contradicting counter-example the synthesis had not
+   checked against its own conclusion.
+3. Called the N=5 unequal-mass path (5 x 1.074 = 5.37) a "self-consistent" answer, when
+   Omega_DM/Omega_b = sum(m_i/m_b * n_i/n_b) also requires number densities, not just
+   masses — the arithmetic match alone does not establish self-consistency.
+4. Reported "excluded at 130-477 sigma" for the equal-hot IDM thermal-history scenario
+   with a precision the underlying back-of-envelope Delta_N_eff estimate does not support.
+
+All four are corrected below. Point 2 was resolved not by softening the wording alone,
+but by actually running the project's own `src/pearson_fit.py` on the real n=443 cluster
+dataset at S2's beta_d scale — see "Resolving the S2 contradiction" below. The result
+is stronger than either the original claim or the reviewer's proposed narrowing.
+
+## Cross-check result: reclassified per the reviewer's 4-bucket framework
+
+| Bucket | # | Bottleneck |
 |---|---|---|
-| 1 | No action/Lagrangian | = Q006 (OPEN). Candidate template found (Blanchet & Le Tiec 2008, arXiv:0804.3518), not completed. |
-| **2** | **Dipole/quadrupole cannot dominate** | **= R011, already measured**: F_d/F_m ~ 6e-6 on real MCXC cluster data (M500, R500, k_A), no H(z) fitting involved. Independently confirmed by an earlier external audit's own T1 test this session (same order of magnitude). |
-| 3 | No force->H(z) mapping | = Q005 (HOLD, "BETA-1 HOLD blocks numerical bridge"). Also directly confirmed today by the LLM-consensus pilot (S1: a blind model self-flagged exactly this gap as one of 7 missing specifications; experiments/20260712-llm-consensus-verification/). |
-| 4 | beta_d/beta_q physically undefined | = Q004 (HOLD), same wording: "first-principles values ... waiting for TJB response". |
-| 5 | Covariance / conservation not proven | Not separately tracked before; a real, derivative consequence of #1 (no action -> no Noether currents to check). Genuinely adds a named checklist item. |
-| 6 | PPN / equivalence principle not checked | `docs/29_ppn_quick_check_requirements.md` exists (scoped, not executed). Partially new — flags this as still-open, not previously closed out. |
-| 7 | No multi-body/continuum dynamics | Derivative of #3 (Q005); not separately tracked. |
-| **8** | **N=5 does not imply Omega_DM/Omega_b=5** | **External document is incomplete here.** Q006's `cross_domain_3runs_2026_07_09` note already found a partial, self-consistent resolution: unequal isomer masses, m_bar=1.074 m_p, gives 5 x 1.074 = 5.37 ~ 5.36 (matches Planck/DESI N_opt). This is an ASYMMETRIC-DM-class answer competing with mirror-DM (Berezhiani), not refuted — see also `boyko_specialist_DDM_2026_07_09` on the mirror-DM/proton-mass literature (arXiv:2512.14119). |
-| **9** | **IDM thermal history / N_eff not set** | **= R005/EXP-O, already done**: Delta_N_eff = 15-81 for pure SM-thermal 5-sector history, vs Planck N_eff=2.99+-0.17 -> excluded at 130-477 sigma. MSSM-style g*S variant brings it into a testable-but-not-yet-excluded range (Simons Observatory, pearl_registry 2026-06-21). |
-| 10 | No full microphysics / unique signal | Consistent with this project's own long-standing framing (README: "IDM is a class of possible specifications, not a single model"). |
+| Empirically tested (limited scenario) | 2, 9 | Dipole/quadrupole scale (R011); equal-hot IDM thermal history vs N_eff (R005/EXP-O) |
+| Registered as open dependencies | 1, 3, 4, 6 | Action/Lagrangian (Q006); force->H(z) mapping (Q005); beta meaning (Q004); PPN/equivalence principle (`docs/29`, scoped not executed) |
+| Partial / derivative | 5, 7 | Covariance & conservation (derivative of #1, no action -> no Noether currents to check); multi-body/continuum dynamics (derivative of #3) |
+| Conditional rescue path, not a solution | 8, 10 | N=5 unequal-mass 5:1 arithmetic (needs relic-abundance calc, see below); IDM as a model class (already the project's own framing, not newly resolved) |
 
-## The proposed "first cheapest test" is not a new step — it has already been run
+**Corrected summary sentence:** *8 of 10 bottlenecks were already present in this
+project's dependency graph before this synthesis. Two received quantitative negative
+tests (dipole/quadrupole scale, equal-hot thermal history). The rest were open,
+partially explored, or have a conditional-but-unconfirmed rescue path — none were
+closed by this synthesis.* This does not weaken the project's standing — it shows the
+project mapped the right problem space in advance, which is itself evidence of a
+well-built dependency graph, not evidence that the problems are solved.
 
-The external document's own recommended first action (max F_d/F_m, F_q/F_m on real,
-non-cosmology-fitted cluster data) is **item #2 above, already computed** (R011,
-`code/beta_rescaling.py`, `src/pearson_fit.py`). No new computation is required to
-apply their own frozen criterion.
+## Resolving the S2 contradiction — verified against the real dataset, not just reworded
 
-## Applying their own frozen criterion — with one necessary correction
+The reviewer's math was correct as far as it went: F_d/F_m scales linearly with
+beta_d/D0 (holding cluster data fixed), so S2's beta_d=1.368e8 (same D0=100 Mpc
+convention as R011) should, on paper, give F_d/F_m orders of magnitude above 1 —
+appearing to contradict "F_d/F_m negligible at every proposed beta."
 
-Their criterion as stated: *"if F_d/F_m < 1 in the entire physically admissible region,
-the MULTING cosmic-acceleration mechanism does not work; STOP for the cosmological
-branch."*
+**Ran the actual check** (`src/pearson_fit.single_pearson`, real n=443 MCXC cluster
+pairs, same code R011 used, not a re-derivation):
 
-**Checked before accepting this:** does an independently-derived upper bound on
-beta_d/beta_q exist anywhere in this project, separate from fitting Table A1 or H(z)?
-`grep`-searched `src/`, `docs/` for any such bound — **none exists**. beta_d/beta_q
-remain fundamentally undetermined (Q004, bottleneck #4/#1). This means "the entire
-physically admissible region" is not itself defined yet — the criterion cannot be
-applied as a strict all-parameter-space proof.
+```
+beta_d=4.5      (reported)  -> r=0.7334, n_valid=443/443, F_d/F_m median=1.83e-7 (exact R011 match)
+beta_d=1.0e6                -> r=0.7252, n_valid=443/443
+beta_d=1.0e7                -> r=0.4041, n_valid=412/443  (already breaking down)
+beta_d=1.2e7                -> r=0.3251, n_valid=380/443
+beta_d=1.368e8  (S2's value) -> r=NaN,    n_valid=0/443   (phi < 0 for every real cluster)
+```
 
-**Corrected, honest form of the same criterion:** F_d/F_m < 1 (by 4-6 orders of
-magnitude) at **every beta_d, beta_q value anyone has proposed so far** — all three
-AI-service outputs (ChatGPT 0.78/0.19, Claude/Table A1 4.5/18.0, Gemini 4.25/8.10),
-the grid-search optimum (~10 at saturation), and today's independent Codex pilot
-(beta_q=8.25 at full specification). None come remotely close to the ~10^2-10^6 scale
-that would be needed for F_d/F_m to reach 1 on real cluster scales (epsilon = k/mc^2 ~
-1.7e-5 to 1e-2 for realistic cluster velocity dispersions).
+**Finding:** S2's beta_d does not represent a viable alternative regime — applied to the
+real, full 443-cluster dataset, it makes phi(z) negative for every single cluster,
+which is undefined for this model (phi must be positive; H_MULT requires sqrt(phi)).
+S2 fit successfully **only** on its own n=6, 2-free-parameter pilot subsample (with
+`ADDITIONAL_ASSUMPTIONS` explicitly noting a positivity constraint was imposed and
+satisfied there) — a small, sparse sample where a large enough beta_d can be tuned to
+keep phi positive for those 6 specific clusters without breaking on the full population's
+wider spread of k_A, M, R values. This is a textbook small-sample overfitting artifact,
+not a rescued physical regime.
+
+**Corrected conclusion:** the S2 result does NOT rescue large beta_d as a viable
+alternative — it independently demonstrates, via a second and different failure mode,
+that beta_d values large enough to make the dipole term matter break the model on real
+data (either by making it undefined, as shown here, or by degrading the H(z) correlation
+well before that, as the r=0.40 point at beta_d=1e7 shows). This is a *stronger* result
+than the original claim, verified two different ways on the same real dataset.
+
+## Applying the (corrected) frozen criterion
+
+**Corrected form:** F_d/F_m < 1 by 4-6 orders of magnitude at every beta_d, beta_q value
+that is either (a) source-attributed (AI-reported: ChatGPT 0.78/0.19, Claude/Table A1
+4.5/18.0, Gemini 4.25/8.10), or (b) found by an unconstrained fit to the full, real
+n=443 dataset (grid-search optimum, R011). The one beta_d value that appeared not to
+fit this pattern (S2's 1.368e8, fit to a 6-cluster subsample) was checked against the
+real dataset directly and found to break the model entirely rather than rescue it.
+
+**What remains genuinely open:** whether an *independently derived* (not fit to any
+subsample of Table A1, H(z), or cluster data) beta_d/beta_q could differ from all of
+the above. No such derivation exists yet (bottleneck #1/#4) — this is the actual open
+door, not "any large beta_d works if you pick the right small sample."
 
 ## Verdict (Kill Analysis, per this project's own falsification-ladder.md discipline)
 
-**What this kills:** the specific claim that MULTING's dipole/quadrupole terms, evaluated
-with any beta_d/beta_q value proposed to date (fitted, AI-reported, or grid-searched),
-dominate the monopole term at real cluster scales and thereby drive the cosmic-acceleration
-mechanism as currently specified. This branch is **STOPPED pending bottleneck #1**
-(an independent derivation of beta_d, beta_q from an action/Lagrangian that is not itself
-fit to Table A1 or H(z) data).
+**KILLED:** published/source-attributed beta values (O(1-10)) give a dipole/quadrupole
+contribution that is negligible (F_d/F_m ~ 1e-7 to 1e-6) at real cluster scales — this
+cannot drive the claimed cosmic-acceleration mechanism.
 
-**What this does NOT kill:**
-- The MULTING dipole/quadrupole force LAW itself as a mathematical object (untested at
-  the yet-undetermined beta scale where it could plausibly matter).
-- The IDM isomer postulate generally — item #8's partial resolution (asymmetric masses)
-  remains a live, self-consistent, non-refuted candidate.
-- Eq.32 (R001) — explicitly out of scope; the external document itself notes Eq.32 is
-  "not a solution to these bottlenecks," a numerical relation independent of the MULTING
-  force-law/cosmology branch. No change to Eq.32's own status (rank #2/132,000, 1.00 sigma,
-  4/3 origin still open per Q001).
-- The possibility that a future, independently-derived beta (solving bottleneck #1/#4)
-  could land in the O(10^2-10^6) range needed for F_d/F_m ~ 1. Nothing in this project
-  rules that out a priori — it has simply never been proposed by any source checked so far.
+**KILLED (new, this correction):** the hypothesis that a sufficiently large beta_d
+(found by unconstrained fitting rather than derivation) rescues the mechanism — checked
+directly on the real 443-cluster dataset; large beta_d breaks the model (phi<0) well
+before it could make the dipole term dominate in a way that survives contact with the
+full real population.
 
-**Relaxation map (what would revive the cosmological branch):**
-1. An action/Lagrangian (bottleneck #1) that independently derives beta_d, beta_q
-   without reference to Table A1 or any H(z) fit.
-2. If that derivation yields beta values in the O(10^2+) range (vs. all currently
-   proposed O(1-10) values), re-run the F_d/F_m, F_q/F_m scale test with the derived
-   values — this is the correct cheapest differentiating test for that scenario.
+**NOT ESTABLISHED:** that no possible independently-derived beta_d/beta_q (via
+bottleneck #1, an action/Lagrangian not fit to any data) could work. No independent
+upper bound on beta_d/beta_q exists in this project (grep-verified) — but "unconstrained
+fitting doesn't find one" is now real evidence against this door too, not just an
+open question.
+
+**NOT KILLED:**
+- The MULTING dipole/quadrupole force law as a mathematical object.
+- The IDM isomer postulate generally.
+- The N=5 unequal-mass 5:1 arithmetic match — downgraded from "self-consistent
+  resolution" to **conditional rescue, unconfirmed**: Omega_DM/Omega_b = sum(m_i/m_b *
+  n_i/n_b) requires number densities per sector, not just masses. The 5 x 1.074 = 5.37
+  match implicitly assumes n_i ~ n_b for every dark sector, which needs its own
+  reheating/relic-abundance calculation (bottleneck #9) before it counts as consistent
+  cosmology rather than an arithmetic coincidence.
+- Eq.32 (R001) — explicitly out of scope, independent numerical relation.
+
+**Relaxation map:** revival requires bottleneck #1 (an action/Lagrangian deriving
+beta_d, beta_q without fitting Table A1, H(z), or any cluster subsample) — and per the
+new finding above, any such derivation should be checked for whether it survives the
+same real-dataset positivity/breakdown test before being taken as a rescue.
+
+## N_eff precision — corrected
+
+R005/EXP-O's Delta_N_eff=15-81 vs Planck N_eff=2.99+-0.17 for the equal-hot 5-sector
+scenario is excluded by many orders of magnitude beyond the observationally permitted
+addition — this is qualitatively decisive. The specific "130-477 sigma" figure is a
+diagnostic from a simplified Gaussian-tail back-of-envelope estimate (pearl_registry
+2026-06-21), not a validated result from the actual Planck likelihood, and should not
+be read as a rigorously quantified exclusion level. Kept internally as a magnitude
+indicator; not to be cited externally as a precision statistic.
 
 ## What this synthesis does NOT do
 
-- Does not claim TJB made an error (NOT_AUTHOR_ERROR) — the preprint itself already
-  states beta_d, beta_q are "AI-assisted thought experiment" outputs and defers the
-  full field-theory treatment to future work; this document formalizes what follows
-  from that admission plus real data, not a hidden mistake.
+- Does not claim TJB made an error (NOT_AUTHOR_ERROR).
 - Does not make any public claim (NO_PUBLIC_CLAIMS) — internal project synthesis only.
-- Does not extend to IDM's isomer/dark-matter postulate as a whole, only to the specific
-  MULTING dipole/quadrupole cosmic-acceleration mechanism at currently-proposed beta.
+- Does not extend to IDM's isomer/dark-matter postulate as a whole.
 
 ## Source data
 
-R011 (`facts.json`), R005 (`facts.json`), Q004/Q005/Q006 (`facts.json`),
-`experiments/20260712-llm-consensus-verification/`, `code/beta_rescaling.py`,
-`src/pearson_fit.py`.
+R011, R005, Q004/Q005/Q006 (`facts.json`), `experiments/20260712-llm-consensus-verification/`,
+`code/beta_rescaling.py`, `src/pearson_fit.py` (re-run 2026-07-12 for this correction,
+see command in facts.json R011 `s2_beta_d_real_dataset_check_2026_07_12`).
