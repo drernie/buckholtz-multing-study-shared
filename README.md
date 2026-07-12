@@ -4,7 +4,7 @@
 ![python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
-<sub>Quality snapshot (verified 2026-06-18, local py3.13): **853 tests pass · 12 skipped · 0 failed · coverage 78% · ruff clean**. The CI badge above is the authoritative live status; this line is a dated snapshot, not a self-updating metric.</sub>
+<sub>Quality snapshot (verified 2026-07-12, local py3.13): **867 tests pass · 0 skipped · 0 failed · coverage 83% · ruff clean**. The CI badge above is the authoritative live status; this line is a dated snapshot, not a self-updating metric.</sub>
 
 **Personal study notes and reproducibility scaffolding for understanding Thomas J. Buckholtz's IDM/MULTING framework.**
 
@@ -29,11 +29,28 @@ It provides a small reproducibility and epistemic-audit layer for selected defin
 
 ---
 
+## The Source
+
+This repository audits the numerical claims in:
+
+> Thomas J. Buckholtz, *"Gravitational and Dark-Matter Concepts that Can Help Explain and Predict Cosmic Data,"* Preprints.org (2026).
+> [DOI: 10.20944/preprints202511.0598.v6](https://doi.org/10.20944/preprints202511.0598.v6) · mirrored on [ResearchGate](https://doi.org/10.13140/RG.2.2.34270.19523)
+
+Read the preprint first — this repo assumes familiarity with its notation (Table A1, β_d, β_q, IDM isomers, MULTING multipole terms).
+
+## About Dr. Thomas J. Buckholtz
+
+Dr. Thomas J. Buckholtz is an independent researcher affiliated with the [Ronin Institute for Independent Scholarship](https://ronininstitute.org/) (Montclair, NJ) and the National Coalition of Independent Scholars (Brattleboro, VT). His recent work proposes Isomeric Dark Matter (IDM) and MULTING (multipole gravity), a framework in which most elementary particles have six "isomers," five of which associate with dark matter — see the preprint linked above for the full framework.
+
+This repository is an **independent, non-affiliated audit** of that work's numerical claims. It does not represent Dr. Buckholtz's own code, endorsement, or conclusions — see the disclaimers throughout this README.
+
+---
+
 ## Key Numerical Results (2026-06-17) — NOT_VALIDATION · OUR_RECONSTRUCTION
 
 | Test | Result | Script |
 |------|--------|--------|
-| Eq.32 fermion-gravity link | **0.17σ** from PDG 2024 | `code/eq32_verify.py` |
+| Eq.32 fermion-gravity link | **1.00σ** (0.0608%) from PDG 2024/2025 | `code/eq32_verify.py` |
 | IDM N=5 vs Planck 2018 ω_DM/ω_b | **5.8σ excluded** | `code/chi2_idm.py` |
 | β_d=4.5 dipole at cluster scale | **ε ≈ 6×10⁻⁶** (negligible) | `code/beta_rescaling.py` |
 | MULTING H(z) ΔAIC vs ΛCDM | **+2.5** (ΛCDM preferred) | `data/pearson_r_test_results.md` |
@@ -102,13 +119,13 @@ pytest tests/test_eq15_constants.py -v
 ```
 buckholtz-idm-multing-mvp/
 ├── src/              # 38 core modules — epistemic registry, beta provenance, bridge candidates, force-law records
-├── tests/            # 46 test files (853 tests) — invariants, controls, dimensional checks, reverse-engineering
+├── tests/            # 49 test files (867 tests) — invariants, controls, dimensional checks, reverse-engineering
 ├── code/             # standalone verified scripts — eq32_verify, chi2_idm, beta_cv, beta_rescaling
-├── scripts/          # 22 pipeline/report scripts — recompute_n4_aic, jeans_nfw_multing, build_report_ru
+├── scripts/          # 54 pipeline/report scripts — recompute_n4_aic, jeans_nfw_multing, build_report_ru
 ├── audit/            # self-consistency diagnostics
 ├── data/             # PDG/CODATA constants + real catalogs (MCXC, XMM T_X) + Moresco+2022 CC H(z)
 │                     #   ⚠ author preprint PDF & supplementary CSVs are gitignored (local-only)
-├── docs/             # 119 documents — see docs/INDEX.md for the full map
+├── docs/             # 113 documents — see docs/INDEX.md for the full map
 ├── paper/            # LaTeX manuscript skeleton (main.tex, refs.bib)
 ├── reports/          # 21 machine-readable result JSONs
 ├── notebooks/        # 3 exploration notebooks
@@ -143,7 +160,7 @@ Every claim, parameter, and equation is marked with one of these statuses:
 
 ## Test Suite
 
-*The full suite is **46 test files / 853 tests (12 skipped, 0 failed)** — run `pytest`. The six below
+*The full suite is **49 test files / 867 tests (0 skipped, 0 failed)** — run `pytest`. The six below
 are representative of the core invariants, not the complete list; see `tests/` for all.*
 
 ### Core Tests
@@ -194,7 +211,7 @@ pytest -x
 ## Key Modules
 
 ### `constants.py`
-Physical constants from PDG 2022 and CODATA 2018.
+Physical constants from PDG 2024/2025 and CODATA 2018.
 
 **WARNING:** This file contains ONLY fundamental constants (m_e, m_tau, G, k_e, e, c, hbar).  
 **DO NOT** add cosmological fitted parameters (H0, Omega_m, etc.) here.
@@ -360,7 +377,7 @@ This repository organizes and audits claims from:
 - Thomas J. Buckholtz's work on Isomeric Dark Matter (IDM) and MULTING cosmology
 
 Physical constants from:
-- Particle Data Group (PDG) 2022
+- Particle Data Group (PDG) 2024/2025
 - CODATA 2018
 
 ---
