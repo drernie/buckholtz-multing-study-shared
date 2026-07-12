@@ -10,6 +10,14 @@ search space), **extended 2026-07-13 (v6)** with a closed-form, zero-free-parame
 derivation of the quadrupole-saturation plateau and a finer near-zero grid check — see
 "v6: Analytic Origin of the Plateau" at the end of this document for the closed-form
 result and the canonical R011-v5/v6 summary for facts.json.
+**Canonical registration (2026-07-13):** the resolved v2-v6 chain is registered as a
+standalone, reproducible FL artifact at
+`experiments/20260713-r011-beta-profile-nesting/` (claim.md + decision.md with the
+full computation passport + a re-runnable verification script) and as
+`null_results/20260713-nr013-r011-beta-profile-nesting.md` (verdict: REJECTED WITHIN
+IMPLEMENTATION). Use those as the citable source going forward; this document remains
+the narrative history of how the result was reached, including the two corrected
+errors along the way.
 **Status:** SYNTHESIS — cross-checks an external "top-10 bottleneck" adversarial audit
 against this project's own accumulated evidence (facts.json, R001-R011, Q001-Q006),
 then resolves a genuine internal contradiction the review surfaced using the project's
