@@ -6,8 +6,10 @@ via a full invariant beta_d/D0 parameterization protocol (user-specified), **cor
 own Step 4/5 numerics, **gate-checked 2026-07-13 (v5)** after external review caught
 that v4 never explicitly verified the nested-model inequality (max r over the full
 model must be >= the monopole-only r, since eta_d=eta_q=0 is a valid point in the
-search space) — see "v5: Nesting-Inequality Gate & True Profile" at the end of this
-document for the current, gate-passed result.
+search space), **extended 2026-07-13 (v6)** with a closed-form, zero-free-parameter
+derivation of the quadrupole-saturation plateau and a finer near-zero grid check — see
+"v6: Analytic Origin of the Plateau" at the end of this document for the closed-form
+result and the canonical R011-v5/v6 summary for facts.json.
 **Status:** SYNTHESIS — cross-checks an external "top-10 bottleneck" adversarial audit
 against this project's own accumulated evidence (facts.json, R001-R011, Q001-Q006),
 then resolves a genuine internal contradiction the review surfaced using the project's
@@ -474,3 +476,98 @@ correlation regardless of dipole strength (now confirmed non-fine-tuned, and con
 to still sit below the monopole baseline); the global-optimum question raised by this
 round's review is answered — checked directly, not re-described — and the nesting
 inequality holds with no exceptions found.
+
+## v6: Analytic Origin of the Plateau (2026-07-13)
+
+External review asked for the natural next step: derive `lim_{eta_q -> infinity}
+r(eta_d, eta_q)` analytically, to check whether it is independent of `eta_d` (which
+would formally confirm the "dipole becomes unobservable under quadrupole saturation"
+reading of the v5 plateau) rather than just observing the same number numerically.
+
+**Derivation.** From PASS-A, `phi_i = (1/D0^2)[m_i(1+z_i)^2 - 2 eta_d k_i r_i (1+z_i)^3
++ eta_q^2 (k_i r_i)^2 (1+z_i)^4]`. For any fixed, finite `eta_d`, as `eta_q -> infinity`
+the quadrupole term grows as `eta_q^2` while the monopole and dipole terms stay `O(1)`,
+so `phi_i / eta_q^2 -> (k_i r_i)^2(1+z_i)^4 / D0^2` for every cluster `i` — the `eta_d`
+and `D0` dependence cancels entirely in this limit. Taking the ratio to the reference
+cluster (needed for `H_MULT`) cancels the remaining `eta_q^2` and `D0^2` factors too:
+
+```
+lim_{eta_q->inf}  phi_i/phi_ref  =  [(k_i r_i)^2 (1+z_i)^4] / [(k_ref r_ref)^2 (1+z_ref)^4]
+```
+
+— a ratio that depends **only on the cluster data**, not on `eta_d`, `eta_q`, or `D0`
+at all. Substituting into `H_MULT = H_anchor*sqrt(phi/phi_ref)`:
+
+```
+lim_{eta_q->inf}  H_MULT(z_i)  =  H_anchor * [k_i r_i (1+z_i)^2] / [k_ref r_ref (1+z_ref)^2]
+```
+
+a **zero-free-parameter template**, fixed entirely by the real cluster catalog. Its
+Pearson correlation against the real `H_CC(z)` data is therefore a single deterministic
+number, independent of `eta_d` by construction — not merely observed to be constant,
+but provably so.
+
+**Numeric confirmation:** computing this template directly (no fit, no `beta_d`/`beta_q`
+at all) on the real 443-cluster dataset gives `r = 0.6235174988880...`, matching the
+v5 numeric plateau (`0.623517`) to 7 significant figures. Spot-checked the limit's
+`eta_d`-independence directly at `eta_d in {0, 1e4, 1e6, 1e8}` with `eta_q=1e8`: all
+four return `r=0.623517` exactly. **The plateau is not a numerical coincidence or a
+grid-resolution artifact — it is the correlation of one fixed, parameter-free template
+with the real data, and the dipole term is analytically absent from it, not just
+practically negligible.**
+
+**Finer near-zero grid check (addressing "could a small bump above Q(0,0) exist for
+tiny eta_d, hidden by the coarser v5 grid"):** re-ran the true profile on a 300x300
+grid (`eta_d` log-spaced 1e-2 to 1e5 plus 0, `eta_q` log-spaced 1e-6 to 1e3 plus 0,
+finer than v5's spacing specifically in the region closest to the monopole where an
+overshoot would be most plausible). Maximum found across the entire fine grid: exactly
+`Q(0,0)=0.733359...`, at `eta_d=eta_q=0`. No point anywhere exceeded it. This is
+additional numeric evidence, still **not** a certified/interval-arithmetic proof — that
+distinction, raised in review, stands and is not claimed resolved here.
+
+### Canonical R011 status (v5/v6 summary for facts.json)
+
+```
+Claim: within the implemented cosmological pipeline, profiled non-monopole MULTING
+configurations improve the Pearson correlation relative to the nested monopole
+baseline.
+
+Result: FAIL in every scanned configuration.
+
+Evidence: Q(0,0)=0.7334. The true eta_q-profile never exceeds the baseline on the
+tested eta_d grid (coarse and fine). For large eta_d it approaches a stable
+quadrupole-dominated plateau r=0.623517 with F_q/F_m~1e14 — now derived in closed
+form as the correlation of a zero-free-parameter data template, proven independent
+of eta_d.
+
+Correction: the previously reported r=0.6235 "optimum" (R011) came from a restricted
+beta_d grid [1e2, 1e8] that excluded the nested baseline point (0,0); it was a
+box-constrained local optimum, not a global one.
+
+Scope: a strong empirical result for the implemented mapping and dataset, now backed
+by one exact closed-form limit; not a formal proof over the complete continuous
+parameter space, and not a test of every possible MULTING formulation (different
+F->H(z) mapping, relativistic closure, or N-body treatment are all out of scope here).
+```
+
+### v6 Verdict (extends v5; nothing in v5 retracted)
+
+| Status line | Verdict |
+|---|---|
+| Parameter degeneracy eta_d=beta_d/D0 | VERIFIED IN IMPLEMENTATION |
+| Old grid "global optimum" claim (r=0.6235) | FALSE — corrected; was a box-constrained local optimum |
+| v3 collapse claim | FALSE / SUPERSEDED (v4) |
+| Quadrupole-saturation plateau | VERIFIED NUMERICALLY (v5) **and now VERIFIED ANALYTICALLY, closed form (v6)** |
+| Dipole empirical added value | NOT DEMONSTRATED |
+| Monopole baseline | SURVIVES all v2-v6 tests, including the finer near-zero grid |
+| Global continuous dominance (`sup r <= Q(0,0)` over the full continuous domain) | STRONGLY SUPPORTED, NOT FORMALLY PROVEN — would need a certified/interval-arithmetic bound or a monotonicity proof of the profile function |
+| All possible MULTING theories | NOT FALSIFIED — only this implementation's beta_d/beta_q rescue strategy is disfavored |
+
+**What this gives the practical next step:** in this reproducible reconstruction,
+neither varying `beta_d`, nor freeing `beta_q`, nor pushing into quadrupole saturation
+improves on the monopole baseline — and the saturation plateau's value is now derived,
+not just measured. Further progress on the cosmological branch requires a new physical
+derivation of the dynamics (bottleneck #1: the `F->H(z)` bridge itself), not another
+round of coefficient-fitting in the existing pipeline. This is not a refutation of
+MULTING as a theory; it is a strong STOP specifically for the strategy of rescuing the
+cosmological mechanism by fitting `(beta_d, beta_q)` inside the current pipeline.
