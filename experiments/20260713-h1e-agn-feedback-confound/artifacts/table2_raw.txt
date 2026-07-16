@@ -1,0 +1,93 @@
+8 Mahdavi et al.
+TABLE 2
+Mass and Substructure Properties at r500
+Cluster r
+5
+W
+00
+L MWL MGas M
+hydro
+K0 DBCG wX P3/P0
+Mpc 1014M(cid:12) 1014M(cid:12) 1014M(cid:12) keVcm2 kpc 103×r
+5
+W
+00
+L ×10−7
+3C295 1.06±0.06 5.7±1.2 0.62±0.03 3.9±1.0 12.8± 2.4 12 5.7±1.4 0.25±0.20
+Abell0068 1.16±0.09 5.9±1.6 0.77±0.01 5.1±1.0 214.2± 29.5 15 14.0±2.1 0.74±0.60
+Abell0115N 1.03±0.12 3.9±1.5 0.60±0.01 4.1±0.2 30.0± 2.4 10 59.6±0.8 3.31±0.82
+Abell0115S 1.14±0.07 5.3±1.2 0.80±0.01 4.2±0.3 192.8± 48.5 143 ··· ···
+Abell0209 1.24±0.07 6.8±1.4 1.02±0.02 5.6±1.1 152.7± 20.9 16 7.1±1.1 1.47±1.10
+Abell0222 1.16±0.07 5.7±1.3 0.61±0.01 2.4±0.6 220.2± 32.2 10 38.4±3.2 1.21±0.96
+Abell0223S 1.24±0.10 6.9±2.0 0.68±0.04 3.3±1.6 133.5± 20.1 8 36.9±2.4 2.26±1.62
+Abell0267 1.13±0.09 5.3±1.5 0.63±0.01 5.7±0.6 160.8± 20.6 77 22.0±1.7 0.27±0.22
+Abell0370 1.43±0.06 12.8±2.0 1.00±0.05 8.6±6.0 500.1±159.8 23 15.8±1.3 0.62±0.49
+Abell0383 1.04±0.13 4.0±1.8 0.39±0.01 4.6±0.6 21.3± 1.0 <3 3.1±0.6 0.36±0.26
+Abell0520 1.16±0.07 5.6±1.3 0.85±0.01 7.3±0.3 590.1± 39.4 341 100.7±0.7 4.66±0.97
+Abell0521 1.19±0.08 6.3±1.6 1.06±0.02 5.0±1.3 75.6± 18.1 33 58.5±1.7 8.59±3.41
+Abell0586 1.18±0.09 5.6±1.6 0.65±0.08 3.9±0.6 140.1± 23.5 11 7.3±1.6 0.59±0.49
+Abell0611 1.13±0.06 5.7±1.3 0.66±0.05 6.0±0.9 57.0± 9.0 4 8.0±0.8 0.68±0.42
+Abell0697 1.35±0.05 9.7±1.3 1.56±0.03 10.9±1.5 240.0± 45.4 20 9.1±1.1 0.20±0.16
+Abell0851 1.32±0.09 10.5±2.5 0.97±0.02 7.4±2.3 479.7± 79.7 278 30.5±3.4 13.15±7.51
+Abell0959 1.26±0.07 7.8±1.7 0.75±0.03 5.6±0.5 203.8± 23.7 36 42.6±4.5 7.70±6.55
+Abell0963 1.00±0.10 3.7±1.3 0.57±0.01 4.7±0.5 63.1± 5.9 6 5.5±0.5 0.12±0.10
+Abell1689 1.57±0.09 13.7±2.7 1.27±0.01 9.7±0.6 72.5± 5.5 5 4.1±0.3 0.08±0.04
+Abell1758E 1.37±0.08 10.1±2.3 1.23±0.04 9.4±0.6 227.4± 28.5 25 117.9±1.2 8.42±1.62
+Abell1758W 1.37±0.06 10.0±1.4 0.93±0.07 11.5±1.6 194.5± 19.9 25 117.9±1.2 8.42±1.62
+Abell1763 1.40±0.10 10.1±2.5 1.34±0.01 3.9±0.7 419.5± 54.0 7 22.9±1.2 0.97±0.64
+Abell1835 1.30±0.05 8.4±1.3 1.21±0.01 9.9±0.7 19.7± 0.4 6 3.9±0.2 <0.1
+Abell1914 1.18±0.05 5.6±1.0 0.99±0.00 9.2±0.9 128.7± 9.5 86 27.8±0.5 2.39±0.40
+Abell1942 1.05±0.06 4.3±1.0 0.44±0.01 2.7±0.6 230.6± 72.2 4 9.3±1.4 1.57±1.21
+Abell2104 1.22±0.08 6.1±1.6 0.68±0.14 5.8±0.8 201.7± 44.2 8 ··· ···
+Abell2111 1.07±0.10 4.5±1.5 0.74±0.07 7.3±2.5 203.8± 55.6 129 33.0±2.8 3.22±2.43
+Abell2163 1.38±0.11 9.5±2.5 2.33±0.03 12.0±1.2 336.0± 18.0 160 35.3±0.4 3.76±0.37
+Abell2204 1.34±0.07 8.1±1.6 1.16±0.01 8.7±0.6 17.3± 0.3 <3 4.8±0.3 <0.1
+Abell2218 1.14±0.08 5.1±1.4 0.72±0.01 4.3±0.6 317.9± 44.9 60 18.9±1.0 1.28±0.53
+Abell2219 1.35±0.07 9.1±1.9 1.65±0.03 7.1±0.9 243.2± 33.3 8 ··· ···
+Abell2259 1.05±0.09 4.0±1.2 0.50±0.04 4.1±0.9 134.7± 30.1 78 24.1±1.7 1.18±0.95
+Abell2261 1.52±0.05 12.9±1.6 1.46±0.13 6.6±1.0 60.0± 9.0 <2 14.3±1.0 0.39±0.21
+Abell2390 1.33±0.06 8.6±1.5 1.48±0.01 11.0±0.9 31.6± 1.1 4 11.1±0.9 1.24±0.17
+Abell2537 1.22±0.05 7.2±1.1 0.86±0.06 5.9±0.9 91.8± 21.7 17 8.4±1.3 0.99±0.74
+CL0024.0+1652 1.30±0.10 9.8±2.7 0.45±0.08 3.1±4.7 61.2± 15.9 24 73.5±11.5 6.46±5.23
+MACSJ0717.5+3745 1.46±0.07 16.6±3.4 2.35±0.03 12.3±1.9 396.3± 80.0 224 23.9±0.9 23.09±3.24
+MACSJ0913.7+4056 0.95±0.07 4.0±1.3 0.53±0.02 4.8±0.7 17.0± 1.1 4 4.3±1.0 0.40±0.19
+MS0015.9+1609 1.60±0.06 21.9±3.2 2.01±0.06 13.4±1.9 171.0± 20.0 41 8.6±1.1 0.58±0.38
+MS0440.5+0204 0.85±0.06 2.2±0.7 0.24±0.05 2.8±0.5 30.1± 5.7 <3 19.6±4.2 1.38±1.16
+MS0451.6-0305 0.95±0.10 4.5±1.7 1.03±0.02 7.8±1.0 235.3± 43.3 28 11.9±1.1 1.44±0.82
+MS0906.5+1110 1.36±0.09 8.7±1.9 0.87±0.03 3.5±0.5 148.9± 29.0 3 17.1±1.2 0.20±0.14
+MS1008.1-1224 1.06±0.05 4.8±0.9 0.58±0.04 7.3±3.1 97.9± 24.7 10 55.8±2.2 4.17±2.33
+MS1231.3+1542 0.54±0.11 0.6±0.4 0.14±0.00 1.4±0.1 131.5± 16.5 72 6.9±1.4 5.08±3.82
+MS1358.1+6245 1.12±0.09 5.9±1.6 0.67±0.07 7.6±0.9 39.3± 3.9 4 8.6±1.2 0.34±0.29
+MS1455.0+2232 1.04±0.05 4.2±0.8 0.56±0.01 3.1±0.2 23.6± 0.8 3 4.9±0.2 0.13±0.06
+MS1512.4+3647 0.85±0.18 2.6±1.8 0.34±0.03 2.1±0.7 26.4± 8.1 6 6.7±1.3 1.30±1.09
+MS1621.5+2640 1.19±0.07 7.7±1.8 0.83±0.03 5.4±0.8 182.1± 37.7 41 19.0±4.3 7.47±5.43
+RXJ1347.5-1145 1.25±0.12 9.3±2.9 1.63±0.01 13.1±1.8 29.7± 2.1 <4 12.6±1.4 1.30±0.41
+RXJ1524.6+0957 0.87±0.12 3.4±1.8 0.41±0.04 2.7±0.4 123.9± 42.3 22 63.2±5.6 22.92±15.12
+Note. — All quantities are measured at r
+5
+W
+00
+L, except for P3/P0 power ratio, which is measured at r
+2
+W
+50
+L
+0
+, and DBCG, which
+is in Mpc. MX is the X-ray hydrostatic mass, K0 is the entropy at 20 kpc, wBCG is the X-ray peak to BCG offset, wX is the
+centroidshift. LensingmassesarefromHoekstraetal.(2012).
+effective area of Chandra. We find that setting ζ =0.07 inal discrepancy is less severe than in the realm of the
+brings Chandra and XMM-Newton masses into agree- spectroscopic temperature.
+ment as shown in Figure 2. In either case, the intrinsic WechosetomodifytheChandraeffectivearea,andnot
+scatter between Chandra and XMM-Newton mass mea- the XMM-Newton effective area, based on the fact that
+surements at these fixed radii is certainly less than 10%, the XMM-Newton has exhibited the least variation over
+though inconsistent with zero at the 2σ level. the years, whereas Chandra has enacted larger 10-15%
+Figure 2 also shows that the integrated X-ray temper- changes in its effective area calibration historically. We
+atures and luminosities within lensing r are also im- note that had we modified the XMM-Newton effective
+2500
+proved by our suggested calibration. The discrepancy areatomatchthatofChandra,thenwewouldhavefound
+between unmodified Chandra X-ray temperatures and inwhatfollowsthatclustersnolongerexhibitself-similar
+XMM temperatures is roughly the same as the discrep- behavior and that (a) those with obvious substructure
+ancy in hydrostatic masses. The bolometric X-ray lumi- wouldbetheoneswhosemassescalculatedassuminghy-
+nosities are also in better agreement as a result of the drostatic equilibrium would agree with their weak lens-
+effectiveareare-calibration, thoughinthiscasetheorig- ing masses, and (b) that clusters with cool cores would
