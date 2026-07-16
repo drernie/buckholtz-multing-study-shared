@@ -84,26 +84,31 @@ values (delta_M, E_ICM, M_WL, wX) was ever persisted** -- they were computed inl
 a prior session and are not reproducible from files currently in this repo. This is a
 real gap, not specific to H1e.
 
-- **Phase 1 (shared infrastructure fix):** re-extract M_WL, M_HE, M_gas, T_x, wX per
-  cluster from Mahdavi et al. 2013 (source of all of H1a/c/d/e), save as
-  `experiments/20260713-h1e-agn-feedback-confound/artifacts/cccp_base.csv` so this
-  gap does not recur for any future H1x branch. This reproduces H1a/c/d's numbers as
-  a validation step before adding anything new.
-- **Phase 2 (H1e-specific):** add the AGN-feedback indicator column(s) -- cool-core
-  flag (already identified, same Mahdavi 2013 source, zero additional fetch cost) as
-  the cheapest first test, with a quantitative radio-luminosity or X-ray-cavity power
-  catalog as a stretch goal if cool-core alone is inconclusive.
+- **Phase 1 (shared infrastructure fix) -- COMPLETE 2026-07-13:** re-extracted M_WL,
+  M_hydro, M_Gas, T_X, wX, K0 per cluster (50/50, zero name mismatches) directly from
+  the downloaded Mahdavi et al. 2013 PDF via `pdfplumber` (not an AI-summarized
+  WebFetch -- that path was tried first and rejected as unreliable for large numeric
+  tables). Saved as `artifacts/cccp_mahdavi2013_merged.csv`, `[VERIFIED-DIRECT-READ]`,
+  with raw extraction text and parser committed for full reproducibility. Internal
+  sanity check against the paper's own stated "~10% average mass bias" passed (median
+  and sum-ratio statistics bracket it; the naive mean is outlier-pulled, explained not
+  hidden). This gap no longer blocks any future H1x branch.
+- **Phase 2 (H1e-specific) -- data now in hand, test not yet run:** K0 (central
+  entropy, keV cm^2) turned out to already be a standard quantitative AGN-feedback
+  proxy in the same table -- no separate radio/X-ray-cavity catalog fetch needed. The
+  "cheapest first test" and the "quantitative catalog" stretch goal from the original
+  plan have effectively merged into one: K0 IS the quantitative indicator.
 
 ## Assumptions (Claim Entropy)
 
 | # | Assumption | Testable? | Evidence |
 |---|-----------|-----------|---------|
-| A1 | Cool-core classification (Mahdavi et al. 2013) is a valid, if coarse, proxy for AGN feedback activity | [VERIFIED-REAL, literature-established] | Standard result: cool-core clusters host radio-loud BCGs regulating cooling flows (McNamara & Nulsen review; Rafferty et al. 2006; Bîrzan et al. 2004) |
-| A2 | Cool-core status is not simply a relabeling of wX (already tested, killed in H1c) | [OPEN] | Cool-core and centroid-shift disturbance are correlated in the literature but not identical; needs an explicit check r(cool-core, wX) before interpreting H1e as independent of H1c |
-| A3 | Base CCCP data (M_WL, M_HE, M_gas, T_x) is re-extractable from the same Mahdavi 2013 source used for H1a/c/d | [VERIFIED-REAL, source identified] | Same paper, same tables, ar5iv HTML fetch already demonstrated working this session |
-| A4 | A quantitative AGN radio/cavity catalog with meaningful CCCP overlap exists and is publicly accessible | [UNVERIFIED] | Not yet searched; cool-core flag is the fallback if this fails |
+| A1 | K0 (central entropy) is a valid, quantitative proxy for AGN feedback activity | [VERIFIED-REAL, literature-established] | Standard result: low K0 = cool-core = radio-loud BCG regulating cooling flow (McNamara & Nulsen review; Rafferty et al. 2006; Bîrzan et al. 2004); the source paper itself uses a K0 threshold to define cool-core in its own Fig. 3 |
+| A2 | K0 is not simply a relabeling of wX (already tested, killed in H1c) | [OPEN] | Source paper's own Fig. 4 reports Spearman r=0.52+-0.10 between K0 and wX -- correlated but far from identical (r^2~0.27, most variance unshared); still needs an explicit partial-correlation-controlling-for-wX check to confirm H1e is not just H1c restated |
+| A3 | Base CCCP data (M_WL, M_hydro, M_Gas, T_X, K0, wX) is re-extractable from the same Mahdavi 2013 source used for H1a/c/d | [VERIFIED-DIRECT-READ] | Done -- `artifacts/cccp_mahdavi2013_merged.csv`, 50/50 clusters, pdfplumber extraction, sanity-checked |
+| A4 | A quantitative AGN-feedback proxy exists in publicly accessible, already-used data (no new external catalog needed) | [VERIFIED-REAL] | K0 (central entropy), already in Table 2 of the same source paper as M_WL/M_Gas/M_hydro/wX |
 
-**Claim entropy:** 2 (A2, A4 open; A1, A3 resolved)
+**Claim entropy:** 1 (A2 open; A1, A3, A4 resolved -- down from 2)
 
 ## Counterfactual Frame
 
@@ -122,5 +127,9 @@ eliminated (H1a raw correlation, H1c morphology, H1e AGN feedback), leaving H1b
 remaining untested channel.
 
 ## Status
-**NEEDS-DATA (2026-07-13).** Pre-registration complete. Phase 1 (base CCCP data
-re-extraction) and Phase 2 (AGN indicator fetch + test) not yet started.
+**DATA-READY (2026-07-13).** Pre-registration complete. Phase 1 (base CCCP data
+re-extraction) complete -- `artifacts/cccp_mahdavi2013_merged.csv`,
+`[VERIFIED-DIRECT-READ]`. Phase 2's indicator (K0) identified in the same fetch, no
+separate catalog needed. The actual partial-correlation test
+(`r(delta_M, E_ICM | M_WL, K0)` per the pre-registered criteria above) has NOT been
+run yet -- next step, not yet started.
