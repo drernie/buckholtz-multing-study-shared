@@ -211,6 +211,27 @@ same collaboration:
   cheap next step. **Not sent this session** — requires explicit user
   approval (correspondence, not a technical action).
 
+- **CONFIRMED 2026-07-17 [VERIFIED-BROWSERFETCH, official MNRAS Data
+  Availability Statement, quoted verbatim]:** the FULL journal version of the
+  Three Hundred hydrostatic-mass-bias study — Gianfagna et al. 2023, MNRAS
+  518, 4238-4248, arXiv:2211.08372, DOI 10.1093/mnras/stac3364 (the
+  conference proceedings 2111.01903 above is its condensed preview by the
+  same authors, same ~300-cluster sample, same GADGET-X code as the WHIM
+  paper) — carries this exact statement:
+  > "DATA AVAILABILITY — The data underlying this article were produced as
+  > part of THE THREE HUNDRED Project (Cui et al. 2018). They will be shared
+  > on request to THE THREE HUNDRED collaboration, at
+  > https://www.the300-project.org."
+  This is not an inference — the authors' own words confirm the per-cluster
+  data (including the hydrostatic mass bias half of what H1b needs) exists
+  and is obtainable **on request**, not by public download. Combined with the
+  WHIM paper (2503.05011, same collaboration, same clusters, same code) this
+  makes the "email the collaboration" path in Option E the CONFIRMED correct
+  access route, not merely a plausible guess. Verified corresponding-author
+  contact: Giulia Gianfagna, [third-party email redacted] (from
+  2111.01903v2 p.1, [VERIFIED-DIRECT-READ]). **Still not sent — requires
+  explicit user approval.**
+
 **Observational cross-check catalog (for the REAL-DATA promotion step, NOT a
 TNG bypass) — CHEX-MATE:** [VERIFIED-REAL via WebFetch of arXiv:2010.11972,
 2026-07-08]
@@ -237,14 +258,18 @@ TNG bypass) — CHEX-MATE:** [VERIFIED-REAL via WebFetch of arXiv:2010.11972,
   one net-new item in an otherwise-already-covered project map).
 
 ## Status
-[BLOCKED — no technical bypass found] Claim defined. Estimand refined
-(5-ring binning, T-covariate prohibition added). Options B, C, D all checked
-and confirmed NOT to provide a bypass of TNG API access — full findings
-above. Option E (The Three Hundred) is DEAD as a download but surfaced a
-genuine human-contact lead (direct email to the collaboration), not yet
+[BLOCKED — no technical bypass found, but a CONFIRMED human-contact route
+exists] Claim defined. Estimand refined (5-ring binning, T-covariate
+prohibition added). Options B, C, D all checked and confirmed NOT to provide
+a bypass of TNG API access — full findings above. Option E (The Three
+Hundred) is DEAD as a public download, but its own MNRAS Data Availability
+Statement (Gianfagna et al. 2023, arXiv:2211.08372) explicitly confirms the
+data "will be shared on request to THE THREE HUNDRED collaboration" —
+verified corresponding-author contact: [third-party email redacted]. Not yet
 attempted — requires explicit user approval before sending.
 Next step: either (a) await TNG API approval (submitted 2026-07-01, login
 attempt 2026-07-04 returned "invalid email/password combination" — 16+ days
 unresolved), or (b) user approves outreach to The Three Hundred collaboration
-per Option E. When either path opens, execute per the revised 5-annulus
-design, and piggyback the NW-001 topology data pull in the same session.
+per the confirmed Option E route. When either path opens, execute per the
+revised 5-annulus design, and piggyback the NW-001 topology data pull in the
+same session.

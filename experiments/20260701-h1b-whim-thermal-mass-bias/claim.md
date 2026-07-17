@@ -74,6 +74,9 @@ analysis not started).
 Next action: Options B/C/D (Barnes 2020, Vladutescu-Zopp 2025, TNG-Cluster public
 zarr catalog) all checked and confirmed dead as technical bypasses. Option E
 (The Three Hundred, arXiv:2503.05011 + arXiv:2111.01903, same 324-cluster
-collaboration) is dead as a download but is a real, not-yet-tried human-contact
-lead (direct email to the corresponding authors) — pending explicit user
-approval to send. Otherwise: await TNG API approval (16+ days unresolved).
+collaboration) is dead as a public download, but the CONFIRMED-CORRECT access
+route per the collaboration's own MNRAS Data Availability Statement (Gianfagna
+et al. 2023, arXiv:2211.08372: "shared on request to THE THREE HUNDRED
+collaboration") — verified contact [third-party email redacted] — pending
+explicit user approval to send. Otherwise: await TNG API approval (16+ days
+unresolved).
