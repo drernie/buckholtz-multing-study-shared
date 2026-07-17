@@ -67,7 +67,7 @@ Total claim_entropy = 6 → must decrease with each experimental step
 - H1b test: GENUINELY NOVEL — no paper tests E_WHIM(shell) vs delta_M directly
 
 ## Status
-[NEEDS-DATA] Experiment designed. Data access pending.
+[NEEDS-DATA, WAITING_FOR_THE300_REPLY] Experiment designed. Data access pending.
 Current experimental status: IN-PROGRESS (literature survey complete, including a
 2026-07-17 re-check for TNG-API bypasses — see estimand.md Options D/E; data
 analysis not started).
@@ -77,6 +77,7 @@ zarr catalog) all checked and confirmed dead as technical bypasses. Option E
 collaboration) is dead as a public download, but the CONFIRMED-CORRECT access
 route per the collaboration's own MNRAS Data Availability Statement (Gianfagna
 et al. 2023, arXiv:2211.08372: "shared on request to THE THREE HUNDRED
-collaboration") — verified contact [third-party email redacted] — pending
-explicit user approval to send. Otherwise: await TNG API approval (16+ days
-unresolved).
+collaboration") — data request drafted and **SENT 2026-07-17** [USER-REPORTED]
+to [third-party email redacted]. Now awaiting reply (no fixed next_check date
+yet; check back in ~2-3 weeks if silent). Otherwise: await TNG API approval
+(16+ days unresolved, no action pending on that front).

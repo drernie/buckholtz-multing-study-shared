@@ -229,8 +229,12 @@ same collaboration:
   makes the "email the collaboration" path in Option E the CONFIRMED correct
   access route, not merely a plausible guess. Verified corresponding-author
   contact: Giulia Gianfagna, [third-party email redacted] (from
-  2111.01903v2 p.1, [VERIFIED-DIRECT-READ]). **Still not sent — requires
-  explicit user approval.**
+  2111.01903v2 p.1, [VERIFIED-DIRECT-READ]). **SENT 2026-07-17** [USER-REPORTED]
+  — data request drafted per this Option E, citing both papers (2503.05011 +
+  2211.01903/MNRAS 518,4238), requesting per-cluster b_SZ/b_X at
+  R200/R500/R2500 + WHIM thermal energy/mass fraction in radial annuli to
+  ~5xR200. Awaiting reply — no fixed next_check date yet, suggest checking
+  back in ~2-3 weeks if nothing arrives sooner.
 
 **Observational cross-check catalog (for the REAL-DATA promotion step, NOT a
 TNG bypass) — CHEX-MATE:** [VERIFIED-REAL via WebFetch of arXiv:2010.11972,
@@ -258,18 +262,20 @@ TNG bypass) — CHEX-MATE:** [VERIFIED-REAL via WebFetch of arXiv:2010.11972,
   one net-new item in an otherwise-already-covered project map).
 
 ## Status
-[BLOCKED — no technical bypass found, but a CONFIRMED human-contact route
-exists] Claim defined. Estimand refined (5-ring binning, T-covariate
-prohibition added). Options B, C, D all checked and confirmed NOT to provide
-a bypass of TNG API access — full findings above. Option E (The Three
-Hundred) is DEAD as a public download, but its own MNRAS Data Availability
-Statement (Gianfagna et al. 2023, arXiv:2211.08372) explicitly confirms the
-data "will be shared on request to THE THREE HUNDRED collaboration" —
-verified corresponding-author contact: [third-party email redacted]. Not yet
-attempted — requires explicit user approval before sending.
-Next step: either (a) await TNG API approval (submitted 2026-07-01, login
-attempt 2026-07-04 returned "invalid email/password combination" — 16+ days
-unresolved), or (b) user approves outreach to The Three Hundred collaboration
-per the confirmed Option E route. When either path opens, execute per the
-revised 5-annulus design, and piggyback the NW-001 topology data pull in the
-same session.
+[BLOCKED — WAITING_FOR_THE300_REPLY, second correspondence blocker alongside
+TJB reply and TNG API] Claim defined. Estimand refined (5-ring binning,
+T-covariate prohibition added). Options B, C, D all checked and confirmed
+NOT to provide a bypass of TNG API access — full findings above. Option E
+(The Three Hundred) is DEAD as a public download, but its own MNRAS Data
+Availability Statement (Gianfagna et al. 2023, arXiv:2211.08372) explicitly
+confirms the data "will be shared on request to THE THREE HUNDRED
+collaboration" — outreach drafted per this confirmed route and **SENT
+2026-07-17** [USER-REPORTED] to [third-party email redacted], requesting
+per-cluster b_SZ/b_X + WHIM annulus data.
+Next step: await a reply from either (a) The Three Hundred collaboration
+(sent 2026-07-17, no fixed next_check yet — check back in ~2-3 weeks if
+silent), or (b) TNG API approval (submitted 2026-07-01, login attempt
+2026-07-04 returned "invalid email/password combination" — 16+ days
+unresolved, no separate action pending). When either path opens, execute per
+the revised 5-annulus design, and piggyback the NW-001 topology data pull in
+the same session.
