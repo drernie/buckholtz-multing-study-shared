@@ -162,6 +162,55 @@ ar5iv, direct quote confirmed].
   masses." No mass bias of any kind is measured. Cannot be used to bypass
   TNG API access.
 
+**Option D [CHECKED 2026-07-17, PARTIAL — real bypass of the LOGIN wall, but wrong data]:**
+`tng-project.org/files/TNG-Cluster_Catalog.zarr/` — publicly readable directory
+(HTTP 200, no auth header, [VERIFIED-BASH] via direct `curl`), released 2025-03-05
+alongside Nelson et al. 2024 "Introducing the TNG-Cluster simulation"
+(arXiv:2311.06338). Confirmed real per-cluster zarr arrays (352 clusters,
+float32) for: `mhalo_200c`, `mhalo_500c`, `r200c`, `r500c`, `fgas_r500`,
+`richness_{9.5,10.0,10.5,11.0}`, `sfr_30pkpc`, `szy_r500c`, `temp_10kpc`,
+`xray_0.5-2.0kev`, `coolcore_*`, `peakoffset_{sz,xray}_{x,y,z}`, `mass_smbh`,
+`zform`, `mstar_{30kpc,100kpc}`, `mhi_halo`, `Bmag_10kpc`, `ne_10kpc`, `origID`.
+**Verdict: does NOT unblock H1b.** No hydrostatic mass estimate anywhere in
+this catalog (`mhalo_*` are gravitationally-bound/FoF masses, not X-ray
+hydrostatic M_HE); all thermodynamic quantities are central/interior
+(`_10kpc`, `_r500`), none reach the R200-5×R200 WHIM annuli this claim needs.
+The interactive raw-particle/cutout API (`/api/TNGCluster/snapshots/`) remains
+gated — confirmed still returning HTTP 403 [VERIFIED-BASH] on the same date.
+This catalog is real and open, but it is a "headline derived-properties" table,
+not the raw gas-cell data required to compute E_WHIM per cluster.
+
+**Option E [CHECKED 2026-07-17, DEAD as a technical bypass — genuine human-contact
+lead surfaced]:** The Three Hundred project (324 clusters, Gadget-X +
+Gizmo-Simba) has exactly the right physics split across two papers from the
+same collaboration:
+- Li et al. 2025 (arXiv:2503.05011, A&A) — WHIM gas properties (T, density,
+  mass fraction) out to 5×R200c, same T-range definition (10^5-10^7 K) this
+  project already adopted from a related paper (Vladutescu-Zopp, Option C).
+  [VERIFIED-BROWSERFETCH, full text read]: **zero Data Availability
+  statement**; every result (Figs. 1-8) is a **median/stacked profile across
+  all 324 clusters** — no per-cluster table exists in or alongside the paper.
+- Gianfagna et al. 2021 (arXiv:2111.01903, EPJ Web Conf.) — hydrostatic mass
+  bias for ~300 of the same clusters, z=0.07-1.3. [VERIFIED-BROWSERFETCH]: short
+  conference proceedings (not a full journal article), "Code, Data, Media"
+  section on the arXiv page is empty — no public per-cluster table found.
+- **the300-project.org itself is unreachable** — confirmed independently two
+  ways: direct `curl` (DNS/connection failure, `000`) and browser `navigate`
+  (denied/failed), not merely a single tool's sandbox limitation. The project's
+  own mirror page (weiguangcui.github.io/the300) states "all simulations and
+  derived data products are publicly available" but the concrete download
+  mechanism could not be located; a separate "Projects (restricted access)"
+  pbworks page requires permission.
+- **Verdict: not a usable technical bypass today**, but structurally the
+  *best-fit* combination if pursued as a **human contact**, not a download —
+  same collaboration, same 324 clusters, same simulation codes underlie both
+  papers, so the per-cluster catalog plausibly exists internally even though
+  neither paper published it. Direct email to the corresponding authors (Cui,
+  W. — listed on both papers, or Li, R. for the WHIM paper) requesting the
+  per-cluster E_WHIM(annulus) + M_HE table is a genuine, not-yet-tried,
+  cheap next step. **Not sent this session** — requires explicit user
+  approval (correspondence, not a technical action).
+
 **Observational cross-check catalog (for the REAL-DATA promotion step, NOT a
 TNG bypass) — CHEX-MATE:** [VERIFIED-REAL via WebFetch of arXiv:2010.11972,
 2026-07-08]
@@ -188,12 +237,14 @@ TNG bypass) — CHEX-MATE:** [VERIFIED-REAL via WebFetch of arXiv:2010.11972,
   one net-new item in an otherwise-already-covered project map).
 
 ## Status
-[BLOCKED — Option A only] Claim defined. Estimand refined (5-ring binning,
-T-covariate prohibition added). Options B and C both checked and confirmed
-NOT to provide a bypass of TNG API access — full findings above.
-Next step: await TNG API approval (submitted 2026-07-01, login attempt
-2026-07-04 returned "invalid email/password combination" — ambiguous between
-wrong password and account not yet activated; user troubleshooting via
-password reset). When API access is confirmed, execute per the revised
-5-annulus design, and piggyback the NW-001 topology data pull in the same
-session.
+[BLOCKED — no technical bypass found] Claim defined. Estimand refined
+(5-ring binning, T-covariate prohibition added). Options B, C, D all checked
+and confirmed NOT to provide a bypass of TNG API access — full findings
+above. Option E (The Three Hundred) is DEAD as a download but surfaced a
+genuine human-contact lead (direct email to the collaboration), not yet
+attempted — requires explicit user approval before sending.
+Next step: either (a) await TNG API approval (submitted 2026-07-01, login
+attempt 2026-07-04 returned "invalid email/password combination" — 16+ days
+unresolved), or (b) user approves outreach to The Three Hundred collaboration
+per Option E. When either path opens, execute per the revised 5-annulus
+design, and piggyback the NW-001 topology data pull in the same session.

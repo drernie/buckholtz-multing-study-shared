@@ -68,5 +68,12 @@ Total claim_entropy = 6 → must decrease with each experimental step
 
 ## Status
 [NEEDS-DATA] Experiment designed. Data access pending.
-Current experimental status: IN-PROGRESS (literarure survey complete; data analysis not started)
-Next action: Check arXiv:2506.18459 for per-cluster mass bias data (Option C, cheapest).
+Current experimental status: IN-PROGRESS (literature survey complete, including a
+2026-07-17 re-check for TNG-API bypasses — see estimand.md Options D/E; data
+analysis not started).
+Next action: Options B/C/D (Barnes 2020, Vladutescu-Zopp 2025, TNG-Cluster public
+zarr catalog) all checked and confirmed dead as technical bypasses. Option E
+(The Three Hundred, arXiv:2503.05011 + arXiv:2111.01903, same 324-cluster
+collaboration) is dead as a download but is a real, not-yet-tried human-contact
+lead (direct email to the corresponding authors) — pending explicit user
+approval to send. Otherwise: await TNG API approval (16+ days unresolved).
