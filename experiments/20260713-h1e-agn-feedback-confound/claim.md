@@ -127,9 +127,7 @@ eliminated (H1a raw correlation, H1c morphology, H1e AGN feedback), leaving H1b
 remaining untested channel.
 
 ## Status
-**DATA-READY (2026-07-13).** Pre-registration complete. Phase 1 (base CCCP data
-re-extraction) complete -- `artifacts/cccp_mahdavi2013_merged.csv`,
-`[VERIFIED-DIRECT-READ]`. Phase 2's indicator (K0) identified in the same fetch, no
-separate catalog needed. The actual partial-correlation test
-(`r(delta_M, E_ICM | M_WL, K0)` per the pre-registered criteria above) has NOT been
-run yet -- next step, not yet started.
+**CLOSED — KILL (2026-07-17).** Test executed via `artifacts/h1e_partial_correlation_test.py`:
+r(delta_M, E_ICM | M_WL, K0) = -0.7181, p=1.33e-08 -- exceeds the pre-registered KILL
+threshold (|r|>0.40, p<0.10). AGN feedback does not mediate the partial correlation.
+Full writeup: `decision.md`. Registered as `null_results/20260713-nr014-h1e-agn-feedback-confound.md`.
