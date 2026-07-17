@@ -7,7 +7,8 @@ experiment. No item here has been tested; each idea card lists a cheap test that
 WOULD need to be run before any item could be promoted to `experiments/`.
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · NOT_AUTHOR_ERROR
 **Validation:** `scripts/validate_output.py` run against this file — 0 CRITICAL
-findings, 52/52 cards parsed and structurally complete. Category-distribution
+findings, 53/53 cards parsed and structurally complete (item 53 added 2026-07-17
+after external review; re-validated). Category-distribution
 WARNINGS remain by design (see "Honest scope note" below; not defects).
 `scripts/detect_duplicates.py` flagged one pair above its 0.5 threshold: #36/#37
 (similarity 0.58) — reviewed manually, not merged: they test different upstream
@@ -20,7 +21,8 @@ documented here rather than silently dismissed.
 
 ## Honest scope note (per skill's own Step 7 discipline)
 
-This report contains **52 content-distinct ideas**, not 100. After generating a wider
+This report contains **53 content-distinct ideas** (52 original + item 53 added
+2026-07-17 after external review), not 100. After generating a wider
 internal pool and deduplicating by mechanism (not wording), padding to 100 would have
 meant listing "apply method X" and "apply improved method X" as separate items, or
 restating the same action-principle idea with different symbol names. The skill's own
@@ -104,7 +106,7 @@ are meant to source six independent multipole channels or one shared one.
 
 ---
 
-## Stage D/E/F — Idea pool (52 cards, full template)
+## Stage D/E/F — Idea pool (53 cards, full template)
 
 Scores use exactly the validator's five 0-10 axes plus confidence (0-1):
 `relevance, feasibility, novelty, expected_impact, evidence_strength, confidence`.
@@ -147,34 +149,43 @@ Scores:
 Sources: [Blanchet & Le Tiec 2008, arXiv:0804.3518](https://arxiv.org/abs/0804.3518);
 [Blanchet & Le Tiec 2009, arXiv:0901.3114](https://arxiv.org/abs/0901.3114)
 
-## 2. Check F_oP against the known PPN dipole bound before building anything new
+## 2. Check F_oP against Blanchet's existing Planck bispectrum constraint on primordial dipole
 Type: established_method
 Evidence: fact
-Core mechanism: this project already has a real PPN-style constraint on hand
-(Blanchet arXiv:1312.6991, used in this session's completed task #8, "Quantify
-Planck constraint on dipole"). Before inventing a new bridge, re-derive what the
-already-known PPN-dipole literature implies for any candidate action.
-Why it may work: it is a re-read of an existing, already-verified source, not new
-research — the cheapest possible way to narrow the search space.
-Required assumptions: the existing bound's theory class is close enough to `F_oP`
-that its numeric constraint transfers with only bookkeeping changes.
-Main obstacle: PPN constraints are usually stated for a specific theory class;
-translating them to `F_oP`'s exact functional form needs care.
-Cheapest test: re-read `Blanchet 1312.6991`'s bound and check whether it already
-rules out the `(beta_d, D0)` regime `docs/122`/`NR-013` found problematic,
-independent of any new bridge.
-Falsifier: if the PPN bound is orders of magnitude looser than the regime NR-013
-already excluded empirically, this check adds nothing new.
-Expected output: one paragraph stating whether the existing PPN bound already
-constrains the dipole independent of the H(z) test, with the numeric comparison.
+Core mechanism: **corrected 2026-07-17 after external review** — arXiv:1312.6991
+("Dipolar Dark Matter and Cosmology," Blanchet) is NOT a general PPN bound as this
+card originally claimed. Verified via direct source check: it is a second-order
+cosmological-perturbation-theory result specific to Blanchet's own dipolar-dark-matter
+(DDM) model, constraining that model's *primordial dipole amplitude* via the
+Planck-measured bispectrum non-Gaussianity the DDM internal energy induces at second
+order (first order is LambdaCDM-degenerate — this is the same degeneracy item 13
+already investigates). It is model-specific, not a universal PPN-class bound.
+Why it may work: still cheaper than inventing a new bridge, but the transfer to
+`F_oP` requires the full model dictionary from item 1, not a direct number lookup —
+weaker claim than originally stated.
+Required assumptions: item 1's DDM-to-MULTING mapping exists and is close enough
+that Blanchet's second-order non-Gaussianity calculation transfers; without item 1,
+this source constrains Blanchet's model, not `F_oP`, at all.
+Main obstacle: this is a second-order-perturbation, model-specific result, not a
+weak-field two-body (PPN) constraint — the original card conflated the two; using it
+without item 1's mapping first would misapply the bound to an unrelated model.
+Cheapest test: re-read arXiv:1312.6991's actual bispectrum constraint and item 1's
+DDM-to-MULTING dictionary together; only then check whether the resulting
+constraint bears on the `(beta_d, D0)` regime `docs/122`/`NR-013` found problematic.
+Falsifier: if item 1's mapping fails (its own falsifier), this source gives no
+transferable constraint on `F_oP` at all — this item is now gated on item 1, not
+independent of it as originally claimed.
+Expected output: either a transferred numeric constraint (contingent on item 1
+succeeding) or an explicit statement that this source does not apply to `F_oP`
+without a DDM mapping.
 Scores:
-  relevance: 8
-  feasibility: 9
+  relevance: 6
+  feasibility: 5
   novelty: 2
-  expected_impact: 6
-  evidence_strength: 8
-  confidence: 0.8
-Sources: Blanchet arXiv:1312.6991 (already cited in this project's task #8)
+  expected_impact: 5
+  evidence_strength: 6
+  confidence: 0.55
+Sources: [Blanchet 2013, "Dipolar Dark Matter and Cosmology," arXiv:1312.6991](https://arxiv.org/abs/1312.6991) — re-verified 2026-07-17, second-order bispectrum/non-Gaussianity constraint on Blanchet's own DDM model, not a general PPN bound
 
 ## 3. Effective Field Theory of Dark Energy (EFT-DE) parametrization
 Type: established_method
@@ -364,33 +375,40 @@ Yamaguchi, Yokoyama 2011, arXiv:1105.5723
 
 ## 9. Post-Newtonian order-counting to find the correct H(z) route by elimination
 Type: no_go
-Evidence: inference
-Core mechanism: systematically classify which PN order each of `F_oP`'s three terms
-enters at (monopole Newtonian 0PN, dipole likely 0.5PN odd-parity, quadrupole 1PN
-even-parity), then check which candidate bridges are even PN-order-consistent with
-that classification, eliminating structurally impossible routes before spending
-effort on them.
-Why it may work: PN order-counting is a cheap, purely-analytic filter that can rule
-out large parts of the solution space before any expensive derivation is attempted.
-Required assumptions: a metric ansatz (simplest choice: isotropic PPN gauge) can be
-fixed provisionally for counting purposes even without a full theory.
-Main obstacle: PN order-counting for a non-standard force law not derived from a
-known action is itself ambiguous without first fixing a metric ansatz.
-Cheapest test: assume the simplest metric ansatz and PN-count `F_oP`'s three terms;
-report the result even if it doesn't fully resolve the ambiguity.
+Evidence: hypothesis
+Core mechanism: **corrected 2026-07-17 after external review** — the original card
+stated "monopole 0PN, dipole 0.5PN, quadrupole 1PN" as if it followed from the
+radial powers alone. This does not hold: PN order is fixed by powers of `v/c` under
+a stated metric/action, not by a term's `1/r^n` falloff by itself — a term can have
+any radial power at a given PN order depending on the underlying theory. The
+classification is at best a starting guess to check, not a derived result.
+Why it may work: PN order-counting, done correctly (from an actual metric ansatz,
+not guessed from radial power), is still a cheap, purely-analytic filter — the
+mechanism's VALUE survives the correction, only the specific numbers in the original
+card do not.
+Required assumptions: a metric ansatz (simplest choice: isotropic PPN gauge) must be
+fixed FIRST and the PN order derived from it — not assumed from radial dependence.
+Main obstacle: without Gap 1 (an action) solved, any metric ansatz is itself a
+guess, so the "PN order" this item produces is conditional on that guess, not a
+theory-independent fact — weaker than the original card implied.
+Cheapest test: assume the simplest metric ansatz and derive (not guess) each term's
+PN order from it; report the result explicitly as ansatz-conditional.
 Falsifier: not directly falsifiable — this is a filtering tool feeding other items'
 falsifiers, not a standalone physical claim.
-Expected output: a PN-order table for `F_oP`'s three terms, used as an elimination
-filter for Blocks 1-3.
+Expected output: an ansatz-conditional PN-order table for `F_oP`'s three terms,
+explicitly labeled as dependent on the chosen metric ansatz, not a theory-independent
+classification.
 Scores:
-  relevance: 7
-  feasibility: 8
+  relevance: 6
+  feasibility: 6
   novelty: 4
-  expected_impact: 5
-  evidence_strength: 4
-  confidence: 0.5
+  expected_impact: 4
+  evidence_strength: 2
+  confidence: 0.3
 Source: standard PPN formalism (Will, "Theory and Experiment in Gravitational
-Physics", Cambridge, 2018 ed.)
+Physics", Cambridge, 2018 ed.) — the formalism is real and correctly cited; the
+original card's specific PN-order assignment was an unjustified extrapolation from
+it, now corrected
 
 ## 10. Symmetry-first route — derive the aggregation rule from FRW homogeneity/isotropy
 Type: established_method
@@ -436,7 +454,14 @@ directly, at the cost of not producing a closed-form theory.
 Required assumptions: the existing dipolar-DM RAMSES code's kernel can be swapped for
 `F_oP` without a full rewrite.
 Main obstacle: substantial compute/engineering cost; existing project resources
-(this session's Python/numpy pipeline) are not an N-body code.
+(this session's Python/numpy pipeline) are not an N-body code. **Caveat added
+2026-07-17:** standard cosmological N-body codes take a background `H(a)` as INPUT
+(to set the expanding comoving grid) and simulate structure formation ON TOP of it —
+they do not, by themselves, output an independent background expansion history. This
+item tests whether `F_oP` reproduces realistic STRUCTURE given a fixed background,
+not whether it PRODUCES a background `H(z)`; for the latter, item 53's approach
+(deriving the background equation directly) is the more direct route, and this item
+should be understood as complementary to it, not a substitute.
 Cheapest test: check whether the existing dipolar-DM RAMSES code is public and could
 be re-purposed with `F_oP`'s exact kernel swapped in, rather than writing a new
 N-body code from scratch.
@@ -1125,22 +1150,25 @@ Scores:
   confidence: 0.75
 Sources: same as item 20
 
-## 34. PPN check plus TeVeS structural comparison
+## 34. Blanchet bispectrum-constraint check plus TeVeS structural comparison
 Type: hybrid
-Evidence: fact
-Core mechanism: combine item 2 (existing PPN dipole bound) and item 4 (TeVeS
-structural comparison) into one combined literature/consistency pass, since both are
-"check against an existing constraint/theory before building something new."
-Why it may work: running both checks together is more efficient than sequentially,
-and a TeVeS-structure candidate found via item 4 can be immediately checked against
-the item-2 PPN bound in the same pass.
-Required assumptions: same as items 2 and 4 combined.
-Main obstacle: none new beyond each item's own — a low-risk combination.
-Cheapest test: perform item 2's PPN re-read and item 4's TeVeS term-matching in the
-same literature session, cross-checking any TeVeS-like candidate against the
-existing PPN bound immediately.
-Falsifier: combination of items 2 and 4's individual falsifiers.
-Expected output: a single combined literature-consistency note covering both checks.
+Evidence: hypothesis
+Core mechanism: **corrected 2026-07-17** — item 2 is no longer a standalone "PPN
+bound," it is now gated on item 1's DDM mapping (see item 2's own correction). This
+hybrid combines item 2 (in its corrected, item-1-dependent form) and item 4 (TeVeS
+structural comparison) into one literature-consistency pass, since both check
+against an existing constraint/theory before building something new.
+Why it may work: running both checks together is still more efficient than
+sequentially, once item 2's real prerequisite (item 1) is acknowledged.
+Required assumptions: same as items 2 and 4 combined, INCLUDING item 2's now-explicit
+dependency on item 1 succeeding first.
+Main obstacle: item 2's corrected scope means this hybrid is no longer two
+independent low-risk checks — it inherits item 1's adaptation risk through item 2.
+Cheapest test: perform item 4's TeVeS term-matching first (independent of item 1);
+only attempt item 2's bispectrum-constraint transfer if item 1 succeeds.
+Falsifier: combination of items 2 (as corrected) and 4's individual falsifiers.
+Expected output: item 4's result standalone, plus item 2's result only if item 1's
+prerequisite is met.
 Scores:
   relevance: 8
   feasibility: 7
@@ -1650,6 +1678,45 @@ Scores:
   confidence: 0.85
 Sources: same as item 47
 
+### Block 9 — Added 2026-07-17 after external adversarial review (1 item)
+
+## 53. Shtanov et al. generalized cosmic energy equation (missing item, added post-review)
+Type: established_method
+Evidence: fact
+Core mechanism: **added 2026-07-17 — a genuine gap in the original 52, confirmed via
+WebSearch, arXiv:1010.6205 ("Generalizing the Cosmic Energy Equation," Shtanov et
+al.) is real and directly on-point: it derives a Friedmann-equation-like expansion
+law directly from a MODIFIED two-body gravitational interaction between dark-matter
+particles, using the generalized Layzer-Irvine cosmic energy equation and cosmic
+virial theorem — nonrelativistic, but a genuine existing precedent for exactly Gap 2
+(pairwise force to Friedmann-like equation), missed in the original search.
+Why it may work: unlike items 6/7 (this document's own from-scratch attempts at the
+same aggregation step), this is an ALREADY-PUBLISHED, ALREADY-WORKED-OUT derivation
+for a structurally similar problem (modified two-body DM interaction to modified
+Friedmann equation) — directly reusable rather than reinvented.
+Required assumptions: `F_oP` can be treated nonrelativistically for this route (the
+same approximation Shtanov et al. use); a relativistic completion (Gap 3) is still
+needed afterward, this item only addresses Gap 2.
+Main obstacle: nonrelativistic — does not by itself resolve Gap 3 (relativistic
+completion) or Gap 1 (action); it is the cheapest, most direct route to a
+FIRST-PASS answer for Gap 2 specifically, not a full theory.
+Cheapest test: apply Shtanov et al.'s generalized cosmic energy equation formalism
+directly to `F_oP` (their method is designed for exactly this: a modified two-body
+DM potential) and read off the resulting renormalized-G Friedmann-like equation.
+Falsifier: if `F_oP`'s dipole/quadrupole terms cannot be cast in the modified-
+potential form their method requires, this route does not apply without adaptation.
+Expected output: a first-pass, nonrelativistic modified Friedmann equation directly
+derived from `F_oP`, usable as an initial candidate for item 35's test pipeline
+pending a relativistic completion.
+Scores:
+  relevance: 9
+  feasibility: 8
+  novelty: 6
+  expected_impact: 9
+  evidence_strength: 8
+  confidence: 0.65
+Source: [Shtanov et al., "Generalizing the Cosmic Energy Equation," arXiv:1010.6205](https://arxiv.org/abs/1010.6205) — verified real via WebSearch 2026-07-17
+
 ---
 
 ## Stage: Scoring formula (per skill's `references/scoring-model.md`)
@@ -1673,20 +1740,31 @@ discount.
 
 ## Top-12 (by adjusted priority)
 
+**Revised 2026-07-17 after external review** — item 53 (real, on-point,
+previously-missed source) enters at rank 2; the "check the dipole's tensor
+character first" unknown (see Unknowns section) is now flagged as a P0 prerequisite
+above even rank-1, since items 10/22/41's no-go arguments are conditional on it.
+
 | Rank | # | Idea | Type | Why it ranks here |
 |---|---|---|---|---|
+| P0 | — | Resolve whether `F_oP`'s dipole is a true vector or a scalar tier label | (prerequisite, not a card) | gates items 10, 22, 41's entire no-go argument — see Unknowns |
 | 1 | 52 | Dimensional-analysis audit of this document itself | computational_experiment | feasibility=10, evidence_strength=9, zero risk |
-| 2 | 20 | Historical precedent study (Newton→Friedmann template) | cross_domain_transfer | relevance=9, evidence_strength=9, already delivered its own output |
-| 3 | 43 | Scope-check: is NR-013 partial evidence for #1 generally? | no_go | feasibility=9, evidence_strength=8, prevents overclaiming this document's own results |
-| 4 | 38 | Enforce held-out validation on any future bridge test | computational_experiment | feasibility=9, evidence_strength=8, already-proven protocol |
-| 5 | 33 | Historical scaffold applied to sequence items 1-14 | hybrid | feasibility=9, evidence_strength=8, output already delivered |
-| 6 | 47 | Dimensional-analysis audit, general | computational_experiment | feasibility=9, evidence_strength=8 |
-| 7 | 13 | Blanchet-Le Tiec perturbation-matching, generalized to quadrupole | extension | expected_impact=9, highest-impact genuine new-physics item |
-| 8 | 30 | PN-order + symmetry-first filtering pipeline | hybrid | feasibility=8, relevance=9 |
+| 2 | 53 | Shtanov et al. generalized cosmic energy equation | established_method | expected_impact=9, real published precedent for Gap 2, added post-review |
+| 3 | 20 | Historical precedent study (Newton→Friedmann template) | cross_domain_transfer | relevance=9, evidence_strength=9, already delivered its own output |
+| 4 | 43 | Scope-check: is NR-013 partial evidence for #1 generally? | no_go | feasibility=9, evidence_strength=8, prevents overclaiming this document's own results |
+| 5 | 38 | Enforce held-out validation on any future bridge test | computational_experiment | feasibility=9, evidence_strength=8, already-proven protocol |
+| 6 | 33 | Historical scaffold applied to sequence items 1-14 | hybrid | feasibility=9, evidence_strength=8, output already delivered |
+| 7 | 47 | Dimensional-analysis audit, general | computational_experiment | feasibility=9, evidence_strength=8 |
+| 8 | 13 | Blanchet-Le Tiec perturbation-matching, generalized to quadrupole | extension | expected_impact=9, highest-impact genuine new-physics item |
 | 9 | 35 | Reuse NR-013's pipeline for EFT-DE-derived H(z) | computational_experiment | feasibility=8, relevance=9, shovel-ready |
 | 10 | 1 | Literalize EM analogy via Blanchet-Le Tiec action | cross_domain_transfer | relevance=9, feasibility=7 |
-| 11 | 2 | Check existing PPN dipole bound before building anything | established_method | feasibility=9, evidence_strength=8 |
-| 12 | 48 | Independent-model cross-check requirement | computational_experiment | feasibility=8, evidence_strength=7, already-proven protocol |
+| 11 | 48 | Independent-model cross-check requirement | computational_experiment | feasibility=8, evidence_strength=7, already-proven protocol |
+| 12 | 30 | PN-order + symmetry-first filtering pipeline (now ansatz-conditional, demoted) | hybrid | feasibility=6, relevance=6 after item 9's correction |
+
+**Dropped from Top-12 after correction:** item 2 (Blanchet bispectrum constraint) —
+was rank 11, now gated on item 1 succeeding first, no longer an independent
+low-risk check; item 9 (PN order-counting) — was rank 8 as item 30's input, its
+evidence_strength dropped 4→2 after the ansatz-conditional correction.
 
 **Pattern worth naming explicitly:** the top of this ranking is dominated by cheap,
 low-risk PROCESS/filtering items (dimensional analysis, held-out validation,
@@ -1777,6 +1855,17 @@ FL experiment).
   (item 44 is the cheap first check).
 - Whether Gaps 1-3 are independently solvable or genuinely coupled (item 33's
   historical-scaffold sequencing is a first attempt to find out, not a resolution).
+- **Added 2026-07-17 after external review, highest-priority open unknown:**
+  whether the preprint's "dipole" is a genuine oriented (odd-parity, vector-moment)
+  object at all, or a scalar radial-power-law "tier" label (a `1/r^3` amplitude with
+  no directional character). This is NOT resolved anywhere in this document. Items
+  10, 22, and 41 all assume a true vector dipole subject to orientation-averaging
+  cancellation — if the preprint's "dipole" is actually a scalar tier amplitude,
+  their entire no-go/averaging argument does not apply, and the leading-order
+  cancellation they rely on may not occur at all. This should be checked directly
+  against the preprint's own definition BEFORE trusting items 10/22/41's
+  conclusions, and is now the single most consequential unresolved ambiguity in this
+  document — more consequential than any individual idea card's own score.
 
 ## Sources (all real, checked this session)
 
