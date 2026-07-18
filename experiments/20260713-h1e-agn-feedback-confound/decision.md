@@ -133,4 +133,17 @@ cosmic-web-scale mechanism) is now the ONLY remaining untested channel among tho
 originally considered, and remains externally blocked. A genuinely new alternative
 (weak-lensing measurement systematics) has not yet been formulated as a testable branch.
 
+**UPDATE 2026-07-18 (NR-015):** "4/4 KILLED" above is correct as stated -- none of H1a/c/d/e
+is mediated by the confound each specifically targeted. But this table's implicit reading
+("therefore the correlation is unexplained by standard physics") does not follow: none of
+the four controlled for T_X, and a dedicated test found `r(delta_M, M_gas | M_WL, T_X)`
+collapses to -0.08 (p=0.58, bootstrap 95% CI [-0.39,0.27]) once T_X is controlled, while T_X
+alone (r=-0.81) is the strongest predictor found in the whole program. **Mechanism is NOT
+established** -- an independent skeptic review (context-asymmetry, no session history) found
+a live competing explanation: cluster dynamical state as a genuine common physical driver of
+both T_X and delta_M, not distinguished from the definitional M_hydro-T_X-coupling reading by
+this test. See `null_results/20260718-nr015-tx-shared-variable-artifact.md` for the full
+Skeptic Response Matrix. H1b is unaffected under either reading and remains the correct next
+step.
+
 *NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION*

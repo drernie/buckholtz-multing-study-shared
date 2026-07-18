@@ -74,6 +74,24 @@ H1b (WHIM/filament test) is now the only remaining open, cluster-scale-independe
 the TJB mechanism, since the two most natural standard-physics alternatives (mass-threshold,
 morphology) have both been ruled out on real CCCP data.
 
+## Addendum 2026-07-18 — NR-015 reclassification
+
+The redesigned non-circular test this file's own addendum proposed ("M_gas-only, not
+M_gas×T_x, remains open for a future session") was finally executed. **Result: NOT-SURVIVES
+the pre-registered criterion** — with the exact pre-registered control (`M_WL` AND `T_X`
+together, not `M_WL` alone), `r(delta_M, M_gas | M_WL, T_X)` collapses to −0.08 (p=0.58,
+bootstrap 95% CI [-0.39,0.27]). Separately, `r(delta_M, T_X | M_WL) = −0.81` — T_X alone, at
+fixed M_WL, is a *stronger* predictor than the E_ICM proxy this whole file is built on.
+NR-012's own KILL verdict (morphology/wX does not mediate) is unaffected. But this file's
+"the partial correlation is therefore robust against two natural standard-physics
+alternative explanations" framing (echoed in `paper/main.tex`) overclaims: neither
+alternative tested here controlled for T_X. **Mechanism is NOT established** — an
+independent skeptic review found a real competing explanation (dynamical state as a genuine
+common physical driver of both T_X and delta_M, not merely a definitional M_hydro-T_X
+coupling) that this test does not distinguish from the definitional reading; both remain
+live. See `null_results/20260718-nr015-tx-shared-variable-artifact.md` for the full
+Skeptic Response Matrix.
+
 ---
 
 *KILL — pre-registered criterion met on [VERIFIED-REAL] CCCP data (N=47/50).*

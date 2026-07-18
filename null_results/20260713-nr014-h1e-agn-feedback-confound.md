@@ -65,6 +65,26 @@ With all four testable standard-physics alternatives on existing CCCP data now k
 open test of the TJB mechanism, still blocked on TNG API access. A genuinely new
 alternative not yet tested is weak-lensing measurement systematics itself.
 
+## Addendum 2026-07-18 — NR-015 reclassification
+
+A fifth, more fundamental candidate confound was tested the day after this file was
+written: T_X shared between `E_ICM=M_Gas*T_X` (directly) and `delta_M` (indirectly, via
+`M_hydro`'s standard hydrostatic-equilibrium dependence on the temperature profile).
+**Result: NOT-SURVIVES the pre-registered criterion** — `r(delta_M, M_gas | M_WL, T_X) =
+-0.08` (p=0.58, bootstrap 95% CI [-0.39,0.27]) once T_X is controlled; `r(delta_M, T_X |
+M_WL) = -0.81` alone, stronger than the E_ICM proxy this file's K0 test was built on.
+NR-014's own KILL verdict (AGN feedback/K0 does not mediate) is unaffected — K0 genuinely
+does not explain the correlation. But the "4/4 standard-physics alternatives now killed"
+framing (this file's own status table) is not the same claim as "the correlation is
+unexplained by standard physics" — none of the four controlled for T_X, and T_X is a live,
+unresolved candidate (mechanism NOT established — an independent skeptic review found a
+genuine competing explanation, cluster dynamical state as a common physical driver, that is
+not distinguished from the definitional-artifact reading by this test). See
+`null_results/20260718-nr015-tx-shared-variable-artifact.md` for the full Skeptic Response
+Matrix. H1b remains structurally immune to this specific concern (WHIM is a different gas
+phase/radius range from the interior T_X used in M_hydro) and is, if anything, more clearly
+the sole remaining real test of H1 than this file's own conclusion stated.
+
 ---
 
 *KILL — pre-registered criterion met on [VERIFIED-REAL] CCCP data (N=47/50).*
