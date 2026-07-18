@@ -57,6 +57,20 @@ H1b (WHIM/filament test, TNG-based) remains the cleanest untested TJB-specific p
 The redesigned non-circular T_x-mediation test (M_gas alone, not M_gas×T_x, as the proxy)
 is a cheap next check reusing existing CCCP data — see pearl_registry, next_check 2026-07-15.
 
+## Addendum 2026-07-18 — NR-015 reclassification
+
+The redesigned test flagged above as the "correct next direction" was finally executed.
+**Result: NOT-SURVIVES the pre-registered criterion** — `r(delta_M, M_gas | M_WL, T_X)`
+collapses to −0.08 (p=0.58, bootstrap 95% CI [-0.39,0.27]) once T_X is properly controlled,
+while T_X alone at fixed M_WL has r=−0.81, the single strongest predictor found in the H1
+program. **Mechanism is NOT established** (definitional M_hydro-T_X coupling vs. a genuine
+common physical driver like dynamical state remain both live — see NR-015's Skeptic Response
+Matrix). NR-011's own KILL verdict (no mass-threshold effect) is unaffected — it correctly
+rules out mass-threshold specifically. But NR-011 never controlled for T_X, so it cannot be
+cited (alone or combined with NR-012/NR-014) as evidence the correlation is unexplained by
+standard physics. See `null_results/20260718-nr015-tx-shared-variable-artifact.md` for the
+full analysis.
+
 ---
 
 *KILL — pre-registered Fisher z-test criterion met on [VERIFIED-REAL] CCCP data.*

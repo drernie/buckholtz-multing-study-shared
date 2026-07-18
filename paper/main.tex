@@ -117,25 +117,48 @@ The Pearson correlation is $r=0.021$ ($p=0.883$) --- the sub-hypothesis that
 A secondary, unanticipated pattern emerged from the same sample: conditioning on
 $M_\mathrm{WL}$, the partial correlation between $\Delta M$ and the thermal
 energy proxy is $r=-0.701$ ($p<10^{-4}$) --- at fixed lensing mass, clusters with
-\emph{more} ICM thermal energy show a \emph{smaller} mass gap. We tested two
-standard-physics explanations for this partial correlation and both fail to
-account for it: splitting the sample at the median $M_\mathrm{WL}$ leaves the
+\emph{more} ICM thermal energy show a \emph{smaller} mass gap. We tested three
+standard-physics explanations for this partial correlation and none mediates it:
+splitting the sample at the median $M_\mathrm{WL}$ leaves the
 partial correlation unchanged in both subsamples ($r=-0.732$ vs.\ $r=-0.731$,
-Fisher $z=0.005$, $p=0.50$, ruling out a mass-threshold effect), and
-controlling additionally for X-ray centroid shift $w_X$ (a standard cluster
+Fisher $z=0.005$, $p=0.50$, ruling out a mass-threshold effect); controlling
+additionally for X-ray centroid shift $w_X$ (a standard cluster
 morphology/relaxation indicator, available for 47/50 clusters from the same
 catalog) leaves the partial correlation essentially unchanged
 ($r=-0.726$ vs.\ $-0.714$ baseline on the same subsample), ruling out
-dynamical-state confounding. The partial correlation is therefore robust
-against two natural standard-physics alternative explanations, yet it does not
-constitute evidence for the preprint's mechanism: it is a cluster-interior
-(ICM) result, not the cosmic-web filament (WHIM) effect the mechanism
-proposes, and no causal model for the partial correlation itself is offered
-here. We label this an open, reproducible empirical pattern, not a validation.
-Crucially, the preprint's mechanism refers to warm-hot intergalactic medium
-(WHIM, $T\sim 10^5$--$10^7$~K) in cosmic-web \emph{filaments} rather than
-the cluster ICM; the broader hypothesis remains inconclusive pending
-WHIM-specific observations.
+dynamical-state confounding; and controlling for central entropy $K_0$ (a
+standard AGN radio/kinetic-feedback and cool-core proxy) similarly leaves it
+unchanged ($r=-0.718$ vs.\ $-0.714$ baseline), ruling out AGN-feedback
+confounding. However, none of these three tests controls for X-ray temperature
+$T_X$ itself, and $T_X$ enters the correlation on \emph{both} sides by
+construction: directly in the thermal-energy proxy ($M_\mathrm{gas}\times T_x$),
+and indirectly in $\Delta M$ through $M_\mathrm{HE}$, since standard
+hydrostatic-equilibrium mass estimation requires the temperature profile as an
+input. A dedicated test controlling for both $M_\mathrm{WL}$ and $T_x$
+simultaneously finds that $M_\mathrm{gas}$ alone --- the thermal-mass
+component not multiplicatively tied to $T_x$ --- no longer significantly
+correlates with $\Delta M$ ($r=-0.08$, $p=0.58$, bootstrap 95\% CI
+$[-0.39,0.27]$, $N=50$), while $T_x$ alone at fixed $M_\mathrm{WL}$ is the
+single strongest predictor found ($r=-0.81$). We therefore do
+\emph{not} characterize this partial correlation as an unexplained empirical
+pattern robust to standard physics, but we also do not identify its mechanism:
+two explanations remain equally consistent with the data and are not
+distinguished by this test --- a shared, largely definitional dependence on
+cluster temperature (via $M_\mathrm{HE}$'s construction), or a genuine common
+physical driver such as cluster dynamical state affecting both $T_x$ and the
+hydrostatic-equilibrium assumption independently. Resolving this would require
+either an independent, temperature-decoupled mass estimate or a
+dynamical-state stratification of the existing sample; neither has been done.
+It does not constitute evidence for the preprint's mechanism under any reading
+considered here: it is a cluster-interior (ICM) result, not the cosmic-web
+filament (WHIM) effect the mechanism proposes, and no causal model for the
+partial correlation itself is offered here. Crucially, the preprint's
+mechanism refers to warm-hot
+intergalactic medium (WHIM, $T\sim 10^5$--$10^7$~K) in cosmic-web
+\emph{filaments} rather than the cluster ICM --- a physically distinct gas
+phase and radius range not subject to this specific temperature-sharing
+concern; the broader hypothesis remains inconclusive pending WHIM-specific
+observations.
 All hypothesis tests in this paper are labelled \reconstruction\ and follow
 the Falsification Ladder protocol of our supplement.
 

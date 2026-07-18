@@ -21,6 +21,7 @@
 | NR-012 | 2026-07-01 | h1c-morphology-mediator | KILL | partial r unchanged after controlling wX (−0.726 vs −0.714 baseline); morphology does not mediate |
 | NR-013 | 2026-07-13 | r011-beta-profile-nesting | REJECTED WITHIN IMPLEMENTATION | true eta_q profile + eta_q→∞ closed form both ≤ Q(0,0)=0.7334; old "optimum" 0.6235 was a box-excluded-baseline artifact |
 | NR-014 | 2026-07-17 | h1e-agn-feedback-confound | KILL | r(delta_M,E_ICM\|M_WL,K0)=-0.7181 p=1.33e-08; AGN feedback does not mediate; 4/4 standard-physics alternatives now killed |
+| NR-015 | 2026-07-18 | tx-shared-variable-artifact | ARTIFACT-CONFIRMED | r(delta_M,M_gas\|M_WL,T_X)=-0.08 p=0.58, signal vanishes once T_X controlled; T_X alone r=-0.81 stronger than E_ICM itself; reclassifies NR-011/012/014's "robust to 4 confounds" framing as overclaim |
 
 ---
 
@@ -37,3 +38,4 @@
 - [NR-012: H1c morphology mediator — killed](20260701-nr012-h1c-morphology-mediator.md)
 - [NR-013: R011 beta_d/beta_q profile vs nested monopole — rejected within implementation](20260713-nr013-r011-beta-profile-nesting.md)
 - [NR-014: H1e AGN feedback confound — killed](20260713-nr014-h1e-agn-feedback-confound.md)
+- [NR-015: T_X shared-variable artifact — reclassifies NR-011/012/014](20260718-nr015-tx-shared-variable-artifact.md)
