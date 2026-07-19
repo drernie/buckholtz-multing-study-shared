@@ -176,26 +176,46 @@ record(
 
 # ======================================================================
 # C4 -- N_opt = omega_cdm/omega_b, deviation from integer 5
+#
+# Two self-consistent methods exist (2026-07-19 reconciliation, see
+# pearl_registry/INDEX.md and paper/main.tex Sec. IDM chi2 test, both
+# skeptic-verified: profile-LR and Fieller's theorem independently
+# collapse onto the score-type answer, so it is adopted as the headline):
+#   score-type (headline): T = omega_cdm - 5*omega_b, variance at the NULL
+#     N=5 -- exact, no delta-method approximation needed -- gives 5.79 sigma
+#   Wald-type (delta-method): sigma_N evaluated at the OBSERVED ratio
+#     N_opt=5.366 -- a legitimate but inferior point-null test -- gives 5.67
+# A THIRD, genuinely buggy value (~259 sigma) results from mixing them: a
+# ratio-space numerator (N_opt-5, dimensionless) divided by an omega-space
+# denominator (s_score, in omega units) -- a real units-mismatch bug from
+# an early paper draft, kept below only as a worked anti-pattern.
 # ======================================================================
 n_opt = OMEGA_CDM / OMEGA_B
-# naive (wrong) sigma that shipped in an early paper draft:
-s_naive = math.sqrt(OMEGA_CDM_SIG**2 + (5 * OMEGA_B_SIG) ** 2)
-sig_naive = (n_opt - 5) / s_naive
-# correct delta-method (ratio error propagation):
+# score-type (headline, exact under H0): variance at the null value N=5
+s_score = math.sqrt(OMEGA_CDM_SIG**2 + (5 * OMEGA_B_SIG) ** 2)
+sig_score = (OMEGA_CDM - 5 * OMEGA_B) / s_score
+# Wald-type delta-method (ratio error propagation, variance at observed ratio):
 s_delta = n_opt * math.sqrt((OMEGA_CDM_SIG / OMEGA_CDM) ** 2 + (OMEGA_B_SIG / OMEGA_B) ** 2)
 sig_delta = (n_opt - 5) / s_delta
+# units-mismatch anti-pattern (illustrative only, not a candidate answer):
+sig_unit_mismatch_bug = (n_opt - 5) / s_score
 record(
     "C4",
     "N_opt = DM:OM ratio non-integer",
-    "N_opt ~ 5.366, deviation from 5 is 5.67 sigma (delta-method), NOT 259 sigma",
-    f"N_opt = {n_opt:.5f}; delta-method sigma_N = {s_delta:.5f}",
+    "N_opt ~ 5.366, deviation from integer 5 is 5.79 sigma (score-type, headline)",
+    f"N_opt = {n_opt:.5f}; score-type sigma_T = {s_score:.6f}",
     "5 (integer)",
-    f"{sig_delta:.2f} sigma (naive-wrong method gave {sig_naive:.1f})",
-    "CONFIRMED" if abs(sig_delta - 5.67) < 0.3 else "CORRECTED",
+    f"{sig_score:.2f} sigma (Wald delta-method gives {sig_delta:.2f}; "
+    f"units-mismatch anti-pattern gives {sig_unit_mismatch_bug:.1f}, NOT a valid answer)",
+    "CONFIRMED" if abs(sig_score - 5.79) < 0.3 else "CORRECTED",
     "[VERIFIED-BASH]",
-    "Planck omega_cdm/omega_b. The ~259 sigma is a UNIT-MISMATCH artifact "
-    "(dimensionless DeltaN over omega-space sigma). Done right, BOTH methods agree: "
-    "delta-method N-space = 5.67 sigma; correct omega-space (omega_cdm-5 omega_b)/s_tot = 5.79 sigma.",
+    "Planck omega_cdm/omega_b. Score-type test (variance at H0: N=5) is the "
+    "statistically preferred point-null test -- profile-likelihood-ratio and "
+    "Fieller's theorem for the ratio CI both independently collapse onto it "
+    "(skeptic-verified, pearl_registry/INDEX.md 2026-07-19). The delta-method "
+    "5.67 sigma is a legitimate but inferior Wald-type summary, not an error. "
+    "The ~259 sigma units-mismatch bug (ratio-space numerator over omega-space "
+    "denominator) is neither -- it is a worked anti-pattern, not a candidate.",
 )
 
 # ======================================================================

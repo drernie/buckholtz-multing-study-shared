@@ -1,6 +1,22 @@
 """
 chi2_idm.py — Formal kill of IDM integer isomer count
 NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION
+
+Method: exact score-type test on the linear combination T = omega_dm - N*omega_b,
+variance evaluated at the null value N (not at the observed ratio). This is the
+statistically preferred point-null test — no delta-method approximation is
+needed, since T is exactly Gaussian if omega_dm/omega_b are. Matches
+paper/main.tex's headline N=5 figure (5.79sigma, chi2=33.5) after the
+2026-07-19 reconciliation (see pearl_registry/INDEX.md, skeptic-verified).
+
+Contrast with experiments/desi_dr2_nopt_forecast_2026-06-21.py, which computes
+N_opt via the DERIVED (omega_m - omega_b)/omega_b route instead of this
+script's direct omega_dm parameter — necessary there for apples-to-apples
+comparison with DESI (which cannot cleanly separate omega_cdm from omega_b on
+its own), and consequently noisier (2.83sigma for Planck alone under that
+route vs this script's 5.79sigma). Both are legitimate; they answer different
+questions (Planck-alone maximum precision vs Planck-DESI comparable
+methodology), not a bug in either.
 """
 
 import numpy as np

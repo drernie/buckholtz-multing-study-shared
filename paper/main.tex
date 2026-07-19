@@ -52,7 +52,7 @@ rendered negligible at cluster scales for the tabulated $\beta_d = 4.5$,
 requiring $\beta_d \gtrsim 10^{3.2}$ for a 1\% observational signature ---
 formally quantified via Birge Ratio $R_B = 15.9$ ($\beta_d$) and $R_B = 24.1$
 ($\beta_q$), both with $p < 10^{-4}$;
-(4)~equal-mass $N=5$ IDM isomers are excluded at $5.67\sigma$ by Planck 2018,
+(4)~equal-mass $N=5$ IDM isomers are excluded at $5.79\sigma$ by Planck 2018,
 but five isomers with $\bar{m} = 1.074\,m_p$ are Planck-compatible (EXP-N);
 (5)~the $\Delta N_\mathrm{eff} > 100\sigma$ claim applies to a thermalized
 mirror sector only; gravitational-only IDM gives $\Delta N_\mathrm{eff}
@@ -712,18 +712,25 @@ The IDM prediction $\omega_\mathrm{DM} = N \omega_b$ (equal baryon asymmetry per
 isomer) requires, from Planck 2018~\cite{planck2018}: $N_\mathrm{opt} =
 \omega_\mathrm{DM}/\omega_b = 0.12011/0.022383 = 5.366$.
 
-The nearest integer $N=5$ deviates by $5.67\sigma$, where the uncertainty
-on the ratio $N_\mathrm{opt} = \omega_\mathrm{DM}/\omega_b$ is propagated
-by the delta method:
+The nearest integer $N=5$ deviates by $5.79\sigma$. We test the point
+hypothesis $H_0\!:\,\omega_\mathrm{DM} = N\omega_b$ directly via the exact
+score-type statistic (variance evaluated at $N=5$, the null value, rather
+than at the observed ratio): the linear combination
+$T \equiv \omega_\mathrm{DM} - N\omega_b$ is exactly Gaussian under $H_0$
+(no approximation is needed, unlike a delta-method expansion of the ratio
+itself), with
 \begin{equation}
-\sigma_N = N_\mathrm{opt}\,\sqrt{\!\left(\frac{\sigma_{\omega_\mathrm{DM}}}
-{\omega_\mathrm{DM}}\right)^{\!2}
-+ \left(\frac{\sigma_{\omega_b}}{\omega_b}\right)^{\!2}}
-= 5.366\times\sqrt{0.00999^2 + 0.00670^2} = 0.0646
+\sigma_T = \sqrt{\sigma_{\omega_\mathrm{DM}}^2 + N^2\sigma_{\omega_b}^2}
+= \sqrt{0.0012^2 + 5^2\times 0.00015^2} = 0.001415,
 \end{equation}
-yielding $(N_\mathrm{opt} - 5)/\sigma_N = 5.67\sigma$\, ($\chi^2 = 33.5$,
+yielding $T/\sigma_T = 5.79\sigma$ ($\chi^2 = 33.5$,
 assuming equal baryon asymmetry per isomer, $f \equiv 1$;
-see caveat below).
+see caveat below). A Wald-type delta-method estimate on the ratio
+$N_\mathrm{opt} = \omega_\mathrm{DM}/\omega_b = 5.366$ itself (variance
+evaluated at the \emph{observed} ratio) gives a close but distinct
+$5.67\sigma$; we adopt the score-type statistic above as the point-null
+test, since it requires no linearization and its variance is evaluated
+under $H_0$, as a hypothesis test for a specific integer requires.
 \reconstruction
 
 As an independent cross-check, the DESI DR1+CMB combination~\cite{desi2024vi}
@@ -735,7 +742,7 @@ $\omega_b$ independently~\cite{desi2024vi}).
 \reconstruction
 
 \textbf{Assumption caveat ($f \equiv 1$).}
-The $5.67\sigma$ exclusion of integer $N=5$ is conditional on all dark isomers
+The $5.79\sigma$ exclusion of integer $N=5$ is conditional on all dark isomers
 sharing the same baryon asymmetry per comoving volume as ordinary matter
 ($f \equiv \eta_\mathrm{dark}/\eta_\mathrm{SM} = 1$).
 If the dark-sector baryon asymmetry differs by an $O(1)$ factor $f \neq 1$,
@@ -998,7 +1005,7 @@ waves) and Lorentz covariance cannot be verified.
 \textit{IDM symmetry group (G4).}
 The six IDM isomers are postulated by analogy with the SM, but the symmetry
 group that distinguishes exactly six from other values of $N$ is not derived.
-The $5.67\sigma$ tension with Planck 2018 ($N_\mathrm{opt} = 5.366$) may be
+The $5.79\sigma$ tension with Planck 2018 ($N_\mathrm{opt} = 5.366$) may be
 resolvable if the symmetry group predicts non-equal isomer masses or
 baryon asymmetries.
 
@@ -1136,7 +1143,7 @@ H(z) correlation & $\triangle$ $\Delta\mathrm{AIC}{=}{+}0.74$ & 27 Moresco CC & 
 $H_\mathrm{FLRW}$ provenance & $\triangle$ not Planck baseline & MAE $120$ vs $5$ & recompute on the Planck~2018 baseline; author to confirm intended convention \\
 $\beta_d = 4.5$ observability & $\triangle$ negligible as tabulated & $k_A/M$ calc & first-principles $\beta$ (Lagrangian) or author disclosure; not recoverable by data calibration (non-identifiable) \\
 $\beta$ provenance (BRAI) & $\triangle$ $R_B{=}15.9/24.1$ ($p{<}10^{-4}$) & 3 AI services & author's intended $\beta$ definition \\
-IDM $N=5$ equal-mass & $\triangle$ $5.67\sigma$ if equal & Planck 2018 (EXP-N) & relax to unequal isomer masses (next row) \\
+IDM $N=5$ equal-mass & $\triangle$ $5.79\sigma$ if equal & Planck 2018 (EXP-N) & relax to unequal isomer masses (next row) \\
 IDM $N=5$ unequal-mass & $\triangle$ $\bar{m}=1.074\,m_p$ & mass spectrum & sum matches $\omega_\mathrm{DM}/\omega_b$; adds a parameter, needs independent motivation \\
 IDM cold-DM viability & $\triangle$ warm-DM free-streaming tension & thermal history & warm/mixed-DM or massive dark $\nu$; author to specify thermal history \\
 $f\sigma_8$ dipole proxy & $\triangle$ $r{=}0.851$ ($n{=}10$, $z{\le}5$) & Table A1 $+$ $\Lambda$CDM & DESI DR1 $+$ author's $\beta_d$ \\
@@ -1176,7 +1183,7 @@ specify which H$_\mathrm{FLRW}$ convention is intended.
 
 The IDM cosmological predictions face two structural constraints, with a
 third that depends on the coupling assumption.
-First, $N=5$ \emph{equal-mass} isomers are excluded at $5.67\sigma$ by Planck
+First, $N=5$ \emph{equal-mass} isomers are excluded at $5.79\sigma$ by Planck
 2018; however, five isomers with a common mass $\bar{m} = 1.074\,m_p$ exactly
 reproduce the observed $\omega_\mathrm{DM}/\omega_b = 5.369$, converting the
 exclusion into a mass-spectrum constraint (EXP-N).

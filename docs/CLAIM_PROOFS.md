@@ -20,9 +20,9 @@ python scripts/verify_all_claims.py        # prints proof per atom, writes repor
 
 | ID | Claim (corrected) | Computed | Verdict | Evidence | Proof command |
 |----|-------------------|----------|---------|----------|---------------|
-| **C9** | (4/3)(m_τ/m_e)¹² = α_EM/α_G at **0.17σ** | LHS/RHS = 1.00013516 (0.0135%) | ✅ CONFIRMED | `[VERIFIED-BASH]` | `python scripts/verify_all_claims.py` → [C9] |
+| **C9** | (4/3)(m_τ/m_e)¹² = α_EM/α_G at **1.00σ** (PDG 2024 m_τ=1776.93±0.09, corrected 2026-07-11) | LHS/RHS = 1.00060807 (0.0608%) | ✅ CONFIRMED | `[VERIFIED-BASH]` | `python scripts/verify_all_claims.py` → [C9] |
 | **C9b** | n=12 is the **unique** hit (not range-fitted) | 1 of 120 combinations within 1% → only (4/3, 12, τ/e) | ✅ CONFIRMED | `[VERIFIED-BASH]` | `python scripts/verify_all_claims.py` → [C9b] |
-| **C4** | N_opt = 5.366, **5.67σ** from integer 5 (delta-method) | N_opt=5.36613, σ_N=0.06456 | ✅ CONFIRMED | `[VERIFIED-BASH]` | `python scripts/verify_all_claims.py` → [C4] |
+| **C4** | N_opt = 5.366, **5.79σ** from integer 5 (score-type, headline; Wald delta-method gives 5.67σ, see [C4] note) | N_opt=5.36613, σ_T=0.001415 | ✅ CONFIRMED | `[VERIFIED-BASH]` | `python scripts/verify_all_claims.py` → [C4] |
 | **C6** | 7:9:17 holds to ~0.2% by value, but **W = 3.8σ**, H = 1.1σ, Z = anchor | W²=6.991, Z²=9.000, H²=16.966 (units (m_Z/3)²) | ⚠️ CORRECTED | `[VERIFIED-BASH]` | `python scripts/verify_all_claims.py` → [C6] |
 | **C5** | ΔN_eff is **BLOCKED** — not computable from preprint; "0.70" is one assumed scenario | naive SM = 22–81 (130–477σ); 0.70 needs g_*S>210 | 🔴 BLOCKED | `[CONFLICTING]` | `python scripts/m7_c_thermal_history_neff_audit.py` + `mirror_dm_neff_constraint.py` |
 
