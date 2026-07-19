@@ -3,6 +3,15 @@
 Question: Is the N=5 exclusion (5.67σ) a falsification of IDM, or
           can it be re-read as a *measurement* of IDM parameters?
 
+Method note (2026-07-19, see pearl_registry/INDEX.md): this script uses a
+Wald-type delta-method on the ratio R=omega_dm/omega_b (variance at the
+OBSERVED ratio), giving 5.67sigma -- appropriate for its own goal (exploring
+the full Planck-compatible N range as an estimate, not testing a single
+point null). code/chi2_idm.py's score-type test (variance at the null N=5)
+is preferred for testing the specific N=5 point hypothesis and is adopted as
+the paper's headline figure (5.79sigma); both are legitimate, self-consistent
+methods for different questions -- not a discrepancy in this script.
+
 Sub-questions:
   1. Reproduce the N=5 @ 5.67σ exclusion from Planck 2018
   2. What is N_Planck (the Planck-preferred value)?

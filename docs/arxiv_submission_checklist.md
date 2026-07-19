@@ -46,13 +46,14 @@ count from the baryon density ratio ω_DM/ω_b.
 We find: (1) the empirical boson-mass relation [7:9:17] holds to <0.05% in mass
 units (the scale-free ratio m_W/m_H = sqrt(7/17) holds to 0.04%, though per-boson
 the W deviates by 3.8σ and H by 1.1σ when Z-anchored); the fermion-gravity link
-(Eq. 32) holds at 0.17σ — both empirical assets independent of MULTING/IDM
+(Eq. 32) holds at 1.00σ (0.0608%, PDG 2024 m_τ=1776.93±0.09) — both empirical
+assets independent of MULTING/IDM
 cosmology; (2) the fermion mass spectrum (Eqs. 21-24) reproduces the muon mass
 to 0.47% and quark geometric means to <0.31% using PDG 2024 constants; (3) the
 MULTING dipole term is rendered negligible at cluster scales for the tabulated
 β_d = 4.5, requiring β_d ≳ 10^3.2 for a 1% observational signature — formally
 quantified via Birge Ratio R_B = 15.9 (β_d) and R_B = 24.1 (β_q), both with
-p < 10^{-4}; (4) equal-mass N=5 IDM isomers are excluded at 5.67σ by Planck 2018,
+p < 10^{-4}; (4) equal-mass N=5 IDM isomers are excluded at 5.79σ by Planck 2018,
 but five isomers with m̄ = 1.074 m_p are Planck-compatible; (5) the ΔN_eff > 100σ
 claim applies to a thermalized mirror sector only; gravitational-only IDM gives
 ΔN_eff ≲ 10^{-40}, trivially within Planck bounds; (6) the H_FLRW baseline used

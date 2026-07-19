@@ -26,13 +26,13 @@
     {
       "id": "C4",
       "name": "N_opt = DM:OM ratio non-integer",
-      "claim": "N_opt ~ 5.366, deviation from 5 is 5.67 sigma (delta-method), NOT 259 sigma",
-      "computed": "N_opt = 5.36613; delta-method sigma_N = 0.06456",
+      "claim": "N_opt ~ 5.366, deviation from integer 5 is 5.79 sigma (score-type, headline)",
+      "computed": "N_opt = 5.36613; score-type sigma_T = 0.001415",
       "target": "5 (integer)",
-      "sigma": "5.67 sigma (naive-wrong method gave 258.7)",
+      "sigma": "5.79 sigma (Wald delta-method gives 5.67; units-mismatch anti-pattern gives 258.7, NOT a valid answer)",
       "verdict": "CONFIRMED",
       "evidence": "[VERIFIED-BASH]",
-      "note": "Planck omega_cdm/omega_b. The ~259 sigma is a UNIT-MISMATCH artifact (dimensionless DeltaN over omega-space sigma). Done right, BOTH methods agree: delta-method N-space = 5.67 sigma; correct omega-space (omega_cdm-5 omega_b)/s_tot = 5.79 sigma."
+      "note": "Planck omega_cdm/omega_b. Score-type test (variance at H0: N=5) is the statistically preferred point-null test -- profile-likelihood-ratio and Fieller's theorem for the ratio CI both independently collapse onto it (skeptic-verified, pearl_registry/INDEX.md 2026-07-19). The delta-method 5.67 sigma is a legitimate but inferior Wald-type summary, not an error. The ~259 sigma units-mismatch bug (ratio-space numerator over omega-space denominator) is neither -- it is a worked anti-pattern, not a candidate."
     },
     {
       "id": "C6",
