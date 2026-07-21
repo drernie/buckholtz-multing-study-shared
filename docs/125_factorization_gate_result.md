@@ -11,6 +11,20 @@ tested the matrix-kernel form of that relaxation.
 **Skeptic:** context-asymmetry review of the *interpretation only* (algebra given as
 verified), 2026-07-21, verdict FALSIFIED.
 
+> **Correction 2026-07-21 (user review) — three phrases below were overclaimed and
+> are hereby weakened; see `docs/126` for the correctly-scoped successor.**
+> (1) "matrix-Shtanov shortcut is **closed**" → **BLOCKED** (blocked pending q's
+> evolution law, not proven impossible). (2) "`k_i r_i` has **no conserved
+> background**" → the evolution law for `q=k_i r_i` is **MISSING from the corpus**,
+> which is absence of evidence, NOT a proof of non-existence. (3) "the kill is now
+> **known to be physical**" → the skeptic *argued* it is physical; that skeptic was a
+> same-model isolated-context pass (Weak-Medium independence) — corroborated now by
+> an independent human review, but the robust confirmation is the not-yet-run
+> constructive counterexample (`docs/126` P2). The word "**worse**" (§below) is
+> likewise a rhetorical read, not established. Status labels: `MATRIX FACTORIZATION —
+> PASS · COSMOLOGICAL CLOSURE FOR q — MISSING · DIRECT SHTANOV — BLOCKED · NO-GO —
+> NOT YET PROVED`.
+
 ---
 
 ## The question (per user's P1, session 24)
@@ -94,18 +108,19 @@ both are `[SPECULATIVE]` leads for a future session.
 ## Strategic consequence (updates `decisions.md` P1 line)
 
 The gate did its job: it **cleanly separated the algebraic obstruction from the
-physical one**. NR-016's kill is now known to be physical (no conserved background
-for the second charge), which is *harder* to escape than an algebraic obstruction
-and *closer to a no-go ingredient* than a bridge-revival.
+question of cosmological closure**. The algebraic single-kernel obstruction is
+resolved (2×2 matrix); what remains open is whether the corpus supplies the
+*evolution law* for the second charge needed to close the cosmology — and it does
+not (MISSING, not proven non-existent).
 
-- The matrix-Shtanov shortcut is **closed** (this document).
-- The real remaining physical routes are the user's **P3** (multi-species kinetic /
-  continuum coarse-graining — the route that must confront the `k/m` distribution
-  and its cosmic evolution head-on, exactly the missing `ϱ_q(t)`) and **P4** (scoped
-  no-go: "object-dependent, non-conserved interaction charges + isotropy + no
-  independent closure ⇒ a single pairwise `F_oP` does not fix a unique background
-  `H(z)`"). The skeptic's own strongest objection is close to being P4's central
-  lemma.
+- Direct matrix-Shtanov application is **BLOCKED** (not "closed") pending a
+  specified/derived evolution law `q_i(a)` — see `docs/126` for the correctly-scoped
+  successor (a non-uniqueness lemma, not a closure of the route).
+- The real remaining routes are the user's **P1/P2** (prove non-uniqueness of closure
+  first — `docs/126`), then **P3** (kinetic/virial coarse-graining, which must
+  confront the `k/m` distribution and its evolution) and only then **P4** (scoped
+  no-go under explicit assumptions). The skeptic's objection is a *candidate*
+  ingredient for the non-uniqueness lemma, not itself a proof.
 - Candidate G remains an `INDEPENDENT PHENOMENOLOGICAL BENCHMARK` (unchanged);
   nothing here promotes it.
 
