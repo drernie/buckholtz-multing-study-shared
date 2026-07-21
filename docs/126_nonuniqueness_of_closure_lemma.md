@@ -1,8 +1,13 @@
 # docs/126 — Non-Uniqueness of Cosmological Closure for F_oP (scoped lemma)
 
 **Date:** 2026-07-21
-**Status:** LEMMA STATED + PROOF SKETCH + COUNTEREXAMPLE DESIGN. The lemma is NOT yet
-proved (the constructive counterexample, P2, is designed here but not executed).
+**Status:** ⚠️ **FALSIFIED for the Shtanov–Sahni background closure by P2
+(`docs/127`, 2026-07-21).** The counterexample was executed: ΔH(a) = 0 exactly under
+the S–S background closure (the dipole/quadrupole background couplings vanish by the
+`r→∞` limit for any, even time-dependent, `q`). The lemma survives ONLY as an open
+question for Sec. III structure-formation observables, NOT for background `H(z)`. The
+statement below is preserved as the (now-refuted-at-background-level) original; read
+`docs/127` for the outcome.
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · NOT_AUTHOR_ERROR
 **Supersedes framing in:** `docs/125` (three overclaims corrected there in place —
 see its "Correction 2026-07-21" note).
