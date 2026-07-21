@@ -80,21 +80,27 @@ single-kernel Shtanov mapping falsified) plus the Factorization Gate result belo
 - **Two-loop operating mode:** `MULTING SOURCE VALIDATION — WAITING FOR AUTHOR` (P0,
   blocked on TJB) runs in parallel with independent bridge research (P1+).
 
-**Revised priority ladder (P0–P6, re-ordered 2026-07-21 after the Factorization Gate +
-user review — non-uniqueness proof now precedes any no-go):**
+**Priority ladder (P0–P6, re-ordered again 2026-07-21 AFTER P2 executed):**
 ```
 P0  fix the corpus + get author's answer on the F_oP→H(z) procedure   [blocked on TJB]
-P1  theorem of non-uniqueness of closure (docs/126)                   [SKETCH stated]
-P2  constructive counterexample: two admissible q_i(a) laws → different H(a)  [designed]
-P3  kinetic / virial coarse-graining (once a closure is chosen)
-P4  scoped no-go under explicitly listed assumptions   [ONLY after P1+P2]
+P1  non-uniqueness lemma (docs/126)     → FALSIFIED at background level by P2 (docs/127)
+P2  constructive counterexample (docs/127)  → DONE: ΔH=0 under S&S background closure
+P3  does q(a) affect STRUCTURE-FORMATION observables (fσ8, Sec. III)?  [redirected — the
+    only place a MULTING cosmological signature can live, given P2]
+P4  covariant completion / N-body keeping dipole ANISOTROPY   [the only route that could
+    overturn P2's caveat C1 that background H is q-blind]
 P5  Candidate G as independent phenomenological benchmark
-P6  MCMC / CC / DESI — only after a closure is chosen
+P6  MCMC / CC / DESI — only after a surviving closure exists
 ```
-Note: the Universality/Factorization Gate (formerly "P1") is DONE (result below); it
-fed directly into the new P1 (non-uniqueness). Covariant completion (formerly P5)
-is deferred behind the non-uniqueness question — no point completing a bridge whose
-closure is not even shown to be unique.
+**P2 outcome (docs/127) changed the direction:** under the Shtanov–Sahni background
+closure, background `H(z)` is UNIQUELY `G_eff=G` (ΛCDM-like) and completely `q`-blind
+— the dipole/quadrupole background couplings vanish (`G·lim[f-rf']=0` for `1/r²`,
+`1/r³`, for any even time-dependent `q`). So there is NO background non-uniqueness to
+prove and NO background no-go to state (both moot). The scoped no-go (former P4) is
+retired at the background level. The audit statement sharpened from "MULTING's H is
+ambiguous" to "MULTING's dipole/quadrupole/isomer apparatus is INVISIBLE to background
+H(z) under S&S; any signature must be in structure formation." Scoped to the S&S
+closure (caveat C1: a covariant/N-body closure keeping dipole anisotropy could differ).
 
 - **P1 Factorization Gate — RESULT (2026-07-21, sympy-verified + skeptic-reviewed,
   SPLIT VERDICT):** the algebra is CONFIRMED — a single scalar kernel FAILS (confirms
