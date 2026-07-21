@@ -58,6 +58,56 @@ specific to *this* project's scope and framing.
   session) is confident — established after the NR-015 first draft ("ARTIFACT-CONFIRMED")
   had to be walked back following exactly such a review, 2026-07-18.
 
+## Cosmological-branch strategy (restructured 2026-07-21, session 24)
+
+Standing decisions for the F_oP → H(z) bridge problem, superseding the informal
+priority in `docs/122`/`docs/123`. The restructure was triggered by NR-016 (naive
+single-kernel Shtanov mapping falsified) plus the Factorization Gate result below.
+
+- **Candidate G is a BENCHMARK, not a bridge.** The Hamiltonian reconstruction
+  `E²(z) = c₂(1+z)² + c₃(1+z)³ + c₄(1+z)⁴ + c₅(1+z)⁵` (constraints Σcᵢ=1, c₄≤0,
+  c₅≥0) is `INDEPENDENT PHENOMENOLOGICAL BENCHMARK`, NOT `LITERATURE-CONFIRMED
+  BRIDGE`. It is useful for identifiability / synthetic-recovery / sign-conflict /
+  ΛCDM-comparison studies, but must NEVER be called the authorial `H_MULTING`.
+- **Table A1 (11 points) may not be used to PROVE Candidate G** — it was part of the
+  β-fitting process (circular). Independent CC-27 (cosmic chronometers) is the
+  minimum honest out-of-sample test.
+- **No theory-level MCMC** until a source-confirmed OR validly-derived bridge exists.
+  The existing cluster implementation stays `REJECTED WITHIN IMPLEMENTATION`
+  (NR-013), never transferred to the whole theory.
+- **DESI/BAO only after** the geometry and the role of `r_d` are defined for a
+  surviving bridge — not before.
+- **Two-loop operating mode:** `MULTING SOURCE VALIDATION — WAITING FOR AUTHOR` (P0,
+  blocked on TJB) runs in parallel with independent bridge research (P1+).
+
+**Revised priority ladder (P0–P6):**
+```
+P0  fix the corpus + get author's answer on the F_oP→H(z) procedure   [blocked on TJB]
+P1  Universality / Factorization Gate — can F_oP be a global kernel?   [RUN 2026-07-21]
+P2  Candidate G as independent benchmark (identifiability, synth recovery)
+P3  multi-species kinetic / continuum coarse-graining (if P1 needs it)
+P4  scoped no-go theorem (object-dependence + isotropy + no closure ⇒ non-unique H(z))
+P5  covariant completion (action → field eqs → FLRW → perturbations)
+P6  CC / DESI / BAO / MCMC — only for a bridge that passed P1–P5
+```
+
+- **P1 Factorization Gate — RESULT (2026-07-21, sympy-verified + skeptic-reviewed,
+  SPLIT VERDICT):** the algebra is CONFIRMED — a single scalar kernel FAILS (confirms
+  NR-016); a **2×2 matrix kernel** with per-object charge `Q_i=(m_i, q_i)`,
+  `q_i≡k_i r_i`, reproduces F_oP EXACTLY (global entries κ_mm=G, κ_mq=2Gβ_d/c²,
+  κ_qq=Gβ_q²/c⁴; same charge `k_i r_i` serves dipole and quadrupole). But the
+  interpretation "this revives Shtanov-Sahni" is **FALSIFIED** (context-asymmetry
+  skeptic): NR-016 was killed by a *physical* fact (`k_i r_i` has no conserved
+  cosmological background `ϱ_q(t)` for Shtanov-Sahni's `[ρ-ϱ]` subtraction), not an
+  algebraic one. The matrix factorization resolves the algebra and leaves the
+  physical obstruction intact (arguably worse). **Licensed claim:** F_oP is a
+  2-species bilinear form with charges `(m_i, k_i r_i)`. **NOT licensed:** "Shtanov
+  revived" / "matrix-component extension is the next step." Consequence: the
+  matrix-Shtanov shortcut is CLOSED; the physical obstruction points to P3 (kinetic
+  coarse-graining, which must confront the missing `ϱ_q(t)`) and P4 (the skeptic's
+  objection is close to P4's central lemma), NOT back to a Shtanov adaptation. See
+  `docs/125` + `scripts/factorization_gate.py`.
+
 ## Repository hygiene
 
 - **Branch workflow is mandatory for every commit**: feature branch → commit → merge
