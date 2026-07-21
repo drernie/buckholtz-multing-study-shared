@@ -7,6 +7,26 @@ scientific null result here just because it "felt like a lesson." Cross-referenc
 
 ---
 
+## 2026-07-19 — Skeptic review caught a silent universality assumption in a literature-application claim
+
+Applied Shtanov & Sahni (arXiv:1010.6205, real, verified) to `F_oP` — mapped the
+two-body potential into their `φ(r)=-(G/r)f(r)` form via `φ≡V(r)/(m_A m_P)`, got a
+clean, computer-algebra-verified `G_eff=G` result (dipole/quadrupole vanish from
+background `H(z)`). Independent context-asymmetry skeptic review found the mapping
+silently assumed `B`, `C` (dipole/quadrupole coefficients) were bilinear in
+`(m_A,m_P)` alone — checking the primary source directly (not memory) showed `k_A`
+is defined as "internal kinetic energy of object-A," a per-cluster physical
+quantity, not something reducible to a mass product. The universal-kernel
+requirement Shtanov & Sahni's whole derivation depends on was not actually met.
+Full writeup: `docs/124`, formally registered as `null_results/20260719-nr016...`.
+
+**Takeaway:** the same discipline that caught NR-015 (2026-07-18, a self-authored
+statistical claim) also caught a self-authored *literature-adaptation* claim one day
+later — a different failure mode (silent scaling assumption vs. a mis-dated
+threshold) but the same fix: adversarial review before presenting a clean-looking
+derivation as established, especially when the "clean" result is a symbolic limit
+that looks too tidy to be wrong.
+
 ## 2026-07-18 — Skeptic review caught an inaccurate self-authored claim before it shipped
 
 Wrote NR-015 ("T_X shared-variable artifact") with an "ARTIFACT-CONFIRMED" verdict and a

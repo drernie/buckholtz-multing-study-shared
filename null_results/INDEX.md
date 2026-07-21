@@ -22,6 +22,7 @@
 | NR-013 | 2026-07-13 | r011-beta-profile-nesting | REJECTED WITHIN IMPLEMENTATION | true eta_q profile + eta_q→∞ closed form both ≤ Q(0,0)=0.7334; old "optimum" 0.6235 was a box-excluded-baseline artifact |
 | NR-014 | 2026-07-17 | h1e-agn-feedback-confound | KILL | r(delta_M,E_ICM\|M_WL,K0)=-0.7181 p=1.33e-08; AGN feedback does not mediate; 4/4 standard-physics alternatives now killed |
 | NR-015 | 2026-07-18 | tx-shared-variable-artifact | ARTIFACT-CONFIRMED | r(delta_M,M_gas\|M_WL,T_X)=-0.08 p=0.58, signal vanishes once T_X controlled; T_X alone r=-0.81 stronger than E_ICM itself; reclassifies NR-011/012/014's "robust to 4 confounds" framing as overclaim |
+| NR-016 | 2026-07-19 | shtanov-bridge-naive-mapping | REJECT | phi=V/(m_A m_P) not universal kernel; B,C depend on per-cluster k_A/m_A, k_P/m_P not just m_A*m_P product |
 
 ---
 
