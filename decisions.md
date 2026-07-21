@@ -94,11 +94,29 @@ Q006 construct the MULTING Lagrangian (docs/129)  → DONE (Lagrangian built + v
     BUT broad "ξ=0 ⇒ ΛCDM-degenerate" closure FALSIFIED by skeptic. Sharpened to ONE
     named missing parameter η (scalar tidal response of k: k→k₀+η|∇∇Φ|²τ). η unfixed
     by corpus → [BLOCKED on TJB η OR a covariant completion OR a k-rigidity theorem]
-P4  covariant completion / N-body keeping dipole ANISOTROPY   [C1 done for the dipole;
-    a full covariant closure is the only route that could overturn P2's caveat C1]
+P4  covariant completion (CANDIDATE-L1) → FAILS weak-field matching on the REPULSIVE
+    dipole sign (docs/131): structure matchable (sombrero, alignment derived), but
+    MULTING's repulsive dipole needs k_A/c² (positive mass-energy) to anti-gravitate,
+    against the equivalence principle. [covariant program CLOSED at reconstruction level]
 P5  Candidate G as independent phenomenological benchmark
 P6  MCMC / CC / DESI — only after a surviving closure exists
 ```
+**L1 outcome (docs/131, 2026-07-22) — arc endpoint:** the natural covariant completion
+(Blanchet-Le Tiec polarizable medium) FAILS to reproduce MULTING's *repulsive* dipole
+with a stable, positive-energy, ghost-free, EP-respecting static local action. The
+1/r³ ∝ k_A m_B STRUCTURE matches (fixed-magnitude "sombrero" dipole, alignment DERIVED
+by energy minimization), but the energy-minimized alignment is ATTRACTIVE; MULTING's
+repulsion is the unstable maximum. Decisive: k_A is internal kinetic ENERGY, so k_A/c²
+is a positive mass (the 1/c² in F_d = the mass-energy factor), which gravitates
+attractively (EP) — a repulsive dipole from it violates EP. Escapes closed by 2 cheap
+checks (k_A-as-free-charge: closed, k_A IS energy; vector mediator: gives 1/r not 1/r³).
+**Whole cosmological arc P1→L1 now converges to a single physical bottom line:** under a
+reconstruction, MULTING's cosmological sector is invisible to background H(z) (P2) and
+linear fσ8 (P3), and its *repulsive* dipole resists a stable local covariant realization
+(L1) — it is under-specified (η, Q006) AND in tension with the EP if read as
+energy-gravity. NOT_REFUTATION: every gap/tension is a modeling choice only TJB can
+resolve. No further in-session progress without TJB or a labeled model-extension.
+
 **P3 outcome (docs/128, 2026-07-22):** the broad "linear fσ8 degenerate" claim was
 skeptic-FALSIFIED (5 holes: induced-polarization branch untested; fixed-Ωm bound
 artifact; scale-independent parametrization; single z-point; ≥6 other first-order
