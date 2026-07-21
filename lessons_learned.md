@@ -7,6 +7,30 @@ scientific null result here just because it "felt like a lesson." Cross-referenc
 
 ---
 
+## 2026-07-21 — "Algebraic revival of a physical null" — a named failure mode the skeptic caught
+
+Ran the P1 Factorization Gate to test whether NR-016's obstruction could be lifted.
+Found (sympy-exact) that `F_oP` factorizes into a global 2×2 matrix kernel with
+per-object charge `(m_i, k_i r_i)` — cleanly escaping the *algebraic* single-kernel
+problem NR-016 hit. It was tempting to read this as "NR-016's obstruction is
+non-fatal, Shtanov is revived." A context-asymmetry skeptic pass (given only the
+algebra + the interpretation, not the reasoning) named the exact error: **NR-016 was
+killed by a physical fact — `k_i r_i` has no conserved cosmological background — not
+an algebraic one, so resolving the algebra leaves the kill fully intact (arguably
+worse, since a non-conserved quantity is now promoted to a "density field").** The
+factorization was itself motivated by wanting to rescue the mapping (AOG-5 fail).
+
+**Takeaway (the pattern, worth naming):** when a killed result gets "revived" by a
+cleaner equation-level rewrite, check whether the rewrite touches the *reason* it was
+killed or only the *symptom*. If the original kill was physical (conservation,
+symmetry, dimensionality) and the revival is algebraic (factorization, change of
+variables, reparametrization), the revival is cosmetic — the null stands. This is the
+**third** skeptic catch this session (NR-015 statistical, NR-016 universality
+assumption, this one algebraic-vs-physical) and the cleanest illustration that the
+context-asymmetry pass earns its cost specifically on *self-authored* results that
+look too tidy. Full content: `docs/125`; the surviving algebraic fact is a pearl
+(2026-07-21), not a bridge.
+
 ## 2026-07-19 — Skeptic review caught a silent universality assumption in a literature-application claim
 
 Applied Shtanov & Sahni (arXiv:1010.6205, real, verified) to `F_oP` — mapped the

@@ -77,9 +77,25 @@ check before that: search the full preprint for any stated `k_A`-mass scaling
 relation (Relaxation 3) — minutes of work, could make the harder derivation
 unnecessary if a simplifying assumption is already given by the author.
 
+## Addendum (2026-07-21) — Relaxation Map item 1 attempted, insufficient
+
+The Relaxation Map above (item 1, "population-averaged / non-single-pair effective
+kernel") was partially attempted via a **matrix-kernel factorization** (docs/125,
+the P1 Factorization Gate): `F_oP` was shown (sympy-exact) to admit a global 2×2
+bilinear kernel with per-object charge `(m_i, k_i r_i)`, escaping the *algebraic*
+single-kernel obstruction of this NR. However, a context-asymmetry skeptic pass
+found this does **not** lift the REJECT: NR-016's kill is **physical**, not
+algebraic — `k_i r_i` has no conserved cosmological background `ϱ_q(t)` for
+Shtanov & Sahni's `[ρ-ϱ]` subtraction, and the matrix form promotes a
+non-conserved quantity to a "density field" without providing one. So NR-016 stands,
+now sharpened: the obstruction is the missing conserved background of the second
+charge (→ P3 kinetic coarse-graining or P4 no-go, not a Shtanov shortcut). The
+algebraic factorization itself survives as a reusable structural fact (pearl
+2026-07-21), just not as a bridge revival.
+
 ---
 
 *REJECT — literature-application bridge falsified. skeptic [FALSIFIED, context-asymmetry]
 + primary-source cross-check [VERIFIED-DIRECT-QUOTE] + sympy re-derivation [VERIFIED-BASH].*
 *Parent: `docs/123` item 53 (Shtanov & Sahni candidate, rank 2/12) + `docs/124` (full
-derivation, corrected in place after this falsification).*
+derivation, corrected in place after this falsification). Addendum: `docs/125`.*
