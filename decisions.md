@@ -128,7 +128,7 @@ closure (caveat C1: a covariant/N-body closure keeping dipole anisotropy could d
 - **P1 Factorization Gate — RESULT (2026-07-21, sympy-verified + skeptic-reviewed,
   SPLIT VERDICT):** the algebra is CONFIRMED — a single scalar kernel FAILS (confirms
   NR-016); a **2×2 matrix kernel** with per-object charge `Q_i=(m_i, q_i)`,
-  `q_i≡k_i r_i`, reproduces F_oP EXACTLY (global entries κ_mm=G, κ_mq=2Gβ_d/c²,
+  `q_i≡k_i r_i`, reproduces F_oP EXACTLY (global entries κ_mm=G, κ_mq=Gβ_d/c²,
   κ_qq=Gβ_q²/c⁴; same charge `k_i r_i` serves dipole and quadrupole). But the
   interpretation "this revives Shtanov-Sahni" is **FALSIFIED** (context-asymmetry
   skeptic — a same-model isolated-context pass, Weak-Medium independence, later

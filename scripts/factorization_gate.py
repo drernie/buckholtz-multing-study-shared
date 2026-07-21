@@ -38,7 +38,7 @@ def main() -> int:
     #   dipole    F_d ~ B/r^3,  B = (2 G beta_d/c^2)(k_i r_i m_j + k_j r_j m_i)   [r_dA=beta_d r_A]
     #   quadrupole F_q ~ C/r^4, C = (G beta_q^2/c^4)(k_i r_i)(k_j r_j)           [r_qAB^2=beta_q^2 r_A r_P]
     A_coeff = G * m_i * m_j
-    B_coeff = (2 * G * beta_d / c**2) * (k_i * r_i * m_j + k_j * r_j * m_i)
+    B_coeff = (G * beta_d / c**2) * (k_i * r_i * m_j + k_j * r_j * m_i)
     C_coeff = (G * beta_q**2 / c**4) * (k_i * r_i) * (k_j * r_j)
 
     print("=" * 70)
@@ -62,7 +62,7 @@ def main() -> int:
     #   kappa_mm on 1/r  (-> 1/r^2 force),  kappa_mq on 1/r^2 (-> 1/r^3),
     #   kappa_qq on 1/r^3 (-> 1/r^4).
     q_i, q_j = k_i * r_i, k_j * r_j
-    kappa_mm, kappa_mq, kappa_qq = G, 2 * G * beta_d / c**2, G * beta_q**2 / c**4
+    kappa_mm, kappa_mq, kappa_qq = G, G * beta_d / c**2, G * beta_q**2 / c**4
     A_rec = kappa_mm * m_i * m_j
     B_rec = kappa_mq * (m_i * q_j + m_j * q_i)
     C_rec = kappa_qq * q_i * q_j

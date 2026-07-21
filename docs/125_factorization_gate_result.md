@@ -24,6 +24,14 @@ verified), 2026-07-21, verdict FALSIFIED.
 > likewise a rhetorical read, not established. Status labels: `MATRIX FACTORIZATION —
 > PASS · COSMOLOGICAL CLOSURE FOR q — MISSING · DIRECT SHTANOV — BLOCKED · NO-GO —
 > NOT YET PROVED`.
+>
+> **Correction 2026-07-22 (user-caught, source-verified):** the dipole coefficient was
+> written `2Gβ_d/c²` here and in the scripts — a misread of the preprint's `c⁻²` (=1/c²)
+> as a coefficient `−2`. The correct value is `Gβ_d/c²` (no 2); fixed in place above and
+> in `scripts/factorization_gate.py` (residual still 0). **Cosmologically immaterial** —
+> the factorization structure and every P2/C1/P3/Q006 conclusion depend on r-powers and
+> the bilinear form, not this coefficient — but corrected for the CANDIDATE-L1 matching
+> program (docs/130). The quadrupole `Gβ_q²/c⁴` was already correct.
 
 ---
 
@@ -40,11 +48,11 @@ cosmological bridge (arXiv:1010.6205) requires — either as a single scalar ker
 kernel matrix and a per-object charge vector `Q_i = (m_i, q_i)`, `q_i ≡ k_i r_i`.*
 
 - Single universal SCALAR kernel `F_ij = -m_i m_j ∂_r φ(r)`: **FAILS**.
-  `dipole/(m_i m_j) = 2Gβ_d/c²·(k_i r_i/m_i + k_j r_j/m_j)` is pair-dependent
+  `dipole/(m_i m_j) = Gβ_d/c²·(k_i r_i/m_i + k_j r_j/m_j)` is pair-dependent
   (confirms NR-016's obstruction at the scalar level).
 - Finite 2×2 MATRIX kernel: **EXACT**. With `Q_i=(m_i, k_i r_i)`, the whole pair
   potential is `Q_iᵀ K(r) Q_j` with **global** (pair-independent) entries
-  `κ_mm=G`, `κ_mq=2Gβ_d/c²`, `κ_qq=Gβ_q²/c⁴`. All three residuals exactly 0.
+  `κ_mm=G`, `κ_mq=Gβ_d/c²`, `κ_qq=Gβ_q²/c⁴`. All three residuals exactly 0.
 - Non-trivial structural fact: the **same** charge `q_i=k_i r_i` serves both the
   dipole (cross term `q_i m_j + q_j m_i`) and the quadrupole (`q_i q_j`) — a genuine
   2-species structure, not three separate per-multipole charges. This is in the

@@ -33,14 +33,14 @@ def main() -> int:
     # Constructed pair potential (docs/125 bilinear kernel; q_i = k_i r_i):
     V = (
         -G * mi * mj / r
-        + (G * bd / c**2) * (mi * qj + mj * qi) / r**2
+        + (G * bd / (2 * c**2)) * (mi * qj + mj * qi) / r**2
         - (G * bq**2 / (3 * c**4)) * qi * qj / r**3
     )
     Fr = sp.simplify(-sp.diff(V, r))  # radial force, outward positive
 
     # Target: preprint Eqs. 14-16, F_oP = F_m - F_d + F_q, radial (-A/r^2 + B/r^3 - C/r^4)
     A = G * mi * mj
-    B = (2 * G * bd / c**2) * (qi * mj + qj * mi)
+    B = (G * bd / c**2) * (qi * mj + qj * mi)
     Cc = (G * bq**2 / c**4) * qi * qj
     target = -A / r**2 + B / r**3 - Cc / r**4
 

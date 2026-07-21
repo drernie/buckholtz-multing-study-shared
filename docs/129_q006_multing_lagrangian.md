@@ -33,7 +33,7 @@ Two further verbatim source facts that decide the cosmologically-relevant questi
 ## Derived Lagrangian (VERIFIED, sympy residual = 0)
 
 The pair force `F_oP = F_m - F_d + F_q` (radial `F_r = -A/r² + B/r³ - C/r⁴`, with
-`A=G m_i m_j`, `B=(2Gβ_d/c²)(q_i m_j + q_j m_i)`, `C=(Gβ_q²/c⁴) q_i q_j`) is exactly
+`A=G m_i m_j`, `B=(Gβ_d/c²)(q_i m_j + q_j m_i)`, `C=(Gβ_q²/c⁴) q_i q_j`) is exactly
 `F_r = -dV/dr` of the pair potential
 
 ```
