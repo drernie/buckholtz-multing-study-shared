@@ -137,5 +137,45 @@ its own positive control (shell theorem at n=2). The round values `0, −1/3, �
 the exact analytic angular factors the MC reproduced — a convergence of methods, not
 a red flag (self-audited: `(2−n)/3` is the comparison target, never an input to the
 force sum). The `∇·g` divergence route is NOT counted as independent (same physics as
-S&S). Remaining rung: a human/textbook confirmation, or an anisotropic-dipole N-body
-that tests caveat C1 (the scalar-radial reduction of the odd dipole).
+S&S).
+
+## Caveat C1 tested: anisotropic (vector) dipole N-body (2026-07-22, user-requested)
+
+C1 was the one route that could overturn "background H is q-blind": P2 and the G_αβ
+check reduced the dipole to a SCALAR radial `1/r³` force, but the MULTING dipole is an
+ODD multipole — a genuine VECTOR (the preprint describes object-A as two
+spatially-separated sub-masses, so the effect depends on the orientation of A's
+internal axis). `scripts/c1_anisotropic_dipole_nbody.py` keeps the full anisotropic
+force `F_dip ∝ [p_j − 3(p_j·r̂)r̂]/r³` (vector dipole moment `p_j = q·n̂_j`), sums it
+over a uniform ball of objects, and measures the background tidal coefficient for two
+orientation ensembles:
+
+- **RANDOM (isotropic) orientations** — the physical background (A1): ensemble-mean
+  tidal `= +0.085 ± 0.58 (SEM)`, **z-score +0.15σ → consistent with zero**. The
+  monopole-dipole force is LINEAR in `p_j` and `⟨n̂_j⟩ = 0` for isotropic
+  orientations, so the mean washes out **exactly** — a MORE robust mechanism than
+  P2's scalar-radial limit (odd-multipole isotropy, not a limit artifact).
+- **ALIGNED (∥z) control** — coherent, NON-isotropic: tidal `= +9.9` (definite,
+  nonzero). So the anisotropic vector force IS real and the test detects it; the
+  washout is a property of isotropic averaging, not of a broken/insensitive test.
+- **Per-realization STD `= 36.6`** (can exceed the aligned value): the dipole's real
+  dynamical action is LARGE fluctuations — the SECOND-ORDER (structure-formation)
+  signal — consistent with the `beta_cv.py` pearl ("degenerate with ΛCDM at first
+  order, distinguishable only at second"). Real physics, but NOT in background H(z).
+
+**C1 does NOT overturn the result.** Keeping the full dipole anisotropy, an isotropic
+background still gives a q-blind background H (mean tidal 0.15σ from zero). The ONLY
+way to source the background is a globally coherent dipole alignment (a preferred
+direction) — which violates isotropy (A1) and is independently excluded by CMB
+isotropy. Tidal/partial alignment is a perturbative (structure) effect → second
+order, not background.
+
+## Verification status — closed rungs
+
+The "background H is q-blind under the S&S closure" conclusion is now robust to:
+(a) time-dependent `q(a)` (P2, ΔH=0); (b) the same-formula-independence concern
+(brute-force MC, its own shell-theorem control); (c) the scalar-radial-reduction
+concern (C1, full vector dipole N-body, its own aligned control). The only remaining
+rung on the Independent Verification Strength Ladder is an **external human/textbook
+or blind-replication** check — inherently outside a single session. All three
+in-session independent routes agree.
