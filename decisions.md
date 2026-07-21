@@ -85,13 +85,25 @@ single-kernel Shtanov mapping falsified) plus the Factorization Gate result belo
 P0  fix the corpus + get author's answer on the F_oP→H(z) procedure   [blocked on TJB]
 P1  non-uniqueness lemma (docs/126)     → FALSIFIED at background level by P2 (docs/127)
 P2  constructive counterexample (docs/127)  → DONE: ΔH=0 under S&S background closure
-P3  does q(a) affect STRUCTURE-FORMATION observables (fσ8, Sec. III)?  [redirected — the
-    only place a MULTING cosmological signature can live, given P2]
-P4  covariant completion / N-body keeping dipole ANISOTROPY   [the only route that could
-    overturn P2's caveat C1 that background H is q-blind]
+C1  anisotropic vector-dipole N-body (docs/127)  → DONE: background washout survives
+    (mean tidal 0.15σ from 0); dipole signal is 2nd-order structure, not background H
+P3  does the dipole affect linear fσ8?  → PARTIALLY DONE (docs/128): broad claim
+    FALSIFIED by skeptic; intrinsic-random branch is ΛCDM-equivalent, but the
+    INDUCED-POLARIZATION branch (Blanchet DDM) is UNTESTED and routes into Q006 →
+    [BLOCKED ON Q006 — the Lagrangian decides ξ (n̂↔∇∇Φ); real test = μ(k,z) on the
+    full fσ8(z) compilation + E_G, marginalized over Ωm/σ8]
+P4  covariant completion / N-body keeping dipole ANISOTROPY   [C1 done for the dipole;
+    a full covariant closure is the only route that could overturn P2's caveat C1]
 P5  Candidate G as independent phenomenological benchmark
 P6  MCMC / CC / DESI — only after a surviving closure exists
 ```
+**P3 outcome (docs/128, 2026-07-22):** the broad "linear fσ8 degenerate" claim was
+skeptic-FALSIFIED (5 holes: induced-polarization branch untested; fixed-Ωm bound
+artifact; scale-independent parametrization; single z-point; ≥6 other first-order
+probes ignored). Only a NARROW claim survives (intrinsic-random branch = ΛCDM-equiv).
+The dipole's cosmological-signature question closes NEITHER at the background (P2) NOR
+at linear fσ8 (P3) — it inherits the corpus's central open question **Q006 (the
+Lagrangian)**, which decides whether the induced-polarization channel exists.
 **P2 outcome (docs/127) changed the direction:** under the Shtanov–Sahni background
 closure, background `H(z)` is UNIQUELY `G_eff=G` (ΛCDM-like) and completely `q`-blind
 — the dipole/quadrupole background couplings vanish (`G·lim[f-rf']=0` for `1/r²`,
