@@ -89,9 +89,11 @@ C1  anisotropic vector-dipole N-body (docs/127)  → DONE: background washout su
     (mean tidal 0.15σ from 0); dipole signal is 2nd-order structure, not background H
 P3  does the dipole affect linear fσ8?  → PARTIALLY DONE (docs/128): broad claim
     FALSIFIED by skeptic; intrinsic-random branch is ΛCDM-equivalent, but the
-    INDUCED-POLARIZATION branch (Blanchet DDM) is UNTESTED and routes into Q006 →
-    [BLOCKED ON Q006 — the Lagrangian decides ξ (n̂↔∇∇Φ); real test = μ(k,z) on the
-    full fσ8(z) compilation + E_G, marginalized over Ωm/σ8]
+    INDUCED-POLARIZATION branch is UNTESTED and routes into Q006
+Q006 construct the MULTING Lagrangian (docs/129)  → DONE (Lagrangian built + verified)
+    BUT broad "ξ=0 ⇒ ΛCDM-degenerate" closure FALSIFIED by skeptic. Sharpened to ONE
+    named missing parameter η (scalar tidal response of k: k→k₀+η|∇∇Φ|²τ). η unfixed
+    by corpus → [BLOCKED on TJB η OR a covariant completion OR a k-rigidity theorem]
 P4  covariant completion / N-body keeping dipole ANISOTROPY   [C1 done for the dipole;
     a full covariant closure is the only route that could overturn P2's caveat C1]
 P5  Candidate G as independent phenomenological benchmark
@@ -104,6 +106,15 @@ probes ignored). Only a NARROW claim survives (intrinsic-random branch = ΛCDM-e
 The dipole's cosmological-signature question closes NEITHER at the background (P2) NOR
 at linear fσ8 (P3) — it inherits the corpus's central open question **Q006 (the
 Lagrangian)**, which decides whether the induced-polarization channel exists.
+**Q006 outcome (docs/129, 2026-07-22):** the non-relativistic Lagrangian was built and
+verified (sympy residual=0), but the broad closure "ξ=0 ⇒ ΛCDM-degenerate" was
+skeptic-FALSIFIED — "author does not model internal dynamics" is a modeling omission,
+not a physical zero, and a SCALAR tidal-heating channel η (k responding to ∇∇Φ, needing
+no orientation vector) is compatible with the corpus and controls the linear-growth
+signature. Net: the whole cosmological branch now hinges on ONE named, corpus-unfixed
+parameter η — a sharper open question than "the Lagrangian is missing", but still
+BLOCKED on TJB (or a labeled extension). NOT_REFUTATION: MULTING is under-specified in
+the sector cosmology needs, not refuted.
 **P2 outcome (docs/127) changed the direction:** under the Shtanov–Sahni background
 closure, background `H(z)` is UNIQUELY `G_eff=G` (ΛCDM-like) and completely `q`-blind
 — the dipole/quadrupole background couplings vanish (`G·lim[f-rf']=0` for `1/r²`,
