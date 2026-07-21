@@ -111,3 +111,31 @@ the next independent rung (per `falsification-ladder.md` Independent Verificatio
 Strength Ladder) would be an independent human/textbook check of the `G_αβ=0`
 background-coupling claim, or an independently-coded N-body background that keeps the
 dipole anisotropy (which would test caveat C1).
+
+## Independent verification of G_αβ=0 (2026-07-21, user-requested)
+
+The original `G_αβ=0` used Shtanov–Sahni's `G_eff = G·lim_{r→∞}[f−rf']` — one
+derivation. Re-running that formula, or the divergence route (`∇·g = −∇²φ`, the same
+physics S&S used), is only Weak–Medium on the Independent Verification Strength
+Ladder. `scripts/verify_Gab_independent.py` re-derives the result by a genuinely
+**different method** ("independently-written derivation" = Strong): direct
+Monte-Carlo summation of Newton's force law on a test particle displaced from the
+centre of a uniform spherical shell — **no potential, no Laplacian, no S&S formula**.
+
+Results (all MC-measured, nothing analytic injected):
+- **Angular factor** `⟨1−(n+1)cos²θ⟩` measured by brute-force finite difference:
+  `0.00000` (n=2), `−0.33333` (n=3), `−0.66667` (n=4) — matches `(2−n)/3` exactly.
+- **Built-in control:** the monopole (n=2) factor is `0` — the MC independently
+  reproduces Newton's **shell theorem** (exterior shells exert no interior force), so
+  the machinery is sound; the monopole background comes from ENCLOSED mass instead.
+- **Radial scaling** measured by MC at R=1,2,4,8: per-source tidal coeff `∝ R^−(n+1)`;
+  the bulk shell weight `R²·coeff` **shrinks** with R for n=3,4 → far/background
+  matter contributes nothing → `G_dipole = G_quad = 0`.
+
+**Two independent methods (S&S limit + brute-force MC) agree**, and the MC carries
+its own positive control (shell theorem at n=2). The round values `0, −1/3, −2/3` are
+the exact analytic angular factors the MC reproduced — a convergence of methods, not
+a red flag (self-audited: `(2−n)/3` is the comparison target, never an input to the
+force sum). The `∇·g` divergence route is NOT counted as independent (same physics as
+S&S). Remaining rung: a human/textbook confirmation, or an anisotropic-dipole N-body
+that tests caveat C1 (the scalar-radial reduction of the odd dipole).
