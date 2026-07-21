@@ -7,6 +7,27 @@ scientific null result here just because it "felt like a lesson." Cross-referenc
 
 ---
 
+## 2026-07-22 — "Narrow test, class claim" — over-generalizing one branch to a theory family
+
+The P3 fσ8 test (docs/128) modeled ONE dipole channel (intrinsic-random orientation),
+ONE parametrization (scale-independent constant), ONE data point (z=0.07), at FIXED
+Ωm — and the draft conclusion generalized to "MULTING dipole is degenerate with ΛCDM
+at linear order." A context-asymmetry skeptic FALSIFIED it on five independent holes,
+the strongest being an untested SECOND physical channel (induced/tidal polarization,
+Blanchet DDM) that the isotropic-averaging argument simply does not cover. The clean
+0.06σ data match and a working positive control made the draft LOOK solid — the gap
+was in physics *scope*, not numerics.
+
+**Takeaway:** when a test fixes a branch/parametrization/dataset/nuisance-parameter,
+the licensed claim is scoped to exactly those choices — generalizing to "the theory
+class is degenerate" silently asserts the untested branches behave the same. The
+tell: a clean result with a working control still deserves a skeptic pass on
+*coverage* ("what did I hold fixed, and does a real alternative violate it?"), not
+just on correctness. This is the 4th skeptic catch this session and the first on
+physics-modeling scope rather than an internal error — and it re-routed P3 into Q006
+(the Lagrangian), turning an "interesting theory question" into a load-bearing
+kill-condition.
+
 ## 2026-07-21 — "Algebraic revival of a physical null" — a named failure mode the skeptic caught
 
 Ran the P1 Factorization Gate to test whether NR-016's obstruction could be lifted.
