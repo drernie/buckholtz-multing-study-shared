@@ -14,11 +14,15 @@ Found (sympy-exact) that `F_oP` factorizes into a global 2×2 matrix kernel with
 per-object charge `(m_i, k_i r_i)` — cleanly escaping the *algebraic* single-kernel
 problem NR-016 hit. It was tempting to read this as "NR-016's obstruction is
 non-fatal, Shtanov is revived." A context-asymmetry skeptic pass (given only the
-algebra + the interpretation, not the reasoning) named the exact error: **NR-016 was
-killed by a physical fact — `k_i r_i` has no conserved cosmological background — not
-an algebraic one, so resolving the algebra leaves the kill fully intact (arguably
-worse, since a non-conserved quantity is now promoted to a "density field").** The
-factorization was itself motivated by wanting to rescue the mapping (AOG-5 fail).
+algebra + the interpretation, not the reasoning) named the exact error: **the
+obstruction is not algebraic but about cosmological CLOSURE — the evolution law for
+`k_i r_i` is missing from the corpus, so resolving the algebra leaves the closure
+question fully open.** The factorization was itself motivated by wanting to rescue
+the mapping (AOG-5 fail). (Second-order lesson, added same day after user review: the
+skeptic itself over-stated this as "no conserved background *exists*" — a same-model
+pass is Weak-Medium independence and cannot certify non-existence; the honest label
+is "MISSING from corpus," and the robust check is the `docs/126` counterexample. Even
+the tool that catches overclaims can overclaim.)
 
 **Takeaway (the pattern, worth naming):** when a killed result gets "revived" by a
 cleaner equation-level rewrite, check whether the rewrite touches the *reason* it was

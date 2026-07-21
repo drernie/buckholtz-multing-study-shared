@@ -80,16 +80,21 @@ single-kernel Shtanov mapping falsified) plus the Factorization Gate result belo
 - **Two-loop operating mode:** `MULTING SOURCE VALIDATION — WAITING FOR AUTHOR` (P0,
   blocked on TJB) runs in parallel with independent bridge research (P1+).
 
-**Revised priority ladder (P0–P6):**
+**Revised priority ladder (P0–P6, re-ordered 2026-07-21 after the Factorization Gate +
+user review — non-uniqueness proof now precedes any no-go):**
 ```
 P0  fix the corpus + get author's answer on the F_oP→H(z) procedure   [blocked on TJB]
-P1  Universality / Factorization Gate — can F_oP be a global kernel?   [RUN 2026-07-21]
-P2  Candidate G as independent benchmark (identifiability, synth recovery)
-P3  multi-species kinetic / continuum coarse-graining (if P1 needs it)
-P4  scoped no-go theorem (object-dependence + isotropy + no closure ⇒ non-unique H(z))
-P5  covariant completion (action → field eqs → FLRW → perturbations)
-P6  CC / DESI / BAO / MCMC — only for a bridge that passed P1–P5
+P1  theorem of non-uniqueness of closure (docs/126)                   [SKETCH stated]
+P2  constructive counterexample: two admissible q_i(a) laws → different H(a)  [designed]
+P3  kinetic / virial coarse-graining (once a closure is chosen)
+P4  scoped no-go under explicitly listed assumptions   [ONLY after P1+P2]
+P5  Candidate G as independent phenomenological benchmark
+P6  MCMC / CC / DESI — only after a closure is chosen
 ```
+Note: the Universality/Factorization Gate (formerly "P1") is DONE (result below); it
+fed directly into the new P1 (non-uniqueness). Covariant completion (formerly P5)
+is deferred behind the non-uniqueness question — no point completing a bridge whose
+closure is not even shown to be unique.
 
 - **P1 Factorization Gate — RESULT (2026-07-21, sympy-verified + skeptic-reviewed,
   SPLIT VERDICT):** the algebra is CONFIRMED — a single scalar kernel FAILS (confirms
@@ -97,16 +102,18 @@ P6  CC / DESI / BAO / MCMC — only for a bridge that passed P1–P5
   `q_i≡k_i r_i`, reproduces F_oP EXACTLY (global entries κ_mm=G, κ_mq=2Gβ_d/c²,
   κ_qq=Gβ_q²/c⁴; same charge `k_i r_i` serves dipole and quadrupole). But the
   interpretation "this revives Shtanov-Sahni" is **FALSIFIED** (context-asymmetry
-  skeptic): NR-016 was killed by a *physical* fact (`k_i r_i` has no conserved
-  cosmological background `ϱ_q(t)` for Shtanov-Sahni's `[ρ-ϱ]` subtraction), not an
-  algebraic one. The matrix factorization resolves the algebra and leaves the
-  physical obstruction intact (arguably worse). **Licensed claim:** F_oP is a
-  2-species bilinear form with charges `(m_i, k_i r_i)`. **NOT licensed:** "Shtanov
-  revived" / "matrix-component extension is the next step." Consequence: the
-  matrix-Shtanov shortcut is CLOSED; the physical obstruction points to P3 (kinetic
-  coarse-graining, which must confront the missing `ϱ_q(t)`) and P4 (the skeptic's
-  objection is close to P4's central lemma), NOT back to a Shtanov adaptation. See
-  `docs/125` + `scripts/factorization_gate.py`.
+  skeptic — a same-model isolated-context pass, Weak-Medium independence, later
+  corroborated by independent human review). The evolution law for `q=k_i r_i` is
+  **MISSING from the corpus** (absence of evidence, NOT proven non-existent), so
+  Shtanov-Sahni's `[ρ-ϱ]` subtraction has no background for the second charge.
+  **Licensed claim:** F_oP is a 2-species bilinear form with charges `(m_i, k_i r_i)`.
+  **NOT licensed:** "Shtanov revived" / "matrix-component extension is the next step"
+  / "the shortcut is closed" / "no background exists". Corrected status labels
+  (2026-07-21): `MATRIX FACTORIZATION — PASS · COSMOLOGICAL CLOSURE FOR q — MISSING ·
+  DIRECT SHTANOV — BLOCKED · NO-GO — NOT YET PROVED`. Consequence: direct
+  matrix-Shtanov is BLOCKED (not closed); the correctly-scoped next step is the
+  **non-uniqueness-of-closure lemma** (`docs/126`, new P1), NOT a broad no-go. See
+  `docs/125` (corrected in place) + `docs/126` + `scripts/factorization_gate.py`.
 
 ## Repository hygiene
 
