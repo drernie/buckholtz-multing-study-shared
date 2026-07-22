@@ -22,21 +22,26 @@ non-identifiable, or never independently derived).
 | **r_A** | Cluster radius (r₅₀₀) | Mpc | Real: MCXC meta-catalogue | per-cluster, real | same as k_A | 🟢 **RESOLVED** — standard, independently-cross-checkable X-ray catalogue quantity |
 | **D(z)** | Inter-cluster (pair) distance, `D₀/(1+z)`, D₀=100 Mpc | Mpc | **Author-undisclosed convention** — paper's own text (§results, line ~488) explicitly labels this "a phenomenological hypothesis, not a derivation" | D₀=100 Mpc (our audit's own choice, never confirmed against TJB's) | `src/pearson_fit.py` `phi()` | 🔴 **UNRESOLVED — THE #1 untested load-bearing assumption** (deep audit, 2026-07-22): the entire Track-A edifice (R011, T4, the cosmological STOP, "MULTING≡ΛCDM@73") is conditional on this specific functional form, never independently tested or derived (Q005 HOLD) |
 | **β_d, β_q** | Dipole/quadrupole coupling coefficients | dimensionless | Three independent AI-service extractions, wildly inconsistent: Claude/Table A1 (4.5, 18.0), Gemini (4.25, 8.10), ChatGPT (0.78, 0.19) — BRAI Birge Ratio R_B=15.9/24.1, p<10⁻⁴ | no single value — non-identifiable | `phi()` formula | 🔴 **UNRESOLVED** — Q004 HOLD; author's own words: derivation "remains to be determined" (facts.json, docs/122) |
-| **F_d/F_m (ε)** | Dipole/monopole force ratio | dimensionless | Computed from k_A, r_A, D, β_d on the real pipeline | median ε≈1.6×10⁻⁷ at β_d=4.5; requires β_d≳2.9×10⁵ for ε≳1% | `paper/main.tex §beta`, `scripts/t4_monopole_dominance.py` | 🟢 **RESOLVED** (within this pipeline's D(z)/k_A conventions) — negligible at every source-attributed β; fixed 2026-07-22 (commit c125179) after catching a ~30-65× illustrative-number error (T11, NR-adjacent) |
+| **F_d/F_m — analytical formula** | `ε = β_d[(k_A/M_Ac²)(r_A/D) + (k_P/M_Pc²)(r_P/D)]` | dimensionless (formula) | Direct algebra from the published force law | exact, formula-level | `paper/main.tex Eq.(epsilon)` | 🟢 **RESOLVED** — the formula itself is not in dispute, only its inputs |
+| **F_d/F_m — for a specified pair** | Same formula, evaluated at real (k_A,r_A) with an assumed D | dimensionless (number) | Real MCXC/PSZ2 k_A,r_A + our own D₀=100 Mpc convention | median ε≈1.6×10⁻⁷ at β_d=4.5; requires β_d≳2.9×10⁵ for ε≳1% | `scripts/t4_monopole_dominance.py`, `paper/main.tex §beta` | 🟡 **CONDITIONAL** — correct *given* our D(z) convention and *given* a specified β_d; changes if either input changes (T11, commit c125179, fixed a ~30-65× illustrative-number error in this row specifically) |
+| **F_d/F_m — cosmological effective value** | ε(z) as actually entering TJB's H_MULT(z) | dimensionless (function of z) | Requires D(z), β_d, β_q, and an averaging/selection rule over the real cluster population — none independently confirmed | not computable without the 🔴 rows below | — | 🔴 **UNRESOLVED** — this is the row that actually matters for the cosmological claim; do not read the 🟡 row above as settling it |
 | **H_MULT(z)** | `H_anchor·√(φ(z)/φ(z_ref))` | km/s/Mpc | **Phenomenological formula**, not derived from an action/Lagrangian (Q006 open, no MULTING Lagrangian exists) | Underperforms trivial (1+z)² baseline AND monopole-only at every tested (β_d,β_q) — R011 v2-v6, T4 (2026-07-22) | `src/pearson_fit.py` | 🔴 **TESTED-AND-FAILS** (within this pipeline) — the STOP (R011/docs122 v6) is analytically proven *for this implementation*, but the D(z)/β conventions feeding it are themselves 🔴, so the STOP's scope is explicitly "this pipeline," not "any possible MULTING closure" (docs/122's own careful scoping, reaffirmed here) |
 
 ---
 
 ## Reading the table
 
-**What is solid (🟢), independent of TJB:** the force-law layer (r_A, ε computation) and the
-statistical verdict that this pipeline's H_MULT(z) does not beat trivial baselines. These do not
-need author input to stand.
+**What is solid (🟢), independent of TJB:** r_A, and the ε *formula* itself. The statistical
+verdict that this pipeline's H_MULT(z) does not beat trivial baselines is also solid, but note
+the ε row's own split above — a 🟢 formula and a 🟡 conditional numeric value do not automatically
+make the 🔴 cosmological-effective value resolved. **Do not collapse those three levels** —
+formula-resolved, pair-conditional, and cosmologically-effective are different claims, and only
+the first is unconditionally true independent of TJB.
 
 **What is genuinely blocked (🔴), cannot be resolved by any further audit:** D(z)'s functional
-form, β_d/β_q's first-principles values, and the Lagrangian/action generating H_MULT(z) in the
-first place. No amount of additional computation on real cluster data changes this — the audit
-has data, not the author's closure.
+form, β_d/β_q's first-principles values, the cosmological-effective ε(z), and the Lagrangian/
+action generating H_MULT(z) in the first place. No amount of additional computation on real
+cluster data changes this — the audit has data, not the author's closure.
 
 **What is ambiguous (🟡) and worth a direct question:** k_A's normalization. We have a real,
 defensible physical proxy (SZ/X-ray) that we use throughout; TJB's own supplementary text states

@@ -207,6 +207,20 @@ activeContext; recommended order: T8.1 → T1.1+T9.1 → T3.1 → T5.1+T6.1.
   were independently verified against the actual script and stand on their own.
   Artifacts: scripts/t8_icm_partial_mechanism.py, scripts/t8b_measurement_error_null.py,
   boyko_T8_report.md, boyko_T8b_null.md.
+  **Circularity CLOSED 2026-07-22 (T8c, coordinator-reproduced):** leave-one-out refit of the
+  null's HSE slope across all 50 clusters — LOO std=0.0165 (1.2% of b_in=1.385), max single-
+  cluster shift 4.79%, no leverage outlier. Out-of-sample null percentile 42.4% (vs in-sample
+  46.1%) — stays near-median, does NOT shift toward the tail. Independently cross-checked with a
+  fully EXTERNAL HSE slope (Arnaud, Pointecouteau & Pratt 2005, A&A 441, 893, arXiv:astro-ph/
+  0502210, α=1.49±0.15 for hot clusters kT>3.5 keV — [VERIFIED-WEBSEARCH title+journal+value,
+  coordinator]; zero in-sample slope information) → obs at 52.0th percentile, dead on the null
+  median. The circularity precondition (in-sample fit laundering cluster-specific physics) is
+  absent on both tests. **R010 status upgraded MEDIUM → HIGH** (artifact-of-definitional-
+  T_X-coupling reading). This was the last legitimate internal test identified by the 2026-07-23
+  external re-review (P4); it passed — R010 internal-audit line CLOSED. Remaining, does not
+  reopen the verdict: a truly T_X-independent ICM-energy proxy remains [BLOCKED-DATA] — bounds
+  further *external* confirmation only. Artifact: scripts/t8c_leave_one_out_refit.py +
+  boyko_T8c_leave_one_out.md.
 
 ### T9 — Joint look-elsewhere across ALL of TJB's numerical relations (meta) — PRIORITY 2
 - **Context:** The project has several claimed relations (Eq.32, 7:9:17, N=5.36, + preprint).
