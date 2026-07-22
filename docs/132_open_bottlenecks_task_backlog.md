@@ -31,7 +31,14 @@ tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
   evidence, promote.
 - **Resources:** `/boyko-specialist`, `/hypothesis-arbiter`, reuse `scripts/scan_reference_mass_robustness.py`. ~half-day.
 - **Guardrail:** NOT_VALIDATION (our audit, not TJB's derivation); no numerology-chaining (Q002 flag).
-- **Status:** OPEN
+- **Status:** RESOLVED 2026-07-22 — verdict **coincidence-leaning** [VERIFIED-BASH, coordinator-reproduced].
+  Prong 1 (second prediction): clean NULL — 0 of 5 dictated-Casimir companions sub-0.1% (best miss 36%);
+  per the Q001 discriminator this is the coincidence signature. Prong 2 (look-elsewhere v2): rank #1
+  holds in the baseline 83,160 space and the simple-coefficient space (14,520), but degrades to #3
+  (420,750 trials) and #5 (841,500 with sqrt(p/q) forms) — uniqueness is search-space-dependent.
+  Empirical p falls to ~6e-6 as pools grow (mechanical; rank loss is the load-bearing fact).
+  Artifact: `scripts/t1_eq32_second_prediction.py`. Open tail [UNKNOWN]: identity of the 2-4
+  broadened-space competitors (cheapest next step: top-5 print, classify alias/exotic/genuine).
 
 ### T2 — MULTING dipole: observational-viability window (NO fitting) — PRIORITY 3
 - **Context:** Fitting-branch STOPPED (R011). Separate, unmapped question: is the dipole
@@ -131,7 +138,16 @@ tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
 - **Resources:** reuse `scripts/scan_reference_mass_robustness.py`. High value for external credibility.
 - **Guardrail:** do this BEFORE any external submission of a numerical result — bring the referee
   the honest joint figure rather than receive it as an objection.
-- **Status:** OPEN
+- **Status:** RESOLVED 2026-07-22 — **surviving core = Eq.32 alone** [VERIFIED-BASH, coordinator-reproduced].
+  Of 7 named relations, only 2 have any usable p (R001 trials-corrected 6e-5; R004 raw); 5 are
+  [UNKNOWN] (consistency checks, not detections). Bonferroni (dependence-safe): Eq.32 survives 0.05
+  up to family size ~800 (m=7 → 4.2e-4). BH/BY FDR q=0.05: Eq.32 to m~100; fσ8 marginal (washes out
+  m≥100). No precise joint p quoted — shared lepton masses violate independence; fabricating one is
+  exactly the inflation the audit exists to prevent. Active misses stay on record: m_Z 5.5σ, ΔN_eff
+  (orders of magnitude; "130-477σ" = flagged false precision). SCOPE caveat: surviving cross-relation
+  correction (this task) ≠ surviving within-formula-space broadening (T1's rank #3/#5) — both facts
+  go together. Artifact: `scripts/t9_joint_lookelsewhere.py`. Cheapest next: trials-corrected p for
+  fσ8 proxy choice (~1-2h).
 
 ---
 
