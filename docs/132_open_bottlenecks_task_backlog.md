@@ -53,7 +53,7 @@ tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
   future derivation.
 - **Resources:** boyko-agent + `literature/refs_digitized/` (Blanchet) + Planck numbers. ~1 day.
 - **Guardrail:** NO_BRIDGE_FITTING (do not fit Table A1/H(z)); NOT_REFUTATION.
-- **Status:** OPEN
+- **Status:** RESOLVED-PARTIAL 2026-07-22 [mission run, coordinator-verified] — window ALIVE (instability edge amplitude-independent, tau_g>t_H by 4.3x; Planck s_eq<~1.5e-3 upper edge), but MULTING beta-placement BLOCKED on Q005 bridge. Artifact: scripts/t2_dipole_viability.py + boyko_T2_report.md
 
 ### T3 — The 7:9:17 boson mass-ratio: real pattern or coincidence? (the Z-tension)
 - **Context:** `m_W^2 : m_Z^2 : m_H^2 = 7 : 9 : 17` (R002). Higgs fits at 0.4σ, but Z shows
@@ -67,7 +67,7 @@ tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
 - **Resources:** PDG 2024/2026 masses (facts.json) + look-elsewhere scan + `/boyko-specialist` (EW).
   ~half-day.
 - **Guardrail:** NOT_VALIDATION; honest trials-factor.
-- **Status:** OPEN
+- **Status:** RESOLVED-PARTIAL 2026-07-22 [mission run, coordinator-verified] — look-elsewhere rank #1 (next triple ~8x worse chi2); Higgs 0.4sigma; Z-tension = +3.8sigma with FULL error propagation (NOT the stored 5.5sigma — R002 needs re-audit before external use); the ~1% Z-gap is the size of a 1-loop EW correction (plausible, not derived — the one live physics lead). Artifact: scripts/t3_boson_ratio_lookelsewhere.py + boyko_T3_report.md
 
 ### T4 — Is the monopole's dominance fundamental, or a bad quadrupole form? (R011 open)
 - **Context:** R011 v6: monopole baseline (r=0.7334) beats every MULTING config (proven
@@ -80,7 +80,7 @@ tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
   quadrupole FORM, not the physics, is the culprit.
 - **Guardrail:** ⚠️ NO_BRIDGE_FITTING — permutation/holdout discipline only, NOT a fishing
   expedition over Table A1. This is the most fitting-risky task; frame strictly as falsification.
-- **Status:** OPEN
+- **Status:** RESOLVED 2026-07-22 [mission run, coordinator-verified] — REJECT-leaning, STOP strengthened: among 13 pre-specified forms even the best cluster-physics tracer loses to trivial (1+z)^2 (0.8904 ceiling); cluster apparatus adds only scatter; monopole>dipole>quadrupole ranking robust in both holdout splits; permutation p<=0.001; NO coefficient fitted. Artifact: scripts/t4_monopole_dominance.py + boyko_T4_report.md
 
 ### T5 — Is the 5:1 dark/baryon ratio a real relic prediction or arithmetic? (N=5 unequal-mass)
 - **Context:** `Ω_DM/Ω_b = 5×1.074 = 5.37 ≈ 5.36` [NOT KILLED, conditional]. The match assumes
@@ -92,7 +92,7 @@ tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
 - **Kill/Success:** Needs fine-tuned n_i → arithmetic coincidence. Emerges naturally → real
   prediction, promote.
 - **Resources:** `/boyko-specialist` (ADM/mirror-DM). **Guardrail:** NOT_VALIDATION.
-- **Status:** OPEN
+- **Status:** RESOLVED 2026-07-22 [mission run, coordinator-verified] — REJECT-leaning: hitting 5.36 needs n_i/n_b=1 to ~1.2% per sector with no mechanism in corpus; mirror/ADM DERIVES the same 5:1 (competing explanation). Tuned arithmetic unless TJB supplies an isomer-level relic derivation. COUPLED to T6 (see cross-cutting note). Artifact: scripts/t5_relic_abundance.py + boyko_T5_report.md
 
 ### T6 — Honest ΔN_eff exclusion for IDM dark neutrinos (R005 redo)
 - **Context:** `ΔN_eff = 15-81` vs Planck `2.99±0.17`. The "130-477σ" figure is flagged as
@@ -101,7 +101,7 @@ tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
   Planck+BBN likelihood; test the 3 escapes (different BBN chemistry / hidden sector / decoupling).
 - **Kill/Success:** Excluded even under generous escapes → hard constraint. Escape exists → open door.
 - **Guardrail:** honest σ, no false precision (direct lesson from docs/122 v2).
-- **Status:** OPEN
+- **Status:** RESOLVED-PARTIAL 2026-07-22 [mission run, coordinator-verified] — honest exclusion: thermalized 5-isomer dark nu excluded by FACTOR ~50 (retire '130-477sigma' everywhere); early-decoupling (g*~107 dilutes to ~0.61) and grav-only escapes open the door. CROSS-CUTTING: T5<->T6 escapes are COUPLED — the non-thermality that rescues N_eff removes T5's equal-density basis; they cannot both be claimed. Artifact: scripts/t6_neff_honest.py + boyko_T6_report.md
 
 ### T7 — The distinguishing 2nd-order signature: does Euclid DR1 already decide? (Blanchet Window A)
 - **Context:** Dipolar DM = ΛCDM at 1st order; distinguishable only at 2nd order (CMB
@@ -114,7 +114,7 @@ tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
   dataset that would decide.
 - **Guardrail:** ⚠️ derivation-first ALLOWED, but the action adaptation is "the author's to do";
   we do constraint-mapping, not derive the theory for TJB.
-- **Status:** OPEN
+- **Status:** RESOLVED-PARTIAL 2026-07-22 [mission run] — distinguishing signal = post-equality-growing bispectrum non-Gaussianity (Blanchet 1210.4106); CMB channel already Planck-bounded (1312.6991); Euclid DR1 LSS products release ~mid-2027 so DR1 does NOT already decide; MULTING-specific prediction Q006-gated. Artifact: boyko_T7_report.md (literature, no script)
 
 ### T8 — The unexplained ICM partial correlation (R010 open)
 - **Context:** `partial r(δ_M, E_ICM | M_WL) = -0.701` — robust, survived H1c/H1d falsification,
@@ -125,7 +125,7 @@ tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
   systematic, selection effect, or genuinely unexplained?
 - **Kill/Success:** Maps to a known systematic → explained. Survives → registered anomaly (pearl).
 - **Guardrail:** do NOT present as TJB's mechanism (different observable).
-- **Status:** OPEN
+- **Status:** RESOLVED 2026-07-22 [mission run, coordinator-verified] — R010 puzzle RESOLVED-AS-SYSTEMATIC: r=-0.70 collapses to -0.08 under T_X control; T_X-mediated mass-observable systematic via HSE definition (identity delta_M=M_WL-M_hydro verified exactly); NOT an anomaly, NOT TJB's WHIM. Caveats: distinct from the earlier RETRACTED naive T_X test (mediation framing, stated); CC/NCC discriminator underpowered [WEAK, n=8]. Artifact: scripts/t8_icm_partial_mechanism.py + boyko_T8_report.md
 
 ### T9 — Joint look-elsewhere across ALL of TJB's numerical relations (meta) — PRIORITY 2
 - **Context:** The project has several claimed relations (Eq.32, 7:9:17, N=5.36, + preprint).
