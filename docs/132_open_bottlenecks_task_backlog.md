@@ -215,11 +215,16 @@ activeContext; recommended order: T8.1 → T1.1+T9.1 → T3.1 → T5.1+T6.1.
   0502210, α=1.49±0.15 for hot clusters kT>3.5 keV — [VERIFIED-WEBSEARCH title+journal+value,
   coordinator]; zero in-sample slope information) → obs at 52.0th percentile, dead on the null
   median. The circularity precondition (in-sample fit laundering cluster-specific physics) is
-  absent on both tests. **R010 status upgraded MEDIUM → HIGH** (artifact-of-definitional-
-  T_X-coupling reading). This was the last legitimate internal test identified by the 2026-07-23
-  external re-review (P4); it passed — R010 internal-audit line CLOSED. Remaining, does not
-  reopen the verdict: a truly T_X-independent ICM-energy proxy remains [BLOCKED-DATA] — bounds
-  further *external* confirmation only. Artifact: scripts/t8c_leave_one_out_refit.py +
+  absent on both tests. **R010 status upgraded MEDIUM → HIGH**, precisely scoped: *"the observed
+  amplitude is compatible with mathematical coupling and does not require additional physics"* —
+  this is NOT the same as *"100% of the correlation is proven to be caused by shared T_X"*; exact
+  causal decomposition (shared aperture, covariance structure, an independent T_X-free proxy)
+  remains open (see BLOCKED-DATA note below) and HIGH must not be read as closing that finer
+  question. This was the last legitimate internal test identified by the 2026-07-23 external
+  re-review (P4); it passed — R010 internal-audit line CLOSED **as a new-physics claim**.
+  Remaining, does not reopen the verdict: a truly T_X-independent ICM-energy proxy remains
+  [BLOCKED-DATA] — bounds further *external* confirmation and the exact-decomposition question
+  only, not the new-physics rejection itself. Artifact: scripts/t8c_leave_one_out_refit.py +
   boyko_T8c_leave_one_out.md.
 
 ### T9 — Joint look-elsewhere across ALL of TJB's numerical relations (meta) — PRIORITY 2
