@@ -452,16 +452,20 @@ The dipole force fraction at cluster scale is
     \varepsilon \equiv \frac{F_d}{F_m} = \beta_d \frac{k_A}{M} \frac{r_A}{D},
     \label{eq:epsilon}
 \end{equation}
-where $k_A = E_\mathrm{ICM}/c^2$ is the cluster kinetic mass.
-For a typical $T_X = 5$~keV, $M_{500} = 5\times10^{14}\,M_\odot$ cluster:
-$k_A/M \approx 1.3 \times 10^{-6}$.
+where $k_A = E_\mathrm{ICM}/c^2$ is the cluster kinetic mass and $D$ is the
+inter-cluster distance (not the cluster radius), so $r_A/D \ll 1$ for any
+physically meaningful pair. Evaluated on the real MCXC/PSZ2 catalogue
+(\S\ref{sec:results}, $n=548$, median $k_A/M = 1.7\times10^{-6}$, median
+$r_A/D = 1.0\times10^{-2}$ at $D=D_0=100$~Mpc):
 
 With the tabulated $\beta_d = 4.5$ (Table~A1 of~\cite{buckholtz2026}):
-$\varepsilon \approx 6 \times 10^{-6}$ (negligible). An observational signature of
-$\varepsilon \gtrsim 1\%$ requires $\beta_d \gtrsim 7.5 \times 10^3$.
+median $\varepsilon \approx 1.6 \times 10^{-7}$ (negligible). An observational
+signature of $\varepsilon \gtrsim 1\%$ requires $\beta_d \gtrsim 2.9 \times 10^5$.
 The AI-service run reported $\beta_d \approx 2\times10^4$ (Gemini), which yields
-$\varepsilon \approx 3\%$ (marginally non-negligible) but without a first-principles
-derivation.
+$\varepsilon \approx 0.07\%$ --- still fully negligible, not the ``marginally
+non-negligible'' regime a naive typical-cluster estimate (using $r_A/D\sim1$,
+i.e.\ conflating the cluster radius with the inter-cluster distance) would
+suggest.
 \reconstruction
 
 To quantify the inter-service consistency of $\beta$ extractions, we apply the

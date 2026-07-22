@@ -203,6 +203,39 @@ activeContext; recommended order: T8.1 → T1.1+T9.1 → T3.1 → T5.1+T6.1.
   Least-favorable defensible p ≈ 0.023 → fσ8 stays MARGINAL, now QUANTIFIED (survives 0.05, does not
   wash out, does not reach strong). Artifact: `scripts/t9b_fsig8_trials_p.py`.
 
+### T10 — R006 baseline-convention gap (found by deep audit, 2026-07-22)
+- **Context:** R006 (facts.json) established TJB's own $H_\mathrm{FLRW}$ baseline in Table A1 is a
+  power law `H=54.07(1+z)^0.884`, NOT Planck ΛCDM (MAE 24× better fit to CC data than Planck ΛCDM).
+  This is load-bearing for EVERY H(z)/anchor claim in the project — including tonight's P2
+  "MULTING≡ΛCDM@73" result and the whole honest-Hubble-chart work — yet was never entered into this
+  backlog as its own item. Deep audit (`boyko_DEEP_AUDIT_report.md`, §5.4) flagged this as a genuine
+  backlog coverage gap, not a physics gap.
+- **Task:** No new computation needed — R006 IS already computed. The task is registration +
+  cross-reference: confirm every place that assumes a ΛCDM/Planck baseline (P2/docs127, the honest
+  Hubble-anchoring scripts, T7's Planck-bound citations) states explicitly that TJB's own preferred
+  baseline is the power law, not Planck, and that this is an unconfirmed-by-TJB convention choice
+  (Q005-adjacent).
+- **Status:** REGISTERED 2026-07-22 (deep audit finding, not independently re-tested this pass) —
+  cross-reference confirmed present in docs/127 (P2) already; NOT an open computation, an open
+  **documentation/scope** item. No further action unless TJB confirms/disputes the baseline choice.
+
+### T11 — §beta ε-chain numeric error (found by deep audit, 2026-07-22)
+- **Context:** Deep audit found a THIRD instance of the "illustrative supplementary number ≠ real
+  pipeline" failure class (same shape as the k_A~600× external-review catch and the ΔN_eff
+  g*-vs-N_eff units bug): `paper/main.tex` §\ref{ssec:beta} stated ε=F_d/F_m≈6e-6 at β_d=4.5 using a
+  "typical cluster" example that implicitly assumed r_A/D≈1 (cluster radius ≈ inter-cluster
+  distance — physically impossible for the pair-distance D the ratio is defined at).
+- **Task/verification:** Coordinator independently reproduced on the real MCXC/PSZ2 pipeline
+  (`data/clusters_clean.csv`, n=548) THREE ways: (1) direct median computation — ε≈1.6e-7 at
+  β_d=4.5, matching R011's stored 1.83e-7; (2) Gemini β_d=2e4 → ε≈0.07%, not the paper's claimed 3%;
+  (3) reverse-solved the paper's own stated numbers (6e-6 = 4.5×1.3e-6×(r_A/D)) → implied r_A/D≈1,
+  confirming the bug's exact mechanism independent of the audit agent's framing.
+- **Status:** FIXED 2026-07-22 (commit pending) — `paper/main.tex` §beta corrected: ε≈1.6e-7
+  (not 6e-6); threshold for ε≳1% is β_d≳2.9e5 (not 7.5e3); Gemini's β_d≈2e4 gives ε≈0.07% (removed
+  the false "marginally non-negligible" hedge — it is fully negligible). Direction was conservative
+  for the paper's own thesis (dipole even more negligible → strengthens R011/T4 STOP); no conclusion
+  reverses, but the externally-facing number was wrong and needed fixing before any submission.
+
 ---
 
 ## Tier B — blocked (do not attack until unblocked)
