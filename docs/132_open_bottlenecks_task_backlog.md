@@ -1,0 +1,156 @@
+# docs/132 — Open Bottlenecks: Task Backlog
+
+**Date:** 2026-07-22
+**Status:** LIVING BACKLOG — the full set of open bottlenecks, framed as self-contained
+tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
+(cosmological-branch verdict v1-v6). Update status column as tasks are attacked.
+**Labels:** NOT_VALIDATION · NOT_REFUTATION · NO_AUTHOR_ERROR · OUR_RECONSTRUCTION
+
+## How to read this
+- **Tier A** = self-attackable NOW, no TJB and no fitting-blocked dependency.
+- **Tier B** = blocked on TJB or infrastructure; do not attack until unblocked.
+- Each Tier-A task is a competition-style brief: Context → Task → Kill/Success → Resources → Guardrail.
+- Priority (value × tractability × independence): **T1 > T9 > T2** are the strongest; see per-task notes.
+
+---
+
+## Tier A — self-attackable now
+
+### T1 — Eq.32: physics or a 1-in-83160 coincidence? (second-prediction test) — PRIORITY 1
+- **Context:** `(4/3)·(m_τ/m_e)^12 = α_EM/α_G`, verified to 0.06% [VERIFIED], rank #1 of
+  83160 formulas, p~6e-5 (R001). The project's strongest result, outside the cosmological
+  STOP. The 4/3 origin is [VERIFIED-ABSENT] across 4 literature niches. Discriminator
+  (Q001): a genuine structure yields a SECOND independent prediction; a coincidence does not.
+- **Task:** Derive + test a second, independent, falsifiable prediction from Eq.32's
+  structure (4/3 prefactor + integer exponent + α_G link): (a) does the same template with a
+  different SU(3) Casimir (C_A=3) on the muon / another lepton pair give another <0.1%
+  relation? (b) does Eq.32 blind-predict a quantity NOT used in its construction? (c) broaden
+  the look-elsewhere space (>83160, other coefficient forms) — does rank #1 hold?
+- **Kill/Success:** No second prediction AND no broadened-space competitor → honest downgrade
+  to "single-label coincidence". A second <0.1% prediction emerges → strong non-numerology
+  evidence, promote.
+- **Resources:** `/boyko-specialist`, `/hypothesis-arbiter`, reuse `scripts/scan_reference_mass_robustness.py`. ~half-day.
+- **Guardrail:** NOT_VALIDATION (our audit, not TJB's derivation); no numerology-chaining (Q002 flag).
+- **Status:** OPEN
+
+### T2 — MULTING dipole: observational-viability window (NO fitting) — PRIORITY 3
+- **Context:** Fitting-branch STOPPED (R011). Separate, unmapped question: is the dipole
+  observationally ALIVE? If ≈ Blanchet-Le Tiec dipolar DM (0804.3518), it inherits [VERIFIED,
+  digitized]: (a) Planck 2nd-order dipole-field constraints (1312.6991); (b) an exponential
+  instability, marginally safe only because τ_g~6e10 yr > 1.38e10 yr. β non-identifiable → map
+  the constraint as a FUNCTION of β/η.
+- **Task:** Derive the allowed window: for what dipole amplitude (as a function of β/η) does it
+  (i) violate the Planck 2nd-order constraint, (ii) go unstable within a Hubble time? Produce a
+  "viability band" where the dipole is both non-negligible AND observationally alive.
+- **Kill/Success:** Band empty → strong constraint for TJB. Band exists → target region for any
+  future derivation.
+- **Resources:** boyko-agent + `literature/refs_digitized/` (Blanchet) + Planck numbers. ~1 day.
+- **Guardrail:** NO_BRIDGE_FITTING (do not fit Table A1/H(z)); NOT_REFUTATION.
+- **Status:** OPEN
+
+### T3 — The 7:9:17 boson mass-ratio: real pattern or coincidence? (the Z-tension)
+- **Context:** `m_W^2 : m_Z^2 : m_H^2 = 7 : 9 : 17` (R002). Higgs fits at 0.4σ, but Z shows
+  5.5σ tension — an unexplained internal inconsistency.
+- **Task:** Rigorous look-elsewhere on small-integer triples (a:b:c) fitting the measured
+  ratios within the 7:9:17 tolerance — where does 7:9:17 rank? Separately: is the Z-tension a
+  known EW radiative correction (W/Z via ρ-parameter / sin²θ_W)? Does accounting for it rescue
+  or kill the pattern?
+- **Kill/Success:** Many triples fit equally → 7:9:17 not special. Standout + Z-tension maps to
+  a known EW correction → pattern strengthens.
+- **Resources:** PDG 2024/2026 masses (facts.json) + look-elsewhere scan + `/boyko-specialist` (EW).
+  ~half-day.
+- **Guardrail:** NOT_VALIDATION; honest trials-factor.
+- **Status:** OPEN
+
+### T4 — Is the monopole's dominance fundamental, or a bad quadrupole form? (R011 open)
+- **Context:** R011 v6: monopole baseline (r=0.7334) beats every MULTING config (proven
+  analytically). Open: is that because the monopole is fundamentally the best cluster→H(z)
+  tracer, or because the specific `(k_A·r_A)^2/D^4` form is bad?
+- **Task:** Test out-of-sample / by permutation whether ANY principled combination of
+  (k_A, r_A, D, z) beats the monopole. Falsification framing — is the monopole>dipole>quadrupole
+  ranking robust.
+- **Kill/Success:** None beats → monopole-dominance robust (strengthens STOP). One beats → the
+  quadrupole FORM, not the physics, is the culprit.
+- **Guardrail:** ⚠️ NO_BRIDGE_FITTING — permutation/holdout discipline only, NOT a fishing
+  expedition over Table A1. This is the most fitting-risky task; frame strictly as falsification.
+- **Status:** OPEN
+
+### T5 — Is the 5:1 dark/baryon ratio a real relic prediction or arithmetic? (N=5 unequal-mass)
+- **Context:** `Ω_DM/Ω_b = 5×1.074 = 5.37 ≈ 5.36` [NOT KILLED, conditional]. The match assumes
+  n_i≈n_b per dark sector — needs a relic-abundance/reheating calc. Competes with mirror-DM
+  (Berezhiani). Fresh lead: arXiv:2512.14119 (ADM mass ~ proton mass).
+- **Task:** Compute the relic abundance for the 5-isomer IDM scenario under explicit reheating
+  assumptions; does 5.36 emerge naturally, or need fine-tuned n_i? Compare to the mirror-DM
+  explanation of the same 5:1.
+- **Kill/Success:** Needs fine-tuned n_i → arithmetic coincidence. Emerges naturally → real
+  prediction, promote.
+- **Resources:** `/boyko-specialist` (ADM/mirror-DM). **Guardrail:** NOT_VALIDATION.
+- **Status:** OPEN
+
+### T6 — Honest ΔN_eff exclusion for IDM dark neutrinos (R005 redo)
+- **Context:** `ΔN_eff = 15-81` vs Planck `2.99±0.17`. The "130-477σ" figure is flagged as
+  FALSE PRECISION (back-of-envelope Gaussian tail) — not citable externally.
+- **Task:** Compute ΔN_eff properly for the 5-isomer dark-neutrino scenario against the real
+  Planck+BBN likelihood; test the 3 escapes (different BBN chemistry / hidden sector / decoupling).
+- **Kill/Success:** Excluded even under generous escapes → hard constraint. Escape exists → open door.
+- **Guardrail:** honest σ, no false precision (direct lesson from docs/122 v2).
+- **Status:** OPEN
+
+### T7 — The distinguishing 2nd-order signature: does Euclid DR1 already decide? (Blanchet Window A)
+- **Context:** Dipolar DM = ΛCDM at 1st order; distinguishable only at 2nd order (CMB
+  bispectrum / non-linear LSS growth / cluster-scale). Planck already constrains the primordial
+  dipole (1312.6991). [VERIFIED, digitized]
+- **Task:** Identify which 2nd-order observable MULTING's dipole would produce, and whether
+  current Euclid DR1 / Planck already bound it to a decisive level. (Complement to T2: T2 = the
+  instability/constraint window; T7 = the distinguishing signal + is the data already here.)
+- **Kill/Success:** Data already excludes → signal dead. Insufficient precision → name the
+  dataset that would decide.
+- **Guardrail:** ⚠️ derivation-first ALLOWED, but the action adaptation is "the author's to do";
+  we do constraint-mapping, not derive the theory for TJB.
+- **Status:** OPEN
+
+### T8 — The unexplained ICM partial correlation (R010 open)
+- **Context:** `partial r(δ_M, E_ICM | M_WL) = -0.701` — robust, survived H1c/H1d falsification,
+  unexplained. It is a cluster-ICM effect, NOT the cosmic-web WHIM mechanism TJB proposes. The
+  main test (H1b, WHIM via IllustrisTNG) is TNG-login-blocked, but the puzzle itself is
+  attackable on the CCCP N=50 data we already have.
+- **Task:** On CCCP N=50, investigate WHY this partial correlation exists: known mass-observable
+  systematic, selection effect, or genuinely unexplained?
+- **Kill/Success:** Maps to a known systematic → explained. Survives → registered anomaly (pearl).
+- **Guardrail:** do NOT present as TJB's mechanism (different observable).
+- **Status:** OPEN
+
+### T9 — Joint look-elsewhere across ALL of TJB's numerical relations (meta) — PRIORITY 2
+- **Context:** The project has several claimed relations (Eq.32, 7:9:17, N=5.36, + preprint).
+  The #1 referee attack is the JOINT trials factor: impressive individually, but how many were
+  tested?
+- **Task:** A unified rigorous joint look-elsewhere — given all claimed relations, what is the
+  joint probability they all hold by chance? Which survive Bonferroni/FDR correction?
+- **Kill/Success:** Most wash out under joint correction → the program is trials-inflated. A core
+  survives → THAT core is the defensible external claim.
+- **Resources:** reuse `scripts/scan_reference_mass_robustness.py`. High value for external credibility.
+- **Guardrail:** do this BEFORE any external submission of a numerical result — bring the referee
+  the honest joint figure rather than receive it as an objection.
+- **Status:** OPEN
+
+---
+
+## Tier B — blocked (do not attack until unblocked)
+
+| ID | Task | Unblocked by |
+|---|---|---|
+| B1 | Q004 — β_d/β_q from first principles | TJB reply to docs/121 (BETA-1) |
+| B2 | Q005 — numerical F→H(z) bridge | β values + bridge form |
+| B3 | Q003 — what is "K²" (Discord 2026-06-30) | ask TJB |
+| B4 | Chart Q2/Q5 — red-curve functional form; what fixes H0≈73 | TJB reply to the H(z)-chart letter |
+| B5 | H1b — WHIM-filament test via IllustrisTNG | TNG API access (infra, not TJB) |
+| B6 | MCMC / PREDICTION blockers | completed bridge |
+
+---
+
+## Summary
+- **9 self-attackable** (T1-T9) · **6 blocked** (B1-B6).
+- Every Tier-A task is a falsifier / space-narrower, not a builder — the correct convergent-contour
+  posture when the divergent input (TJB) is blocked. A NULL here is as valuable as a PROMOTE.
+- None violates NO_BRIDGE_FITTING / NOT_VALIDATION under the stated guardrails.
+- Recommended attack order: **T1 → T9 → T2** (strongest, fully in our hands).
