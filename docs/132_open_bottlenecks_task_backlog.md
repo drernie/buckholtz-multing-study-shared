@@ -6,6 +6,17 @@ tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
 (cosmological-branch verdict v1-v6). Update status column as tasks are attacked.
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · NO_AUTHOR_ERROR · OUR_RECONSTRUCTION
 
+## ⚠️ RECOMPOSITION NOTE (2026-07-23, after external adversarial re-review)
+The per-task "RESOLVED" labels below mean **"the scoped computation/artifact is done"**, NOT "the
+physics question is closed." The honest global summary: *9 tasks examined, hypothesis space
+substantially narrowed, several initially-strong verdicts softened, and a next discriminating test
+specified per branch.* A downstream verdict is never stronger than its weakest mandatory dependency
+(e.g. T2/T7 inherit the missing covariant bridge; T5/T6 inherit the unspecified thermal history).
+Confirmed catch from that re-review: the paper's ΔN_eff=106.8 was g* itself, not N_eff units —
+fixed (commit 58307b7, →~61, factor ~80-215). Follow-up tasks T1.1-T9.1 (preregistered scan, RG
+boundary test, cogenesis Boltzmann, measurement-error null, hierarchical FDR) are tracked in
+activeContext; recommended order: T8.1 → T1.1+T9.1 → T3.1 → T5.1+T6.1.
+
 ## How to read this
 - **Tier A** = self-attackable NOW, no TJB and no fitting-blocked dependency.
 - **Tier B** = blocked on TJB or infrastructure; do not attack until unblocked.
@@ -141,7 +152,30 @@ tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
   systematic, selection effect, or genuinely unexplained?
 - **Kill/Success:** Maps to a known systematic → explained. Survives → registered anomaly (pearl).
 - **Guardrail:** do NOT present as TJB's mechanism (different observable).
-- **Status:** RESOLVED 2026-07-22 [mission run, coordinator-verified] — R010 puzzle RESOLVED-AS-SYSTEMATIC: r=-0.70 collapses to -0.08 under T_X control; T_X-mediated mass-observable systematic via HSE definition (identity delta_M=M_WL-M_hydro verified exactly); NOT an anomaly, NOT TJB's WHIM. Caveats: distinct from the earlier RETRACTED naive T_X test (mediation framing, stated); CC/NCC discriminator underpowered [WEAK, n=8]. Artifact: scripts/t8_icm_partial_mechanism.py + boyko_T8_report.md
+- **Status:** RESOLVED-PARTIAL 2026-07-22 [mission + T8.1 null test, coordinator-verified,
+  skeptic-reviewed] — R010 leans **artifact of definitional T_X-coupling**, MEDIUM confidence
+  (downgraded from agent's self-reported MEDIUM-HIGH after an independent context-asymmetric
+  skeptic pass): r=-0.70 collapses to -0.08 under T_X control (HSE identity δ_M=M_WL-M_hydro(T_X)
+  verified exactly); T8.1 measurement-error null (20,000 catalogs, 2 independent generative
+  models) places the observed -0.7008 at the 30-60th percentile of a null built from definitional
+  coupling + real per-cluster errors alone — near-median, not tail. NOT TJB's WHIM mechanism.
+  **Skeptic-confirmed non-issue:** the one NAMED physical confound that could break the null's
+  exchangeability assumption — AGN feedback — was independently already tested with REAL data in
+  experiments/20260713-h1e-agn-feedback-confound (KILLED: controlling for K0 changes |r| by only
+  +0.0038, K0 orthogonal to both δ_M and E_ICM at fixed M_WL, p>0.5). **Skeptic-confirmed open
+  gap (CODE-VERIFIED, not yet addressed):** the null's own HSE slope (b_hse) and (M_WL,T_X,M_gas)
+  covariance are fit ON THE SAME 50 clusters whose r=-0.70 is being tested — a circularity that
+  could launder undetected physics into the null via the covariance matrix. Cheapest next test:
+  leave-one-out refit of b_hse, or an externally-calibrated HSE slope (e.g. X-COP), rerun the null;
+  if the null median shifts by |Δr|>0.05, the artifact verdict is unsafe. Minor noted gaps: median-
+  only (not per-cluster) error deconvolution in Variant A [WEAK]; Pearson-vs-Spearman outlier
+  sensitivity untested; CC/NCC discriminator underpowered [WEAK, n=8]. **Flag:** the skeptic pass
+  cited two memory-file links ([[feedback_inverse_problem_circularity]],
+  [[feedback_reason_b_narrower_than_framed]]) that do NOT exist in this project's memory —
+  confirmed phantom sources, disregarded per integrity.md; the code-grounded findings (Attacks 1-3)
+  were independently verified against the actual script and stand on their own.
+  Artifacts: scripts/t8_icm_partial_mechanism.py, scripts/t8b_measurement_error_null.py,
+  boyko_T8_report.md, boyko_T8b_null.md.
 
 ### T9 — Joint look-elsewhere across ALL of TJB's numerical relations (meta) — PRIORITY 2
 - **Context:** The project has several claimed relations (Eq.32, 7:9:17, N=5.36, + preprint).
