@@ -67,7 +67,18 @@ tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
 - **Resources:** PDG 2024/2026 masses (facts.json) + look-elsewhere scan + `/boyko-specialist` (EW).
   ~half-day.
 - **Guardrail:** NOT_VALIDATION; honest trials-factor.
-- **Status:** RESOLVED-PARTIAL 2026-07-22 [mission run, coordinator-verified] — look-elsewhere rank #1 (next triple ~8x worse chi2); Higgs 0.4sigma; Z-tension = +3.8sigma with FULL error propagation (NOT the stored 5.5sigma — R002 needs re-audit before external use); the ~1% Z-gap is the size of a 1-loop EW correction (plausible, not derived — the one live physics lead). Artifact: scripts/t3_boson_ratio_lookelsewhere.py + boyko_T3_report.md
+- **Status:** RESOLVED 2026-07-22 [T3 mission + T3b one-loop follow-up, coordinator-verified] —
+  look-elsewhere rank #1 (next triple ~8x worse chi2); Higgs 0.4σ; Z-tension citable = +3.8σ
+  (R002 reconciled: 5.5σ was the tighter-dW vintage). **T3b EW one-loop check: NULL (with PARTIAL
+  character)** — the SM loop shift is right-signed and ~right-sized (0.008 vs the naive 0.009 gap)
+  but LOOP-INVARIANT for the mass ratio: κ is multiplicative (shifts tree and measurement together),
+  and the Δr budget is spent reproducing measured m_W (SM predicts 80.39-80.49; 7:9:17 needs
+  Δr ~0.003 smaller). Residual +3.7-3.8σ under BOTH readings. NOT derivation-adjacent via SM loops.
+  Weakest premise [WEAK]: residual is NOT m_W-choice-invariant — raw CDF-II m_W collapses it to
+  −1.4σ (PDG down-weights CDF, defensible, but must be stated). SM-loop line EXHAUSTED; only live
+  lever = future m_W world-average (watch PDG/CMS). Skeptic (context-asymmetric): [CONFIRMED-REAL].
+  Artifacts: scripts/t3_boson_ratio_lookelsewhere.py, scripts/t3b_ew_oneloop_check.py,
+  boyko_T3_report.md + boyko_T3b_ew_oneloop.md
 
 ### T4 — Is the monopole's dominance fundamental, or a bad quadrupole form? (R011 open)
 - **Context:** R011 v6: monopole baseline (r=0.7334) beats every MULTING config (proven
