@@ -37,8 +37,13 @@ tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
   holds in the baseline 83,160 space and the simple-coefficient space (14,520), but degrades to #3
   (420,750 trials) and #5 (841,500 with sqrt(p/q) forms) — uniqueness is search-space-dependent.
   Empirical p falls to ~6e-6 as pools grow (mechanical; rank loss is the load-bearing fact).
-  Artifact: `scripts/t1_eq32_second_prediction.py`. Open tail [UNKNOWN]: identity of the 2-4
-  broadened-space competitors (cheapest next step: top-5 print, classify alias/exotic/genuine).
+  Artifact: `scripts/t1_eq32_second_prediction.py`.
+  **Tail CLOSED 2026-07-22 (T1b, coordinator-verified):** competitors identified & classified —
+  1 ALIAS (sqrt(16/9)·(m_tau/m_e)^12 IS Eq.32 rewritten; the sqrt family double-counts it), all real
+  beaters EXOTIC (17/11·(m_p/m_e)^13; 12·(m_c/m_u)^15 with MSbar quark masses ±20% at n=15 = spurious
+  precision; sqrt(9/11)·(m_t/m_c)^20), ZERO genuinely-distinct simple rivals. Rank-loss = mechanical
+  pool noise → verdict SHARPENED to coincidence-leaning; physics-leaning NOT reopened.
+  Artifact: `scripts/t1b_competitor_id.py`.
 
 ### T2 — MULTING dipole: observational-viability window (NO fitting) — PRIORITY 3
 - **Context:** Fitting-branch STOPPED (R011). Separate, unmapped question: is the dipole
@@ -157,8 +162,12 @@ tasks. Derived from `facts.json` (R001-R011, Q001-Q006, blockers) + `docs/122`
   exactly the inflation the audit exists to prevent. Active misses stay on record: m_Z 5.5σ, ΔN_eff
   (orders of magnitude; "130-477σ" = flagged false precision). SCOPE caveat: surviving cross-relation
   correction (this task) ≠ surviving within-formula-space broadening (T1's rank #3/#5) — both facts
-  go together. Artifact: `scripts/t9_joint_lookelsewhere.py`. Cheapest next: trials-corrected p for
-  fσ8 proxy choice (~1-2h).
+  go together. Artifact: `scripts/t9_joint_lookelsewhere.py`.
+  **Tail CLOSED 2026-07-22 (T9b, coordinator-verified):** fσ8 trials-corrected p computed both ways —
+  proxy-count Bonferroni K=6-13 [WEAK archaeology] → p∈[0.011, 0.023]; AR(1) smoothness-preserving
+  surrogate null p=0.018 (plain permutation 0.0015 flagged OPTIMISTIC — breaks curve smoothness).
+  Least-favorable defensible p ≈ 0.023 → fσ8 stays MARGINAL, now QUANTIFIED (survives 0.05, does not
+  wash out, does not reach strong). Artifact: `scripts/t9b_fsig8_trials_p.py`.
 
 ---
 
