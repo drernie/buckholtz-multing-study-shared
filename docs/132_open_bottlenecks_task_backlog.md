@@ -95,6 +95,19 @@ activeContext; recommended order: T8.1 → T1.1+T9.1 → T3.1 → T5.1+T6.1.
   lever = future m_W world-average (watch PDG/CMS). Skeptic (context-asymmetric): [CONFIRMED-REAL].
   Artifacts: scripts/t3_boson_ratio_lookelsewhere.py, scripts/t3b_ew_oneloop_check.py,
   boyko_T3_report.md + boyko_T3b_ew_oneloop.md
+  **T3.1 RG boundary-condition test CLOSED 2026-07-22 (T3c, skeptic-reviewed [CONFIRMED via
+  3-line attack, one scoping refinement]):** the remaining "coupling-boundary-condition" reading
+  (g'²/g²(μ*)=2/7 at a physically-motivated high scale, NOT the pole-mass reading T3b killed) also
+  **FAILS, non-post-hoc, 1-loop decisive**. tan²θ_W(m_Z)=0.30088 is already ABOVE the target 2/7
+  (=0.28571) in MS-bar, and the 1-loop trajectory moves monotonically AWAY with scale (no GUT-
+  adjacent crossing exists); the only crossing is μ*≈14.6 GeV, BELOW m_Z, unmotivated and in the
+  wrong direction. The λ-boundary Higgs-mass cross-check is not independently informative (μ* too
+  low for a genuine high-scale test). Skeptic scoping note: T3c kills the MS-bar high-scale
+  reading specifically; T3b (on-shell, pole-mass) already killed the complementary reading — the
+  two together, not either alone, close "7:9 as any RG-related boundary condition." **7:9:17 is
+  now exhausted on every tested physics-mechanism route (mass-ratio + gauge-boundary); remains a
+  statistically real (rank #1) but mechanism-less integer coincidence.** Artifact:
+  scripts/t3c_rg_boundary_check.py + boyko_T3c_rg_boundary.md.
 
 ### T4 — Is the monopole's dominance fundamental, or a bad quadrupole form? (R011 open)
 - **Context:** R011 v6: monopole baseline (r=0.7334) beats every MULTING config (proven
@@ -128,7 +141,25 @@ activeContext; recommended order: T8.1 → T1.1+T9.1 → T3.1 → T5.1+T6.1.
   Planck+BBN likelihood; test the 3 escapes (different BBN chemistry / hidden sector / decoupling).
 - **Kill/Success:** Excluded even under generous escapes → hard constraint. Escape exists → open door.
 - **Guardrail:** honest σ, no false precision (direct lesson from docs/122 v2).
-- **Status:** RESOLVED-PARTIAL 2026-07-22 [mission run, coordinator-verified] — honest exclusion: thermalized 5-isomer dark nu excluded by FACTOR ~50 (retire '130-477sigma' everywhere); early-decoupling (g*~107 dilutes to ~0.61) and grav-only escapes open the door. CROSS-CUTTING: T5<->T6 escapes are COUPLED — the non-thermality that rescues N_eff removes T5's equal-density basis; they cannot both be claimed. Artifact: scripts/t6_neff_honest.py + boyko_T6_report.md
+- **Status:** RESOLVED-PARTIAL 2026-07-22 [mission run, coordinator-verified] — honest exclusion: thermalized 5-isomer dark nu excluded by FACTOR ~50 (retire '130-477sigma' everywhere); early-decoupling (g*~107 dilutes to ~0.61) and grav-only escapes open the door. CROSS-CUTTING (later CORRECTED below): T5<->T6 escapes are COUPLED — the non-thermality that rescues N_eff removes T5's equal-density basis; they cannot both be claimed. Artifact: scripts/t6_neff_honest.py + boyko_T6_report.md
+  **T5.1+T6.1 joint literature-grounded feasibility CLOSED 2026-07-22 (skeptic-reviewed
+  [WEAKENED, no claim falsified]) — verdict OPEN, and CORRECTS the T5<->T6 "coupled/mutually
+  exclusive" framing above.** The framing was a false dichotomy: a published mechanism class
+  (decaying-"reheaton" cogenesis into multiple sectors, Easa/Gregoire/Stolarski/Cosme, PRD 109
+  075003, arXiv:2206.11314) transfers a shared asymmetry to several sectors WITHOUT full thermal
+  equilibration (ξ=T_dark/T_SM≲0.35 suffices, [VERIFIED-BASH] toy calc scripts/t5t6_cogenesis_
+  estimate.py) — so ΔN_eff-safety and definite per-sector densities CAN coexist in one model;
+  "sharing ⇒ equilibration ⇒ N_eff excluded" is broken by counterexample. HOWEVER this does not
+  rescue IDM's specific postulate: no surveyed mechanism (thermal, non-thermal, or transfer-based)
+  produces IDM's exact structure — **five IDENTICAL sectors each independently at n_i/n_b≈1** —
+  known constructions reach a similar total ratio through different internal structure (unequal
+  sectors via differential decoupling, or a few components via conversions), not five equal
+  densities. Net: the 5:1 match remains a posited coincidence under EVERY known cogenesis history,
+  for a sharper reason than the original coupling argument (no known mechanism reaches the
+  specific 5-equal-sector structure at all, not because the ΔN_eff/5:1 escapes are logically
+  incompatible). **paper/main.tex corrected accordingly** (commit pending) — the false-dichotomy
+  sentence removed, the sharper "no known mechanism produces this specific structure" conclusion
+  substituted, citing easa2022. Artifact: scripts/t5t6_cogenesis_estimate.py + boyko_T5_T6_cogenesis.md.
 
 ### T7 — The distinguishing 2nd-order signature: does Euclid DR1 already decide? (Blanchet Window A)
 - **Context:** Dipolar DM = ΛCDM at 1st order; distinguishable only at 2nd order (CMB
