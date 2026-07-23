@@ -133,29 +133,48 @@ This reframes the open question from "how was the bridge closed" to something sh
 answerable: **is the July figure the same calculation as Appendix A1, or a revised one?** — this
 is now folded into letter Q1 (2026-07-23 update, v10).
 
-### Source-fidelity gate — NOT YET PASSED (blocks exact-number use, does not block the direction claim)
+### Source-fidelity gate — RUN 2026-07-23 (direct read of Appendix A.1, pp.32–38 of the v6 PDF)
 
-Per FL Substrate Gate discipline: before the ×4365 number (not the qualitative M1/M2 findings) is
-used in any external-facing artifact, the following must be done — none are done yet:
+Run against `data/source_material/buckholtz_preprints202511.0598.v6_pymupdf-clean.md`, lines
+2090–2578 (Appendix A "Using MULTING to calculate the Hubble parameter H(z)", the full A.1
+prompt-text, A.2, A.3, and Table A1's own caption). Page/line-cited, not memory.
 
-1. Re-read the original PDF and confirm the (M_A, k_A, r_A, D) ranges as actually stated.
-2. Record why geometric mean (not arithmetic, not endpoint) was chosen as the representative value.
-3. Re-verify the sign convention `F_m − F_d + F_q` against the PDF's own stated force law.
-4. Re-verify the normalization `Φ(z)/Φ(0)` matches the PDF's stated bridge exactly.
-5. Establish whether Appendix A1 and the July-20 chart share a calculation version at all.
+| # | Gate item | Result |
+|---|---|---|
+| 1 | Confirm (M_A,k_A,r_A,D) ranges as stated | **FAILS AS SPECIFIED — no canonical range exists.** The PDF (Step 4, "Galaxy Cluster Parameters") instructs the AI service to *generate its own* ranges ("Explain how you found, chose, or estimated the values") and explicitly grants discretion (Step 5: "use your discretion about how to choose... typical values"). Appendix A.3 confirms services' ranges "disagreed somewhat." Section 4.2's general background text (line 1400: "Diameters of 1 to 3 Mpc," "separations... 20 to 90 Mpc") is **not** stated as the per-z input table — and even taken as a loose match, the June reconstruction used the 1–3 Mpc **diameter** range directly as a **radius** range (r_A=1.73=geom(1,3), no ÷2), and used a separation ceiling of 100 Mpc where the text says 90. Both are concrete, found-today transcription risks, not resolved by this gate. |
+| 2 | Why geometric mean | **PARTIAL PASS.** The PDF itself uses "geom.mean.mass" as its own convention elsewhere (line 955, quark-mass tables) — geometric mean is a precedented choice in this document for range→representative-value, though not proven to be what the Claude service specifically did for cluster parameters. |
+| 3 | Sign convention `F_m − F_d + F_q` | **CONFIRMED, verbatim.** Lines 2226–2239: monopole attracts (`F_m=Gm_Am_P/r²`), dipole **repels** (`F_d`, subtracted), quadrupole attracts (`F_q`, added); `F_oP = F_m − F_d + F_q` stated exactly. `r_dA=β_d·r_A`, `\|r_qAB\|²=β_q²·r_A·r_P` also confirmed verbatim (line 2312) — matches this project's φ() formula structure exactly. |
+| 4 | Normalization `Φ(z)/Φ(0)` matches PDF | **DOES NOT EXIST IN SOURCE.** The PDF gives no H(z)-combination formula at all — only qualitative design constraints (item below) and "feel free to use any or all the information... try to avoid using FLRW/ΛCDM outputs." Our `Φ(z)/Φ(0)∝H²` convention (used throughout `src/pearson_fit.py`/R011, and in the June self-consistency script) is **entirely this project's own interpretation**, not sourced from TJB's text. This confirms and sharpens the H_MULT(z) row's existing 🔴 status — not just "not derived," but literally not attempted by the source prompt. |
+| 5 | Does Appendix A1 share a calc version with the July-20 chart | **Not resolvable from the PDF alone** (dated 21 May, two months before the chart) — this is exactly what the new Q1 addition asks TJB directly. |
 
-**Until this gate passes, the letter (below) uses only the qualitative/order-of-magnitude framing,
-not the exact ×4365 figure** — the precise number stays as a technical appendix, available on
-request, not in the main letter body.
+**New finding from this gate run, not previously known — materially affects M2:** Step 5 (line
+2337–2340) gives the AI service an explicit **design constraint**: *"Ensure that quadrupole
+attraction dominates at high redshift. Ensure that dipole repulsion dominates at low redshift."*
+Whatever cluster parameters actually produced Table A1 must satisfy this ordering by construction.
+The June reconstruction's own Part D found **quadrupole dominates at every tested z, including
+z=0** (ε_q≈1.5×10⁹ at z=0) — the opposite of the low-z regime TJB required. This is a concrete,
+identified reason the June reconstruction's cluster-parameter choice likely does **not** represent
+whatever parameters the real Claude-service run actually used to satisfy this constraint.
 
-**What this does and does not establish:** M1 shows TJB's own reported H_MULT column is
-numerically close to a constant rescaling of his own reported H_FLRW column — confirmed,
-unconditional. M2 shows a reconstruction of TJB's own stated bridge formula, applied to
-TJB's own AI-service process's *type* of inputs for the OLD (v6, 21-May) Table A1, moves in the
-opposite direction from that same table's own H_MULT column — robust in direction, conditional in
-magnitude. Neither proves the bridge formula is wrong, only that this reconstruction attempt
-doesn't close, and that Table A1 alone cannot be the July chart's generating procedure (the
-contradiction above). Framed to TJB as a question, not a finding against him (NO_AUTHOR_ERROR).
+**Verdict on M2, downgraded from the previous revision:** the reconstruction is a **valid
+demonstration that a naive/literal application of the stated force law, using generically-derived
+cluster parameters that do not enforce the low-z dipole-dominance requirement, fails badly** — but
+it is **no longer a reliable claim about what the real Table A1-generating process would show**,
+because it likely used a different parameter regime by design. Both the exact ×4365 figure and
+the qualitative "opposite direction" framing should be treated as **illustrative of a naive
+attempt, not evidence about TJB's actual process** — this is a stronger downgrade than the prior
+revision's "conditional magnitude, robust direction."
+
+**What remains solid and independent of all of this:** M1 (`H_MULT≈1.074×H_FLRW`, corr=0.9996) —
+untouched by any cluster-parameter question, since it uses only Table A1's own two reported
+columns. **New, fully author-sourced corroboration found this gate run** (Appendix A.3, lines
+2511–2518, TJB's own words, no reconstruction needed): *"The services reported somewhat different
+ranges of values regarding... masses of galaxy clusters, radii of galaxy clusters, and distances
+between neighboring galaxy clusters... Disagreements regarding values, that the services
+suggested, for βd and βq were noticeable. Disagreements between values, calculated via MULTING,
+for H(z) were noticeable."* TJB himself confirms H_MULT(z) is service-and-run-sensitive — this
+is safer to cite in the letter than any of this project's own reconstruction, and does not
+require the source-fidelity gate at all.
 
 ## Relation to the standing TJB letter draft
 
@@ -193,7 +212,7 @@ curve's form/parameters) — current status against each:
 | 2 | What does D mean (physical/comoving/nearest-neighbour/averaged)? | 🔴 **NEEDS_DATA** — never stated by TJB; our D₀/(1+z)=100 Mpc is our own audit convention, not his |
 | 3 | Constant β_d, β_q, or z-dependent? | 🔴 **NEEDS_DATA** — three AI-service extractions disagree 5.8×/95× (BRAI R_B=15.9/24.1); no z-dependence specified anywhere |
 | 4 | Population-averaging rule over the cluster sample? | 🔴 **NEEDS_DATA** — never specified; our pipeline uses per-cluster φ(z), no stated averaging rule from TJB |
-| 5 | What equation generates H_MULT(z)? | 🔴 **NEEDS_DATA** — no action/Lagrangian exists (Q006 open); the published curve's exact form is unknown to us — **this is letter Q1, the single most direct ask**. Sharpened (2026-07-23): M1 (confirmed) shows Table A1's H_MULT is a near-constant rescaling of H_FLRW, which structurally could not cross ΛCDM the way the July curve does — Table A1 and the July chart are **likely not the same computational procedure** (see new section above; this specific deduction does not depend on M2's conditional ×4365 figure) |
+| 5 | What equation generates H_MULT(z)? | 🔴 **NEEDS_DATA** — no action/Lagrangian exists (Q006 open); the published curve's exact form is unknown to us — **this is letter Q1, the single most direct ask**. Sharpened (2026-07-23): M1 (confirmed) shows Table A1's H_MULT is a near-constant rescaling of H_FLRW, which structurally could not cross ΛCDM the way the July curve does — Table A1 and the July chart are **likely not the same computational procedure** (see new section above; this specific deduction does not depend on M2's conditional ×4365 figure). Gate run confirms: **the PDF itself specifies no H(z)-combination formula at all** — Q5 is genuinely unanswerable without TJB, not merely under-documented. M2 (bridge reconstruction) downgraded to illustrative-only after the gate run found the reconstruction likely violates TJB's own stated low-z dipole-dominance design constraint (Step 5) — do not cite ×4365 or "opposite direction" as evidence about TJB's real process. |
 | 6 | Was H(z) used in choosing the curve's form/parameters? | 🔴 **NEEDS_DATA** — cannot be determined without TJB; explicitly asked (letter Q1) |
 
 **Overall C1 verdict: NEEDS_DATA**, closer to PIVOT than FAIL. Reasoning: nothing found this
