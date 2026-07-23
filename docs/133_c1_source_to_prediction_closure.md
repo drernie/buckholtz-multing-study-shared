@@ -74,6 +74,39 @@ the original AI session that generated it.
 
 ---
 
+## Formal verdict (Audit 1 of 3, 2026-07-23 — PASS / PIVOT / FAIL / NEEDS_DATA)
+
+Per the six key questions (k_A physical meaning; D definition; are β_d/β_q constant or z-dependent;
+population-averaging rule; the equation the red curve comes from; was H(z) used in choosing the
+curve's form/parameters) — current status against each:
+
+| # | Question | Status |
+|---|---|---|
+| 1 | What does k_A mean physically? | 🟡 real proxy used (E_ICM via SZ/X-ray); Table A1's own worked example disagrees with its own stated formula by ~599× — **open, asked directly (letter Q2/Q3)** |
+| 2 | What does D mean (physical/comoving/nearest-neighbour/averaged)? | 🔴 **NEEDS_DATA** — never stated by TJB; our D₀/(1+z)=100 Mpc is our own audit convention, not his |
+| 3 | Constant β_d, β_q, or z-dependent? | 🔴 **NEEDS_DATA** — three AI-service extractions disagree 5.8×/95× (BRAI R_B=15.9/24.1); no z-dependence specified anywhere |
+| 4 | Population-averaging rule over the cluster sample? | 🔴 **NEEDS_DATA** — never specified; our pipeline uses per-cluster φ(z), no stated averaging rule from TJB |
+| 5 | What equation generates H_MULT(z)? | 🔴 **NEEDS_DATA** — no action/Lagrangian exists (Q006 open); the published curve's exact form is unknown to us — **this is letter Q1, the single most direct ask** |
+| 6 | Was H(z) used in choosing the curve's form/parameters? | 🔴 **NEEDS_DATA** — cannot be determined without TJB; explicitly asked (letter Q1) |
+
+**Overall C1 verdict: NEEDS_DATA**, closer to PIVOT than FAIL. Reasoning: nothing found this
+session shows the closure is impossible (no contradiction proving no formula can exist) — but
+nothing found shows a fixed, non-fitted formula DOES exist either. Every one of the six links
+that would need to resolve to PASS depends on information only TJB has. This is the honest
+midpoint the external review's own framing predicts for "the branch is real, but not yet
+theory-closed" — **not a verdict this audit can move further without a reply**.
+
+**What would flip it:**
+- → **PASS**: TJB supplies fixed D(z)/β_d/β_q/averaging-rule + confirms H(z) points were NOT used
+  in building the curve, AND the resulting formula survives held-out CC data.
+- → **PIVOT** (phenomenological, not first-principles): TJB confirms the curve is a genuine
+  fit-to-data exercise (consistent with his own July-6 framing) — downgrades the cosmological
+  branch from "candidate fundamental theory" to "reconstructible phenomenology," which is still
+  a legitimate, testable object (feeds directly into Audit 3's fair model comparison).
+- → **FAIL**: no fixed formula exists at all, or D(z)/β were chosen per-point to match H(z).
+
+---
+
 *This table is a consolidation, not new evidence — every cell traces to an artifact already
-committed this session (commits 4196f9a through 4c5bd8c) or to facts.json/docs/122. No
+committed this session (commits 4196f9a through af3d5c4) or to facts.json/docs/122. No
 independent verification beyond what those artifacts already carry.*
