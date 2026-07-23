@@ -18,6 +18,29 @@ full computation passport + a re-runnable verification script) and as
 IMPLEMENTATION). Use those as the citable source going forward; this document remains
 the narrative history of how the result was reached, including the two corrected
 errors along the way.
+
+**Independent same-day cross-check (2026-07-23, docs/135 Audit 3, P0 section):** while
+resolving an unrelated question (fair MULTING/ΛCDM model comparison), a separately
+written script (`scratchpad/nesting_invariant_check.py`, not committed — not written
+with knowledge of this document's v5/v6 sections) re-derived the identical numbers:
+`Q(0,0)=0.733359`; `Q` at R011's box-restricted "grid optimum" (`beta_d=100,
+beta_q=3.24e7`) `=0.623517`, below `Q(0,0)`; an extended grid confirms the true
+unconstrained maximum sits at `beta≈0`. This is a **same-repository, same-model
+re-run** (Independent Verification Strength Ladder: "same model, isolated context" —
+Weak-Medium, not a fully independent reimplementation), so treat it as a same-day
+sanity confirmation of NR-013, not as new independent evidence. **One incremental data
+point NR-013 does not already state explicitly:** `r` at TJB's own literal Table A1
+pair (`beta_d=4.5, beta_q=18.0`, combined — not the beta_d-alone check at line ~82
+below) `= 0.623443` — essentially identical to R011's box-restricted optimum. This is
+a direct corollary of the beta_q-saturation threshold already established below
+(lines ~298-306: plateau begins near `beta_q~10-20`), not a new mechanism — but it is
+useful because it pins the saturation plateau at TJB's own published coupling value,
+not just at the grid-search's arbitrarily larger point. **Process note for future
+sessions:** this cross-check should have started with `grep -i nesting
+null_results/INDEX.md` (would have found NR-013 immediately) per the Adaptive
+Iteration Branch Rule — it did not, and the duplication, while harmless here because
+the numbers agreed, cost otherwise-avoidable compute. See docs/135's own revision log
+for the corrected framing.
 **Status:** SYNTHESIS — cross-checks an external "top-10 bottleneck" adversarial audit
 against this project's own accumulated evidence (facts.json, R001-R011, Q001-Q006),
 then resolves a genuine internal contradiction the review surfaced using the project's

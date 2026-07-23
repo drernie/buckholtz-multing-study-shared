@@ -17,7 +17,7 @@ equivalent) and the DDD ADR for this stretch of work.
 | **3a — ΛCDM vs wCDM** (docs/135) | ΛCDM weakly preferred (ΔAIC=+2.0, ΔBIC=+3.3) | w=−0.959±0.464 unconstrained by 27 points; simplicity preference, **not exclusion of wCDM** |
 | **3b — R011 reproducibility** | PASS (4-digit match) | Coordinator-reproduced, same implementation. r is a correlation metric, not a full likelihood |
 | **3c — MULTING vs ΛCDM, fair footing** | `BLOCKED / NOT TESTED` | Reason: missing C1 closure — not a loss, an unresolved precondition |
-| **P0 — nesting invariant** (new this session) | Checked, no violation | True global optimum of the 443-cluster correlation objective is β≈0 (monopole); R011's "grid optimum" was a restricted-region optimum, not global — but TJB's own literal Table A1 values (4.5, 18.0) land in the same degraded regime (r=0.6234), so the qualitative finding survives and sharpens |
+| **P0 — nesting invariant** (re-checked this session; **already established** by `null_results/20260713-nr013-r011-beta-profile-nesting.md`, 2026-07-13) | Confirmed, no violation | True global optimum of the 443-cluster correlation objective is β≈0 (monopole); R011's "grid optimum" was a restricted-region optimum, not global — NR-013 proved this 10 days earlier via a closed-form limit; this session's script converged on the same numbers independently and adds one new data point: TJB's own literal Table A1 values (4.5, 18.0) land in the same degraded regime (r=0.6234) |
 
 ## 2. Global gate
 
@@ -102,7 +102,10 @@ R011's AIC to the CC-likelihood AIC (the exact error Audit 3 itself retracted) �
 constraint construction · a declaration that MULTING "lost" via the `n/a` cells · any expansion of
 numerology pattern search. The only new computation this session was the P0 nesting invariant
 test, which was in-scope (resolving Audit 3's own internal question, explicitly requested as the
-cheapest, most urgent check).
+cheapest, most urgent check) — **though "new" is imprecise: it duplicated `null_results/20260713-nr013-r011-beta-profile-nesting.md`,
+which should have been found first via `grep -i nesting null_results/INDEX.md` per the Adaptive
+Iteration Branch Rule. Process gap noted for future sessions; both docs/122 and docs/135 now carry
+the cross-reference.**
 
 ---
 

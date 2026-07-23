@@ -21,7 +21,7 @@ retracts:
 |---|---|---|---|
 | 1 | Single unified table mixing χ²/AIC/BIC (27 CC) with Pearson r (443 clusters) | Different data, targets, metrics, sample sizes, likelihoods — a single table implies one ranking | Split into **Table A** (CC likelihood) and **Table B** (cluster pipeline), see below |
 | 2 | MULTING full labeled `η-only` free params | β_d=100, β_q=3.24e7 were grid-selected on the same data — not free | Relabeled: `η fitted; β_d, β_q data-selected hyperparameters` |
-| 3 | "Full model r=0.6235 worse than monopole r=0.7334" reported as a plain finding | If full is nested in monopole (β=0 recovers it exactly), an optimized full model cannot score worse than monopole — this needed an actual check, not an assumption | **P0 nesting invariant test run this session** — see dedicated section below. Resolves cleanly: no violation, but the "grid optimum" label was imprecise |
+| 3 | "Full model r=0.6235 worse than monopole r=0.7334" reported as a plain finding | If full is nested in monopole (β=0 recovers it exactly), an optimized full model cannot score worse than monopole — this needed an actual check, not an assumption | **Re-checked this session, P0 section below** — resolves cleanly, no violation, but the "grid optimum" label was imprecise. **Already established more rigorously by `null_results/20260713-nr013-r011-beta-profile-nesting.md` (2026-07-13, closed-form limit + train/holdout) — this session's check is a same-day confirmation, not a new finding; see P0 section's correction note** |
 | 4 | "MULTING cannot be evaluated on 27 CC points physically" | Overstates a specification gap as a physical impossibility | "No population-level mapping to a unique H_MULT(z) has been specified yet" |
 | 5 | "Independently reproduced" (R011 numbers) | Coordinator re-ran the *same* script/repo/data — this is repeatability, not independent reimplementation | Split: `COORDINATOR-REPRODUCED: YES` / `INDEPENDENT REIMPLEMENTATION: NOT DONE` |
 | 6 | "Three independent audits converge" | All three share the same repo, same φ definition, same data, same coordinator workflow | "Methodologically distinct but dependency-correlated audits converge on the same bottleneck" |
@@ -82,6 +82,19 @@ grid search on this same 443-cluster set. Correct accounting: `η fitted (via cu
 ---
 
 ## P0 — Nesting invariant test (run this session, per user's flagged concern)
+
+**Correction (added after cross-checking docs/122, post-hoc — this should have been checked
+first):** this test duplicates, and does not supersede, prior work. `null_results/20260713-nr013-r011-beta-profile-nesting.md`
+(verdict: REJECTED WITHIN IMPLEMENTATION, 2026-07-13) already established this exact result ten
+days earlier, more rigorously — including a closed-form analytic `η_q→∞` limit (not just a
+numeric scan) and a train/holdout split, formalized at `experiments/20260713-r011-beta-profile-nesting/decision.md`
+and narrated in `docs/122_bottleneck_synthesis_cosmological_branch_verdict.md` (v5/v6). Per the
+Adaptive Iteration Branch Rule (falsification-ladder.md), `null_results/INDEX.md` should have been
+grepped for "nesting" before writing a new script — it was not. The numbers below are a **same-day,
+same-repository re-derivation** (Independent Verification Strength Ladder: "same model, isolated
+context" — Weak-Medium, not independent reimplementation), useful as a sanity cross-check and for
+one incremental data point (the TJB-literal-pair number), not as a new finding. NR-013 is the
+citable source; treat the section below as confirmation, not discovery.
 
 **The concern, stated precisely:** φ(β_d, β_q) = M500/D² − 2β_d·k_A·R500/D³ + (β_q·k_A·R500)²/D⁴
 reduces to the pure monopole term M500/D² exactly when β_d=β_q=0 — the full model is nested in
@@ -180,6 +193,7 @@ Independent reimplementation             — NOT DONE
 MULTING vs ΛCDM on CC likelihood         — NOT TESTED (reason: missing C1 closure, Audit 1)
 Cluster-pipeline r ranking               — REPRODUCED
 Nesting invariant (P0)                   — CHECKED, NO VIOLATION — true global optimum is beta=0
+                                            (confirms NR-013, 2026-07-13 — not a new finding)
 Full-model "degradation"                 — CONFIRMED as a genuine feature of the objective,
                                             not a restricted-grid artifact (see P0 section)
 Fair model comparison including MULTING  — INCOMPLETE (blocked on C1, not on statistics)
