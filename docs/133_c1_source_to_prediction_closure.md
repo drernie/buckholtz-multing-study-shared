@@ -72,25 +72,90 @@ formula `src/pearson_fit.py` uses throughout this trilogy.
   of ranges described in the PDF's accompanying text. Their transcription fidelity against the
   original PDF was **not** independently re-verified today — inherited, not re-checked.
 
-**Findings [VERIFIED-BASH, re-verified 2026-07-23]:**
+**Two-tier evidentiary split (user correction, 2026-07-23 — the original single-tier framing
+overclaimed the exact number; corrected here, do not revert):**
 
-| # | Finding | Number |
-|---|---|---|
-| M1 | H_MULT ≈ constant × H_FLRW | `H_MULT = 1.074×H_FLRW`, scatter 2.6%, corr=0.9996 — statistically indistinguishable from a near-constant rescaling of the ΛCDM column, not an independently-varying quantity |
-| M2 | Self-consistency failure | Φ(z) computed from the bridge formula + these cluster parameters **decreases** ×580,790 from z=0→8.5 (H falls 73→0.096 km/s/Mpc, ×762); Table A1's own reported H_MULT **increases** 73→418.1 km/s/Mpc (×5.7) over the same range — opposite directions, gap ×4365 at z=8.5 |
-| M3 | Dataset-independent | A second AI service's own parameter set (Gemini, different β) shows the same qualitative failure — computed H(z) stays flat/weak, doesn't reproduce the reported growth either |
-| Robustness | Survives a representative-value swap | Geometric-mean → arithmetic-mean cluster parameters: gap ×4365 → ×3944 — same order of magnitude, conclusion unchanged (`audit/self_consistency_diagnostic.py` Part F, its own built-in red-team check) |
+### M1 — CONFIRMED (from the raw CSV, unconditional)
 
-**What this does and does not establish:** this shows TJB's own stated bridge formula, applied to
-parameters consistent with what TJB's own AI-service process would have used for the OLD (v6,
-21-May) Table A1, does not reproduce that same table's own H_MULT column — a self-consistency
-failure internal to that one artifact, not a claim about the July-20 chart specifically (a
-different, later artifact — whether it was built the same way is exactly what Q4 below now asks).
-It does **not** prove the bridge formula is wrong, only that *this* attempted application of it
-to *this* table's own numbers doesn't close. Framed to TJB as a question, not a finding against
-him (NO_AUTHOR_ERROR): most likely explanations are a different D(z) schedule than the geometric-
-mean reconstruction assumed, or cluster parameters chosen directly to match H_obs rather than
-independently — both legitimate, both his call to clarify.
+`H_MULT ≈ 1.074 × H_FLRW`, scatter 2.6%, corr=0.9996 — [VERIFIED-BASH] against
+`data/supplementary_extracted/claude_approximate_matches.csv` directly, no reconstructed inputs
+involved (only the table's own H_MULT and H_FLRW columns).
+
+```
+Table A1 H_MULT is nearly a rescaled H_FLRW column   — CONFIRMED
+Independent redshift-shape signal in Table A1        — NOT DEMONSTRATED
+Reason or intent behind this construction            — UNKNOWN
+```
+
+**Do not write** "the AI service just rescaled ΛCDM" — the numbers show near-scaling, they do
+not establish the AI service's intent or exact procedure. Say "numerically close to a constant
+rescaling," not "was rescaled."
+
+### M2 — ROBUST DIRECTION, CONDITIONAL EXACT MAGNITUDE
+
+Φ(z) computed from the bridge formula + reconstructed cluster parameters **decreases** from
+z=0→8.5 while Table A1's own reported H_MULT **increases** — opposite trends. The *direction* of
+this mismatch is robust (survives the geometric→arithmetic representative-value swap, Part F).
+The *exact* ×4365 magnitude at z=8.5 is **conditional**: it depends on cluster parameters
+(m_A, k_A, r_A, D) reconstructed from PDF-text ranges (2026-06-09), not read from an unambiguous
+Table A1 row, and their fidelity against the original PDF was not independently re-checked today.
+
+```
+Bridge reconstruction gives opposite redshift trend   — ROBUST INDICATION
+Exact ×4365 discrepancy                                — CONDITIONAL (depends on reconstructed inputs)
+Cluster-input transcription from PDF                   — NEEDS SOURCE-FIDELITY RECHECK (not done)
+```
+
+M3 (dataset-independent, Gemini cross-check) and the Part F robustness swap (×4365→×3944 under
+geom→arith) both still stand as supporting M2's *direction*, not as certifying the *exact number*.
+
+### The critical contradiction this reveals (2026-07-23, likely the most valuable single result of this whole check)
+
+M1 and the July-20 chart are, on their face, **mutually inconsistent**. If H_MULT is (per M1)
+numerically close to a *constant* rescaling of H_FLRW, the two could not produce a curve that
+*crosses* H_FLRW/ΛCDM — a constant ratio between two curves never crosses zero difference more
+than once (in fact never, if the ratio stays >1 or <1 throughout, as M1's 1.02–1.11 range does).
+Yet the July-20 chart's red and blue curves visibly cross near z≈1.6–1.7 (already the basis of
+letter Q1). **This is a clean logical deduction from M1 alone — it does not depend on M2's
+conditional cluster-parameter reconstruction, so it survives even if the ×4365 number does not.**
+
+At least one of the following must be true:
+- the July curve is built by a different/revised procedure than produced Table A1's H_MULT column;
+- a different H_FLRW/Ωm baseline or normalization was used for the July chart;
+- an additional redshift-dependent step was applied after whatever produced Table A1;
+- the July chart is a new phenomenological reconstruction, not a direct extension of Appendix A1.
+
+```
+Table A1 and the July-20 chart are probably NOT the same computational procedure — LIKELY
+```
+
+This reframes the open question from "how was the bridge closed" to something sharper and more
+answerable: **is the July figure the same calculation as Appendix A1, or a revised one?** — this
+is now folded into letter Q1 (2026-07-23 update, v10).
+
+### Source-fidelity gate — NOT YET PASSED (blocks exact-number use, does not block the direction claim)
+
+Per FL Substrate Gate discipline: before the ×4365 number (not the qualitative M1/M2 findings) is
+used in any external-facing artifact, the following must be done — none are done yet:
+
+1. Re-read the original PDF and confirm the (M_A, k_A, r_A, D) ranges as actually stated.
+2. Record why geometric mean (not arithmetic, not endpoint) was chosen as the representative value.
+3. Re-verify the sign convention `F_m − F_d + F_q` against the PDF's own stated force law.
+4. Re-verify the normalization `Φ(z)/Φ(0)` matches the PDF's stated bridge exactly.
+5. Establish whether Appendix A1 and the July-20 chart share a calculation version at all.
+
+**Until this gate passes, the letter (below) uses only the qualitative/order-of-magnitude framing,
+not the exact ×4365 figure** — the precise number stays as a technical appendix, available on
+request, not in the main letter body.
+
+**What this does and does not establish:** M1 shows TJB's own reported H_MULT column is
+numerically close to a constant rescaling of his own reported H_FLRW column — confirmed,
+unconditional. M2 shows a reconstruction of TJB's own stated bridge formula, applied to
+TJB's own AI-service process's *type* of inputs for the OLD (v6, 21-May) Table A1, moves in the
+opposite direction from that same table's own H_MULT column — robust in direction, conditional in
+magnitude. Neither proves the bridge formula is wrong, only that this reconstruction attempt
+doesn't close, and that Table A1 alone cannot be the July chart's generating procedure (the
+contradiction above). Framed to TJB as a question, not a finding against him (NO_AUTHOR_ERROR).
 
 ## Relation to the standing TJB letter draft
 
@@ -128,7 +193,7 @@ curve's form/parameters) — current status against each:
 | 2 | What does D mean (physical/comoving/nearest-neighbour/averaged)? | 🔴 **NEEDS_DATA** — never stated by TJB; our D₀/(1+z)=100 Mpc is our own audit convention, not his |
 | 3 | Constant β_d, β_q, or z-dependent? | 🔴 **NEEDS_DATA** — three AI-service extractions disagree 5.8×/95× (BRAI R_B=15.9/24.1); no z-dependence specified anywhere |
 | 4 | Population-averaging rule over the cluster sample? | 🔴 **NEEDS_DATA** — never specified; our pipeline uses per-cluster φ(z), no stated averaging rule from TJB |
-| 5 | What equation generates H_MULT(z)? | 🔴 **NEEDS_DATA** — no action/Lagrangian exists (Q006 open); the published curve's exact form is unknown to us — **this is letter Q1, the single most direct ask**. Additional evidence (2026-07-23): applying the stated bridge formula to TJB's own OLD Table A1 fails a self-consistency check by ×4365 (see new section above) — does not resolve Q5, but raises the prior against "the July curve is a literal application of the same formula to consistent inputs" |
+| 5 | What equation generates H_MULT(z)? | 🔴 **NEEDS_DATA** — no action/Lagrangian exists (Q006 open); the published curve's exact form is unknown to us — **this is letter Q1, the single most direct ask**. Sharpened (2026-07-23): M1 (confirmed) shows Table A1's H_MULT is a near-constant rescaling of H_FLRW, which structurally could not cross ΛCDM the way the July curve does — Table A1 and the July chart are **likely not the same computational procedure** (see new section above; this specific deduction does not depend on M2's conditional ×4365 figure) |
 | 6 | Was H(z) used in choosing the curve's form/parameters? | 🔴 **NEEDS_DATA** — cannot be determined without TJB; explicitly asked (letter Q1) |
 
 **Overall C1 verdict: NEEDS_DATA**, closer to PIVOT than FAIL. Reasoning: nothing found this
