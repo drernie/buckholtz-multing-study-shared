@@ -51,14 +51,56 @@ NOT_AUTHOR_ERROR-framed single question available: *"which k_A normalization did
 actually use?"* — answerable in one sentence by TJB, unblocks nothing else on its own, but is the
 cheapest possible confirmation to request alongside the harder D(z)/β/H_MULT(z) asks.
 
+## Appendix A1 self-consistency check (2026-06-09 finding, re-verified 2026-07-23)
+
+**This section did not exist when this document was first written on 2026-07-22 — it was found
+during today's C1-R follow-up and folds in a result that predates this whole trilogy by six
+weeks, was never previously cross-referenced into docs/133, and is materially stronger evidence
+for the H_MULT(z) row's 🔴 status than anything in the trace table above.**
+
+**Source:** `audit/self_consistency_diagnostic.py` (2026-06-09), re-run and independently
+hand-verified 2026-07-23 (one z-value recomputed by hand from the raw formula, matched to 2
+significant figures; H_MULT/H_FLRW/β_d/β_q inputs cross-checked line-by-line against the raw
+source, `data/supplementary_extracted/claude_approximate_matches.csv` — exact match). This test
+uses TJB's own v6-preprint Table A1 (12 rows, z=0–8.5) and TJB's own stated bridge formula
+`H²(z)/H²_anchor = Φ(z)/Φ(0)`, `Φ = m_A/D² − 2k_Aβ_dr_A/D³ + (k_Aβ_qr_A)²/D⁴` — the exact same
+formula `src/pearson_fit.py` uses throughout this trilogy.
+
+**Provenance split (important, a skeptic pass this session caught an earlier draft blurring this):**
+- β_d=4.5, β_q=18.0 — **from Table A1 itself**, machine-readable, [VERIFIED-BASH] against the raw CSV.
+- m_A, k_A, r_A, D per row — **not from Table A1**; reconstructed (2026-06-09) as geometric means
+  of ranges described in the PDF's accompanying text. Their transcription fidelity against the
+  original PDF was **not** independently re-verified today — inherited, not re-checked.
+
+**Findings [VERIFIED-BASH, re-verified 2026-07-23]:**
+
+| # | Finding | Number |
+|---|---|---|
+| M1 | H_MULT ≈ constant × H_FLRW | `H_MULT = 1.074×H_FLRW`, scatter 2.6%, corr=0.9996 — statistically indistinguishable from a near-constant rescaling of the ΛCDM column, not an independently-varying quantity |
+| M2 | Self-consistency failure | Φ(z) computed from the bridge formula + these cluster parameters **decreases** ×580,790 from z=0→8.5 (H falls 73→0.096 km/s/Mpc, ×762); Table A1's own reported H_MULT **increases** 73→418.1 km/s/Mpc (×5.7) over the same range — opposite directions, gap ×4365 at z=8.5 |
+| M3 | Dataset-independent | A second AI service's own parameter set (Gemini, different β) shows the same qualitative failure — computed H(z) stays flat/weak, doesn't reproduce the reported growth either |
+| Robustness | Survives a representative-value swap | Geometric-mean → arithmetic-mean cluster parameters: gap ×4365 → ×3944 — same order of magnitude, conclusion unchanged (`audit/self_consistency_diagnostic.py` Part F, its own built-in red-team check) |
+
+**What this does and does not establish:** this shows TJB's own stated bridge formula, applied to
+parameters consistent with what TJB's own AI-service process would have used for the OLD (v6,
+21-May) Table A1, does not reproduce that same table's own H_MULT column — a self-consistency
+failure internal to that one artifact, not a claim about the July-20 chart specifically (a
+different, later artifact — whether it was built the same way is exactly what Q4 below now asks).
+It does **not** prove the bridge formula is wrong, only that *this* attempted application of it
+to *this* table's own numbers doesn't close. Framed to TJB as a question, not a finding against
+him (NO_AUTHOR_ERROR): most likely explanations are a different D(z) schedule than the geometric-
+mean reconstruction assumed, or cluster parameters chosen directly to match H_obs rather than
+independently — both legitimate, both his call to clarify.
+
 ## Relation to the standing TJB letter draft
 
-The Hubble-chart letter (`reply_to_TJB_EMAIL_READY.txt`, Desktop) already asks Q2 ("explicit
-functional form and parameters of the red curve") — this is the H_MULT(z) row of this table,
-narrowly scoped to his chart. It does **not** currently ask about D(z)'s convention, β_d/β_q's
-derivation, or the k_A normalization discrepancy — those remain open, separate asks. Whether to
-fold them into an expanded letter or hold them for a follow-up is a scope decision for the user,
-not made here.
+The Hubble-chart letter (`reply_to_TJB_EMAIL_READY.txt`, Desktop, now v9) asks Q2 ("explicit
+functional form and parameters of the red curve") — the H_MULT(z) row of this table, narrowly
+scoped to his July chart — and Q4 now also carries the Appendix A1 self-consistency finding above
+(2026-07-23 update), asking directly whether the same D(z)/parameter mismatch explains it. It
+still does **not** ask separately about β_d/β_q's first-principles derivation or the k_A
+normalization discrepancy as standalone items — those remain open, lower-priority asks, a scope
+decision for the user.
 
 ## Success / Kill criteria (per the external review's own framing, adopted)
 
@@ -86,7 +128,7 @@ curve's form/parameters) — current status against each:
 | 2 | What does D mean (physical/comoving/nearest-neighbour/averaged)? | 🔴 **NEEDS_DATA** — never stated by TJB; our D₀/(1+z)=100 Mpc is our own audit convention, not his |
 | 3 | Constant β_d, β_q, or z-dependent? | 🔴 **NEEDS_DATA** — three AI-service extractions disagree 5.8×/95× (BRAI R_B=15.9/24.1); no z-dependence specified anywhere |
 | 4 | Population-averaging rule over the cluster sample? | 🔴 **NEEDS_DATA** — never specified; our pipeline uses per-cluster φ(z), no stated averaging rule from TJB |
-| 5 | What equation generates H_MULT(z)? | 🔴 **NEEDS_DATA** — no action/Lagrangian exists (Q006 open); the published curve's exact form is unknown to us — **this is letter Q1, the single most direct ask** |
+| 5 | What equation generates H_MULT(z)? | 🔴 **NEEDS_DATA** — no action/Lagrangian exists (Q006 open); the published curve's exact form is unknown to us — **this is letter Q1, the single most direct ask**. Additional evidence (2026-07-23): applying the stated bridge formula to TJB's own OLD Table A1 fails a self-consistency check by ×4365 (see new section above) — does not resolve Q5, but raises the prior against "the July curve is a literal application of the same formula to consistent inputs" |
 | 6 | Was H(z) used in choosing the curve's form/parameters? | 🔴 **NEEDS_DATA** — cannot be determined without TJB; explicitly asked (letter Q1) |
 
 **Overall C1 verdict: NEEDS_DATA**, closer to PIVOT than FAIL. Reasoning: nothing found this
