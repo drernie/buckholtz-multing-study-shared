@@ -31,7 +31,7 @@ from scipy.optimize import curve_fit
 
 REPO = Path(__file__).resolve().parents[1]
 CC_CSV = REPO / "data" / "hz_cc.csv"
-OUT_PNG = REPO / "reports" / "same_anchor_hubble_comparison.png"
+OUT_PNG = REPO / "reports" / "hubble_anchor_control_comparison.png"
 
 OM_FID = 0.317  # fiducial matter density held fixed for the anchored curves
 PLANCK_H0 = 67.36  # Planck 2018 TT,TE,EE+lowE+lensing
@@ -53,7 +53,8 @@ def main() -> int:
     h = cc["Hz_km_s_Mpc"].to_numpy(float)
     s = cc["sigma_Hz"].to_numpy(float)
 
-    (h0_free, om_free), _ = curve_fit(lcdm, z, h, sigma=s, p0=(70.0, 0.3), maxfev=10000)
+    (h0_free, om_free), cov_free = curve_fit(lcdm, z, h, sigma=s, p0=(70.0, 0.3), maxfev=10000)
+    h0_free_err, om_free_err = np.sqrt(np.diag(cov_free))
     chi2_free = chi2(z, h, s, h0_free, om_free)
     chi2_planck = chi2(z, h, s, PLANCK_H0, OM_FID)
     chi2_shoes = chi2(z, h, s, SH0ES_H0, OM_FID)
@@ -63,7 +64,11 @@ def main() -> int:
     print("NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION")
     print("=" * 70)
     print(f"  CC data      : {len(z)} points, z in [{z.min():.3f}, {z.max():.3f}]")
-    print(f"  free fit     : H0={h0_free:.3f}, Om={om_free:.4f}  chi2={chi2_free:.2f}")
+    print(
+        f"  free fit     : H0={h0_free:.2f}+-{h0_free_err:.2f}, "
+        f"Om={om_free:.3f}+-{om_free_err:.3f}  chi2={chi2_free:.2f}  "
+        "(diagonal quoted CC errors, no covariance matrix)"
+    )
     print(f"  Planck anchor (H0={PLANCK_H0}, Om={OM_FID}): chi2={chi2_planck:.2f}")
     print(f"  SH0ES  anchor (H0={SH0ES_H0}, Om={OM_FID}): chi2={chi2_shoes:.2f}")
     print(f"  dof = {len(z) - 2} (free fit), {len(z)} (fixed-Om anchors)")
@@ -89,7 +94,7 @@ def main() -> int:
         "-",
         color="#c0392b",
         lw=2.2,
-        label=f"ΛCDM at H₀={SH0ES_H0} (SH0ES anchor)",
+        label=f"ΛCDM (Ωm={OM_FID}), H₀={SH0ES_H0} — SH0ES anchor",
     )
     ax.plot(
         zg,
@@ -97,7 +102,7 @@ def main() -> int:
         "-",
         color="#2f6db0",
         lw=2.2,
-        label=f"ΛCDM at H₀={PLANCK_H0} (Planck anchor)",
+        label=f"ΛCDM (Ωm={OM_FID}), H₀={PLANCK_H0} — Planck anchor",
     )
     ax.plot(
         zg,
@@ -106,20 +111,41 @@ def main() -> int:
         color="#1a2230",
         lw=1.4,
         alpha=0.8,
-        label=f"ΛCDM free fit to this data (H₀={h0_free:.1f}, Ωm={om_free:.2f})",
+        label=(
+            f"Chronometer-only free fit (diagonal errors): "
+            f"H₀={h0_free:.1f}±{h0_free_err:.1f}, Ωm={om_free:.2f}±{om_free_err:.2f}"
+        ),
     )
-    ax.plot(0, SH0ES_H0, marker="D", ms=8, color="#e0891c", ls="none", label="SH0ES local H₀")
+    ax.plot(
+        0,
+        SH0ES_H0,
+        marker="D",
+        ms=8,
+        color="#e0891c",
+        ls="none",
+        label="SH0ES local H₀ (reference point, not in the chronometer-only fit)",
+    )
 
     ax.set_xlabel("redshift  z")
     ax.set_ylabel("H(z)  [km/s/Mpc]")
-    ax.set_title("ΛCDM at a common H₀ vs. two different anchors, over cosmic-chronometer data")
+    fig.suptitle(
+        "Effect of H₀ anchoring in flat ΛCDM over 27 cosmic-chronometer measurements",
+        fontsize=12,
+        y=0.985,
+    )
+    ax.set_title(
+        "Solid curves share the same Ωm and differ only in the adopted H₀ anchor",
+        fontsize=9,
+        style="italic",
+        pad=8,
+    )
     ax.set_xlim(-0.03, 2.05)
     ax.set_ylim(55, 215)
-    ax.legend(fontsize=8.5, loc="upper left", framealpha=0.9)
+    ax.legend(fontsize=8, loc="upper left", framealpha=0.9)
     ax.grid(True, alpha=0.25)
 
     OUT_PNG.parent.mkdir(exist_ok=True)
-    fig.tight_layout()
+    fig.tight_layout(rect=(0.0, 0.0, 1.0, 0.94))
     fig.savefig(OUT_PNG, dpi=140)
     print(f"\n  saved -> {OUT_PNG.relative_to(REPO)}")
     return 0
