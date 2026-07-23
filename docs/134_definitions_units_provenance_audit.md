@@ -65,12 +65,15 @@ reproduce supplementary's own tabulated number — flagged to TJB, not yet resol
 any of these; this audit cannot manufacture one, only state precisely what is missing (this is
 the same conclusion Audit 1/docs/133 reaches from the closure-chain side).
 
-**Headline finding, stated plainly:** three of nine ledger rows had a real, verified,
-prose/code/table discrepancy this session alone (k_A, ε, N_eff/g*) — a ~33% hit rate on the rows
-actually checked. This is not proof more exist elsewhere in the project, but it is strong enough
-evidence of a systemic risk class that any future numeric claim in this project — ours or TJB's
-own — should be checked against this ledger's method (definition → units → source → code path →
-recomputation) before being treated as established, not assumed clean by default.
+**Headline finding, stated precisely (revised 2026-07-23 — "hit rate" framing retracted):** in a
+small set of the nine most safety-critical quantities in this chain, three independent, verified
+prose/code/table discrepancies were found this session (k_A, ε, N_eff/g*). These nine rows were
+**not a random sample** of every numeric quantity in the project, so a percentage is not a valid
+frequency estimate — do not read this as "33% of all project numbers are wrong." What it does
+establish: this is enough evidence to treat provenance defects (prose ≠ table ≠ code ≠
+data-derived value) as a systemic risk class, and to check every future numeric claim in this
+project — ours or TJB's own — through this ledger's method (definition → units → source → code
+path → recomputation) before treating it as established, not assumed clean by default.
 
 ---
 
