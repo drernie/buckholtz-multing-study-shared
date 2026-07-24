@@ -52,20 +52,31 @@ case it matters for how a referee reads the ΛCDM comparison — the direction o
 effect on the MULTING-vs-ΛCDM comparison itself would need a shared likelihood to assess, which
 we have not attempted."
 
-## 3. r_d-dependence of the DESI z=2.33 point
+## 3. The DESI z=2.33 point is DR1's value, labeled DR2 (upgraded 2026-07-24, was "r_d-dependence")
 
-**Finding:** DESI DR2 reports the invariant D_H(z)/r_d = 8.632±0.098. Converting to H(z) in
-km/s/Mpc requires choosing r_d. At the standard r_d=147.09 Mpc: H(2.33)=236.1±2.8. At a lower,
-early-dark-energy-style r_d (e.g. 139.5 Mpc): H(2.33)=249.0. The paper's cited 239.2±4.8 implies
-a still-different r_d/release convention.
-**Why this is useful regardless of outcome:** the DESI comparison in Table VI is r_d-convention-
-dependent, not a single model-independent number. Stating the invariant (D_H/r_d) alongside the
-converted H(z) removes that ambiguity for a reader.
-**Suggested wording:** "The DESI point's value in km/s/Mpc depends on the assumed sound horizon
-r_d; the invariant D_H(z)/r_d=8.632±0.098 is convention-independent. Noting the specific r_d and
-release used for the cited 239.2±4.8 would let a reader reproduce the conversion exactly."
-**Evidence tier:** `RECOMPUTED-SAME-PIPELINE` (`scripts/hz_desi_and_redcurve_space.py`, re-run
-2026-07-24).
+**Finding, now `SOURCE-LOCATED` on BOTH sides via direct WebFetch of the primary sources (not
+memory):**
+- TJB's Table VI / abstract / in-text citation [33] all label 239.2±4.8 km/s/Mpc as "DESI DR2
+  Lyman-α baryon acoustic oscillations at z=2.33."
+- DESI's 2024 DR1 Lyman-α BAO paper (arXiv:2404.03001, "DESI 2024 IV") reports, verbatim in its
+  own abstract: **"H(z_eff) = (239.2 ± 4.8)(147.09 Mpc/r_d) km/s/Mpc"** at z_eff=2.33 — the exact
+  same central value and uncertainty, to the decimal.
+- DESI's actual DR2 Lyman-α BAO paper (arXiv:2503.14739, "DESI DR2 Results I", 2025) reports a
+  *different* native measurement at the same z=2.33: **D_H(z_eff)/r_d = 8.632 ± 0.098 ± 0.026**,
+  which converts to H(2.33)=236.1±2.8 at the standard r_d=147.09 Mpc — not 239.2±4.8.
+**What this means:** the number cited as "DESI DR2" in the paper is DESI DR1's own published
+value; genuine DR2 gives a somewhat different number. This looks like a citation/release-label
+slip, not a computational error — worth flagging as a simple, high-value correctable fix (updates
+the citation and, if desired, the comparison itself to the newer DR2 measurement).
+**Suggested wording:** "The DESI point cited as DR2 (239.2±4.8, ref. [33]) matches DESI DR1's
+2024 Lyman-α BAO paper (arXiv:2404.03001) exactly; DESI's actual DR2 release (arXiv:2503.14739,
+2025) reports D_H(z=2.33)/r_d=8.632±0.098±0.026, converting to H(2.33)=236.1±2.8 at the standard
+r_d=147.09 Mpc. Worth double-checking which release was intended, and updating the citation/label
+(and possibly the comparison itself) accordingly."
+**Evidence tier:** `SOURCE-LOCATED` for both the DR1 and DR2 papers' own abstracts
+(`WebFetch`, 2026-07-24, both fetched directly from arxiv.org — see docs/141 for the fetch
+transcript) + `RECOMPUTED-SAME-PIPELINE` for the r_d-conversion arithmetic
+(`scripts/hz_desi_and_redcurve_space.py`, re-run 2026-07-24).
 
 ## 4. Offer: independent clean-room reimplementation
 
