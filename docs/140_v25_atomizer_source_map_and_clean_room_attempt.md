@@ -170,6 +170,35 @@ merger/infall statistics used for the accretion correction (Eqs 15–16), or fix
 unstated convention?* Not sent yet — routing decision is the user's (see docs/137/138 triage
 discipline: GREEN items still need a final read + cooling-off pass before anything is sent).
 
+### 3.3b F_acc ablation (A/B/C branches, 2026-07-24) — the accretion term is NOT the cause
+
+User-requested control: does the non-monotonic shape come from `F_acc`, or from the bare force
+law + `v0` closure? Added three branches to `scripts/clean_room_v25_reimplementation.py`, all
+sharing the identical `s0`-closure and ODE machinery, differing only in how `F_acc` enters:
+
+- **Branch A** — `F_acc` entirely omitted (pure ablation control, isolates Eq 1–4 alone).
+- **Branch B** — `F_acc` frozen at the constant `H0,anchor` (the historical §3.2 bug, kept
+  deliberately as a "what our first wrong attempt actually computed" control).
+- **Branch C** — `F_acc` self-consistent in `H(z)` (the corrected version, §3.2).
+
+Result (`reports/clean_room_v25_branch_ablation.json`), m0=8×10¹⁴ M☉:
+
+| Branch | H_peak (km/s/Mpc) | z at peak | H(z=2.33) | Monotonic? |
+|---|---|---|---|---|
+| A (no F_acc) | 156.76 | 0.666 | 77.55 | No |
+| B (F_acc frozen) | 153.76 | 0.667 | 74.53 | No |
+| C (F_acc self-consistent) | 152.47 | 0.671 | 76.20 | No |
+
+(m0=1×10¹⁵ M☉ case: peaks 209.8/207.5/205.3 at z≈0.545, same pattern.)
+
+**All three branches — including with `F_acc` completely removed — produce the same
+qualitative shape, with peak height and location within ~2–3% of each other.** This sharpens
+§3.3's conclusion: the non-monotonic curve is **not an artifact of the accretion term or of how
+it's solved** — it comes from the bare force law (Eq 1–4) combined with the `v0=H0,anchor·s0`
+closure choice. The open question in §3.3 (what determines `ds/dt` at z=0) remains the load-bearing
+one; `F_acc`'s self-consistency (the §3.2 bugfix) turns out to be a real, worth-fixing correctness
+issue but a minor contributor to *this specific* shape-mismatch finding, not its cause.
+
 ### 3.4 Coverage / honesty note
 
 This is not a Statistical Certification Gate pass (no χ²/Pearson-r comparison was computed

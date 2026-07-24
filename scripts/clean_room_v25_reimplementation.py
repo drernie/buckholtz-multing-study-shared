@@ -209,21 +209,82 @@ def s_ddot(s: float, z: float, beta1: float, beta2: float, m0: float, r0: float)
     return h_z**2 * s
 
 
-def solve_s0(beta1: float, beta2: float, h0_anchor: float, m0: float, r0: float) -> float:
-    """Root-find s0 such that H(z=0), solved self-consistently via
-    h_self_consistent, equals H0,anchor exactly (see CLOSURE ASSUMPTION in module
-    docstring -- s0 itself is pinned by this equation, not a free choice).
+def h_no_accretion(s: float, z: float, beta1: float, beta2: float, m0: float, r0: float) -> float:
+    """Branch A -- ABLATION CONTROL, not a candidate reading of v25: F_acc is
+    entirely omitted (H(z) = sqrt(F_P/(mu*s))). Isolates what the force law alone
+    (Eq 1-4) contributes to the curve's shape, with no accretion term at all.
+    Returns NaN where F_P/(mu*s) < 0 (no real H at this (s,z))."""
+    mu = m_x(z, m0) / 2.0
+    fp = f_p_identical_nodes(s, z, beta1, beta2, m0, r0)
+    val = fp / (mu * s)
+    if val < 0:
+        return float("nan")
+    return np.sqrt(val)
 
-    h_self_consistent(s, 0, ...) is NOT monotonic in s (quadrupole/dipole terms
-    fall off faster than the monopole, so it rises from NaN/undefined at small s
-    once real, peaks somewhere, then falls back toward 0 as s->infinity) -- there
-    can be zero, one, or two roots depending on whether H0,anchor is below/above
-    that peak. We return the SMALLER root (rising branch) as the more physically
-    sensible "adjacent node" separation; a RuntimeError is raised if H0,anchor
-    exceeds the peak (no solution exists for this m0 at all)."""
+
+def h_accretion_frozen_anchor(
+    s: float, z: float, beta1: float, beta2: float, m0: float, r0: float, h0_anchor: float
+) -> float:
+    """Branch B -- HISTORICAL BUG, kept deliberately as a control, not a candidate
+    reading of v25: F_acc is evaluated with h_of_z FROZEN at the constant
+    h0_anchor for every z, exactly what an earlier version of this script did
+    before Agent(reviewer) caught it (2026-07-24, see module docstring and
+    h_self_consistent's docstring) -- reproducing "what our first, wrong attempt
+    actually computed" on purpose, so it can be compared against the corrected
+    branch C rather than just asserted to differ from it."""
+    mu = m_x(z, m0) / 2.0
+    fp = f_p_identical_nodes(s, z, beta1, beta2, m0, r0)
+    facc = f_acc(z, h0_anchor, m0, r0)
+    val = (fp - facc) / mu / s
+    if val < 0:
+        return float("nan")
+    return np.sqrt(val)
+
+
+def h_branch(
+    branch: str,
+    s: float,
+    z: float,
+    beta1: float,
+    beta2: float,
+    m0: float,
+    r0: float,
+    h0_anchor: float,
+) -> float:
+    """Single dispatch point for the three-branch F_acc ablation:
+      A -- no F_acc at all (h_no_accretion)
+      B -- F_acc frozen at h0_anchor, the historical bug (h_accretion_frozen_anchor)
+      C -- F_acc self-consistent in H(z), the corrected version (h_self_consistent)
+    Every solver/integrator below takes `branch` and calls this, so A/B/C reuse
+    the identical s0-closure and ODE machinery -- only the H(z) formula differs."""
+    if branch == "A":
+        return h_no_accretion(s, z, beta1, beta2, m0, r0)
+    if branch == "B":
+        return h_accretion_frozen_anchor(s, z, beta1, beta2, m0, r0, h0_anchor)
+    if branch == "C":
+        return h_self_consistent(s, z, beta1, beta2, m0, r0)
+    raise ValueError(f"Unknown branch {branch!r}, expected 'A', 'B', or 'C'")
+
+
+def solve_s0(
+    beta1: float, beta2: float, h0_anchor: float, m0: float, r0: float, branch: str = "C"
+) -> float:
+    """Root-find s0 such that H(z=0), solved via the given branch's H(z) formula
+    (h_branch), equals H0,anchor exactly (see CLOSURE ASSUMPTION in module
+    docstring -- s0 itself is pinned by this equation, not a free choice, for ALL
+    THREE branches -- only the formula used to evaluate H changes).
+
+    h_branch(branch, s, 0, ...) is NOT monotonic in s for any branch (quadrupole/
+    dipole terms fall off faster than the monopole, so it rises from NaN/undefined
+    at small s once real, peaks somewhere, then falls back toward 0 as
+    s->infinity) -- there can be zero, one, or two roots depending on whether
+    H0,anchor is below/above that peak. We return the SMALLER root (rising
+    branch) as the more physically sensible "adjacent node" separation; a
+    RuntimeError is raised if H0,anchor exceeds the peak (no solution exists for
+    this m0/branch combination at all)."""
 
     def residual(s0: float) -> float:
-        h_z0 = h_self_consistent(s0, 0.0, beta1, beta2, m0, r0)
+        h_z0 = h_branch(branch, s0, 0.0, beta1, beta2, m0, r0, h0_anchor)
         if not np.isfinite(h_z0):
             return float("-inf")
         return h_z0 - h0_anchor
@@ -264,15 +325,19 @@ def integrate_h_of_z(
     r0: float,
     z_max: float = 2.5,
     n_eval: int = 400,
+    branch: str = "C",
 ):
     """Integrate the coupled [s, v, z] system forward in cosmic time until z_max,
-    return (z_array, H_array) via dense interpolation.
+    return (z_array, H_array) via dense interpolation, using the given branch's
+    H(z) formula (h_branch) at every step.
 
-    P1 review fix (2026-07-24): H(z) is now solved self-consistently at every
-    step via h_self_consistent (an exact quadratic solve), not read from a
-    caller-supplied h_of_z that was previously always the constant H0,anchor --
-    see h_self_consistent's docstring for why that was wrong and by how much."""
-    s0 = solve_s0(beta1, beta2, h0_anchor, m0, r0)
+    branch="C" (default) is the corrected, self-consistent version (P1 review fix,
+    2026-07-24) -- H(z) is solved exactly via a quadratic at every step, not read
+    from a caller-supplied h_of_z that was previously always the constant
+    H0,anchor. branch="A"/"B" are deliberate ablation controls (see h_branch,
+    h_no_accretion, h_accretion_frozen_anchor) -- NOT alternative candidate
+    readings of v25, kept to isolate F_acc's contribution to the curve's shape."""
+    s0 = solve_s0(beta1, beta2, h0_anchor, m0, r0, branch=branch)
     v0 = h0_anchor * s0  # CLOSURE ASSUMPTION -- see module docstring
 
     def rhs(_t: float, y: np.ndarray) -> list[float]:
@@ -280,7 +345,7 @@ def integrate_h_of_z(
         if s <= 0 or z < -0.999:
             return [0.0, 0.0, 0.0]
         z_c = max(z, -0.999)
-        h_z = h_self_consistent(s, z_c, beta1, beta2, m0, r0)
+        h_z = h_branch(branch, s, z_c, beta1, beta2, m0, r0, h0_anchor)
         if not np.isfinite(h_z):
             return [0.0, 0.0, 0.0]  # guard; hit_boundary event should stop first
         sdd = h_z**2 * s
@@ -298,14 +363,13 @@ def integrate_h_of_z(
     hit_zmax.direction = 1
 
     def hit_boundary(_t, y):
-        # +1 while a real self-consistent H(z) exists at this (s,z), -1 once it
-        # doesn't (see h_self_consistent docstring) -- stops the integration
-        # honestly at the edge of the physically valid region instead of letting
-        # NaN propagate silently.
+        # +1 while a real H(z) exists at this (s,z) for the chosen branch, -1
+        # once it doesn't -- stops the integration honestly at the edge of the
+        # physically valid region instead of letting NaN propagate silently.
         s, _v, z = y
         if s <= 0:
             return -1.0
-        h_z = h_self_consistent(s, max(z, -0.999), beta1, beta2, m0, r0)
+        h_z = h_branch(branch, s, max(z, -0.999), beta1, beta2, m0, r0, h0_anchor)
         return 1.0 if np.isfinite(h_z) else -1.0
 
     hit_boundary.terminal = True
@@ -328,7 +392,7 @@ def integrate_h_of_z(
     s_t, v_t, z_t = sol.sol(t_grid)
     h_t = np.full_like(z_t, np.nan)
     for i, (s_i, z_i) in enumerate(zip(s_t, z_t, strict=True)):
-        h_t[i] = h_self_consistent(s_i, z_i, beta1, beta2, m0, r0)
+        h_t[i] = h_branch(branch, s_i, z_i, beta1, beta2, m0, r0, h0_anchor)
     return z_t, h_t
 
 
@@ -345,29 +409,56 @@ if __name__ == "__main__":
     # as m0/r0 (identical-node case, Sec II.E) -- these are NOT fitted, just a
     # reference scale; results are reported for a SWEEP to show sensitivity.
     RHO_CRIT0_MSUN_MPC3 = 2.775e11 * 0.674**2  # standard rho_crit,0 = 2.775e11 h^2 Msun/Mpc^3
-    RESULTS = []
+
+    # F_acc ablation (2026-07-24, user request): compare the three branches
+    # SIDE BY SIDE on the same node masses, so the answer to "what does F_acc
+    # actually contribute to the curve's shape?" comes from the code, not from
+    # re-asserting the earlier finding.
+    #   A -- no F_acc at all (isolates the bare force law, Eq 1-4)
+    #   B -- F_acc frozen at h0_anchor (the historical bug, kept as a control)
+    #   C -- F_acc self-consistent in H(z) (the corrected version, docs/140)
+    BRANCH_LABELS = {
+        "A": "no F_acc (ablation control)",
+        "B": "F_acc frozen at H0_anchor (historical bug, control)",
+        "C": "F_acc self-consistent in H(z) (corrected)",
+    }
     # 4e14-1e15 Msun brackets the closure crossing found in diagnostics for
     # Case-1's (beta1,beta2,H0_anchor) -- "node = one cluster or a few clusters"
     # (p.2) covers this range comfortably.
+    RESULTS = []
     for m0 in [4e14, 6e14, 8e14, 1e15]:
         r0 = (3 * m0 / (4 * np.pi * 500 * RHO_CRIT0_MSUN_MPC3)) ** (1.0 / 3.0)
-        try:
-            z_arr, h_arr = integrate_h_of_z(BETA1_CASE1, BETA2_CASE1, H0_ANCHOR_CASE1, m0, r0)
-            h_at_233 = float(np.interp(2.33, z_arr, h_arr)) if z_arr.max() >= 2.33 else None
-            RESULTS.append(
-                {
-                    "m0_Msun": m0,
-                    "r0_Mpc": r0,
-                    "z_max_reached": float(z_arr.max()),
-                    "H_at_z0": float(h_arr[0]),
-                    "H_at_z2.33": h_at_233,
-                    "note": "H_at_z0 should equal H0_anchor by construction (closure check)",
-                }
-            )
-        except Exception as exc:  # noqa: BLE001 -- diagnostic script, report and continue
-            RESULTS.append({"m0_Msun": m0, "error": str(exc)})
+        for branch, label in BRANCH_LABELS.items():
+            try:
+                z_arr, h_arr = integrate_h_of_z(
+                    BETA1_CASE1, BETA2_CASE1, H0_ANCHOR_CASE1, m0, r0, branch=branch
+                )
+                h_at_233 = float(np.interp(2.33, z_arr, h_arr)) if z_arr.max() >= 2.33 else None
+                h_peak = float(np.nanmax(h_arr))
+                z_at_peak = float(z_arr[int(np.nanargmax(h_arr))])
+                RESULTS.append(
+                    {
+                        "branch": branch,
+                        "branch_label": label,
+                        "m0_Msun": m0,
+                        "r0_Mpc": r0,
+                        "z_max_reached": float(z_arr.max()),
+                        "H_at_z0": float(h_arr[0]),
+                        "H_peak": h_peak,
+                        "z_at_H_peak": z_at_peak,
+                        "H_at_z2.33": h_at_233,
+                        "monotonic_rising": bool(np.all(np.diff(h_arr) >= -1e-6)),
+                        "note": "H_at_z0 should equal H0_anchor by construction (closure check)",
+                    }
+                )
+            except Exception as exc:  # noqa: BLE001 -- diagnostic script, report and continue
+                RESULTS.append(
+                    {"branch": branch, "branch_label": label, "m0_Msun": m0, "error": str(exc)}
+                )
 
-    out_path = Path(__file__).resolve().parents[1] / "reports" / "clean_room_v25_sensitivity.json"
+    out_path = (
+        Path(__file__).resolve().parents[1] / "reports" / "clean_room_v25_branch_ablation.json"
+    )
     out_path.parent.mkdir(exist_ok=True)
     out_path.write_text(json.dumps(RESULTS, indent=2))
     print(json.dumps(RESULTS, indent=2))

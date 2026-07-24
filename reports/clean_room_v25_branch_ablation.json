@@ -1,0 +1,116 @@
+[
+  {
+    "branch": "A",
+    "branch_label": "no F_acc (ablation control)",
+    "m0_Msun": 400000000000000.0,
+    "error": "No s0 solves the closure equation for this m0: peak H(0)=33.33 < H0_anchor=76.46"
+  },
+  {
+    "branch": "B",
+    "branch_label": "F_acc frozen at H0_anchor (historical bug, control)",
+    "m0_Msun": 400000000000000.0,
+    "error": "No s0 solves the closure equation for this m0: peak H(0)=29.81 < H0_anchor=76.46"
+  },
+  {
+    "branch": "C",
+    "branch_label": "F_acc self-consistent in H(z) (corrected)",
+    "m0_Msun": 400000000000000.0,
+    "error": "No s0 solves the closure equation for this m0: peak H(0)=31.9 < H0_anchor=76.46"
+  },
+  {
+    "branch": "A",
+    "branch_label": "no F_acc (ablation control)",
+    "m0_Msun": 600000000000000.0,
+    "error": "No s0 solves the closure equation for this m0: peak H(0)=61.22 < H0_anchor=76.46"
+  },
+  {
+    "branch": "B",
+    "branch_label": "F_acc frozen at H0_anchor (historical bug, control)",
+    "m0_Msun": 600000000000000.0,
+    "error": "No s0 solves the closure equation for this m0: peak H(0)=58.44 < H0_anchor=76.46"
+  },
+  {
+    "branch": "C",
+    "branch_label": "F_acc self-consistent in H(z) (corrected)",
+    "m0_Msun": 600000000000000.0,
+    "error": "No s0 solves the closure equation for this m0: peak H(0)=59.08 < H0_anchor=76.46"
+  },
+  {
+    "branch": "A",
+    "branch_label": "no F_acc (ablation control)",
+    "m0_Msun": 800000000000000.0,
+    "r0_Mpc": 1.447047756578507,
+    "z_max_reached": 2.499999999999999,
+    "H_at_z0": 76.46000000000137,
+    "H_peak": 156.76271446496673,
+    "z_at_H_peak": 0.6659094506885269,
+    "H_at_z2.33": 77.5493542609162,
+    "monotonic_rising": false,
+    "note": "H_at_z0 should equal H0_anchor by construction (closure check)"
+  },
+  {
+    "branch": "B",
+    "branch_label": "F_acc frozen at H0_anchor (historical bug, control)",
+    "m0_Msun": 800000000000000.0,
+    "r0_Mpc": 1.447047756578507,
+    "z_max_reached": 2.5,
+    "H_at_z0": 76.45999999999992,
+    "H_peak": 153.75824067238545,
+    "z_at_H_peak": 0.666566505716962,
+    "H_at_z2.33": 74.52559361127514,
+    "monotonic_rising": false,
+    "note": "H_at_z0 should equal H0_anchor by construction (closure check)"
+  },
+  {
+    "branch": "C",
+    "branch_label": "F_acc self-consistent in H(z) (corrected)",
+    "m0_Msun": 800000000000000.0,
+    "r0_Mpc": 1.447047756578507,
+    "z_max_reached": 2.5000000000000004,
+    "H_at_z0": 76.45999999999992,
+    "H_peak": 152.4666313483172,
+    "z_at_H_peak": 0.6710548231617074,
+    "H_at_z2.33": 76.20407112105516,
+    "monotonic_rising": false,
+    "note": "H_at_z0 should equal H0_anchor by construction (closure check)"
+  },
+  {
+    "branch": "A",
+    "branch_label": "no F_acc (ablation control)",
+    "m0_Msun": 1000000000000000.0,
+    "r0_Mpc": 1.5587849424527742,
+    "z_max_reached": 2.5000000000000013,
+    "H_at_z0": 76.46000000000008,
+    "H_peak": 209.8193760711791,
+    "z_at_H_peak": 0.5450226944630668,
+    "H_at_z2.33": 72.07015696830297,
+    "monotonic_rising": false,
+    "note": "H_at_z0 should equal H0_anchor by construction (closure check)"
+  },
+  {
+    "branch": "B",
+    "branch_label": "F_acc frozen at H0_anchor (historical bug, control)",
+    "m0_Msun": 1000000000000000.0,
+    "r0_Mpc": 1.5587849424527742,
+    "z_max_reached": 2.5000000000000115,
+    "H_at_z0": 76.45999999999982,
+    "H_peak": 207.49473973625268,
+    "z_at_H_peak": 0.5439020505981991,
+    "H_at_z2.33": 67.80449086989766,
+    "monotonic_rising": false,
+    "note": "H_at_z0 should equal H0_anchor by construction (closure check)"
+  },
+  {
+    "branch": "C",
+    "branch_label": "F_acc self-consistent in H(z) (corrected)",
+    "m0_Msun": 1000000000000000.0,
+    "r0_Mpc": 1.5587849424527742,
+    "z_max_reached": 2.5,
+    "H_at_z0": 76.46000000000038,
+    "H_peak": 205.2756572014362,
+    "z_at_H_peak": 0.545574441027737,
+    "H_at_z2.33": 70.01109957965859,
+    "monotonic_rising": false,
+    "note": "H_at_z0 should equal H0_anchor by construction (closure check)"
+  }
+]
