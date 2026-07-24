@@ -1,0 +1,26 @@
+[
+  {
+    "m0_Msun": 400000000000000.0,
+    "error": "No s0 solves the closure equation for this m0: peak H(0)=31.9 < H0_anchor=76.46"
+  },
+  {
+    "m0_Msun": 600000000000000.0,
+    "error": "No s0 solves the closure equation for this m0: peak H(0)=59.08 < H0_anchor=76.46"
+  },
+  {
+    "m0_Msun": 800000000000000.0,
+    "r0_Mpc": 1.447047756578507,
+    "z_max_reached": 2.5000000000000004,
+    "H_at_z0": 76.45999999999992,
+    "H_at_z2.33": 76.20407112105516,
+    "note": "H_at_z0 should equal H0_anchor by construction (closure check)"
+  },
+  {
+    "m0_Msun": 1000000000000000.0,
+    "r0_Mpc": 1.5587849424527742,
+    "z_max_reached": 2.5,
+    "H_at_z0": 76.46000000000038,
+    "H_at_z2.33": 70.01109957965859,
+    "note": "H_at_z0 should equal H0_anchor by construction (closure check)"
+  }
+]
