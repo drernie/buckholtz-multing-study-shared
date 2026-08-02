@@ -100,3 +100,66 @@ code — but it **knew Blind A's numbers in advance**. Correct label:
 **cross-implementation numerical replication**. `INDEPENDENTLY REPRODUCED` is
 reserved for Blind B, run against a frozen specification with no knowledge of
 expected values.
+
+---
+
+## Update 2026-08-02 — after Blind B
+
+### Status changes
+
+| Claim | New status |
+|---|---|
+| A 1/r³ term is present in public kSZ data | **NOT DETECTED** (ℓ̂_d = 0 exactly; Δχ² = 0.000000) |
+| Weighted stat-only result ≈ 8.34 Mpc at r_lo = 6 | **CROSS-IMPLEMENTATION REPRODUCED** |
+| Raw result ≈ 11.23 Mpc | **REPRODUCED AS AN ALTERNATIVE MODEL** |
+| Spec v1 defines the analysis unambiguously | **REFUTED** |
+| v1 is a frozen specification | **INVALIDATED** |
+| A single physical limit equals 8.34 Mpc | **NOT ADMITTED** |
+| The limit is conditional on r_lo | **VERIFIED** — monotone 5.43→8.97, no plateau |
+| PV defines K₃ mathematically | **SUPPORTED** |
+| PV is the unique physical completion | **OPEN** |
+| Weighting of K₃ follows from the estimator | **OPEN / MODEL ASSUMPTION** (was over-claimed as DERIVED) |
+
+### The distinction that matters
+
+Admissible: *the numerical implementation of the intended weighted analysis has
+been independently reproduced.*
+
+**Not** admissible: *frozen specification v1 has been independently reproduced.*
+Blind B proved the opposite — v1 does not determine a unique analysis.
+
+### Blind B's independent numbers (its own computation, weighted reading)
+
+```
+K_2^w(100)  = 1.2024593877       K_3^w(100) = 0.015480160151
+ell_d_hat   = 0.0000 exactly     unconstrained stationary point mu* = -3.5228
+L95         = 8.34 +- 0.02 Mpc   (r_lo = 6, MC only)
+r_lo scan   = 8.970 ... 5.427 Mpc, monotone, factor 1.65
+coverage    = 0.948-0.952 across 8 mu_true, 200k sims each
+Delta chi2  = 0.000000  ->  p = 0.500 (boundary mixture)
+kSZ signal  = A_hat 0.024579 +- 0.004115  ->  5.97 sigma with the K_2 template
+```
+
+The 5.97σ detection of the kSZ signal itself matters: the null result on ℓ_d is
+not caused by absence of data or of sensitivity to the signal.
+
+### Agreement with our implementation
+
+| quantity | ours | Blind B | Δ |
+|---|---|---|---|
+| K₃ʷ(100) | 0.015653 | 0.015480 | 1.1% |
+| ℓ̂_d | 0.00 | 0.0000 | exact |
+| L₉₅ at r_lo=6 | 8.50 | 8.34 | 1.9% |
+| r_lo range | 9.00–5.25 | 8.970–5.427 | ~2% |
+
+Numerical reproducibility: **achieved**. Specification reproducibility: **not**.
+
+### Externally admissible statement
+
+> We find no evidence for an additive 1/r³ contribution in the public
+> pairwise-kSZ data. Under a pair-weighted, fixed-template continuum
+> implementation with lower support boundary r_lo = 6 Mpc, independent
+> implementations give a calibrated stat-only upper sensitivity near 8.3 Mpc
+> for ℓ_d = A₃/A₂. Varying that unsupported boundary over its plausible range
+> moves the endpoint from about 5.4 to 9.0 Mpc, so the result remains
+> conditional on model support below the measured correlation-function range.

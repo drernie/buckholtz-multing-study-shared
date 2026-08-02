@@ -1,3 +1,28 @@
+# SPEC v1 — INVALIDATED
+
+**STATUS: INVALIDATED 2026-08-02 by Blind B. Retained as lineage, do not use.**
+
+This document called itself FROZEN and was not. Blind B, implementing it
+honestly, showed that its text admits readings giving **0, 8.34 and 11.23 Mpc**.
+A specification is judged by its symbols, not by its author's intent.
+
+Defects, in order of severity:
+
+| id | defect | effect |
+|---|---|---|
+| A11 | §8 writes the undecorated `K_2` from §3 while §6 defines `K_k^weighted`; which enters the model is unstated | 8.348 vs 11.230 Mpc (35%) |
+| A3 | §9 says "interpolate the zero crossing", but q̃₀ ≡ 0 for every dataset, so μ=0 is always a root | literal reading returns 0.00 Mpc |
+| A1 | fixes h = 0.677 while the shipped data carries h = 0.6731 exactly in all 18 bins; "h enters exactly ONCE" is false | 0.13 Mpc, and an 8× worse template match |
+| A5 | never states the covariance used to GENERATE pseudo-data | 0.26 Mpc (3%) across three readings |
+| A5b | lists `covariances_sdss_g.txt` and uses it nowhere; template uncertainty (0.6%→10.4%) silently zeroed, not disclosed in §11 | undisclosed |
+| A2 | applies the ε exclusion to k=2, where there is no pole — a one-sided bias, not a regularisation | 0.06 Mpc |
+| A9 | sims floor of 12 000 too weak; endpoint seed-to-seed sd 0.075 Mpc | 0.1–0.2 Mpc between implementers |
+| A12 | labels the K₃ weighting DERIVED; it is an extrapolation from the monopole case | affects a 35% choice |
+
+Superseded by `DRAFT_SPEC_v2.md`, which fixes each of these.
+
+---
+
 # FROZEN SPECIFICATION v1 — kSZ dipole upper limit
 
 **Frozen 2026-08-02.** Every choice below is fixed. An implementation that
