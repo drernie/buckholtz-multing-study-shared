@@ -1,0 +1,30 @@
+{
+  "artifacts/dr6.hdf": {
+    "sha256": "2103a0a81cdf70a7c5385f823da166452eb75da99b428ace1b1e79b48a430d77",
+    "bytes": 193808
+  },
+  "artifacts/xi_zbin2.dat": {
+    "sha256": "ba66704356d9d5c2ad59fdce01358caaf8363e17baee18e9efa817c404715cc4",
+    "bytes": 1580
+  },
+  "artifacts/covariances_sdss_g.txt": {
+    "sha256": "eff411c43fcedb6942bd1ac370d0f30ac160537d81210095e6e6695fa25c52de",
+    "bytes": 5625
+  },
+  "artifacts/sdss_g_sqrtg.csv": {
+    "sha256": "2a505e4ac1d3360f6bf3b90772d2445e5ba7a3fa8841cf2d92da8dc3a41c5114",
+    "bytes": 695
+  },
+  "blind_a/report_original.md": {
+    "sha256": "c6c2b336105a3419f4e71feadbb3420d2bfbc8ef189eb53ba77dba1596cb281a",
+    "bytes": 9369
+  },
+  "blind_a/specification_received.md": {
+    "sha256": "e7e9811f8e2126f5382673be2d5550995181c3a8a107748bc0daa7cbb5c9e5e4",
+    "bytes": 2817
+  },
+  "recheck_onesided.py": {
+    "sha256": "527fffed307ff3ae150325b568d5acaf700b89a2167f6bac315ad91885ddb6fb",
+    "bytes": 10303
+  }
+}
