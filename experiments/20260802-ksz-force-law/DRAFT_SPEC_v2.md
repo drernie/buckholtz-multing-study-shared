@@ -1,8 +1,9 @@
 # DRAFT SPECIFICATION v2 — kSZ dipole conditional upper limit
 
-**STATUS: DRAFT. NOT FROZEN.** v1 was labelled FROZEN and was not: Blind B
-showed that two honest readings give 0, 8.34 or 11.23 Mpc. A specification is
-judged by its symbols, not by its author's intent.
+**STATUS: DRAFT. NOT FROZEN.** v1 was labelled FROZEN and was not: an
+independent implementer following it honestly showed that its text admits
+several materially different readings, one of them trivially degenerate. A
+specification is judged by its symbols, not by its author's intent.
 
 Path to freezing: `DRAFT_v2 → STATIC_SPEC_REVIEW → DUAL_READER_DRY_RUN →
 FROZEN_v2 → Blind C`. No blind run may be launched from this document.
