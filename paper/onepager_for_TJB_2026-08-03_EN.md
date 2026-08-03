@@ -6,14 +6,14 @@ reproducible parts of the framework from the one part that still needs a bridge.
 
 ---
 
-### 1 · The local interaction reconstructs uniquely — nothing to interpret
+### 1 · The local interaction's radial dependence reconstructs uniquely
 
 $$F(r,z)=-\frac{A_2}{r^{2}}+\frac{A_3}{r^{3}}-\frac{A_4}{r^{4}}
 \qquad\Longrightarrow\qquad
-U(r,z)=-\frac{A_2}{r}+\frac{A_3}{2r^{2}}-\frac{A_4}{3r^{3}}$$
+U(r,z)=-\frac{A_2}{r}+\frac{A_3}{2r^{2}}-\frac{A_4}{3r^{3}}+C(z)$$
 
-Exact, no free constants beyond the additive one. The force law stands as a
-testable physical hypothesis.
+$C(z)$ is the ordinary additive freedom that leaves the local force unchanged.
+The force law stands as a testable physical hypothesis.
 
 ### 2 · The naive pair-fluid bridge is closed — as an identity, not an estimate
 
@@ -56,13 +56,15 @@ recovers as flat Planck ΛCDM at $H_0=67.37$, $\Omega_m=0.3152$, **rms 0.002 %**
 two parts in $10^5$. The distinct shape is therefore a property of the curve, not
 of our digitiser. *(See the attached figure: control and result on one panel.)*
 
-### 4 · What the audit leaves — a much narrower problem
+### 4 · What the audit leaves — the main result
 
 $$\text{local MULTING force}\;\longrightarrow\;
-\boxed{\;\text{missing covariant or coarse-grained bridge}\;}\;\longrightarrow\;H(z)$$
+\boxed{\;\text{unidentified physical bridge}\;}\;\longrightarrow\;H(z)$$
 
-Levels one and three are in reasonable shape. The whole remaining theoretical
-task sits in the box.
+The first stage is explicit. The last stage is a numerical target curve whose
+generating procedure is not identified in the material available to us. The
+open problem sits entirely in the box, and it is now considerably narrower
+than it was.
 
 ### 5 · One local prediction survives, and it is testable now
 
@@ -74,20 +76,24 @@ $$\boxed{\ \ell_q\ \ge\ \ell_d/2\ }$$
 
 is the exact condition for the force to stay attractive at every separation. A
 relation between the two length scales, not a fit. Confrontable with cluster
-dynamics, pairwise velocities, lensing and kSZ-conditioned samples. First pass
-against 1742 X-ray clusters: the constraint is weak, and the force law passes it.
+dynamics, pairwise velocities, lensing and kSZ-conditioned samples. A
+preliminary pass against 1742 X-ray clusters found no overt contradiction,
+though this is a geometric screening, not yet a statistical constraint on the
+parameters.
 
 ---
 
-### The two points that are yours to set
+### What we will state in the memorandum, absent further information
 
-Unless corrected, we record them as follows — no reply is required for us to
-proceed, and one line is enough to change either:
+1. **the later H(z) curve** — a separate, code-generated artifact whose
+   generating procedure is not published; not classified as an independent
+   forward prediction without further basis.
+2. **the effective energy behind it** — carried by an unspecified sector,
+   since the standard pair-fluid mapping of pair-interaction energy (§2) is
+   not sufficient on its own.
 
-1. **the later H(z) curve** — an illustrative, calibration-marked expansion
-   history whose generating procedure is not published; *not* a forward prediction.
-2. **the effective energy behind it** — carried by an unspecified sector, since
-   the pair-interaction energy is now excluded as its source (§2).
+A line from you on either point would be welcome, whenever convenient; nothing
+here depends on a reply.
 
 ---
 
@@ -95,6 +101,7 @@ proceed, and one line is enough to change either:
 published table. Full certificates, negative results and reproduction commands
 are in the technical memorandum in preparation.*
 
-*Your figure marks four epistemic regimes of a single curve and flags the end of
-the calibrated range explicitly — more disclosure than most published
-expansion-history figures carry, and it is what made this audit straightforward.*
+*The parts of this we could audit cleanly — the caveat you attached to Table A1,
+the calibration boundaries marked explicitly on the later figure — were
+auditable because they were documented, not smoothed over. That made this a
+constructive audit rather than an adversarial one.*

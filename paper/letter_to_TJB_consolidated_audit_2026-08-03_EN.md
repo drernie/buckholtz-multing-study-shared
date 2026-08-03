@@ -109,19 +109,19 @@ Ronin Institute
 
 ---
 
-## Attachment package (five items)
+## Attachment package (two items, plus this letter)
 
 | # | item | source |
 |---|---|---|
-| 1 | one-page summary of the four results | this letter, condensed |
+| 1 | one-page summary — carries `w = n/3`, the three-level diagram, and `ℓ_d > 2ℓ_q` in one place | `onepager_for_TJB_2026-08-03_EN.md` |
 | 2 | the two-curve figure with the positive control and the full divergence, annotated | our extraction |
-| 3 | `w = n/3` with its scope of validity | `CERT_C2_C3.md` |
-| 4 | the three-level diagram `F → U → [bridge] → H(z)` | new, one panel |
-| 5 | the local prediction `ℓ_d > 2 ℓ_q` | `FINDING_cluster_pair_sign_constraint.md` |
 
-The nine-row Table A1 divergence table lives on the figure (item 2) and in the
-memorandum, not as a separate handout — the letter now carries only the
-headline numbers.
+An earlier draft of this table listed the `w=n/3` excerpt, the bridge diagram,
+and the local-prediction excerpt as three further separate files. They were
+never built, and building them now would be redundant: all three already sit
+inline in item 1. Three pieces (letter, one-pager, figure) is a package a
+correspondent who rarely replies can actually get through; five smaller files
+saying the same things is not.
 
 **Excluded from the package, deliberately:** the per-service supplementary
 transcripts and any table derived from them. They are unpublished
