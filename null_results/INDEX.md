@@ -24,6 +24,7 @@
 | NR-015 | 2026-07-18 | tx-shared-variable-artifact | WEAKENED (mechanism unresolved) | r(delta_M,M_gas\|M_WL,T_X)=-0.08 p=0.58, signal vanishes once T_X controlled; T_X alone r=-0.81 stronger than E_ICM itself; reclassifies NR-011/012/014's "robust to 4 confounds" framing as overclaim. NOTE: file's own "ARTIFACT-CONFIRMED" first-draft label was retired 2026-07-18 by skeptic review — do not cite it |
 | NR-016 | 2026-07-19 | shtanov-bridge-naive-mapping | REJECT | phi=V/(m_A m_P) not universal kernel; B,C depend on per-cluster k_A/m_A, k_P/m_P not just m_A*m_P product |
 | NR-017 | 2026-07-22 | 79-17-rg-boundary-condition | REJECT | tan²θ_W(m_Z)=0.301 already exceeds target 2/7=0.286, runs monotonically AWAY with scale; no non-post-hoc high-scale μ* exists; companion to T3b's same-day pole-mass REJECT — exhausts 7:9:17's mechanism search |
+| NR-018 | 2026-08-03 | pair-potential-effective-fluid | REJECT | w = n/3 >= 1/3 for all terms, cannot accelerate; Omega_pair ~1e-6, needs 1e6 boost |
 
 ---
 
