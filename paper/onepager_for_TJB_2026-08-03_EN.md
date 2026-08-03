@@ -61,13 +61,16 @@ recovers as flat Planck ΛCDM at $H_0=67.37$, $\Omega_m=0.3152$, **rms 0.002 %**
 two parts in $10^5$. The distinct shape is therefore a property of the curve, not
 of our digitiser. *(See the attached figure: control and result on one panel.)*
 
-**Observational status on real data.** Evaluating the curve at the 27 real
-cosmic-chronometer points (Moresco et al. 2022) with zero free parameters
-gives $\chi^2=14.4$; a flat ΛCDM fit to the same points (2 free parameters,
-$H_0=68.8$, $\Omega_m=0.32$) gives $\chi^2=12.8$. A mild, stable preference for
-ΛCDM ($\Delta\chi^2\approx+1.6$; the sign does not flip under leave-one-out on
-any of the 27 points) — not yet a decisive observational discrimination.
-**Status: curve-level distinct, observationally unresolved.**
+**Observational status on real data — not yet a certified comparison.**
+Evaluated at the 27 real cosmic-chronometer points (Moresco et al. 2022), the
+curve gives $\chi^2=14.4$ against a flat-ΛCDM best fit's $\chi^2=12.8$ (2
+parameters, $H_0=68.8$, $\Omega_m=0.32$). Read naively this favours ΛCDM; but
+penalise ΛCDM's two fitted parameters (AIC or BIC) and the sign reverses in the
+curve's favour. Neither reading should be asserted: the curve's own effective
+degrees of freedom are unknown, since its generating operator is unidentified
+(§3), so no parameter count can honestly be assigned to it yet. **Status:
+curve-level distinct; no observational preference is established either way
+until a protocol fixes what is being compared on both sides.**
 
 ### 4 · What the audit leaves — the main result
 
@@ -79,7 +82,7 @@ generating procedure is not identified in the material available to us. The
 open problem sits entirely in the box, and it is now considerably narrower
 than it was.
 
-### 5 · One local prediction survives, and it is testable now
+### 5 · One exact local structural condition survives, and remains testable
 
 $$F(r)\propto-\frac{1}{r^{2}}+\frac{\ell_d}{r^{3}}-\frac{\ell_q^{2}}{r^{4}}$$
 

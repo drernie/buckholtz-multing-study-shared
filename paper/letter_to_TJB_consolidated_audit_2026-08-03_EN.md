@@ -47,8 +47,9 @@ effort on this one route.
 
 You flagged Table A1's status yourself — that the responses were obtained from
 an online service and are "not necessarily trustworthy or directly useful." We
-worked out the numerical consequence: β_d and β_q were selected by minimising
-deviation from the H-data, with the curve normalised to the observed H0 at z=0.
+worked out the numerical consequence: in the available transcript, β_d and β_q
+were chosen as a best-fit value against the supplied H-data, and the curve was
+normalised to the observed H0 at z=0.
 Table A1 is best read as an exploratory, data-conditioned calibration rather
 than an independent prediction — a statement about procedure, not about the
 model.
@@ -72,7 +73,7 @@ generating procedure is not identified in the material available to us. The
 open problem sits entirely in the middle, and it is now considerably narrower
 than it was.
 
-**5. One local, testable prediction survives.**
+**5. One exact local structural condition survives, and remains testable.**
 
 Writing F(r) ∝ -1/r² + ℓ_d/r³ - ℓ_q²/r⁴, an intermediate repulsive interval
 exists only when ℓ_d > 2ℓ_q — equivalently, ℓ_q ≥ ℓ_d/2 is the exact condition
