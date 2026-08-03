@@ -2,6 +2,9 @@
 
 **Status: DRAFT. Not sent. The user sends, not the assistant.**
 Every number below traces to a certificate in `experiments/20260803-bridge/audit/`.
+Detailed derivations, the full nine-row divergence table, and the verification
+counts belong in the technical memorandum, not in this letter — see "What moved
+out" below.
 
 ---
 
@@ -9,148 +12,94 @@ Every number below traces to a certificate in `experiments/20260803-bridge/audit
 
 Dear Dr. Buckholtz,
 
-We have finished several independent reconstruction and falsification passes over
-the MULTING H(z) material. I am writing to hand you the result rather than a list
-of questions.
+We have finished several independent reconstruction and falsification passes
+over the MULTING H(z) material. I am writing to hand you the result rather than
+a list of questions.
 
-The outcome is constructive. The analysis does not reject the local MULTING force
-law. What it does is separate the parts of the framework that are already
-reproducible from the one part that still needs a physical bridge — and it closes
-off two routes that would otherwise absorb a great deal of time.
+The outcome is constructive. The analysis does not reject the local MULTING
+force law. It separates what is already reproducible from the one part that
+still needs a physical bridge, and it closes off one route that would otherwise
+absorb a great deal of time.
 
-**1. The local interaction is mathematically well defined and reconstructs
-uniquely.**
+**1. The local interaction's radial dependence reconstructs uniquely.**
 
-From the published force law
+From F(r,z) = -A2/r² + A3/r³ - A4/r⁴, the r-dependent part of the potential
+follows without ambiguity:
 
-    F(r,z) = -A2(z)/r^2 + A3(z)/r^3 - A4(z)/r^4
+    U(r,z) = -A2/r + A3/(2r²) - A4/(3r³) + C(z)
 
-the potential follows without ambiguity:
+where C(z) is the ordinary additive freedom that leaves the local force
+unchanged. The local force law remains a testable physical hypothesis, and
+nothing in our work rejects it.
 
-    U(r,z) = -A2(z)/r + A3(z)/(2 r^2) - A4(z)/(3 r^3)
+**2. One specific cosmological bridge — the simplest one — is not sufficient.**
 
-There is nothing to interpret here — the reconstruction is exact. The local force
-law remains a testable physical hypothesis, and nothing in our work rejects it.
-
-**2. The simplest cosmological bridge is now closed, and closed cleanly.**
-
-For the standard configurational pair-fluid mapping, a pure inverse-power
-potential U ∝ r^(-n) gives, through Euler's identity applied pair by pair before
-any averaging,
-
-    p = (n/3) ρ
-
-so the three MULTING terms correspond to w = 1/3, 2/3, 1 within that mapping.
-None of them is negative. The direct interpretation of pair-interaction energy as
-a positive-density dark-energy component is therefore not sufficient, and this
-holds as an identity rather than as a numerical estimate.
-
-We verified this symbolically and across 360 configurations, to 7 × 10⁻¹⁶.
-
-I want to be precise about the scope: this closes the naive pair-fluid route
-**only**. It says nothing against a covariant medium, a polarisation sector, a
-nonlocal completion, or explicit cosmological averaging. We have registered it as
-a negative result so that neither of us spends further effort there.
+For a pure inverse-power potential U ∝ r⁻ⁿ under the standard configurational
+pair-fluid mapping, Euler's identity applied pair by pair, before any averaging,
+gives p = (n/3)ρ, so the three MULTING terms correspond to w = 1/3, 2/3, 1 within
+that mapping — none negative. This specific reading of pair-interaction energy
+cannot by itself explain late-time acceleration. It says nothing against a
+covariant medium, a polarisation sector, or explicit cosmological averaging, and
+we have registered it as a negative result so neither of us spends further
+effort on this one route.
 
 **3. Table A1 and the later H(z) curve are two different objects.**
 
-You flagged the status of Table A1 yourself — that the responses were obtained
-from an online service and are "not necessarily trustworthy or directly useful."
-We took that caveat seriously and worked out its numerical consequences: the
-supplementary transcripts show β_d and β_q were selected by minimising deviation
-from the H-data, with the curve normalised to the observed H₀ at z = 0. Table A1
-is therefore best read as an exploratory, data-conditioned calibration rather
-than as an independent forward prediction. That is a statement about the
-procedure, not about the model.
+You flagged Table A1's status yourself — that the responses were obtained from
+an online service and are "not necessarily trustworthy or directly useful." We
+worked out the numerical consequence: β_d and β_q were selected by minimising
+deviation from the H-data, with the curve normalised to the observed H0 at z=0.
+Table A1 is best read as an exploratory, data-conditioned calibration rather
+than an independent prediction — a statement about procedure, not about the
+model.
 
-The later orange MULTING curve is a **separate object with its own provenance.**
-It is not a plot of Table A1. Digitised and compared point by point, the two
-diverge monotonically:
+The later orange curve is a separate object, not a plot of Table A1: the two
+diverge to 44 % by z ≈ 2.1, rms 21 % (detail on the attached figure), and the
+curve is not ΛCDM re-anchored to a different H0 either. Below z = 0.4 the two
+differ by a few per cent and change sign; above z = 0.4 the difference becomes
+one-sided and grows systematically — a real feature of the curves, confirmed by
+a positive control: fitting the same figure's blue reference curve recovers flat
+ΛCDM to 0.002 % rms.
 
-    z      curve    Table A1 H_MULT     deviation
-    0.00    73.9         73.0             +1.2 %
-    0.06    72.6         70.2             +3.4 %
-    0.14    72.6         73.5             -1.2 %
-    0.25    75.4         78.8             -4.3 %
-    0.40    83.0         83.1             -0.1 %
-    0.65   101.2         91.4            +10.7 %
-    1.00   130.4        104.2            +25.1 %
-    1.50   172.1        126.5            +36.1 %
-    2.10   218.6        151.8            +44.0 %
-                                    rms   21 %
+**4. The separation this leaves is the main result.**
 
-Below z = 0.4 the two scatter about each other by a few per cent in both
-directions — consistent with digitisation noise and a shared low-redshift
-anchor. Above it the difference is one-sided and grows monotonically. All nine
-rows in range are shown; none is omitted.
+    local MULTING force  →  [ unidentified physical bridge ]  →  H(z)
 
-Nor is it flat ΛCDM re-anchored to a different H₀: the ratio between the two
-plotted curves varies by 10 % across the range and crosses unity.
+The first stage is explicit. The last stage is a numerical target curve whose
+generating procedure is not identified in the material available to us. The
+open problem sits entirely in the middle, and it is now considerably narrower
+than it was.
 
-**As a positive control on our own extraction**, we fitted the blue curve on the
-same figure and recovered
+**5. One local, testable prediction survives.**
 
-    H0 = 67.37,   Ω_m = 0.3152,   rms 0.002 %
-
-— flat Planck ΛCDM, to two parts in a hundred thousand. So the distinct shape of
-the MULTING curve is a real property of the curve and not an artefact of our
-digitisation.
-
-One further point that deserves saying directly: your figure marks four
-epistemic regimes of a single curve — future, data-grounded, CC-calibrated only,
-beyond calibration — and marks the end of the calibrated range explicitly. That
-is more disclosure than most published expansion-history figures carry, and it
-made the audit straightforward.
-
-**4. The main positive result is a clean separation of three levels.**
-
-    local MULTING force  →  [ missing covariant or coarse-grained bridge ]  →  H(z)
-
-Levels one and three are in reasonable shape. The whole remaining theoretical
-problem sits in the bracket, and it is now a much narrower problem than it was.
-
-**5. A concrete local prediction survives, and it is testable now.**
-
-Writing the normalised force as
-
-    F(r) ∝ -1/r^2 + ℓ_d/r^3 - ℓ_q^2/r^4
-
-an intermediate repulsive interval exists **only** when ℓ_d > 2 ℓ_q. Equivalently,
-
-    ℓ_q ≥ ℓ_d / 2
-
-is the exact condition for the force to remain attractive at every separation.
-This is a relation between the two length scales, not a fit, and it can be
-confronted with cluster dynamics, pairwise velocities, lensing, and
-kSZ-conditioned samples. We have made a first pass against a catalogue of 1742
-X-ray clusters; the constraint it yields is weak, and the force law passes it.
+Writing F(r) ∝ -1/r² + ℓ_d/r³ - ℓ_q²/r⁴, an intermediate repulsive interval
+exists only when ℓ_d > 2ℓ_q — equivalently, ℓ_q ≥ ℓ_d/2 is the exact condition
+for the force to stay attractive at every separation. A preliminary pass against
+a catalogue of 1742 X-ray clusters found no overt contradiction, though this is
+a geometric screening, not yet a statistical constraint on the parameters.
 
 ---
 
-Our present reading is therefore positive and, I hope, precise:
+Our present reading: the local MULTING interaction remains open and testable;
+the later H(z) curve is a genuinely distinct object; the standard pair-fluid
+reading of pair-interaction energy is not sufficient on its own; what remains is
+to identify the sector, or averaging rule, that carries the local interaction
+into a cosmological background.
 
-- the local MULTING interaction remains open and testable;
-- the later H(z) curve is a distinct object, genuinely different in shape from
-  ΛCDM;
-- the direct pair-energy explanation of cosmic acceleration is insufficient;
-- what remains is to specify the sector, or the averaging rule, that carries the
-  local interaction into a cosmological background.
+We are preparing a technical memorandum with the full equations, the calibrated
+extraction, and the registered negative results. In it we will describe the
+later curve as a separate, code-generated artifact whose generating procedure is
+not published, and we will not classify it as an independent prediction without
+further basis. If you have more to say about it, a line would be very welcome —
+nothing here depends on a reply.
 
-We are preparing a compact technical memorandum with the equations, the
-calibrated curve extraction, the provenance audit, and the registered negative
-results.
-
-Two points in it are yours to set, and I do not want to guess at them. Unless you
-tell us otherwise, we will record them as follows:
-
-- **the orange curve** as an illustrative, calibration-marked expansion history
-  whose generating procedure is not published — not as a forward prediction;
-- **the effective energy** behind it as carried by an unspecified sector, since
-  the pair-interaction energy itself is now excluded as its source.
-
-If either default misstates your intent, a single line correcting it is all we
-need, whenever it is convenient. If both are right, nothing is required and we
-will proceed on them.
+One thing is worth saying plainly, apart from the results above. A programme
+spanning particle content and cosmological structure in a single framework is a
+large undertaking, and the parts of it we could audit cleanly — the caveat you
+yourself attached to Table A1, the calibration boundaries marked explicitly on
+the later figure — were auditable precisely because they were documented rather
+than smoothed over. That made this a constructive audit rather than an
+adversarial one, and it is worth acknowledging directly.
 
 With respect,
 
@@ -160,16 +109,19 @@ Ronin Institute
 
 ---
 
-## Attachment package (six items, nothing more)
+## Attachment package (five items)
 
 | # | item | source |
 |---|---|---|
 | 1 | one-page summary of the four results | this letter, condensed |
-| 2 | the two-curve figure with the positive control marked | our extraction |
-| 3 | the Table A1 vs curve divergence table | `CERT_C5B_figure3.md` |
-| 4 | `w = n/3` with its scope of validity | `CERT_C2_C3.md` |
-| 5 | the three-level diagram `F → U → [bridge] → H(z)` | new, one panel |
-| 6 | the local prediction `ℓ_d > 2 ℓ_q` | `FINDING_cluster_pair_sign_constraint.md` |
+| 2 | the two-curve figure with the positive control and the full divergence, annotated | our extraction |
+| 3 | `w = n/3` with its scope of validity | `CERT_C2_C3.md` |
+| 4 | the three-level diagram `F → U → [bridge] → H(z)` | new, one panel |
+| 5 | the local prediction `ℓ_d > 2 ℓ_q` | `FINDING_cluster_pair_sign_constraint.md` |
+
+The nine-row Table A1 divergence table lives on the figure (item 2) and in the
+memorandum, not as a separate handout — the letter now carries only the
+headline numbers.
 
 **Excluded from the package, deliberately:** the per-service supplementary
 transcripts and any table derived from them. They are unpublished
@@ -177,15 +129,48 @@ author-provided material and are gitignored under this repository's
 publication-hygiene policy; only aggregate observations may be reported, and
 §3 above reports only those.
 
+## What moved out, and why
+
+Six precision corrections were applied to the working draft before this
+version, each because the earlier wording claimed slightly more than the
+evidence supports:
+
+1. **The potential's additive constant.** "Reconstructs without ambiguity" was
+   true only for the r-dependent part; C(z) is real freedom, now stated.
+2. **Low-z scatter is not attributed to digitisation noise.** The positive
+   control put our own extraction error at 0.002 %, two orders below the
+   several-per-cent scatter below z = 0.4 — calling it "noise" overclaimed a
+   cause we hadn't established. Now stated as a plain, unexplained fact.
+3. **"First and third levels in reasonable shape" overgeneralised.** The third
+   level — the later curve — has an unidentified generating operator; only the
+   first level (the force law itself) is explicit. The diagram's caption now
+   says so.
+4. **The cluster-catalogue test is a screening, not a likelihood fit.** "The
+   force law passes it" implied a statistical test we have not run.
+5. **The two "default" classifications assumed too much.** Calling the later
+   curve "illustrative" by default, absent objection, stated a status we
+   haven't established. The letter now states only what is verified — code
+   output, unpublished, operator unidentified — and drops the "silence =
+   agreement" framing entirely.
+6. **"Pair-interaction energy excluded as a source" was too broad.** Only the
+   standard configurational pair-fluid mapping is closed. The letter and the
+   closing summary now both say "this specific mapping," not "the source."
+
+Also moved out, for length rather than accuracy: the 360-configuration
+verification count and the 7×10⁻¹⁶ precision figure, and the full nine-row
+Table A1 comparison — all three now live in the memorandum and the figure, not
+in the letter body. The letter kept one number per result, not the full
+derivation.
+
 ## Notes on the draft
 
 - **Form of address** is fixed by prior instruction: "Dear Dr. Buckholtz" and
-  "With respect" / "Respectfully". Never "Tom", never "Dear Doctor".
-- **The generating tool is not mentioned.** We know it from the file's metadata;
-  saying so reads as inspection of his working files and buys nothing the phrase
-  "separate object with its own provenance" does not already carry.
-- **The two open points are written as defaults, not questions.** A correspondent
-  who does not answer questions will often correct a statement. The letter works
-  if he says nothing and improves if he replies.
-- **Credit is specific, not general.** The praise in §3 names an actual property
-  of his figure that is genuinely better practice than Table A1 carried.
+  "With respect". Never "Tom", never "Dear Doctor".
+- **The generating tool is not mentioned.** We know it from the file's
+  metadata; saying so reads as inspection of his working files.
+- **The closing paragraph of respect is new and deliberate.** It is specific,
+  not generic — it credits a concrete, verified practice (self-flagged
+  limitations on Table A1, explicit calibration marks on the later figure), not
+  the physics itself, which remains open. It is placed last, immediately before
+  the signature, so the letter's final substance is about him rather than about
+  the sender.
