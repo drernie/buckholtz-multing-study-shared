@@ -106,7 +106,7 @@ def main() -> int:
 
     ax.plot([z_min], [h_min], "v", ms=11, color="#d95923", mec="k", mew=0.8, zorder=6)
     ax.annotate(
-        f"minimum at $z={z_min:+.3f}$\nflat ΛCDM has none here",
+        "shallow minimum near $z\\approx0.1$\nflat ΛCDM has none in this range",
         xy=(z_min, h_min),
         xytext=(0.40, 0.11),
         textcoords="axes fraction",
@@ -141,15 +141,18 @@ def main() -> int:
         ax.spines[sp].set_visible(False)
     ax.legend(loc="upper left", frameon=False, fontsize=9.5)
     ax.set_title(
-        "The same two curves, with the chronometer uncertainties shown",
-        fontsize=11.5,
+        "AUXILIARY ILLUSTRATION — his two curves over a DIFFERENT chronometer set,\n"
+        "to show the scale of CC uncertainties. Not a test of his data.",
+        fontsize=11,
         pad=10,
     )
     fig.text(
         0.5,
         0.012,
-        "Curves digitised from the supplied figure. Data is a 27-point Moresco+2022 compilation; "
-        "the source figure cites 31 points.\nSuggestion of form, not a replacement of the author's data.",
+        "NOT A CERTIFIED TEST. Curves digitised from the supplied figure; the points are OUR 27-point "
+        "Moresco+2022 set, not the author's.\nOnly 26 of his 32 plotted markers match ours "
+        "(|Δz|<0.02, |ΔH|<4), so these bars are NOT his per-point uncertainties.\n"
+        "Illustrates presentation only. Internal material — not for sending.",
         ha="center",
         fontsize=8,
         color="0.4",
