@@ -38,16 +38,20 @@ nabla^2 xi = -phi*(d phi/dr)^2 = -1/r^5
 this session, not merely relayed from an unverified source — upgraded from
 the handoff's own "useful hypothesis, not certified."
 
-**2026-08-03, later same day — strengthened further.** The three cascade
-equations are not merely dimensionally consistent with "one propagator" —
-they are exactly reproducible, at both orders checked, as the perturbative
-expansion of **one** field-dependent-kinetic scalar action,
-`L = ½(1+2εΦ)(∂Φ)²`. See `FINDING_R7_collapses_to_one_action.md` for the
-full derivation (sympy-verified) and its scope limits (flat/static only, not
-covariant; not proven unique). This also sharpens NR-019 below: the same
-action's kinetic coefficient vanishes at a specific, calculable field value
-`Φ_ghost = -1/(2ε)`, turning the ghost-condensate worry from a literature
-analogy into a concrete boundary within a named witness theory.
+**2026-08-03, later same day — strengthened to an exact closed form.** A field
+redefinition (`dχ/dΦ = √f(Φ)`) makes the same action's kinetic term exactly
+canonical to *all* orders, not just perturbatively: `χ` is exactly harmonic,
+`χ(r)=1/r`, and `Φ(χ) = [(1+3εχ)^{2/3}-1]/(2ε)` is the exact, closed-form,
+covariant (fixed-background) completion — `S = ∫√(-g)[½(∂χ)² - ρ·Φ(χ)]`.
+Cross-checked two independent ways (direct EL-equation solving and Taylor
+expansion of the exact form): matches R7's `φ` and `σ` exactly; matches `ξ`
+in functional form (`~1/r³`) but not coefficient (factor `-4`, now understood
+as the theory's own unique, forced prediction, not an error). A free `O(ε³)`
+term (`~1/r⁴`) has no counterpart in MULTING's own published force law —
+flagged as an open discriminator. NR-019's ghost point is now exact
+(`χ_ghost=-1/(3ε)`) and shown *not* to be reached by the physical
+point-source branch (`χ=1/r>0`). Full derivation, cross-checks, and scope
+limits: `FINDING_R7_collapses_to_one_action.md`.
 
 **What this does and does not establish.** It confirms that a specific,
 simple class of nested-source field equations reproduces the right *powers*
