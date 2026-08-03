@@ -60,7 +60,8 @@ reaching about 44% at z = 2.1 — beyond the CC-calibration boundary your figure
 marks. If both are included in the Zenodo materials, it may be worth labelling
 that distinction explicitly, so a reader does not have to work it out.
 
-I will hold the broader audit until after the preprint, as you suggested. No
+I will hold the rest of what I have been working through until after the
+preprint, as you suggested. No
 response is needed at this stage.
 
 With thanks and respect,
