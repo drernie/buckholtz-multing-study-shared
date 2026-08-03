@@ -34,7 +34,7 @@ assumed to be a cosmological energy density without a covariant definition
 of `T_mu_nu` — that assumption is exactly what Sections 2 and 6 test and
 find insufficient in its simplest form.
 
-**Status: mathematically defined, not falsified by anything in this memo.**
+**Status: mathematically defined; nothing in this memo refutes it.**
 
 ## 2. The standard pair-fluid bridge — closed within a stated scope
 

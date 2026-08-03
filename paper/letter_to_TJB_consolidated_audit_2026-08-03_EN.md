@@ -12,7 +12,7 @@ out" below.
 
 Dear Dr. Buckholtz,
 
-We have finished several independent reconstruction and falsification passes
+We have finished several independent reconstruction and verification passes
 over the MULTING H(z) material. I am writing to hand you the result rather than
 a list of questions.
 
