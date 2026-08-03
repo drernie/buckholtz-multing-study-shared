@@ -51,18 +51,18 @@ and it appears to be the clearest difference in shape visible on the current
 figure in the low-redshift region — which is where you said the interesting
 behaviour lies.
 
-One provenance note may also be useful before the Zenodo package is frozen.
-The later orange curve and the H_MULT column of Table A1 do not agree
+One further point about provenance may be useful before the Zenodo package is
+frozen. The later orange curve and the H_MULT column of Table A1 do not agree
 numerically, and appear to represent different versions or stages of the
 construction. Their difference is small and changes sign below z ≈ 0.4, but
 then grows to roughly 11% at z = 0.65, 25% at z = 1.0, and 36% at z = 1.5,
-reaching about 44% at z = 2.1 — beyond the CC-calibration boundary your figure
-marks. If both are included in the Zenodo materials, it may be worth labelling
-that distinction explicitly, so a reader does not have to work it out.
+reaching about 44% at z = 2.1 — beyond the CC-calibration boundary marked in
+your figure. If both are included in the Zenodo materials, it may be worth
+labelling that distinction explicitly so that readers can interpret the two
+materials correctly.
 
-I will hold the rest of what I have been working through until after the
-preprint, as you suggested. No
-response is needed at this stage.
+I will wait until after the preprint to share the rest of my notes and
+results, as you suggested. No response is needed at this stage.
 
 With thanks and respect,
 
