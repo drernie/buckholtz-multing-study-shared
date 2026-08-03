@@ -2,24 +2,23 @@
 
 **Status: DRAFT. The user sends, not the assistant.**
 
-**This replaces the audit-style draft entirely.** TJB's latest email (received
-2026-08-03, not present in the 07-08 raw archive) changes the situation:
+Answers his 2026-08-03 email, which (a) says Sergey will be in the
+acknowledgments, (b) asks us not to feel obligated to do anything now,
+(c) attaches the figure again, and (d) asks *"Your thoughts?"* — so thoughts
+on the figure are what is wanted, kept brief.
 
-1. *"Your name will be listed in the acknowledgments section. (I hope this
-   doesn't embarrass you.)"* — the project's goal is already achieved. The
-   correct reply is gratitude, not more material.
-2. *"Please do not feel obligated to do anything now regarding my materials.
-   After I publish the preprint, if you wish, let's discuss what you might
-   undertake."* — he has explicitly asked us to stand down. Sending the β
-   spreads, the digitiser control and the w=n/3 result now would directly
-   contradict what he asked for.
-3. *"I am discussing with AI how to create a set of supplementary materials …
-   This may turn out to be quite a laborious task."* — his actual stated pain
-   point, and the one place a concrete offer is responsive rather than
-   burdensome.
-4. *"Your thoughts?"* — an invitation to reply warmly, not with a dossier.
+The two things offered are the ones he cannot easily get himself:
+- a **number** for the low-z feature he says matters: his curve has a minimum
+  in H(z) at z = +0.098; flat ΛCDM has no minimum anywhere in the plotted
+  range. That is a qualitative difference, and it is his strongest card.
+- the chronometer **error bars**, which his figure omits. Median σ is
+  17 km/s/Mpc against a ~3 km/s/Mpc median separation between his two curves —
+  a referee will ask, and he has said he is writing to a desk-review standard.
 
-All audit content is withheld. It keeps.
+Zenodo help offer removed at the user's instruction. Attachment offered softly,
+explicitly ignorable.
+
+**Attachment:** `reports/hz_with_errorbars_for_tjb.pdf`
 
 ---
 
@@ -27,34 +26,48 @@ All audit content is withheld. It keeps.
 
 Dear Dr. Buckholtz,
 
-Thank you — sincerely. Being named in the acknowledgments is an honour, and
-not in the least embarrassing. It means a great deal to me, and I am grateful
-for it.
+Thank you — sincerely. Being named in the acknowledgments is an honour, and not
+in the least embarrassing. It means a great deal to me, and I am grateful for
+it.
 
-Your recommendation is well taken, and I will follow it. I will not send you
-anything further to read while you are finishing. Whatever I have been working
-on will keep perfectly well, and I would much rather the remaining time went
-into the paper itself. When the preprint is out and you have some room to
-breathe, I would be glad to talk about what might be useful then.
+Your recommendation is well taken and I will follow it: I will not send you
+work to review while you are finishing. But you asked for thoughts, and you
+sent the figure, so let me offer two — briefly, and both about the figure
+itself.
 
-One offer in the meantime, and only if it is genuinely helpful — please
-disregard it otherwise. You mentioned the Zenodo supplementary set may turn
-out to be laborious. That kind of work — organising files, labelling
-provenance, making each item reproducible and clearly sourced — is close to
-what I have been doing anyway, and I would be glad to take some of it off your
-hands. If it would help, let me know the shape you have in mind once it is
-clearer to you, and I will fit in around whatever you have already decided.
+The first concerns the low-redshift behaviour you mentioned. I think you are
+right that it is the important part, and it may be stronger than you have
+stated it. Reading your curve carefully, it has a genuine minimum in H(z), at
+about z = +0.098. Flat ΛCDM has no minimum anywhere in the plotted range — it
+simply decreases toward the future. So the difference there is not a matter of
+one curve sitting a few km/s/Mpc above the other; it is a difference in the
+*shape* of the function, and that is a much harder thing to reproduce by
+adjusting parameters. If it helps as a second number, the acceleration
+transition q(z) = 0 falls at z ≈ 0.378 on your curve against z ≈ 0.631 for
+Planck ΛCDM. Those two facts together seem to me the most quotable form of
+what you described.
 
-On the short verification note on Equation 32: I will hold it until your
-preprint is published, which seems the natural order in any case.
+The second is smaller and more practical. The cosmic-chronometer points on the
+figure are drawn without their uncertainties, and those uncertainties are
+large — around 17 km/s/Mpc typically, up to about 62 at the high-redshift end.
+Since the two curves sit only a few km/s/Mpc apart across most of the range, a
+referee will almost certainly ask what the error bars look like, and it is
+better for that question to be answered in the figure than in a report. It also
+helps the argument rather than hurting it: once the bars are shown, it becomes
+visible that the point-by-point agreement is not where your case rests — the
+low-z shape is. I have attached a version with the bars drawn in, marking the
+minimum, purely as an illustration of the form. I used a 27-point Moresco 2022
+compilation, where your figure cites 31, so it is not a substitute for your own
+data — only a suggestion of presentation.
 
-As for my thoughts — I am glad the low-redshift behaviour turned out to
-matter. It caught my attention too when I looked at the figure; the curve does
-something distinctly its own down there, quite unlike the reference curve
-beside it, and it is the part of the picture I found myself returning to. I am
-glad it is carrying weight in the paper.
+I put together a small comparison table alongside it while working through the
+material. If it would be of any use before the Zenodo set is finalised, I am
+glad to send it; if not, please simply disregard this.
 
-I hope the remaining work goes smoothly, and I hope your wife continues to
+On the short verification note on Equation 32, I will hold it until your
+preprint is published — that seems the natural order in any case.
+
+I hope the remaining work goes smoothly, and that your wife continues to
 recover well.
 
 With respect and gratitude,
