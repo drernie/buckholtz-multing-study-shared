@@ -46,7 +46,7 @@ def _hy(y: float) -> float:
 
 
 def _same(a, b, tol: float = 1e-6) -> bool:
-    return a is not None and all(abs(u - v) < tol for u, v in zip(a, b))
+    return a is not None and all(abs(u - v) < tol for u, v in zip(a, b, strict=True))
 
 
 def _points(item) -> list:
@@ -97,7 +97,7 @@ def main() -> int:
     a1_curve = np.interp(a1.z, zo, ho)
     dev = 100.0 * (a1_curve - a1.H_MULT) / a1.H_MULT
     print(f"RESULT   curve vs Table A1 H_MULT: rms={rms_pct(a1_curve, a1.H_MULT.values):.1f}%")
-    for z, hc, hm, d in zip(a1.z, a1_curve, a1.H_MULT, dev):
+    for z, hc, hm, d in zip(a1.z, a1_curve, a1.H_MULT, dev, strict=True):
         print(f"   z={z:4.2f}  curve {hc:6.1f}   Table A1 {hm:6.1f}   {d:+6.1f}%")
 
     # ---------------------------------------------------------------- figure --
@@ -146,7 +146,7 @@ def main() -> int:
         ha="right",
         va="bottom",
         fontsize=9.5,
-        bbox=dict(boxstyle="round,pad=0.45", fc="#eef4fb", ec="#2a78d6", lw=0.9),
+        bbox={"boxstyle": "round,pad=0.45", "fc": "#eef4fb", "ec": "#2a78d6", "lw": 0.9},
     )
 
     bx.axhline(0, color="0.6", lw=0.9)
@@ -166,7 +166,7 @@ def main() -> int:
         lw=1.5,
         label="orange curve vs Table A1  (21 % rms)",
     )
-    for z, d in zip(a1.z, dev):
+    for z, d in zip(a1.z, dev, strict=True):
         if abs(d) > 8:
             bx.annotate(
                 f"{d:+.0f}%",
