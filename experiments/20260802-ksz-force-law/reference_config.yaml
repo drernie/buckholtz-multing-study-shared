@@ -1,0 +1,135 @@
+# NORMATIVE constants and library contracts for SPEC v7.
+# Every numeric constant and every library call the procedure depends on.
+# Safety: NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · L0 descriptive
+
+version: 7
+normative: true
+
+cosmology:
+  hdata: 0.6731            # the only h used anywhere
+
+fit:
+  bin_window: [25.0, 225.0]      # physical Mpc, endpoints inclusive
+  bin_count_required: 15
+  Nboot: 1000
+  Nbin: 15
+  alpha_formula: "(Nboot - Nbin - 2) / (Nboot - 1)"
+  alpha_value: 0.983983983983984   # 983/999
+  mumax: 60.0
+
+kernels:
+  eps: 0.05                # PV excision half-width, Mpc
+  r_lo_grid:
+    formula: "3.8 + 0.8*kk"
+    kk_range: [0, 9]
+    values: [3.8, 4.6, 5.4, 6.2, 7.0, 7.8, 8.6, 9.4, 10.2, 11.0]
+  r_lo_conditional: 6.0
+  r_lo_conditional_keyRlo: 100
+
+grids:
+  coarse:
+    formula: "0.1*jj"
+    jj_range: [0, 600]
+    nsim: 100000
+    keyStage: 0
+  refined:
+    formula: "0.05*ii"
+    window_halfwidth: 2.0
+    clip: [0.05, 60.0]
+    nsim: 200000
+    keyStage: 1
+  coverage:
+    keyStage: 2
+    nsim: 200000
+    muTrue: [2.0, 4.0, 6.0, 8.0, 10.0, 12.0, 14.0, 16.0]
+  bisection:
+    keyStage: 3
+    nsim: 100000
+
+# ---------------------------------------------------------------------------
+# Library contracts. Every numerical operator names its routine and options.
+# v6 left the quadrature as a method family; that is the one operator three
+# reviews flagged as implementable in more than one way.
+# ---------------------------------------------------------------------------
+libraries:
+  interpolation:
+    call: "scipy.interpolate.CubicSpline"
+    kwargs: {bc_type: "not-a-knot"}
+    outside_range: 0.0
+    presort: "ascending by abscissa, before construction"
+
+  quadrature:
+    call: "scipy.integrate.quad"
+    kwargs:
+      epsabs: 1.0e-10
+      epsrel: 1.0e-10
+      limit: 200
+      full_output: 1
+    points_rule: >
+      the interval endpoints, plus s = R when strictly interior, plus every
+      spline knot strictly interior. Passed as `points`, sorted ascending,
+      duplicates removed.
+    non_convergence:
+      # v6 said "failure to reach tolerance" without a computable criterion.
+      criterion: "ier != 0, or abserr > max(epsabs, epsrel * abs(result))"
+      verb: NUMERICAL_FAILURE
+      label: QUADRATURE_NOT_CONVERGED
+
+  quantile:
+    call: "numpy.quantile"
+    kwargs: {method: "linear"}
+
+  scalar_minimise:
+    call: "scipy.optimize.minimize_scalar"
+    kwargs: {method: "brent", tol: 1.0e-14}
+
+  rng:
+    call: "numpy.random.default_rng"
+    seed_call: "numpy.random.SeedSequence"
+    normal_draw: "rng.standard_normal(size=(nsim, 15), dtype=numpy.float64)"
+    integer_draw: "rng.integers(0, 1000, size=nsim, dtype=numpy.int64)"
+    order: "C"
+    consumption: "normals first, always; integers only for branch 2, after the normals"
+
+  kde:
+    bandwidth_formula: "0.9 * min(sdev, iqr/1.34) * npos**(-0.2)"
+    sdev_ddof: 1
+    iqr: "numpy.quantile(x, 0.75, method='linear') - numpy.quantile(x, 0.25, method='linear')"
+    iqr_zero_fallback: "0.9 * sdev * npos**(-0.2)"
+    both_zero: "SdMC = NOT_DEFINED"
+    floor: 1.0e-9
+
+seeds:
+  rootCal: 20260802     # sections 9, 10, 11
+  rootVal: 20260803     # section 13
+  rootDual: 20260804    # section 14
+  key_fields: [keyModel, keyRlo, keyMu, keyStage, keyStep]
+  keyMu: "round(mu / 0.05), half away from zero, integer"
+  key_is_unit_free: true
+
+tolerances:
+  Drel: "max_i( |x_i - y_i| / max(|y_i|, tauAbs) )"
+  Dabs: "max_i( |x_i - y_i| )"
+  tauAbs_default: 1.0e-30
+  control_2: 1.0e-6
+  control_5: 1.0e-6
+  control_6: 1.0e-3
+  control_7: 1.0e-9
+  control_1: 1.0e-9
+  guard_G3_symmetry: 1.0e-12
+  guard_G3_cond2: 1.0e12
+  guard_G4_floor: 1.0e-300
+  dual_unit_pass: 0.001        # 0.1 %
+
+inputs:
+  gcurve:
+    # v6 named neither the column nor the units of this file, while pinning
+    # both for every other input.
+    file: "sdss_g_sqrtg.csv"
+    abscissa_column: 0
+    abscissa_units: "h^-1 Mpc"
+    abscissa_conversion: "multiply by 1/hdata"
+    ordinate_column: 1
+    ordinate_meaning: "g, not sqrt(g)"
+    interpolation: "numpy.interp onto the 15 fitted r_mp"
+    outside_range: "clamp to the end values; numpy.interp default"

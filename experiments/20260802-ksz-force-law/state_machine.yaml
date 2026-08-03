@@ -1,0 +1,195 @@
+# NORMATIVE. This file, not the prose, defines the endpoint terminal states.
+# DRAFT_SPEC_v7.md explains it; where the two differ, this file governs.
+#
+# Safety: NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · L0 descriptive
+
+version: 7
+normative: true
+governs: "endpoint classification, terminal states, and tie resolution"
+
+# ---------------------------------------------------------------------------
+# Acceptance vector
+# ---------------------------------------------------------------------------
+acceptance_vector:
+  symbol: acc
+  index: jj
+  range: [0, 600]                 # jj = 0 IS included; see zero_node below
+  definition: "acc(jj) is true iff Qobs(0.1*jj) <= Q95(0.1*jj)"
+  dtype: bool
+  shape: [601]
+
+zero_node:
+  # v6 asserted both "the left end is accepted by construction" and "mu = 0 is
+  # never an endpoint". Those cannot both hold. Resolved here in favour of
+  # evaluating the node, because its value is analytic and needs no simulation.
+  mu: 0.0
+  Qobs: 0.0
+  Q95: 0.0
+  acc: true
+  rationale_is_normative: false
+  note: >
+    Qstat(0) = 0 for every dataset: when muhat > 0 the first branch gives 0,
+    and when muhat = 0 the second branch gives Chi2(0) - Chi2(0) = 0. The
+    simulated sample at jj = 0 is therefore identically zero, so Q95(0) = 0
+    and acc(0) is true. No simulation is run at jj = 0.
+
+# ---------------------------------------------------------------------------
+# Derived sets. Both are computed before classification.
+# ---------------------------------------------------------------------------
+derived_sets:
+  P:
+    definition: "{ jj in 1..600 : acc(jj) }"
+    meaning: "accepted nodes strictly above zero"
+  F:
+    definition: "{ jj in 0..599 : acc(jj) and not acc(jj+1) }"
+    meaning: "falling transitions"
+    guaranteed_nonempty_when: "acc(600) is false"
+    guarantee_reason: "a boolean sequence that starts true and ends false has at least one true->false step"
+
+# ---------------------------------------------------------------------------
+# Classification. Evaluated top to bottom; the first matching rule fires.
+# Proven total and mutually exclusive by exhaustive enumeration over every
+# acc vector of length 2..13 with acc(0) = true (8190 vectors, 0 undefined).
+# ---------------------------------------------------------------------------
+classification:
+  - id: S1
+    when: "acc(600) is true"
+    state: RANGE_INSUFFICIENT
+    action: none
+    L95: null
+    SdMC: NOT_DEFINED
+    reports: [acc, max_Qobs, argmax_Qobs, muzero]
+    note: >
+      sup ACC >= mumax. No interior crossing may be returned. This state makes
+      no claim about mu > mumax; a state asserting the absence of a crossing
+      anywhere would require evaluating beyond mumax, which section 0 of the
+      specification places out of scope.
+
+  - id: S2
+    when: "acc(600) is false and P is empty"
+    state: FINITE_LIMIT_NEAR_ZERO
+    action: bisect_zero
+    L95: "numeric, in [0.0, 0.1]"
+    SdMC: "from the final bracket, per sdmc_contract"
+    reports: [acc, L95, SdMC, bisection_iterations]
+
+  - id: S3
+    when: "acc(600) is false and P is non-empty and |F| == 1"
+    state: FINITE_LIMIT
+    action: refine_last_fall
+    L95: numeric
+    SdMC: "from the bracketing refined pair, per sdmc_contract"
+    reports: [acc, L95, SdMC, jlast]
+
+  - id: S4
+    when: "acc(600) is false and P is non-empty and |F| > 1"
+    state: FINITE_LIMIT_MULTICROSS
+    action: refine_last_fall
+    L95: "numeric; the supremum of the acceptance set, i.e. the right edge of the LAST accepted component"
+    SdMC: "from the bracketing refined pair, per sdmc_contract"
+    reports: [acc, L95, SdMC, jlast, n_falls]
+
+# ---------------------------------------------------------------------------
+# Actions
+# ---------------------------------------------------------------------------
+actions:
+  bisect_zero:
+    bracket_initial: [0.0, 0.1]
+    left_end_accepted: true          # by zero_node, not by assumption
+    right_end_rejected: true         # guaranteed by S2's condition
+    nsim: 100000
+    keyStage: 3
+    keyStep: "1-based bisection iteration"
+    stop_when: "bracket width < 1.0e-3"
+    max_iterations: 20
+    L95_rule: "the accepted (left) end of the final bracket"
+    L95_may_be_zero: true
+    mua_mub: "the final bracket ends"
+    note: >
+      L95 = 0.0 is a permitted numeric result of this action. It means the
+      procedure resolves the endpoint below the bisection tolerance, not that
+      the endpoint is undefined.
+
+  refine_last_fall:
+    jlast: "max(F)"
+    nsim: 200000
+    keyStage: 1
+    grid: "mu = 0.05*ii for every integer ii with 0.1*jlast - 2 <= 0.05*ii <= 0.1*jlast + 2"
+    clip: [0.05, 60.0]
+    pair_rule: "the LAST adjacent (accepted, rejected) pair on the refined grid"
+    on_no_pair:
+      state: REFINEMENT_LOST_CROSSING
+      L95: null
+      SdMC: NOT_DEFINED
+      reports: [acc, jlast]
+    L95_rule: "linear interpolation in (Qobs - Q95) between mua and mub"
+
+# ---------------------------------------------------------------------------
+# Tie resolution. ONE rule, used everywhere.
+# ---------------------------------------------------------------------------
+tie_rule:
+  name: argmax_left
+  definition: "among all indices attaining the extremum, take the SMALLEST index"
+  applies_to:
+    - "argmax of Qobs over the acceptance grid (S1 report)"
+    - "argmin of Chi2 over Cand (muhat)"
+    - "the fitted bin nearest 100 Mpc (output item 1)"
+    - "every other argmax or argmin anywhere in the specification"
+  note: >
+    A total tie over all 601 nodes is reachable: when muhat = mumax, Qstat is
+    identically zero on the whole grid. Test vector TV02 exercises it.
+
+# ---------------------------------------------------------------------------
+# Empty-set contract. No max, min or range is ever applied silently to an
+# empty collection.
+# ---------------------------------------------------------------------------
+empty_set_contract:
+  - collection: "violations (monotonicity pair set)"
+    when_empty:
+      maxViolation: 0.0
+      violationState: NONE
+    when_nonempty:
+      maxViolation: "max(violations)"
+      violationState: "VIOLATED if maxViolation > 0 else NONE"
+  - collection: "retained L95 values (for the range)"
+    when_empty:
+      range: [null, null]
+      rangeState: NO_RETAINED_NODES
+    when_single:
+      range: "[v, v]"
+      rangeState: SINGLE_NODE
+    when_multiple:
+      range: "[min, max]"
+      rangeState: OK
+
+# ---------------------------------------------------------------------------
+# Terminal verbs and their effect on the report. Every verb states which
+# output items are absent; none is left to the implementer.
+# ---------------------------------------------------------------------------
+terminal_verbs:
+  STOP_RUN:
+    ends_run: true
+    items_absent: [1, 2, 3, 4, 5, 6, 7, 9, 10, 12]
+    items_present: [8, 11, 13]
+  INVALID_INPUT:
+    ends_run: true
+    items_absent: [1, 2, 3, 4, 5, 6, 7, 9, 10, 12]
+    items_present: [8, 11, 13]
+  NUMERICAL_FAILURE:
+    ends_run: true
+    items_absent: [1, 2, 3, 4, 5, 6, 7, 9, 10, 12]
+    items_present: [8, 11, 13]
+  STOP_BRANCH:
+    ends_run: false
+    raised_by: "a branch of section 11 whose endpoint state is not S2, S3 or S4"
+    effect: "that branch's row carries its state label in place of L95 and SdMC; the row is present"
+  FLAG_AND_RETAIN:
+    ends_run: false
+    raised_by: "AMPLITUDE_SIGN_CHANGE_IN_RANGE"
+    effect: "recorded and reported; nothing removed"
+
+control_completion:
+  # v6 said STOP_RUN keeps item 8 while item 8 requires all nine controls,
+  # some of which would not have run. Resolved: controls run to completion.
+  rule: "all nine controls are executed and emit their measured value before any terminal verb is honoured"
+  consequence: "item 8 is always complete"

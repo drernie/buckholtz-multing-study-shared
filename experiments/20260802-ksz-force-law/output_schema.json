@@ -1,0 +1,147 @@
+{
+  "version": 7,
+  "normative": true,
+  "purpose": "Declares every reported output: name, shape, dtype, validity mask, and which terminal verbs suppress it. After v7 this file, not the prose, arbitrates report format.",
+  "axes": {
+    "model": {"size": 2, "order": ["MODEL-W", "MODEL-R"]},
+    "rlo": {"size": 11, "order": ["kk=0 (3.8)", "kk=1 (4.6)", "kk=2 (5.4)", "kk=3 (6.2)", "kk=4 (7.0)", "kk=5 (7.8)", "kk=6 (8.6)", "kk=7 (9.4)", "kk=8 (10.2)", "kk=9 (11.0)", "keyRlo=100 (6.0)"]},
+    "stage": {"size": 4, "order": ["coarse", "refined", "coverage", "bisection"]},
+    "branch": {"size": 5, "order": ["primary", "branch_1", "branch_2", "branch_3", "branch_4"]},
+    "muTrue": {"size": 8, "order": [2.0, 4.0, 6.0, 8.0, 10.0, 12.0, 14.0, 16.0]},
+    "boundary": {"size": 2, "order": ["muhat==0", "muhat==mumax"]}
+  },
+
+  "items": [
+    {
+      "n": 1, "name": "kernels_at_ref_bin",
+      "shape": [4], "dtype": "float64",
+      "order": ["Kw2", "Kw3", "Kraw2", "Kraw3"],
+      "at": "the fitted bin nearest 100 Mpc, ties to the smaller r_mp",
+      "extra": {"ref_bin_r_mp": {"shape": [], "dtype": "float64"}},
+      "suppressed_by": ["STOP_RUN", "INVALID_INPUT", "NUMERICAL_FAILURE"]
+    },
+    {
+      "n": 2, "name": "mu_characteristics",
+      "shape": [2, 4], "dtype": "float64",
+      "columns": ["muhat", "mu1", "muzero", "mu1_in_range"],
+      "note": "mu1_in_range is stored as 0.0 or 1.0",
+      "at": "r_lo = 6.0",
+      "suppressed_by": ["STOP_RUN", "INVALID_INPUT", "NUMERICAL_FAILURE"]
+    },
+    {
+      "n": 3, "name": "limit_scan",
+      "fields": {
+        "L95": {"shape": [11], "dtype": "float64", "nan_where": "state is not FINITE_LIMIT, FINITE_LIMIT_NEAR_ZERO or FINITE_LIMIT_MULTICROSS"},
+        "SdMC": {"shape": [11], "dtype": "float64", "nan_where": "SdMC is NOT_DEFINED"},
+        "state": {"shape": [11], "dtype": "str"},
+        "valid": {"shape": [11], "dtype": "bool"},
+        "range": {"shape": [2], "dtype": "float64", "nullable": true},
+        "rangeState": {"shape": [], "dtype": "str", "enum": ["OK", "SINGLE_NODE", "NO_RETAINED_NODES"]},
+        "maxViolation": {"shape": [], "dtype": "float64"},
+        "violationState": {"shape": [], "dtype": "str", "enum": ["NONE", "VIOLATED"]},
+        "excluded_from_range": {"shape": ["n"], "dtype": "int64"},
+        "excluded_from_monotonicity": {"shape": ["n"], "dtype": "int64"}
+      },
+      "model": "MODEL-W only",
+      "note": "a label is NEVER stored inside the float64 arrays; it lives in `state`",
+      "suppressed_by": ["STOP_RUN", "INVALID_INPUT", "NUMERICAL_FAILURE"]
+    },
+    {
+      "n": 4, "name": "limit_conditional",
+      "fields": {
+        "L95": {"shape": [2], "dtype": "float64"},
+        "SdMC": {"shape": [2], "dtype": "float64"},
+        "state": {"shape": [2], "dtype": "str"}
+      },
+      "at": "r_lo = 6.0, both models",
+      "suppressed_by": ["STOP_RUN", "INVALID_INPUT", "NUMERICAL_FAILURE"]
+    },
+    {
+      "n": 5, "name": "coverage",
+      "fields": {
+        "fraction": {"shape": [8], "dtype": "float64"},
+        "band": {"shape": [], "dtype": "float64"},
+        "verdict": {"shape": [8], "dtype": "str", "enum": ["PASS", "FAIL"]},
+        "n_fail": {"shape": [], "dtype": "int64"}
+      },
+      "model": "MODEL-W only, r_lo = 6.0",
+      "suppressed_by": ["STOP_RUN", "INVALID_INPUT", "NUMERICAL_FAILURE"]
+    },
+    {
+      "n": 6, "name": "chi2_difference",
+      "fields": {
+        "delta": {"shape": [], "dtype": "float64"},
+        "p_value": {"shape": [], "dtype": "float64"},
+        "marker": {"const": "[WEAK]"}
+      },
+      "model": "MODEL-W only",
+      "suppressed_by": ["STOP_RUN", "INVALID_INPUT", "NUMERICAL_FAILURE"]
+    },
+    {
+      "n": 7, "name": "dual_unit",
+      "fields": {
+        "L95_physical": {"shape": [], "dtype": "float64", "nullable": true},
+        "L95_dual_converted": {"shape": [], "dtype": "float64", "nullable": true},
+        "rel_diff": {"shape": [], "dtype": "float64", "nullable": true},
+        "verdict": {"shape": [], "dtype": "str", "enum": ["PASS", "FAIL", "LABELS_ONLY"]},
+        "labels": {"shape": [2], "dtype": "str"}
+      },
+      "suppressed_by": ["STOP_RUN", "INVALID_INPUT", "NUMERICAL_FAILURE"]
+    },
+    {
+      "n": 8, "name": "controls",
+      "fields": {
+        "measured": {"shape": [9], "dtype": "object", "note": "control 1 emits 3 values, control 5 emits 2, control 6 emits 4, the rest emit 1"},
+        "verdict": {"shape": [9], "dtype": "str", "enum": ["PASS", "FAIL", "REPORT_ONLY"]}
+      },
+      "always_present": true,
+      "note": "all nine controls run to completion before any terminal verb is honoured"
+    },
+    {
+      "n": 9, "name": "counters",
+      "fields": {
+        "edge_count": {"shape": [2, 11, 4, 2], "dtype": "int64", "axes": ["model", "rlo", "stage", "boundary"]},
+        "degen_count": {"shape": [2, 11, 4], "dtype": "int64", "axes": ["model", "rlo", "stage"]},
+        "observed_boundary": {"shape": [2, 11, 2], "dtype": "int64", "axes": ["model", "rlo", "boundary"]},
+        "observed_valid": {"shape": [2, 11], "dtype": "bool", "note": "false where the model was not run at that r_lo; the value array is then meaningless and must not be read"}
+      },
+      "suppressed_by": ["STOP_RUN", "INVALID_INPUT", "NUMERICAL_FAILURE"]
+    },
+    {
+      "n": 10, "name": "branch_table",
+      "fields": {
+        "L95": {"shape": [5], "dtype": "float64"},
+        "SdMC": {"shape": [5], "dtype": "float64"},
+        "state": {"shape": [5], "dtype": "str"},
+        "marker": {"shape": [5], "dtype": "str", "note": "[WEAK] on branch_2, empty elsewhere"}
+      },
+      "row_order": "primary, branch_1, branch_2, branch_3, branch_4",
+      "note": "a branch whose state has no numeric L95 keeps its row and carries the label in `state`",
+      "suppressed_by": ["STOP_RUN", "INVALID_INPUT", "NUMERICAL_FAILURE"]
+    },
+    {
+      "n": 11, "name": "labels_emitted",
+      "shape": ["n"], "dtype": "str",
+      "always_present": true
+    },
+    {
+      "n": 12, "name": "acc_vectors",
+      "shape": [16, 601], "dtype": "bool",
+      "row_order": "MODEL-W kk=0..9, MODEL-W r_lo=6.0, MODEL-R r_lo=6.0, branch_1..branch_4",
+      "note": "601 columns because jj = 0 is included; the section 14 run is not a row here",
+      "suppressed_by": ["STOP_RUN", "INVALID_INPUT", "NUMERICAL_FAILURE"]
+    },
+    {
+      "n": 13, "name": "ambiguity_report",
+      "shape": ["n"], "dtype": "str",
+      "always_present": true,
+      "note": "outranks every numeric item above"
+    }
+  ],
+
+  "annotations": {
+    "note": "annotations are report fields, never outcome labels, and are never members of item 11",
+    "stat_only_fixed_template": {"applies_to": [3, 4], "dtype": "bool", "const": true},
+    "model_support_conditional": {"applies_to": [1, 2, 3, 4, 5, 6, 7, 9, 10, 12], "dtype": "bool", "const": true}
+  }
+}

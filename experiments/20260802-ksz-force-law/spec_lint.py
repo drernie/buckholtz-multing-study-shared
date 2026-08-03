@@ -134,6 +134,24 @@ def _section(doc: str, header_re: str) -> str:
     return rest[: nxt.start()] if nxt else rest
 
 
+def _companion_text(doc: str) -> str:
+    """Text of every normative file the document declares, concatenated.
+
+    From v7 the specification delegates constants, library contracts and the
+    state machine to machine-readable files. A term defined there is defined;
+    copying the formula back into the prose would recreate the drift the
+    delegation exists to prevent.
+    """
+    names = set(re.findall(r"`([a-z_]+\.(?:yaml|json))`", doc))
+    here = Path(__file__).resolve().parent
+    parts = []
+    for n in sorted(names):
+        p = here / n
+        if p.exists():
+            parts.append(p.read_text(encoding="utf-8"))
+    return "\n".join(parts)
+
+
 def _defines(doc: str, term: str) -> bool:
     """True if the document defines `term` — the term stands left of an '=' somewhere.
 
@@ -145,7 +163,14 @@ def _defines(doc: str, term: str) -> bool:
     # all read as a definition under a naive pattern, which would let a document
     # that only COMPARES a tolerance pass the has-a-formula check.
     pat = re.compile(rf"^[^=\n]*\b{re.escape(term)}\b[^=\n]{{0,60}}(?<![=<>!])=(?!=)", re.M | re.I)
-    return bool(pat.search(doc))
+    if pat.search(doc):
+        return True
+    # Companion files are YAML/JSON, where a definition reads "term: value".
+    # Without this the delegation of a formula to a normative file would read
+    # as an undefined term, and the only way to satisfy the check would be to
+    # copy the formula back into the prose — the drift the delegation prevents.
+    yml = re.compile(rf"^\s*\"?{re.escape(term)}\w*\"?\s*:", re.M | re.I)
+    return bool(yml.search(doc))
 
 
 def check_named_methods(doc: str) -> list[Finding]:
@@ -153,7 +178,8 @@ def check_named_methods(doc: str) -> list[Finding]:
     out = []
     for i, ln in enumerate(_lines(doc), 1):
         for w in NAMED_METHODS:
-            if w.lower() in ln.lower() and not _defines(doc, "h_kde"):
+            scope = doc + _companion_text(doc)
+            if w.lower() in ln.lower() and not _defines(scope, "bandwidth_formula"):
                 out.append(Finding("named-method-without-formula", i, w))
     return out
 
@@ -165,7 +191,8 @@ def check_needs_formula(doc: str) -> list[Finding]:
     for i, ln in enumerate(_lines(doc), 1):
         low = ln.lower()
         for w in NEEDS_FORMULA:
-            if w in low and w not in seen and not _defines(doc, w.split()[-1]):
+            scope = doc + _companion_text(doc)
+            if w in low and w not in seen and not _defines(scope, w.split()[-1]):
                 seen.add(w)
                 out.append(Finding("tolerance-without-formula", i, w))
     return out

@@ -1,0 +1,324 @@
+{
+  "version": 7,
+  "normative": true,
+  "purpose": "One regression witness per registered ambiguity. A vector fixes an input pattern, the terminal state it must reach, and the numeric output it must produce. A specification edit that reopens an ambiguity fails its vector.",
+  "acc_notation": "acc is written as a run-length list of [value, count] pairs over jj = 0..600, so acc[0] is always true per state_machine.yaml zero_node",
+  "vectors": [
+    {
+      "id": "TV01",
+      "closes": "ZERO-01 — F1/B6 — case B returned a value the same section forbade",
+      "scenario": "every positive node rejected",
+      "acc": [
+        [
+          true,
+          1
+        ],
+        [
+          false,
+          600
+        ]
+      ],
+      "expected_state": "FINITE_LIMIT_NEAR_ZERO",
+      "expected_L95_in": [
+        0.0,
+        0.1
+      ],
+      "expected_SdMC": "numeric",
+      "must_not": "raise any label asserting mu = 0 is inadmissible; L95 = 0.0 is a permitted result",
+      "ledger_id": "ZERO-01"
+    },
+    {
+      "id": "TV02",
+      "closes": "TIE-01 — F2/B2 — no tie rule for the reported argmax",
+      "scenario": "muhat = mumax, so Qstat is identically zero on the whole grid",
+      "acc": [
+        [
+          true,
+          601
+        ]
+      ],
+      "expected_state": "RANGE_INSUFFICIENT",
+      "expected_L95": null,
+      "expected_SdMC": "NOT_DEFINED",
+      "expected_argmax_Qobs_mu": 0.0,
+      "tie_rule_exercised": "argmax_left over 601 equal maxima",
+      "ledger_id": "TIE-01"
+    },
+    {
+      "id": "TV03",
+      "closes": "IDX-01 — F3/B3 — counters indexed by jj fire where no jj exists",
+      "scenario": "a G4 drop and an edge fit occur at a refined node and at a bisection node",
+      "acc": [
+        [
+          true,
+          51
+        ],
+        [
+          false,
+          550
+        ]
+      ],
+      "expected_state": "FINITE_LIMIT",
+      "counter_contract": "edge and degenerate events are accumulated over the (keyModel, keyRlo, keyStage) bucket; the jj axis is not used off the coarse grid",
+      "expected_edge_shape": [
+        2,
+        11,
+        4,
+        2
+      ],
+      "expected_degen_shape": [
+        2,
+        11,
+        4
+      ],
+      "ledger_id": "IDX-01"
+    },
+    {
+      "id": "TV04",
+      "closes": "EMPTY-01 — F4/B7 — max and min over an empty set",
+      "scenario": "every one of the ten grid nodes reaches RANGE_INSUFFICIENT, so no node is retained",
+      "per_node_state": "RANGE_INSUFFICIENT",
+      "expected_range": [
+        null,
+        null
+      ],
+      "expected_rangeState": "NO_RETAINED_NODES",
+      "expected_maxViolation": 0.0,
+      "expected_violationState": "NONE",
+      "must_not": "return -inf, +inf or nan from an empty max or min",
+      "ledger_id": "EMPTY-01"
+    },
+    {
+      "id": "TV05",
+      "closes": "INP-01 — F5/B4 — gcurve column, units and extrapolation unstated",
+      "scenario": "control 3 is evaluated on a gcurve whose abscissa is in h^-1 Mpc and extends beyond the fitted range on one side and stops short on the other",
+      "expected_behaviour": "abscissa multiplied by 1/hdata, ordinate column 1 taken as g, numpy.interp with end-value clamping",
+      "expected_control_3": "a single finite number, report-only, no verb",
+      "ledger_id": "INP-01"
+    },
+    {
+      "id": "TV06",
+      "closes": "MASK-01 — F6 — MODEL-R declared over an r_lo axis it does not run on",
+      "scenario": "MODEL-R is evaluated only at r_lo = 6.0",
+      "expected_shape": [
+        2,
+        11,
+        2
+      ],
+      "expected_mask_shape": [
+        2,
+        11
+      ],
+      "expected_mask_row_0": "all true",
+      "expected_mask_row_1": "true only at keyRlo index 10 (r_lo = 6.0)",
+      "must_not": "report structural zeros as if they were measured 0/1 states",
+      "ledger_id": "MASK-01"
+    },
+    {
+      "id": "TV07",
+      "closes": "PAIR-01 — B13 — monotonicity pairing specified two incompatible ways",
+      "scenario": "node kk = 5 is excluded; kk = 4 and kk = 6 are retained",
+      "expected_pairing": "excluded nodes remove both comparisons that involve them; kk = 4 is NOT compared with kk = 6",
+      "expected_pairs_from_ten_nodes_with_one_excluded": 7,
+      "ledger_id": "PAIR-01"
+    },
+    {
+      "id": "TV08",
+      "closes": "QUAD-01 — B5 — quadrature had no named routine or subdivision limit",
+      "scenario": "an integrand that exhausts the subdivision limit",
+      "expected_state": "NUMERICAL_FAILURE",
+      "expected_label": "QUADRATURE_NOT_CONVERGED",
+      "criterion_exercised": "ier != 0 or abserr > max(epsabs, epsrel*|result|)",
+      "ledger_id": "QUAD-01"
+    },
+    {
+      "id": "TV09",
+      "closes": "CTRL-03 — B11 — control 5's operands were fixed by a rule pointing at the wrong quantity",
+      "scenario": "control 5 compares each kernel against its own 1e-12 recomputation",
+      "expected_operands": [
+        [
+          "Kraw3_tol1e-12",
+          "Kraw3_tol1e-10"
+        ],
+        [
+          "Kw3_tol1e-12",
+          "Kw3_tol1e-10"
+        ]
+      ],
+      "expected_emitted_values": 2,
+      "must_not": "compare Kraw3 against Kw3",
+      "ledger_id": "CTRL-03"
+    },
+    {
+      "id": "TV10",
+      "closes": "RNG-01 — B1 — the coverage threshold's stream was ambiguous",
+      "scenario": "the coverage study needs Q95 at muTrue",
+      "expected_source": "recomputed under rootVal at keyStage = 0, nsim = 100000, not reused from the section 10 scan",
+      "rationale_is_normative": false,
+      "ledger_id": "RNG-01"
+    },
+    {
+      "id": "TV11",
+      "closes": "TERM-01 — F9/B9 — two terminal verbs never said which items are absent",
+      "scenario": "INVALID_INPUT fires at guard G3, after the kernels exist",
+      "expected_items_present": [
+        8,
+        11,
+        13
+      ],
+      "expected_items_absent": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        12
+      ],
+      "ledger_id": "TERM-01"
+    },
+    {
+      "id": "TV12",
+      "closes": "CTRL-02 — F8 — item 8 required all nine controls while some had not run",
+      "scenario": "control 2 fails",
+      "expected_behaviour": "all nine controls run to completion and emit their measured values; only then is STOP_RUN honoured",
+      "expected_item_8_rows": 9,
+      "ledger_id": "CTRL-02"
+    },
+    {
+      "id": "TV13",
+      "closes": "CTRL-01 — F12 — controls 5 and 6 did not say how many values they emit",
+      "expected_control_5_values": 2,
+      "expected_control_6_values": 4,
+      "verdict_rule": "the verdict is taken on the maximum over the emitted values",
+      "ledger_id": "CTRL-01"
+    },
+    {
+      "id": "TV14",
+      "closes": "LIST-01 — F7 — the excluded-node list had two populations",
+      "scenario": "one node excluded by a label, one node numeric but with SdMC NOT_DEFINED",
+      "expected_two_lists": [
+        "excluded_from_range",
+        "excluded_from_monotonicity"
+      ],
+      "must_not": "report a single undifferentiated list",
+      "ledger_id": "LIST-01"
+    },
+    {
+      "id": "TV15",
+      "closes": "ANNO-01 — F10 — annotations were attached to items while the label set forbade emitting them",
+      "expected_behaviour": "annotations live in a separate report field, not in the outcome-label set",
+      "expected_annotation_fields": [
+        "stat_only_fixed_template",
+        "model_support_conditional"
+      ],
+      "ledger_id": "ANNO-01"
+    },
+    {
+      "id": "TV16",
+      "closes": "SHAPE-01 — F11 — float shapes declared for arrays that must hold labels",
+      "expected_representation": "value array of float64 with NaN at non-numeric slots, plus a parallel state array of strings",
+      "must_not": "store outcome labels inside a float64 array",
+      "ledger_id": "SHAPE-01"
+    },
+    {
+      "id": "TV17",
+      "closes": "ORDER-01 — F13 — row order and row count unspecified",
+      "expected_branch_table_order": [
+        "primary",
+        "branch_1",
+        "branch_2",
+        "branch_3",
+        "branch_4"
+      ],
+      "expected_rlo_axis_order": "kk = 0..9 ascending, then r_lo = 6.0 at index 10",
+      "expected_acc_rows": 16,
+      "acc_rows_composition": "11 MODEL-W r_lo nodes + 1 MODEL-R at 6.0 + 4 branches; the section 14 run is excluded",
+      "ledger_id": "ORDER-01"
+    },
+    {
+      "id": "TV18",
+      "closes": "BRANCH-01 — B8 — a branch with no numeric L95 had no disposition",
+      "scenario": "branch 2 reaches RANGE_INSUFFICIENT",
+      "expected_verb": "STOP_BRANCH",
+      "expected_row_present": true,
+      "expected_row_content": "the state label in place of L95 and SdMC",
+      "expected_branch_table_rows": 5,
+      "ledger_id": "BRANCH-01"
+    },
+    {
+      "id": "TV19",
+      "closes": "structural — multiple crossings",
+      "scenario": "the acceptance set is disconnected and the grid ends rejected",
+      "acc": [
+        [
+          true,
+          21
+        ],
+        [
+          false,
+          10
+        ],
+        [
+          true,
+          10
+        ],
+        [
+          false,
+          560
+        ]
+      ],
+      "expected_state": "FINITE_LIMIT_MULTICROSS",
+      "expected_L95_rule": "the supremum of the acceptance set, i.e. the crossing at the LAST falling transition",
+      "expected_jlast": 40,
+      "ledger_id": null
+    },
+    {
+      "id": "TV20",
+      "closes": "structural — refinement loses the crossing it was sent to find",
+      "scenario": "the refined grid contains no accepted-then-rejected pair",
+      "expected_state": "REFINEMENT_LOST_CROSSING",
+      "expected_L95": null,
+      "expected_SdMC": "NOT_DEFINED",
+      "ledger_id": null
+    }
+  ],
+  "coverage_requirements": {
+    "every_terminal_state_reached_by": {
+      "RANGE_INSUFFICIENT": [
+        "TV02",
+        "TV04",
+        "TV18"
+      ],
+      "FINITE_LIMIT_NEAR_ZERO": [
+        "TV01"
+      ],
+      "FINITE_LIMIT": [
+        "TV03"
+      ],
+      "FINITE_LIMIT_MULTICROSS": [
+        "TV19"
+      ],
+      "REFINEMENT_LOST_CROSSING": [
+        "TV20"
+      ],
+      "NUMERICAL_FAILURE": [
+        "TV08"
+      ],
+      "INVALID_INPUT": [
+        "TV11"
+      ],
+      "STOP_RUN": [
+        "TV12"
+      ],
+      "STOP_BRANCH": [
+        "TV18"
+      ]
+    },
+    "no_vector_without_a_state": true,
+    "no_vector_with_two_states": true
+  }
+}
