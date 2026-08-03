@@ -15,7 +15,7 @@
       "null_results/INDEX.md NR-001..NR-018",
       "parked/INDEX.md NW-001"
     ],
-    "governing_precedent": "NR-015 \u2014 first-draft label retired by skeptic review"
+    "governing_precedent": "NR-015 — first-draft label retired by skeptic review"
   },
   "claims": [
     {
@@ -72,7 +72,7 @@
       "subject": "amplitude bound",
       "verdict": "FAIL",
       "reason": "independent implementation differs by 3.11 orders at the central choice; frozen rule fails above 2",
-      "cause": "rho_eff = n*<m> set to 2.52x the total matter density \u2014 252% of all matter in clusters",
+      "cause": "rho_eff = n*<m> set to 2.52x the total matter density — 252% of all matter in clusters",
       "path_a": 3.9e-05,
       "path_b": 3e-08,
       "claim_direction": "CONFIRMED AND STRENGTHENED",
@@ -109,8 +109,8 @@
         "blue_curve_fit": "Planck LCDM H0=67.37 Om=0.3152 at rms 0.002%"
       },
       "excluded": [
-        "GRAPHICAL_INTERPOLATION of Table A1 \u2014 21.1% rms, monotone divergence to 44%",
-        "LCDM rescaled to another H0 \u2014 curve ratio spreads 10.3% and crosses unity"
+        "GRAPHICAL_INTERPOLATION of Table A1 — 21.1% rms, monotone divergence to 44%",
+        "LCDM rescaled to another H0 — curve ratio spreads 10.3% and crosses unity"
       ],
       "open": "the operator producing the orange curve is unidentified"
     }
@@ -151,5 +151,24 @@
     "FROZEN_CLAIMS_C1_C4.md": "ed0b252bbcc13193",
     "CERT_C5A_supplementary.md": "9d691a9bc76f3355",
     "CERT_C5B_figure3.md": "7fb63e0c208d6445"
+  },
+  "verdicts": [
+    "C5C:UNPUBLISHED_NON_IDENTIFIABLE_ARTIFACT"
+  ],
+  "artifact_ids": {
+    "ARTIFACT_EMAIL_2026-08-02_MULTING_INTRO_V6": {
+      "file": "multing_intro_figure_v6.pdf",
+      "tool": "Matplotlib 3.10.8",
+      "created_utc": "2026-07-30T18:09:58Z",
+      "received_local": "2026-08-02T16:01",
+      "predecessor": "image002.png (2026-07-20 message)",
+      "published": false,
+      "excluded": [
+        "hand-drawn",
+        "rendering of Table A1",
+        "rescaled LCDM",
+        "standard FLRW fluid cosmology"
+      ]
+    }
   }
 }
