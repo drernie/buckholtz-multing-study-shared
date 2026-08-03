@@ -116,7 +116,7 @@ def main() -> int:
         zorder=4,
         label=f"flat ΛCDM fit to it — $H_0$={p_ctl[0]:.2f}, $\\Omega_m$={p_ctl[1]:.4f}",
     )
-    ax.plot(zo, ho, color="#d95923", lw=2.4, label="MULTING curve as plotted (orange)", zorder=3)
+    ax.plot(zo, ho, color="#d95923", lw=2.4, label="Later email MULTING curve (orange)", zorder=3)
     ax.plot(
         a1.z,
         a1.H_MULT,
@@ -126,22 +126,22 @@ def main() -> int:
         mew=1.8,
         color="#8c1d1d",
         zorder=5,
-        label="Table A1, $H_{\\rm MULT}$ column",
+        label="Table A1, AI-conditioned $H_{\\rm MULT}$",
     )
     ax.axvline(0.0, color="0.75", lw=0.8, ls=":")
     ax.set_ylabel("$H(z)$  [km s$^{-1}$ Mpc$^{-1}$]")
     ax.set_ylim(45, 265)
     ax.legend(loc="upper left", frameon=False, fontsize=9.5)
     ax.set_title(
-        "The digitiser is calibrated on a curve of known identity,\n"
-        "and the two artifacts still do not agree",
-        fontsize=11.5,
+        "The digitiser is validated on a known ΛCDM control, while the two\n"
+        "MULTING-related artifacts remain quantitatively distinct",
+        fontsize=11.0,
         pad=12,
     )
     ax.text(
         0.985,
         0.06,
-        f"control residual  {ctl:.3f} %\n(Planck 2018 recovered)",
+        f"control residual  {ctl:.3f} %\n(flat Planck-like ΛCDM parameters recovered)",
         transform=ax.transAxes,
         ha="right",
         va="bottom",
@@ -164,7 +164,7 @@ def main() -> int:
         ms=6.5,
         color="#8c1d1d",
         lw=1.5,
-        label="orange curve vs Table A1  (21 % rms)",
+        label="email curve vs Table A1 $H_{\\rm MULT}$  (21 % rms)",
     )
     for z, d in zip(a1.z, dev, strict=True):
         if abs(d) > 8:
@@ -178,6 +178,17 @@ def main() -> int:
             )
     bx.set_xlabel("redshift  $z$")
     bx.set_ylabel("fractional difference  [%]")
+    bx.text(
+        0.985,
+        0.05,
+        r"$\Delta_H(z)=100\times\dfrac{H_{\rm orange}(z)-H_{A1}(z)}{H_{A1}(z)}$"
+        "\n(blue series: same formula against its own ΛCDM fit)",
+        transform=bx.transAxes,
+        ha="right",
+        va="bottom",
+        fontsize=8.5,
+        color="0.3",
+    )
     bx.set_xlim(-0.22, 2.55)
     bx.legend(loc="upper left", frameon=False, fontsize=9.5)
 
@@ -189,8 +200,8 @@ def main() -> int:
     fig.text(
         0.5,
         0.012,
-        "Curves digitised by colour from the supplied figure. Squares are the published Table A1 column, "
-        "not a fit.\nOur reconstruction — errors are ours.",
+        "Curves digitised by colour from the supplied figure. Squares are Table A1 "
+        "$H_{\\rm MULT}$ values, not a fit.\nOur reconstruction — errors are ours.",
         ha="center",
         fontsize=8.5,
         color="0.35",
