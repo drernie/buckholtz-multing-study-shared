@@ -69,12 +69,20 @@ diverge monotonically:
 
     z      curve    Table A1 H_MULT     deviation
     0.00    73.9         73.0             +1.2 %
+    0.06    72.6         70.2             +3.4 %
+    0.14    72.6         73.5             -1.2 %
+    0.25    75.4         78.8             -4.3 %
     0.40    83.0         83.1             -0.1 %
     0.65   101.2         91.4            +10.7 %
-    1.00   130.4        104.2            +25.2 %
+    1.00   130.4        104.2            +25.1 %
     1.50   172.1        126.5            +36.1 %
     2.10   218.6        151.8            +44.0 %
                                     rms   21 %
+
+Below z = 0.4 the two scatter about each other by a few per cent in both
+directions — consistent with digitisation noise and a shared low-redshift
+anchor. Above it the difference is one-sided and grows monotonically. All nine
+rows in range are shown; none is omitted.
 
 Nor is it flat ΛCDM re-anchored to a different H₀: the ratio between the two
 plotted curves varies by 10 % across the range and crosses unity.
