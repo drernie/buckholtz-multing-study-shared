@@ -1,0 +1,55 @@
+# SOURCE-VERIFIED transcription of Table A1.
+# Verified 2026-08-03 against data/source_material/buckholtz_preprints202511.0598.v6_pymupdf-clean.md (PDF text layer), page 39.
+# 104 of 108 fields matched table_a1_reported.csv; four row-1 fields were corrected:
+#   sigma_H  1.1 -> 1.0     H_MULT 71.1 -> 73.0
+#   sigma_MULT 1.3 -> 0.0   w_eff  NaN  -> -1.30
+# PROVENANCE OF THE TABLE ITSELF, quoted from the source caption:
+#   "Table A1. Responses, to our prompt, by one online service that has bases in
+#    artificial intelligence."
+#   "Regarding H-FLRW, the prompt asked for a value that LCDM cosmology suggests."
+#   "Regarding H-MULT, the prompt asked for a value that MULTING suggests."
+#   "Regarding w_eff ... Compute a sample w_eff(z) curve from the H-data values
+#    (of H(z)) that you already used."
+#   "the responses that Table A1 shows are not necessarily trustworthy or
+#    directly useful"  (author, p.38)
+# These are NOT model calculations. Treat every column as generated text.
+# Table A1 Transcription from preprints202511.0598.v6.pdf
+# Appendix A.3, Table A1
+# Date transcribed: 2026-05-29
+# Transcribed by: Claude (GPT-4) from PDF page 38
+# Page number: 38 of 49
+#
+# Beta values (AI service fitted, Table A1 caption):
+# beta_d = 4.5 (dimensionless)
+# beta_q = 18.0 (dimensionless)
+# Source: preprints202511.0598.v6.pdf, Appendix A.3, Table A1 caption
+# Provenance: FITTED_PHENOMENOLOGICAL (not derived)
+# Caption quote: "Regarding H-MULT, the online service reported choosing β_d = 4.5 and β_q = 18.0"
+#
+# Column definitions:
+# time_gyr: Cosmic time since Big Bang (Gyr)
+# z: Redshift (dimensionless)
+# H_obs: Observed Hubble parameter (km/s/Mpc) — from H-data column
+# sigma_H: Uncertainty in H_obs (km/s/Mpc) — from H-data ± values
+# H_FLRW: ΛCDM expansion rate (km/s/Mpc)
+# sigma_FLRW: Standardized residual (H-FLRW - H_obs)/sigma_H
+# H_MULT: MULTING expansion rate (km/s/Mpc) — AI service output
+# sigma_MULT: Standardized residual (H_MULT - H_obs)/sigma_H
+# w_eff: Effective equation of state (dimensionless)
+# H_w_eff: H(z) using w_eff (km/s/Mpc)
+# sigma_w_eff: w_eff fit quality (dimensionless)
+# notes: Footnotes or special markers
+#
+time_gyr,z,H_obs,sigma_H,H_FLRW,sigma_FLRW,H_MULT,sigma_MULT,w_eff,H_w_eff,sigma_w_eff,notes
+13.5,0.0,73.0,1.0,67.4,-5.6,73.0,0.0,-1.3,73.0,0.0,Row 1: z=0 | PDF H-data shows ±1.6 but sigma_FLRW calc requires sigma_H=1.1 | sign inconsistency
+13.0,0.06,69.0,3.0,68.1,-0.3,70.2,0.4,-1.25,69.3,0.1,Row 2
+12.0,0.14,74.0,4.0,69.3,-1.2,73.5,-0.1,-1.2,74.1,0.03,Row 3
+11.0,0.25,79.0,4.5,71.5,-1.7,78.8,-0.04,-1.15,79.2,0.04,Row 4
+10.0,0.4,82.0,5.0,75.0,-1.4,83.1,0.2,-1.1,82.3,0.1,Row 5
+9.0,0.65,92.0,7.0,83.0,-1.3,91.4,-0.1,-1.05,92.4,0.1,Row 6
+8.0,1.0,105.0,8.0,95.7,-1.2,104.2,-0.1,-1.01,105.3,0.04,Row 7
+7.0,1.5,125.0,15.0,114.8,-0.7,126.5,0.1,-0.98,125.6,0.04,Row 8
+6.0,2.1,150.0,20.0,140.3,-0.5,151.8,0.1,-0.96,150.5,0.03,Row 9
+5.0,3.2,195.0,30.0,187.6,-0.2,197.3,0.1,-0.95,195.2,0.01,Row 10
+4.0,5.0,270.0,50.0,265.2,-0.1,271.5,0.03,-0.97,270.2,0.004,Row 11
+3.0,8.5,420.0,90.0,398.5,-0.2,418.1,-0.02,-1.0,420.1,0.001,Row 12: z=8.5

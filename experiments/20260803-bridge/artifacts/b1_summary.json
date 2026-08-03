@@ -1,0 +1,30 @@
+{
+  "background": {
+    "H0": 67.4,
+    "Omega_m": 0.05808412039207226,
+    "max_rel_resid": 0.21347617783505812
+  },
+  "w_X_spread_across_interpolants": {
+    "median": 0.10423427298980126,
+    "max": 0.6157519492680281
+  },
+  "kill_test_1_active_mass": {
+    "cubic": {
+      "negative_at_z_le_0.5": true,
+      "n_negative_of_12": 12
+    },
+    "pchip": {
+      "negative_at_z_le_0.5": true,
+      "n_negative_of_12": 12
+    },
+    "loglog": {
+      "negative_at_z_le_0.5": true,
+      "n_negative_of_12": 12
+    },
+    "finite": {
+      "negative_at_z_le_0.5": true,
+      "n_negative_of_12": 12
+    }
+  },
+  "label": "OUR_RECONSTRUCTION / NOT_VALIDATION / NOT_REFUTATION"
+}
