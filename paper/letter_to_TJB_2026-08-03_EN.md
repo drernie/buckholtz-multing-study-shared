@@ -1,82 +1,69 @@
-# Letter to Dr. Buckholtz — 2026-08-03
+# Letter to Dr. Buckholtz — 2026-08-03 (FINAL, short, no attachments)
 
 **Status: DRAFT. The user sends, not the assistant.**
 
-Answers his 2026-08-03 email, which (a) says Sergey will be in the
-acknowledgments, (b) asks us not to feel obligated to do anything now,
-(c) attaches the figure again, and (d) asks *"Your thoughts?"* — so thoughts
-on the figure are what is wanted, kept brief.
+## Product separation (the thing that went wrong earlier)
 
-The two things offered are the ones he cannot easily get himself:
-- a **number** for the low-z feature he says matters: his curve has a minimum
-  in H(z) at z = +0.098; flat ΛCDM has no minimum anywhere in the plotted
-  range. That is a qualitative difference, and it is his strongest card.
-- the chronometer **error bars**, which his figure omits. Median σ is
-  17 km/s/Mpc against a ~3 km/s/Mpc median separation between his two curves —
-  a referee will ask, and he has said he is writing to a desk-review standard.
+Two different products got merged into one line. They are now separate:
 
-Zenodo help offer removed at the user's instruction. Attachment offered softly,
-explicitly ignorable.
+| artifact | purpose | status |
+|---|---|---|
+| `letter_to_TJB_consolidated_audit_2026-08-03_EN.md` | full consolidated audit | **HOLD until after the preprint** — he asked for exactly this |
+| `technical_memorandum_MULTING_Hz_audit_2026-08-03.md` | derivations, full tables | HOLD, ours |
+| `reports/audit_summary_for_tjb.*` | proof that the curve ≠ Table A1 | memorandum only; the *result* is reported in one sentence below, the figure is not sent |
+| `reports/hz_with_errorbars_for_tjb.*` | error bars + minimum | **WITHHELD** — see provenance note |
+| **this file** | brief reply to his 2026-08-03 email | **SEND** |
+| MULTING+, P(X), LLM tournament | new theory | separate track entirely |
 
-**Attachment:** `reports/hz_with_errorbars_for_tjb.pdf`
+## Why the error-bar figure is withheld
+
+Extracted his plotted CC markers and matched them against our 27-point
+Moresco+2022 set: **26 of 32 matched** (|Δz|<0.02 and |ΔH|<4 km/s/Mpc). So ~6
+of his points come from a source we do not hold. The qualitative point (the
+bars are missing, and CC uncertainties are large) is robust, but quoting
+"median σ = 17, max 62" as if it characterised *his* set would be an overclaim.
+Withholding also respects his request not to be sent material now.
+
+## Precision decisions, both tested rather than assumed
+
+- **`z ≈ 0.10`, not `z = 0.098`.** The minimum is shallow: H stays within
+  0.2 km/s/Mpc of it across z ∈ [0.062, 0.136]. Three significant figures are
+  not justified by the digitisation.
+- **`q(z)=0 at z≈0.378` omitted — but it is NOT unstable.** Tested under
+  smoothing windows from 1 to 201 points: the crossing moves only 0.378 →
+  0.382. The number is sound; it is left out for economy, because it is one
+  more claim he would have to check, not because it fails. Available if wanted.
 
 ---
 
-**Subject:** Re: Graph showing progress toward a possible resolution of the Hubble tension
+**Subject:** Re: current MULTING figure and Zenodo materials
 
 Dear Dr. Buckholtz,
 
-Thank you — sincerely. Being named in the acknowledgments is an honour, and not
-in the least embarrassing. It means a great deal to me, and I am grateful for
-it.
+Thank you for the update. I would be honoured to be included in the
+acknowledgements.
 
-Your recommendation is well taken and I will follow it: I will not send you
-work to review while you are finishing. But you asked for thoughts, and you
-sent the figure, so let me offer two — briefly, and both about the figure
-itself.
+One feature of the current figure seems especially worth having in explicit
+form: the orange curve has a shallow minimum near z ≈ 0.10, while the flat
+ΛCDM curve is monotonic across the plotted interval. That is a difference in
+the shape of the function rather than an offset between two similar curves,
+and it looks to me like the clearest qualitative distinction in the
+low-redshift region — which is where you said the interesting behaviour lies.
 
-The first concerns the low-redshift behaviour you mentioned. I think you are
-right that it is the important part, and it may be stronger than you have
-stated it. Reading your curve carefully, it has a genuine minimum in H(z), at
-about z = +0.098. Flat ΛCDM has no minimum anywhere in the plotted range — it
-simply decreases toward the future. So the difference there is not a matter of
-one curve sitting a few km/s/Mpc above the other; it is a difference in the
-*shape* of the function, and that is a much harder thing to reproduce by
-adjusting parameters. If it helps as a second number, the acceleration
-transition q(z) = 0 falls at z ≈ 0.378 on your curve against z ≈ 0.631 for
-Planck ΛCDM. Those two facts together seem to me the most quotable form of
-what you described.
+One provenance note may also be useful before the Zenodo package is frozen.
+The later orange curve and the H_MULT column of Table A1 are not numerically
+the same object. Their difference is small and changes sign below z ≈ 0.4, but
+then grows to roughly 11% at z = 0.65, 25% at z = 1.0, and 36% at z = 1.5,
+reaching about 44% at z = 2.1 — beyond the CC-calibration boundary your figure
+marks. This may simply mean they belong to different stages or different
+constructions. But if both are included in the Zenodo materials, it would be
+worth labelling that distinction explicitly, so a reader does not have to
+work it out.
 
-The second is smaller and more practical. The cosmic-chronometer points on the
-figure are drawn without their uncertainties, and those uncertainties are
-large — around 17 km/s/Mpc typically, up to about 62 at the high-redshift end.
-Since the two curves sit only a few km/s/Mpc apart across most of the range, a
-referee will almost certainly ask what the error bars look like, and it is
-better for that question to be answered in the figure than in a report. It also
-helps the argument rather than hurting it: once the bars are shown, it becomes
-visible that the point-by-point agreement is not where your case rests — the
-low-z shape is. I have attached a version with the bars drawn in, marking the
-minimum, purely as an illustration of the form. I used a 27-point Moresco 2022
-compilation, where your figure cites 31, so it is not a substitute for your own
-data — only a suggestion of presentation.
+I will hold the broader audit until after the preprint, as you suggested. No
+response is needed at this stage.
 
-One last thing, mentioned now only because of the timing of the Zenodo set.
-While digitising, I compared this figure point by point against the H-MULT
-column of Table A1, and the two do not track each other above z ≈ 0.5 — they
-agree closely at low redshift and then separate, reaching roughly 40% by
-z ≈ 2.1. I am not suggesting either is wrong; they may simply come from
-different stages of the work. But if both are going into the same Zenodo
-folder, it seemed better that you hear it from me now than from a reader
-afterwards. I have the point-by-point table if it is useful, and I am happy to
-say no more about it if it is not.
-
-On the short verification note on Equation 32, I will hold it until your
-preprint is published — that seems the natural order in any case.
-
-I hope the remaining work goes smoothly, and that your wife continues to
-recover well.
-
-With respect and gratitude,
+With thanks and respect,
 
 Sergey Boyko
 ORCID 0009-0009-2178-5701
