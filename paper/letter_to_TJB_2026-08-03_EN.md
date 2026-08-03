@@ -60,9 +60,15 @@ minimum, purely as an illustration of the form. I used a 27-point Moresco 2022
 compilation, where your figure cites 31, so it is not a substitute for your own
 data — only a suggestion of presentation.
 
-I put together a small comparison table alongside it while working through the
-material. If it would be of any use before the Zenodo set is finalised, I am
-glad to send it; if not, please simply disregard this.
+One last thing, mentioned now only because of the timing of the Zenodo set.
+While digitising, I compared this figure point by point against the H-MULT
+column of Table A1, and the two do not track each other above z ≈ 0.5 — they
+agree closely at low redshift and then separate, reaching roughly 40% by
+z ≈ 2.1. I am not suggesting either is wrong; they may simply come from
+different stages of the work. But if both are going into the same Zenodo
+folder, it seemed better that you hear it from me now than from a reader
+afterwards. I have the point-by-point table if it is useful, and I am happy to
+say no more about it if it is not.
 
 On the short verification note on Equation 32, I will hold it until your
 preprint is published — that seems the natural order in any case.
