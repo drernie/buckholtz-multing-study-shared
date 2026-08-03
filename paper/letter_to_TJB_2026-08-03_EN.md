@@ -1,4 +1,6 @@
-# Letter to Dr. Buckholtz — 2026-08-03 (FINAL, short, no attachments)
+# Letter to Dr. Buckholtz — 2026-08-03 (FINAL, one attachment)
+
+**Attachment:** `reports/multing_curve_comparison_for_tjb.pdf`
 
 **Status: DRAFT. The user sends, not the assistant.**
 
@@ -50,6 +52,10 @@ the shape of the function rather than an offset between two similar curves,
 and it appears to be the clearest difference in shape visible on the current
 figure in the low-redshift region — which is where you said the interesting
 behaviour lies.
+
+To make these two numerical points easier to see, I have attached one
+compact comparison figure. It uses only the curves in your supplied figure
+and the Table A1 values.
 
 One further point about provenance may be useful before the Zenodo package is
 frozen. The later orange curve and the H_MULT column of Table A1 do not agree
