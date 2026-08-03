@@ -1,4 +1,10 @@
-# NR-018 — the pair-potential effective-fluid bridge
+# NR-018 — the naive pair-fluid virial mapping
+
+> **Scope, stated first.** This closes ONE mapping: a positive-density
+> effective fluid built by virial-averaging a pure inverse-power pair potential.
+> It does NOT close the generalized Layzer-Irvine formalism, which remains a
+> valid energy balance, and it does NOT close the space of MULTING -> H(z)
+> bridges.
 
 **Date:** 2026-08-03 · **Verdict:** REJECT · **Recurrence:** 4th bridge rejection
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · L0 descriptive
@@ -31,15 +37,24 @@ p_pair   = -(1/6) n_c^2 ∫ d³s ξ(s) s dU/ds  =  (n/3) · rho_pair
 **Independent of `ξ`, of the amplitude, and of any cutoff.** Verified
 symbolically.
 
-| term | `U ∝` | n | `w = n/3` | accelerates? |
+| term | `U ∝` | n | `w = n/3` | dark-energy-like? |
 |---|---|---|---|---|
 | monopole (gravity) | `1/s` | 1 | `+1/3` | no |
 | dipole | `1/s²` | 2 | `+2/3` | no |
 | quadrupole | `1/s³` | 3 | `+1` (stiff) | no |
 
-Acceleration requires `ρ + 3p < 0`, i.e. `w < -1/3`. **No inverse-power pair
-potential in physical separation can reach it.** The three MULTING terms give
-`+1/3`, `+2/3` and `+1`; each dilutes at least as fast as radiation.
+A dark-energy component requires `ρ > 0` together with `p < 0`. Here `w = n/3 > 0`
+for every term, so `p` carries the sign of `ρ`: the two can never be opposite.
+**No positive-density fluid built this way is dark-energy-like**, and each term
+dilutes at least as fast as radiation.
+
+**The sign qualifier matters, and the first draft of this entry omitted it.**
+`ρ + 3p = (1+n)ρ`, so when `ρ < 0` — which is exactly the case for the attractive
+monopole, whose binding energy is negative — the acceleration inequality
+`ρ + 3p < 0` is satisfied identically. Such a component does *not* behave as dark
+energy: it carries negative energy density and **reduces** `H²`. The claim being
+made here is about the dark-energy equation of state, not about the sign of
+`ρ + 3p` in the abstract.
 
 The consequence is the sharp one: any cosmological signal in a bridge of this
 form comes **entirely** from the assumed time-dependence of `A₂(a), A₃(a),
@@ -90,9 +105,14 @@ guidance, because the construction itself is unpublished** — see below.
 
 ## Kill analysis
 
-**What this kills:** the effective-fluid route in general — pair potential →
-`ρ_pair, p_pair` → Friedmann. Not a particular parameterisation of it. Grounds 1
-and 3 are properties of inverse-power pair potentials, not of MULTING.
+**What this kills:** the positive-density virial mapping — pair potential ->
+`rho_pair, p_pair` as an ordinary isotropic fluid -> Friedmann. Ground 1 is a
+property of that mapping applied to pure inverse powers. Ground 3 constrains the
+amplitude only, and is itself cutoff-dependent.
+
+**What this does NOT kill:** the generalized Layzer-Irvine energy balance as a
+formalism; comoving-separation or non-power-law variants; anisotropic-stress
+mappings; and every covariant route.
 
 **What survives, untouched:**
 

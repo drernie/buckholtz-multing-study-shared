@@ -16,8 +16,12 @@ responding to a prompt, and the author says so plainly in the caption and in the
 surrounding text. Every column — including `H-MULT` and `H-FLRW` — was
 *requested from the service*, not computed by a model.
 
-That resolves the bridge question at the root: there is no operator to recover
-from Table A1, because no operator produced Table A1. A candidate bridge, if
+That reframes the bridge question at the root: **the material available to us
+does not contain a deterministic, published, reproducible operator `F -> H` that
+produced Table A1.** The service applied some procedure; we observe only that it
+is not published, not identifiable from the table alone, and not shown to follow
+from the force law. Stronger phrasings of this sentence in the first draft --
+"no operator produced it" -- claimed more than the evidence supports. A candidate bridge, if
 built, must not be validated against it — doing so would mean reproducing a
 language model's output, not a physical theory.
 
@@ -175,8 +179,10 @@ is of the wrong kind.
    reconstruct, and Table A1 is a distraction. If no, then the bridge does not
    exist yet in any form, and building one is new work rather than
    reconstruction.
-3. **The kSZ constraint is unaffected.** It tests the force law directly against
-   ACT+SDSS pairwise velocities and never touches Table A1.
+3. **The kSZ constraint is unaffected by this finding**, since it tests the force
+   law against ACT+SDSS pairwise velocities and never touches Table A1. It does
+   not, however, stand outside the bridge question entirely: any bridge relating
+   the same force law to structure growth must remain consistent with it.
 
 **What must not be done:** quoting any Table A1 number as a MULTING prediction,
 in either direction. That includes our own earlier reconstructions of `ε(z)`,

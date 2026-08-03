@@ -1,4 +1,8 @@
-# The effective-fluid bridge fails by four to five orders of magnitude
+# The naive pair-fluid mapping fails by four to five orders of magnitude
+
+> **Scope:** one mapping, not the bridge problem. See
+> `audit/FROZEN_CLAIMS_C1_C4.md` C3 and C4 for what this does and does not
+> assert.
 
 **Date:** 2026-08-03 · **Stage:** B3, the decisive order-of-magnitude test
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · L0 descriptive
@@ -126,7 +130,7 @@ MULTING calculation:
 |---|---|
 | B0 target | `BLOCKED_BY_TARGET_PROVENANCE` — Table A1 is generated text |
 | B1 target reconstruction | cannot be done in the author's background; his `H_FLRW` column is not any standard cosmology |
-| B2/B3 effective fluid | **falsified by 4–5 orders of magnitude** |
+| B2/B3 naive pair-fluid mapping | **falsified**: `w = n/3` structurally, amplitude 4-5 orders short (amplitude is cutoff-dependent) |
 | level 3 covariant action | untouched, and now the only surviving route |
 
 The programme's own B0 phrasing anticipated this branch: *"масштаб меньше на много
