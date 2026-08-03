@@ -51,10 +51,23 @@ scatter by a few per cent in both directions; above it the difference is
 one-sided and monotone. Nor is the curve flat ΛCDM re-anchored: the ratio between
 the two plotted curves varies 10 % and crosses unity.
 
+**The 44 % point is past the source figure's own calibration boundary.** Your
+figure marks $z=1.965$ as where "calibrated data ends, extrapolation begins."
+The $z=2.10$ comparison above sits just beyond that line; within it, the
+largest divergence is $36\%$ at $z=1.50$.
+
 **Positive control on our own extraction.** The blue curve on the same figure
 recovers as flat Planck ΛCDM at $H_0=67.37$, $\Omega_m=0.3152$, **rms 0.002 %** —
 two parts in $10^5$. The distinct shape is therefore a property of the curve, not
 of our digitiser. *(See the attached figure: control and result on one panel.)*
+
+**Observational status on real data.** Evaluating the curve at the 27 real
+cosmic-chronometer points (Moresco et al. 2022) with zero free parameters
+gives $\chi^2=14.4$; a flat ΛCDM fit to the same points (2 free parameters,
+$H_0=68.8$, $\Omega_m=0.32$) gives $\chi^2=12.8$. A mild, stable preference for
+ΛCDM ($\Delta\chi^2\approx+1.6$; the sign does not flip under leave-one-out on
+any of the 27 points) — not yet a decisive observational discrimination.
+**Status: curve-level distinct, observationally unresolved.**
 
 ### 4 · What the audit leaves — the main result
 
@@ -86,7 +99,7 @@ parameters.
 ### What we will state in the memorandum, absent further information
 
 1. **the later H(z) curve** — a separate, code-generated artifact whose
-   generating procedure is not published; not classified as an independent
+   generating procedure is not identified in the material available to us; not classified as an independent
    forward prediction without further basis.
 2. **the effective energy behind it** — carried by an unspecified sector,
    since the standard pair-fluid mapping of pair-interaction energy (§2) is

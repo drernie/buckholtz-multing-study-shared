@@ -199,14 +199,16 @@ def main() -> int:
 
     fig.text(
         0.5,
-        0.012,
+        0.008,
         "Curves digitised by colour from the supplied figure. Squares are Table A1 "
-        "$H_{\\rm MULT}$ values, not a fit.\nOur reconstruction — errors are ours.",
+        "$H_{\\rm MULT}$ values, not a fit.\nThe $z=2.1$ comparison lies beyond the "
+        "source figure's own marked CC-calibration boundary at $z=1.965$.\n"
+        "Our reconstruction — errors are ours.",
         ha="center",
-        fontsize=8.5,
+        fontsize=8,
         color="0.35",
     )
-    fig.tight_layout(rect=(0, 0.035, 1, 1))
+    fig.tight_layout(rect=(0, 0.075, 1, 1))
     for ext in ("png", "pdf"):
         fig.savefig(f"{OUT}.{ext}", dpi=200)
     print(f"\nwrote {OUT}.png and {OUT}.pdf")

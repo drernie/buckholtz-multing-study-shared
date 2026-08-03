@@ -54,8 +54,10 @@ than an independent prediction — a statement about procedure, not about the
 model.
 
 The later orange curve is a separate object, not a plot of Table A1: the two
-diverge to 44 % by z ≈ 2.1, rms 21 % (detail on the attached figure), and the
-curve is not ΛCDM re-anchored to a different H0 either. Below z = 0.4 the two
+diverge to 44 % by z ≈ 2.1 — past the CC-calibration boundary your own figure
+marks at z = 1.965; within that boundary the largest divergence is 36 % at
+z = 1.5 — rms 21 % overall (detail on the attached figure), and the curve is
+not ΛCDM re-anchored to a different H0 either. Below z = 0.4 the two
 differ by a few per cent and change sign; above z = 0.4 the difference becomes
 one-sided and grows systematically — a real feature of the curves, confirmed by
 a positive control: fitting the same figure's blue reference curve recovers flat
@@ -89,7 +91,7 @@ into a cosmological background.
 We are preparing a technical memorandum with the full equations, the calibrated
 extraction, and the registered negative results. In it we will describe the
 later curve as a separate, code-generated artifact whose generating procedure is
-not published, and we will not classify it as an independent prediction without
+not identified in the material available to us, and we will not classify it as an independent prediction without
 further basis. If you have more to say about it, a line would be very welcome —
 nothing here depends on a reply.
 
