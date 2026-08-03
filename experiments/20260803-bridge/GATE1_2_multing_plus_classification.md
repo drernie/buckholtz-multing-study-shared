@@ -38,6 +38,17 @@ nabla^2 xi = -phi*(d phi/dr)^2 = -1/r^5
 this session, not merely relayed from an unverified source — upgraded from
 the handoff's own "useful hypothesis, not certified."
 
+**2026-08-03, later same day — strengthened further.** The three cascade
+equations are not merely dimensionally consistent with "one propagator" —
+they are exactly reproducible, at both orders checked, as the perturbative
+expansion of **one** field-dependent-kinetic scalar action,
+`L = ½(1+2εΦ)(∂Φ)²`. See `FINDING_R7_collapses_to_one_action.md` for the
+full derivation (sympy-verified) and its scope limits (flat/static only, not
+covariant; not proven unique). This also sharpens NR-019 below: the same
+action's kinetic coefficient vanishes at a specific, calculable field value
+`Φ_ghost = -1/(2ε)`, turning the ghost-condensate worry from a literature
+analogy into a concrete boundary within a named witness theory.
+
 **What this does and does not establish.** It confirms that a specific,
 simple class of nested-source field equations reproduces the right *powers*
 of `r`. It says nothing about:
