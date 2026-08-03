@@ -1,0 +1,130 @@
+{
+  "schema": "rdr.certificate/1",
+  "date": "2026-08-03",
+  "subject": "MULTING force law -> H(z) bridge: certification of four claims",
+  "labels": [
+    "NOT_VALIDATION",
+    "NOT_REFUTATION",
+    "OUR_RECONSTRUCTION",
+    "L0_descriptive"
+  ],
+  "criteria_frozen_before_runs": true,
+  "prior_work_check": {
+    "performed": true,
+    "registries": [
+      "null_results/INDEX.md NR-001..NR-018",
+      "parked/INDEX.md NW-001"
+    ],
+    "governing_precedent": "NR-015 \u2014 first-draft label retired by skeptic review"
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "subject": "provenance of Table A1",
+      "verdict": "PASS",
+      "path_b_independence": [
+        "source excerpt only",
+        "not told AI was suspected",
+        "open questions, not confirmation"
+      ],
+      "result": "NO_REPRODUCIBLE_OPERATOR_IN_THIS_EXCERPT",
+      "path_b_added": [
+        "three AI services tried",
+        "services disagreed on observed H(z)",
+        "beta_d/beta_q disagreements noticeable",
+        "H(z) 'calculated via MULTING' disagreements noticeable"
+      ],
+      "unresolved": "whether H-MULT was produced with H-data in hand; answerable from Supplemental Material [251]"
+    },
+    {
+      "id": "C2",
+      "subject": "transcription fidelity",
+      "verdict": "PASS",
+      "quantitative": {
+        "mismatches_vs_corrected": 0,
+        "fields_compared": 132,
+        "discrepancies_vs_original": 4,
+        "all_in_row": 1
+      }
+    },
+    {
+      "id": "C3",
+      "subject": "virial identity w = n/3",
+      "verdict": "PASS",
+      "path_b_independence": [
+        "definitions only",
+        "not told the answer",
+        "not told the sign",
+        "derive not recall"
+      ],
+      "quantitative": {
+        "worst_deviation": 6.7e-16,
+        "configurations": 360
+      },
+      "refinements": [
+        "pair-set regularisations preserve the identity; functional-form regularisations break it",
+        "sign(rho+3p)=sign(rho) unconditionally for n>0",
+        "rho and p separately cutoff-dependent; only the ratio is clean"
+      ]
+    },
+    {
+      "id": "C4",
+      "subject": "amplitude bound",
+      "verdict": "FAIL",
+      "reason": "independent implementation differs by 3.11 orders at the central choice; frozen rule fails above 2",
+      "cause": "rho_eff = n*<m> set to 2.52x the total matter density \u2014 252% of all matter in clusters",
+      "path_a": 3.9e-05,
+      "path_b": 3e-08,
+      "claim_direction": "CONFIRMED AND STRENGTHENED",
+      "corrected_value": {
+        "order": 1e-07,
+        "range": [
+          1e-08,
+          1e-06
+        ]
+      },
+      "withdrawn": [
+        "207 Gpc = 46x Hubble radius",
+        "the 'generous ceiling' framing"
+      ],
+      "new_result": "dipole needs 1e4-1e5 Hubble radii; quadrupole only ~5-15, being quadratic in its length"
+    }
+  ],
+  "not_adjudicated": [
+    "local force law",
+    "covariant MULTING+",
+    "Figure 3 provenance",
+    "backreaction"
+  ],
+  "errors_recorded": [
+    {
+      "kind": "unphysical assumption",
+      "detail": "abundance exceeding the matter budget, described as generous"
+    },
+    {
+      "kind": "overclaim",
+      "detail": "six statements at wider scope than evidence, corrected before certification"
+    },
+    {
+      "kind": "process",
+      "detail": "null_results not checked before the first bridge run"
+    }
+  ],
+  "next_actions": [
+    "read Supplemental Material [251]",
+    "correct NR-018 Ground 2",
+    "audit Figure 3 provenance separately",
+    "covariant MULTING+ only after the above"
+  ],
+  "prohibited_without_approval": [
+    "contacting the author",
+    "quoting any Table A1 number as a MULTING prediction"
+  ],
+  "artifacts": {
+    "CERT_C1_provenance.md": "aca5246c8656ec83",
+    "CERT_C2_C3.md": "a1e727ce39a4b7f1",
+    "CERT_C4_amplitude.md": "a8977b316dc029de",
+    "decision.md": "acb9bc7df9c1504f",
+    "FROZEN_CLAIMS_C1_C4.md": "ed0b252bbcc13193"
+  }
+}
