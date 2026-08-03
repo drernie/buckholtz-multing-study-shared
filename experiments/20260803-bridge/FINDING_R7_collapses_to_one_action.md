@@ -126,6 +126,64 @@ class of theory*, but for this specific solution and this specific sign of
 source configuration) that the ordinary attractive point-source solution
 does not visit.
 
+## 6. Matched to MULTING's actual `ℓ_d`, `ℓ_q` — a sharp, falsifiable structural prediction
+
+Section 4 flagged that this action's series has no natural place to stop.
+Matching it to MULTING's *own* potential pins that down properly. From the
+technical memorandum, `U(r,z) = -A2/r + A3/(2r²) - A4/(3r³) + C(z)`, and
+Section 5's own definitions `ℓ_d = A3/A2`, `ℓ_q² = A4/A2`, so:
+
+```
+-U/A2  =  1/r  -  ell_d/(2 r^2)  +  ell_q^2/(3 r^3)
+```
+
+matched term by term against `Φ_exact`'s own series (§3):
+
+```
+O(eps^0):  1/r                                       <-> 1/r                    (identity, fixes normalisation)
+O(eps^1): -eps/(2 r^2)                                <-> -ell_d/(2 r^2)         =>  eps = ell_d  (exact match)
+O(eps^2):  2*eps^2/(3 r^3), eps=ell_d -> 2 ell_d^2/(3 r^3)  <-> ell_q^2/(3 r^3)  =>  ell_q^2 = 2 ell_d^2
+```
+
+**`ε = ℓ_d` is dimensionally sound** — `Φ ≡ -U/A2` carries dimensions of
+inverse length (since `U/A2` has dimensions of `1/r`), so `ε ~ 1/Φ` has
+dimensions of length, matching `ℓ_d` exactly. Not a coincidence of numbers;
+the identification is unit-consistent.
+
+**An error caught mid-derivation, left in the record on purpose.** A first
+hand-tracked version of this match produced `ℓ_q² = -2ℓ_d²` — the wrong sign,
+from a bookkeeping slip (dividing a series *coefficient* by `eps` when the
+coefficient no longer contained one). Redone cleanly in `sympy`, working with
+the literal `eps^1`/`eps^2` *terms* rather than manually-extracted
+coefficients, the correct result is:
+
+```
+ell_q^2 = 2 * ell_d^2        (positive)
+```
+
+**Self-consistency check against this project's own earlier result.** Branch
+C (`FINDING_cluster_pair_sign_constraint.md`, same day) established
+`ℓ_q ≥ ℓ_d/2` as the exact condition for the force to stay attractive at
+every separation. The predicted value, `ℓ_q = √2·ℓ_d ≈ 1.414·ℓ_d`,
+comfortably satisfies it — this specific action, if correct, would put
+MULTING's local force **safely inside the always-attractive regime**, with
+real headroom (1.414 vs. the 0.5 threshold), not marginally.
+
+**The `O(ε³)` term is now a concrete number, with nothing to compare it to.**
+At `ε=ℓ_d`, it evaluates to `-7ℓ_d³/(6r⁴)` — a specific, falsifiable
+prediction for a fifth force term MULTING's own published law does not
+carry. Section 4's flag now has a number attached, still unresolved.
+
+**What this does NOT do — stated to prevent a specific, tempting error.**
+Table A1's fitted `β_d, β_q` enter a *different* force formula (per TJB's own
+prompt to the AI services: `F_3_1 = β_d·G·mass_1·(ICM thermal energy)_1/c²·.../r³`
+etc., built from cluster-specific mass/energy/radius variables) — not simply
+`ℓ_d = A3/A2`, `ℓ_q² = A4/A2` from the letter's own `F(r)` parametrisation.
+Converting between the two requires a derivation not attempted here.
+Plugging `β_d=4.5, β_q=18.0` into `ℓ_q²=2ℓ_d²` without that derivation would
+silently conflate two different parametrisations of the theory — exactly the
+class of error this project's own Gate 1 exists to catch. Not done.
+
 ## Verdict against the frozen classification
 
 ```
@@ -145,6 +203,13 @@ Covariant MULTING+ completion:  STILL OPEN. This is one witness action that
                                  shown to be MULTING's actual completion,
                                  and section 4's extra term is a concrete,
                                  named reason to doubt it is the final one.
+Matched to real ell_d, ell_q:   ell_q^2 = 2*ell_d^2 predicted -- self-
+                                 consistent with the attractive-everywhere
+                                 bound (comfortably, 1.414 vs required 0.5)
+                                 -- but NOT checked against real fitted
+                                 numbers (Table A1's beta_d/beta_q use a
+                                 different parametrisation; converting was
+                                 not attempted, deliberately).
 ```
 
 ## What remains exactly as open as before
