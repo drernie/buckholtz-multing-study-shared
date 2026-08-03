@@ -6,7 +6,7 @@ reproducible parts of the framework from the one part that still needs a bridge.
 
 ---
 
-### 1 · The local interaction's radial dependence reconstructs uniquely
+### 1 · The local interaction's radial dependence reconstructs uniquely, up to $C(z)$
 
 $$F(r,z)=-\frac{A_2}{r^{2}}+\frac{A_3}{r^{3}}-\frac{A_4}{r^{4}}
 \qquad\Longrightarrow\qquad
@@ -15,7 +15,7 @@ U(r,z)=-\frac{A_2}{r}+\frac{A_3}{2r^{2}}-\frac{A_4}{3r^{3}}+C(z)$$
 $C(z)$ is the ordinary additive freedom that leaves the local force unchanged.
 The force law stands as a testable physical hypothesis.
 
-### 2 · The naive pair-fluid bridge is closed — as an identity, not an estimate
+### 2 · The simplest pair-fluid bridge is closed — as an identity, not an estimate
 
 For $U\propto r^{-n}$, Euler's identity applied **pair by pair, before averaging**:
 

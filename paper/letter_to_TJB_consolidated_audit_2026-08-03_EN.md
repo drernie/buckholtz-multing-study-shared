@@ -21,7 +21,7 @@ force law. It separates what is already reproducible from the one part that
 still needs a physical bridge, and it closes off one route that would otherwise
 absorb a great deal of time.
 
-**1. The local interaction's radial dependence reconstructs uniquely.**
+**1. The local interaction's radial dependence reconstructs uniquely, up to an additive constant.**
 
 From F(r,z) = -A2/r² + A3/r³ - A4/r⁴, the r-dependent part of the potential
 follows without ambiguity:
@@ -93,13 +93,12 @@ not published, and we will not classify it as an independent prediction without
 further basis. If you have more to say about it, a line would be very welcome —
 nothing here depends on a reply.
 
-One thing is worth saying plainly, apart from the results above. A programme
-spanning particle content and cosmological structure in a single framework is a
-large undertaking, and the parts of it we could audit cleanly — the caveat you
-yourself attached to Table A1, the calibration boundaries marked explicitly on
-the later figure — were auditable precisely because they were documented rather
-than smoothed over. That made this a constructive audit rather than an
-adversarial one, and it is worth acknowledging directly.
+One thing is worth saying plainly, apart from the results above. The parts of
+this we could audit cleanly — the caveat you yourself attached to Table A1, the
+calibration boundaries marked explicitly on the later figure — were auditable
+precisely because they were documented rather than smoothed over. That made
+this a constructive audit rather than an adversarial one, and it is worth
+acknowledging directly.
 
 With respect,
 
