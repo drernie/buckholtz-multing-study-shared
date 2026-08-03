@@ -22,7 +22,10 @@ is exact and needs no data at all.
 
 ---
 
-## Ground 1 — structural: the equation of state cannot be negative
+## Ground 1 — structural · **EXACT**, independent of every modelling choice
+
+Certified as claim C3 by an analyst who was given only the definitions, was not
+told the expected answer or its sign, and derived it blind.
 
 For a pair potential `U(s) = C·s^(-n)` the virial pressure integral gives an
 exact identity, because `s·dU/ds = -n·U`:
@@ -62,29 +65,70 @@ A₄(a)`, and none from the force law. Fitting `A_n(a)` to a target `H(z)` fits 
 free function to a curve; the force law contributes a label. That is the same
 failure class as **NR-001** and **NR-002**.
 
-## Ground 2 — magnitude: six to eight orders short
+## Ground 2 — amplitude · **CONDITIONAL**, and our first implementation is RETRACTED
 
-Two independent routes, plus a published measurement of the same quantity.
+**This ground is now split from Ground 1. They must not be recombined into a
+single universal no-go.** Ground 1 is an exact identity. Ground 2 is a
+model-dependent estimate with a stated envelope.
 
-| estimate | `Ω_pair` at z = 0 |
+### Retracted: our Path A numbers
+
+| withdrawn | reason |
 |---|---|
-| pair integral, `ξ = (s/5 Mpc)^-1.8` | `(5–17) × 10⁻⁷` |
-| peculiar kinetic energy, `σ₁D = 200–500 km/s` | `(2–13) × 10⁻⁷` |
-| our own generous ceiling (n 10× real, M = 10¹⁵ M☉, r₀ = 25 Mpc) | `7.4 × 10⁻⁵` monopole; `3.9 × 10⁻⁵` dipole at `ℓ_d = 8 Mpc` |
-| Chiang, Makiya, Komatsu & Ménard, arXiv:2007.01679 (measured) | the `Ω_W`, `Ω_th` family sits at `10⁻⁸` |
+| `Omega_pair <= 3.9e-5` at `ell_d = 8 Mpc` | built on `n = 1e-4 Mpc^-3` with `M = 1e15 Msun`, i.e. `rho_eff/rho_m = 2.52` — **252 % of all the matter in the universe** |
+| "generous ceiling" framing | it was not a ceiling; it was outside the mass budget |
+| `ell_d = 207 Gpc = 46x` the Hubble radius | artefact of the same abundance |
 
-The two independent estimates agree once our deliberate generosity is removed:
-using a cluster abundance ten times the real one inflates `n²` by 100.
+Registered as **C4 Path A: FAILED IMPLEMENTATION** (certificate
+`experiments/20260803-bridge/audit/CERT_C4_amplitude.md`). Cause: everything
+factorises through `rho_eff = n<m>`, which is bounded by the total matter
+density; expressing it as a fraction of `rho_m` makes the violation visible in
+one line, and we did not.
 
-Reaching `Ω ~ 0.7` needs a boost of `~10⁶`, which in force terms means
-`F_dipole/F_grav ~ 10⁶–10⁷` at 1–5 Mpc. That contradicts the model's own premise
-— these are meant to be *corrections* to cluster-scale gravity — and contradicts
-the observational bound on dark-sector fifth forces, currently **7–14 % of
-gravity** from cluster data (arXiv:2209.03963).
+### Conditional envelope, from the independent implementation
 
-For a length-scale statement: the dipole term reaches `ρ_crit` only at
-`ℓ_d ≈ 2.1 × 10⁵ Mpc = 207 Gpc`, which is **46× the Hubble radius**, against a
-kSZ bound of order ten megaparsecs from this project's own analysis.
+An independent implementation, sharing no code with ours, over a 324–972-cell
+grid:
+
+```
+monopole    -8e-08   of rho_crit        range -(0.5-2)e-07
+dipole      +2..4e-08  at L_d = 8 Mpc   range +(0.8-9)e-08
+quadrupole  -1e-08   at L_q = 8 Mpc     ~1e-08 once halo exclusion is imposed
+total       ~-6e-08                     firm ceiling 1e-06
+```
+
+**Order of magnitude `1e-7`; defensible as "between `1e-8` and `1e-6`".**
+
+**Assumptions this envelope rests on**, none of which are free:
+
+- mass function (Press–Schechter and Tinker-2008 both run; they agree to 6 % above `1e14`)
+- mass threshold, and the fact that `rho_eff` is fixed by the cluster mass fraction (~10 % of matter above `1e14 Msun`)
+- halo bias — and `r0 = 15-25 Mpc` is **not** self-consistent with mass selection above `1e14`, which has `b_eff = 3.29`
+- halo exclusion at `2 R_200m` = 2.89 Mpc for `1e14 Msun`. **Every `s_min` we and the envelope used lies inside it**, so quadrupole values are ~10x overestimates
+- connected `xi(r)` versus `1+xi`: the homogeneous dipole term grows **linearly** with `s_max` and overtakes its clustering term at ~2 Gpc, so "the dipole energy density of the universe" is not well defined without background removal
+- physical versus comoving coordinates; `z = 0` only
+- whether a non-relativistic pair-potential energy density gravitates as `rho` or as `rho + 3p` is unspecified
+
+Dominant uncertainty is the abundance choice at roughly +/-0.5 dex. Numerical
+error is `1e-15`.
+
+### Length scales, restated
+
+| term | length needed to reach `rho_crit` | in Hubble radii |
+|---|---|---|
+| dipole `L_d` (linear) | `1e8-1e9` Mpc | **1e4-1e5** |
+| quadrupole `L_q` (quadratic) | `1-4 x 1e4` Mpc | **~5-15** |
+
+A steeper term is far cheaper to make cosmologically relevant, because its
+ultraviolet divergence does the work. Neither is viable; they fail by different
+amounts.
+
+### What Ground 2 does NOT establish
+
+**Not** that any averaging of MULTING pairs is always cosmologically negligible.
+That statement would require `rho` and `p` to be well defined independently of
+the background prescription and the cutoffs, and the independent analyst on
+Ground 1 established that they are not: only their *ratio* is clean.
 
 ## Ground 3 — the integrals are regulator-controlled
 
