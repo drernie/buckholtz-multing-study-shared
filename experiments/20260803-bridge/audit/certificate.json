@@ -88,12 +88,36 @@
         "the 'generous ceiling' framing"
       ],
       "new_result": "dipole needs 1e4-1e5 Hubble radii; quadrupole only ~5-15, being quadratic in its length"
+    },
+    {
+      "id": "C5A",
+      "subject": "supplementary transcripts, three AI services",
+      "verdict": "DATA_CONDITIONED_CONSTRUCTION",
+      "evidence": [
+        "beta fitted: 'minimizing RMS deviation from H-data' (ChatGPT), 'optimization section' (Claude), 'from fitting' (Gemini)",
+        "h0_anchor = 73.0, 'H_MULT normalized to this value at z=0', in two independent service recaps"
+      ],
+      "consequence": "H-MULT is a two-parameter fit anchored to the observed H0, not a prediction",
+      "reframing": "k_A, r_A, D exist in the supplementary but are service output, not author physics"
+    },
+    {
+      "id": "C5B",
+      "subject": "the object called 'Figure 3'",
+      "verdict": "NON_IDENTIFIABLE",
+      "premise_correction": "the v6 preprint contains ZERO occurrences of 'figure'; the audited object is an unpublished email attachment of 2026-08-02",
+      "extraction_validation": {
+        "blue_curve_fit": "Planck LCDM H0=67.37 Om=0.3152 at rms 0.002%"
+      },
+      "excluded": [
+        "GRAPHICAL_INTERPOLATION of Table A1 \u2014 21.1% rms, monotone divergence to 44%",
+        "LCDM rescaled to another H0 \u2014 curve ratio spreads 10.3% and crosses unity"
+      ],
+      "open": "the operator producing the orange curve is unidentified"
     }
   ],
   "not_adjudicated": [
     "local force law",
     "covariant MULTING+",
-    "Figure 3 provenance",
     "backreaction"
   ],
   "errors_recorded": [
@@ -111,10 +135,9 @@
     }
   ],
   "next_actions": [
-    "read Supplemental Material [251]",
-    "correct NR-018 Ground 2",
-    "audit Figure 3 provenance separately",
-    "covariant MULTING+ only after the above"
+    "ask the author whether any H(z) calculation exists that does not pass through a fitting service",
+    "identify the origin of the emailed figure's curve",
+    "correct every record that says 'Figure 3' or 'the published figure'"
   ],
   "prohibited_without_approval": [
     "contacting the author",
@@ -125,6 +148,8 @@
     "CERT_C2_C3.md": "a1e727ce39a4b7f1",
     "CERT_C4_amplitude.md": "a8977b316dc029de",
     "decision.md": "acb9bc7df9c1504f",
-    "FROZEN_CLAIMS_C1_C4.md": "ed0b252bbcc13193"
+    "FROZEN_CLAIMS_C1_C4.md": "ed0b252bbcc13193",
+    "CERT_C5A_supplementary.md": "9d691a9bc76f3355",
+    "CERT_C5B_figure3.md": "7fb63e0c208d6445"
   }
 }

@@ -67,37 +67,109 @@ repository. The figure therefore marks the edge of the observational range
 explicitly, which is to the author's credit and was the basis of our earlier
 honest-diagram work.
 
-## An attempted test, and why its result is not reported as a finding
+## The calibrated comparison — run, with the extraction validated first
 
-The natural question is whether the plotted MULTING curve is a rendering of Table
-A1's `H_MULT` column. A quick extraction of the PDF's vector paths, compared
-against Table A1 over the nine rows inside the figure's redshift range, gave a
-best match of **9.84 % rms** — no column tracked within 2 %.
+A first quick extraction gave 9.84 % rms and was discarded as untrustworthy: it
+took every polyline over 40 points and could not be shown to have isolated the
+MULTING curve. The repository's digitiser selects **by colour** instead — orange
+for MULTING at width 2.0, blue for ΛCDM, dark fill for the data markers. Run
+that way:
 
-**That result is not reported as evidence, because the extraction is not good
-enough to carry it.** It took every polyline longer than 40 points and sorted by
-x; among the six such paths are almost certainly axis furniture, gridlines and
-error bars, and there is no guarantee the MULTING curve was among the ones
-compared. A 10 % mismatch is equally consistent with "different construction" and
-with "compared the wrong polyline".
+```
+MULTING (orange) : 4 segments, 300 points, z in [-0.200, 2.500]
+LCDM    (blue)   : 37 points
+data markers     : 32
+```
 
-The repository already contains a proper digitiser — `a1_digitize_tjb_figure.py`,
-with a recorded calibration error of 0.03 % — and the correct next step is to run
-the comparison through it rather than through a five-line reimplementation.
+### The extraction validates itself
+
+Fitting flat ΛCDM to the **blue** curve returns
+
+```
+H0 = 67.37   Omega_m = 0.3152   rms = 0.002 %
+```
+
+That is Planck 2018 recovered to two parts in a hundred thousand. The digitiser
+reproduces a known curve essentially exactly, so a large mismatch elsewhere is a
+property of the curves and not of the extraction. `[VERIFIED-EXTRACTION]`
+
+### Result: the figure does not render Table A1
+
+| `z` | figure | Table A1 `H_MULT` | deviation |
+|---|---|---|---|
+| 0.00 | 73.9 | 73.0 | +1.2 % |
+| 0.40 | 83.0 | 83.1 | −0.1 % |
+| 0.65 | 101.2 | 91.4 | **+10.7 %** |
+| 1.00 | 130.4 | 104.2 | **+25.2 %** |
+| 1.50 | 172.1 | 126.5 | **+36.1 %** |
+| 2.10 | 218.6 | 151.8 | **+44.0 %** |
+
+```
+figure vs H_MULT  : rms 21.1 %      figure vs H_obs   : rms 21.7 %
+figure vs H_w_eff : rms 21.4 %      figure vs H_FLRW  : rms 29.3 %
+```
+
+Not noise: agreement within a few per cent below `z = 0.4`, then a monotone
+divergence to 44 %. **No Table A1 column is rendered by this figure.**
+
+### Which of the two is physically sensible
+
+The divergence is one-sided, and the side matters.
+
+| `z` | figure | Table A1 `H_MULT` | Planck ΛCDM | real cosmic chronometers |
+|---|---|---|---|---|
+| 1.00 | 130.4 | 104.2 | 120.6 | 105 ± 12 @ 0.78, 125 ± 17 @ 0.88 |
+| 1.50 | 172.1 | 126.5 | 159.6 | 168 ± 17 @ 1.30, 160 ± 34 @ 1.36 |
+| 2.10 | 218.6 | 151.8 | 213.8 | 186 ± 50 @ 1.97 |
+
+The figure tracks the physical expansion history; Table A1 runs low. And Table
+A1's own **"H-data" column** does not match the cosmic-chronometer compilation
+above `z = 1`:
+
+```
+z = 1.00   Table A1 H-data = 105.0   real CC mean = 121.5   -13.6 %
+z = 1.50   Table A1 H-data = 125.0   real CC mean = 159.0   -21.4 %
+z = 2.10   Table A1 H-data = 150.0   real CC mean = 186.5   -19.6 %
+```
+
+So the two artefacts rest on **different observations**. Table A1's are
+service-generated and drift low at high redshift; the figure's region matches
+measured data. That is a second, independent reason they are separate
+constructions.
+
+### What the plotted MULTING curve is not
+
+Fitting flat ΛCDM to the **orange** curve gives `H0 = 68.14`, `Ω_m = 0.3401` at
+**3.44 % rms** — a poor fit by the standard the blue curve sets. And the ratio
+between the two plotted curves varies across the range:
+
+```
+MULTING / LCDM :  mean 1.0424   sd 0.0354   min 0.9804   max 1.0878
+spread 10.3 % — and it crosses unity
+```
+
+**The orange curve is therefore not ΛCDM rescaled to a different `H₀`.** It is a
+genuinely different shape that crosses below ΛCDM at some redshift. Whatever
+produced it, it is neither Table A1 nor a re-anchored ΛCDM.
 
 ## Status against the frozen options
 
 ```
-REPRODUCIBLE_OPERATOR              not established
-DATA_CONDITIONED_CONSTRUCTION      not established
-GRAPHICAL_INTERPOLATION            not established
-NON_IDENTIFIABLE                   not established
+REPRODUCIBLE_OPERATOR              not established — no operator is given anywhere
+DATA_CONDITIONED_CONSTRUCTION      not established for this object
+GRAPHICAL_INTERPOLATION of Table A1  EXCLUDED  <-- positive result, 21 % rms
+                                                 with a validated extraction
+NON_IDENTIFIABLE                   YES, as things stand
 ```
 
-**None of the four applies yet.** The prior question — *which object are we
-auditing* — had not been answered, and answering it is this certificate's whole
-content. The four-way status determination remains open and now has a
-well-defined subject.
+**Verdict: `NON_IDENTIFIABLE`, with one hypothesis positively excluded.** The
+figure is not a plot of Table A1, and it is not a rescaled ΛCDM. Its operator
+remains unidentified, and nothing in the repository or the published preprint
+identifies it.
+
+This is a stronger position than before: the space of candidate origins has been
+narrowed by two, and the exclusion rests on an extraction validated to 0.002 %
+against a known curve.
 
 ## What is established
 
