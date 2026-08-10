@@ -284,6 +284,57 @@
       "expected_L95": null,
       "expected_SdMC": "NOT_DEFINED",
       "ledger_id": null
+    },
+    {
+      "id": "TV21",
+      "closes": "CLIP-01 — R6-01 — the clip interval was given without the operation",
+      "scenario": "the coarse crossing sits at jlast = 5, so the refined window [0.1*jlast - 2, 0.1*jlast + 2] = [-1.5, 2.5] overruns the left clip bound",
+      "acc": [
+        [
+          true,
+          6
+        ],
+        [
+          false,
+          595
+        ]
+      ],
+      "expected_state": "FINITE_LIMIT",
+      "jlast": 5,
+      "refined_window": [
+        -1.5,
+        2.5
+      ],
+      "clip_contract": "restrict: keep 0.05 <= mu <= 60.0, drop the rest, never clamp",
+      "expected_refined_node_count": 50,
+      "expected_min_refined_node": 0.05,
+      "expected_coincident_nodes": 0,
+      "rejected_reading": "clamp retains all 81 window nodes with 32 coincident at mu = 0.05, inflating edge_count[model, rlo, stage=1, boundary=0] by 31 per boundary fit",
+      "ledger_id": "CLIP-01"
+    },
+    {
+      "id": "TV22",
+      "closes": "LABELS-01 — R6-03 — items 11 and 13 had neither set-vs-multiset semantics nor an order",
+      "scenario": "the same labels are raised in two different execution orders, with one label raised twice: two of the four branches reach STOP_BRANCH and an amplitude sign change raises FLAG_AND_RETAIN",
+      "kind": "metamorphic",
+      "labels_raised_run_1": [
+        "STOP_BRANCH",
+        "FLAG_AND_RETAIN",
+        "STOP_BRANCH"
+      ],
+      "labels_raised_run_2": [
+        "FLAG_AND_RETAIN",
+        "STOP_BRANCH",
+        "STOP_BRANCH"
+      ],
+      "expected_labels_emitted": [
+        "FLAG_AND_RETAIN",
+        "STOP_BRANCH"
+      ],
+      "expected_length": 2,
+      "metamorphic_contract": "permuting the raise order, and repeating any label, must leave items 11 and 13 byte-identical",
+      "rejected_reading": "multiset-chronological yields length 3 in two different orderings, which makes execution order observable and reopens the control-order question that item 8's control-indexed array was relied on to close",
+      "ledger_id": "LABELS-01"
     }
   ],
   "coverage_requirements": {

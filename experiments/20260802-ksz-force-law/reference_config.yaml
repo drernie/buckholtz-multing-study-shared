@@ -36,6 +36,16 @@ grids:
     formula: "0.05*ii"
     window_halfwidth: 2.0
     clip: [0.05, 60.0]
+    # v7 gave the interval without the operation. "clip" reads as numpy.clip,
+    # i.e. clamp, and every other np.clip in this experiment's code does clamp;
+    # but clamping a GRID replaces each out-of-range node with the boundary
+    # value, so one boundary node appears once per out-of-range ii. Since
+    # IDX-01 made every fit increment edge_count, those duplicates are visible
+    # in a reported int64 array. Restriction is chosen: a grid is a set of
+    # distinct evaluation points, duplicates are seed-identical under
+    # keyMu = round(mu/0.05) and so carry no information, and inflating a
+    # boundary counter with them would defeat its diagnostic purpose.
+    clip_semantics: restrict     # keep nodes with clip[0] <= mu <= clip[1]; drop the rest; never clamp
     nsim: 200000
     keyStage: 1
   coverage:
