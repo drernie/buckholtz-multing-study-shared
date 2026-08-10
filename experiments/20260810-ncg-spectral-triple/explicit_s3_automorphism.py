@@ -184,12 +184,12 @@ diff_direct = np.max(np.abs(T_new - C8))
 print(f"  max|T_new(a,i,j) - C8(a,i,j)| (direct match) = {diff_direct:.2e}")
 # T_new(a,i,j) = <e_j, ea_bar * e_i> (from the construction: chi part = omul(ea_bar,e_i))
 # while C8(a,i,j) = <e_j, e_a * e_i> -- these use ea_bar vs ea, so compare against
-# the conjugate-structure-constants too (a=0 has ea_bar=ea; a=1..7 differ by sign)
+# the conjugate-structure-constants too (a=0 has ea_bar=ea; a=1..7 differ by sign,
+# handled directly by oconj() below -- caught by code review as dead code: an
+# earlier version of this loop also hand-computed the sign-flipped coefficients
+# into an unused variable before recomputing the same thing via oconj(); removed).
 C8_conj = np.zeros((8, 8, 8))
 for a in range(8):
-    ea_bar_coeffs = np.eye(8)[a].copy()
-    if a > 0:
-        ea_bar_coeffs[a] = -1.0  # oconj flips sign of imaginary units
     for i in range(8):
         C8_conj[a, i, :] = from_oct(omul(oconj(to_oct(np.eye(8)[a])), to_oct(np.eye(8)[i])))
 diff_conj = np.max(np.abs(T_new - C8_conj))
