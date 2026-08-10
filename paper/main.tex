@@ -1,7 +1,36 @@
 % main.tex — Critical Assessment of MULTING/IDM Framework
 % Sergey Boyko · Ronin Institute · 2026-06-19
 % NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION
-% Status: DRAFT · NOT_FOR_SUBMISSION
+% Status: DRAFT · NOT_FOR_SUBMISSION · PARTLY SUPERSEDED (see below)
+%
+% =====================================================================
+% SUPERSEDED IN PART BY FINDING B0 (2026-08-03) — READ BEFORE CITING
+% ---------------------------------------------------------------------
+% Last substantive edit of this file: 2026-07-22.
+% Finding B0 postdates it by 12 days and is NOT yet incorporated
+% throughout:
+%   experiments/20260803-bridge/FINDING_table_a1_provenance.md
+%
+% B0, in the finding's own (deliberately hedged) wording: the material
+% available to us does not contain a deterministic, published,
+% reproducible operator F -> H that produced Table A1. Every column of
+% Table A1 — including H-MULT and H-FLRW — was requested from an online
+% AI service, per the author's own caption and surrounding text
+% (preprint pp. 38-39, [VERIFIED-SOURCE]). The author states plainly
+% that those responses are "not necessarily trustworthy".
+%
+% CONSEQUENCE FOR THIS FILE: every quantity here derived FROM Table A1
+% — epsilon(z), q(z), w_eff, and the f-sigma8 shape correlation
+% (Sec. \ref{ssec:fsig8}) — characterises that AI response, NOT MULTING.
+% The results are not wrong; they are mis-subjected. Sections carrying
+% affected quantities are flagged inline with \tableAsubject.
+%
+% Also superseded: data/table_a1_reported.csv (4 wrong fields in row 1,
+% notably H_MULT 71.1 -> 73.0). Use data/table_a1_source_verified.csv.
+%
+% UNAFFECTED: Eq.32, 7:9:17, fermion masses, N_opt/chi2 (PDG/Planck
+% based), and the kSZ track (ACT+SDSS, never touches Table A1).
+% =====================================================================
 
 \documentclass[twocolumn,prd,amsmath,amssymb,floatfix]{revtex4-2}
 
@@ -16,6 +45,11 @@
 % Safety label macro
 \newcommand{\reconstruction}{\textcolor{gray}{\small[OUR\_RECONSTRUCTION]}}
 \newcommand{\notvalidation}{\textcolor{gray}{\small[NOT\_VALIDATION]}}
+% Subject-of-claim flag, added 2026-08-04 after finding B0: marks any
+% quantity derived from Table A1, whose subject is the AI service's
+% response rather than MULTING itself.
+\newcommand{\tableAsubject}{\textcolor{gray}{\small[SUBJECT:
+  TABLE~A1 AI RESPONSE, NOT MULTING --- see B0, 2026-08-03]}}
 
 \begin{document}
 
@@ -44,7 +78,9 @@ though per-boson the $W$ deviates by $3.8\sigma$ and $H$ by $1.1\sigma$ when
 $Z$-anchored); stated parameter-free, the relation is consistent only with the
 heavier (CDF-II/CMS) boson masses ($\chi^2 = 2.0$, $p = 0.36$) and excludes the
 light/Standard-Model set ($\chi^2 = 39$), making it a falsifiable discriminant
-on the $W$-mass anomaly. The fermion-gravity link (Eq.~32) holds at $1.0\sigma$
+on the $W$-mass anomaly. The fermion-gravity link (Eq.~32) holds at $1.0\sigma$,
+with a trials-corrected $p_\mathrm{look\text{-}elsewhere} = 0.16$ over an
+explicitly declared expression space
 --- both empirical assets independent of MULTING/IDM cosmology; (2)~the fermion mass spectrum
 (Eqs.~21--24) reproduces the muon mass to $0.47\%$ and quark geometric means
 to $<0.31\%$ using PDG 2024 constants; (3)~the MULTING dipole term is
@@ -79,9 +115,22 @@ The framework of Buckholtz~\cite{buckholtz2026} proposes a multipole-expansion
 extension of Newtonian gravity (MULTING) in which galaxy clusters exert a
 dipole force component $F_d$ and a quadrupole component $F_q$ that supplement
 the monopole $F_m$, together modifying the Hubble expansion rate.
-The preprint provides a table of predicted values (Table~A1) for
-$H_\mathrm{MULT}(z)$ at 11 redshift points, derived from an AI-mediated
-numerical procedure.
+The preprint provides a table of values (Table~A1) for
+$H_\mathrm{MULT}(z)$ at 11 redshift points.
+We initially treated this table as a MULTING calculation; that assumption
+was audited and withdrawn on 2026-08-03 (finding~B0).
+The author states in the caption and surrounding text that Table~A1 shows
+``responses, to our prompt, by one online service that has bases in
+artificial intelligence'', that the $H_\mathrm{MULT}$ column specifically
+was obtained because ``the prompt asked for a value that MULTING
+suggests'', and that the responses are ``not necessarily trustworthy''.
+The material available to us therefore does not contain a deterministic,
+published, reproducible operator carrying the force law into $H(z)$.
+The author labelled the table accurately; the error was ours, in reading
+it as a model calculation.
+Results in this paper that were derived from Table~A1 are flagged
+accordingly and characterise that response rather than the theory.
+\tableAsubject
 
 The six fundamental constants identified by Rees~\cite{rees1999} include
 the ratio of electromagnetic to gravitational coupling strengths
@@ -309,6 +358,40 @@ We find LHS/RHS~$= 1.000608$, corresponding to a $1.0\sigma$ agreement
 dominated by the $m_\tau$ uncertainty.
 \reconstruction
 
+\paragraph{Trials factor (added 2026-08-10).}
+The $1.0\sigma$ figure quantifies the experimental uncertainty \emph{given} the
+formula.  It is not the probability of finding such a relation somewhere in an
+admissible expression space, and that second quantity had not been computed.
+We therefore applied to Eq.~(\ref{eq:c9}) the same enumeration used to reject a
+proposed geometric origin for its $4/3$ prefactor (NR-009).
+The space, declared before scanning, is all
+$p/q\,(m_A/m_B)^n$ with $p,q \le 12$ in lowest terms, $m_A/m_B > 1$ drawn from
+$\{e,\mu,\tau,u,d,s,c,b,t,W,Z,H,p\}$, and integer $n \le 24$: 170\,352
+expressions.
+Of these, 35\,672 could be \emph{stated} to better than $0.5\%$ once the PDG
+uncertainties of their own mass inputs are propagated --- the filter matters,
+because the nearest unfiltered competitor,
+$12\,(m_c/m_u)^{15}$ at $0.057\%$, carries a $265\%$ uncertainty of its own
+(light-quark masses raised to the fifteenth power) and could never be claimed as
+a precision relation.
+Within that statable space Eq.~(\ref{eq:c9}) is the \emph{only} expression
+reaching its own $0.059\%$.
+Drawing 4000 random targets log-uniformly within a decade of
+$\alpha_\mathrm{EM}/\alpha_G$ and recording the best hit available to each from
+the same space gives a median best hit of $0.228\%$ and a 10th percentile of
+$0.037\%$; Eq.~(\ref{eq:c9})'s $0.059\%$ corresponds to
+\begin{equation}
+  p_\mathrm{look\text{-}elsewhere} = 0.16 ,
+\end{equation}
+i.e.\ roughly one arbitrary target in six does at least as well.
+The relation is twice better than the median and is not thereby refuted; its
+agreement is, however, \emph{ordinary} rather than extraordinary for a target of
+this magnitude, and the Belle~II test below remains falsifiable independently of
+how the formula was found.
+The $p$-value is conditional on the declared grammar: a wider one raises the
+trials factor and lowers it.
+\reconstruction
+
 \paragraph{Formal uncertainty propagation.}
 A first-order propagation through Eq.~(\ref{eq:c9}) using PDG 2024 and
 CODATA 2018 uncertainties gives:
@@ -455,7 +538,13 @@ The dipole force fraction at cluster scale is
 where $k_A = E_\mathrm{ICM}/c^2$ is the cluster kinetic mass and $D$ is the
 inter-cluster distance (not the cluster radius), so $r_A/D \ll 1$ for any
 physically meaningful pair. Evaluated on the real MCXC/PSZ2 catalogue
-(\S\ref{sec:results}, $n=548$, median $k_A/M = 1.7\times10^{-6}$, median
+% [PROVENANCE RESOLVED 2026-08-10] The 2026-08-04 flag is lifted. The filter
+% is recorded in data/pearson_r_test_results.md: clusters with E_thermal/c^2
+% available (Path B, Y_SZ), i.e. data/clusters_clean.csv restricted to
+% Ethermal_c2_Msun.notna(). That subset is exactly 548 of 1740 rows, and both
+% medians reproduce from it: k_A/M = 1.739e-6 and R500/D = 9.979e-3 at
+% D = 100 Mpc (median R500 = 0.998 Mpc). Verified by direct recomputation.
+($n=548$, median $k_A/M = 1.7\times10^{-6}$, median
 $r_A/D = 1.0\times10^{-2}$ at $D=D_0=100$~Mpc):
 
 With the tabulated $\beta_d = 4.5$ (Table~A1 of~\cite{buckholtz2026}):
@@ -638,6 +727,23 @@ $f\sigma_8 \approx 0.449$ at $z=0.06$ to a peak of $\approx 0.601$ at $z \approx
 then falls to $\approx 0.259$ at $z=5$.
 This bell-shaped curve correlates with $\varepsilon(z)$ at Pearson
 $r = 0.851$ across $z \le 5$ ($n=10$ Table~A1 points).
+\tableAsubject
+
+\emph{Subject of this correlation (added 2026-08-04).}
+The $\varepsilon(z)$ values entering this and every following number in
+this subsection are derived from Table~A1. Finding~B0 (2026-08-03,
+\texttt{experiments/20260803-bridge/FINDING\_table\_a1\_provenance.md})
+established from the author's own caption that each Table~A1 column,
+$H_\mathrm{MULT}$ included, was requested from an online AI service
+rather than computed from the force law, and that the material available
+to us does not contain a deterministic, published, reproducible operator
+$F \to H$ that produced it.
+The shape correlation reported here is therefore a statement about that
+AI response, not about MULTING. It is not thereby wrong --- the
+arithmetic stands --- but its subject is not the theory, and no number in
+this subsection may be quoted as a MULTING prediction in either
+direction. A bridge test of the force law must target the
+cosmic-chronometer compilation instead (\S\ref{sec:hz}).
 The correlation captures a genuine \emph{shape match}: both are bell-peaked at
 $z \sim 0.4$--$0.65$ ($r = 0.903$ on the rising half $z \le 0.65$;
 $r = 0.958$ on the falling half $z \ge 0.65$).
@@ -1165,8 +1271,8 @@ input and are not endorsed here as fixes.}
 \hline
 Component & Status & Evidence & Path to resolution / next test \\
 \hline
-Eq.~31 (7:9:17 bosons) & $\triangle$ $m_W/m_H$ at $0.04\%$; $1.14\sigma$ (H), $3.8\sigma$ (W) & PDG 2024 & $W$-mass world average (LHC Run~3) is the discriminant \\
-Eq.~32 (fermion-gravity) & $\checkmark$ $1.0\sigma$ & PDG 2024 & Belle~II $m_\tau$ (2027) sharpens exact vs.\ approximate \\
+Eq.~31 (7:9:17 bosons) & $\triangle$ $m_W/m_H$ at $0.04\%$; $1.14\sigma$ (H), $3.8\sigma$ (W); trials-corrected $p = 0.0051 \pm 0.0002_\mathrm{MC}$ ($a,b,c \le 20$), but $\sigma_\mathrm{spec}$ spans $0.003$--$0.077$; isolation test $P=0.34$ (negative) & PDG 2024 $+$ 997-triple null & $W$-mass world average (LHC Run~3); $m_H$ precision also binds \\
+Eq.~32 (fermion-gravity) & $\checkmark$ $1.0\sigma$; trials-corrected $p = 0.16$ & PDG 2024 $+$ 35\,672-expression null & Belle~II $m_\tau$ (2027) sharpens exact vs.\ approximate \\
 Eqs.~21--24 (fermion masses) & $\checkmark$ muon $0.47\%$, quarks $<0.31\%$ & PDG 2024 & confirmed asset \\
 Inflaton $m_Z/3 = 30.4$~GeV & ? undetected & LEP/LHC null & precision/collider search \\
 Cassini constraint & $\checkmark$ pass & $\varepsilon \sim 10^{-19}$ & satisfied \\
@@ -1177,8 +1283,8 @@ $\beta$ provenance (BRAI) & $\triangle$ $R_B{=}15.9/24.1$ ($p{<}10^{-4}$) & 3 AI
 IDM $N=5$ equal-mass & $\triangle$ $5.79\sigma$ if equal & Planck 2018 (EXP-N) & relax to unequal isomer masses (next row) \\
 IDM $N=5$ unequal-mass & $\triangle$ $\bar{m}=1.074\,m_p$ & mass spectrum & sum matches $\omega_\mathrm{DM}/\omega_b$; adds a parameter, needs independent motivation \\
 IDM cold-DM viability & $\triangle$ warm-DM free-streaming tension & thermal history & warm/mixed-DM or massive dark $\nu$; author to specify thermal history \\
-$f\sigma_8$ dipole proxy & $\triangle$ $r{=}0.851$ ($n{=}10$, $z{\le}5$) & Table A1 $+$ $\Lambda$CDM & DESI DR1 $+$ author's $\beta_d$ \\
-Secondary $z{=}8.5$ bump & $\triangle$ structural & Two-component $\varepsilon$ & quadrupole $\beta_q$ from author \\
+$f\sigma_8$ dipole proxy & $\triangle$ $r{=}0.851$ ($n{=}10$, $z{\le}5$) --- \emph{subject is the Table~A1 AI response, not MULTING (B0)} & Table A1 $+$ $\Lambda$CDM & retest against cosmic chronometers, not Table A1 \\
+Secondary $z{=}8.5$ bump & $\triangle$ structural --- \emph{same subject caveat (B0)} & Two-component $\varepsilon$ & quadrupole $\beta_q$ from author \\
 MULTING Lagrangian & ? open & Future work & action-principle derivation (G3): the key open problem \\
 6-isomer symmetry & ? open & Future work & $S_3$ representation test (order $6 = 1{+}5$) \\
 \hline
@@ -1204,6 +1310,128 @@ The fermion mass spectrum (Eqs.~21--24) reproduces the muon mass to $0.47\%$
 and quark geometric means to $<0.31\%$.
 These H4 results are non-trivial empirical regularities regardless of the
 status of MULTING cosmology.
+
+Their strength should not be overstated, and we quantify one of them rather
+than assert it.  Eq.~32's $1.0\sigma$ measures experimental precision given the
+formula; the search that produced the formula is not free.  Enumerating 170\,352
+simple prefactor--power expressions, of which 35\,672 are statable to better than
+$0.5\%$ after propagating their own mass uncertainties, and comparing against
+4000 random targets of the same magnitude, gives
+$p_\mathrm{look\text{-}elsewhere} = 0.16$ (\S\ref{ssec:eq32}).
+Eq.~32 is twice better than the median such target and remains the sole statable
+hit at its own precision, but its agreement is ordinary rather than
+extraordinary.
+
+The same treatment applied to [7:9:17] gives the opposite verdict, and the two
+should not be quoted as though they carried equal weight.  That relation needs a
+separate enumerator --- it fixes two scale-free ratios with a triple of small
+integers rather than a prefactor times a power --- scored by the minimax residual
+over a free scale, which is the paper's own figure of merit
+(\S\ref{ssec:bosons}).  Among the 997 coprime triples $a<b<c\le 20$,
+$(7,9,17)$ is the \emph{unique} best fit at $0.050\%$, against a median of
+$0.64\%$ for random targets drawn within a factor 1.5 of the observed ratios:
+\begin{equation}
+  p_\mathrm{look\text{-}elsewhere}^{[7:9:17]} = 0.0051 \pm 0.0002
+  \quad (a,b,c \le 20) ,
+\end{equation}
+from $K=233{,}726$ random targets.  The quoted uncertainty is binomial and is
+not optional --- single runs of $\sim\!2\times10^{4}$ targets scatter over
+$0.003$--$0.010$ --- but it is also \emph{not} the dominant uncertainty.  It
+measures only $\sigma_\mathrm{MC}$; the specification uncertainty
+$\sigma_\mathrm{spec}$, induced by the choice of grammar, spans
+$0.003$--$0.077$ across the families scanned below, two orders of magnitude
+larger.  No single number is therefore ``the'' significance of this relation,
+and the figure above should never be quoted without its bound.
+It remains the unique best triple out to $a,b,c \le 50$, and it wins in
+$100\%$ of $3000$ pseudo-datasets drawn from the PDG uncertainties.  That second
+figure must not be read as a look-elsewhere result: it asks whether measurement
+noise of order $0.088\%$ can dislodge a triple already sitting $0.050\%$ away,
+and the answer is almost tautologically no.  It establishes robustness of the
+rank against experimental error and says nothing about how often a random target
+would find so good a candidate.  Likewise, the grammars in which the rank
+persists are largely nested --- integers $\le 20$ is contained in integers
+$\le 50$ and in the rational families --- so persistence of the rank under
+enlargement demonstrates that no competitor appears, which is weaker than
+demonstrating that none was expected to.  Triples sharing a common divisor are
+excluded as duplicates rather than competitors: $(14,18,34)$ states the same
+proportion as $(7,9,17)$.  The ordering $a<b<c$ is forced by
+$m_W<m_Z<m_H$ and carries no additional assignment freedom.  Working in mass
+units rather than squared-mass units rescales every residual by exactly two and
+therefore leaves the rank and $p$ unchanged.
+
+The bound $N$ must be quoted with the number, and a grammar scan shows why.  We
+repeated the identical measurement across twelve declared grammars --- integers
+to several bounds, ratios of small integers, $7$- and $11$-smooth numbers,
+squares, and arithmetic progressions --- canonicalising every candidate to its
+unique coprime integer triple, since a scale-free proportion has one such form.
+Among the seven grammars that can express $(7,9,17)$, all of which return the
+same $0.050\%$ residual and are therefore scored against an identical threshold,
+\begin{equation}
+  p \;=\; (7.1\times10^{-6})\,|G|^{0.95},
+  \qquad \text{median residual } 2\% ,
+\end{equation}
+with the integer and rational families \emph{interleaved} on that line rather
+than occupying separate curves.  An exponent near unity is not a discovery: for
+a nearest neighbour among $|G|$ candidates at roughly uniform density, the
+rare-event probability of landing within a fixed radius grows as $|G|\,V_d(r)$,
+so $p \propto |G|^{1}$ is precisely what a well-behaved enumerator should
+return.  Its value here is diagnostic rather than physical --- it confirms that
+$p$ is being set by candidate density and essentially nothing else.  Ratios of small integers are thus not a second
+degree of freedom: canonicalised, they are a differently shaped subset of the
+same triples and cost precisely what their count costs.  The trials factor is,
+to within tens of percent, the size of the declared search and little else ---
+$p$ rises to $0.077$ at $N=50$ for that reason.  It is by contrast stable
+against changes in the null's sampling window.
+
+Two further points follow, one of which weakens the result and one of which
+sharpens it.  First, no principled cut on ``simple'' exists, so the bound is a
+choice we make and the $p$ must always be quoted with it.  Second, ``simple'' is
+not one axis: five of the twelve grammars cannot state the relation \emph{at
+all}, among them $11$-smooth numbers below $200$, a space three times larger
+than integers $\le 50$.  The triple is small by magnitude but not simple by
+factorisation --- $17$ is prime --- nor by pattern, being neither an arithmetic
+progression nor a ratio of squares.  A trials factor quoted without naming which
+axis of simplicity it ranges over is incomplete.
+
+A sharper test separates the two hypotheses that a bare $p$ conflates: that the
+triple has some structure making it unusually close to the data ($H_1$), against
+that it is simply the nearest neighbour in a sufficiently dense discrete space
+($H_0$).  A genuinely special point should be not only \emph{close} but
+\emph{isolated}, so we record for every target both the best residual $D_1$ and
+the gap to the runner-up, $D_2-D_1$.  The result does not favour $H_1$.  For
+$a,b,c\le 20$ the observed ratio is $D_2/D_1 = 14.7$, whereas random targets
+that are equally close have a \emph{median} $D_2/D_1$ of $18.0$; the conditional
+probability $P(D_2-D_1 \ge \text{observed} \mid D_1 \le \text{observed})$ is
+$0.34$, and $0.19$ at $N=50$.  Conditional on being close, $(7,9,17)$ is no more
+isolated than a typical random target --- at $N=20$, slightly less.  The
+isolation dimension therefore contributes no evidence beyond closeness itself,
+and closeness is exactly the quantity shown above to be set by the density of
+the declared grammar.
+
+\emph{These two $p$-values are not directly comparable as measures of evidential
+strength.}  Eq.~32's grammar is one-dimensional and Eq.~31's is
+two-dimensional, and the corrected tail probabilities were computed under
+different pre-specified search spaces; harmonising the null spaces would be
+required before the ratio of the two numbers meant anything.  The defensible
+statement is the weaker one: under its own declared grammar each relation
+carries a measured trials factor, and that factor is substantially smaller for
+[7:9:17].  Both figures remain conditional on grammars chosen by us
+\emph{after} the relations were known, which no amount of enumeration removes.
+
+Finally, the $0.050\%$ residual sits below the $0.088\%$ that the current $m_H$
+uncertainty can resolve.  This is a statement about what the data cannot do, not
+about what they confirm: the measurements are \emph{compatible} with $7:9:17$,
+but they lack the precision to distinguish it from a whole neighbourhood of
+nearby proportions.  Compatibility, precision, and evidence for an exact
+relation are three different claims, and only the first is currently supported.
+Two consequences follow.  First, $m_H$ precision joins the $W$-mass combination
+as a discriminant.  Second, the relation makes point predictions sharper than
+present data, which future measurements will test out of sample even though the
+present ones cannot: anchoring on $m_Z$ gives $m_H = 125.3254$~GeV
+($+1.14\sigma$) and $m_W = 80.4199$~GeV ($+3.92\sigma$ against the world average
+adopted here).  The $W$ prediction is thus already in tension, and no part of
+the agreement reported above is out-of-sample --- all three masses entered the
+selection of the triple.
 
 A key methodological finding is that the H$_\mathrm{FLRW}$ baseline in
 Table~A1 is inconsistent with standard Planck 2018 $\Lambda$CDM
@@ -1240,12 +1468,23 @@ the tabulated $\beta_d = 4.5$ gives a negligible dipole signal
 ($\beta_d \sim 10^4$) are not derived from first principles.
 The growth-rate observable $f\sigma_8(z)$ reproduces the shape of
 $\varepsilon(z)$ at $r = 0.851$ for $z \le 5$ and identifies a secondary
-structural feature at $z = 8.50$ consistent with the quadrupole term $F_q$.
+structural feature at $z = 8.50$ consistent with the quadrupole term $F_q$
+--- with the subject caveat of finding~B0: $\varepsilon(z)$ here is derived
+from Table~A1, so both statements describe the AI service's response and
+not MULTING.
+\tableAsubject
 
 The primary open questions are: a first-principles derivation of $\beta_d$
 and $\beta_q$, a Lagrangian for MULTING, and the symmetry group for the
-IDM isomer count.  Pending these, no strong conclusions about the physical
-reality of the dipole force can be drawn from Table~A1 alone.
+IDM isomer count.
+A fourth, established after this draft's last substantive revision, is
+prior to all of them: whether a MULTING calculation of $H(z)$ exists that
+does not pass through an AI service.
+If it does, that calculation --- not Table~A1 --- is the object to
+reconstruct; if it does not, then building a bridge is new work rather
+than reconstruction.
+Pending these, no conclusions about the physical reality of the dipole
+force can be drawn from Table~A1 in either direction.
 
 \paragraph*{Code and data availability.}
 All numerical checks in this paper are reproducible via
