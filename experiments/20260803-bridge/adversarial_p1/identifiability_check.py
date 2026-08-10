@@ -50,14 +50,20 @@ u_p99 = np.percentile(u, 99)
 u_median = np.median(u)
 
 print(
-    "\n[A2] identical-pair ell_d = 2*kappa*u, ell_q^2 = 6*kappa^2*u^2 (Mpc, kappa dimensionless O(1)?)"
+    "\n[A2] identical-pair ell_d = 2*kappa*(u+u) = 4*kappa*u, ell_q^2 = 6*kappa^2*u^2"
+    " (Mpc, kappa dimensionless O(1)?)"
 )
 for label, uu in (
     ("median u", u_median),
     ("p99 u (near-extreme)", u_p99),
     ("max u (single most extreme cluster)", u_max),
 ):
-    ld = 2 * uu  # kappa=1 reference point
+    # ell_d = 2*kappa*(u_A+u_B); identical bodies u_A=u_B=uu -> 4*kappa*uu, NOT 2*kappa*uu.
+    # Caught in code review (2026-08-10): a first version wrote 2*uu, silently specializing
+    # the sum 2*(u_A+u_B) to a single term instead of substituting u_A=u_B=uu into it -- the
+    # same formula this script's own sibling counterfactual_checks.py derives and verifies
+    # symbolically (match_ld check). kappa=1 reference point, as before.
+    ld = 4 * uu
     lq2 = 6 * uu**2
     print(
         f"  {label:38s}: u={uu:.3e}  ell_d(kappa=1)={ld:.3e} Mpc  ell_d/D_lo={ld / D_lo:.3e}  ell_q^2/D_lo^2={lq2 / D_lo**2:.3e}"

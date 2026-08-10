@@ -35,9 +35,17 @@ slope_MT, intercept_MT, r_MT, p_MT, se_MT = stats.linregress(
 print("\n[0] CIRCULARITY CHECK -- chexmate_real_TX.csv: ln(M500_Msun) vs ln(TX_keV)")
 print(f"  slope = {slope_MT:.3f} +/- {se_MT:.3f}   r = {r_MT:.4f}   (self-similar predicts 1.5)")
 print(
-    f"  -> {'CONFIRMS' if abs(slope_MT - 1.5) < 3 * se_MT else 'DOES NOT CONFIRM'} P2's claim that"
-    f" M500_Msun is consistent with being derived from TX_keV alone (r={r_MT:.3f} is"
-    f" {'very tight' if r_MT > 0.9 else 'moderate'} for real independent measurements)."
+    f"  -> the SLOPE {'CONFIRMS' if abs(slope_MT - 1.5) < 3 * se_MT else 'DOES NOT CONFIRM'}"
+    f" P2's claim that M500_Msun is consistent with a self-similar M-T scaling-relation origin."
+    # Reworded after code review (2026-08-10): r=0.864 (not near 1) does NOT by itself argue
+    # for circularity -- a near-exact formula would show r near 1, limited only by rounding.
+    # r=0.864 is what a real scaling-relation MASS ESTIMATE (fit with its own intrinsic
+    # scatter, a standard practice, not a raw independent measurement) would look like too.
+    # The slope match to 1.5 is the load-bearing evidence for "scaling-relation-like origin";
+    # r alone does not independently strengthen or weaken that reading.
+    f" r={r_MT:.3f} is moderate, which is expected for a scaling-relation-based mass estimate"
+    f" carrying its own intrinsic scatter -- it neither confirms nor rules out circularity by"
+    f" itself; the slope match is the load-bearing evidence here, not r."
 )
 
 # ---------------------------------------------------------------------------

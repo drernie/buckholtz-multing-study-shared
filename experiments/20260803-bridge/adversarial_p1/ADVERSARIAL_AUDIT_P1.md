@@ -290,9 +290,13 @@ audit, not merely [MEMORY]-cited. Decomposition: `k∝M^1.269`, `r∝M^0.287`
 finding used): even at the single most extreme cluster in the n=548 sample
 (`u_max=8.92e-6`) and the closest pair separation used anywhere in this
 project's own kSZ fits (25 Mpc), with the unknown coupling `κ` set to 1 (i.e.
-*not* further suppressed): `ℓ_d/D ~ 7×10⁻⁷`, `ℓ_q²/D² ~ 8×10⁻¹³`. The
-"physically inert" finding is **not a median artifact** — the tail doesn't
-save it.
+*not* further suppressed): `ℓ_d/D ~ 1.4×10⁻⁶`, `ℓ_q²/D² ~ 8×10⁻¹³`. (`ℓ_d`
+corrected 2026-08-10 post-commit code review: `identifiability_check.py` had
+specialized `ℓ_d=2(u_A+u_B)` to identical bodies as `2u` instead of `4u` — a
+factor-of-2 slip, caught against this same audit's own independent symbolic
+derivation in §3. Non-load-bearing: the order-of-magnitude conclusion is
+unaffected by a factor of 2.) The "physically inert" finding is **not a
+median artifact** — the tail doesn't save it.
 
 **Noise vs. amplitude.** A Monte Carlo propagating a [WEAK]-sourced,
 order-of-magnitude typical `Y_SZ`-scaling scatter (18% in `k`, 5% in `r`, not
