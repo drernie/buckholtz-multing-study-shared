@@ -432,8 +432,20 @@ if not j_exists_on_C3:
     print("STAGE 6 -- order-zero condition [a,b(deg)]=0: what does it force on Y?")
     print("=" * 88)
 
+    # CORRECTED (caught by Stage 6a's own order-zero check failing on a random
+    # sample, isolated in a standalone diagnostic before touching this file):
+    # a first version represented M3 on H_generation=3(+)3bar as
+    # block_diag(M3, conj(M3)) -- acting on BOTH legs with the SAME matrix.
+    # That makes A's own non-commutativity ([M_a,M_b]!=0 generically, M_3(C)
+    # is non-abelian) show up directly in [pi(a),pi(b)], which order-zero
+    # forbids -- this was a structural mistake in the representation choice,
+    # not a coding bug in J or right_action. The standard NCG bimodule trick:
+    # A acts on ONE leg only (the "3"), identity on the other ("3bar"); J's
+    # right action then naturally produces conj(M) on the OTHER leg, and the
+    # two never overlap -- [pi(a),pi_right(b)]=0 identically, verified in an
+    # isolated diagnostic before this fix was applied here.
     def alg_elt_full(lam0: complex, lam1: complex, M3: np.ndarray) -> np.ndarray:
-        M6 = np.block([[M3, np.zeros((3, 3))], [np.zeros((3, 3)), M3.conj()]])
+        M6 = np.block([[M3, np.zeros((3, 3))], [np.zeros((3, 3)), np.eye(3)]])
         return np.kron(lam0 * P0 + lam1 * P1, M6)
 
     def right_action(b: np.ndarray) -> np.ndarray:
@@ -469,6 +481,160 @@ if not j_exists_on_C3:
             " introduced; the algebra/J combination itself is inconsistent, stop"
         )
     print("  STAGE 6a PASSED -- proceeding to the first-order condition (Y-dependent)\n")
+
+    # =========================================================================
+    # STAGE 6b -- first-order condition, [[D_full,a],b(deg)]=0. First check:
+    # is [D_matter(x)I, a]=0 identically (D_matter and the P0/P1 projectors
+    # that define a's matter-block are simultaneously diagonal, so they
+    # commute exactly)? If so, the Y-INDEPENDENT part of the condition
+    # vanishes identically and the whole condition reduces to a HOMOGENEOUS
+    # linear constraint purely on Y -- checked here, not assumed.
+    # =========================================================================
+    print("=" * 88)
+    print("STAGE 6b -- first-order condition: solving for what it forces on Y")
+    print("=" * 88)
+    a_probe = alg_elt_full(1.3 - 0.4j, -0.7 + 0.9j, lam[2])
+    Y_indep_term = D_matter_full @ a_probe - a_probe @ D_matter_full
+    y_indep_zero = np.allclose(Y_indep_term, 0, atol=1e-9)
+    print(
+        f"  [D_matter(x)I, a] = 0 identically (D_matter, P0/P1 share an eigenbasis): {y_indep_zero}"
+    )
+    if not y_indep_zero:
+        raise SystemExit(
+            "STAGE 6b FAILED -- Y-independent part of first-order does not vanish;"
+            " the reduction to a homogeneous Y-only condition below would be invalid, stop"
+        )
+
+    # Hermitian basis for Y (6x6, 36 real basis matrices spanning all Hermitian
+    # 6x6 matrices) -- diag(6) + symmetric-off-diag(15) + antisymmetric-off-diag(15).
+    Y_basis = []
+    for k in range(6):
+        E = np.zeros((6, 6), dtype=complex)
+        E[k, k] = 1
+        Y_basis.append(E)
+    for k in range(6):
+        for ell in range(k + 1, 6):
+            E1 = np.zeros((6, 6), dtype=complex)
+            E1[k, ell] = 1
+            E1[ell, k] = 1
+            Y_basis.append(E1)
+            E2 = np.zeros((6, 6), dtype=complex)
+            E2[k, ell] = 1j
+            E2[ell, k] = -1j
+            Y_basis.append(E2)
+    assert len(Y_basis) == 36
+    herm_basis_ok = all(np.allclose(Yb, Yb.conj().T) for Yb in Y_basis)
+    print(f"  Y basis (36 matrices) all Hermitian: {herm_basis_ok}")
+    if not herm_basis_ok:
+        raise SystemExit("STAGE 6b FAILED -- Y basis is not Hermitian; stop")
+
+    # For several random (a,b) pairs, build the linear map Y -> [[gamma(x)Y,a],b(deg)],
+    # flatten to real vectors (re/im stacked), stack constraints from all pairs,
+    # and find the null space -- the set of Y's satisfying first-order for ALL
+    # sampled (a,b), which (given enough random pairs to be generic) approximates
+    # the set satisfying it for ALL a,b in A.
+    n_pairs = 6
+    all_rows = []
+    for _ in range(n_pairs):
+        a_ = alg_elt_full(
+            rng.normal() + 1j * rng.normal(), rng.normal() + 1j * rng.normal(), lam[rng.integers(8)]
+        )
+        b_ = alg_elt_full(
+            rng.normal() + 1j * rng.normal(), rng.normal() + 1j * rng.normal(), lam[rng.integers(8)]
+        )
+        b_deg = right_action(b_)
+        for Yb in Y_basis:
+            D_Y_part = np.kron(gamma_matter, Yb)
+            comm1 = D_Y_part @ a_ - a_ @ D_Y_part
+            comm2 = comm1 @ b_deg - b_deg @ comm1
+            all_rows.append(comm2.flatten())
+    # all_rows: (n_pairs * dim_full_gen^2) rows, 36 columns (one per Y_basis
+    # element) -- but built column-major per pair; reshape properly.
+    constraint_matrix = np.array(all_rows).reshape(n_pairs, 36, -1)  # (pairs, 36, dim^2)
+    constraint_matrix = np.transpose(constraint_matrix, (0, 2, 1)).reshape(
+        -1, 36
+    )  # stack pairs*dim^2 x 36
+    real_constraint = np.vstack([constraint_matrix.real, constraint_matrix.imag])
+    _, s_y, vh_y = np.linalg.svd(real_constraint)
+    null_dim_y = int(np.sum(s_y < 1e-6 * (s_y[0] if len(s_y) else 1.0)))
+    print(
+        f"\n  first-order constraint on Y: {real_constraint.shape[0]} real equations, 36 unknowns"
+    )
+    print(f"  singular values (largest 5): {np.round(s_y[:5], 4)}")
+    print(f"  singular values (smallest 5): {np.round(s_y[-5:], 6)}")
+    print(f"  null-space dimension (allowed Y's): {null_dim_y} out of 36")
+    if null_dim_y == 0:
+        print(
+            "\n  -> FIRST-ORDER FORCES Y=0 EXACTLY. In this construction (N=3 truncation,"
+            " A=(C(+)C) tensor M_3(C) one-leg representation, J as built), the generation-"
+            " mixing Dirac term is not just unconstructed by hand -- it is FORBIDDEN by the"
+            " NCG axioms themselves. Recorded as the answer to Experiment #2's Model A vs B"
+            " vs C question: this is Model C (a symmetry forces X=0), not an assumption."
+        )
+    else:
+        print(f"\n  -> {null_dim_y}-real-dimensional family of Y's survives first-order.")
+        # Inspect the surviving null-space vectors' structure.
+        Y_allowed_basis = vh_y[vh_y.shape[0] - null_dim_y :, :]
+        for idx in range(min(null_dim_y, 4)):
+            coeffs = Y_allowed_basis[idx]
+            Y_reconstructed = sum(c * Yb for c, Yb in zip(coeffs, Y_basis, strict=True))
+            offdiag_33bar = Y_reconstructed[:3, 3:]
+            diag_block = np.diag(Y_reconstructed).real
+            print(
+                f"    null-vector {idx}: diag={np.round(diag_block, 3)}, "
+                f"3-3bar off-block max|.|={np.max(np.abs(offdiag_33bar)):.4f}"
+            )
+        print(
+            "\n  -> Model B (X!=0, generation mixing IS allowed): a nonzero Y survives the"
+            " symmetries of this specific construction. Its detailed form (diagonal-only?"
+            " off-block only?) is printed above per null-vector, not asserted."
+        )
+    print("  STAGE 6b COMPLETE\n")
+
+    # =========================================================================
+    # STAGE 7 (Experiment #5 kill test, folded in as agreed) -- with whatever Y
+    # first-order allows (possibly Y=0), does SU(3) still act TRANSITIVELY on
+    # the "3" leg, i.e. is there a symmetry-respecting unitary erasing any
+    # preferred basis / distinguishing the "3 generations" as canonical
+    # objects? If Y=0 is forced (Stage 6b's likely outcome), this reduces to:
+    # does the residual algebra structure alone ever pick out 3 distinguishable
+    # basis vectors, or does SU(3) (acting irreducibly on the "3" leg) make
+    # "3 generations" basis-dependent language, not a physical statement?
+    # =========================================================================
+    print("=" * 88)
+    print("STAGE 7 -- Experiment #5 kill test: are '3 generations' physically distinguishable?")
+    print("=" * 88)
+    print(
+        "  SU(3) acts IRREDUCIBLY on the '3' leg of H_generation by construction (Stage 1's"
+        " Gell-Mann generators are the standard irreducible fundamental rep -- this is not"
+        " re-derived here, it is definitional for 'the fundamental representation'). An"
+        " irreducible action means: for ANY two unit vectors v,w in the '3' leg, there is a"
+        " unitary U in the group generated by su(3) with U v = w (transitivity on the unit"
+        " sphere follows from irreducibility for a compact simple group's fundamental rep)."
+    )
+    if null_dim_y == 0:
+        print(
+            "\n  Given Y=0 is forced (Stage 6b): NOTHING in this construction breaks that"
+            " transitivity. There is no preferred basis of 3 vectors -- 'the 3 generations'"
+            " are not 3 distinguishable objects in this model, they are 3 coordinates of a"
+            " single irreducible carrier, indistinguishable up to an SU(3) change of basis."
+            " KILL RESULT: as built, this construction does NOT establish N_gen=3 as 3"
+            " physically distinguishable generations -- only as the DIMENSION of a single"
+            " irreducible representation. This is the sharp, literal answer Experiment #5"
+            " asked for, and it is negative for the strong reading of 'N_gen=3'."
+        )
+    else:
+        print(
+            "\n  A nonzero Y survived Stage 6b. Whether it breaks SU(3) down to a subgroup"
+            " that stabilises 3 distinguishable basis vectors depends on Y's specific"
+            " eigenstructure (printed above) -- if Y is proportional to identity or to a"
+            " Casimir-like invariant, it still commutes with all of SU(3) and transitivity"
+            " survives (same negative conclusion as the Y=0 case); only a Y that BREAKS"
+            " SU(3) to at most its Cartan subgroup (diagonal, non-degenerate eigenvalues)"
+            " would pick out 3 distinguishable directions. Checked directly above: diagonal"
+            " components of the surviving null-vectors were printed for exactly this reason."
+        )
+    print("  STAGE 7 COMPLETE\n")
 else:
     raise SystemExit(
         "Unexpected: Stage 3 found J DOES exist on C^3 alone -- code path not written for this case"
