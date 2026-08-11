@@ -15,6 +15,21 @@ invariant `Λ(r)`) — applied here directly to the Yukawa kernel to get the
 Yukawa tiers reproducing the same forms; internal series-order asserts) all
 pass before anything new is trusted.
 
+**[Skeptic review, same day.] First finding in the P9→P12 sequence to
+survive context-blind review with both verdicts CONFIRMED-REAL — no
+retraction, no falsified claim.** Skeptic independently hand-re-derived
+every formula, series coefficient, and numeric value through `O(x⁴)` and
+found no algebra or numerical error. Two minor, non-retracting refinements
+applied below (§4, §7): the "Helmholtz Green's function" framing was
+overstated (the standard multipole expansion gives `O(x²)` uniformly for
+every `ℓ`; the "each tier more protected" pattern found here is a real but
+construction-specific fact, not a general Helmholtz-theory statement), and
+one item was added to "does NOT establish" (laboratory/solar-system
+fifth-force constraints — flagged by the skeptic as a real gap in the
+enumeration, though not physically substantive given `μ~H₀/c`'s
+Hubble-scale Compton wavelength). See "Skeptic verdict" section at the end
+for full detail.
+
 ---
 
 ## 1. The question
@@ -69,12 +84,24 @@ F_kk·r⁴ = (…)·(6 − x⁴/4 + x⁵/5 − …)                leading corre
 ```
 
 Every tier's leading `1/r²`, `1/r³`, `1/r⁴` power law survives *exactly* at
-`x=0`, and — a clean, physically sensible pattern — **each successive
-multipole's leading correction appears one power of `x` later than the
-previous one**: monopole at `O(x²)`, dipole at `O(x³)`, quadrupole at
-`O(x⁴)`. This is the expected signature of a Helmholtz Green's function's
-multipole expansion in a small screening parameter, not a numerical
-coincidence.
+`x=0`, and — a clean pattern, confirmed by an independent hand re-derivation
+in the skeptic review — **each successive multipole's leading correction
+appears one power of `x` later than the previous one**: monopole at `O(x²)`,
+dipole at `O(x³)`, quadrupole at `O(x⁴)`.
+
+**[Corrected after skeptic review]** This is *not*, as an earlier version of
+this file claimed, a general property of "a Helmholtz Green's function's
+multipole expansion" — the standard spherical-harmonic (modified spherical
+Bessel function) expansion of the Yukawa Green's function gives a leading
+correction of `O(x²)` **uniformly for every multipole order `ℓ`**, not
+progressively later for higher `ℓ`. The pattern found here is real and
+correctly derived, but is a feature specific to *this* point-charge,
+derivative-of-`K` construction (each tier's force is built from
+`K^{(n)}(r)`, and for `K=exp(-μr)/r` each derivative order happens to carry
+a truncated-exponential structure that produces exactly this staggering) —
+not a general fact about screened mediators that would carry over
+automatically to a different multipole realization (e.g. an extended
+charge distribution rather than idealized point pairs).
 
 **Numeric evaluation at `μr=10⁻⁴`** (cluster scale, `μ~H₀/c` — P11's own
 physically-motivated scale):
@@ -113,13 +140,21 @@ just observed): `Λ`'s `O(x²)` coefficient is nonzero, the true ratio's
 point-charge expansion), which equals `Λ(r)=K'''(r)K'(r)/K''(r)²` **only
 when `K'(r)=-1/r²` exactly** — true for the massless kernel `K=1/s`
 specifically (`K'=-1/s²`), not for Yukawa (`K'(r)=-exp(-μr)(μr+1)/r² ≠ -1/r²`
-for `μ≠0`). So P1's equivalence between `Λ` and `ℓ_q²/ℓ_d²`, stated as if
-kernel-general, is actually a coincidence of the massless case — real and
-correct there, but not the general statement it reads as. This does not
-change any prior verdict on the massless case (P1's `β_q/β_d=√6/2` result is
-untouched), but **it does mean the ACTUAL near-field departure from
-`β_q/β_d=√6/2` under a small mediator mass is smaller than `Λ` alone would
-suggest** — `O(x³)` fractional, not `O(x²)`.
+for `μ≠0`). So P1's equivalence between `Λ` and `ℓ_q²/ℓ_d²` — asserted as *"the kernel
+**part of** `ℓ_q²/ℓ_d²` is the invariant `Λ(r)`"* and then operationally
+applied to a Yukawa kernel a few lines later, treating `Λ`'s `r`-dependence
+as the physically meaningful sensitivity to mediator mass — is exact only
+for the massless case; **[skeptic review]** the "part of" phrasing admits a
+charitable reading where P1 only ever intended this for `K=1/s`, but P1's
+own next section computes and uses `Λ(r)` for Yukawa specifically, which is
+the stricter, kernel-general reading this finding tests and refines — so
+this is a warranted correction of how `Λ` was actually *used*, not an
+attack on a claim P1 never made. This does not change any prior verdict on
+the massless case (P1's `β_q/β_d=√6/2` result is untouched), and the
+correction, if anything, makes the near-field survival argument **stronger,
+not weaker** — the ACTUAL departure from `β_q/β_d=√6/2` under a small
+mediator mass is smaller than `Λ` alone would suggest, `O(x³)` fractional
+rather than `O(x²)`.
 
 ## 6. Bottom line
 
@@ -151,8 +186,58 @@ computed, not asserted, answer: **no, by a wide margin.**
    specific candidate mechanism (P11's fixed-mass Yukawa) — it does not
    establish that mechanism is correct, only that it is not immediately
    self-contradictory.
-5. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction
+5. **[Added after skeptic review]** Laboratory / solar-system fifth-force
+   constraints on the ordinary `g·m_i·φ` monopole coupling, once `φ` carries
+   a mass `μ`. Not checked here — flagged by the skeptic as a genuine gap in
+   this enumeration. Not expected to be physically substantive: `μ~H₀/c`
+   gives a Compton wavelength on the order of the Hubble radius, so the
+   screening this mass introduces is negligible at any sub-Hubble scale any
+   laboratory or solar-system test could probe — but this is an expectation,
+   not a checked result, and belongs in the list of open items regardless.
+6. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction
    (P1's action, extended), not a claim about TJB's own unpublished theory.
+
+## Skeptic verdict (context-blind, 2026-08-12)
+
+Two separate verdicts, per Step 8a / Context Asymmetry (skeptic given only
+this file, the script, `two_field_action_closure.py`, and
+`FINDING_P11_yukawa_screening_breaks_double_layer.md` — no session history).
+**First finding in the P9→P12 sequence with both verdicts CONFIRMED-REAL —
+no retraction.**
+
+- **Mathematical/numerical result** (exact Yukawa tiers; series-expansion
+  leading-correction orders; numeric fractional corrections at cluster
+  scale; the three positive-control asserts): **CONFIRMED-REAL.** The
+  skeptic independently hand-re-derived `K(r), K'(r), K''(r), K'''(r)` for
+  the Yukawa kernel, the resulting `U_km, U_kk` from the point-charge
+  construction, every series coefficient through `O(x⁴)`, and every printed
+  numeric value — found no algebra or arithmetic error anywhere. Confirmed
+  the `ratio_x2_coeff == 0` assert is a genuine, non-tautological
+  discriminator (it would fail if the "actual ratio" literally equaled
+  `Λ`). One overstatement caught and corrected in §4 above: the "Helmholtz
+  Green's function multipole expansion" framing implied a general fact
+  about screened mediators; the skeptic showed the standard modified-
+  spherical-Bessel expansion actually gives `O(x²)` uniformly for every
+  multipole order, so the staggered-order pattern found here is real but
+  specific to this point-charge, derivative-of-`K` construction.
+- **`Λ(r) ≠` actual `ℓ_q²/ℓ_d²` ratio, framed as "a genuine refinement to
+  P1's own claim":** **CONFIRMED-REAL**, with a scope-of-refinement note
+  incorporated into §5 above. The technical distinction (`equality holds
+  iff K'(r)·r²=-1`) is exact and correctly explained. P1's own "part of"
+  hedge admits a charitable reading limited to `K=1/s`, but P1's own next
+  section *operationally applies* `Λ(r)` to the Yukawa kernel as the
+  physically meaningful sensitivity — the stricter reading this finding
+  tests — so the refinement is warranted against how `Λ` was actually used,
+  not a strawman. The skeptic also noted explicitly: this correction makes
+  the near-field survival argument *stronger*, not weaker.
+
+A genuine gap the skeptic found in the enumeration (not a math error):
+laboratory/solar-system fifth-force constraints on the massive `φ`'s
+ordinary monopole coupling were not listed among the open items — added as
+item 5 in "What this does NOT establish" above. Assessed by the skeptic as
+not physically substantive (`μ~H₀/c`'s Hubble-scale Compton wavelength makes
+any sub-Hubble-scale screening effect negligible) but a real omission from
+the list regardless.
 
 ## Reproduction
 

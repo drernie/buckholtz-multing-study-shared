@@ -99,8 +99,11 @@ def main() -> None:
     print("\n  -> leading r^-2, r^-3, r^-4 power laws all survive exactly at x=0;")
     print("     first nonzero correction: monopole O(x^2), dipole O(x^3),")
     print("     quadrupole O(x^4) -- each higher multipole is MORE protected,")
-    print("     not less, consistent with a multipole expansion of a Helmholtz")
-    print("     Green's function in powers of the screening parameter.")
+    print("     not less. [Note, added after skeptic review: this is a real but")
+    print("     CONSTRUCTION-SPECIFIC pattern (this point-charge, derivative-of-K")
+    print("     build), not a general Helmholtz Green's function multipole fact --")
+    print("     the standard modified-spherical-Bessel expansion gives O(x^2)")
+    print("     uniformly for every multipole order, not staggered by order.]")
 
     print("\n[NUMERIC] fractional correction at mu*r=1e-4 (cluster scale, mu~H0/c,")
     print("  the physically-motivated scale FINDING_P11's skeptic review proposed)")
