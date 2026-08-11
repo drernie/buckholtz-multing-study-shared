@@ -18,6 +18,22 @@ before anything new is trusted.
 this finding and this project's own P1 derivation. This is not a caveat to
 skim — it is the load-bearing open question the finding itself creates.**
 
+**[CORRECTED after skeptic review, same day.] The raw math is CONFIRMED-REAL
+— an independent skeptic re-derivation (closed-form analytic formula for the
+shell's Yukawa exterior potential) matched the numerical results to 4+
+significant figures at three tested `μ` values, and the Yukawa dipole
+formula was independently re-derived from first principles and found
+identical. §4's handling of the masslessness tension is WEAKENED, not
+falsified: the tension itself was flagged honestly, but the specific
+citation of "chameleon/Vainshtein/symmetron-class" screening as the
+resolving mechanism is WRONG-DIRECTION (those mechanisms screen *near*
+matter and un-screen cosmologically — the opposite of what this
+construction needs) and has been corrected below to the mechanism the
+skeptic showed actually works: a plain fixed-mass Yukawa field, no
+environmental/density-dependent screening required at all. CHECK 1's
+framing (angular uniformity "confirms spherical symmetry of the effect")
+is also softened — see the corrected note in §3.**
+
 ---
 
 ## 1. The question, and why it's different from P9's
@@ -84,13 +100,19 @@ Two self-consistency checks, both passing before this is trusted:
 
 - **Angular uniformity.** At fixed `r=2A, μ=0.5`, four points (north pole,
   south pole, equator, 45°) all give **identical** `Φ=1.97479951e-01` to 8
-  significant figures (spread `2.5e-16`) — confirming the result is a
-  genuine spherically-symmetric (monopole-like) effect of the *whole*
-  configuration, not an artefact of sampling one direction. This matters
-  because the source configuration (uniform `τ`, each dipole element
-  pointing radially outward at its own location) is fully rotationally
-  invariant, so the exterior field, if nonzero, is required by symmetry to
-  depend only on `r`, never on angle — confirmed.
+  significant figures (spread `2.5e-16`). **[CORRECTED framing after
+  skeptic review]** — this does not independently confirm new physics: the
+  source configuration (uniform `τ`, each dipole element pointing radially
+  outward at its own location) is fully rotationally invariant *by
+  construction*, so the exterior field, if nonzero, is *guaranteed by
+  symmetry alone* to depend only on `r`. What this check actually verifies
+  is narrower but still useful — **quadrature fidelity**: that the
+  numerical integration method itself preserves the symmetry already
+  present in the input, ruling out a polar-axis-biased artefact of the
+  `dblquad` implementation. A genuine bug could in principle still pass a
+  sparse 4-point check by coincidence (all four points sit on high-symmetry
+  axes), so this is a code-hygiene check, not independent physical
+  evidence for the result.
 - **Radial falloff.** `Φ·r²` is **not** constant across `r=1.2A`–`8A`
   (unlike P9's `μ=0` case, where it was exactly constant) — confirming this
   is a genuinely finite-range, screened effect, not a disguised ordinary
@@ -108,26 +130,60 @@ K'''(r)K'(r)/K''(r)² = 3/2` exactly, for every `r`, only for `K=1/s`
 conflicts with this project's own derivation of `β_d=2, β_q=√6`** — *unless*
 the mediator is effectively massless at the scale where `β_q/β_d` was
 derived and would need to hold (cluster/local scale) and effectively
-massive/screened only at cosmological scale. This is exactly the structure
-of a real, established modified-gravity mechanism class (chameleon,
-Vainshtein, symmetron screening — density- or scale-dependent effective
-mass), so it is not an ad hoc rescue; **but it is a genuine, nontrivial,
-scale-dependent self-consistency requirement that this finding does not
-check, derive, or assume** — only flags as the actual load-bearing question
-a real answer here would need to resolve.
+massive/screened only at cosmological scale.
+
+**[CORRECTED after skeptic review — the mechanism named below was
+wrong-direction.]** ~~This is exactly the structure of a real, established
+modified-gravity mechanism class (chameleon, Vainshtein, symmetron
+screening — density- or scale-dependent effective mass)~~ — **this citation
+was incorrect.** Chameleon, symmetron, and Vainshtein screening all work in
+the opposite direction from what this construction needs: they make the
+fifth force **short-range (screened) near matter** (dense environments,
+e.g. inside/near a galaxy cluster) and **long-range (unscreened) in voids /
+cosmologically**. This project needs the reverse — **unscreened at
+cluster/local scale** (so `Λ=3/2` holds and `β_q/β_d=√6/2` survives) and
+**screened cosmologically**. Naming that mechanism class as precedent
+falsely implies a well-studied family already licenses the needed
+behaviour; it does not.
+
+**The mechanism that would actually work, found by the skeptic review, is
+simpler and needs no environmental/density-dependent screening at all: a
+plain, ordinary fixed-mass Yukawa field with `μ ~ H₀/c`.** At cluster scale
+(`r ~ few Mpc`), `μr ~ 10⁻⁴`, so the massive-kernel correction to `Λ=3/2` is
+`O((μr)²) ~ 10⁻⁸` — indistinguishable from exactly massless in any current
+or foreseeable test, so `β_q/β_d=√6/2` survives to ~8 decimal places. At
+cosmological scale (`r ~ 1/H₀`), `μr ~ 1`, and the double layer breaks
+exactly as shown in §3. This is not a density-dependent screening
+mechanism at all — "scale" here means ordinary Fourier `k` versus a fixed
+Compton wavelength `1/μ`, ratioed against the *distance being probed*
+(cluster separation vs. Hubble radius), not against local matter density.
+**A real, nontrivial consequence for P1's own headline claim:** P1's own
+"`β_q/β_d=√6/2 ⟺` mediator exactly massless" should be read, for the
+purpose of physical viability, as *"⟺ `μ` negligible at the derivation
+scale"* — a small but real softening of P1's "exactly" language that a
+fixed, cosmologically-relevant `μ~H₀/c` satisfies trivially at cluster
+scale. **Still genuinely unresolved:** whether such a fixed-mass extension
+is actually constructible without breaking the near-field `A₃, A₄` ladder
+structure, and whether `μ~H₀/c` specifically (as opposed to some other
+scale) gives an observable magnitude — neither checked here.
 
 ## What this does NOT establish
 
 1. **That this project's construction actually has, or is compatible with,
-   a scale-dependent screening mechanism.** Nothing here derives one, or
-   checks whether one is even constructible without breaking the near-field
-   `A₃, A₄` ladder structure that fixed `β_d=2, β_q=√6` in the first place.
-2. **A specific value of `μ`**, or whether any physically motivated value
-   (e.g., tied to a cosmological screening length, `H₀/c` or similar) gives
-   an observable magnitude. `μ` here is a bare toy parameter, exactly as
-   `ε` was in P9 — this finding trades one unmotivated free parameter (an
-   assumed angular asymmetry) for a different one (a screening mass), not a
-   fully closed derivation.
+   a fixed-mass extension.** Nothing here derives one, or checks whether
+   one is even constructible without breaking the near-field `A₃, A₄`
+   ladder structure that fixed `β_d=2, β_q=√6` in the first place.
+   **[Corrected: earlier language here cited "scale-dependent screening,"
+   which per the skeptic review is not actually what this construction
+   needs — see §4's correction. The open item is a plain fixed-mass field,
+   not a density-dependent screening mechanism.]**
+2. **A specific value of `μ`**, or whether `μ~H₀/c` specifically (as
+   opposed to some other scale) gives an observable magnitude. `μ` here is
+   a bare toy parameter, exactly as `ε` was in P9 — this finding trades one
+   unmotivated free parameter (an assumed angular asymmetry) for a
+   different one (a mediator mass), not a fully closed derivation. Unlike
+   P9's `ε`, `μ~H₀/c` at least has a natural physical scale to test against
+   — but that test has not been run here.
 3. **That P9's and P10's results are superseded.** They checked different,
    independent candidates (assumed asymmetry; velocity-coupling) and their
    own verdicts stand on their own terms — this is a fourth candidate, not
@@ -139,6 +195,37 @@ a real answer here would need to resolve.
 5. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction (P1's
    two-field/two-charge completion), not a claim about TJB's own unpublished
    theory.
+
+## Skeptic verdict (context-blind, 2026-08-12)
+
+Two separate verdicts, per Step 8a / Context Asymmetry (skeptic given only
+this file, the script, and the three cited prior findings — no session
+history):
+
+- **Mathematical/numerical result** (Yukawa dipole formula; nonzero
+  exterior potential with a uniform shell; self-consistency checks):
+  **CONFIRMED-REAL.** The skeptic independently re-derived the dipole
+  formula from first principles (point-charge limit) and got an identical
+  result. Separately, derived a closed-form analytic formula for a uniform
+  Yukawa shell's *own* exterior potential
+  (`Φ_ext = P·∂/∂a[sinh(μa)/(μa)]·exp(-μr)/r`) and matched this script's
+  numerical output to 4+ significant figures at three tested `μ` values
+  (`0.5, 1.0, 2.0`). The radial-falloff check is genuine and meaningful.
+  The angular-uniformity check, while numerically correct, was found to be
+  weaker evidence than framed — see the corrected note in §3.
+- **Handling of the masslessness tension (§4):** **WEAKENED.** The tension
+  itself was flagged honestly and prominently (title, header, §4, verdict
+  block, "does NOT establish") — no language elsewhere smuggled the effect
+  back in as a working, resolved mechanism. But the specific citation of
+  "chameleon/Vainshtein/symmetron-class" screening as the resolving
+  mechanism was **wrong-direction**: those mechanisms screen *near* matter
+  and un-screen cosmologically, the opposite of what this construction
+  needs. The skeptic identified the mechanism that actually works — a
+  plain fixed-mass Yukawa with `μ~H₀/c`, no density-dependent screening
+  required — and flagged that P1's own "iff *exactly* massless" language
+  should, for physical-viability purposes, be read as "iff `μ` negligible
+  at the derivation scale." Corrected throughout §4 and the "does NOT
+  establish" list above.
 
 ## Reproduction
 
