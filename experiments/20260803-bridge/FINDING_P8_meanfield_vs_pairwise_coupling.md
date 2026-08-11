@@ -1,4 +1,4 @@
-# P8 — the smoothed-limit coupling coefficient: not one number, two, depending on the observable
+# P8 — the smoothed-limit coupling coefficient: the mean-field number is withdrawn, not just corrected
 
 **Date:** 2026-08-11 · answers the genuinely open item P6 §3 left unresolved:
 does the near-field two-body suppression factor `ℓ_d/r=β_d(u_A+u_P)` (carries
@@ -13,6 +13,30 @@ the same language this project's own Q006 lead — Blanchet & Le Tiec 2008 —
 already uses for its own dipolar-medium model), not a full field-theoretic
 derivation from P1's action. Flagged `[INFERRED]` throughout, not
 `[VERIFIED]` — see "What this does NOT establish."
+
+**[CORRECTED after context-blind skeptic review, Step 8a — read this before
+anything else in the file. This is a retraction of the headline number, not
+a margin adjustment like P6/P7's corrections.]** The pairwise/mean-field
+classification (§1-2) is **WEAKENED** — real intuition, not a derivation,
+and it does not survive contact with two things this file failed to check
+against: (a) `two_field_action_closure.py` §3 already computed, directly
+and rigorously, that this SAME dipole term's smoothed/isotropic-limit
+contribution is **exactly zero** — not `7×10⁻⁸`, not `7×10⁻⁶`, zero — and
+this file never cited or reconciled that result; (b) `FINDING_P4_two_field_
+does_not_rescue_background.md` §7 itself states the natural home of this
+completion's new physics is **second-order** observables, not first order
+— directly in tension with assigning the FIRST-order mean-field trio
+(`fσ8`, `E_G`) to a nonzero Reading-2 number. **The specific number
+`ΔG_eff/G~7×10⁻⁶` for mean-field observables is FALSIFIED as a quantitative
+forecast and is withdrawn** — it was obtained by dividing Reading 1's number
+by `r_A/r_sep`, not derived, and directly conflicts with the one thing this
+project HAS rigorously computed in the closest comparable regime. §5 below
+replaces §1-4's original claim with the corrected, honest status: the
+mean-field coupling is **undetermined**, not `~7×10⁻⁶`. What survives:
+Reading 1 remains correct for genuinely pairwise observables (kSZ,
+periastron — unaffected), and the qualitative "still undetectable" verdict
+likely survives any resolution of the missing calculation — but that is now
+a weaker, more honest claim than a specific number.
 
 ---
 
@@ -75,9 +99,10 @@ already used Reading 1 correctly, before this file existed. What P6 left
 ambiguous was specifically the mean-field trio (fσ8, E_G, bispectrum), and
 those should use Reading 2 — the LARGER, more pessimistic amplitude.
 
-## 3. The resolved forecast, per observable class
+## 3. The forecast originally proposed here — SUPERSEDED, kept for the record
 
-Reusing P6's own numbers, now correctly assigned:
+**[This section is the original, now-falsified reasoning. Left in place per
+this project's no-silent-edit discipline; §5 below is the corrected status.]**
 
 ```
 MEAN-FIELD observables (fsigma8/RSD, E_G, bispectrum) -- USE READING 2:
@@ -93,15 +118,71 @@ PAIRWISE observables (kSZ, periastron) -- USE READING 1 (unchanged):
                                                   (P6 S3, P7 -- unchanged)
 ```
 
-**Both classes remain undetectable at any current or near-future survey
-precision.** The mean-field class is genuinely ~2 orders of magnitude closer
-to detectability than P6's original (Reading-1-only) estimate suggested —
-worth stating precisely rather than leaving as an unresolved ~100x
-bracket — but "~3 orders of magnitude below Euclid" is still a decisive,
-not a marginal, gap. No part of this changes P6's bottom-line "no full
-observational-forecast pipeline is warranted."
+The pairwise row is unaffected by the correction below. The mean-field row's
+`~7.0e-6` number is withdrawn — see §5.
 
-## 4. Why this resolution, and not the reverse assignment
+## 5. Corrected status, after skeptic review
+
+**The zero-vs-nonzero conflict, stated precisely.** `two_field_action_
+closure.py` §3 computes — not by analogy, by direct calculation — that this
+completion's dipole-sourced contribution to the smoothed cosmological force
+density is **exactly zero**, under isotropic/random-orientation averaging of
+the intrinsic moment `p_i=κk_ir_i/c²`. That is the ONE thing this project
+has rigorously computed in a regime close to what §1-4 above tried to
+forecast by analogy. §1-4's Reading 2 (`~7×10⁻⁶`) was never checked against
+it, and the two cannot both be treated as established: either the O(δ)
+mean-field contribution genuinely differs from the O(δ⁰) background result
+(possible — perturbing the density field breaks the exact isotropy that
+kills the background term — but this has never been calculated, only
+assumed), or the same symmetry that zeroes the background zeroes the
+perturbation too (equally possible, not ruled out). **Nothing in this
+project's files distinguishes these two possibilities.**
+
+**A second, independent inconsistency, also unaddressed until now.**
+`FINDING_P4_two_field_does_not_rescue_background.md` §7 states plainly:
+"the natural new physics, if the dipolar/induced-moment picture is right,
+lives in **second-order** cosmological observables ... not H(z)." P6 and
+this file both assigned the mean-field trio (`fσ8`, `E_G` — both **first-
+order**, linear observables) a nonzero forecast anyway, without addressing
+why a completion whose own project-internal characterization places its new
+physics at second order would show up at first order in `fσ8`/`E_G`
+specifically. Not resolved here.
+
+**Corrected verdict:** the mean-field coupling coefficient is
+**UNDETERMINED**, not `~7×10⁻⁶`. It could plausibly be exactly zero (matching
+the rigorously-computed background result, if the same orientation-averaging
+symmetry survives to first order), a small nonzero number of unknown size
+(if it does not), or genuinely scale-dependent (§"What this does NOT
+establish" #2, already flagged before this correction). **No specific number
+should be quoted for `fσ8`/`E_G` until the missing calculation is done.**
+
+**What survives.** Reading 1 remains correct, and unaffected, for genuinely
+pairwise observables — pairwise kSZ and periastron precession, where P6 §3
+and P7's numbers stand as they were. The qualitative claim "MULTING's
+k-sector, at this project's own coupling-strength estimate, is not
+detectable by any near-future survey" likely survives whatever the missing
+calculation eventually gives (even an O(1) rescaling of Reading 1's already-
+tiny number would not reach Euclid-class sensitivity) — but that is now an
+honest qualitative statement, not a specific quantitative forecast for the
+mean-field trio.
+
+**The actual next step, if this branch is pursued further** (not done
+here, a bounded task, smaller than a full survey-forecast pipeline): write
+the linear-order Euler equation with P1's k-sector source term included,
+and redo the SAME orientation-averaging calculation `two_field_action_
+closure.py` §3 already did for the background, one perturbative order
+higher — determine directly whether the O(δ) contribution is zero, nonzero,
+or scale-dependent, rather than assuming either.
+
+## 4. Why this resolution, and not the reverse assignment — argument stands, conclusion doesn't
+
+**[The classification logic below survives as a reasonable qualitative
+argument for the PAIRWISE side (kSZ, periastron) — it is the MEAN-FIELD
+side's leap from "no single r_A/r_sep" to "therefore ~7×10⁻⁶" that §5
+withdraws. Absence of a pairwise-separation factor does not by itself
+establish what the mean-field coupling IS — only that Reading 1's specific
+form doesn't apply. §5's zero-vs-undetermined status is the honest
+consequence.]**
 
 Could the mean-field observables instead need Reading 1, and the pairwise
 ones Reading 2? No — this is fixed by what each observable structurally
@@ -122,43 +203,67 @@ integrates over, not a free choice:
 ## What this does NOT establish
 
 1. **This is a physical argument by analogy, not a field-theoretic
-   derivation.** The actual modified Poisson equation implied by P1's
-   action (`two_field_action_closure.py`) has not been solved for its
-   polarization-density source term; Reading 2's `2β_d(k/mc²)` is asserted
-   by structural analogy to how a polarizability coefficient would enter
-   such an equation (the same "polarizable in a gravitational field"
-   language this project's own Q006 lead, Blanchet & Le Tiec 2008, uses for
-   an analogous model), not derived from MULTING's own action term by term.
-2. **Does not address scale-dependence.** P6 §2 already flagged that the
-   dipole tier likely enters with an EXTRA power of momentum transfer
-   relative to gravity's own `1/k²` Poisson kernel — meaning Reading 2's
-   `2β_d(k/mc²)` is itself probably an approximation to something that
-   should be `k`(wavenumber)-DEPENDENT, not a single flat number. Not
-   derived here; flagged as the next, genuinely open step if this branch is
-   pursued further.
-3. **Does not change any verdict.** Both observable classes remain
-   undetectable; this resolves the SIZE of the gap for the mean-field class
-   (~3 orders, not left as an unresolved ~1.2-to-5.2-order bracket), not
-   whether detection is plausible.
+   derivation** — and per §5, the analogy is now withdrawn as a
+   quantitative forecast specifically because it was never checked against
+   the one rigorous result in a comparable regime (`two_field_action_
+   closure.py` §3's exact zero). The actual modified Poisson equation
+   implied by P1's action has not been solved for its source term.
+2. **Does not address scale-dependence** — this concern survives
+   independently of §5's correction: even a properly re-derived mean-field
+   coupling would likely be `k`(wavenumber)-dependent, not a flat number.
+3. **Does not change the qualitative verdict, but does change the
+   quantitative one.** "Undetectable at Euclid-class precision" likely
+   survives for the mean-field trio regardless of how the missing
+   calculation resolves (§5) — but "the number is `~7×10⁻⁶`" does not
+   survive, and should not be cited as this project's forecast.
 4. Per NO_AUTHOR_ERROR: this is entirely about how to correctly apply this
    project's own reconstruction (P1) to different observable types — not a
    claim about TJB's own theory or intentions.
 
+## Skeptic verdict (Step 8a, Context Asymmetry — claim + the four cited
+source files, no session history)
+
+Two separate verdicts, not merged:
+
+```
+(1) Pairwise-vs-mean-field observable classification: WEAKENED
+    -- real intuition for the pairwise side (kSZ, periastron -- unaffected);
+    does not survive as a clean binary for the mean-field side, since (a)
+    the bispectrum is itself parametrized by triangle configurations with
+    specific scales, not "no separation anywhere" -- the skeptic's own
+    example: at RSD-relevant k~0.05-0.3 h/Mpc, r_A*k ~ 0.05-0.3, neither
+    Reading 1's 1e-2 nor Reading 2's "1" -- and (b) this file's own S2
+    scale-dependence caveat already contradicts treating Reading 1 and
+    Reading 2 as answers to different questions rather than limits of one
+    scale-dependent coupling.
+(2) The specific mean-field number (dG_eff/G~7e-6): FALSIFIED as a
+    quantitative forecast. Obtained by dividing Reading 1 by r_A/r_sep, not
+    derived; conflicts with two_field_action_closure.py's own directly-
+    computed EXACT ZERO in the closest comparable regime (never cited or
+    reconciled); conflicts with FINDING_P4_two_field_does_not_rescue_
+    background.md S7's own statement that this completion's new physics
+    lives at SECOND order, not the FIRST-order fsigma8/E_G this file
+    assigned Reading 2 to (never addressed). Corrected to UNDETERMINED (S5).
+```
+
+**Cheapest next check the skeptic named, not yet done:** write the linear-
+order Euler equation with P1's k-sector source term, redo the SAME
+orientation-averaging calculation `two_field_action_closure.py` §3 already
+did for the background, one perturbative order higher. A bounded symbolic
+calculation, not a survey pipeline — this is what would actually replace
+"undetermined" with a real number.
+
 ## Reproduction
 
 ```python
+# Reading 1 -- pairwise (kSZ, periastron; unaffected by this correction)
 beta_d = 2
-k_over_mc2_cluster = 1.7e-6
 table_value_per_betad = 3.5e-8  # FINDING_unsuppressed_observable_periastron.md, WITH r_A/r_sep
-r_A_over_rsep = 1.0e-2
-
-# Reading 1 -- pairwise (kSZ, periastron; unchanged from P6/P7)
 ell_d_over_r_pairwise = beta_d * table_value_per_betad          # -> 7.0e-8
 
-# Reading 2 -- mean-field (fsigma8/RSD, E_G, bispectrum)
-ell_d_over_r_meanfield = ell_d_over_r_pairwise / r_A_over_rsep  # -> 7.0e-6
-
-euclid_target = 1e-2
-import math
-print("mean-field, orders below Euclid:", math.log10(euclid_target / ell_d_over_r_meanfield))
+# Reading 2's "7.0e-6" for mean-field observables is WITHDRAWN (S5) -- do
+# not reproduce it as a forecast. The arithmetic (dividing by r_A/r_sep)
+# still runs, but the result is not a validated prediction:
+r_A_over_rsep = 1.0e-2
+ell_d_over_r_meanfield_UNVALIDATED = ell_d_over_r_pairwise / r_A_over_rsep  # -> 7.0e-6, NOT a forecast
 ```
