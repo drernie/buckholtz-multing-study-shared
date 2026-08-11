@@ -125,6 +125,21 @@ counts (§4).** It uses only the part of `k` that is textually beyond dispute
 — TJB's own explicitly-discussed rotational candidate — and an observed,
 not estimated, pulsar spin period. `β_d=2` is excluded by this alone.
 
+**[Caveat added 2026-08-12, found by the skeptic review of
+`FINDING_P14_kappa_normalization_unfixed.md`, not by this file's own
+analysis.]** `u_A=0.23 m` above is computed as `(k_A/m_Ac²)·r_A` — i.e.
+with the overall coupling constant `κ` implicitly set to `1`, never stated
+as an assumption. `P14` found `κ`'s absolute scale is not fixed anywhere
+in this project. **This bound is therefore a joint constraint on
+`(κ,β_d)`, not a pure `β_d` bound**: at `κ=1` (as computed), `β_d≲0.12`
+excludes `β_d=2` by `~1.2` orders; at `κ≈0.06` instead, the bound becomes
+`β_d≲2.0`, landing almost exactly on this project's own derived value
+rather than excluding it. The exclusion stated above should be read as
+*"β_d=2 is excluded if κ~O(1); the exclusion weakens as κ decreases, and
+vanishes near κ~0.06"* — not as an unconditional statement about `β_d`
+alone. Nothing here says which `κ` is correct; `κ` remains unfixed
+project-wide (see P14).
+
 **Open housekeeping item, not fixed here:** `FINDING_unsuppressed_observable_
 periastron.md`'s own `2β_d(u_A+u_P)` convention and `FINDING_two_charge_
 completion.md`'s `ℓ_d=2(u_A+u_P)` (implying `β_d=2` when matched to MULTING's
