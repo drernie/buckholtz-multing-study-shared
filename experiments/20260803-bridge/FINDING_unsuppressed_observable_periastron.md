@@ -10,6 +10,21 @@ J0737-3039 GR prediction reproduced to 0.04 %
 
 ## 1. Why the suppression exists, and what it selects
 
+**[NOTE added 2026-08-11, cross-referenced from P7 — read before using this
+formula for an asymmetric pair.]** `ℓ_d/r = 2β_d(k/mc²)(r_A/r_sep)` below
+assumes **equal contributions from both bodies** (`u_A=u_P=u`, so per
+MULTING's own Eq. (15), `ℓ_d=β_d(u_A+u_P)=β_d·2u`). This is a reasonable
+simplification for the roughly-equal-mass systems in the table just below
+(clusters, Sun-Earth as an order-of-magnitude check, comparable-mass
+binaries), but is NOT a general identity — for an asymmetric pair (e.g.
+J0737-3039's rotational-only case in §4, where only one pulsar spins fast
+enough to matter), use MULTING's own un-doubled form, `ℓ_d/r=β_d(u_A+u_P)/r`,
+with each body's `u_i` computed separately. See
+`FINDING_P7_k_definition_resolved_from_corpus.md` §3 for the corrected
+rotational-only bound (`β_d<0.12`, not `<0.060` as this file's own §4 table
+originally implied by applying the symmetric-body convention to an
+asymmetric pair).
+
 In every isotropically-smoothed cosmological observable the k-tiers appear as
 `ℓ_d/r` and `ℓ_q²/r²` corrections to the monopole. With
 `ℓ_d/r = 2β_d(k/mc²)(r_A/r_sep)`, the suppression is the product of two small
@@ -69,6 +84,15 @@ double pulsar is **~24 orders of magnitude more constraining in absolute length*
 9 orders in the dimensionless `ℓ_d/a`.
 
 ## 4. What the bound means — and the one honest ambiguity
+
+**[NOTE added 2026-08-11]** The `2β_d(u_A+u_B)` below is the symmetric-body
+form (§1's note); the table's own numbers implicitly assumed comparable
+`u_A≈u_B`. For the rotational-only row specifically, J0737-3039's two
+pulsars are NOT comparable (one recycled/fast, one not) — `FINDING_P7_
+k_definition_resolved_from_corpus.md` §3 redoes that one row with the
+un-doubled, per-body-correct form and gets `β_d<0.12`, not the `1.2e-5`→
+`6.0e-2` pattern implied here. The virial/binding-energy row (both bodies
+comparably degenerate/bound) is less affected by this distinction.
 
 `ℓ_d = 2β_d(u_A+u_B)` with `u = (k/c²m)·r_A`. For a neutron star the natural analogue
 of the cluster's thermal `k` depends on which internal energy plays the role:
