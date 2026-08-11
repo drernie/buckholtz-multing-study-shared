@@ -193,7 +193,28 @@ INDEPENDENT INPUT, consumed      : 548-cluster catalogue (MCXC-I+PSZ2), CHEX-MAT
 OPEN, and load-bearing           : the single definition of k -- every unresolved
                                    test in Sec 4 traces back to it. Resolving it
                                    does NOT rescue the killed mass-scaling claim
-                                   (independent failure mode, see Sec 5 note)
+                                   (independent failure mode, see Sec 5 note).
+                                   [PARTIALLY RESOLVED 2026-08-11, from the
+                                   primary source directly, not from TJB --
+                                   see FINDING_P7_k_definition_resolved_from_
+                                   corpus.md. "k is strictly thermal" (the
+                                   escape hatch that would zero the pulsar
+                                   bound) has NO textual support -- the
+                                   preprint explicitly discusses ROTATION as
+                                   a candidate source of k, arguing only that
+                                   thermal motion dominates for the CLUSTER
+                                   case specifically. Using only the
+                                   pulsars' OWN measured spin period (the
+                                   least contestable component), beta_d=2
+                                   (this project's own derived value) is
+                                   excluded by the pulsar bound by ~1.5
+                                   orders of magnitude, with no dependence
+                                   on any disputed physics. One narrower
+                                   question remains open: whether TJB's
+                                   "ground state" baseline is classical or
+                                   quantum-mechanical (affects only whether
+                                   the exclusion is ~1.5 or ~5 orders, not
+                                   whether beta_d=2 survives either way).]
 UNKNOWN, precondition missing    : whether this is a covariant, cosmologically
                                    well-posed field theory beyond the action's
                                    flat-space, fixed-background form (audit S11)
