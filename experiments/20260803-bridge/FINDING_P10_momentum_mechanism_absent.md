@@ -18,6 +18,19 @@ computation needed, this is a structural/provenance check (Gate 1/2 in
 spirit: what does the artifact actually contain, not what it is assumed to
 contain).
 
+**[CORRECTED after skeptic review, same day.] Verdict 1 (the raw grep
+result and the static/internal characterization of `r_i`) is CONFIRMED-REAL
+— independently re-verified symbol-by-symbol, including aliases the grep
+pattern would have missed (`u`-ratios, `beta`, `gamma`, `boost`, `Lorentz`).
+Verdict 2 (framing this as a "third checked-and-absent channel," parallel
+in kind to P4 and P9) is WEAKENED — the skeptic found `two_charge_completion.py`
+contains no time coordinate at all (a pure static Coulomb sum over fixed
+positions), so the negative result is close to a predictable consequence
+of the code's own structure, not a substantive mechanism check on the level
+of P4 (which identified what mechanism the code DOES use) or P9 (which ran
+an actual calculation). See "Skeptic verdict" section below; §3's framing
+is corrected accordingly.**
+
 ---
 
 ## 1. The question, precisely
@@ -91,8 +104,9 @@ field-theoretic construction, as actually written.** The dipole moment
 `p_i` is built entirely from static, internal, body-frame quantities
 (`k_i`, `r_i`) — confirmed by direct grep, not just by reading.
 
-This closes a **third** candidate channel for the mechanism P9's skeptic
-review said was missing, joining:
+**[SUPERSEDED framing — see the corrected paragraph after this one.]**
+~~This closes a **third** candidate channel for the mechanism P9's skeptic
+review said was missing, joining:~~
 
 - P4: gradient-of-Φ sourcing — checked, **absent** from the current
   construction (two live, *unbuilt* escape routes named: non-gradient
@@ -100,8 +114,27 @@ review said was missing, joining:
 - P9 (via its own skeptic review): isotropic orientation-averaging of
   pairwise-radial alignment — **gives zero**, no additional correlation
   shown to arise from density modulation alone.
-- P10 (this finding): velocity/momentum coupling — **absent** from the
-  current construction, grep-verified.
+- ~~P10 (this finding): velocity/momentum coupling — **absent** from the
+  current construction, grep-verified.~~
+
+**Corrected framing (post-skeptic):** P10 is not parallel in kind to P4 or
+P9. P4 identified what mechanism the code *does* use in place of the ruled-
+out one, and named specific live alternatives. P9 ran an actual numerical
+calculation, independently re-derived to 6 significant figures. P10 checked
+whether one specific, lexically-searchable candidate (velocity/momentum
+coupling) is present in a code base that was never built with such a term
+in mind — `two_charge_completion.py` computes a purely **static** Coulomb
+pair-energy sum over fixed positions, with no time coordinate anywhere in
+the code. A grep-confirmed absence of velocity terms in code that contains
+no dynamics at all is close to a predictable consequence of the code's own
+structure, not a substantive test on the same footing as P4's mechanism
+identification or P9's real computation. What P10 actually establishes is
+narrower: **one specific candidate mechanism (velocity/momentum coupling)
+has not been deliberately built into this project's construction, and it
+remains genuinely unknown whether such a construction is even possible
+while respecting the `A↔B` mirror-symmetry constraint that fixed the
+existing radial dipole orientation** — a scope statement about what exists,
+not a mechanism ruled out by testing it.
 
 **Important scope limit, exactly parallel to P4's own escape-route framing:**
 this shows the mechanism is **not present in the construction as built**, not
@@ -133,6 +166,35 @@ finding does not address.
    two-field/two-charge completion built in P1), not a claim about TJB's own
    unpublished theory.
 
+## Skeptic verdict (context-blind, 2026-08-12)
+
+Two separate verdicts, per Step 8a / Context Asymmetry (skeptic given only
+this file, the two source files, and the two cited prior findings — no
+session history):
+
+- **Empirical content** (grep result; `r_i` characterized as static/
+  internal, not kinematic): **CONFIRMED-REAL.** Independently re-verified
+  symbol-by-symbol, checking aliases the grep pattern could have missed
+  (`u`-ratios, `beta`, `gamma`, `boost`, `Lorentz`, dot-notation). Every
+  symbol in both files is a static geometric quantity, a mass, a charge, a
+  static structural coupling, or series-expansion bookkeeping. One
+  subtlety raised and then dismissed by the skeptic itself: a genuinely
+  *covariant* reading of `p^μ` (4-vector, not 3-vector) would carry
+  implicit boost-dependence in a lab frame via `dτ=dt·√(1−v²/c²)` — but the
+  code never implements the covariant action, only static pair energies at
+  fixed positions, so this does not affect the verdict on the code as
+  actually written.
+- **Framing** ("closes a third checked-and-absent channel," parallel to P4
+  and P9): **WEAKENED.** `two_charge_completion.py` contains no time
+  coordinate at all — a pure static Coulomb sum over fixed positions — so
+  the negative grep result is close to what any competent reader would
+  predict from the code's visible structure without running it. P4 and P9
+  both did substantive work (mechanism identification; an actual
+  computation) that P10 does not match. The finding's own §"What this does
+  NOT establish" already partially conceded this, but the top-line "third
+  channel" summary did not carry that caveat with it — corrected in §3
+  above.
+
 ## Reproduction
 
 ```bash
@@ -143,4 +205,5 @@ grep -inE "veloc|momentum|\bv_[a-z]|xdot|\\\\dot|u\^mu|four-velocity|peculiar" \
 
 Exit code 1 (no output) on both files is the entire empirical content of
 this finding — a negative grep result, tool-verified, not a claim from
-memory.
+memory. **What that empirical fact is worth is narrower than first framed
+— see "Skeptic verdict" above and the corrected §3.**
