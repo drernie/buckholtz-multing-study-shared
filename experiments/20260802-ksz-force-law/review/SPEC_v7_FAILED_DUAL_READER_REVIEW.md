@@ -1,3 +1,43 @@
+**[CORRECTION, added after this file was written, same session]** Reading
+`PARK_v7_awaiting_second_reader.md` (which this review did NOT have access
+to at write time, by design — context asymmetry) after the fact surfaced
+two things this file should say plainly, not bury:
+
+1. **This reader does not satisfy the revival condition on file.**
+   `PARK_v7_awaiting_second_reader.md`'s own Independent Verification
+   Strength Ladder table rates "same model, isolated context" as
+   **Weak–Medium** — explicitly below "different model" and
+   "independently-written implementation", which are the two conditions
+   actually named as sufficient to resume. `Agent(skeptic)` run as this
+   review's second reader is the SAME tier as the ROUND6 skeptic run
+   already on file (which found only LABELS-01) — not a genuinely
+   independent reader in the sense this track's own gate structure
+   requires. The 20 findings below are real (3/3 spot-checked against the
+   files directly) and DO block `BLIND_C` on their own evidentiary merit —
+   but they do not, by themselves, satisfy "DUAL_READER_REVIEW passed" OR
+   let this track claim a proper second reading has now happened. A
+   genuinely different-tier reader is still needed after these findings are
+   fixed.
+2. **No reference implementation of v7's specific `SeedSequence`-keyed
+   scheme exists to ground a fix.** The actual scripts that produced the
+   already-replicated kSZ result (`task1_full_kernel_refit.py`,
+   `task3_xi_covariance.py`, `task345_stats.py`, `recheck_onesided.py`,
+   `gate1_fine_coverage.py`) all use a single fixed `np.random.default_rng(
+   <one int>)` call — none implement `key_fields`, `rootCal/rootVal/
+   rootDual`, or a `SeedSequence`-based per-node derivation, and grepping
+   all of them for `Qobs`/`Q95` returns zero hits. `v7`'s elaborate keyed-
+   seeding formalism is a SEPARATE, more rigorous specification effort that
+   was never implemented against real code — meaning the 7-item fix list
+   below cannot be filled in by extracting conventions from existing code;
+   each item would have to be AUTHORED from scratch. Given this session's
+   own repeated rule against hand-deriving technical constructions under
+   time pressure (see the NCG thread's identical caution about the
+   Spin(8) triality formula), that authorship is explicitly NOT attempted
+   in this round — recorded as the honest stopping point, not silently
+   skipped.
+
+---
+
 # Spec v7 — DUAL_READER_REVIEW, second reader — FAILED (2026-08-11)
 
 **Context asymmetry (per falsification-ladder.md § Context Asymmetry Rule):**
