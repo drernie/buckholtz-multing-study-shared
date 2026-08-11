@@ -255,6 +255,34 @@
     border-top: 1px solid var(--rule);
     font-family: var(--mono); font-size: 0.76rem; color: var(--ink-dim); line-height: 1.7;
   }
+
+  /* ---- print / PDF ---- */
+  @media print {
+    :root {
+      --paper: #ffffff; --paper-raised: #f2f4f1; --ink: #182225; --ink-dim: #4a5854;
+      --rule: #c7cfc9; --rule-strong: #a9b4ac;
+      --accent-ok: #2f6f62; --accent-ok-bg: #dfe9e4;
+      --accent-warn: #97672a; --accent-warn-bg: #ede2ce;
+      --accent-bad: #9c4a34; --accent-bad-bg: #ecdfd9;
+    }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .topbar, .nav-drawer, .nav-scrim, .toc-toggle { display: none !important; }
+    body { font-size: 11.5pt; }
+    .hero { padding-top: 0.6rem; }
+    .part-divider { break-before: page; margin-top: 0; padding-top: 0.4rem; }
+    .part-divider:first-of-type { break-before: avoid; }
+    .chapter { break-inside: avoid-page; padding-top: 0.4rem; padding-bottom: 0.4rem; }
+    .chapter h3, .chapter-body h2 { break-after: avoid; }
+    figure.chart { break-inside: avoid-page; }
+    figure.chart img { background: #fff; }
+    a { color: var(--ink); text-decoration: none; }
+    a[href^="#"]::after { content: ""; }
+    .colophon { break-before: page; }
+  }
+  @page {
+    size: A4;
+    margin: 20mm 16mm;
+  }
 </style>
 
 <input type="checkbox" id="toc-check">
