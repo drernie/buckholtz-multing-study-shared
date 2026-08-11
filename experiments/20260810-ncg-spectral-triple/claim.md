@@ -330,6 +330,123 @@ K4 (triality как 1⊗t, U_t D U_t⁻¹=D)          : ВСЁ ЕЩЁ НЕ ПР�
 (явный `S₃`-автоморфизм + K4) остаётся однозначно открытым, не подмят под уже
 достигнутый прогресс.
 
+## K4 — explicit S₃ generator found and verified (2026-08-10, session continuation)
+
+**Reopened after "PAUSED" per explicit user instruction ("продолжай NCG-ветку
+до K4").** Two prior attempts (`triality_map_explicit.py`,
+`explicit_s3_automorphism.py`) each made real, independently-verified
+progress but did not produce a working order-3 operator — the honest
+terminal status below recorded this as needing either an external literature
+formula or a comparably large fresh Jordan-algebra effort. Neither was used.
+Instead: an **exhaustive finite search**, not a recalled formula.
+
+**Why a search is safe here where hand-derivation was not.** Conjugating a
+real basis vector `e_k` is only a sign (`+1` for `k=0`, `−1` otherwise), so
+the space of candidate "permutation of the three argument roles × which
+roles get conjugated" symmetries of the trilinear form is **finite**:
+`6 × 8 = 48` candidates, checkable exhaustively against the algebra with zero
+reliance on memory of non-associative-octonion identities — exactly the
+class of derivation this project's rules warn against trusting by hand.
+
+**A representation-consistency gap found and closed first.**
+`rebuild_ob11_spinor_lift.py`/`variant_c_...py` build `Γ_chiral` via
+Pauli-tensor Jordan-Wigner (**complex** 16-dim Dirac spinors, chirality
+eigenspaces 8-**complex**-dim). `explicit_s3_automorphism.py` builds `Γ`
+directly from octonion multiplication (**real** 16-dim `O⊕O`, the
+Majorana-Weyl real form specific to 8 Euclidean dimensions). These are
+different representations — before building on the octonion-direct `Γ`,
+Variant C's key finding (su(3) commutes with `Γ_chiral`) was **re-verified
+independently in this representation** (`k4_explicit_s3_via_conjugate_twist.py`
+Stage 1a): confirmed, residual `0.00e+00`, not borrowed unchecked.
+
+**A bug caught mid-construction, not hidden.** The first version of the
+search went through an intermediate re-indexed tensor `R[p,q,r]=C8[q,r,p]`
+as a translation layer. That translation had an index-order error: the
+candidate it called "tautological" was NOT (residual `2.0` on direct check),
+and the candidate it called "the real 3-cycle" did NOT reproduce the
+trilinear form on random vectors either (residual `~11`) — both were
+artifacts of the translation bug, not of the algebra. Fixed by removing the
+layer entirely and searching **directly** on the operator-level trilinear
+form, checked on **random, non-basis vectors from the start** (20 independent
+trials per candidate), so no translation step remained to get wrong.
+
+**Result, all residuals `0.00e+00`:**
+
+```
+6 of 48 candidates match exactly -- the full S_3 group (identity, 3
+transpositions, 2 three-cycles), not one lucky fit.
+
+Order-3 generator selected: v,s,c -> s,c,v  (cyclic), conjugate the s and c
+legs, leave v unconjugated.
+
+U (24x24, block-orthogonal on O(+)O(+)O = v(+)s(+)c) built directly from
+this relation:
+  U^3 = I                                    residual 0.00e+00
+  U orthogonal (U^T U = I)                   residual 0.00e+00
+  [U, su(3)_diagonal] = 0, all 8 generators  residual 0.00e+00
+```
+
+**`U` is a genuine automorphism of `(H_generation, su(3)-action)`** — not
+merely of the bare trilinear form. This is the piece named as the single
+hardest remaining obstacle across two prior rounds; it is now built.
+
+**K4 itself, reduced to a clean, D_matter-independent question.** For the
+standard ansatz `D_full = D_matter⊗I + γ_matter⊗Y_gen` (the same one used
+throughout `main_experiment_A_Dfull_triality.py`) and
+`U_t = I_matter⊗U`, the covariance condition `U_t D_full U_t⁻¹ = D_full`
+reduces **exactly** to `U Y_gen U⁻¹ = Y_gen` — independent of whatever
+`D_matter` turns out to be, so it is testable now without building the full
+matter-sector apparatus for Variant C (a separate, larger undertaking, named
+below, not attempted here).
+
+```
+dim{Y_gen symmetric, 24x24 : [U,Y_gen]=0} = 100  (of 300 total)
+  proportional to identity (trivial)              : 0
+  genuinely nontrivial (real cross-leg mixing)     : 100 -- ALL 100
+```
+
+**Sanity check on the "100," not left as a bare assertion.** `U`'s spectrum
+is exactly `{1 (mult 8), ω (mult 8), ω̄ (mult 8)}` (`ω = e^{2πi/3}`) — three
+equal eighths, the multiplet structure triality demands. The symmetric
+commutant of a normal operator with this spectrum is
+`8·9/2 (real block) + 8² (Hermitian block on the ω/ω̄ pair) = 36+64 = 100`,
+**exactly matching** the computed dimension — confirming the number is the
+structurally-expected one, not a numerical fluke. And a direct check: **all
+100** solutions have nonzero off-diagonal (cross-`v/s/c`-leg) content — none
+are trivial per-leg-independent operators; the triality symmetry genuinely
+permits real generation-mixing, unlike the killed main branch's forced
+`Y=0`.
+
+**Verdict on K4 (scoped precisely):**
+
+```
+Explicit S_3 triality generator (OB11(iii))   : BUILT AND VERIFIED,
+                                                residuals 0.00e+00 throughout
+K4, reduced to the standard D_full ansatz      : NOT a forced degeneracy --
+                                                100 nontrivial covariant
+                                                directions exist, all with
+                                                genuine cross-leg mixing
+K4 in FULL generality (any D_full, not just    : NOT TESTED -- would need a
+this ansatz; full first-order/order-zero        constructed D_matter/gamma_
+axioms on the combined H_full)                  matter apparatus for Variant
+                                                C specifically, not built in
+                                                this or any prior round
+```
+
+**What this does NOT establish.** (1) Not a claim that `H ≃ H_matter ⊗
+H_generation` is fully established for a complete spectral triple — only
+that the specific covariance condition K4 names does not force degeneracy
+under the standard ansatz. (2) The `D_full` ansatz used is the SAME one that
+was already killed for the SU(3)-triplet branch (`main_experiment`) — its
+appropriateness for Variant C's genuinely different `H_generation` structure
+is assumed by analogy, not independently justified. (3) Order-zero and
+first-order conditions on the FULL `H_full = H_matter ⊗ H_generation`,
+with `D_matter` actually specified, have not been checked for Variant C —
+this result is upstream of that check, not a substitute for it.
+
+**Script:** `k4_explicit_s3_via_conjugate_twist.py`, 6 stages + 1 diagnostic,
+ruff clean.
+
 ## Закрытие раунда — терминальный статус (2026-08-10)
 
 **Вторая попытка построить явный `S₃` — Gate 1 первым делом, не сработало.**
@@ -374,3 +491,41 @@ K4 (triality как 1⊗t, U_t D U_t⁻¹=D)          : ВСЁ ЕЩЁ НЕ ПР�
 названной причиной у каждой, одна пережила с точно названным недостающим
 куском. Ни одна проверка не была пропущена ради удобного вывода; ни один
 частичный успех не выдан за полный.
+
+---
+
+## REOPENED (2026-08-10, продолжение сессии) — явный `S₃` построен
+
+Статус `PAUSED` выше был закрыт по явной инструкции пользователя
+(«продолжай NCG-ветку до K4»). Ни (a), ни (b) из условий оживления не
+понадобились — вместо принесённой извне формулы или йорданова захода
+использован **исчерпывающий конечный перебор** (сопряжение базисного
+октониона — это просто знак, поэтому пространство кандидатов
+«перестановка × маска сопряжения» конечно, `6×8=48`, и проверяемо без
+опоры на память о неассоциативных тождествах). Полный отчёт, включая
+пойманный по пути баг индексации в первой версии перебора, — в разделе
+«K4 — explicit S₃ generator found and verified» выше.
+
+```
+ОБНОВЛЁННЫЙ ИТОГ (перекрывает строки "явный S₃" и "K4" из блока выше):
+
+  явный S₃-автоморфизм (Вариант C)   : ПОСТРОЕН И ПРОВЕРЕН — U^3=I, U
+                                       ортогонален, [U,su(3)]=0, все
+                                       невязки 0.00e+00 (перебор, не
+                                       формула из памяти)
+  K4 (triality как 1⊗t)              : ЧАСТИЧНО ОТВЕЧЕН — при стандартном
+                                       анзаце D_full=D_matter⊗I+γ_matter⊗Y_gen
+                                       условие сводится к [U,Y_gen]=0;
+                                       найдено 100 нетривиальных
+                                       ковариантных направлений (из 300),
+                                       ВСЕ со смешиванием между v/s/c-ногами
+                                       — не тривиальный K2-подобный запрет
+                                       — но ПОЛНЫЙ K4 (произвольный D_full,
+                                       полные order-zero/first-order на
+                                       H_matter⊗H_generation) не проверен
+
+СТАТУС ТРЕДА: живой, не PAUSED. Единственный самый тяжёлый недостающий
+кусок закрыт. Следующий узкий шаг (не начат): построить D_matter/γ_matter
+для Варианта C конкретно и прогнать полные order-zero/first-order аксиомы
+на H_full = H_matter⊗H_generation — тогда K4 проверяется без анзаца.
+```
