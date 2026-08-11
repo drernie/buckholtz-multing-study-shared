@@ -166,7 +166,7 @@ def fig_html(slug: str) -> str:
     cap = FIG_CAPTIONS[slug]
     return (
         '<figure class="chart">'
-        f'<img src="data:image/png;base64,{b64}" alt="{html.escape(cap)}" loading="lazy">'
+        f'<img src="data:image/png;base64,{b64}" alt="{html.escape(cap)}">'
         f"<figcaption>{html.escape(cap)}</figcaption>"
         "</figure>"
     )
