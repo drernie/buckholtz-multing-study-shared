@@ -207,14 +207,18 @@ OPEN, and load-bearing           : the single definition of k -- every unresolve
                                    pulsars' OWN measured spin period (the
                                    least contestable component), beta_d=2
                                    (this project's own derived value) is
-                                   excluded by the pulsar bound by ~1.5
-                                   orders of magnitude, with no dependence
-                                   on any disputed physics. One narrower
-                                   question remains open: whether TJB's
-                                   "ground state" baseline is classical or
-                                   quantum-mechanical (affects only whether
-                                   the exclusion is ~1.5 or ~5 orders, not
-                                   whether beta_d=2 survives either way).]
+                                   excluded by the pulsar bound by ~1.2
+                                   orders of magnitude [CORRECTED after
+                                   skeptic review -- was misstated ~1.5,
+                                   a factor-of-2 convention slip, see
+                                   FINDING_P7's own correction note], with
+                                   no dependence on any disputed physics.
+                                   One narrower question remains open:
+                                   whether TJB's "ground state" baseline is
+                                   classical or quantum-mechanical (affects
+                                   only whether the exclusion is ~1.2 or ~5
+                                   orders, not whether beta_d=2 survives
+                                   either way).]
 UNKNOWN, precondition missing    : whether this is a covariant, cosmologically
                                    well-posed field theory beyond the action's
                                    flat-space, fixed-background form (audit S11)

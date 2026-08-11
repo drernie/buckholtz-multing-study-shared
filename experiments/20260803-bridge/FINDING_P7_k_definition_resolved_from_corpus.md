@@ -15,6 +15,23 @@ already in this project's possession, per NO_AUTHOR_ERROR (this evaluates
 THIS PROJECT'S OWN derived `β_d=2`, not a claim about what TJB himself
 intends or uses).
 
+**[CORRECTED after context-blind skeptic review, Step 8a — read before the
+rest of this file.]** The core conclusion (the "strictly thermal" escape
+hatch does not survive) is **CONFIRMED**, and the skeptic found a passage
+this file had missed that makes §2's textual case stronger, not weaker (now
+added). One real numeric issue was found: §3's "~1.5 orders of magnitude"
+figure inherited a factor-of-2 inconsistency between this project's own
+`FINDING_unsuppressed_observable_periastron.md` (uses `ℓ_d=2β_d(u_A+u_P)`)
+and MULTING's own Eq. (15) as derived directly (`ℓ_d=β_d(u_A+u_P)`, no
+extra 2) — and for J0737-3039 specifically, only ONE of the two neutron
+stars spins fast enough (`P=22.7`ms) for its rotational energy to matter;
+the other (`P≈2.77`s) contributes a rotational KE roughly `10⁴`× smaller,
+negligible. Using the Eq.-15-consistent formula with the correct
+single-dominant-spin sum, the honest figure is **~1.2 orders of magnitude**,
+not ~1.5. Fixed in §3 below. The qualitative verdict (`β_d=2` excluded) is
+unchanged either way — this is a correction to the exact margin, not to the
+direction of the finding.
+
 ---
 
 ## 1. What the preprint actually says about k — read directly, not from a summary
@@ -44,6 +61,17 @@ pymupdf-clean.md`, quoted verbatim:
 > kinetic energies of bulk linear motions of gas and galaxies are generally
 > large [80-82]."
 
+**[ADDED after skeptic review — missed on the first pass, and the single
+strongest supporting sentence available.]** Lines 660-661, an aside
+immediately after the "ground-state energy" definition, run the thermal and
+rotational channels in explicit parallel:
+> "(We note, as an aside, that one might consider a notion that it takes
+> energy to heat up **or spin up**, from the state that associates with
+> E00,oA, object-A.)"
+TJB himself names "spin up" alongside "heat up" as an example of leaving the
+ground state. If rotation were excluded from `k` by definition, this aside
+would name only "heat up."
+
 ## 2. What this settles, directly, no interpretation required
 
 **"k is strictly thermal energy, by definition" has no textual support.**
@@ -66,26 +94,45 @@ already discussed in the text, and no resolution of any harder ambiguity
 
 ## 3. The clean bound — using only the uncontestable rotational component
 
-`FINDING_unsuppressed_observable_periastron.md` §4 already computed, from
-the double pulsar's OWN measured spin period (`P=22.7` ms, one of the two
-J0737-3039 neutron stars — an observed quantity, not an estimate), the
-rotational-kinetic-energy-only bound:
+**[CORRECTED after skeptic review.]** `FINDING_unsuppressed_observable_
+periastron.md` §1 defines `ℓ_d/r=2β_d(k/mc²)(r_A/r_sep)` — with a leading
+factor of 2 that comes from assuming **equal contributions from both bodies**
+(`u_A=u_P=u`, so `u_A+u_P=2u`), reasonable for the roughly-equal-mass systems
+in that section's survey table. MULTING's own Eq. (15), derived directly, has
+no such built-in factor: `ℓ_d/r=β_d(u_A+u_P)`, general for any two bodies.
+For the ACTUAL J0737-3039 rotational-only case, the two bodies are NOT
+symmetric: only pulsar A spins fast enough (`P=22.7`ms) to matter; pulsar B
+(`P≈2.77`s) has a rotational kinetic energy roughly `10⁴`× smaller —
+negligible. So `u_A+u_P≈u_A` here, not `2u_A`, and the equal-body "×2"
+convention overstates the true sum by a factor of 2 for this specific pair.
 
 ```
-rotational energy only (P = 22.7 ms):  u_NS = 0.23 m   ->   beta_d < 6.0e-2
+u_A (rotational, P=22.7ms, from FINDING_unsuppressed_observable_periastron.md) = 0.23 m
+u_P (rotational, P~2.77s, other pulsar)                                        ~ negligible
+
+Eq.-15-consistent bound:  beta_d < 0.055m / (2 * 0.23m) = 0.12    (not 0.060)
 ```
 
 Against this project's own derived (not fitted) `β_d=2` (`FINDING_two_charge_
 completion.md`, zero free parameters after the overall coupling constant):
 
 ```
-beta_d / bound = 2 / 6.0e-2 = 33.3   ->   ~1.5 orders of magnitude EXCLUDED
+beta_d / bound = 2 / 0.12 = 16.7   ->   ~1.2 orders of magnitude EXCLUDED
 ```
 
 **This does not require resolving whether degenerate/Fermi motion also
 counts (§4).** It uses only the part of `k` that is textually beyond dispute
 — TJB's own explicitly-discussed rotational candidate — and an observed,
 not estimated, pulsar spin period. `β_d=2` is excluded by this alone.
+
+**Open housekeeping item, not fixed here:** `FINDING_unsuppressed_observable_
+periastron.md`'s own `2β_d(u_A+u_P)` convention and `FINDING_two_charge_
+completion.md`'s `ℓ_d=2(u_A+u_P)` (implying `β_d=2` when matched to MULTING's
+un-doubled Eq. 15 form) are not obviously consistent with each other as
+general statements — the "×2" is a reasonable simplification specific to
+equal-body systems, not a general identity, and the two files should be
+reconciled explicitly rather than left to look inconsistent. Flagged for a
+future pass; does not change this finding's verdict.
 
 ## 4. What remains genuinely open — and why it does not change the verdict
 
@@ -120,11 +167,25 @@ anything in the corpus** — this is a genuine interpretive gap, not
 something a closer reading can close. Flagged `[UNKNOWN]`, not resolved.
 
 **This ambiguity does not matter for the bottom line.** §3's rotational-only
-bound already excludes `β_d=2` by ~1.5 orders of magnitude without touching
+bound already excludes `β_d=2` by ~1.2 orders of magnitude without touching
 this question at all. The degenerate-motion question only affects whether
-the exclusion is ~1.5 orders (rotational-only, airtight) or ~5 orders
+the exclusion is ~1.2 orders (rotational-only, airtight) or ~5 orders
 (rotational + degenerate, if "ground state" means classical rest) — either
 way, `β_d=2` does not survive.
+
+**[ADDED after skeptic review] A possible, not certain, resolution of this
+ambiguity.** The skeptic noted a coherent-vs-statistical distinction worth
+naming: TJB's own examples (heating, spinning, bulk gas/galaxy motion) are
+all CLASSICAL, ORDERED-OR-DISORDERED-BUT-CLASSICAL motion. Quantum
+degeneracy pressure is a fundamentally different kind of thing — a
+zero-point, statistically-forced motion with no classical analogue in
+anything TJB discusses. A defensible narrow reading — "k includes any
+classical motion (thermal or coherent/rotational), but the quantum-
+mechanical ground state itself is the zero point, not something to subtract
+a further classical-looking baseline from" — would keep rotation IN (§2-3)
+while keeping degenerate motion OUT, without needing "ground state" to mean
+one specific formal thing. This is offered as a plausible sharpening, not a
+resolution — still genuinely `[UNKNOWN]` which reading TJB intends.
 
 ## 5. Verdict
 
@@ -138,8 +199,10 @@ way, `β_d=2` does not survive.
 Rotational kinetic energy counts as k         : YES, unambiguous on TJB's
                                                own explicit terms.
 beta_d=2 (this project's own derived value)
-  vs pulsar bound, rotational-only            : EXCLUDED by ~1.5 orders of
-                                               magnitude (beta_d<6.0e-2),
+  vs pulsar bound, rotational-only            : EXCLUDED by ~1.2 orders of
+                                               magnitude (beta_d<0.12,
+                                               Eq.-15-consistent, corrected
+                                               after skeptic review),
                                                using only an OBSERVED pulsar
                                                spin period, no disputed
                                                physics estimate needed.
@@ -165,9 +228,46 @@ Remaining open question                       : whether TJB's "ground state"
 `FINDING_unsuppressed_observable_periastron.md` §4 left open does not
 survive close reading of the primary source.** This project's own derived
 `β_d=2` (P1, two-charge completion) is excluded by the double-pulsar bound,
-by at least ~1.5 orders of magnitude on the most conservative, textually
+by at least ~1.2 orders of magnitude on the most conservative, textually
 uncontroversial reading, and by ~5 orders of magnitude on the reading this
 finding's own nuclear-physics estimate favors as more likely.
+
+## Skeptic verdict (Step 8a, Context Asymmetry — claim + the three cited
+source files + the primary source itself, no session history)
+
+Three separate verdicts, not merged:
+
+```
+(1) "Rotation is a legitimate candidate source of k in general, not
+    just a geometric device for the lever-arm parameter"     : CONFIRMED-REAL
+    -- textually solid, and actually UNDER-cited by the first version of
+    this file: lines 660-661 ("heat up or spin up") is the single strongest
+    supporting sentence and was missing until this correction. Also checked:
+    the GEM lever-arm formula r_dA~S_A/(2m_Ak_A)^(1/2) is only dimensionally
+    the radius of a mass-m ring IF k_A really is rotational KE in that
+    scenario -- confirming this is a real physical identification, not a
+    mere formal device.
+(2) beta_d=2 excluded by the rotational-only pulsar bound      : CONFIRMED-
+    REAL, with a corrected numeric margin -- ~1.2 orders of magnitude (was
+    misstated as ~1.5 due to a factor-of-2 carried over from a convention
+    in FINDING_unsuppressed_observable_periastron.md that assumes symmetric
+    bodies, not correctly adjusted for J0737-3039's actual asymmetric spins
+    (one fast pulsar, one ~15,000x slower). Fixed in S3.
+(3) Secondary degenerate-Fermi-motion argument (~5 orders)      : NEEDS-
+    REAL-DATA -- matches this file's own [UNKNOWN] flag exactly; the
+    classical-vs-quantum "ground state" question is genuinely undecidable
+    from a corpus that never discusses quantum degeneracy. A plausible
+    (not certain) sharper reading -- coherent classical motion (rotation)
+    counts, quantum zero-point/degenerate motion does not -- is offered in
+    S4 as a way the ambiguity might resolve, without claiming it is settled.
+```
+
+**One open housekeeping item found, not fixed here (out of scope for this
+finding):** `FINDING_unsuppressed_observable_periastron.md`'s `ℓ_d=2β_d
+(u_A+u_P)` and `FINDING_two_charge_completion.md`'s `ℓ_d=2(u_A+u_P)` (which
+implies `β_d=2` when matched to MULTING's own un-doubled Eq. 15 form) are
+not obviously mutually consistent as GENERAL statements — flagged for a
+future reconciliation pass across those two files specifically.
 
 ## What this does NOT establish
 
@@ -200,9 +300,13 @@ finding's own nuclear-physics estimate favors as more likely.
 import math
 
 # Section 3 -- the clean, uncontroversial bound
+# CORRECTED after skeptic review: Eq.-15-consistent (ell_d = beta_d*(u_A+u_P),
+# no extra factor of 2), with only pulsar A's rotation counted (pulsar B's
+# P~2.77s gives ~1e4x smaller rotational KE, negligible for this sum).
 beta_d = 2  # FINDING_two_charge_completion.md, derived not fitted
-bound_rotational = 6.0e-2  # FINDING_unsuppressed_observable_periastron.md S4, from P=22.7ms
-print(beta_d / bound_rotational)  # -> 33.3, ~1.5 orders of magnitude excluded
+u_A_rotational = 0.23  # m, FINDING_unsuppressed_observable_periastron.md S4, from P=22.7ms
+bound_rotational = 0.055 / (2 * u_A_rotational)  # -> 0.12
+print(beta_d / bound_rotational)  # -> 16.7, ~1.2 orders of magnitude excluded
 
 # Section 4 -- degenerate Fermi kinetic energy estimate, for context only
 hbarc = 197.327  # MeV*fm
