@@ -1,4 +1,78 @@
-**[CORRECTION, added after this file was written, same session]** Reading
+**[MAJOR CORRECTION, added later the same session, 2026-08-11] The headline
+verdict below (NOT TIGHT, 20 blocking findings) is SUBSTANTIALLY OVERSTATED
+— a scoping error, not a spec defect.** This review's own second-reader
+prompt explicitly excluded "any prose spec" from context, modeled on
+falsification-ladder.md's Context Asymmetry Rule. That rule is about hiding
+a BUILDER's post-hoc reasoning chain from a skeptic — it does not apply to
+a SPECIFICATION's own definitional text. `DRAFT_SPEC_v7.md`'s own Appendix
+says plainly: "Two independent readers answer these from **this document
+and the four normative files**" — the spec text and the 4 files are meant
+to be read together, by design. Worse: `DRAFT_SPEC_v7.md` itself says "As
+v6" for nearly every substantive section (§2-15), meaning the base
+definitions live in `DRAFT_SPEC_v6.md` (620 lines), which this review did
+not read at all.
+
+Reading `DRAFT_SPEC_v6.md` directly (same session, after this file was
+first written) found EXACT, complete definitions for every item this review
+called "undefined anywhere":
+
+- **A1** (RNG seed derivation): `DRAFT_SPEC_v6.md` §8, verbatim —
+  `rng = numpy.random.default_rng(numpy.random.SeedSequence(entropy=
+  rootUsed.entropy, spawn_key=key))`, `key = (keyModel, keyRlo, keyMu,
+  keyStage, keyStep)`. **RESOLVED, not a gap.**
+- **A2** (`keyModel`/`keyRlo` mappings): same §8 — `keyModel: 0=MODEL-W,
+  1=MODEL-R`; `keyRlo: kk in 0..9 for a grid node, 100 for r_lo=6.0`.
+  **RESOLVED.**
+- **A3** (`keyStep` outside bisection): same §8 — `keyStep: 0 everywhere
+  except keyStage=3 (bisection), where it is the 1-based iteration number`.
+  **RESOLVED.**
+- **A4** (branch identity not keyed): same §8, explicit — "Branches share
+  the primary's streams. `key` contains no branch field, so at a given node
+  every branch of §11 consumes the same underlying stream as the primary."
+  This IS this review's own "reading (b)", confirmed as the intended one,
+  not left open. **RESOLVED.**
+- **A5** (`sdmc_contract` undefined): `DRAFT_SPEC_v6.md` §10, lines
+  ~397-423 — the FULL `SdMC`/`sq`/`dens`/KDE-bandwidth (`hkde`) formula,
+  including the `iqr=0` fallback and the `1e-9` floor. **RESOLVED.**
+- **A6** (`Qobs, Q95, Qstat, muhat, Chi2, Cand, mu1, muzero, Kw2, Kw3,
+  Kraw2, Kraw3` undefined): all exactly defined — `Qstat`/`Chi2`/`muhat`/
+  `Cand`/`mu1`/`muzero` in §7, `Kw*`/`Kraw*` in §5, `Q95`/`Qobs` context in
+  §8/§10. **RESOLVED.**
+- **A7** (4 of 9 controls missing tolerance): `DRAFT_SPEC_v6.md` §12.1 gives
+  a full 9-row table. Controls 3, 4, 9 are correctly REPORT-ONLY BY DESIGN
+  ("verb on failure: none") — they were never meant to carry a pass/fail
+  tolerance, so their "missing tolerance" is not a gap. Control 8 uses
+  "exact float64 equality" as its criterion, not a `Drel` tolerance —
+  also by design, also not a gap. **RESOLVED, and the original framing
+  ("missing tolerance" as if every control needs one) was itself wrong.**
+
+Spot-checked one Tier-B finding too: **B6** (bin structure, edges vs
+centers) assumed bins are CONSTRUCTED via a spacing rule. They are not —
+`DRAFT_SPEC_v6.md` §7 says bins are SELECTED from `dr6.hdf`'s own existing
+`r_mp` field wherever `25 ≤ r_mp ≤ 225`, with a hard requirement of exactly
+15. There is no spacing rule to specify because there is no construction
+step. **RESOLVED, finding was based on a wrong premise.**
+
+Direct confirmation the 4 files genuinely don't restate these formulas
+(so this is not "I missed it in the files either"): `grep -c "Chi2\b"`
+`reference_config.yaml` = 1, `state_machine.yaml` = 4 — all NAME the
+symbols (for schema/gating purposes) without restating their formulas,
+exactly as the project's own header table promises (`reference_config.yaml`
+governs "every constant... and its options", not the underlying math).
+
+**Given this, tier A (7 of 20 findings) is now believed largely or entirely
+FALSE-POSITIVE, and tier B/C/D's true residual size is unknown** — this
+correction spot-checked only 1 of 13 remaining findings. A properly-scoped
+second-reader pass (spec text `+` 4 files, per the appendix's own
+instruction) was launched immediately after this was discovered; its result
+supersedes both this file's original verdict and this correction note. If
+you are reading this file rather than a newer one, check for a follow-up
+review file before trusting either.
+
+---
+
+**[Superseded correction from earlier the same session, kept for the audit
+trail, itself narrower than the one above]** Reading
 `PARK_v7_awaiting_second_reader.md` (which this review did NOT have access
 to at write time, by design — context asymmetry) after the fact surfaced
 two things this file should say plainly, not bury:
