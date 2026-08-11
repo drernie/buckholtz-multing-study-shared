@@ -335,6 +335,40 @@
       "metamorphic_contract": "permuting the raise order, and repeating any label, must leave items 11 and 13 byte-identical",
       "rejected_reading": "multiset-chronological yields length 3 in two different orderings, which makes execution order observable and reopens the control-order question that item 8's control-indexed array was relied on to close",
       "ledger_id": "LABELS-01"
+    },
+    {
+      "id": "TV23",
+      "closes": "SDMC-01 -- sdmc_contract own zero-Q95 rule applied to case Bs mua=0 edge case",
+      "scenario": "case B (bisect_zero) final bracket has mua = 0.0 -- every one of the up to 20 bisection midpoints was also rejected, so the left end never moved off its initial value",
+      "given": "Q95(mua) = Q95(0) = 0 by zero_node",
+      "expected_state": "FINITE_LIMIT_NEAR_ZERO",
+      "expected_SdMC": "NOT_DEFINED",
+      "must_not": "report a numeric SdMC when Q95 is 0 at either bracketing node -- distinct from TV01, whose typical case B outcome has a midpoint accepted and mua > 0",
+      "ledger_id": "SDMC-01"
+    },
+    {
+      "id": "TV24",
+      "closes": "CTRL7-01 -- control 7 measured value when guard G3 fails and Wt cannot be formed",
+      "scenario": "guard G3 fails (Vcov ill-conditioned), INVALID_INPUT COVARIANCE_ILL_CONDITIONED fires after the kernels exist",
+      "expected_item_8_control_7_measured": "NaN",
+      "expected_items_present": [
+        8,
+        11,
+        13
+      ],
+      "must_not": "omit control 7 row from item 8, or emit a numeric Drel when Wt is undefined",
+      "ledger_id": "CTRL7-01"
+    },
+    {
+      "id": "TV25",
+      "closes": "NAN-01 -- item 4 L95/SdMC nan_where, completing SHAPE-01 for items 4 and 10",
+      "scenario": "MODEL-R at r_lo = 6.0 reaches RANGE_INSUFFICIENT (acc(600) true); MODEL-W at the same r_lo reaches FINITE_LIMIT",
+      "order": "[MODEL-W, MODEL-R]",
+      "expected_item_4_L95": "[<numeric>, NaN]",
+      "expected_item_4_SdMC": "[<numeric>, NaN]",
+      "expected_item_4_state": "[FINITE_LIMIT, RANGE_INSUFFICIENT]",
+      "must_not": "leave MODEL-Rs L95/SdMC slot holding 0.0 or a carried-through value when its state has no numeric endpoint",
+      "ledger_id": "NAN-01"
     }
   ],
   "coverage_requirements": {

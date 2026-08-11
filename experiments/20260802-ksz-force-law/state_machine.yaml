@@ -193,3 +193,51 @@ control_completion:
   # some of which would not have run. Resolved: controls run to completion.
   rule: "all nine controls are executed and emit their measured value before any terminal verb is honoured"
   consequence: "item 8 is always complete"
+  control_7_wt_undefined:
+    id: CTRL7-01
+    when: "guard G3 fails (Vcov is not invertible under G3's own criteria), so Wt = alpha*inv(Vcov) cannot be formed"
+    rule: "control 7 emits NaN for its Drel measured value, at both mu=0 and mu=10, for both models"
+    note: >
+      Control 7 compares Amp(mu) (which needs Wt) against an independent
+      brent-minimize profiling. If Wt cannot be formed, neither side of the
+      comparison is computable, so its Drel is undefined -- NaN reports
+      "not computed", distinct from a passing or failing numeric Drel.
+      This does not itself raise a verb: G3's own INVALID_INPUT already
+      ends the run; NaN is what control 7's slot in item 8 holds while
+      CTRL-02 still requires all nine controls' rows present.
+
+# ---------------------------------------------------------------------------
+# SdMC contract. Referenced by S2/S3/S4 above ("per sdmc_contract") -- this
+# section is that contract, not a dangling name. Formula unchanged from v6
+# section 10; the mua=0 edge case (SDMC-01) was not previously spelled out
+# as a consequence of the general rule, though it always followed from one.
+# ---------------------------------------------------------------------------
+sdmc_contract:
+  inputs: "a bracketing pair (mua, mub) with ga = Qobs(mua) - Q95(mua) <= 0 and gb = Qobs(mub) - Q95(mub) > 0"
+  formula: >
+    wa = -ga/(gb-ga), wb = 1-wa, slope = (gb-ga)/(mub-mua),
+    sq(mu) = sqrt(0.95*0.05/nsim(mu)) / dens(mu),
+    dens(mu) = (positive fraction at mu) * KDE(mu) evaluated at Q95(mu),
+    SdMC = sqrt(wb^2*sq(mua)^2 + wa^2*sq(mub)^2) / abs(slope)
+  kde:
+    bandwidth: "hkde = 0.9 * min(sdev, iqr/1.34) * npos^(-1/5), over the strictly positive Qstat values at that node"
+    sdev: "standard deviation of those positive values, ddof=1"
+    iqr: "75th minus 25th percentile, numpy.quantile(method='linear')"
+    iqr_zero_fallback: "if iqr = 0, hkde = 0.9 * sdev * npos^(-1/5)"
+    floor: "hkde = max(hkde, 1.0e-9)"
+    both_zero: "if sdev AND the iqr fallback are both 0, SdMC = NOT_DEFINED"
+  zero_q95_case:
+    id: SDMC-01
+    rule: "if Q95(mu) = 0 at EITHER bracketing node (mua or mub), SdMC = NOT_DEFINED; report the positive fraction at that node alongside"
+    note: >
+      This is the general rule above, not a special exception -- it is
+      spelled out here because it has one reachable, previously-unstated
+      consequence: in case B (bisect_zero), the bracket's left end mua
+      starts at 0.0 by construction, and Q95(0) = 0 always (zero_node).
+      If every one of the up to 20 bisection midpoints is ALSO rejected,
+      mua never moves off 0.0 and the final bracket has Q95(mua) = 0, so
+      SdMC = NOT_DEFINED for that run. This is a rare sub-case of S2,
+      distinct from the typical case B outcome TV01 witnesses (where a
+      midpoint IS accepted and mua moves off 0). TV23 witnesses this
+      sub-case directly, as a property of the formula, not by relying on
+      a specific RNG draw sequence to reach it.

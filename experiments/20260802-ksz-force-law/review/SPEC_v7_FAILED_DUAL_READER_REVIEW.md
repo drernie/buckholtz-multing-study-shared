@@ -1,3 +1,42 @@
+## CURRENT STATUS (2026-08-11, final for this session — read this first)
+
+A **properly-scoped** second reader (v6 body + v7 delta + the four
+normative files, per `DRAFT_SPEC_v7.md`'s own Appendix instruction) was run
+after the correction below was discovered. It confirmed the correction:
+the original ~20 findings were scope-errors, not spec defects — everything
+questioned (`Qobs/Q95/Qstat/muhat/Chi2/Cand`, the kernels, `SdMC`, the RNG
+seed derivation, all 9 controls' criteria) is fully and exactly defined in
+`DRAFT_SPEC_v6.md`. It also completed the 12 static review questions from
+`DRAFT_SPEC_v7.md`'s Appendix in full (pseudocode, no numbers).
+
+**It found 3 genuinely new, narrow, blocking residual findings** (not 20):
+
+| ID | Finding | Fix applied |
+|---|---|---|
+| **SDMC-01** | `sdmc_contract`, named by `state_machine.yaml`'s S2/S3/S4, was a dangling reference — no section by that name existed. v6's SdMC formula was inherited silently, and its own consequence at case B's `mua=0` edge case (every bisection midpoint also rejected) was never stated as a reachable outcome distinct from TV01's typical case. | Added `sdmc_contract:` as a real top-level section in `state_machine.yaml` — full formula, KDE bandwidth with fallbacks, and the `mua=0 → NOT_DEFINED` consequence spelled out explicitly. Witness `TV23`. |
+| **CTRL7-01** | Control 7 needs `Wt`, which guard G3 can leave undefined (`INVALID_INPUT`). No fallback was specified for what control 7 emits in that case, while CTRL-02 requires all 9 controls to emit before any terminal verb is honoured. | Added `control_completion.control_7_wt_undefined` to `state_machine.yaml`: control 7 emits `NaN` when `Wt` cannot be formed. Witness `TV24`. |
+| **NAN-01** | `output_schema.json` item 3 has explicit `nan_where` clauses on `L95`/`SdMC`; items 4 and 10 do not, even though this ledger's own **SHAPE-01** entry already claims the NaN-plus-state-array contract for "items 3, 4, 10" — the schema fields just never caught up to that claim. | Added matching `nan_where` to items 4 and 10's `L95`/`SdMC` fields in `output_schema.json`. Witness `TV25`. |
+
+**Verified after the fix, same session:** `spec_gate.py` → `TOTAL: 0
+problem(s)` (all 10 checks, including "every ledger entry has a regression
+witness" for the 3 new IDs). `spec_lint.py DRAFT_SPEC_v6.md` → `TOTAL: 0
+finding(s)`. `pytest tests/` (repo-wide, 881 tests) and `ruff check .`
+both clean.
+
+**What this does NOT establish.** Per `PARK_v7_awaiting_second_reader.md`'s
+own Independent Verification Strength Ladder — cited and applied correctly
+in the correction below, and unchanged by anything in this update — BOTH
+second-reader runs (the original narrow one and this corrected one) are
+`Agent(skeptic)`, same model, isolated context: **Weak–Medium** tier, not
+the "different model" or "independently-written implementation" tiers the
+revival condition actually names. `DUAL_READER_REVIEW` is therefore still
+**not formally satisfied**, even though its findings are real, fixed, and
+verified. `v7` should not be declared `COMPUTATIONALLY_FROZEN_v7` on the
+strength of this session's work alone — a genuinely different-tier reader
+is still the one thing standing between here and `BLIND_C`.
+
+---
+
 **[MAJOR CORRECTION, added later the same session, 2026-08-11] The headline
 verdict below (NOT TIGHT, 20 blocking findings) is SUBSTANTIALLY OVERSTATED
 — a scoping error, not a spec defect.** This review's own second-reader

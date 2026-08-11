@@ -118,3 +118,33 @@ not a missing result.
 | `reference_config.yaml` | `026c47d467b62486` — changed by CLIP-01 |
 | `output_schema.json` | `350f41b398f59919` — changed by LABELS-01 |
 | `test_vectors.json` | `4ac59411c129273e` — changed by TV21, TV22 |
+
+---
+
+## Update, 2026-08-11 — still parked, same revival condition, more fixed
+
+A properly-scoped second reader (this file's own revival condition item 1,
+attempted with `Agent(skeptic)`) found and closed 3 more real gaps —
+`SDMC-01`, `CTRL7-01`, `NAN-01` — see
+`review/SPEC_v7_FAILED_DUAL_READER_REVIEW.md`'s "CURRENT STATUS" section
+for the full detail. An EARLIER, wrongly-scoped run of the same tool first
+raised ~20 false-positive findings by excluding `DRAFT_SPEC_v6.md` from
+its context; that mistake is documented and corrected in the same file.
+
+**This does not change the parked status or its revival condition.** Per
+this file's own Independent Verification Strength Ladder above,
+`Agent(skeptic)` — however carefully scoped — is same-model, isolated
+context: Weak–Medium, the same tier as the original ROUND6 skeptic run,
+not "a different model, or a person" (item 1) or "an independently-written
+implementation" (item 2). Both are still what `v7` is actually waiting on.
+
+| | |
+|---|---|
+| `spec_gate.py` | 10 / 10 PASS, 0 problems (re-verified after the fix) |
+| `spec_lint.py DRAFT_SPEC_v6.md` | 0 findings |
+| ledger entries | 22, every one with a witness |
+| test vectors | 25 (`TV23`, `TV24`, `TV25` added) |
+| `state_machine.yaml` | `4faba98d5835acad` — changed by `sdmc_contract`, `CTRL7-01` |
+| `reference_config.yaml` | `026c47d467b62486` — unchanged today |
+| `output_schema.json` | `d4d412ab0e568e93` — changed by `NAN-01` |
+| `test_vectors.json` | `10f410df0cf42ef8` — changed by `TV23`, `TV24`, `TV25` |

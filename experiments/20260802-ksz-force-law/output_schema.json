@@ -202,13 +202,15 @@
           "shape": [
             2
           ],
-          "dtype": "float64"
+          "dtype": "float64",
+          "nan_where": "state is not FINITE_LIMIT, FINITE_LIMIT_NEAR_ZERO or FINITE_LIMIT_MULTICROSS"
         },
         "SdMC": {
           "shape": [
             2
           ],
-          "dtype": "float64"
+          "dtype": "float64",
+          "nan_where": "SdMC is NOT_DEFINED"
         },
         "state": {
           "shape": [
@@ -418,13 +420,15 @@
           "shape": [
             5
           ],
-          "dtype": "float64"
+          "dtype": "float64",
+          "nan_where": "state is not FINITE_LIMIT, FINITE_LIMIT_NEAR_ZERO or FINITE_LIMIT_MULTICROSS"
         },
         "SdMC": {
           "shape": [
             5
           ],
-          "dtype": "float64"
+          "dtype": "float64",
+          "nan_where": "SdMC is NOT_DEFINED"
         },
         "state": {
           "shape": [
