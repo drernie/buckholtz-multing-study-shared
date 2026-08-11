@@ -78,6 +78,7 @@ def monopole_potential(r_vec, sigma_func):
 
 
 def main() -> None:
+    global A  # noqa: PLW0603 -- CHECK 4 deliberately varies the module-level shell radius
     print("=" * 78)
     print("P9 -- PERTURBED SHELL: does the background zero survive to O(delta)?")
     print("NOT_VALIDATION - NOT_REFUTATION - OUR_RECONSTRUCTION  |  L0: descriptive")
@@ -136,6 +137,25 @@ def main() -> None:
         print(f"    r={r}A: Phi_pole={v_pole:.6e}   Phi_equator={v_eq2:.6e}")
     print("    -> also nonzero: NO angular perturbation preserves the exact background zero.")
 
+    print("\n[CHECK 4] a-scaling -- surface dipole density (a^2) or uniform-polarized-")
+    print("           SOLID-sphere (a^3)? [added after skeptic review flagged the")
+    print("           un-published 'matches classical formula' framing as a possible")
+    print("           factor coincidence, not a configurational equivalence]")
+    a_saved = A
+    for a_val in (1.0, 2.0, 3.0):
+        A = a_val
+        tau_a = lambda t: tau0 * (1 + eps * np.cos(t))  # noqa: E731
+        r = 2.0 * a_val
+        v, _ = dipole_potential(np.array([0, 0, r]), tau_a)
+        ratio_a2 = v * r**2 / (eps * a_val**2)
+        ratio_a3 = v * r**2 / (eps * a_val**3)
+        print(f"    a={a_val}: Phi*r^2/(eps*a^2)={ratio_a2:.6f}   Phi*r^2/(eps*a^3)={ratio_a3:.6f}")
+    A = a_saved
+    print("    -> a^2 column constant (4*pi/3), a^3 column is NOT: this is a surface-")
+    print("       dipole-density result, NOT equivalent to a uniformly polarized solid")
+    print("       sphere. The a=1 numeric match to 4*pi/3 was a coincidence of the")
+    print("       shared angular integral, not a physical equivalence.")
+
     print("\n" + "=" * 78)
     print("VERDICT")
     print("=" * 78)
@@ -144,13 +164,18 @@ def main() -> None:
     print("O(delta) (any angular perturbation)     : NONZERO -- exactly linear in the")
     print("                                          perturbation, falls off as an ordinary")
     print("                                          dipole (1/r^2) outside the shell")
-    print("Resolves P8's 'undetermined' status      : toward NONZERO, not zero -- the exact")
-    print("                                          background cancellation is fragile,")
-    print("                                          broken by any angular asymmetry")
-    print("What this does NOT give                  : the actual coefficient (dG_eff/G) --")
-    print("                                          eps here is a bare geometric parameter,")
-    print("                                          not yet connected to a physical")
-    print("                                          kappa/k/grad(delta) relationship")
+    print("Resolves P8's 'undetermined' status      : [CORRECTED after skeptic review --")
+    print("                                          NOT resolved. eps is an assumed input,")
+    print("                                          not derived from a real perturbation;")
+    print("                                          FINDING_P4 found this project's own")
+    print("                                          action uses intrinsic (non-gradient-")
+    print("                                          responsive) moments, with no shown")
+    print("                                          mechanism producing eps>0. See")
+    print("                                          FINDING_P9...md section 4.]")
+    print("What this does NOT give                  : the actual coefficient (dG_eff/G),")
+    print("                                          NOR a shown mechanism producing eps>0")
+    print("                                          for a real cosmological delta --")
+    print("                                          eps here remains a bare geometric input")
 
 
 if __name__ == "__main__":
