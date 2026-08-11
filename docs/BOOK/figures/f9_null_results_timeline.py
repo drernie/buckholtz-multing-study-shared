@@ -34,6 +34,14 @@ assert len(rows) == 17, (
 )
 
 GROUPS = {
+    # NR-013 was originally grouped under "H1 cluster cycle" here. Phase D
+    # (Agent(skeptic), context-blind, 2026-08-11) checked it against its own
+    # file: NR-013's Branch field reads "R011 -- the MULTING dipole/
+    # quadrupole cosmic-acceleration mechanism, tested via
+    # src/pearson_fit.py" -- the bridge/parametrization thread, not the
+    # delta_M/E_ICM cluster-mass-bias thread H1 is about. pearl_registry/
+    # INDEX.md's own 2026-07-18 row agrees, listing NR-013 among the
+    # bridge-thread REJECTs (NR-001/002/003/004/005/008/009/013). Moved here.
     "bridge mechanism": {
         "NR-001",
         "NR-002",
@@ -43,11 +51,12 @@ GROUPS = {
         "NR-007",
         "NR-008",
         "NR-009",
+        "NR-013",
         "NR-016",
         "NR-017",
         "NR-018",
     },
-    "H1 cluster cycle": {"NR-010", "NR-011", "NR-012", "NR-013", "NR-014", "NR-015"},
+    "H1 cluster cycle": {"NR-010", "NR-011", "NR-012", "NR-014", "NR-015"},
 }
 group_of = {}
 for g, ids in GROUPS.items():

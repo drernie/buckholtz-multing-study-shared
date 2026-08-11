@@ -75,23 +75,45 @@ dM_w, eICM_w, mWL_w, wX = (
 )
 r_h1c, p_h1c = partial_corr(dM_w, eICM_w, np.column_stack([mWL_w, wX]))
 
-# NR-015: control for T_X too -- the dissolution.
+# NR-015: control for T_X too -- the dissolution. TWO versions, distinctly
+# labelled: the EXACT pre-registration (M_Gas, per null_results/20260718-
+# nr015-...md "KEY TEST (exact pre-registration, pearl row 34)") and the
+# closely-related E_ICM version this file originally plotted alone. Phase D
+# (Agent(skeptic), context-blind, 2026-08-11) found the chapter text had
+# cited the E_ICM number as if it were the pre-registered result. Both shown
+# now rather than silently picking one.
 rows_tx = [r for r in rows_base if r["T_X_keV"]]
-dM_t, eICM_t, mWL_t, tx = (
+dM_t, eICM_t, mgas_t, mWL_t, tx = (
     col(rows_tx, "delta_M_1e14Msun"),
     col(rows_tx, "E_ICM_proxy_MgasTx"),
+    col(rows_tx, "M_Gas_1e14Msun"),
     col(rows_tx, "M_WL_1e14Msun"),
     col(rows_tx, "T_X_keV"),
 )
-r_tx, p_tx = partial_corr(dM_t, eICM_t, np.column_stack([mWL_t, tx]))
+r_tx_eicm, p_tx_eicm = partial_corr(dM_t, eICM_t, np.column_stack([mWL_t, tx]))
+r_tx_mgas, p_tx_mgas = partial_corr(dM_t, mgas_t, np.column_stack([mWL_t, tx]))
 
-print(f"baseline  r(dM,E_ICM|M_WL)        = {r_base:+.3f}  p={p_base:.2e}  n={len(rows_base)}")
-print(f"H1c       r(dM,E_ICM|M_WL,wX)     = {r_h1c:+.3f}  p={p_h1c:.2e}  n={len(rows_wx)}")
-print(f"NR-015    r(dM,E_ICM|M_WL,T_X)    = {r_tx:+.3f}  p={p_tx:.2e}  n={len(rows_tx)}")
+print(
+    f"baseline               r(dM,E_ICM|M_WL)     = {r_base:+.4f}  p={p_base:.2e}  n={len(rows_base)}"
+)
+print(
+    f"H1c                    r(dM,E_ICM|M_WL,wX)  = {r_h1c:+.4f}  p={p_h1c:.2e}  n={len(rows_wx)}"
+)
+print(
+    f"NR-015 (E_ICM)         r(dM,E_ICM|M_WL,T_X) = {r_tx_eicm:+.4f}  p={p_tx_eicm:.2e}  n={len(rows_tx)}"
+)
+print(
+    f"NR-015 (M_Gas, EXACT pre-registration) r(dM,M_Gas|M_WL,T_X) = {r_tx_mgas:+.4f}  p={p_tx_mgas:.2e}  n={len(rows_tx)}"
+)
 
-labels = ["baseline\n|M_WL", "H1c survives\n|M_WL, wX", "NR-015 dissolves\n|M_WL, T_X"]
-vals = [r_base, r_h1c, r_tx]
-colors = ["#8aa8c8", "#3b6ea5", "#c0392b"]
+labels = [
+    "baseline\n|M_WL",
+    "H1c survives\n|M_WL, wX",
+    "NR-015 (E_ICM)\n|M_WL, T_X",
+    "NR-015 (M_Gas,\npre-registered)\n|M_WL, T_X",
+]
+vals = [r_base, r_h1c, r_tx_eicm, r_tx_mgas]
+colors = ["#8aa8c8", "#3b6ea5", "#c0392b", "#8b0000"]
 
 fig, ax = plt.subplots(figsize=(7.5, 5))
 ax.bar(labels, vals, color=colors, edgecolor="none")
