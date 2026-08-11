@@ -103,6 +103,21 @@ bound. That was wrong — it dropped the multipole factors 2 and 6, assuming
 
 ## 5. The obstruction it was built to clear — cleared
 
+**[CORRECTED 2026-08-11 — this section's headline does NOT survive the
+adversarial audit, see `MODEL_SPEC_AUDIT.md` §"corrected", row
+`d ln ℓ_d/d ln M = +0.555 "reproduced"`, verdict `KILLED (circular)`.**
+`ℓ_d=2(u_A+u_P)` is exact algebra, but `u_i≡κk_ir_i/(c²m_i)` is not predicted
+by this theory — `k_i, r_i` are real cluster observables taken as-is, already
+carrying their own empirical scaling. The theory supplies only the bilinear
+rule `ℓ_d∝(u_A+u_P)`; it contributes no mechanism fixing how `u_i` scales
+with `M`. So "the exponent is reproduced" holds only in the trivial sense
+that whatever exponent the data has, the theory inherits unchanged —
+indistinguishable from a theory making no mass-scaling prediction at all.
+**Also**, the `+0.555±0.041` figure itself was the *marginal*, selection-
+confounded exponent; deconfounded it is `+0.393±0.055` (*further* from `+1`).
+Kept below as the historical record of what was originally claimed;
+`MODEL_SPEC_AUDIT.md` is the authoritative corrected status.**
+
 ```
                           d ln ell_d / d ln M500
   MULTING (measured, n=548)     +0.555 +- 0.041

@@ -112,6 +112,19 @@ clusters (85× mass range), with no β and no H(z) fit anywhere:
 | field picture | **+1** exactly, by construction |
 | separation | **10.8 σ** |
 
+**[CORRECTED 2026-08-11, see `MODEL_SPEC_AUDIT.md` §"corrected", row
+`d ln ℓ_d/d ln M = +0.555`]** — `+0.555±0.041` is the *marginal* exponent,
+confounded with this flux-limited sample's own M–z selection correlation.
+Deconfounded against `E(z)=H(z)/H₀`: **`d ln(u)/d ln(M) = 0.393±0.055`**
+(*further* from `+1`, not closer — the separation grows, it does not shrink).
+Additionally, the adversarial audit found the same `+1` slope falls out of a
+from-scratch self-similar pure-gravity + standard-baryon-physics derivation
+for a reason unrelated to either the field picture or MULTING's charge
+structure — so this comparison is ordinary baryonic-feedback astrophysics,
+not a test of gravitational content either side modelled. Kept here as the
+historical record of what was originally measured; `MODEL_SPEC_AUDIT.md` is
+the authoritative corrected status.
+
 Decomposed: `E_th/c² ∝ M^{1.269}`, `R₅₀₀ ∝ M^{0.287}`, so `(E_th/M)·R₅₀₀ ∝
 M^{0.556}` — the scaling comes almost entirely from `R₅₀₀`, because `E_th/M` is
 nearly mass-independent. Across the sample's 85× mass range the two predictions
@@ -144,6 +157,9 @@ New problem exposed                  : Phi is not invariant under chi -> chi + c
                                        the IR boundary condition is undefined
 Field picture vs MULTING             : SEPARATED at 10.8 sigma on d ln(ell_d)/d ln M
                                        (+1 vs +0.555 +- 0.041, n = 548 clusters)
+                                       [CORRECTED 2026-08-11: deconfounded value
+                                       is +0.393 +- 0.055, separation grows, not
+                                       shrinks -- see MODEL_SPEC_AUDIT.md]
 Status of the covariant completion   : it is a well-posed, finite, one-parameter
                                        theory -- but NOT a completion of MULTING's
                                        charge structure. Same obstruction as
