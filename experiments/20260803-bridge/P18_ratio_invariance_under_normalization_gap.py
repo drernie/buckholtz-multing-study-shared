@@ -5,24 +5,29 @@ FINDING_P16's central conclusion (self-energy dominates cross-terms for
 realistic discrete clusters), or are those -- being RATIOS -- immune?
 
 NOT_VALIDATION - NOT_REFUTATION - OUR_RECONSTRUCTION - L0 descriptive
-2026-08-12. Direct follow-up to FINDING_P17's correction. If a missing
-constant C rescales the field (phi -> C*phi, equivalently rescaling every
-p_i -> C*p_i in the self-energy/cross-term formulas, since both are
-DERIVED FROM phi via the same p.grad(phi) coupling), then:
+2026-08-12, corrected 2026-08-12 after context-blind skeptic review.
+Direct follow-up to FINDING_P17's correction.
 
-  E_self  ~ (grad phi)^2  ~ C^2   (quadratic in phi)
-  U_cross ~ (grad phi_1).(grad phi_2) ~ C^2   (also quadratic, bilinear)
+kappa's cancellation from the ratio is UNCONDITIONAL: p_i = kappa*k_i*r_i/
+c^2 is linear in kappa, so both E_self~p_i^2 and U_cross~p_i*p_j scale as
+kappa^2, and kappa drops out of the ratio regardless of anything else.
+Verified symbolically, genuinely proven.
 
-so C^2 should cancel EXACTLY from any cross_i/self_j-style RATIO,
-regardless of C's actual (unknown) value. The same argument applies to
-kappa itself (p_i = kappa*k_i*r_i/c^2, linear in kappa, so both self and
-cross scale as kappa^2, and the ratio is kappa-independent too) --
-already implicitly relied upon throughout P15/P16 without being proven.
-
-This script proves both invariances symbolically (sympy), using the
-project's own already-verified formulas unchanged: FINDING_P14's
-self-energy (8*pi/3)*p^2/r_min^3, and FINDING_P15's general dipole-dipole
-cross-term formula (p1.p2 - 3*(p1.dhat)*(p2.dhat))/d^3.
+The missing-normalization-constant (C) cancellation is CONDITIONAL, not
+unconditional -- [CORRECTED after skeptic review: an earlier draft of this
+docstring claimed it holds for "any value of C", which oversold what a
+tautological substitution actually shows]. IF the missing constant is a
+pure, r_min-independent overall multiplier (phi -> C*phi uniformly), THEN
+it cancels -- this is the physically plausible first guess, analogous to a
+Green's-function/propagator normalization (like 1/(4*pi*eps0) in
+electrostatics), which would indeed apply identically to E_self and
+U_cross. But it is NOT independently derived from the action here, and it
+would NOT hold if the actual missing physics is closer to a renormalization
+counterterm for E_self's own UV divergence (E_self diverges as r_min->0,
+the classic signature of a quantity needing renormalization) that does not
+act the same way on the IR-finite, well-separated U_cross(d). Part 3 below
+makes this condition explicit with a sensitivity check, rather than hiding
+it inside an assumption baked into Parts 1-2's own setup.
 """
 
 import sympy as sp
@@ -70,9 +75,11 @@ def main() -> None:
     assert sp.simplify(ratio_with_C - ratio_raw) == 0, (
         "C did NOT cancel -- would FALSIFY this finding"
     )
-    print("  -> C cancels EXACTLY, checked by assert. The cross/self ratio is")
-    print("     completely independent of the missing normalization constant,")
-    print("     regardless of C's actual (currently unknown) value.")
+    print("  -> C cancels exactly IF C acts as a pure overall multiplier on phi, as")
+    print("     assumed above (E_self_true=C^2*E_self_raw, U_cross_true=C^2*U_cross_")
+    print("     raw). [CORRECTED after skeptic review:] this is the setup's own")
+    print("     premise, not yet a proof for an arbitrary/unknown C -- see Part 3")
+    print("     for the condition under which this actually holds.")
 
     print("\n[PART 2] kappa itself (p_i = kappa*k_i*r_i/c^2, linear in kappa):")
     kappa = sp.Symbol("kappa", positive=True)
@@ -91,18 +98,44 @@ def main() -> None:
     print("  -> kappa cancels EXACTLY too (both self and cross scale as kappa^2,")
     print("     since both are built from p_i which is linear in kappa).")
 
+    print("\n[PART 3 -- CORRECTED after skeptic review] Sensitivity check: does the")
+    print("  C-cancellation in Part 1 require C to be a PURE multiplicative constant,")
+    print("  or does it survive a more general fix (e.g. one that also depends on")
+    print("  r_min, the way a renormalization counterterm for E_self's own UV")
+    print("  divergence as r_min->0 plausibly would, without touching the IR-finite")
+    print("  U_cross(d) the same way)?")
+    alpha = sp.Symbol("alpha", real=True)
+    e_self_alpha = C**2 * r_min**alpha * e_self_raw(p1, r_min)
+    u_cross_alpha = C**2 * u_cross_collinear_raw(p1, p2, d)  # cross has no r_min dependence to fix
+    ratio_alpha = sp.simplify(u_cross_alpha / e_self_alpha)
+    print(f"  ratio, general r_min-power alpha in the fix: {ratio_alpha}")
+    print(f"  -> r_min survives in the ratio for alpha!=0: {r_min in ratio_alpha.free_symbols}")
+    print("  Part 1's cancellation is therefore CONDITIONAL on alpha=0 (a pure overall")
+    print("  constant, uniform across both formulas) -- NOT proven for 'any C' in the")
+    print("  unqualified sense the first draft of this script claimed.")
+
     print("\n" + "=" * 78)
     print("VERDICT")
     print("=" * 78)
-    print("Both the missing field-normalization constant (FINDING_P17's new gap)")
-    print("and kappa's own unfixed value (FINDING_P14's original gap) cancel")
-    print("EXACTLY from the cross-term/self-energy RATIO -- proven symbolically,")
-    print("not assumed. Consequence, split cleanly by claim type:")
+    print("[CORRECTED after skeptic review.] The kappa-cancellation (Part 2) is")
+    print("UNCONDITIONAL -- kappa enters both formulas linearly through p_i with no")
+    print("complication, verified for real. The C-cancellation (Part 1) is")
+    print("CONDITIONAL on the missing normalization constant being a pure, r_min-")
+    print("independent overall multiplier (Part 3 shows this explicitly) -- a")
+    print("physically plausible first guess (analogous to a Green's-function/")
+    print("propagator normalization, like 1/(4*pi*eps0) in electrostatics, which")
+    print("would indeed apply identically to both formulas), but NOT independently")
+    print("derived from the action, and NOT true if the actual fix is closer to a")
+    print("renormalization counterterm for E_self's own UV divergence (r_min->0)")
+    print("that does not act the same way on the IR-finite, well-separated U_cross.")
+    print("Consequence, split cleanly by claim type:")
     print()
     print("  RATIO-based claims (FINDING_P15/P16: self-energy DOMINATES cross-")
     print("  terms by such-and-such factor, at realistic cluster separations)")
-    print("  -> UNAFFECTED by either open normalization problem. These hold for")
-    print("     ANY value of kappa and ANY value of the missing constant C.")
+    print("  -> UNAFFECTED by kappa (unconditionally). Unaffected by the missing")
+    print("     constant C ONLY IF C is a pure overall multiplier -- plausible, not")
+    print("     proven. If C instead carries r_min-dependent structure (Part 3), the")
+    print("     ratio would NOT be immune.")
     print()
     print("  ABSOLUTE-MAGNITUDE claims (FINDING_P14's Omega_phi numeric value,")
     print("  FINDING_P17's kappa_cosmo_bound numeric value)")
