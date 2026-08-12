@@ -1,11 +1,11 @@
-"""P17: two INDEPENDENT upper bounds on kappa already exist in this project's
-own prior work -- from two completely different physical systems. Are they
-mutually consistent, and which one is binding?
+"""P17: two pre-existing upper bounds on kappa exist in this project's own
+prior work. Do they contradict each other, and does either check out?
 
 NOT_VALIDATION - NOT_REFUTATION - OUR_RECONSTRUCTION - L0 descriptive
-2026-08-12. kappa's absolute scale has never been fixed anywhere in this
-project (FINDING_P14). Two prior findings each derived a CONDITIONAL upper
-bound on kappa from a real, independent physical system, without either
+2026-08-12, corrected 2026-08-12 after context-blind skeptic review.
+kappa's absolute scale has never been fixed anywhere in this project
+(FINDING_P14). Two prior findings each derived a CONDITIONAL upper bound
+on kappa from a real, independent physical system, without either
 recognizing the other:
 
   FINDING_P7 (binary pulsar J0737-3039, rotational-only k):  IF this
@@ -15,19 +15,35 @@ recognizing the other:
     this number -- re-derived here from P7's own base inputs, not quoted.)
 
   FINDING_P14 (cosmological self-energy, Gate-4 cluster-density ceiling):
-    Omega_phi(kappa) ~ 3.28e11 * kappa^2 (self-energy channel alone,
-    P15/P16 later confirmed cross-terms are ~1e-4..1e-9 of self-energy at
-    realistic cluster separations, so neglecting them here is justified,
-    not just assumed). Omega_phi<=1 requires kappa <~ 1.75e-6.
+    Omega_phi(kappa) ~ 3.28e11 * kappa^2 (self-energy channel alone;
+    FINDING_P15/FINDING_P16 confirmed cross-terms are ~4e-5..1.4e-4 of
+    self-energy at realistic cluster separations -- CORRECTED after
+    skeptic review, an earlier draft of this docstring cited P15's own
+    already-retracted ~1e-9 figure). Omega_phi<=1 requires kappa <~ 1.75e-6.
 
 Both are recomputed here from each finding's own stated base inputs (not
 copy-pasted results) so this script is independently checkable without
 re-running P7.py or P14's script.
 
 SCOPE: this does NOT fix kappa. Both bounds are one-sided upper bounds
-(kappa could, for all either constraint says, be exactly zero). This only
-checks whether the two independent bounds are mutually consistent, and by
-how much one dominates the other.
+(kappa could, for all either constraint says, be exactly zero).
+
+[CORRECTED after skeptic review -- read before trusting kappa_cosmo_bound.]
+Omega_phi as computed by FINDING_P14's own formula (reused unchanged here)
+has units kg/m, not dimensionless: p_i has units kg*m, so
+(8*pi/3)*p_i**2/r_min**3 has units kg**2/m, and Omega_phi = rho_phi/rho_crit
+inherits kg/m overall. A missing normalization constant (units m/kg) is
+silently assumed to be 1 -- its true value is unknown. kappa_cosmo_bound's
+NUMERIC value is therefore unverified, not just imprecise; the kappa**2
+SCALING relationship remains valid regardless. Full detail:
+FINDING_P14 section 6 and FINDING_P17's own corrected write-up.
+
+Also corrected: "consistent, no tension" for two one-sided upper bounds is
+close to a tautology (kappa<=A and kappa<=B never contradict; the only
+question is which of A, B is smaller), and the two bounds' underlying
+assumption sets never overlap -- see FINDING_P17 for the full discussion.
+This script prints the raw comparison; do not read "no tension" as a
+substantive cross-check without reading the finding's own corrected caveats.
 """
 
 import math
@@ -109,6 +125,10 @@ def main() -> None:
     print(f"  Omega_phi at kappa=1 (self-energy channel) = {omega_phi_1:.4e}")
     print(f"  -> kappa required for Omega_phi<=1         : kappa <~ {kappa_cosmo:.4e}")
     print("     (matches FINDING_P14's own caveat figure, ~1e-6, re-derived not quoted)")
+    print("  [CORRECTED after skeptic review:] Omega_phi as computed has units kg/m, not")
+    print("  dimensionless (p_i is kg*m, so p_i^2/r_min^3 is kg^2/m) -- a missing")
+    print("  normalization constant is silently assumed =1. kappa_cosmo_bound's NUMERIC")
+    print("  value is therefore unverified, not just imprecise. See FINDING_P14 section 6.")
 
     ratio = kappa_pulsar / kappa_cosmo
     orders = math.log10(ratio)
@@ -116,24 +136,31 @@ def main() -> None:
     print(
         f"  kappa_pulsar_bound / kappa_cosmo_bound = {ratio:.3e}  ({orders:.2f} orders of magnitude)"
     )
-    print("  -> a kappa satisfying the COSMOLOGICAL bound automatically satisfies the")
-    print("     PULSAR-survival bound too, with enormous margin -- NO TENSION between")
-    print("     the two independent constraints.")
+    print("  [CORRECTED after skeptic review:] for two ONE-SIDED upper bounds, 'no")
+    print("  tension' is logically equivalent to 'the tighter bound is tighter' -- not")
+    print("  independent information. The two bounds also rest on non-overlapping")
+    print("  assumption sets (P7: beta_d=2 + rotational-k reading; P14: Gate-4 + r_min")
+    print("  choice + unresolved P14-section-1 tension + the units issue above), and the")
+    print("  vast scale disparity between a single pulsar and a cosmological population")
+    print("  made contradiction essentially impossible from the outset. See FINDING_P17.")
 
     print("\n" + "=" * 78)
     print("VERDICT")
     print("=" * 78)
-    print("Two independent physical systems (binary pulsar orbital dynamics; cosmological")
-    print("self-energy budget) give upper bounds on kappa that DO NOT CONTRADICT each")
-    print("other -- the cosmological bound is the binding (tighter) one, by")
-    print(f"~{orders:.1f} orders of magnitude.")
+    print("Two one-sided upper bounds on kappa, from different physical systems, do not")
+    print(f"contradict -- the cosmological figure is numerically smaller, by ~{orders:.1f}")
+    print("orders of magnitude. [CORRECTED:] this comparison is close to tautological for")
+    print("one-sided bounds and does not constitute a substantive independent cross-check")
+    print("-- see FINDING_P17's corrected 'Are the two bounds consistent?' section.")
     print()
     print("THIS DOES NOT FIX KAPPA. Both bounds are one-sided (kappa <~ X); neither")
     print("provides a lower bound or a specific value. Kappa could be anywhere from 0")
     print(f"up to ~{kappa_cosmo:.2e} and satisfy both constraints -- including exactly zero,")
     print("in which case the entire k-sector dipole coupling this whole bridge track has")
     print("been probing would simply vanish. The open problem from FINDING_P14 (kappa's")
-    print("absolute scale is unfixed project-wide) remains open after this finding.")
+    print("absolute scale is unfixed project-wide) remains open after this finding, and is")
+    print("now joined by a second, separate open problem: the missing normalization")
+    print("constant needed to make Omega_phi dimensionally meaningful at all.")
 
 
 if __name__ == "__main__":

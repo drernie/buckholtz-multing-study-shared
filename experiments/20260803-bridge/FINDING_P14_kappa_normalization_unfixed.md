@@ -180,6 +180,54 @@ per P7's own §4 secondary argument; MODEL_SPEC_AUDIT's observability gap
 remains real at any physically plausible `κ`) — but both claims should now
 be read as conditional on `κ`, not `κ`-independent, until `κ` is fixed.
 
+## 6. Second cross-cutting problem, found by `FINDING_P17`'s skeptic review: `Ω_φ` as computed is not dimensionless
+
+**[Added after `FINDING_P17`'s context-blind skeptic review, 2026-08-12 —
+not in this finding's original scope, but load-bearing enough that it
+must be flagged here too, since it directly undermines this finding's own
+headline number, not just P17's reuse of it.]**
+
+This finding's own script prints `E_self` as **"raw integral units"** and
+its verdict header already says the printed `Ω_φ` number is **"NOT
+physically meaningful as printed"** — but that warning was applied only
+to the *magnitude* (the `κ~O(1)` assumption), not to whether the
+**quantity itself has the right units to be an energy-density fraction at
+all**. It does not. Independently checked (dimensional analysis, verified
+by hand):
+
+```
+p_i = u_i * m_cluster,  u_i has units of length (m)  ->  p_i has units kg*m
+E_self = (8*pi/3) * p_i^2 / r_min^3  ->  units (kg*m)^2 / m^3 = kg^2/m
+```
+
+`kg²/m` is **not an energy** (`J = kg·m²/s²`). Carrying this through
+`ρ_φ = n·E_self` and `Ω_φ = ρ_φ/ρ_crit` (`ρ_crit` genuinely has units
+`kg/m³`), `Ω_φ` as computed by this script has units of `kg/m` — not
+dimensionless. The constraint `Ω_φ≤1`, as literally coded, compares a
+quantity with units `kg/m` against the pure number `1`; this is only a
+well-posed physical statement if an unstated normalization/coupling
+constant (with units `m/kg`, needed to convert the field-energy integral
+into a genuine energy density) is silently being set to `1` in some
+unspecified system of units. That constant is not derived anywhere in
+this project, is not the same thing as `κ` (which is already tracked
+separately), and its value is currently completely unknown — it could be
+many orders of magnitude away from `1`.
+
+**Consequence: the numeric value `Ω_φ(κ=1)=3.3×10¹¹`, and every bound
+derived from it (including `FINDING_P17`'s `κ≲1.75×10⁻⁶`), is not just
+*imprecise* — its absolute scale is currently unverifiable pending this
+missing normalization constant.** The `κ²` *scaling* relationship remains
+correct (multiplying `κ` by any factor still scales `Ω_φ` by that
+factor's square, regardless of the missing normalization), but the
+specific numeric bound this scaling was anchored to is not yet
+trustworthy in absolute terms.
+
+**This is a genuinely new, more fundamental gap than §3's "`κ` is
+unfixed"** — even a fully-fixed `κ` would not make `Ω_φ`'s numeric value
+meaningful until this separate normalization constant is also identified.
+Not attempted here; flagged as an open item for a future finding, per the
+same discipline as §5 above (documented, not silently patched).
+
 ## What this does NOT establish
 
 1. **That the self-energy channel is real, large, or small.** §1's
@@ -194,7 +242,13 @@ be read as conditional on `κ`, not `κ`-independent, until `κ` is fixed.
 4. **That P7's or MODEL_SPEC_AUDIT's bottom-line conclusions are wrong.**
    Only that their stated confidence/precision needs a `κ`-dependence
    caveat, added in place per §5.
-5. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction,
+5. **That `Ω_φ`'s numeric value is dimensionally meaningful.** [Added
+   after `FINDING_P17`'s skeptic review.] `Ω_φ` as computed has units
+   `kg/m`, not dimensionless — a missing normalization constant, separate
+   from `κ`, is required before any specific `Ω_φ` number (including
+   `3.3×10¹¹` and everything scaled from it) can be trusted in absolute
+   terms. See §6.
+6. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction,
    not a claim about TJB's own unpublished theory.
 
 ## Skeptic verdict (context-blind, 2026-08-12)
