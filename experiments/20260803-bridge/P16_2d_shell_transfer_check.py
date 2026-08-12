@@ -118,11 +118,16 @@ def main() -> None:
         p_i = p_total / n
         r_min_i = r_min_shrinking_base * (nn_spacing_estimate(n, sphere_radius) / base_spacing)
         s, c, t = total_energy(n, sphere_radius, p_i, r_min_i)
+        nn = nn_spacing_estimate(n, sphere_radius)
         print(
             f"  N={n:4d}: self={s:+.6e}  cross={c:+.6e}  TOTAL={t:+.6e}  |total/self|={abs(t / s):.4f}"
+            f"  (nn_spacing/r_min={nn / r_min_i:.1f})"
         )
     print("  -> expect DIVERGE if the P15 pattern transfers (self-energy per element")
     print("     ~ p_i^2/r_min_i^3 grows as N grows, same mechanism as the ring case).")
+    print("     [ADDED after skeptic review:] nn_spacing/r_min stays FIXED (~125) across")
+    print("     all N here, unlike Regime C' below where it shrinks -- confirming this")
+    print("     divergence is not a formula-validity artifact, by construction.")
 
     print("\n[REGIME C' -- r_min FIXED, sphere version] same p_i=p_total/N shrink, but")
     print("  r_min held fixed (a genuine physical core size, independent of N) --")
@@ -160,10 +165,12 @@ def main() -> None:
             f"  N={n:4d}: self={s:+.6e}  cross={c:+.6e}  TOTAL={t:+.6e}  |total/self|={abs(t / s):.4f}"
             f"  cross/self={ratio:.3e}"
         )
-    print("  -> if |total/self| stays close to 1 (cross/self stays small) as N grows")
-    print("     at fixed separation-to-size ratio, P15's central result (self-energy")
-    print("     SURVIVES/dominates for realistic discrete clusters) transfers to the")
-    print("     actual P9-shell geometry class, not just the ring stand-in.")
+    print("  [CORRECTED after skeptic review:] self=... above is IDENTICAL to P15's")
+    print("  ring result at matched N -- self_total depends only on N, p, r_min (see")
+    print("  total_energy() above: no position/radius argument), so this is GUARANTEED")
+    print("  once p_i and r_min match, not a geometric transfer result. Only cross/self")
+    print("  (the coordination-number-driven ~3.5x difference from the ring's ~4e-5)")
+    print("  carries actual geometric content -- see FINDING_P16 Bottom Line.")
 
     print("\n" + "=" * 78)
     print("VERDICT")
@@ -173,6 +180,13 @@ def main() -> None:
     print("shell (a different calculation -- summing exterior POTENTIAL, not field")
     print("ENERGY -- not attempted here). See printed regime results above for the")
     print("actual outcome; do not assume transfer from P15's ring result alone.")
+    print()
+    print("[CORRECTED after skeptic review:] Regimes A'/C' carry GENUINE geometric")
+    print("transfer content (qualitative divergent/vanishing structure holds, specific")
+    print("power law honestly differs for a real dimensional reason). Regime B' does")
+    print("NOT test transfer -- self dominance there is guaranteed by construction the")
+    print("moment p_i and r_min are fixed to the same values as P15's ring; only the")
+    print("small coordination-number-driven cross-term difference is real content.")
 
 
 if __name__ == "__main__":
