@@ -60,11 +60,15 @@ def main():
     )
     assert delta_b not in dm_only.free_symbols
     print()
-    print("CONFIRMED: Archidiacono's own eq. 4.4 has NO baryon term -- their")
+    print("CONSISTENT WITH WEBFETCH TRANSCRIPTION (not independent verification")
+    print("of the source paper -- see FINDING_P29 section 1's correction): as")
+    print("transcribed, Archidiacono's own eq. 4.4 has NO baryon term -- their")
     print("fifth force is sourced by dark matter density perturbations ONLY.")
-    print("A universal coupling (P23's reading of g) is sourced by the TOTAL")
-    print("matter perturbation -- these are NOT the same functional form; one")
-    print("is not simply a rescaled/relabeled version of the other.")
+    print("A universal coupling (P23's reading of g) is, by construction here,")
+    print("sourced by the TOTAL matter perturbation -- if the transcription is")
+    print("accurate, these are NOT the same functional form; one is not simply")
+    print("a rescaled/relabeled version of the other. NOTE: 'universal' is a")
+    print("hand-built comparison case, not itself fetched from any source.")
 
     # --- Part 2: does DM's enhanced growth feed into baryon growth via ---
     # --- ordinary gravity, even without a direct fifth-force term? ---
@@ -76,14 +80,20 @@ def main():
     assert ddelta_chi != 0
 
     print()
-    print("CONFIRMED: baryons in Archidiacono's own model respond to delta_chi")
-    print("(nonzero derivative) via the STANDARD gravitational term, even though")
-    print("they carry no direct fifth-force term of their own. If the fifth force")
-    print("enhances delta_chi's own growth (via eq. 4.2's Euler-equation term,")
-    print("not modeled here), that enhancement propagates to baryons through")
-    print("ordinary gravity -- an ABSOLUTE growth-of-structure channel exists in")
-    print("their own DM-only model, alongside the differential DM-baryon effect")
-    print("their abstract names as the paper's primary novel signature.")
+    print("CONSISTENT WITH TRANSCRIPTION: baryons in Archidiacono's own model, as")
+    print("quoted, respond to delta_chi via the STANDARD gravitational term, even")
+    print("though they carry no direct fifth-force term of their own. This")
+    print("derivative is trivially forced by the linear form as transcribed --")
+    print("sympy confirms arithmetic, not the correctness of the transcription.")
+    print("If the fifth force enhances delta_chi's own growth (via eq. 4.2's")
+    print("Euler-equation term, not modeled here), that enhancement propagates to")
+    print("baryons through ordinary gravity -- an absolute growth-of-structure")
+    print("channel EXISTS in their own DM-only model (magnitude not addressed),")
+    print("alongside the differential DM-baryon effect their abstract names as")
+    print("the paper's primary novel signature. NOTE: this does NOT by itself say")
+    print("anything about how a UNIVERSAL coupling would behave in their pipeline")
+    print("-- see FINDING_P29 section 3's correction for why that link is a")
+    print("non-sequitur, not a confirmation of FINDING_P28's retraction.")
 
 
 if __name__ == "__main__":
