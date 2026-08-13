@@ -1,11 +1,20 @@
 """P19: FINDING_P18 left the missing normalization constant's FORM as a
 named, unproven assumption -- "cancels IF it is a pure, r_min-independent
-overall multiplier". Can that form actually be derived, rather than
-assumed, for at least the piece of the normalization that comes from the
-field equation's own Green's function?
+overall multiplier". Can the standard, textbook piece of that normalization
+(the field equation's own Green's-function factor) be pinned down, rather
+than assumed?
 
 NOT_VALIDATION - NOT_REFUTATION - OUR_RECONSTRUCTION - L0 descriptive
-2026-08-12. This project's own action (two_field_action_closure.py):
+2026-08-12, corrected 2026-08-12 after context-blind skeptic review.
+
+[CORRECTED: an earlier draft of this docstring called this a "derivation"
+implying novel physics content. It is not -- 1/(4*pi) is the standard
+Green's-function normalization used throughout ordinary electrostatics
+(same origin as 1/(4*pi*eps0)); this identifies that this project's own
+ansatz was missing it, applying a textbook result to this project's own
+p.grad(phi) coupling for the first time, not discovering new physics.]
+
+This project's own action (two_field_action_closure.py):
 
   S = int d^4x (1/2)(d phi)^2 + sum_i int dtau [g*m_i + p_i . grad] phi(x_i)
 
@@ -17,16 +26,24 @@ DIFFERENT normalization: phi = p*cos(theta)/(4*pi*r^2) -- the textbook
 electrostatics/magnetostatics dipole-potential form, missing a 1/(4*pi)
 factor throughout this project's own prior work.
 
-SCOPE, stated up front: this derives and verifies ONE piece of the
+SCOPE, stated up front: this identifies and verifies ONE piece of the
 missing normalization P17 found (a pure NUMBER, 1/(4*pi), coming from the
-Green's function's own geometric normalization) and proves it is
-r_min-independent BY CONSTRUCTION -- not merely checked for one assumed
-form, as FINDING_P18's Part 3 sensitivity check did. This does NOT resolve
-FINDING_P17's full dimensional problem (Omega_phi has units kg/m, not
-dimensionless) -- 1/(4*pi) is a pure number, not a dimensional constant,
-and cannot by itself fix a units mismatch. That deeper problem (a missing
-constant WITH UNITS, needed to make the action's own kinetic term
-dimensionally consistent) remains completely open after this finding.
+Green's function's own geometric normalization) and shows the POINT-
+SOURCE COEFFICIENT ITSELF is r_min-independent BY CONSTRUCTION -- not
+merely checked for one assumed form, as FINDING_P18's Part 3 sensitivity
+check did. [CORRECTED: this closes only ONE narrow piece of P18's gap.]
+It does NOT touch the renormalization/regularization concern FINDING_P18's
+own skeptic review actually raised (a question about how the ENERGY
+INTEGRAL is regularized, separate from phi's own field-equation
+normalization). It also does NOT rule out r_min-dependent corrections
+from the finite physical size of a real source: E_self is dominated by
+r~r_min, exactly where the point-dipole idealization used here is
+weakest. Nor does this resolve FINDING_P17's full dimensional problem
+(Omega_phi has units kg/m, not dimensionless) -- 1/(4*pi) is a pure
+number, not a dimensional constant, and cannot by itself fix a units
+mismatch. That deeper problem (a missing constant WITH UNITS, needed to
+make the action's own kinetic term dimensionally consistent) remains
+completely open after this finding.
 """
 
 import sympy as sp
@@ -112,24 +129,29 @@ def main() -> None:
     print("  (r>=r_min) AFTER phi is already fully determined. Since the geometric")
     print("  normalization 1/(4*pi) comes entirely from solving Laplacian(G)=delta^3(x)")
     print("  -- an equation r_min cannot appear in -- this piece of the normalization")
-    print("  is r_min-independent BY CONSTRUCTION, for any source configuration (a single")
-    print("  dipole's self-energy, or a pair's cross-term interaction) built from it.")
-    print("  This resolves the specific condition FINDING_P18's Part 3 flagged as open")
-    print("  (alpha=0) for the geometric piece of the missing normalization -- with a")
-    print("  reason, not merely a checked example.")
+    print("  is r_min-independent for the POINT-SOURCE COEFFICIENT ITSELF, for any source")
+    print("  configuration (self-energy or cross-term) built from the point-dipole field.")
+    print("  [CORRECTED after skeptic review:] this closes only ONE narrow piece of P18's")
+    print("  gap -- NOT the renormalization/regularization concern P18's own skeptic")
+    print("  actually raised (a question about the ENERGY INTEGRAL's own structure, a")
+    print("  separate step from phi's normalization). It also does not rule out finite-")
+    print("  size corrections: E_self is dominated by r~r_min, exactly where the point-")
+    print("  dipole idealization used here is weakest for a real extended source.")
 
     print("\n" + "=" * 78)
     print("VERDICT")
     print("=" * 78)
-    print("Derived, not assumed: this project's dipole-field ansatz (phi=p*cos(theta)/r^2,")
-    print("used in P9/P11/P12/P14/P15/P16) is missing a 1/(4*pi) geometric normalization")
-    print("factor, verified against the standard textbook dipole-potential form.")
+    print("[CORRECTED after skeptic review: 'derived' softened to 'identified' -- 1/(4*pi)")
+    print("is the standard Green's-function normalization from ordinary electrostatics,")
+    print("not a new physics result.] This project's dipole-field ansatz (phi=p*cos(theta)/")
+    print("r^2, used in P9/P11/P12/P14/P15/P16) is missing this factor, verified against")
+    print("the standard textbook dipole-potential form.")
     print()
-    print("This factor is PROVABLY r_min-independent (Step 3) -- a real argument, not an")
-    print("assumed form, resolving FINDING_P18's conditional gap for THIS piece of the")
-    print("normalization. The cross/self RATIOS in FINDING_P15/FINDING_P16 are therefore")
-    print("unaffected by this specific factor (it is a pure number, cancels in any ratio")
-    print("regardless of r_min, confirmed structurally, not just numerically).")
+    print("The point-source coefficient is PROVABLY r_min-independent (Step 3). This closes")
+    print("one narrow piece of FINDING_P18's conditional gap, NOT the piece P18's own")
+    print("skeptic actually raised (renormalization/regularization of the energy integral),")
+    print("and does not rule out r_min-dependent finite-size corrections near r~r_min,")
+    print("where E_self is dominated and the point-dipole idealization is weakest.")
     print()
     print("WHAT THIS DOES NOT RESOLVE: 1/(4*pi) is a pure NUMBER, not a quantity with")
     print("physical UNITS. FINDING_P17's full dimensional problem (Omega_phi has units")
