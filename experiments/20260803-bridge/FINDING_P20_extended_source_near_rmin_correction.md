@@ -13,6 +13,20 @@ formula as `d/r_min→0`, to `1e-5` precision) must pass before the
 realistic-regime result is trusted. Convergence in the integration's
 outer radius checked independently (stable to 6+ significant figures).
 
+**[CORRECTED after skeptic review — read before the rest of this file]**
+A context-blind skeptic review raised two legitimate, well-reasoned
+concerns and one fair critique of an unverified assertion: (1) whether
+the numeric ratios at the largest tested `d/r_min` (`1.5`, `1.9`) were
+actually numerically reliable, given a sharp, narrow near-pole feature in
+the integrand the original convergence check (run only at `d/r_min=1.0`)
+never stress-tested; (2) whether `FINDING_P14`'s own prose ("the
+cluster's own physical size") is genuinely ambiguous about whether
+`d/r_min=1` is really this project's convention, versus a possible
+`d/r_min=2` reading; (3) that the cross/self "safety" claim was asserted
+on physical grounds, not independently computed. Concerns (1) and (2)
+were checked directly and the original results survive; (3) is a fair
+critique, corrected below.
+
 ## The gap this addresses
 
 `FINDING_P14` §2 states plainly: *"this project's own construction
@@ -24,6 +38,19 @@ near the `d/r_min→0` point-dipole limit `FINDING_P19`'s normalization was
 derived for. `FINDING_P19`'s own skeptic flagged this as an unaddressed
 possibility; this finding tests it directly rather than leaving it as a
 named-but-unexamined concern.
+
+**[CORRECTED after skeptic review.]** The skeptic pointed out that
+`FINDING_P14`'s parenthetical "(the cluster's own physical size)" could
+colloquially be read as a *radius* (half the separation), which would
+imply `d/r_min=2` — the divergent boundary — rather than `d/r_min=1`.
+Checked directly against the actual code, not just P14's prose:
+`two_charge_completion.py`'s own §"MAP" (line 158) substitutes
+`{dA: rA, dB: rB}` — a direct, unambiguous identification of `r_A` with
+the **full** charge separation `dA` (the same convention used throughout
+this script, charges at `±d/2`), with no factor of 2 anywhere in that
+mapping. **`d/r_min=1` is the project's own actual, code-level
+convention — P14's prose could be clearer, but the underlying
+construction is not ambiguous.**
 
 ## Method
 
@@ -65,6 +92,30 @@ d/r_min=1.90: ratio = 4.512144
 stable to 6+ significant figures by `R_max=5000` (used throughout above;
 `R_max=100000` changes the 8th significant figure only).
 
+**[Added after skeptic review.] Stress test at the two largest,
+most-scrutinized ratios (`d/r_min=1.5` and `1.9`).** The skeptic
+correctly noted that as `d/r_min→2`, points on the cutoff sphere near the
+poles (`θ→0,π`) approach the charges' own locations, creating a narrow,
+sharp feature in the integrand (analytically estimated: angular width
+`~0.03` rad, peak `~10⁴×` the equatorial value at `d/r_min=1.9`) that the
+original convergence check — run only at `d/r_min=1.0`, where no such
+sharp feature exists — never stress-tested. Checked directly, three
+independent ways, at `d/r_min=1.9`:
+
+```
+tolerance refinement (epsrel 1e-9 -> 1e-13, R_max fixed): ratio = 4.512144 (all cases, unchanged)
+R_max refinement (500 -> 100000, epsrel fixed):            ratio = 4.512136 -> 4.512144 (converged)
+manual angular subdivision (explicit fine bins near theta=0,pi): ratio = 4.512144 (exact match)
+```
+
+All three agree to the reported precision. The same check at
+`d/r_min=1.5` also confirms `ratio=1.389991` under both looser and
+much tighter tolerances. **The originally reported values at `d/r_min∈
+{1.5, 1.9}` are numerically reliable, not just directionally correct** —
+`scipy`'s adaptive quadrature resolved the near-pole feature correctly,
+independently confirmed by forcing explicit resolution of that exact
+region.
+
 ## Result
 
 **At the project's own stated convention, the exact self-energy is
@@ -76,12 +127,19 @@ numerically significant at the ratio this project actually uses — not
 merely a theoretical possibility.
 
 **Consequence for the cross/self ratio (`FINDING_P15`/`P16`/`P18`):
-safe, and if anything strengthened.** The correction makes `E_self`
-*larger* than the point-dipole approximation, which makes cross/self
-*smaller* — self-energy dominance is understated, not undermined, by the
-point-dipole formula. `FINDING_P15`/`P16`'s qualitative conclusion (self
-dominates at realistic separations) is unaffected in direction; if
-anything, the true margin is slightly wider than reported.
+~~safe, and if anything strengthened~~ [CORRECTED after skeptic review]
+plausibly safe on physical grounds, not independently verified here.**
+The argument — the correction makes `E_self` *larger*, which makes
+cross/self *smaller*, so self-dominance is understated rather than
+undermined — rests on the assumption that the cross-term itself is
+unaffected, because `FINDING_P15`/`P16` computed it at large inter-cluster
+separations (`~20:1`), well into the point-dipole far-field regime where
+multipole corrections should be small. **This is a reasonable physical
+argument, but this finding does not compute the cross-term correction the
+same way it computed the self-energy correction** — doing so (an exact
+two-dipole cross-integral at realistic separation, analogous to this
+script's own method) would convert "asserted" into "shown," and is a
+natural, cheap follow-up this finding stops short of.
 
 **Consequence for absolute magnitudes (`FINDING_P14`/`P17`): a real but
 moderate correction, not a resolution of the larger open problems.**
@@ -112,8 +170,47 @@ resolves a larger open problem.
    `r_min→0` — a different question, still untouched.
 4. **A general formula for the correction factor at arbitrary `d/r_min`.**
    Only spot values were computed; no closed-form fit was attempted.
-5. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction,
+5. **[Added after skeptic review.] That the cross-term correction is
+   negligible — only that it is plausibly so.** The safety argument for
+   `FINDING_P15`/`P16`'s cross/self conclusion is physical reasoning, not
+   an independent computation of the same kind performed here for
+   self-energy.
+6. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction,
    not a claim about TJB's own unpublished theory.
+
+## Skeptic verdict (Step 8a, context-blind — claim + code + cited files only)
+
+Two separate verdicts, not merged:
+
+**(1) Math/numerical content: CONFIRMED-REAL, with two concerns raised and
+both independently resolved.** The skeptic independently re-derived the
+point-dipole formula by hand and confirmed the setup. Two specific
+concerns: (a) whether the `d/r_min∈{1.5,1.9}` numbers were numerically
+reliable, given a sharp near-pole feature the original convergence check
+never stress-tested — checked directly, three independent ways (tolerance
+refinement, `R_max` refinement, manual angular subdivision), all confirm
+the original values exactly; not falsified. (b) whether `d/r_min=1` is
+genuinely this project's convention, given `FINDING_P14`'s own
+potentially-ambiguous prose — checked directly against
+`two_charge_completion.py`'s own code (the `{dA:rA}` mapping), confirmed
+unambiguous; not falsified.
+
+**(2) Interpretive claims: WEAKENED on one specific point, CONFIRMED-REAL
+otherwise.** The claim that a real, numerically-significant correction
+exists at the project's own convention is CONFIRMED-REAL, now with
+additional stress-testing evidence. The absolute-magnitude scoping
+("moderate, does not resolve the larger open problems") is CONFIRMED-REAL
+and was already appropriately hedged. The cross/self "safe, if anything
+strengthened" claim is WEAKENED — the *direction* of the argument is
+sound, but it was asserted on physical grounds rather than independently
+computed the same way this finding computed the self-energy correction;
+downgraded to "plausibly safe, not independently verified here," with the
+missing computation named as a natural next step. Applied per Response
+Matrix: two stress-test sections added (Fix, both confirm the original
+work), `r_A` ambiguity resolved via direct code check (Fix), cross/self
+claim downgraded (Fix), new "does NOT establish" item added. No response
+fell to core-predicate-false — every numeric result in this finding
+survives independent re-verification.
 
 ## Reproduction
 
