@@ -16,16 +16,33 @@ nothing in this project's own files claims it is -- the k-sector should
 produce a genuine, computable, composition-dependent acceleration
 difference: exactly what Eotvos-type experiments are built to detect.
 
-METHOD: reuse P24's own already-verified F_km expression (sympy, symbolic,
-not re-derived by hand) for the acceleration of a light test body B
-falling toward a heavy fixed source A. Split a_B into a
-composition-INDEPENDENT term (source properties only) and a composition-
-DEPENDENT term (proportional to the test body's OWN K_B/M_B). Compute the
-standard Eotvos parameter eta_Eotvos = 2|a_1-a_2|/|a_1+a_2| for two test
-bodies of different composition in the SAME source field, symbolically.
-Then compare the PREDICTED functional form (not a fabricated number)
-against what a real external EP-test bound would require -- explicitly
-flagged as NOT independently verified this session if no fetch is done.
+[CORRECTED 2026-08-13 after skeptic review -- a real completeness gap, not
+a framing issue.] The original version used ONLY F_km (monopole-dipole
+cross term) for the test body's acceleration. The skeptic found this
+misses TWO real contributions: (1) F_mm (monopole-monopole), which
+dominates the DENOMINATOR |a_1+a_2| and was silently omitted from the
+original eta_Eotvos expression; (2) F_kk (dipole-dipole), which ALSO
+carries a composition-dependent piece proportional to the SAME ratio
+K_test*r_test/M_test as F_km's, but with opposite functional form (kappa^2
+not kappa^1, 1/r^4 not 1/r^3) -- omitting it silently understated the
+composition-dependent coefficient. Both are now included. The original
+positive control (matching K*r/M across two bodies forces a_1=a_2) is kept
+but its diagnostic LIMIT is now stated explicitly: since BOTH the F_km and
+F_kk composition pieces are proportional to the identical ratio K*r/M, this
+control cannot distinguish "F_kk correctly included" from "F_kk omitted
+entirely" -- it passes either way. A genuinely differentiating check (the
+two composition-dependent terms have DIFFERENT r-power, 1/r^3 vs 1/r^4) is
+added instead.
+
+METHOD: reuse P24's own already-verified tiers_from_kernel machinery
+(sympy, symbolic, not re-derived by hand) for the FULL force (F_mm+F_km+
+F_kk) between a light test body and a heavy fixed source. Split the total
+acceleration into a composition-INDEPENDENT term (source properties only)
+and a composition-DEPENDENT term (proportional to the test body's OWN
+K_test*r_test/M_test). Compute the standard Eotvos parameter
+eta_Eotvos = 2|a_1-a_2|/|a_1+a_2| for two test bodies of different
+composition in the SAME source field, symbolically, using the FULL
+acceleration in both numerator and denominator this time.
 """
 
 from __future__ import annotations
@@ -41,7 +58,8 @@ big_m2, big_k2, r2 = sp.symbols("M_2 K_2 r_2", positive=True)
 
 
 def tiers_from_kernel(kernel):
-    """Unchanged from P1/P24 -- same physical-dipole construction."""
+    """Unchanged from P1/P24 -- same physical-dipole construction. Now
+    returns all three tiers (P25 v1 used only u_km)."""
     a_ch = [(mA, 0), (qA, dA / 2), (-qA, -dA / 2)]
     b_ch = [(mB, r), (-qB, r + dB / 2), (qB, r - dB / 2)]
     eps = sp.Symbol("eta_expand", positive=True)
@@ -52,16 +70,21 @@ def tiers_from_kernel(kernel):
     )
     u = sp.series(u, eps, 0, 3).removeO().subs(eps, 1)
     u = sp.expand(sp.simplify(u))
+    u_mm = u.coeff(mA, 1).coeff(mB, 1) * mA * mB
     u_km = u.coeff(qA, 1).coeff(mB, 1) * qA * mB + u.coeff(qB, 1).coeff(mA, 1) * qB * mA
-    return sp.simplify(u_km)
+    u_kk = u.coeff(qA, 1).coeff(qB, 1) * qA * qB
+    return sp.simplify(u_mm), sp.simplify(u_km), sp.simplify(u_kk)
 
 
-def acceleration_of_test_body(m_test, k_test, r_test):
-    """a = F_km/M_test for a light test body (M_test, K_test, r_test) falling
-    toward the fixed source (M_A, K_A, r_A), using P24's own substitution
-    convention (m_i->g*M_i, q_i->-kappa*K_i/c^2, d_i->r_i, one overall A)."""
-    u_km = tiers_from_kernel(1 / s)
+def full_acceleration(m_test, k_test, r_test):
+    """a = (F_mm+F_km+F_kk)/M_test -- the FULL acceleration, all three
+    tiers, for a light test body (M_test, K_test, r_test) falling toward
+    the fixed source (M_A, K_A, r_A). Same substitution convention as P24:
+    m_i->g*M_i, q_i->-kappa*K_i/c^2, d_i->r_i, one overall A."""
+    u_mm, u_km, u_kk = tiers_from_kernel(1 / s)
+    f_mm = sp.simplify(-sp.diff(u_mm, r))
     f_km = sp.simplify(-sp.diff(u_km, r))
+    f_kk = sp.simplify(-sp.diff(u_kk, r))
     subs_map = {
         mA: g * big_ma,
         mB: g * m_test,
@@ -70,83 +93,109 @@ def acceleration_of_test_body(m_test, k_test, r_test):
         dA: ra,
         dB: r_test,
     }
-    f_km_full = sp.simplify(big_a * f_km.subs(subs_map))
-    return sp.simplify(f_km_full / m_test)
+    f_total = big_a * (f_mm + f_km + f_kk).subs(subs_map)
+    return sp.simplify(f_total / m_test)
 
 
 def main() -> int:
     print("=" * 78)
     print("P25 -- WEP/Eotvos kill-gate: does the k-sector violate composition")
-    print("       independence, and if so, how?")
+    print("       independence, and if so, how? (CORRECTED -- full mm+km+kk)")
     print("NOT_VALIDATION - NOT_REFUTATION - OUR_RECONSTRUCTION | L0: descriptive")
     print("=" * 78)
 
-    a1 = acceleration_of_test_body(big_m1, big_k1, r1)
-    a2 = acceleration_of_test_body(big_m2, big_k2, r2)
-    print("\n[STEP 1] Acceleration of two test bodies (1, 2), same source A,")
-    print("  reusing P24's own F_km expression unchanged.")
-    print(f"  a_1 = F_km(body 1)/M_1 = {a1}")
-    print(f"  a_2 = F_km(body 2)/M_2 = {a2}")
-
+    a1 = full_acceleration(big_m1, big_k1, r1)
+    a2 = full_acceleration(big_m2, big_k2, r2)
+    print("\n[STEP 1] FULL acceleration (F_mm+F_km+F_kk)/M_test of two test")
+    print("  bodies (1, 2), same source A -- corrected from v1's F_km-only.")
     a1_c = sp.collect(sp.expand(a1), big_k1)
-    a2_c = sp.collect(sp.expand(a2), big_k2)
-    print(f"\n  a_1 split: {a1_c}")
-    print(f"  a_2 split: {a2_c}")
-    print("  -> each accel = [source-only term, SAME for both bodies]")
-    print("                + [term proportional to the TEST body's OWN K_i/M_i]")
+    print(f"  a_1 (collected by K_1) = {a1_c}")
 
-    print("\n[STEP 2] Difference and Eotvos parameter -- does the source-only")
-    print("  term cancel out of a_1-a_2, leaving a PURE composition-dependent")
-    print("  residual?")
-    delta_a = sp.simplify(a1 - a2)
-    delta_a_expanded = sp.expand(delta_a)
-    print(f"  a_1 - a_2 = {delta_a_expanded}")
-
-    # Isolate: does the source-only piece (proportional to K_A, independent of
-    # K_1,K_2,M_1,M_2) actually cancel in the difference?
-    source_only_term = sp.expand(a1).coeff(big_ka, 1) - sp.expand(a2).coeff(big_ka, 1)
-    print(f"  source-only (K_A) coefficient in a_1 minus in a_2: {sp.simplify(source_only_term)}")
-    cancels = sp.simplify(source_only_term) == 0
-    print(f"  -> source-only term cancels identically: {cancels}")
-    if not cancels:
-        print("  STOP -- unexpected structure, the split assumed above is wrong.")
+    print("\n[STEP 2] Does the source-only piece still cancel from a_1-a_2?")
+    delta_a = sp.expand(sp.simplify(a1 - a2))
+    source_only_diff = sp.simplify(delta_a.subs({big_k1: 0, big_k2: 0}))
+    print(f"  a_1-a_2 with K_1=K_2=0 (pure monopole-monopole part): {source_only_diff}")
+    if source_only_diff != 0:
+        print("  STOP -- source-only/monopole piece does not cancel, unexpected.")
         return 1
+    print("  -> CONFIRMED: the composition-INDEPENDENT part (F_mm entirely, plus")
+    print("     F_km's source-only term) still cancels identically from a_1-a_2,")
+    print("     even with F_mm and F_kk now included.")
 
-    eta_eotvos = sp.simplify(2 * sp.Abs(delta_a_expanded) / sp.Abs(a1 + a2))
-    print(f"\n  eta_Eotvos = 2|a_1-a_2|/|a_1+a_2| = {eta_eotvos}")
+    print("\n[STEP 3] The composition-dependent coefficient -- NOW includes BOTH")
+    print("  the F_km piece (linear in kappa) AND the F_kk piece (quadratic in")
+    print("  kappa, previously missing entirely).")
+    # isolate the coefficient of K_1 (test body 1's charge) in a_1
+    comp_coeff_1 = sp.simplify(sp.diff(a1, big_k1))
+    print(f"  d(a_1)/d(K_1) = {comp_coeff_1}")
+    print("  -> two additive pieces, verified by their DIFFERENT r-power below")
+    print("     (this is the genuinely differentiating check the v1 positive")
+    print("     control could NOT provide, since both pieces share the SAME")
+    print("     K*r/M dependence and are indistinguishable by that test alone):")
+    km_piece = -2 * big_a * g * kappa * big_ma * r1 / (c**2 * r**3 * big_m1)
+    kk_piece = 6 * big_a * kappa**2 * big_ka * ra * r1 / (c**4 * r**4 * big_m1)
+    check_split = sp.simplify(comp_coeff_1 - (km_piece + kk_piece))
+    print(f"  F_km-derived piece (kappa^1, ~1/r^3): {km_piece}")
+    print(f"  F_kk-derived piece (kappa^2, ~1/r^4): {kk_piece}")
+    print(f"  residual after subtracting both from d(a_1)/d(K_1): {check_split}")
+    if check_split != 0:
+        print("  STOP -- the two-piece decomposition does not match.")
+        return 1
+    print("  -> CONFIRMED: two independent contributions, different power of")
+    print("     kappa AND different power of r -- NOT a duplicate, both real.")
 
-    print("\n[STEP 3] The composition-dependence signature")
-    print("  Setting K_1/M_1 = K_2/M_2 (SAME charge-to-mass-times-radius ratio)")
-    print("  should force a_1=a_2 exactly -- a positive control on this result.")
-    equal_ratio_test = sp.simplify(
-        delta_a_expanded.subs({big_k2: big_k1 * big_m2 * r1 / (big_m1 * r2)})
-    )
-    print(f"  a_1-a_2 with K_2 chosen so K_2*r_2/M_2 = K_1*r_1/M_1: {equal_ratio_test}")
+    print("\n[STEP 4] Corrected eta_Eotvos -- using the FULL a_1, a_2 in BOTH")
+    print("  numerator and denominator (v1 used F_km alone in the denominator,")
+    print("  which is wrong: F_mm dominates |a_1+a_2| in reality).")
+    eta_eotvos_full = sp.simplify(2 * sp.Abs(delta_a) / sp.Abs(a1 + a2))
+    print(f"  eta_Eotvos (full) = 2|a_1-a_2|/|a_1+a_2| = {eta_eotvos_full}")
+
+    print("\n[STEP 5] Positive control -- kept, but its diagnostic LIMIT stated.")
+    print("  Setting K_2*r_2/M_2 = K_1*r_1/M_1 forces a_1=a_2 -- but since BOTH")
+    print("  composition-dependent pieces (kappa^1 and kappa^2) share this SAME")
+    print("  ratio, this control passes whether F_kk is included or not -- it")
+    print("  does NOT discriminate this specific completeness error (matches")
+    print("  this project's own FINDING_two_charge_completion.md Sec.6 lesson:")
+    print("  'a control that switches off the feature under test cannot test it').")
+    equal_ratio_test = sp.simplify(delta_a.subs({big_k2: big_k1 * big_m2 * r1 / (big_m1 * r2)}))
+    print(f"  a_1-a_2 with K_2*r_2/M_2=K_1*r_1/M_1: {equal_ratio_test}")
     if equal_ratio_test != 0:
-        print("  STOP -- composition-matched bodies still differ, structure is wrong.")
+        print("  STOP -- composition-matched bodies still differ.")
         return 1
-    print("  -> CONFIRMED: a_1=a_2 exactly when K_i*r_i/M_i matches -- the")
-    print("     violation is driven PURELY by the dipole-moment-per-mass ratio")
-    print("     K_i*r_i/M_i (equivalently p_i/M_i, the body's own dipole moment")
-    print("     per unit mass), not by mass or radius alone.")
+
+    print("\n[STEP 6] Codimension-1 cancellation surface -- a SECOND escape route")
+    print("  beyond K/M universality: does a specific relation among the")
+    print("  parameters zero the TOTAL composition coefficient even when K/M is")
+    print("  NOT universal?")
+    total_comp_coeff = sp.simplify(km_piece + kk_piece)
+    cancel_solution = sp.solve(sp.Eq(total_comp_coeff, 0), kappa)
+    print(f"  Solving [F_km-piece + F_kk-piece] = 0 for kappa: {cancel_solution}")
+    print("  -> a nonzero solution exists (kappa = specific ratio of g, M_A, K_A,")
+    print("     r_A, r, c) -- a fine-tuned surface, not generic, but a real,")
+    print("     distinct alternative to K/M universality that also hides the")
+    print("     violation. Not claimed to be natural or likely -- only that it")
+    print("     exists and was not named in v1.")
 
     print("\n" + "=" * 78)
-    print("VERDICT")
+    print("VERDICT -- CORRECTED, softened per skeptic review")
     print("=" * 78)
-    print("CONFIRMED (structural, sympy-verified): the k-sector (kappa) coupling")
-    print("predicts a GENUINE, nonzero composition-dependent acceleration")
-    print("difference between two test bodies with different K_i*r_i/M_i (dipole")
-    print("moment per unit mass) in the same source field -- this is EXACTLY the")
-    print("kind of signature real Eotvos-type equivalence-principle experiments")
-    print("are built to detect, unlike the g-sector (P23), which is degenerate")
-    print("with G and structurally invisible to such tests.")
+    print("CONFIRMED (structural, sympy-verified, now complete): the k-sector")
+    print("predicts a nonzero composition-dependent acceleration difference from")
+    print("TWO independent contributions (F_km linear in kappa, F_kk quadratic),")
+    print("both proportional to the test body's own K*r/M -- verified via their")
+    print("DIFFERENT r-power, not merely asserted. This is CONDITIONAL, not")
+    print("structural-full-stop: it requires K/M to be non-universal across")
+    print("materials (MODEL_SPEC_AUDIT.md flags k_A,k_P as OPEN, not resolved)")
+    print("AND falls outside the codimension-1 cancellation surface (Step 6).")
+    print("If K/M turns out approximately universal, the k-sector's signal is")
+    print("numerically suppressed toward the g-sector's exact zero, not")
+    print("qualitatively opposite to it.")
     print()
-    print("NOT DONE HERE: comparing this predicted functional form against a")
-    print("real external EP-test bound (e.g. MICROSCOPE) requires an independently")
-    print("verified numeric sensitivity AND a real value/estimate for K_i*r_i/M_i")
-    print("across different materials -- neither attempted in this script. The")
-    print("kill-gate question (does this survive existing WEP limits) remains open")
-    print("pending that external, verified numeric comparison.")
+    print("NOT DONE HERE: numeric evaluation against a real EP bound (e.g.")
+    print("MICROSCOPE), a real/estimated K/M variation across materials, or")
+    print("whether the lab-scale physical-dipole picture (charges at +-r_i/2 of")
+    print("a solid test mass) is even a coherent extension of the cluster-scale")
+    print("construction motivating it -- all explicitly out of scope here.")
     return 0
 
 
