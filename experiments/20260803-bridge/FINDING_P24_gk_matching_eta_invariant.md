@@ -12,6 +12,17 @@ parameter controlling the k-sector's strength *relative to gravity*?
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · L0 descriptive
 **Script:** `P24_gk_matching_eta_invariant.py`
 
+**[CORRECTED after skeptic review, same day — argument precision, not math.]**
+No sub-verdict was FALSIFIED; the underlying algebra and conclusions survive
+fully. Three sub-verdicts were WEAKENED, all about how the argument was
+*framed*, not whether it's *true*: §2's "matches P21/P22 — sanity check"
+overstated an inherently self-consistent result as independent
+cross-verification (§2, corrected below); §4's "g never enters `u_i`'s own
+definition" was a muddled argument for a true conclusion (§4, corrected to
+the cleaner kernel-invariance argument); §3's "algebraic necessity" caveat
+was missing two implicit conditions it silently relied on (§3, corrected).
+See Skeptic Verdict section for the full breakdown.
+
 ## 0. Naming note — read before citing, avoids a real symbol collision
 
 `β_d=2` and `β_q=√6` are **already established, verified, fixed pure
@@ -69,23 +80,52 @@ Substituting `κ=η·g` — `g` **also** cancels identically:
 **`η=κ/g` is the sole parameter controlling the k-sector's force strength
 relative to gravity** — confirmed symbolically, not asserted.
 
+**[Corrected after skeptic review]** `F_mm~A·g²` matching P21/P22's own
+`A·g²` is **not** an independent cross-check of P21's convention — P21 §2
+*defines* `A` via exactly this force-matching, so recovering it here
+confirms only that this finding *applies* P21's convention consistently,
+not that the convention itself is independently verified. Similarly, the
+observation that `A` cancels identically from every cross-sector ratio
+(§2) is **guaranteed by construction** — multiplying every tier by the
+same `A` and then dividing cancels it regardless of whether "one `A` per
+tier" is the physically correct convention. Neither is a discovery; both
+are the finding's own arithmetic behaving consistently with its own setup.
+
 `β_d=2`, `β_q=√6`, `β_q/β_d=√6/2` are **unchanged** — confirmed by direct
 inspection: they were computed *before* any `g`/`κ`/`A` substitution, from
-`f_km`, `f_kk` alone, and `g` never enters `u_i`'s own definition at all.
-This was already established 2026-08-10; this finding re-confirms it
-survives the new `g`-insertion rather than re-deriving it.
+`f_km`, `f_kk` alone. **[Corrected after skeptic review]** the cleanest
+argument for why they survive is *not* "g never enters `u_i`'s own
+definition" (the original wording here) — that framing is ambiguous about
+which mass `u_i`'s own denominator refers to once `mᵢ→g·Mᵢ` is inserted
+elsewhere, and doesn't actually need resolving. The airtight argument is
+simpler: `2` and `6` are coefficients of the kernel's own multipole
+*expansion* — properties of how `K(s)=1/s` Taylor-expands in the
+lever-arm ratio, fixed before any charge is named at all. They are
+**invariant under any subsequent relabeling** of what the charges `mᵢ`,
+`qᵢ` physically represent (bare mass, `g·mass`, or anything else) —
+substituting `g·Mᵢ` for `mᵢ` after the expansion cannot change coefficients
+that were already fixed by the expansion itself. This was already
+established 2026-08-10; this finding re-confirms it survives the new
+`g`-insertion rather than re-deriving it.
 
 ## 3. Honest caveat, stated proactively — is this a discovery or an algebraic necessity?
 
 This reduction to a single `η` **follows near-automatically from the
-already-assumed bilinear coupling form**: the action couples each body
+already-assumed bilinear coupling form** — the action couples each body
 through exactly *one* power of `g` **or** `κ` — never both, never a cross
-term (`g·κ` on the same body). Given that structure, *any* two force tiers
-built from these charges will reduce to a pure ratio of coupling constants
-by dimensional bookkeeping alone — this is closer to "the algebra of the
-already-assumed action shape" than an independent new discovery about
-MULTING's physics, in the same sense P16's skeptic review downgraded a
-"transfer confirmed" claim to "guaranteed by construction." What is *not*
+term (`g·κ` on the same body). **[Corrected after skeptic review]** That
+bilinear structure alone is not sufficient by itself — two further
+conditions, present in this construction but not previously stated, are
+also required: (ii) the couplings are **universal** — the *same* `g` for
+every body's monopole charge, the *same* `κ` for every body's dipole
+charge, not body-specific `g_A≠g_B`; (iii) `g` and `κ` are **dimensionally
+compatible**, so `κ/g` is a genuine pure number. Given all three
+conditions, *any* two force tiers built from these charges reduce to a
+pure ratio of coupling constants by dimensional bookkeeping alone — this is
+closer to "the algebra of the already-assumed action shape" than an
+independent new discovery about MULTING's physics, in the same sense P16's
+skeptic review downgraded a "transfer confirmed" claim to "guaranteed by
+construction." What is *not*
 guaranteed, and *is* the finding's real content: (a) that the reduction is
 to `η¹` for dipole and `η²` for quadrupole *specifically* (not some other
 power, which depends on the actual bilinear degree of each tier); (b) that
@@ -117,9 +157,46 @@ advance (it required checking `g` doesn't enter `u_i`, not just assuming it).
 python experiments/20260803-bridge/P24_gk_matching_eta_invariant.py
 ```
 
-## Skeptic verdict (context-blind, Step 8a)
+## Skeptic verdict (context-blind, Step 8a, 2026-08-13)
 
-*Pending — to be run with only this file + `P24_gk_matching_eta_invariant.py`
-+ `two_field_action_closure.py` + `FINDING_two_charge_completion.md` +
-`FINDING_P21_shared_phi_normalization_constraint.md` (corrected version), no
-session history.*
+Given only this file, the script, `two_field_action_closure.py`,
+`FINDING_two_charge_completion.md`, and
+`FINDING_P21_shared_phi_normalization_constraint.md` (corrected version) —
+no session history. The skeptic independently re-verified the
+`tiers_from_kernel` reuse by hand-deriving the kernel expansion from first
+principles (not trusting the printed output), and confirmed the
+`c2=2`, `c3=6` positive control independently. Five sub-verdicts, per
+Step 8a (not merged):
+
+- **(A)** `tiers_from_kernel` reuse + positive control accuracy:
+  **CONFIRMED-REAL** — behaviourally identical to P1 (differences are
+  cosmetic or forced by variable-name hygiene, none affect return values);
+  `2`, `6` independently re-derived by hand.
+- **(B)** "`A` enters once" justification + P21 match: **WEAKENED** —
+  `F_mm~A·g²` matching P21/P22 is not an independent cross-check (P21
+  *defines* `A` via this exact force-matching, so recovering it confirms
+  only self-consistent application, not independent verification); `A`
+  canceling from cross-sector ratios is guaranteed by construction, not a
+  discovery. *Applied: §2 corrected, both points stated explicitly.*
+- **(C)** `u_i`-never-involves-`g` claim: **WEAKENED** — the *conclusion*
+  is correct but the *argument given* was muddled (ambiguous about which
+  mass `u_i`'s own denominator refers to post-substitution); the airtight
+  argument is that `2`, `6` are kernel-expansion-invariant coefficients,
+  fixed before any charge is named, hence invariant under any subsequent
+  relabeling. *Applied: §4 corrected to the cleaner argument.*
+- **(D)** "algebraic necessity" caveat precision: **WEAKENED** — missing
+  two implicit conditions the reduction silently relies on: universal
+  couplings (same `g`, same `κ` for every body) and dimensional
+  compatibility of `g`,`κ` (so `κ/g` is a pure number). *Applied: both
+  added to §3.*
+- **(E)** Naming-collision-avoidance discipline (`χ_d`,`χ_q` vs.
+  `β_d`,`β_q`): **CONFIRMED-REAL** — necessary and correctly executed; `β`
+  values are fixed pure numbers from a different construction, overloading
+  them would be exactly the Type-1 symbolic-overload failure
+  `research-methodology.md` catalogs.
+
+**No sub-verdict was FALSIFIED.** Unlike P21 and P23, this review found no
+wrong math and no wrong conclusion — only places where the argument, as
+originally written, could mislead a reader about what was proven vs.
+assumed. All three WEAKENED points are corrected above without touching
+any formula, number, or conclusion in §§1–2's derivation.
