@@ -20,12 +20,23 @@ VERIFIED QUOTES (not paraphrased):
     by the scalar fifth force" -- zero baryon coupling in this model, not a
     small one.
   - Abstract headline bound: "less than a percent of gravity" -> beta ~< 0.01,
-    from Planck + BAO (no DESI in this version), for m_phi <~ H0 (the same
-    long-range regime this project's own mu~H0/c mechanism, P11, lives in).
+    from Planck + BAO, for m_phi <~ H0 (the same long-range regime this
+    project's own mu~H0/c mechanism, P11, lives in).
   - NOT independently confirmed at this session's precision: the tighter
     "beta<0.0054" figure FINDING_P13a originally cited. Section 5's precise
     tables were not accessible (PDF mirror returned HTTP 403; HTML excerpt
     insufficient). Flagged as an open precision gap, not assumed.
+
+  CORRECTED 2026-08-13, after context-blind skeptic review: the original
+  version of this docstring claimed "no DESI in this version -- v4 predates
+  DESI DR2." That explanation was WRONG (a reasoning error, not a WebFetch
+  misquote) -- v4 is dated Nov 2025, well AFTER DESI DR2's release. Re-fetched
+  the paper's own version changelog directly: v4's only change was "fixed
+  some coefficients in analytical sub-horizon solutions (Sec 4.2.1)" -- an
+  unrelated technical erratum, not a data update. The paper's constraint
+  dataset (Planck+BAO, plus MICROSCOPE/atomic-clock comparisons added in
+  v2/v3) was never updated with DESI across any version, for reasons the
+  changelog does not state -- NOT because DESI didn't exist yet.
 
 METHOD: symbolic derivation (sympy) of the mapping between this project's
 own P21-corrected relation and Archidiacono's beta, to avoid a repeat of
@@ -90,18 +101,24 @@ def main() -> int:
     print(f"  A*g^2 <~ 16*pi^2 * {beta_val} * {g_n_val:.5e} = {a_g2_bound:.4e}  (SI units)")
 
     print("\n" + "=" * 78)
-    print("VERDICT")
+    print("VERDICT -- CORRECTED after context-blind skeptic review, 2026-08-13")
     print("=" * 78)
-    print("CONFIRMED (structural + conditional numeric): Archidiacono's own")
-    print("beta<~0.01 (Planck+BAO, m_phi<~H0, DM-only coupling -- source text")
-    print("independently verified this session) maps, via the identification")
-    print("Delta_G==G_s, onto A*g^2 <~ 1.05e-10 (SI). This bounds the PRODUCT")
-    print("A*g^2 only -- g and A remain individually unbounded, and Omega_phi")
-    print("(built from kappa, not g) is NOT thereby fixed. The mapping is")
-    print("CONDITIONAL on treating MULTING's g-coupling as comparably")
-    print("constrained to Archidiacono's DM-only coupling -- NOT the same")
-    print("measurement, not verified here, and Archidiacono's own paper")
-    print("explicitly excludes baryon coupling entirely (not just weakly).")
+    print("STRUCTURAL result (algebra A*g^2=16*pi^2*beta*G_N): CONFIRMED-REAL,")
+    print("sympy-verified. NUMERIC result (A*g^2 <~ 1.05e-10): treat as a SOFT")
+    print("CEILING, not a precise bound -- two independent, stacking sources of")
+    print("uncertainty the original verdict understated: (1) beta's own defining")
+    print("equation was read via WebFetch's small-model summarizer, not the raw")
+    print("PDF -- convergent across multiple independent fetches (some evidence")
+    print("against pure hallucination) but not PDF-verified; a wrong 4*pi")
+    print("placement would shift the result by a factor of ~158. (2) Archidiacono's")
+    print("phi couples ONLY to dark matter (paper's own abstract separately names")
+    print("'searches for violations of the Equivalence Principle in the visible")
+    print("sector' as a DIFFERENT constraint channel) -- if MULTING's g is a")
+    print("genuinely universal coupling, the real bound is very plausibly many")
+    print("orders of magnitude tighter than 1.05e-10, not just 'comparable'.")
+    print("Bounds only the PRODUCT A*g^2 -- g and A remain individually")
+    print("unbounded, and Omega_phi (built from kappa, not g) is NOT thereby")
+    print("fixed regardless of which reading is correct.")
     return 0
 
 
