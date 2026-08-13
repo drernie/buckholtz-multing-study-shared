@@ -24,11 +24,16 @@ METHOD:
   3. Leave-one-out: refit the quadratic 9 times, once per dropped point.
      If the curvature's sign or significance flips when ANY single point
      is removed, the feature is not robust.
-  4. Weighted bootstrap (2000 resamples, respecting each point's own
-     sigma_Hz) on the same statistic, for a confidence interval.
+  4. Monte Carlo resampling over the published measurement uncertainties
+     (2000 realizations; each point's H(z) is perturbed by a draw from
+     its own reported sigma_Hz, NOT resampled-with-replacement from the
+     9-point sample -- this is deliberately not a classic non-parametric
+     bootstrap, terminology corrected 2026-08-12 after review) on the
+     same statistic, for a confidence interval.
 
-DECISIVE QUESTION: does the curvature survive LOO deletion of every single
-point, and is its bootstrap CI bounded away from zero?
+DECISIVE QUESTION: does the curvature survive leave-one-out deletion of
+every single point, and is its uncertainty-resampling CI bounded away
+from zero?
 """
 
 from __future__ import annotations
@@ -42,7 +47,7 @@ from scipy.optimize import curve_fit
 REPO = Path(__file__).resolve().parents[1]
 CC_CSV = REPO / "data" / "hz_cc.csv"
 LOW_Z_CUT = 0.3
-N_BOOTSTRAP = 2000
+N_RESAMPLES = 2000
 SEED = 20260812  # fixed, stated -- not tuned after seeing the result
 
 
@@ -107,16 +112,20 @@ def main() -> int:
     print(f"\n  -> sign flips under single-point deletion: {n_flips}/{n_low}")
 
     rng = np.random.default_rng(SEED)
-    boot_c = np.empty(N_BOOTSTRAP)
-    for b in range(N_BOOTSTRAP):
-        h_b = h_low + rng.normal(0.0, sig_low)  # resample within each point's own uncertainty
+    resampled_c = np.empty(N_RESAMPLES)
+    for b in range(N_RESAMPLES):
+        # Monte Carlo perturbation within each point's own reported sigma_Hz --
+        # NOT resampling-with-replacement from the 9-point sample, so this is
+        # not a classic non-parametric bootstrap (terminology fixed 2026-08-12).
+        h_b = h_low + rng.normal(0.0, sig_low)
         resid_b = h_b - lcdm(z_low, h0_fit, om_fit)
-        boot_c[b] = quad_curvature(z_low, resid_b, sig_low)
-    ci_lo, ci_hi = np.percentile(boot_c, [2.5, 97.5])
-    frac_negative = float(np.mean(boot_c < 0))
-    print(f"\n[BOOTSTRAP] {N_BOOTSTRAP} resamples (each point perturbed within its own sigma_Hz):")
-    print(f"  c: mean={boot_c.mean():+.2f}, 95% CI=[{ci_lo:+.2f}, {ci_hi:+.2f}]")
-    print(f"  fraction of resamples with c<0 (uptick-shaped): {frac_negative:.1%}")
+        resampled_c[b] = quad_curvature(z_low, resid_b, sig_low)
+    ci_lo, ci_hi = np.percentile(resampled_c, [2.5, 97.5])
+    frac_negative = float(np.mean(resampled_c < 0))
+    print(f"\n[UNCERTAINTY RESAMPLING] {N_RESAMPLES} Monte Carlo realizations")
+    print("  (each point perturbed by a draw from its own reported sigma_Hz):")
+    print(f"  c: mean={resampled_c.mean():+.2f}, 95% CI=[{ci_lo:+.2f}, {ci_hi:+.2f}]")
+    print(f"  fraction of realizations with c<0 (uptick-shaped): {frac_negative:.1%}")
     ci_excludes_zero = ci_lo > 0 or ci_hi < 0
     print(f"  95% CI excludes zero: {ci_excludes_zero}")
 
@@ -124,22 +133,22 @@ def main() -> int:
     print("VERDICT")
     print("=" * 78)
     if n_flips == 0 and ci_excludes_zero:
-        print("Curvature sign is stable under leave-one-out AND the bootstrap CI excludes")
-        print("zero -- this WOULD be a robust feature, not single-point leverage.")
+        print("Curvature sign is stable under leave-one-out AND the uncertainty-resampling CI")
+        print("excludes zero -- this WOULD be a robust feature, not single-point sensitivity.")
     else:
         print(f"Curvature sign flips under {n_flips}/{n_low} single-point deletions, and the")
         print(
-            f"bootstrap 95% CI [{ci_lo:+.2f}, {ci_hi:+.2f}] {'excludes' if ci_excludes_zero else 'INCLUDES'} zero."
+            f"resampling 95% CI [{ci_lo:+.2f}, {ci_hi:+.2f}] {'excludes' if ci_excludes_zero else 'INCLUDES'} zero."
         )
-        print("This is NOT a robust feature in the real, independent chronometer data at")
-        print("this significance level -- consistent with noise around a smooth curve, not")
-        print("evidence of genuine low-z curvature.")
+        print("This is NOT a robust feature in the published, independent chronometer")
+        print("measurements at this significance level -- consistent with noise around a")
+        print("smooth curve, not evidence of genuine low-z curvature.")
     print()
-    print("SCOPE: this tests the real data directly, not TJB's own rendered curve (not")
-    print("available to us). If his 'uptick' is a feature of a FITTED model curve rather")
-    print("than the raw data itself, this result bounds how much support the raw")
-    print("observations alone can offer that fit -- it does not test the fit's own")
-    print("machinery.")
+    print("SCOPE: this tests the published chronometer measurements directly, not TJB's own")
+    print("rendered curve (not available to us). If his 'uptick' is a feature of a FITTED")
+    print("model curve rather than the measurements themselves, this result bounds how much")
+    print("support the published measurements alone can offer that fit -- it does not test")
+    print("the fit's own machinery.")
     return 0
 
 

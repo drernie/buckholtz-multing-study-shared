@@ -12,17 +12,26 @@ question, not a numeric one).
 **Scripts:** `scripts/plot_hubble_anchoring.py` (pre-existing, re-run for current numbers),
 `scripts/low_z_uptick_robustness_check.py` (new).
 
+**[CORRECTED after review, 2026-08-12 — terminology only, no numbers changed.]** §3's
+resampling step is not a classic non-parametric bootstrap (it does not resample-with-
+replacement from the 9-point sample) — it is Monte Carlo resampling over the *published
+measurement uncertainties* (each point perturbed by a draw from its own reported
+`sigma_Hz`). Relabeled throughout below. Also: cosmic-chronometer `H(z)` values are
+themselves already-processed *measurements*, not raw observational data in the strict
+sense — "raw data" replaced with "published chronometer measurements" throughout.
+
 ---
 
 ## 1. Scope limit, stated up front
 
 TJB's actual current chart (the one behind the 2026-08-12 email) was not available to us —
 no image was attached to what we received. Both checks below run against
-**`data/hz_cc.csv`** — 27 real, independent Moresco+2022 cosmic-chronometer points,
-FLRW-independent, not derived from Table A1 or any MULTING fit — not against TJB's own
-rendered curve, which we do not have pixel data for. If his "uptick" is a feature of a
-fitted model curve rather than the raw data itself, §3 below bounds how much support the
-raw observations alone can offer that fit; it does not test the fit's own machinery.
+**`data/hz_cc.csv`** — 27 published, independent Moresco+2022 cosmic-chronometer
+measurements, FLRW-independent, not derived from Table A1 or any MULTING fit — not against
+TJB's own rendered curve, which we do not have pixel data for. If his "uptick" is a
+feature of a fitted model curve rather than the measurements themselves, §3 below bounds
+how much support the published measurements alone can offer that fit; it does not test
+the fit's own machinery.
 
 ## 2. Anchoring-parity reconfirmation (re-run of P2 / docs/127, current numbers)
 
@@ -38,41 +47,46 @@ finding (MULTING's background is q-blind/degenerate with ΛCDM; the z≈0 gap in
 chart is the anchor choice, not model physics) with current code, unchanged from the prior
 run.
 
-## 3. Low-z uptick — leave-one-out + weighted bootstrap
+## 3. Low-z uptick — leave-one-out + Monte Carlo resampling over measurement uncertainties
 
 **Method:** fit the free ΛCDM baseline to all 27 points (H0=68.77, Ωm=0.317). On the
 low-z subsample (`z<0.3`, 9 points — "low positive z" per TJB's own phrase), fit a
 weighted quadratic to the *residuals* from that baseline; the curvature coefficient `c`
 is the test statistic (`c<0` = residuals bend upward as `z→0`, the "uptick read
 right-to-left" shape TJB described). Leave-one-out: refit dropping each of the 9 points
-once. Bootstrap: 2000 resamples, each point perturbed within its own `sigma_Hz` (fixed
-seed `20260812`, stated before running, not tuned after).
+once. Uncertainty resampling: 2000 Monte Carlo realizations, each point perturbed by a
+draw from its own reported `sigma_Hz` (not resampled-with-replacement from the 9-point
+sample — deliberately not a classic non-parametric bootstrap; fixed seed `20260812`,
+stated before running, not tuned after).
 
 ```
 [FULL-SAMPLE CURVATURE] c = -306.22 km/s/Mpc per z^2   (negative = uptick-shaped)
 
 [LEAVE-ONE-OUT] 0/9 sign flips — every single-point deletion keeps c negative
 
-[BOOTSTRAP] 2000 resamples:
+[UNCERTAINTY RESAMPLING] 2000 Monte Carlo realizations:
   c: mean=-261.32, 95% CI=[-2297.56, +1692.74]
-  fraction of resamples with c<0: 59.9%
+  fraction of realizations with c<0: 59.9%
   95% CI excludes zero: FALSE
 ```
 
-## 4. Result — the LOO/bootstrap split is the finding
+## 4. Result — the LOO/resampling split is the finding
 
 **Leave-one-out alone would say "robust"** — the point estimate's sign never flips when
-any single point is dropped. **The bootstrap says otherwise** — the 95% CI is enormous
-and straddles zero, and only 60% of resamples (barely above a coin flip) even land on the
-same sign as the point estimate. At current low-z chronometer precision (error bars of
-12–37 km/s/Mpc on H(z) values of 69–89), **the data cannot resolve curvature at this scale
-in either direction** — this is not evidence for an uptick, and it is not evidence against
-one either. It is a genuine null result driven by measurement precision, not a refutation.
+any single point is dropped. **The uncertainty resampling says otherwise** — the 95% CI
+is enormous and straddles zero, and only 60% of realizations (barely above a coin flip)
+even land on the same sign as the point estimate. At current low-z chronometer precision
+(error bars of 12–37 km/s/Mpc on H(z) values of 69–89), **the measurements cannot resolve
+curvature at this scale in either direction** — this is not evidence for an uptick, and it
+is not evidence against one either. It is a genuine null result driven by measurement
+precision, not a refutation.
 
-**This is also a clean illustration of why LOO alone is an inadequate robustness check**:
-LOO tests whether one influential point is driving a conclusion; it does not test whether
-the conclusion is statistically distinguishable from noise at all. Both are needed
-together — exactly the design the mini-sprint asked for.
+**This is also a clean illustration of why leave-one-out alone is an inadequate
+robustness check**: LOO tests whether one influential point is driving a conclusion —
+sensitivity to individual observations. It does not test whether the conclusion is
+statistically distinguishable from noise given the actual sampling uncertainty. These are
+different questions; both are needed together — exactly the design the mini-sprint asked
+for.
 
 ## 5. Qualitative notes (not separately computed here)
 
@@ -87,9 +101,10 @@ together — exactly the design the mini-sprint asked for.
 
 ## 6. What this does NOT establish
 
-1. **Anything about TJB's own rendered chart or fitted curve** — only about what the raw,
-   independent chronometer data themselves can and cannot currently support at low z.
-2. **That no low-z uptick exists.** The bootstrap CI is uninformative in both directions;
+1. **Anything about TJB's own rendered chart or fitted curve** — only about what the
+   published, independent chronometer measurements themselves can and cannot currently
+   support at low z.
+2. **That no low-z uptick exists.** The resampling CI is uninformative in both directions;
    absence of resolving power is not evidence of absence.
 3. **An AIC/BIC number for the model-complexity question** (§5) — noted, not computed.
 4. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction and about what
