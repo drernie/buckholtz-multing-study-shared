@@ -1,4 +1,4 @@
-# P27 — the "missing normalization constant" flagged five separate times since P14 is one unknown, `A`, not several
+# P27 — an explicit formula for `A`'s role in `E_self`, working out in detail a convention P21 had already flagged as equivalent
 
 **Date:** 2026-08-13
 **Origin:** user-directed redirect — a frozen external prediction (the
@@ -8,6 +8,28 @@ blocked by the normalization gap `FINDING_P14` §6 first flagged and
 re-encountered without ever asking whether they were the *same* gap.
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · L0 descriptive
 **Script:** `P27_unify_normalization_constant.py`
+
+**[CORRECTED after skeptic review, same day — a real self-consistency
+failure, not just framing.]** `FINDING_P21`'s own §2 (corrected version,
+read and cited by this finding) **already states**, verbatim: *"the
+identical physics results from placing an equivalent factor in the
+kinetic term instead (`(1/(2A))(∂φ)²`)... What is convention-independent
+is only that some factor with `G`'s units must exist somewhere in the
+action; where it formally lives is a choice."* This finding's central
+claim — that deriving `C=1/A` from the kinetic term is an "independent
+cross-validation" of P21 — is therefore **not accurate**: P21 already
+told us this equivalence holds. What this finding actually did is work
+out that already-flagged-equivalent convention *in explicit detail*
+(deriving `[C]`'s units, re-deriving the field equation with `C`
+present, and connecting it to `E_self`) — a real, useful piece of
+bookkeeping, but not an independent discovery of the equivalence itself.
+Also corrected: the "two independent routes agree" verification (§2) is
+a **tautology** under this finding's own substitutions (`C=1/A`,
+`φ_true=A·φ_raw`) — algebraically guaranteed to match, not an independent
+check — and Route 2's stated formula was missing the canonical `1/2`
+factor. The title and §2 are corrected below; §0's own honest-scope
+framing was already adequate and is unchanged. See the Skeptic Verdict
+section for the full breakdown.
 
 ## 0. Honest scope, stated before anything else
 
@@ -58,27 +80,58 @@ Compare to `φ_raw` (P9–P20's own convention, `C` implicitly `=1`):
 ```
 
 **`A = 1/C` reproduces P21's own `φ_true=A·φ_raw` exactly** — verified
-symbolically. This is a genuine **cross-validation** of P21, arrived at
-from action-level first principles (dimensional consistency +
-Euler–Lagrange), not a restatement of P21's own force-matching argument.
+symbolically. **[Corrected after skeptic review — struck through below,
+the original framing overstated this.]**
 
-**Conclusion**: every "missing normalization constant" flagged since P14
-§6 (P14 §6, P17, P21, P22, P26) is **the same single unknown, `A`** — not
-several independent gaps, as the fragmented flagging across five findings
-might have suggested.
+~~This is a genuine cross-validation of P21, arrived at from action-level
+first principles (dimensional consistency + Euler–Lagrange), not a
+restatement of P21's own force-matching argument.~~
 
-**Applying this to `E_self`** — verified by two independent routes:
+P21's own §2 (corrected) already states this equivalence directly —
+`(1/(2A))(∂φ)²` as an alternative, physically identical convention was
+named there, not discovered here. What this section actually shows is
+that *carrying that already-flagged equivalence through explicitly* — real
+units for `C`, a real re-derivation of the field equation with `C`
+present — reproduces `φ_true=A·φ_raw` with no inconsistency. A useful
+consistency check that the two conventions really are interchangeable in
+detail, not merely asserted — but not an independent discovery of the
+equivalence itself.
+
+**Conclusion, corrected**: the claim that every "missing normalization
+constant" flagged since P14 §6 is the same unknown, `A`, was **already
+stated** in `FINDING_P21` §4 (*"the same missing constant `A` enters
+it"*) and `FINDING_P26` §2 corrected (*"the same one P14 §6, P17, P21,
+and P22 already flagged"*). This finding's real contribution is narrower
+and more concrete: an **explicit formula** — `C=1/A`, and (below)
+`E_self,physical=A·p²/(12πr_min³)` — connecting that already-identified
+shared unknown to `E_self` for the first time, not the unification claim
+itself.
+
+**Applying this to `E_self`:**
 
 ```
 Route 1:  A · E_self,correct(P26) = A · p²/(12πr_min³)
-Route 2:  C · ∫(∇φ_true)²dV   (direct kinetic-term integral)
+Route 2:  (C/2) · ∫(∇φ_true)²dV   (direct kinetic-term energy density)
 ```
 
-Both give **exactly energy units** (`kg·m²/s²`), and both routes agree
-with each other. `E_self,physical = A·p²/(12πr_min³)` is a genuine energy
-**for the first time in this project** — `ρ_φ=n·E_self,physical` and
-`Ω_φ=ρ_φ/ρ_crit` are now dimensionally well-posed, a true dimensionless
-number, *once `A`'s numeric value is known*.
+**[Corrected after skeptic review]** These were originally presented as
+"two independent routes" that "agree with each other." **They are not
+independent.** Substituting this finding's own definitions
+(`C=1/A`, `φ_true=A·φ_raw`) into Route 2 gives
+`(1/(2A))·A²·∫(∇φ_raw)²dV = A·(1/2)∫(∇φ_raw)²dV = A·E_self,correct(P26)` —
+*algebraically identical* to Route 1, guaranteed by construction, not an
+independent check. (The original Route 2 formula also omitted the
+canonical `1/2` factor from the kinetic-term energy density, now added
+above.) What *is* genuinely verified — via sympy, not by hand — is that
+`A·E_self,correct(P26)` carries exactly energy units (`kg·m²/s²`), which
+was not obvious before this finding traced through `A`'s exact power.
+
+`E_self,physical = A·p²/(12πr_min³)` is dimensionally an energy for the
+first time in this project — **a statement about units, not about a
+numeric value**. `ρ_φ=n·E_self,physical` and `Ω_φ=ρ_φ/ρ_crit` are now
+dimensionally well-posed formulas, ready to become a true dimensionless
+number *once `A`'s numeric value is known* — which this finding does not,
+and cannot, provide.
 
 ## 3. What this does NOT establish
 
@@ -99,8 +152,17 @@ number, *once `A`'s numeric value is known*.
    own "zero free parameters after `κ`" originally stated.
 4. **A resolution of P25's WEP kill-gate**, P23's target-population
    question, or any other open item from the P21–P26 arc — this finding
-   is narrowly about unifying the normalization-constant bookkeeping.
-5. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction
+   is narrowly about the normalization-constant bookkeeping.
+5. **[Added after skeptic review] That the unification claim itself
+   (one shared unknown, not several) is new.** `FINDING_P21` §4 and
+   `FINDING_P26` §2 corrected both already stated this. This finding's
+   contribution is the explicit `C=1/A` formula and its consequence for
+   `E_self`, not the underlying unification insight.
+6. **[Added after skeptic review] That the "two independent routes"
+   verification is an independent check.** It is a consistency check
+   under this finding's own substitutions, algebraically guaranteed to
+   match — see §2's correction.
+7. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction
    of P1's action, not a claim about TJB's own unpublished theory.
 
 ## Reproduction
@@ -109,9 +171,53 @@ number, *once `A`'s numeric value is known*.
 python experiments/20260803-bridge/P27_unify_normalization_constant.py
 ```
 
-## Skeptic verdict (context-blind, Step 8a)
+## Skeptic verdict (context-blind, Step 8a, 2026-08-13)
 
-*Pending — to be run with only this file + `P27_unify_normalization_constant.py`
-+ `two_field_action_closure.py` + `FINDING_P21_shared_phi_normalization_constraint.md`
-(corrected version) + `FINDING_P26_stress_tensor_equation_of_state.md`
-(corrected version), no session history.*
+Given only this file, the script, `two_field_action_closure.py`,
+`FINDING_P21_shared_phi_normalization_constraint.md` (corrected), and
+`FINDING_P26_stress_tensor_equation_of_state.md` (corrected) — no session
+history. The skeptic independently re-derived the Euler-Lagrange step for
+the *dipole* coupling by hand (this finding's own Step 4 explicitly
+derives only the monopole case and asserts "the same argument applies to
+the dipole term" without showing it) — confirmed correct, no hidden
+sign or power-of-`C` asymmetry between sectors. Six sub-verdicts, per
+Step 8a (not merged):
+
+- **(a)** `[C]=1/G`'s units: **CONFIRMED-REAL**, but follows immediately
+  from P21's own `[φ]=m²/s²` — not independent new input, dimensional
+  bookkeeping downstream of P21.
+- **(b)** Field-equation re-derivation (monopole + dipole): **CONFIRMED-REAL**
+  — independently re-derived the dipole case by hand (this finding's own
+  text left it unshown), no asymmetry found.
+- **(c)** "Genuine cross-validation of P21... not a restatement":
+  **WEAKENED — the sharpest overreach**, quoting P21 §2 (corrected)
+  verbatim: *"the identical physics results from placing an equivalent
+  factor in the kinetic term instead."* P21 already stated this
+  equivalence; this finding works it out in detail, it does not discover
+  it independently. *Applied: FIXED — title and §2 corrected.*
+- **(d)** "`E_self,physical=A·E_self,correct(P26)`, verified by two
+  independent routes": **WEAKENED** — the two routes are not independent;
+  substituting this finding's own `C=1/A` definition into Route 2 reduces
+  it algebraically to Route 1, a tautology under the finding's own
+  substitutions, not two separate checks. Also found: the original Route
+  2 formula omitted the canonical `1/2` kinetic-term factor. *Applied:
+  FIXED — §2 corrected, both issues stated explicitly.*
+- **(e)** "All five... flags are the same single unknown": **WEAKENED** —
+  already stated in `FINDING_P21` §4 and `FINDING_P26` §2 corrected; not
+  a new claim of this finding. *Applied: §2's conclusion and §3 corrected
+  to attribute the unification claim to those findings, narrowing this
+  finding's own contribution to the explicit `C=1/A` and `E_self` formulas.*
+- **(f)** Adequacy of the "honest limit" framing: **WEAKENED** — §0/§3's
+  disclaimers are accurate, but §2's result narrative ("genuine energy...
+  for the first time," "genuine cross-validation") created a stronger
+  impression of numeric progress than the disclaimers alone convey.
+  *Applied: §2's language brought in line with §0/§3 throughout.*
+
+**Not a core-predicate-false kill.** Every piece of mathematics survives
+independent re-derivation intact — `[C]=1/G`, the field equation for both
+sectors, `A=1/C`, and the units of `A·E_self,correct(P26)`. What was
+withdrawn is entirely about *framing*: presenting a detailed working-out
+of an already-known equivalence as an independent discovery, and
+presenting an algebraically-guaranteed consistency check as two separate
+verifications. The skeptic's own summary: *"a real, useful piece of
+bookkeeping, but not a discovery."*
