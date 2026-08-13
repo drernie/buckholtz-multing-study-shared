@@ -46,6 +46,25 @@ real issues fixed, not just framing:
       Friedmann-identity -> growth-equation derivation chain (the same
       chain P30 itself used) -- but "direct equation comparison" overstated
       the licensing. Corrected language below.
+
+CORRECTED AGAIN 2026-08-13 (SAME DAY), user-flagged, after the skeptic
+pass above. Bean & Tangmatitham's (Q,R) framework assumes matter remains
+MINIMALLY COUPLED -- new physics lives entirely in the modified metric
+Poisson equation, and their own likelihood combines CMB+growth+LENSING to
+constrain Q (with a stated Q-R degeneracy). two_field_action_closure.py's
+own action has NO Einstein-Hilbert term -- MULTING's own reconstruction is
+a WORLDLINE-coupled scalar force (g*m_i*phi) layered on an implicitly-
+standard GR metric, a structurally DIFFERENT mechanism that can match the
+SAME growth equation while leaving lensing/ISW unaffected (photons are
+massless, so g*m*phi gives them zero direct coupling -- see FINDING_P32).
+Whether B&T's likelihood, calibrated to a metric-modification scenario,
+actually constrains MULTING's own mechanism is therefore OPEN, not
+established -- this finding's status is downgraded to a PHENOMENOLOGICAL
+SOFT CEILING, not a direct bound. Also fixed: "one-sided 95% limit"
+overstated what reusing a published TWO-sided interval's upper edge as a
+conservative ceiling actually is; and the near-equal P22/P31 numbers are
+NOT independent convergence -- both are ~1%-level external inputs mapped
+through the identical A*g^2=4*pi*G_N*epsilon formula.
 """
 
 import sympy as sp
@@ -82,9 +101,13 @@ def main():
     print("  non-negative -- Delta_G >= 0 is FORCED, not assumed. A scalar-mediated")
     print("  exchange force between like masses is always attractive, exactly like")
     print("  gravity itself.")
-    delta_g_over_gn_bound = q_upper_edge  # the physically-relevant, tighter edge
+    delta_g_over_gn_bound = q_upper_edge  # conservative ceiling from the published upper edge
     assert delta_g_over_gn_bound >= 0
-    print(f"  Physically-relevant one-sided bound: Delta_G/G_N <= {float(delta_g_over_gn_bound)}")
+    print(
+        f"  Conservative soft ceiling (published upper edge): Delta_G/G_N <~ {float(delta_g_over_gn_bound)}"
+    )
+    print("  (NOT a freshly re-derived one-sided 95% limit -- that would require")
+    print("  re-normalizing B&T's own posterior under a Q>=1 prior, not done here.)")
 
     print("\n[STEP 4] Map onto MULTING's A*g^2 via P21/P30's own derived relation:")
     G_N_val = sp.Float(6.6743e-11)
@@ -103,24 +126,27 @@ def main():
     print("  version of this finding claimed using the wrong interval edge.")
 
     print("\n" + "=" * 78)
-    print("VERDICT -- CORRECTED after context-blind skeptic review, same day")
+    print("VERDICT -- CORRECTED twice (skeptic + user-flagged), same day")
     print("=" * 78)
     print("A REAL, externally-sourced bound (Bean & Tangmatitham 2010, Table 1)")
     print("maps onto A*g^2 <~ 8.39e-12 (SI) via P21/P30's own derived chain, using")
-    print("the physically-relevant one-sided edge of an asymmetric interval --")
-    print("essentially IDENTICAL to FINDING_P22's own Archidiacono-based ceiling,")
-    print("a striking numerical coincidence between two independently-derived")
-    print("bounds from different mechanisms and eras of data, not a deeper")
-    print("physical connection (not claimed as one). This bound's target (Q, a")
-    print("universal Poisson-equation modifier summed over ALL matter species) is")
-    print("structurally closer to MULTING's universal g than Archidiacono's")
-    print("DM-only beta -- but this project's own (Q,R)-parametrization")
-    print("universality is a MODELING CHOICE by the source paper, not a proof that")
-    print("any mechanism producing this phenomenology is automatically universal;")
-    print("applying it to MULTING's g still assumes g produces a species-uniform,")
-    print("scale-independent, time-independent Poisson modification (P23's")
-    print("reading), not an unconditional fact. This is a 2010-era result; more")
-    print("recent DESI-era analyses were not searched for, an open precision gap.")
+    print("a conservative ceiling from the published interval's upper edge --")
+    print("essentially IDENTICAL to FINDING_P22's own Archidiacono-based ceiling.")
+    print("This is NOT independent convergence: both inputs are ~1%-level bounds")
+    print("run through the SAME A*g^2=4*pi*G_N*epsilon formula, so a near-equal")
+    print("result is a fact about the conversion's scale, not physical evidence.")
+    print("This bound's target (Q, a universal Poisson-equation modifier summed")
+    print("over ALL matter species) is structurally closer to MULTING's universal")
+    print("g than Archidiacono's DM-only beta -- but (a) Q's universality is a")
+    print("MODELING CHOICE by the source paper, not a theorem, and (b) B&T's own")
+    print("(Q,R) framework assumes matter stays minimally coupled, with new physics")
+    print("living ONLY in the metric Poisson equation -- MULTING's own action has")
+    print("NO Einstein-Hilbert term and couples phi directly to matter's worldline,")
+    print("a structurally different mechanism that can match this SAME growth")
+    print("equation while leaving lensing/ISW unaffected (see FINDING_P32). This")
+    print("finding's status: a PHENOMENOLOGICAL SOFT CEILING under the Q-mapping,")
+    print("not yet an established direct bound on MULTING's own completion.")
+    print("Also: a 2010-era result; more recent DESI-era analyses not searched for.")
     return 0
 
 

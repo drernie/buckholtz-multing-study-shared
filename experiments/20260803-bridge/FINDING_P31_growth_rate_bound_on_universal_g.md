@@ -1,4 +1,4 @@
-# P31 — a real growth-of-structure bound on MULTING's universal g, essentially matching P22's Archidiacono-based ceiling once the correct interval edge is used
+# P31 — a phenomenological soft ceiling under Bean & Tangmatitham's Q-mapping, not yet an established direct bound on MULTING's own worldline-coupling completion
 
 **Date:** 2026-08-13
 **Origin:** direct continuation of `FINDING_P30`'s own corrected §3 —
@@ -33,6 +33,47 @@ identification is physically correct but follows from a derivation *chain*
 (Poisson-source → Friedmann identity → growth equation), not a direct
 comparison. See the Skeptic Verdict section for the full 6-sub-verdict
 breakdown.
+
+**[USER-FLAGGED CORRECTION, same day, after the skeptic pass above — a
+real, additional gap the skeptic review did not surface.]** A collaborator
+identified a further, more fundamental caveat, independently verified
+before accepting: Bean & Tangmatitham's `(Q,R)` framework assumes **matter
+remains minimally coupled** — the extra physics lives entirely in a
+*modified metric Poisson equation*, and matter (and light) moves on
+standard geodesics of that modified metric. `two_field_action_closure.py`'s
+own action (re-checked directly: `S=∫d⁴x(1/2)(∂φ)² +
+Σᵢ∫dτ[g·mᵢ+pᵢ·∇]φ(xᵢ)`, explicitly documented as *"a fifth force, not
+gravity"*) contains **no Einstein-Hilbert term at all** — this project's
+own reconstruction is a **worldline-coupled** scalar force acting directly
+on matter's equation of motion, layered on top of an implicitly-standard
+GR metric, not a modification of the metric Poisson equation itself. These
+are two structurally different mechanisms that can produce an *identical*
+growth equation (both give `G_N→G_eff`) while diverging on other
+observables — most importantly, lensing/ISW, which depend on the metric
+potentials themselves, not on whatever extra force massive matter alone
+feels. Since `g·mᵢ·φ` is proportional to rest mass, a massless photon gets
+**zero** direct coupling to `φ` in this construction — a specific,
+checkable consequence explored in `FINDING_P32`. Bean & Tangmatitham's own
+likelihood combines CMB + growth + **lensing** data to constrain `Q` (with
+a stated `Q`–`R` degeneracy) — meaning their reported `Q` bound is
+calibrated to a scenario where growth and lensing move *together*. If
+MULTING's actual mechanism leaves lensing unmodified while growth is
+modified, applying their `Q` bound directly to MULTING's `ΔG` is not yet
+licensed — the *bound itself* is real and the *mapping arithmetic* is now
+correct (§3), but whether the *right physical quantity* is being bounded
+remains open. **Consequence for this finding's status:** downgraded from
+"a real, topologically-correct external bound" to a **phenomenological
+soft ceiling under the Q-mapping** — plausible, useful as a scale-setting
+cross-check, but not yet established as a *direct* bound on MULTING's own
+worldline-coupling completion. Two further, smaller corrections applied
+per the same review: (a) §3's "one-sided 95% limit" language overstated
+what a published *two-sided* interval's upper edge, reused as a
+conservative ceiling, actually is — corrected below; (b) the P22/P31
+numeric coincidence (§3) is **not** independent convergence of two
+measurements of the same observable — both external inputs happen to be
+~1%-level bounds, mapped through the *same* `A·g²=4πG_N·ε` formula, so the
+near-equal result is closer to a units-and-scale coincidence than
+evidence of anything physical.
 
 ## 0. Honest scope, stated before anything else
 
@@ -110,21 +151,30 @@ is the correct, narrower statement of what licenses the mapping:
 **[Corrected after skeptic review]** ~~|ΔG/G_N| ≲ 0.03 (95% CL)~~ — this
 was the wrong reading of Table 1's asymmetric interval; see §3.
 
-## 3. Result (corrected — the physically-relevant one-sided bound)
+## 3. Result (corrected — a conservative soft ceiling from the published interval's upper edge)
 
-Table 1's interval `Q∈[0.97,1.01]` is **asymmetric**, and `[VERIFIED —
-own established relation]` `FINDING_P21`'s `A·g²=4π·ΔG` forces `ΔG≥0`
-always (both `A` and `g²` structurally non-negative). The physically-
-relevant edge is therefore the *upper* one:
+Table 1's interval `Q∈[0.97,1.01]` is a published **two-sided** 95%
+marginalized interval, and `[VERIFIED — own established relation]`
+`FINDING_P21`'s `A·g²=4π·ΔG` forces `ΔG≥0` always (both `A` and `g²`
+structurally non-negative). **[Corrected per user-flagged review]** using
+`Q≤1.01` as a fresh, independently-derived one-sided 95% limit would
+require re-normalizing Bean & Tangmatitham's own posterior under a `Q≥1`
+prior — not done, and not attempted here. What *is* legitimate: treating
+the *published* upper edge as a **conservative soft ceiling**, since any
+`Q` value the data allows up to `1.01` is, by definition, not excluded at
+95% — this is weaker than a genuine one-sided limit but adequate for the
+scale-setting purpose this finding serves:
 
 ```
-Q − 1 ≤ 0.01  (NOT the lower edge, Q−1=−0.03, which corresponds to a
-               repulsive ΔG<0 that MULTING's own g² structure excludes)
+Q − 1 ≲ 0.01  (conservative soft ceiling — the published upper edge, NOT
+               a re-derived one-sided limit; NOT the lower edge Q−1=−0.03,
+               which corresponds to a repulsive ΔG<0 that MULTING's own
+               g² structure excludes)
 ```
 
 ```
-ΔG ≤ 0.01 × G_N = 6.674×10⁻¹³ (SI)
-A·g² = 4π·ΔG ≤ 4π × 6.674×10⁻¹³ = 8.387×10⁻¹² (SI, m³kg⁻¹s⁻²)
+ΔG ≲ 0.01 × G_N = 6.674×10⁻¹³ (SI)
+A·g² = 4π·ΔG ≲ 4π × 6.674×10⁻¹³ = 8.387×10⁻¹² (SI, m³kg⁻¹s⁻²)
 ```
 
 **Compared to `FINDING_P22`'s corrected `A·g²≲8.39×10⁻¹²` (Archidiacono-based):**
@@ -134,15 +184,21 @@ Ratio (this corrected bound / P22's ceiling) = 0.9997 ≈ 1
 ```
 
 **Essentially identical — not 3× looser, as the original version of this
-finding claimed.** This is a striking numerical coincidence between two
-bounds derived from genuinely different mechanisms (a DM-only scalar
-fifth force vs. a phenomenological growth-of-structure parametrization)
-and different eras of data — not evidence of any deeper connection, and
-not claimed as one. What survives from the original framing: `Q`'s own
-defining Poisson equation (eq. 6) sums over *all* matter species, making
-it structurally closer to a universal coupling than Archidiacono's
-DM-only `β` — but see §4 point 3 (corrected) for why "no caveat needed" was
-also too strong a claim.
+finding claimed.** **[Corrected per user-flagged review]** this near-equal
+result should **not** be read as independent convergence of two
+measurements of the same physical observable. Both external inputs happen
+to be `~1%`-level bounds (`β≲0.01` from P22, `Q−1≲0.01` here), mapped
+through the *identical* formula `A·g²=4πG_N·ε`. Two ~1%-level inputs run
+through the same conversion will always land near the same number — the
+coincidence is a fact about the *conversion formula's scale*, not a
+physical cross-check between independent mechanisms. What survives from
+the original framing, with the mechanism-frame caveat now attached (see
+the User-Flagged Correction banner above): `Q`'s own defining Poisson
+equation (eq. 6) sums over *all* matter species, making it structurally
+closer to a universal coupling than Archidiacono's DM-only `β` — but
+whether Bean & Tangmatitham's *likelihood*, calibrated to a metric-MG
+scenario, actually constrains the *kind* of force MULTING's worldline
+coupling produces remains open (see `FINDING_P32`).
 
 ## 4. What this does NOT establish
 
@@ -196,11 +252,26 @@ also too strong a claim.
    product `A·g²`, now numerically coincident (§3) — citing either is
    defensible, but neither should be presented as more authoritative than
    the other without further work.
-8. **Anything about `κ`.** Entirely about `g`, matching every prior finding
+8. **[Added, user-flagged] That Bean & Tangmatitham's likelihood actually
+   constrains MULTING's own worldline-coupling mechanism.** Their `(Q,R)`
+   framework assumes matter remains minimally coupled — new physics lives
+   in the metric Poisson equation alone, and their joint likelihood (CMB +
+   growth + **lensing**, with a stated `Q`–`R` degeneracy) is calibrated to
+   a scenario where growth and lensing move *together*. MULTING's own
+   reconstructed action has no Einstein-Hilbert term and couples `φ`
+   directly to matter's worldline (`g·mᵢ·φ`) — a structurally different
+   mechanism that can produce the *same* growth equation while leaving
+   lensing/ISW unaffected (see `FINDING_P32`). Whether Bean & Tangmatitham's
+   `Q` bound genuinely applies to MULTING's `ΔG`, or only to a
+   metric-modification with matching lensing phenomenology, is the open
+   question `FINDING_P32` investigates — this finding's status is
+   downgraded accordingly to a **phenomenological soft ceiling**, not an
+   established direct bound.
+9. **Anything about `κ`.** Entirely about `g`, matching every prior finding
    in this sub-arc.
-9. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction
-   and a published external paper's own equations — not a claim about
-   TJB's own unpublished theory.
+10. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction
+    and a published external paper's own equations — not a claim about
+    TJB's own unpublished theory.
 
 ## Reproduction
 
