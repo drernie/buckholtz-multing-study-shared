@@ -171,6 +171,39 @@ underdetermination result (B), not a blocker to route around by guessing.
   density and for a compact point source's own internal content — this is
   a real generalization, not shown to be automatic, and the review was
   asked to scrutinize it explicitly.
+- 2026-08-14: **P36 corrected — most severe correction of the whole
+  campaign.** 5 of 6 skeptic issues FALSIFIED outright, not merely
+  weakened. Most consequential: silently extended the 2026-08-10
+  double-layer result (proven for dipoles radially aligned from one
+  common center) to P34's homogeneous background, which has no
+  privileged center — an incoherent extension. Also conflated two
+  genuinely different theorems the source material itself keeps separate
+  (coherent-alignment double-layer vs. isotropic-orientation random
+  average), and one "independent cross-check" was a bare `return True`
+  with zero computation. Corrected conclusion: `κ`'s visibility to
+  P34/P35's channels is withdrawn as genuinely open, not resolved in
+  either direction — the closest this session has come to
+  core-predicate-false. Commit `db24b15`.
+- **2026-08-14, end-of-stretch assessment.** Three consecutive corrections
+  (P34, P35, P36) show an escalating severity pattern: P34's issues were
+  framing plus one real leap; P35 added a genuine circularity plus a real
+  physics conflation; P36 was almost entirely load-bearing errors. This
+  is a signal worth taking seriously, not just noting — it suggests the
+  territory being covered (self-consistency at `O(ĝ²)`, and now `κ`'s
+  actual channel) is genuinely harder and more error-prone than the
+  earlier, more mechanical P21–P33 arc, and that continuing to push at
+  the same pace risks a worse error than any caught so far. Pausing the
+  campaign here is the deliberate, considered choice — not a stall.
+  What is solid: `κ`-invisibility to P34/P35's channels is genuinely
+  open, not resolved either way (a real, if humbler, result in its own
+  right — the 2026-08-14 push found a real assumption gap in the
+  project's own earlier informal reasoning about this). What is NOT
+  solid enough to build further on without more care: P35's own `O(ĝ²)`
+  self-consistency gap. Recommended next action for a future session:
+  resume at a slower pace, with EACH step's skeptic review read and
+  fully processed before drafting the next step's script (this stretch
+  sometimes launched a new build before a prior skeptic verdict had
+  landed — worth avoiding next time, even under time pressure).
 - Interim assessment, mid-campaign: real, verified progress on the `g`
   (monopole) sector's static/two-body content — P21's founding relation
   is now derived, not merely assumed, a genuine result. The κ (dipole)
