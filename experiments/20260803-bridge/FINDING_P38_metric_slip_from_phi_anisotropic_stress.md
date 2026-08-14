@@ -228,7 +228,7 @@ value of `C` from first principles.
 | 5 | Step 8 "independent verification" — genuinely independent, or same code path twice? | WEAKENED — real overclaim, shares code with the solving step | Fixed (§2): relabeled "completeness check"; genuine independence supplied by new Step 9 (trace equation), reviewer's own suggested fix |
 | 6a | "Self-caught arithmetic" compared to P6/P9/P37 | Minor prose overclaim | Fixed (§3): distinguished as a narrative-text catch, not an arithmetic catch |
 | 6b | `T_ij` inherited from P37, not re-verified here | Flag, not a finding (explicitly out of scope per review instructions) | Noted explicitly (§5, item 6) |
-| 6c | Suggested cross-check: does `Φ_φ=0` follow from pairing with the `00`-sector solve? | Suggestion, not adopted at the time | ~~**Declined** — an independent hand-check during correction found this specific claim does *not* hold exactly (`Φ_φ` came out nonzero)~~ **[ADDENDUM, `FINDING_P40`, same day]** That hand-check was itself never mechanically verified and its own arithmetic does not survive re-derivation — `FINDING_P40` redid this properly with sympy, reusing this finding's own already-verified `G₀₀=2∇²Ψ` relation, and found `Φ_φ=0` **exactly**, confirming the skeptic's original suggestion. The most likely cause of the original error: the undocumented hand-check probably used the generic textbook Poisson form `∇²Ψ=4πG_Nρ` instead of this finding's own carefully-*derived* `G₀₀=2∇²Ψ`, a factor-of-2 slip. **Declining the claim at the time remained the correct process move** (an unverified claim, right or wrong, should not be adopted without independent verification) — see `FINDING_P40` §2 for the full reconciliation. |
+| 6c | Suggested cross-check: does `Φ_φ=0` follow from pairing with the `00`-sector solve? | Suggestion, not adopted at the time | ~~**Declined** — an independent hand-check during correction found this specific claim does *not* hold exactly (`Φ_φ` came out nonzero)~~ **[ADDENDUM, `FINDING_P40`, same day, itself skeptic-confirmed]** That hand-check was itself never mechanically verified and its own arithmetic does not survive re-derivation — `FINDING_P40` redid this properly with sympy, reusing this finding's own already-verified `G₀₀=2∇²Ψ` relation, and found `Φ_φ=0` **exactly**, confirming the skeptic's original suggestion — independently confirmed a second way by `FINDING_P40`'s own reviewer (`T₀₀+T_kk=0` for any canonical static scalar ⟹ `∇²Φ_φ=0` identically, a general result, not specific to this configuration). The exact mechanism of the original hand-check's error cannot be reconstructed from the record (an initial "factor-of-2, wrong Poisson form" guess was itself checked and withdrawn in `FINDING_P40` §2 — the two forms are algebraically equivalent, so that could not have been the actual cause). **Declining the claim at the time remained the correct process move** (an unverified claim, right or wrong, should not be adopted without independent verification) — see `FINDING_P40` §2 and §7 for the full reconciliation. |
 | 6d | Sign of `ĝ` (does it matter, given `T_ij` is `ĝ²`)? | CONFIRMED-REAL — reviewer confirmed no issue | No fix needed |
 
 **What survives:** the core numeric result — independently re-derived by
@@ -245,15 +245,21 @@ second clean survival in a row this session (after P37), the first
 review to also add genuine new verification content (Step 9) rather than
 only correct or caveat existing content.
 
-**[ADDENDUM, `FINDING_P40`, same day — corrects the paragraph above.]**
-The declining check on item 6c was itself never mechanically verified.
-`FINDING_P40` redid it with sympy and found `Φ_φ=0` **exactly**, matching
-the skeptic's original suggestion — the undocumented hand-check that led
-to declining it was almost certainly a factor-of-2 slip (generic Poisson
-form vs. this finding's own derived `G₀₀=2∇²Ψ`). Declining an unverified
-claim was still the right process call at the time; the claim itself
-turned out to be correct. See `FINDING_P40` §2 for the reconciliation and
-§3 for what this enables (a closed-form, nonzero slip ratio `γ`).
+**[ADDENDUM, `FINDING_P40`, same day, itself skeptic-confirmed — corrects
+the paragraph above.]** The declining check on item 6c was itself never
+mechanically verified. `FINDING_P40` redid it with sympy and found
+`Φ_φ=0` **exactly**, matching the skeptic's original suggestion — and
+independently confirmed a second, structurally different way by
+`FINDING_P40`'s own reviewer, who showed `Φ_φ=0` is a general result for
+any canonical static scalar (`T₀₀+T_kk=0`), not specific to this
+configuration. The exact mechanism of the original hand-check's error is
+not reconstructable from the record; an initial guess (a factor-of-2 from
+using the generic Poisson form instead of this finding's own derived
+`G₀₀=2∇²Ψ`) does not hold up — the two forms are algebraically
+equivalent. Declining an unverified claim was still the right process
+call at the time; the claim itself turned out to be correct. See
+`FINDING_P40` §2 and §7 for the full reconciliation and §3 for what this
+enables (a closed-form, nonzero slip ratio `γ`).
 
 ## Reproduction
 
