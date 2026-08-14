@@ -148,6 +148,29 @@ underdetermination result (B), not a blocker to route around by guessing.
   possible overclaim risk in "P21's relation is derived, not restated").
   **Do not build P36 (quasi-static cosmological reduction) or cite P35's
   γ=1 claim as settled until this verdict lands and is processed.**
+- 2026-08-14: **P35 corrected** (context-blind skeptic review, same day).
+  Most consequential: independently re-read `FINDING_P21` directly and
+  confirmed its own text already states the normalization constant's
+  value is convention-dependent, not physical — the "A=1 matches P21"
+  check was substantially circular. Narrowed to: only the functional
+  form `ΔG∝ĝ²/(4π)` is genuinely shown, not P21's specific coefficient.
+  Also withdrew the `γ=1` slip claim as a real physics error (conflated
+  two different perturbation expansions) — genuinely open, not "second-
+  order-small." Commit `679a4bc`.
+- 2026-08-14: **P36 done** (first `κ`-sector finding, deliberately
+  conservative — reuses two already-verified prior results rather than
+  deriving new physics). Connects the already-proven double-layer/
+  contact-interaction result to P34/P35's framework: `κ` is exactly
+  invisible to both channels that derived `g`'s own `ΔG`, for a specific,
+  already-established structural reason — confirming, at the field-theory
+  level, `two_field_action_closure.py`'s own docstring claim. `g` and `κ`
+  are each visible to exactly the channel the other is blind to. Commit
+  `679a4bc`. Context-blind skeptic review launched, specifically asked to
+  check whether the "double-layer shell" result (proven for a 2D shell of
+  dipoles) is actually the right structure to invoke for a smooth 3D
+  density and for a compact point source's own internal content — this is
+  a real generalization, not shown to be automatic, and the review was
+  asked to scrutinize it explicitly.
 - Interim assessment, mid-campaign: real, verified progress on the `g`
   (monopole) sector's static/two-body content — P21's founding relation
   is now derived, not merely assumed, a genuine result. The κ (dipole)
