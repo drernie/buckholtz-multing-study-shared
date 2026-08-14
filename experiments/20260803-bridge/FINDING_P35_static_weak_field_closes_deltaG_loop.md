@@ -1,6 +1,21 @@
-# P35 — the static, weak-field, point-source limit of MULTING's own action derives (not merely restates) P21's founding relation A·g²=4π·ΔG, with A=1 in the canonical convention
+# P35 — a flat-background Yukawa-exchange calculation reproduces the functional form of P21's ΔG formula under a specific, already-flagged-as-conventional normalization choice; the full self-consistent O(ĝ²) treatment (and the slip question) remain genuinely open
 
 **Date:** 2026-08-14
+**Status:** **CORRECTED after context-blind skeptic review, same day.**
+Four real issues, the most consequential of which is a genuine physics
+gap, not just framing. Most consequential: independently re-reading
+`FINDING_P21_shared_phi_normalization_constraint.md` directly (not from
+memory, per the skeptic's flagged open question) confirmed P21's own
+already-corrected text states the normalization constant `A`'s
+*placement* is "a convention, not a forced discovery" — P21 never claimed
+a specific numeric value for `A`. This script's canonical-kinetic-term
+choice makes `A=1` true *by construction*, not by independent physical
+content, so the original "P21's relation is derived, not merely
+restated" claim was substantially circular. Second, genuinely-a-physics-
+gap issue: §5's "qualitative slip, second-order-small" claim conflated
+two different perturbation expansions and was simply wrong (not just
+unproven) — withdrawn to an open question. Full verdict in the new §7
+below.
 **Origin:** second step of the covariant-completion campaign
 (`PLAN_final_goal_20260814.md`), continuing directly from P34's explicit
 gravitational-sector choice (standard, unmodified Einstein-Hilbert
@@ -91,32 +106,47 @@ From the *same* matter-action interaction term used throughout P33–P35
 U_5th(r) = −ĝ²mM/(4πr)
 ```
 
-Attractive for like-sign `ĝ`, matching `two_field_action_closure.py`'s
-own docstring point 2 ("its m-m exchange renormalises G, attractive") —
-an independent consistency check this finding did not have to construct,
-already stated by the project's own earliest source file.
+~~Attractive for like-sign `ĝ`, matching `two_field_action_closure.py`'s
+own docstring point 2...~~ **[CORRECTED]** "Like-sign" is meaningless
+here — `U_5th` is attractive for *any real* `ĝ`, since `ĝ` enters
+**squared** (`m_eff` applies to both the source and the test particle).
+The original wording uncritically echoed the source docstring's phrasing
+without checking whether it actually applied to this specific
+calculation — flagged by the skeptic as a "pattern-matching tell."
 
-Combined with the standard (P34: `S_EH` unmodified) Newtonian potential
-energy `U_N(r)=−G_N·mM/r` — **linear superposition of two independently-
-sourced, leading-order-weak fields on a test particle, the standard
-procedure for this class of problem (matches the implicit assumption
-P21's own additive `G_eff=G_N+ΔG` framing already required, now made
-explicit)**:
+**[CORRECTED]** ~~Combined with the standard (P34: `S_EH` unmodified)
+Newtonian potential energy `U_N(r)=−G_N·mM/r` — linear superposition of
+two independently-sourced, leading-order-weak fields...~~ `U_N` is
+**imported**, not derived from `S_EH` anywhere in this finding (`S_EH`
+itself was never varied to linear order in a metric perturbation here —
+that full calculation is not attempted). Only `U_5th` is genuinely
+derived from the action. Combining a derived quantity with an imported
+one and calling their sum "`G_eff`, derived" would overclaim:
 
 ```
-U_total(r) = −mM/r·[G_N + ĝ²/(4π)]
-⟹ G_eff = G_N + ĝ²/(4π)
-⟹ ΔG = ĝ²/(4π)
+U_total(r) = −mM/r·[G_N + ĝ²/(4π)]     [G_N imported, ĝ²/(4π) derived]
+⟹ ΔG = ĝ²/(4π)     [only this additive piece is genuinely derived here]
 ```
 
-## 4. The load-bearing check — comparison to P21's own founding relation
+## 4. The check against P21's own formula — corrected, largely circular as originally framed
 
-P21 (start of the whole `ΔG`-normalization arc, everything since built
-on it) **defined** the relation `A·g²=4π·ΔG` by dimensional matching to
-Archidiacono's phenomenology — it was never derived from an actual field
-equation. Setting `A=1` (the canonical-kinetic-term convention used
-throughout P34–P35, one of the legitimate convention choices P24 flagged
-as equally valid but never adopted consistently before now):
+~~P21 (start of the whole `ΔG`-normalization arc) **defined** the relation
+`A·g²=4π·ΔG` by dimensional matching... P21's founding relation is
+derived here, not merely restated.~~ **[CORRECTED — the consequential
+fix.]** Independently re-read `FINDING_P21_shared_phi_normalization_
+constraint.md` directly before accepting this correction (not from
+memory): P21's own text — already corrected once by its own skeptic
+review — explicitly states the normalization constant `A`'s *placement*
+is **"a convention, not a forced discovery: the identical physics
+results from placing an equivalent factor in the kinetic term instead."**
+P21 never claimed a specific numeric value for `A` — only that *some*
+factor carrying `G`'s units must exist.
+
+This script **chose** the canonical-kinetic-term convention (`S_φ` with
+coefficient exactly `1/2`, no separate `A`) — the *same* convention P21
+already flagged as one equally-valid option among several. That choice
+makes `A=1` **true by construction**, not by independent physical
+content:
 
 ```
 P21's ΔG (A left general):  A·ĝ²/(4π)
@@ -124,34 +154,47 @@ This derivation's ΔG:            ĝ²/(4π)
 Difference at A=1:                    0    (script assertion, exact)
 ```
 
-**P21's founding relation is derived here, not merely restated** — the
-first time in the P21–P35 arc that this specific formula has followed
-from an actual field-theoretic calculation rather than being assumed by
-dimensional matching.
+**What this comparison actually shows:** the **functional form**
+`ΔG∝ĝ²/(4π)` — the generic shape of any canonically-normalized
+massless-scalar Yukawa exchange — is reproduced by an actual calculation
+from the action. **What it does NOT show:** independent numeric
+confirmation of P21's specific coefficient, since P21's own text already
+states that coefficient is convention-dependent, not a physical
+prediction. The original "derived, not merely restated" framing
+overclaimed in essentially the same way the P34 skeptic review flagged
+the same day (a check whose "independence" partly dissolves once its
+shared premises are examined) — caught here on a genuinely different
+mechanism (convention-freedom, not shared-action tautology), by
+independently reading the comparison target's own text rather than
+trusting a summary of it.
 
-## 5. Qualitative slip observation (cheap, not independently computed)
+## 5. The slip claim — withdrawn, a real physics gap not just framing
 
-Dust has zero anisotropic stress; `φ` is a canonical, minimally-coupled
-scalar with no direct `R`-coupling (P34's own explicit choice) — its own
-anisotropic-stress contribution at linear order is second-order-small
-(`∇φ·∇φ`, with `φ` itself already first-order). This is the standard,
-well-known reason canonical quintessence-type scalars give **no slip**
-(`γ:=Φ/Ψ=1`) at this order. Stated qualitatively only — **not
-independently derived or computed in this finding**, flagged explicitly
-as a claim resting on a well-known general argument, not a fresh
-calculation.
+~~Dust has zero anisotropic stress; `φ` is a canonical, minimally-coupled
+scalar... its own anisotropic-stress contribution at linear order is
+second-order-small (`∇φ·∇φ`, with `φ` itself already first-order)...
+NO slip (`γ:=Φ/Ψ=1`) at this order.~~ **[WITHDRAWN — the consequential
+physics gap, not a framing issue.]** This reasoning conflated two
+*different* perturbation expansions. In cosmological perturbation theory,
+a genuinely small perturbation `δφ` makes `(∇δφ)²` second-order-small —
+correctly. But `φ(r)=ĝM/(4πr)` in *this* static, two-body picture is not
+a small cosmological perturbation — it is the **full** field sourced by
+`M`, and its own `|∇φ|²` is `O(ĝ²)`, the **exact same parametric order**
+as `ΔG` itself. `φ`'s own stress-energy — and hence any contribution it
+makes to a metric slip `Φ≠Ψ` — is **uncomputed at the order that would
+actually matter**, not "second-order-small." Status: genuinely **open**,
+not asserted at any confidence level. A real, correctly-scoped treatment
+would require the full self-consistent `O(ĝ²)` calculation (§6 point 8).
 
 ## 6. What this does NOT establish
 
-1. The connection between this **static, two-body** `G_eff` and P30's
+1. The connection between this **static, two-body** `ΔG` and P30's
    **cosmological, perturbation-growth** `G_eff` — related by the
    standard quasi-static/sub-horizon approximation, but that reduction
-   is **not performed here**. Until it is, treat the two `G_eff`s as
-   linked by strong physical plausibility, not by an explicit derivation
-   chain.
-2. `γ(a,k)=Φ/Ψ` quantitatively — §5 is qualitative, citing a
-   well-established general fact about this theory class, not computed
-   from the actual perturbed field equations here.
+   is **not performed here**. Until it is, treat the two as linked by
+   strong physical plausibility, not by an explicit derivation chain.
+2. `γ(a,k)=Φ/Ψ` at any confidence level — §5's original qualitative claim
+   was withdrawn as wrong, not merely unproven; the question is open.
 3. `μ(a,k)`'s scale (`k`) dependence — the static result here is
    `k`-independent by construction (massless mediator, point-source
    limit), consistent with expectation, but the full `k`-dependent
@@ -162,6 +205,42 @@ calculation.
 6. Any comparison against Table A1 — closed gate, not touched.
 7. Per NO_AUTHOR_ERROR: entirely this project's own reconstruction
    (OUR_RECONSTRUCTION), not a claim about TJB's own unpublished theory.
+8. **[ADDED after correction] A fully self-consistent `O(ĝ²)` solution.**
+   `φ`'s own stress-energy sources gravity (via Einstein's equations) at
+   the *same* `O(ĝ²)` order as the claimed `ΔG`. This finding computed
+   `U_5th` on a flat background (no metric response to `φ`) and combined
+   it with an *unperturbed* `U_N` (also no metric response to `φ`) — a
+   linear superposition of two decoupled leading-order pieces, not the
+   fully coupled Einstein+scalar+matter solution a genuine `G_eff`
+   derivation needs. This gap is neither computed nor bounded here, and
+   is the same underlying issue as §5's withdrawn slip claim.
+
+## 7. Skeptic verdict (context-blind, Step 8a, 2026-08-14)
+
+Reviewed with `claim.md`-equivalent content (this finding, pre-correction)
++ the script, **no session history**, per Falsification Ladder Context
+Asymmetry Rule, explicitly asked to check the slip-order reasoning and
+whether `U_N` is derived or asserted. Six issues found:
+
+| # | Issue | Verdict | Disposition |
+|---|---|---|---|
+| 1 | "Derives (not merely restates)" oversells the actual algebraic work done | WEAKENED | Retitled, softened throughout |
+| 2 | `U_N` asserted not derived; summing derived+asserted and calling it "derived" | **FALSIFIED (strict claim)** | Narrowed to: only the additive `ΔG` is derived; `U_N`/`G_N` explicitly flagged as imported (§3) |
+| 3 | Circularity risk vs. P21 — skeptic could not resolve without P21's content | **NEEDS-REAL-DATA → resolved** | Independently re-read `FINDING_P21` directly: confirmed `A`'s value is explicitly convention-dependent per P21's own text — the "A=1 match" is largely circular, not independent confirmation (§4, most consequential fix) |
+| 4 | "Second-order-small" slip claim conflates cosmological-perturbation and static-field expansions | **FALSIFIED** | Withdrawn to a genuinely open question (§5) |
+| 5 | Signs/dimensions in the field-equation and Green's-function steps | CONFIRMED-REAL | No fix needed |
+| 6 | "Attractive for like-sign `ĝ`" is meaningless (`ĝ` enters squared) | **FALSIFIED** | Wording removed (§3) |
+| + | Scalar's own metric backreaction at the same `O(ĝ²)` order, uncomputed | WEAKENED | Added as §6 point 8 |
+
+**What survives:** the general (non-homogeneous) field-equation derivation
+and the Green's-function point-source solution (§1–§2) are correct,
+sympy-verified. `U_5th=−ĝ²mM/(4πr)` is genuinely derived from the action.
+**What does not survive:** "`G_eff` is derived," "P21's relation is
+derived, not merely restated," and the qualitative slip claim — all three
+withdrawn or substantially narrowed. Kill classification: mixed — issues
+2/3/6 are framing/scope; issue 4 (and its companion, §6 point 8) is a
+real, unresolved physics gap, the most serious correction of the P34–P35
+pair.
 
 ## Reproduction
 

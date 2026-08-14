@@ -119,3 +119,45 @@ underdetermination result (B), not a blocker to route around by guessing.
 ## 4. Status log (updated as steps complete)
 
 - 2026-08-14: Plan written. Starting P34.
+- 2026-08-14: **P34 done + corrected.** Explicitly added a gravitational
+  sector (standard, unmodified Einstein-Hilbert, flagged as a choice, per
+  its own corrected lesson never to assume this silently) and derived the
+  FRW background scalar equation `φ̈+3Hφ̇=ĝρ₀` via two derivation routes.
+  Skeptic review found the "two independent routes" framing overclaimed
+  (Noether's theorem guarantees their agreement — 5th occurrence of this
+  session's "shared-input" pattern) and, more consequentially, that the
+  claim "`ΔG` is a linear-perturbation effect, not background" was an
+  unsupported leap given P34's own background-only scope. Both corrected
+  in place. Commits `9e76713` (build), `4a4cc31` (correction, bundled with
+  P35).
+- 2026-08-14: **P35 done, skeptic review in progress.** Static, weak-field,
+  point-source limit of the same action. Reused P34's action (extended to
+  the general, non-homogeneous case) and P19's own already-`CONFIRMED-REAL`
+  Green's function. Result: `ΔG=ĝ²/(4π)`, matching P21's own founding
+  relation `A·g²=4π·ΔG` exactly with `A=1`. **This is the calculation
+  that supplies what P34's correction found missing** — turns out to
+  answer P34's own gap, built independently before that verdict was read.
+  Commit `4a4cc31`. Context-blind skeptic review launched, specifically
+  asked to check the slip-order subtlety (§5's "second-order-small"
+  claim — is `φ`'s own gradient-squared stress genuinely higher-order in
+  this *static* two-body picture, where `φ` itself is not a small
+  cosmological perturbation, or does that reasoning improperly import a
+  cosmological-perturbation-theory argument into a different expansion?)
+  and whether `U_N=-G_N mM/r` is derived here or merely asserted (it is
+  asserted, standard GR, not re-derived from `S_EH` — flagged as a
+  possible overclaim risk in "P21's relation is derived, not restated").
+  **Do not build P36 (quasi-static cosmological reduction) or cite P35's
+  γ=1 claim as settled until this verdict lands and is processed.**
+- Interim assessment, mid-campaign: real, verified progress on the `g`
+  (monopole) sector's static/two-body content — P21's founding relation
+  is now derived, not merely assumed, a genuine result. The κ (dipole)
+  sector was considered next (per the plan's `P_κ` item) but deliberately
+  **not** rushed: a correct treatment requires re-grounding in this
+  project's own already-established geometric setup (P1's specific
+  radially-aligned dipole configuration, P24's `tiers_from_kernel`
+  machinery, P25's WEP composition-dependence result) rather than
+  reasoning from a summary of them — attempting it under time pressure
+  risked contradicting or garbling an already-proven claim
+  ("proven 2026-08-10" per P1's own docstring) without properly reading
+  it first. Deferred to the next session slot, to be done carefully
+  rather than quickly.
