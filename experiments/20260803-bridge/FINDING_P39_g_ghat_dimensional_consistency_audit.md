@@ -1,8 +1,16 @@
 # P39 — the "restore explicit c-factors" task P34 and P35 both deferred is not simple bookkeeping: P21's own `g` and P33's own `ĝ:=g/c` formula are mutually inconsistent, and the resulting gap is not a missing power of `c`
 
 **Date:** 2026-08-14
-**Status:** Built, run, ruff clean, all assertions pass.
-**Pending context-blind skeptic review (Step 8a) — not yet run.**
+**Status:** **Reviewed after context-blind skeptic review, same day — core
+claim survives intact, no FALSIFIED issues.** The reviewer independently
+re-derived every step of the dimensional arithmetic by hand (base
+dimensions, `[φ]`, the required `[g]` under P33's own formula, the
+residual mass-exponent argument) and cross-checked every quoted formula
+against its own source file, confirming no misquotes and no logical gap
+in applying P21's `φ` to P33's formula. Two WEAKENED-level polish
+suggestions were made and applied below (§0's error-class classification;
+§2's "genuinely new constant" wording, now connected explicitly to P21's
+own already-named `A`). Full verdict in the new §5 below.
 **Origin:** sixth step of the covariant-completion campaign
 (`PLAN_final_goal_20260814.md`), continuing at the deliberately slower,
 one-step-at-a-time pace per explicit user instruction ("продолжай P39,
@@ -30,9 +38,16 @@ mechanically (exponent bookkeeping on `kg, m, s`, via a small script — not
 hand algebra, which is exactly the kind of thing this project's own
 history shows is error-prone for exactly this class of check). This
 directly instantiates `research-methodology.md`'s own still-open "gap #2 —
-symbol/parameter registry" (Тип 1 error class: one symbol, two objects in
-different parts of the project) — this finding is a concrete case of
-running that check, not an abstract proposal to build a checker someday.
+symbol/parameter registry" — this finding is a concrete case of running
+that check, not an abstract proposal to build a checker someday.
+**[CORRECTED per skeptic review]** ~~Тип 1 error class: one symbol, two
+objects in different parts of the project~~ — not a clean fit for either
+named error class alone. As originally posed, P21 states an *unstated
+dimensional condition* on `g` (Тип 3) that P33's formula silently
+requires to be different; only in the *post-hoc* reading (treating
+P21's-g and P33's-g as if they were two different objects sharing one
+name) does it resemble Тип 1. Both readings point at the same underlying
+gap; the classification itself doesn't change what was found.
 
 **What this does NOT do:** it does not fix the gap it finds, does not
 pick which candidate reading of `g`'s units is "correct," and does not
@@ -88,8 +103,17 @@ mass-exponent always zero) — under both readings, the residual carries a
 **nonzero mass exponent** (`-1` in both cases). No power of `c`, however
 large or fractional, can supply a nonzero mass exponent. **"Restore
 explicit `c`-factors"** — P34's and P35's own characterization of the
-deferred task — **understates what is actually missing: a genuinely new,
-mass-dependent constant, not a pure `c`-power.**
+deferred task — **understates what is actually missing.**
+**[CORRECTED per skeptic review — "genuinely new" was ambiguous.]** ~~a
+genuinely new, mass-dependent constant, not a pure c-power~~ — the
+required constant is not necessarily *new to this project*: `FINDING_P21`
+itself already named a constant `A` with exactly `[A]=[G_N]`
+(mass-exponent `-1`), and the reviewer independently confirmed both
+residuals here equal `A·c²` (reading 1) and `A·c⁴` (reading 2) exactly.
+What's missing is not a c-power, and may well be P21's own already-named
+`A`, carried through — but P33/P34/P35 never actually track `A`
+alongside `ĝ`, so whether it is literally the same `A` is not established
+by this finding, only structurally plausible.
 
 Tracing this into P38's own `Φ−Ψ=G_N·ĝ²·M²/(16π·r²)` (using reading 1,
 `g` dimensionless, the more standard of the two): the result carries
@@ -133,15 +157,58 @@ under any straightforward reading.
    sympy assertions) is wrong** — those scripts never actually plug in
    P21's real, SI-valued `g`/`β` bound; they use `ĝ` purely as an internal
    symbol, and their own internal algebra (e.g. P38's Step 9 trace-equation
-   cross-check) remains valid as *internal* consistency checks. This
-   finding only blocks *connecting* that internal chain back to any
-   external, SI-valued number (like P22/P31's ceiling) — exactly the
-   connection P34/P35 both flagged as deferred and not yet attempted.
+   cross-check) remains valid as *internal* consistency checks. **[Added
+   per skeptic review]** That internal validity is *guaranteed* by
+   working entirely in `c=1` units — an internal check performed that way
+   cannot, by construction, detect the SI-restoration issue this finding
+   is about; "internal consistency" and "SI-consistency" are different
+   properties, not degrees of the same one. This finding only blocks
+   *connecting* the internal chain back to any external, SI-valued number
+   (like P22/P31's ceiling) — exactly the connection P34/P35 both flagged
+   as deferred and not yet attempted.
 5. **Anything about the `κ` (dipole) sector directly** — entirely about
    the monopole (`g`) sector's own chain, though §2's noted structural
    echo with `FINDING_P17` may be worth a future, separate check.
 6. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction's
    internal bookkeeping, not a claim about TJB's own unpublished theory.
+
+## 5. Skeptic verdict (context-blind, Step 8a, 2026-08-14)
+
+Reviewed with the finding + script + the four directly-cited source files
+(`FINDING_P21`, `FINDING_P33`, `FINDING_P35`, `FINDING_P17`), **no session
+history**, per Falsification Ladder Context Asymmetry Rule. The reviewer
+independently re-derived every step of the dimensional arithmetic by
+hand and cross-checked every quoted formula against its actual source
+text. This finding carries a higher bar than most — it claims two
+already-corrected prior findings (P21, P33) are mutually inconsistent —
+and the review was explicitly asked to check the quotes, the licensing
+of applying P21's `φ` to P33's formula, the "no power of `c`" argument,
+and the hedging on the `Ω_φ` echo before accepting any of it.
+
+| # | Issue | Verdict | Disposition |
+|---|---|---|---|
+| 1 | Quote accuracy (P21/P33/P34/P35/P17) | CONFIRMED-REAL — all six load-bearing quotes checked against source, exact | No fix needed |
+| 2 | Licensing of applying P21's `φ` to P33's formula | CONFIRMED-REAL — P34's own "re-used unchanged" and P35's own "same Lagrangian density" license it | No fix needed |
+| 3 | "No power of `c` can bridge the gap" argument, and the dimension-tuple helper functions | CONFIRMED-REAL — independently re-derived by hand; helpers correctly implement dimensional arithmetic | No fix needed |
+| 4 | Hedging on the `Ω_φ`/`FINDING_P17` "kg/m echo" | CONFIRMED-REAL — hedge present and consistent everywhere the echo is mentioned | No fix needed |
+| 5a | "Blocked, not merely deferred" | CONFIRMED-REAL | No fix needed |
+| 5b | "P34–P38's internal self-consistency unaffected" | WEAKENED — true, but that internal validity is guaranteed by the `c=1` convention, a subtlety worth stating explicitly | Fixed (§4 point 4) |
+| 5c | "Genuinely new, mass-dependent constant" | WEAKENED — ambiguous ("new to the project"?); reviewer found both residuals equal `A·c²`/`A·c⁴` for P21's own already-named `A` | Fixed (§2) |
+| 5d | "Тип 1 error class" classification | WEAKENED — closer to a Тип 3 (unstated condition) / Тип 1 (post-hoc) hybrid | Fixed (§0) |
+| 6 | Script bugs (index errors, tautological assertions) | CONFIRMED-REAL — none found; `ddiv`/`dsub` compute the same operation via two paths, a code-smell, not a bug | No fix needed |
+
+**What survives:** the core claim in full — P21's own stated "`g`
+dimensionless" assumption and P33's own `m_eff` formula, applied to the
+same `φ` both findings say they share, are dimensionally inconsistent;
+the residual gap carries a nonzero mass exponent under both candidate
+readings, so no power of `c` can resolve it; the planned P22/P31 numeric
+comparison is genuinely blocked, not merely unfinished bookkeeping. **What
+was corrected:** two wording ambiguities (both fixed to explicitly connect
+to P21's own already-named `A` and to state the `c=1`-internal-validity
+subtlety) and one classification quibble. No issue reached FALSIFIED.
+Kill classification: none — the closest to a fully clean review this
+campaign has produced, with the added weight that it survived scrutiny
+aimed specifically at re-litigating two already-corrected prior findings.
 
 ## Reproduction
 
