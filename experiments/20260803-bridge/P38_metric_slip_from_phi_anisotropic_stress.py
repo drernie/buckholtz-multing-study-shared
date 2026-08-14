@@ -37,6 +37,31 @@ textbook coefficient. If that control fails, the whole derivation (sign
 conventions, index placement) is untrustworthy and the ij-sourced result
 that follows cannot be trusted either.
 
+CORRECTED 2026-08-14, after context-blind skeptic review, same day. Core
+numeric result Phi-Psi=-G_N*g_hat^2*M^2/(16*pi*r^2) SURVIVED INTACT -- the
+skeptic independently re-derived the linearized Einstein tensor by hand
+and confirmed it. Two issues found were both framing overclaims, not
+physics bugs, and both were given a genuine FIX rather than just a
+caveat: (1) the G_00 "positive control" was oversold as validating "the
+ij-sector extraction below" -- for this static ansatz G_00 depends ONLY
+on Psi, never on Phi, so it cannot by itself catch a Phi-side sign/index
+error in the ij sector; the print text now says exactly what it does and
+does not establish. (2) the original Step 8 was labeled "INDEPENDENT
+VERIFICATION" but shares the SAME linearized_christoffels/ricci/
+einstein_tensor code path as the solving step (Step 7) -- it verifies
+completeness (all 5 trace-free components, not just one), not
+independence; a bug shared by that code would pass both. FIXED (not just
+relabeled): added Step 9, a genuinely different equation -- the TRACE of
+the spatial Einstein equation, G_ii=8*pi*G_N*T_ii (structurally distinct
+from the trace-free equation solved in Step 7) -- solved independently
+for the same ansatz and confirmed to give the EXACT SAME C. This closes
+the specific gap the skeptic named: an overall-scale bug in how
+(Phi-Psi) enters G_ij would evade both the G_00 control and the Phi=Psi
+self-consistency check, but would generically break agreement between
+the trace and trace-free equations -- agreement between two structurally
+different equations is real, new evidence against exactly that failure
+mode, not a restatement of Step 8.
+
 NOT_VALIDATION - NOT_REFUTATION - OUR_RECONSTRUCTION - L0 descriptive
 """
 
@@ -131,8 +156,14 @@ def main():
 
     print("\n[POSITIVE CONTROL, Gate 3] Does G_00 reduce to the standard Newtonian-")
     print("  limit Poisson equation? This is the single most well-established")
-    print("  result in weak-field GR -- if this derivation's sign/index conventions")
-    print("  are wrong, this check fails and nothing downstream can be trusted.")
+    print("  result in weak-field GR.")
+    print("  CORRECTED after skeptic review: this control exercises ONLY the Psi-side")
+    print("  of the code (h_ii) and the overall factor of 2 -- for THIS static ansatz")
+    print("  G_00 does not depend on Phi at all, so this check alone does NOT verify")
+    print("  Phi's sign/index placement in the ij-sector derived below. Kept as a")
+    print("  necessary, but explicitly NOT sufficient, sanity check -- Step 9 below")
+    print("  supplies the genuinely independent cross-check the ij-sector result")
+    print("  actually needs.")
     G_00 = sp.simplify(G[0, 0])
     print(f"  G_00 (derived) = {G_00}")
     laplacian_Psi = sp.diff(Psi, x, 2) + sp.diff(Psi, y, 2) + sp.diff(Psi, z, 2)
@@ -144,10 +175,9 @@ def main():
         "Newtonian-limit form; do not trust the ij-sector result below"
     )
     print("  -> PASSES: G_00 = 2*Laplacian(Psi) exactly, matching G_00=8*pi*G_N*T_00")
-    print("     with T_00=rho (source-free vacuum check: Laplacian(Psi)=0 outside")
-    print("     the source, consistent with the standard weak-field Poisson result).")
-    print("     This confirms the derivation's conventions are the standard ones --")
-    print("     the ij-sector extraction below uses the SAME, now-checked, code path.")
+    print("     with T_00=rho. Confirms the Psi-side conventions and the overall")
+    print("     linearized-gravity code path are standard -- Phi's role in the")
+    print("     ij-sector is checked separately, not by this control.")
 
     print("\n[STEP 4] Extract the SPATIAL trace-free part of G_ij -- the equation")
     print("  that sources a metric slip (Phi != Psi):")
@@ -216,10 +246,15 @@ def main():
     C_value = solution[0]
     print(f"  => Phi - Psi = ({C_value}) / r^2")
 
-    print("\n[STEP 8] INDEPENDENT VERIFICATION -- substitute the solved C back into")
-    print("  the FULL trace-free equation (not just the xy-component ansatz-matching")
-    print("  shortcut used to solve for C) and confirm it holds identically for a")
-    print("  GENERIC point (x,y,z), not only on a special axis:")
+    print("\n[STEP 8] CORRECTED LABEL after skeptic review -- this is a COMPLETENESS")
+    print("  check, not an independent verification: it substitutes the solved C back")
+    print("  into the FULL trace-free equation (not just the xy-component used to solve")
+    print("  for C) and confirms all 5 independent trace-free components hold at a")
+    print("  GENERIC point, not only on a special axis. Valuable (rules out the ansatz")
+    print("  being under-constrained by a single component), but it shares the SAME")
+    print("  linearized_christoffels/ricci/einstein_tensor code path as the solving")
+    print("  step -- a latent bug in that shared code would pass both. Genuine")
+    print("  independence is supplied separately by Step 9 below.")
     C_solved = C_value
     Phi_final = C_solved / (x**2 + y**2 + z**2)
     Psi_final = 0
@@ -261,10 +296,38 @@ def main():
     print(f"  max |residual| over all 9 (i,j) components: {max(sp.Abs(r_) for r_ in residuals)}")
     for res in residuals:
         assert res == 0, f"INDEPENDENT VERIFICATION FAILED -- residual {res} != 0"
-    print("  -> PASSES: all 9 components verified identically zero, for generic (x,y,z),")
-    print("     via a DIFFERENT code path (direct tensor substitution) than the one used")
-    print("     to solve for C (coefficient matching on a single ansatz ODE) -- a")
-    print("     genuinely independent check, not a restatement of the solving step.")
+    print("  -> PASSES: all 9 components verified identically zero, for generic (x,y,z) --")
+    print("     a real completeness check (rules out an under-constrained ansatz), not")
+    print("     yet the independent cross-check Step 9 supplies.")
+
+    print("\n[STEP 9] ADDED after skeptic review -- a GENUINELY independent equation-")
+    print("  level cross-check, not just more components of the same trace-free")
+    print("  equation. The TRACE of the spatial Einstein equation, G_ii=8*pi*G_N*T_ii,")
+    print("  is a STRUCTURALLY DIFFERENT physical constraint than the trace-free")
+    print("  equation solved in Step 7 -- it fixes (Phi-Psi) via the TRACE of T_ij,")
+    print("  not the traceless part. If this separate equation, solved independently,")
+    print("  gives the SAME C, that is real evidence against exactly the failure mode")
+    print("  the skeptic flagged: an overall-scale bug in how (Phi-Psi) enters G_ij")
+    print("  would be invisible to the Step 3 positive control (which involves only")
+    print("  Psi, not the ij sector at all) AND to the Phi=Psi self-consistency check")
+    print("  (which is insensitive to a common factor multiplying Phi and Psi equally)")
+    print("  -- but a shared scale bug would generically break agreement between the")
+    print("  trace and trace-free equations, since they combine G_ij's components")
+    print("  differently:")
+    trace_equation = sp.Eq(G_trial_trace, 8 * sp.pi * G_N * T_trace)
+    trace_solution = sp.solve(trace_equation, C)
+    print(f"  trace equation: {trace_equation}")
+    print(f"  solved C (from the TRACE equation) = {trace_solution}")
+    assert len(trace_solution) == 1, f"expected exactly one solution, got {trace_solution}"
+    C_from_trace = trace_solution[0]
+    trace_agreement = sp.simplify(C_from_trace - C_value)
+    print(f"  C (trace-free eq, Step 7) - C (trace eq, Step 9) = {trace_agreement}")
+    assert trace_agreement == 0, (
+        "trace and trace-free equations disagree on C -- inconsistent system, "
+        "do not trust either result"
+    )
+    print("  -> PASSES: the trace equation independently gives the exact same C.")
+    print("     This is the genuinely independent check Step 8 was mislabeled as being.")
 
     print("\n" + "=" * 78)
     print("VERDICT")

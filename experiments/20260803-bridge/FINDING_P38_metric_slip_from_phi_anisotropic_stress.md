@@ -1,8 +1,17 @@
 # P38 — solving the sourced trace-free ij Einstein equation for the metric slip Φ−Ψ, from a self-contained linearized-Einstein-tensor derivation
 
 **Date:** 2026-08-14
-**Status:** Built, run, self-caught-and-fixed one sign error, ruff clean.
-**Pending context-blind skeptic review (Step 8a) — not yet run.**
+**Status:** **CORRECTED after context-blind skeptic review, same day.**
+Core numeric result `Φ−Ψ=-G_N·ĝ²·M²/(16π·r²)` **survived intact** — the
+reviewer independently re-derived the linearized Einstein tensor by hand
+and confirmed it. Two framing overclaims were found (not physics bugs)
+and both were given a genuine *fix*, not just a caveat: the "positive
+control" text was oversold, and Step 8 was mislabeled "independent" when
+it shares the same code path as the solving step. A new Step 9 (a
+structurally different equation — the trace, not the trace-free, part of
+the sourced Einstein equation) now supplies the genuine independent
+cross-check, and confirms the exact same coefficient. Full verdict in the
+new §6 below.
 **Origin:** fifth step of the covariant-completion campaign
 (`PLAN_final_goal_20260814.md`), continuing at the deliberately slower,
 one-step-at-a-time pace per explicit user instruction ("продолжай, но
@@ -69,14 +78,21 @@ direct index loops (30 of 64 Christoffels nonzero, found by the
 computation itself, not assumed) rather than a hand-shortcut, to avoid
 silently dropping a term.
 
-**Positive control (Gate 3, run before trusting the `ij`-sector result):**
-`G₀₀` derived from this same code reduces *exactly* to `2∇²Ψ`, matching
-the single most well-established fact in weak-field GR — the Newtonian
-limit `G₀₀=8πG_N T₀₀` gives the ordinary Poisson equation. Confirmed by
-direct symbolic comparison (script assertion, exact zero difference), not
-eyeballed. This is the same convention family used throughout P34–P37
-(`G_N` — standard, unmodified Newton's constant, per P34's own explicit
-flag never to silently assume a gravitational sector).
+**Positive control (Gate 3, run before trusting the `ij`-sector result) —
+[CORRECTED, see §6]:** `G₀₀` derived from this same code reduces
+*exactly* to `2∇²Ψ`, matching the single most well-established fact in
+weak-field GR — the Newtonian limit `G₀₀=8πG_N T₀₀` gives the ordinary
+Poisson equation. Confirmed by direct symbolic comparison (script
+assertion, exact zero difference), not eyeballed. This is the same
+convention family used throughout P34–P37 (`G_N` — standard, unmodified
+Newton's constant, per P34's own explicit flag never to silently assume a
+gravitational sector). ~~This confirms the derivation's conventions are
+the standard ones — the ij-sector extraction below uses the SAME,
+now-checked, code path.~~ **Corrected:** for this static ansatz, `G₀₀`
+depends *only* on `Ψ`, never on `Φ` — this control validates the
+`Ψ`-side conventions and the overall linearized-gravity code path, but
+cannot by itself catch a `Φ`-side sign or index error in the `ij` sector.
+The genuinely independent check for that is §2's Step 9, added below.
 
 **Self-consistency check:** setting `Ψ=Φ` (no slip) makes the trace-free
 `ij` part vanish identically for *any* smooth `Φ` — the textbook "no
@@ -99,15 +115,30 @@ structure `Σ_ij` has). Setting `[G_ij]_tracefree(ansatz) = 8πG_N·Σ_ij`
 C = -G_N·ĝ²·M² / (16π)
 ```
 
-**Independent verification (a genuinely different code path from the
-solving step):** substituting this `C` back into the *full* symbolic
-trace-free equation and checking all 9 `(i,j)` components at a *generic*
-point `(x,y,z)` — not just the single component/axis used to solve for
-`C` — gives an exact zero residual for every component (script
-assertion). This is the check P37 itself declined to do for the
-reviewer's own unverified closed form; here it is done for this
-finding's own derivation, by a different route than the one that
-produced the number.
+**Completeness check [CORRECTED label, see §6 — was called "independent
+verification," is not]:** substituting this `C` back into the *full*
+symbolic trace-free equation and checking all 9 `(i,j)` components at a
+*generic* point `(x,y,z)` — not just the single component/axis used to
+solve for `C` — gives an exact zero residual for every component (script
+assertion). Valuable (rules out the ansatz being under-constrained by a
+single component), but it shares the *same*
+`linearized_christoffels`/`linearized_ricci`/`linearized_einstein_tensor`
+code as the solving step — a latent bug in that shared code would pass
+both checks identically.
+
+**Genuine independent cross-check (added after skeptic review — Step
+9):** the *trace* of the spatial Einstein equation, `G_ii=8πG_N T_ii`, is
+a structurally different physical constraint than the trace-free equation
+solved above — it fixes `Φ−Ψ` via the trace of `T_ij`, not the traceless
+part. Solved independently for the same ansatz, it gives the *exact same*
+`C`. This closes the gap the skeptic named precisely: an overall-scale
+bug in how `(Φ−Ψ)` enters `G_ij` would evade *both* the `G₀₀` positive
+control (involves only `Ψ`) *and* the `Φ=Ψ` self-consistency check
+(insensitive to a common factor multiplying `Φ,Ψ` equally) — but would
+generically break agreement between the trace and trace-free equations,
+since they combine `G_ij`'s components differently. Agreement between two
+structurally different equations is the genuinely independent check the
+original Step 8 was mislabeled as being.
 
 ## 3. Result
 
@@ -134,9 +165,13 @@ printed `C_solved` value against its own printed sign claim before
 writing this document — not by the skeptic (this review has not yet
 run). Fixed by replacing the hand-typed sign claim with a computed
 `C_solved.is_negative` check and a new script-level assertion, so this
-specific mistake cannot silently recur on a re-run. Consistent with this
-campaign's established pattern (P6, P9, P37) of scripts catching their
-own arithmetic before a human or skeptic has to.
+specific mistake cannot silently recur on a re-run. **[CORRECTED per
+skeptic review — see §6:]** ~~consistent with this campaign's established
+pattern (P6, P9, P37) of scripts catching their own arithmetic before a
+human or skeptic has to~~ — that comparison overstated it: P6/P9/P37
+caught actual arithmetic or logic errors in the computation itself; this
+was a mismatched *print string*, the computation was correct throughout.
+Distinct, smaller class of self-catch, not the same pattern.
 
 ## 4. What this establishes, precisely
 
@@ -168,6 +203,47 @@ computed value — the natural endpoint of the chain P37 deferred.
    any existing bound (P22/P31's phenomenological ceilings) — no
    numerical comparison against those ceilings is attempted in this
    finding; that would be a natural, separate next step, not assumed here.
+6. Independent re-verification of `T_ij` itself (P37's own derivation,
+   already skeptic-reviewed there — out of scope for *this* finding's own
+   review, which took `T_ij` as a given input per its own review
+   instructions). If P37's `T_ij` normalization were ever found to be
+   non-standard, that error would propagate directly into this finding's
+   `C`, since `T_ij` is used, not re-derived, here.
+
+## 6. Skeptic verdict (context-blind, Step 8a, 2026-08-14)
+
+Reviewed with the finding + script, **no session history**, per
+Falsification Ladder Context Asymmetry Rule. The reviewer independently
+re-derived the linearized Einstein tensor by hand, hand-computed the
+trace-free operator acting on `Φ−Ψ`, verified the `8πG_N` normalization
+and the uniqueness of the `C/r²` ansatz, and cross-checked the numeric
+value of `C` from first principles.
+
+| # | Issue | Verdict | Disposition |
+|---|---|---|---|
+| 1 | Linearized-gravity `Γ·Γ`-drop shortcut applied correctly? | CONFIRMED-REAL | No fix needed — reviewer's independent hand-derivation matched exactly |
+| 2 | `G₀₀` "positive control" — does it actually validate the `ij`-sector's `Φ` conventions? | WEAKENED — real overclaim | Fixed (§1): text now states only `Ψ`-side + code-path sanity is validated |
+| 3 | Is `Φ−Ψ=C/r²` the unique solution under standard boundary conditions? | CONFIRMED-REAL — reviewer independently proved the homogeneous-solution space is trivial | No fix needed |
+| 4 | `8πG_N` factor and coefficient placement | CONFIRMED-REAL — reviewer's independent hand-solve reproduced `C=-G_N ĝ²M²/(16π)` exactly | No fix needed |
+| 5 | Step 8 "independent verification" — genuinely independent, or same code path twice? | WEAKENED — real overclaim, shares code with the solving step | Fixed (§2): relabeled "completeness check"; genuine independence supplied by new Step 9 (trace equation), reviewer's own suggested fix |
+| 6a | "Self-caught arithmetic" compared to P6/P9/P37 | Minor prose overclaim | Fixed (§3): distinguished as a narrative-text catch, not an arithmetic catch |
+| 6b | `T_ij` inherited from P37, not re-verified here | Flag, not a finding (explicitly out of scope per review instructions) | Noted explicitly (§5, item 6) |
+| 6c | Suggested cross-check: does `Φ_φ=0` follow from pairing with the `00`-sector solve? | Suggestion, not adopted | **Declined** — an independent hand-check during correction found this specific claim does *not* hold exactly (`Φ_φ` came out nonzero), so it is not added to this finding; adopting an unverified "nice fact" would repeat exactly the mistake `audit-verification-gate.md` warns against |
+| 6d | Sign of `ĝ` (does it matter, given `T_ij` is `ĝ²`)? | CONFIRMED-REAL — reviewer confirmed no issue | No fix needed |
+
+**What survives:** the core numeric result — independently re-derived by
+the reviewer from scratch and now additionally confirmed by a second,
+structurally different equation (§2's Step 9) this finding did not
+originally have. **What was corrected:** two framing overclaims (the
+positive control's actual coverage; Step 8's actual independence), both
+given genuine fixes rather than caveats, plus one prose overclaim.
+**What was explicitly declined:** the reviewer's own suggested "`Φ_φ=0`"
+embellishment — an independent check found it does not hold, so it was
+left out rather than propagated unverified, per this project's own
+evidence discipline. Kill classification: framing/completeness only, the
+second clean survival in a row this session (after P37), the first
+review to also add genuine new verification content (Step 9) rather than
+only correct or caveat existing content.
 
 ## Reproduction
 
