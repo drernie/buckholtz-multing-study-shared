@@ -4,11 +4,50 @@ PLAN_final_goal_20260814.md): explicitly add a gravitational sector
 gravity, chosen as the simplest possible closure, per P33's own
 corrected lesson never to assume this silently) to MULTING's own
 reconstructed matter+scalar action, reduce to the homogeneous FRW
-background, and derive the background equations via TWO independent
+background, and derive the background equations via TWO derivation
 routes -- Bianchi/energy-conservation vs direct Euler-Lagrange variation
-of the reduced (minisuperspace) action -- as a genuine, non-tautological
-cross-check (the two routes start from structurally different equations;
-agreement is real information, not guaranteed by construction).
+of the reduced (minisuperspace) action.
+
+CORRECTED 2026-08-14, after context-blind skeptic review, same day.
+THREE real issues fixed, none core-predicate-false (the derived equation
+itself, phi''+3H*phi'=g_hat*rho0, is correct and unchanged):
+  (1) "Two independent routes, non-tautological cross-check" OVERCLAIMED.
+      Both routes derive from the SAME action -- Route A's rho_phi,
+      p_phi, rho_m,eff are definitions read directly off S_phi/S_matter,
+      the very same action Route B varies. By Noether's theorem, the
+      Euler-Lagrange equations and the stress-energy conservation law of
+      a consistently-varied action are NOT independent facts -- agreement
+      between them is REQUIRED by the theorem, not evidence FOR it. This
+      is the FIFTH occurrence this session of the "two routes agree, but
+      they share the same underlying input" failure pattern (after P22,
+      P29, P30, and P33's sympy-tautology cousin) -- caught this time by
+      a skeptic explicitly asked to check for exactly this. Relabeled
+      throughout: this is a genuine ALGEBRAIC CONSISTENCY CHECK (it does
+      catch typos, sign errors, and arithmetic slips -- both routes
+      passed independent hand-transcription of the same physics into
+      different formalisms, which is not nothing) -- NOT a
+      "non-tautological positive control" in the Perelman-audit sense,
+      which requires an INDEPENDENT oracle for the correct answer.
+  (2) Section 3's claim "the background Friedmann equation uses
+      unmodified G_N" is TRUE BY THE CHOICE MADE IN SECTION 1 (standard,
+      minimally-coupled EH gravity was explicitly CHOSEN, not derived)
+      -- the original prose read as if this were an independently
+      confirmed fact rather than a direct, immediate consequence of that
+      choice. Any f(phi)*R non-minimal coupling would give a DIFFERENT,
+      modified background. Fixed: explicit "by the choice made in
+      Section 1" qualifier added throughout.
+  (3) THE CONSEQUENTIAL ONE: "Delta G (P21-22) is a linear-perturbation
+      effect, not a background-level G_N replacement" was an UNSUPPORTED
+      LEAP. This finding's own Section 4 (What this does NOT establish)
+      explicitly excludes any linear-perturbation analysis -- so the
+      claim about WHERE Delta G lives cannot be concluded FROM this
+      finding's own background-only calculation. What IS established:
+      Delta G is NOT present in THIS background reduction, under minimal
+      coupling. WHERE it lives is a separate question this finding does
+      not answer on its own. (Addendum, added after the correction was
+      applied: P35, built the same day, independently performs the
+      missing static/perturbative calculation and DOES establish this --
+      but that is P35's result, not P34's, and P34 must not borrow it.)
 
 UNITS NOTE (found by re-reading two_field_action_closure.py directly
 before starting, not from memory): the project's own stated action,
@@ -32,14 +71,23 @@ import sympy as sp
 
 def route_a_bianchi(t, a, phi, rho0, ghat, H):
     """Route A: assume the STANDARD (unmodified) Friedmann + total energy
-    conservation law rho_dot_total = -3H(rho_total+p_total) -- this is
-    forced by the Bianchi identity for ANY matter content once gravity
-    itself (S_EH) is standard, unmodified GR -- and solve it for the
-    scalar's own source term. This uses ONLY: (1) bare mass conservation
-    rho0_dot=-3H*rho0 (particle number conservation, unmodified by phi),
-    (2) the definitions rho_m_eff=rho0*(1-ghat*phi), rho_phi=phi_dot^2/2,
-    p_phi=phi_dot^2/2 (standard canonical scalar, no potential), p_m=0
-    (dust). It does NOT use the matter+scalar action directly."""
+    conservation law rho_dot_total = -3H(rho_total+p_total) -- forced by
+    the Bianchi identity IF Einstein's equations G_munu=8*pi*G_N*T_munu
+    hold for this matter+scalar content with the standard, minimally-
+    coupled T_munu (a standard, textbook consequence of varying S_EH+
+    S_phi+S_matter, but NOT independently re-derived or verified in this
+    script -- CORRECTED 2026-08-14: flagged explicitly per skeptic
+    review, this is an assumed, standard premise, not a proven one here)
+    -- and solve it for the scalar's own source term. This uses: (1) bare
+    mass conservation rho0_dot=-3H*rho0 (particle number conservation,
+    unmodified by phi), (2) the definitions rho_m_eff=rho0*(1-ghat*phi),
+    rho_phi=phi_dot^2/2, p_phi=phi_dot^2/2 (standard canonical scalar, no
+    potential), p_m=0 (dust) -- ALL of these are definitions read
+    directly off the SAME S_phi/S_matter that route_b_euler_lagrange
+    varies directly below; this route is NOT independent of Route B in
+    the sense of using different physical inputs, only a different
+    FORMALISM (energy bookkeeping vs. direct field variation) -- see the
+    module docstring's correction note (1)."""
     rho_m_eff = rho0 * (1 - ghat * phi)
     rho_phi = sp.Rational(1, 2) * sp.diff(phi, t) ** 2
     p_total = rho_phi
@@ -84,7 +132,7 @@ def main():
     M = sp.Symbol("M", positive=True)  # comoving bare mass, M = rho0*a^3 = const
 
     print("=" * 78)
-    print("P34 -- FRW background, two independent derivation routes")
+    print("P34 -- FRW background, two derivation routes (consistency check, CORRECTED)")
     print("NOT_VALIDATION - NOT_REFUTATION - OUR_RECONSTRUCTION | L0: descriptive")
     print("=" * 78)
 
@@ -104,14 +152,21 @@ def main():
     print("  (uses ONLY: bare mass conservation + standard rho,p definitions --")
     print("   does NOT touch the matter+scalar action directly)")
     residual_a = route_a_bianchi(t, a, phi, rho0, ghat, H)
-    # residual_a should be linear in phi_ddot; solve for phi_ddot + 3H phi_dot - ghat*rho0
+    # residual_a should be linear in phi_ddot, with coefficient phi_dot (from
+    # d/dt[(1/2)phi_dot^2] = phi_dot*phi_ddot via the chain rule)
     phi_dd = sp.diff(phi, t, 2)
-    coeff_check = sp.diff(residual_a, phi_dd)
-    print(f"  coefficient of phi'' in the residual (sanity: should be phi_dot): {coeff_check}")
+    coeff_check = sp.simplify(sp.diff(residual_a, phi_dd) - sp.diff(phi, t))
+    print(
+        f"  coefficient of phi'' in the residual, minus phi' (sanity, should be 0): {coeff_check}"
+    )
+    assert coeff_check == 0, "residual's phi''-coefficient is not phi_dot as expected"
     solved_a = sp.solve(sp.Eq(residual_a, 0), phi_dd)
-    print(f"  => phi'' solved from Route A: {sp.simplify(solved_a[0]) if solved_a else 'FAILED'}")
-    eom_a = sp.simplify(phi_dd - 3 * H * sp.diff(phi, t) + ghat * rho0)
-    print(f"  Route A EOM claim  phi''+3H*phi' = g_hat*rho0  <=> this expr is 0: {eom_a}")
+    assert solved_a, "Route A residual could not be solved for phi''"
+    phi_dd_solution_a = sp.simplify(solved_a[0])
+    print(f"  => phi'' solved from Route A: {phi_dd_solution_a}")
+    claimed_a = sp.simplify(phi_dd_solution_a - (ghat * rho0 - 3 * H * sp.diff(phi, t)))
+    print(f"  Route A EOM claim  phi''=g_hat*rho0-3H*phi'  <=> this expr is 0: {claimed_a}")
+    assert claimed_a == 0, "Route A's solved phi'' does not match the claimed EOM"
     check_a = sp.simplify(residual_a.subs(phi_dd, 3 * H * sp.diff(phi, t) * -1 + ghat * rho0))
     print(f"  Substituting the CLAIMED solution into the Route-A residual (should be 0): {check_a}")
 
@@ -130,44 +185,50 @@ def main():
         f"{sp.simplify(claimed_b)}"
     )
 
-    print("\n[CROSS-CHECK] Do Route A and Route B agree? (genuine, non-tautological --")
-    print("  the two routes started from DIFFERENT equations: energy conservation")
-    print("  vs. direct field variation)")
+    print("\n[CONSISTENCY CHECK] Do Route A and Route B agree? (CORRECTED framing --")
+    print("  NOT independent: both read rho_phi/p_phi/rho_m,eff off the SAME action")
+    print("  Route B varies directly; by Noether's theorem this agreement is REQUIRED")
+    print("  for any consistently-varied action, not evidence FOR the theorem. This")
+    print("  is an algebraic consistency check -- catches typos/sign errors, does NOT")
+    print("  independently confirm the physics)")
     agree = (check_a == 0) and (sp.simplify(claimed_b) == 0)
     print("  Route A gives:  phi'' + 3H phi' = g_hat * rho0")
     print("  Route B gives:  phi'' + 3H phi' = g_hat * rho0   (rho0 = M/a^3)")
     print(f"  Both residuals vanish identically: {agree}")
-    assert agree, "Route A and Route B disagree -- STOP, do not proceed to P35"
+    assert agree, "Route A and Route B disagree -- STOP, do not proceed further"
 
-    print("\n[STRUCTURAL OBSERVATION] Where does 'G_eff = G_N + Delta G' actually live?")
-    print("  The BACKGROUND Friedmann equation above uses the UNMODIFIED G_N --")
-    print("  S_EH was never touched. The only background-level deviation from LCDM")
-    print("  is through rho_total's own content (rho_phi, and rho_m,eff's g_hat*phi")
-    print("  correction), BOTH of which are second-order-small if g_hat*phi<<1 --")
-    print("  consistent with P22/P31's own bound (epsilon_g <~ 8.39e-12). This is")
-    print("  CONSISTENT WITH, and structurally explains, P1's own already-stated")
-    print("  background result ('MULTING q-blind on background, = LCDM@73',")
-    print("  two_field_action_closure.py line 128) -- not previously derived from")
-    print("  a full action, only asserted. The P21-22 'Delta G' (fifth-force")
-    print("  correction to Newton's constant) is a LINEAR-PERTURBATION / two-body")
-    print("  potential effect (phi mediates a Yukawa-like force between mass")
-    print("  overdensities), NOT a background-level G_N replacement -- this")
-    print("  distinction was never made explicit anywhere in P21-P33.")
+    print("\n[STRUCTURAL OBSERVATION, CORRECTED] What does THIS reduction show about")
+    print("  'G_eff = G_N + Delta G'?")
+    print("  BY THE CHOICE MADE IN THE SETUP ABOVE (standard, minimally-coupled S_EH,")
+    print("  not derived, not the only consistent choice -- see FINDING doc Sec. 4.5),")
+    print("  the BACKGROUND Friedmann equation uses the UNMODIFIED G_N. The only")
+    print("  background-level deviation from LCDM in THIS reduction is through")
+    print("  rho_total's own content (rho_phi, and rho_m,eff's g_hat*phi correction),")
+    print("  both second-order-small if g_hat*phi<<1 -- consistent with P22/P31's own")
+    print("  bound. This is CONSISTENT WITH P1's own already-stated background result")
+    print("  ('MULTING q-blind on background, = LCDM@73', two_field_action_closure.py")
+    print("  line 128). CORRECTED (skeptic review): this finding does NOT establish")
+    print("  WHERE 'Delta G' (P21-22) lives -- only that it is NOT present in THIS")
+    print("  background reduction under minimal coupling. Claiming it 'lives in linear")
+    print("  perturbations' requires an actual perturbative calculation, not performed")
+    print("  in this script (see P35 for that calculation, done separately).")
 
     print("\n" + "=" * 78)
-    print("VERDICT")
+    print("VERDICT (CORRECTED after skeptic review, same day)")
     print("=" * 78)
-    print("Two structurally independent derivation routes (Bianchi/energy-conservation")
-    print("vs. direct Euler-Lagrange variation) agree EXACTLY on the background scalar")
-    print("equation of motion: phi''+3H*phi' = (g/c)*rho0. This is a genuine positive")
-    print("control -- the routes share no common derivation step, so agreement is real")
-    print("information, not a tautology. The background Friedmann equation itself is")
-    print("the STANDARD, unmodified GR result (G_N untouched); MULTING's own")
-    print("deviation from LCDM enters entirely through the SOURCE content, matching")
-    print("and explaining P1's own prior (asserted, not derived) background-blindness")
-    print("claim. Explicit new finding: 'Delta G' (P21-22) is a linear-perturbation")
-    print("effect, not a background-level G_N modification -- this had never been")
-    print("stated explicitly before this derivation.")
+    print("Two derivation routes (Bianchi/energy-conservation vs. direct Euler-")
+    print("Lagrange variation) agree EXACTLY on the background scalar equation of")
+    print("motion: phi''+3H*phi' = g_hat*rho0. This is a genuine ALGEBRAIC")
+    print("CONSISTENCY CHECK, not an independent positive control -- both routes read")
+    print("their inputs off the same action, so agreement is required by Noether's")
+    print("theorem, not surprising information. The background Friedmann equation, BY")
+    print("THE CHOICE of standard minimally-coupled gravity made in the setup (not")
+    print("derived), is the standard GR result; MULTING's deviation from LCDM in THIS")
+    print("reduction enters entirely through the source content, consistent with P1's")
+    print("prior background-blindness claim. WITHDRAWN: the original claim that Delta")
+    print("G (P21-22) is definitively a linear-perturbation effect -- this finding's")
+    print("own background-only scope cannot establish that; only that Delta G is NOT")
+    print("present in the background under minimal coupling.")
     return 0
 
 
