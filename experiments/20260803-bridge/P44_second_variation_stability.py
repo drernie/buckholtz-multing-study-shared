@@ -25,10 +25,21 @@ PART 2 -- no-ghost check: is the resulting quadratic form's associated
 Hamiltonian density positive-definite (standard criterion; a ghost has a
 kinetic term that lets the Hamiltonian run to -infinity)?
 
-PART 3 -- connect the (expected) background-independence to P34's own
-"no V(phi)" finding: this IS the structural reason no background-
-dependent instability can appear at this order, and motivates exactly the
-next step (P45: minimal V(phi)).
+PART 3 -- connect the background-independence to P34's own "no V(phi)"
+finding, and check EXACTLY what kind of V(phi) would break it.
+[CORRECTED after context-blind skeptic review, 2026-08-14]: the ORIGINAL
+Part 3 claimed "a nonzero V(phi) is precisely what would introduce a
+V''(phi_bg)*delta^2 term, making stability background-dependent" without
+checking this against the simplest possible V(phi): a MASS term
+V=m^2*phi^2/2. Skeptic showed by direct computation that V''=m^2 is a
+CONSTANT (independent of phi_bg) for any quadratic V -- so a mass term is
+a "nonzero V(phi)" that does NOT make stability background-dependent,
+contradicting the original claim as worded. Independently re-verified
+below (now computed explicitly, not just asserted in prose): only a V
+with V'''!=0 (cubic or higher, i.e. genuine self-interaction beyond a
+mass term) actually introduces phi_bg-dependence. The P45 link survives
+ONLY if P45's "minimal V(phi)" is understood to mean cubic-or-higher --
+this is now stated explicitly rather than left ambiguous.
 
 NOT_VALIDATION - NOT_REFUTATION - OUR_RECONSTRUCTION - L0 descriptive
 """
@@ -67,17 +78,25 @@ def main():
     L_expanded = lagrangian(phibg + eps * delta)
     d2L_deps2 = sp.diff(L_expanded, eps, 2)
     d2L_at_0 = sp.simplify(d2L_deps2.subs(eps, 0))
-    print(f"  d^2L/d(epsilon)^2 |_(epsilon=0) = {d2L_at_0}")
-    depends_on_bg = phibg in d2L_at_0.atoms(sp.Function)
-    print(f"  Contains phi_bg (the background)? {depends_on_bg}")
-    assert not depends_on_bg, "second variation unexpectedly depends on the background"
-    print("  -> CONFIRMED: delta^2(L) is COMPLETELY INDEPENDENT of the background")
-    print("     phi_bg. This is a structural consequence of the matter coupling")
-    print("     being exactly LINEAR in phi (-rho*g_hat*phi, no phi^2 or higher term)")
-    print("     -- P35's own action has no self-interaction and no potential V(phi)")
-    print("     (already known from P34's 'stiff fluid, w=1' dead end). Any check")
-    print("     of this second variation is therefore a check of the WHOLE THEORY,")
-    print("     not of the specific static solution phi(r)=g_hat*M/(4*pi*r).")
+    print(f"  d^2(density L)/d(epsilon)^2 |_(epsilon=0) = {d2L_at_0}")
+    # [CORRECTED, skeptic-caught] direct derivative check, not atom-membership --
+    # atom-tracking would pass even on an unsimplified residual term
+    dependence = sp.simplify(sp.diff(d2L_at_0, phibg))
+    print(f"  d/d(phi_bg) of the above (direct dependence check) = {dependence}")
+    assert dependence == 0, "second variation unexpectedly depends on the background"
+    print("  -> CONFIRMED: the density-level second variation is COMPLETELY")
+    print("     INDEPENDENT of the background phi_bg (note: this is delta^2 of the")
+    print("     LAGRANGIAN DENSITY, not literally delta^2(S) -- the two coincide by")
+    print("     integration once boundary terms drop, but the object computed here")
+    print("     is pointwise; phi_bg is NOT required to satisfy any field equation")
+    print("     for this specific density-level result). This is verified for THIS")
+    print("     ONE Lagrangian, not proven as a general theorem: the sharper general")
+    print("     condition is 'L at most quadratic in phi with phi-independent")
+    print("     coefficients' (linear-in-phi is sufficient but not necessary -- a")
+    print("     constant-coefficient mass term m^2*phi^2/2 would ALSO give a")
+    print("     background-independent result, see Part 3). Any check built on this")
+    print("     second variation is a check of THIS action as a whole, not of the")
+    print("     specific static solution phi(r)=g_hat*M/(4*pi*r).")
 
     # ------------------------------------------------------------------
     print("\n" + "-" * 78)
@@ -101,10 +120,19 @@ def main():
     )
     print("  -> H_2 = (1/2)*delta_dot^2 + (1/2)*(grad delta)^2 : a SUM OF SQUARES,")
     print("     manifestly >= 0 for every field configuration, zero only at")
-    print("     delta=const. This IS the standard no-ghost criterion (a ghost has")
-    print("     a kinetic term with the WRONG relative sign, making H unbounded")
-    print("     below). PASSES: no ghost instability at this order, for any")
-    print("     background -- because there IS no background-dependent term.")
+    print("     delta=const. PASSES: no ghost (a ghost has a kinetic term with the")
+    print("     WRONG relative sign, making H unbounded below).")
+    print("  [CORRECTED, skeptic-caught] This result is actually STRONGER than 'no")
+    print("  ghost' alone -- H_2's exact sum-of-squares form also rules out a")
+    print("  tachyon (no wrong-sign mass term -- there is no mass term at all here)")
+    print("  and a gradient instability (no wrong-sign spatial-gradient term).")
+    print("  'At this order' is also slightly misleading: L is EXACTLY quadratic in")
+    print("  phi, so L_2 is exact, not a leading-order truncation -- O(eps^3) and")
+    print("  higher vanish identically, so there is no nonlinear correction to")
+    print("  worry about at any order for the LINEARIZED fluctuation. (This check")
+    print("  says nothing about Ostrogradsky-type higher-derivative ghosts, since L")
+    print("  has only first derivatives of phi -- not applicable here, but would")
+    print("  need separate treatment if a future step added higher derivatives.)")
 
     # ------------------------------------------------------------------
     print("\n" + "-" * 78)
@@ -116,30 +144,62 @@ def main():
     print("  showed delta^2(S) doesn't know which solution (or even whether a")
     print("  solution at all) sits at phi_bg. The same H_2>=0 result would hold")
     print("  for phi_bg=0, or any other static or non-static configuration.")
-    print("  Does mean: the THEORY as a whole (P35's action, matter coupling")
-    print("  included) has no ghost at quadratic order, full stop -- a genuine,")
-    print("  if structurally unsurprising, fact about the whole action.")
-    print("  Direct connection to P34: this background-independence is exactly")
-    print("  what 'no V(phi) exists in this action' (P34's stiff-fluid/w=1 dead")
-    print("  end) predicts -- a nonzero V(phi) is precisely what would introduce a")
-    print("  V''(phi_bg)*delta^2 term into L_2, making stability background-")
-    print("  dependent and giving a REAL, solution-specific stability question.")
-    print("  This motivates P45 (minimal V(phi)) directly: only once V(phi) exists")
-    print("  does 'is THIS solution stable' become a well-posed, non-trivial")
-    print("  question at all.")
+    print("  Does mean: THIS action (matter coupling included) has no ghost/tachyon/")
+    print("  gradient instability at quadratic order, full stop -- a genuine, if")
+    print("  near-tautological, fact given the coupling is exactly quadratic.")
+
+    print("\n  [CORRECTED, skeptic-caught] The ORIGINAL claim here was: 'a nonzero")
+    print("  V(phi) is precisely what would introduce a V''(phi_bg)*delta^2 term,")
+    print("  making stability background-dependent.' This was checked against only")
+    print("  ONE class of V(phi) in prose, not computed -- and is FALSE for the")
+    print("  simplest case. Computed explicitly for two cases:")
+    m = sp.Symbol("m", positive=True)
+    lam = sp.Symbol("lambda")
+
+    def d2_of_minus_V(V_of_phi):
+        V_expanded = V_of_phi.subs(sp.Symbol("PHI_PLACEHOLDER"), phibg + eps * delta)
+        return sp.simplify(sp.diff(-V_expanded, eps, 2).subs(eps, 0))
+
+    phi_ph = sp.Symbol("PHI_PLACEHOLDER")
+    V_mass = sp.Rational(1, 2) * m**2 * phi_ph**2
+    d2_mass = d2_of_minus_V(V_mass)
+    mass_depends = sp.simplify(sp.diff(d2_mass, phibg)) != 0
+    print(f"    mass term V=(1/2)m^2*phi^2:   d^2(-V)/d(eps)^2|_0 = {d2_mass}")
+    print(f"      depends on phi_bg? {mass_depends}")
+    assert not mass_depends, "mass term should NOT introduce phi_bg-dependence"
+
+    V_cubic = lam * phi_ph**3 / 6
+    d2_cubic = d2_of_minus_V(V_cubic)
+    cubic_depends = sp.simplify(sp.diff(d2_cubic, phibg)) != 0
+    print(f"    cubic term V=lambda*phi^3/6: d^2(-V)/d(eps)^2|_0 = {d2_cubic}")
+    print(f"      depends on phi_bg? {cubic_depends}")
+    assert cubic_depends, "cubic term SHOULD introduce phi_bg-dependence"
+
+    print("  -> A quadratic V (mass term) is a 'nonzero V(phi)' that does NOT make")
+    print("     stability background-dependent (V''=m^2 is a CONSTANT). Only a V")
+    print("     with V'''!=0 (cubic or higher -- genuine self-interaction beyond a")
+    print("     mass term) actually introduces phi_bg-dependence. The link to P45")
+    print("     survives ONLY if P45's 'minimal V(phi)' means cubic-or-higher --")
+    print("     stated explicitly here rather than left ambiguous as it was before")
+    print("     this correction. This motivates P45 SPECIFICALLY exploring a")
+    print("     non-quadratic V(phi), not 'any V(phi) at all.'")
 
     print("\n" + "=" * 78)
     print("VERDICT")
     print("=" * 78)
-    print("delta^2(S) is exactly background-independent (structural consequence")
-    print("of P35's action being linear in phi, no V(phi) term) -- CONFIRMED by")
-    print("direct symbolic computation on a GENERIC background, not assumed.")
-    print("The resulting quadratic form is a sum of squares (H_2>=0): no ghost at")
-    print("this order, for the theory as a whole. This is NOT evidence that the")
-    print("specific solution phi(r)=g_hat*M/(4*pi*r) is stable in any sense")
-    print("particular to it -- the check has zero solution-specific content,")
-    print("exactly the failure mode P43's Part B was corrected for, caught here")
-    print("BEFORE writing the headline rather than after a skeptic pass.")
+    print("Density-level delta^2(L) is exactly background-independent for THIS")
+    print("action -- CONFIRMED by direct symbolic computation on a GENERIC")
+    print("background, not assumed, and by a direct-derivative check (not just")
+    print("atom membership). The resulting quadratic form is a sum of squares")
+    print("(H_2>=0): no ghost/tachyon/gradient instability, exact at all orders")
+    print("for the fluctuation (L is exactly quadratic in phi). This is NOT")
+    print("evidence that the specific solution phi(r)=g_hat*M/(4*pi*r) is stable")
+    print("in any sense particular to it -- the check has zero solution-specific")
+    print("content, exactly the failure mode P43's Part B was corrected for,")
+    print("caught here BEFORE writing the headline rather than after a skeptic")
+    print("pass. [CORRECTED] The link to P45 requires a NON-QUADRATIC V(phi)")
+    print("(cubic or higher) -- a mass term alone would NOT create a solution-")
+    print("specific stability question, verified explicitly above, not assumed.")
     return 0
 
 
