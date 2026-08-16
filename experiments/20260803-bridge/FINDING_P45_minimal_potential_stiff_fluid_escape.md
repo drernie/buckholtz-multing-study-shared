@@ -1,8 +1,11 @@
-# P45 — Minimal `V(φ)=λφ⁴/4`: reopens `w_φ≠1` and closes P44's stability loop, without the P11 conflict originally expected
+# P45 — Minimal `V(φ)=λφ⁴/4`: reopens `w_φ≠1` and closes P44's stability loop — two corrected precision errors (a backwards regime claim, an undersold sign result)
 
 **Date:** 2026-08-14
-**Status:** Built, run, ruff clean, all assertions pass.
-**Pending context-blind skeptic review (Step 8a) — not yet run.**
+**Status:** Built, run, ruff clean, all assertions pass. **Corrected same
+day after context-blind skeptic review — Part 2's regime-of-validity
+claim was exactly backwards, and Part 3 undersold a trivially-available
+result.**
+**Skeptic review (Step 8a): COMPLETE. See § Skeptic Verdict below.**
 **Origin:** thirteenth step of the covariant-completion campaign
 (`PLAN_final_goal_20260814.md`), third and final of three
 symmetry/action-theoretic checks the user authorized in sequence
@@ -48,6 +51,16 @@ V'''(φ) = 6λφ   (nonzero for φ≠0)
   `FINDING_P44`'s own corrected requirement that `V'''≠0` somewhere for a
   solution-specific stability question to exist at all (script assertion).
 
+**[CORRECTED after skeptic review — added justification, not a
+retraction]** The choice of *quartic* specifically has additional
+standard reasons not originally stated: (i) **boundedness below** for
+`λ>0` — a cubic (also `V''(0)=0`-trivially, but `V''=6λφ`, genuinely
+`φ`-dependent too) is *unbounded below*, pathological; `φ⁴` is bounded.
+(ii) **`Z₂` symmetry `φ→−φ`**, preserved by `φ⁴`/`φ⁶`, broken by `φ³`.
+(iii) `φ⁴` is the *lowest-degree monomial* satisfying `V''(0)=0` *and*
+bounded-below *and* `Z₂`-symmetric simultaneously — considerably
+narrower than "one choice among several."
+
 ## Part 2 — field equation re-derived, `λ=0` positive control, and the residual on P35's own solution
 
 Euler-Lagrange (not by hand) on `L` with `−λφ⁴/4` added gives:
@@ -66,12 +79,29 @@ equation, for `r>0`:
 λφ₀(r)³ = M³ĝ³λ/(64π³r³)   — NONZERO
 ```
 
-`φ₀(r)` is no longer an *exact* solution once `V` is added — only
-approximate, valid when this residual is small compared to the other
-terms, i.e. `λφ₀²≪1` near the source. This is a *more restrictive*
-version of the same `ĝφ≪1` perturbative regime `FINDING_P34` already
-uses throughout — not a new assumption. **Solving the full nonlinear
-equation is not attempted here — flagged explicitly as future work.**
+`φ₀(r)` is no longer an *exact* solution once `V` is added.
+
+**[CORRECTED after skeptic review]** The original text claimed this
+residual is small "near the source" — **exactly backwards**. Computed
+directly:
+
+```
+λφ₀(r)² as r→0:   ∞
+λφ₀(r)² as r→∞:   0
+d/dr[λφ₀²] < 0 for all r>0 (monotonically decreasing)
+threshold: r* = ĝM√λ/(4π)   (where λφ₀²=1)
+```
+
+The perturbative criterion `λφ₀²≪1` holds **far** from the source
+(`r≫r*`), **not near it** — `φ₀` itself diverges as `r→0`, so the
+residual actually *dominates* closest to the source, the opposite of
+where the original text claimed the approximation was valid. (The same
+`ĝφ≪1` regime `FINDING_P34` already uses has the identical direction
+problem — both are *outer*, large-`r` criteria; calling the new one
+"more restrictive" did not fix that.) **Solving the full nonlinear
+equation, valid down to small `r`, is not attempted here — flagged
+explicitly as future work, now correctly scoped to where it is actually
+needed (near the source, not far from it).**
 
 ## Part 3 — `δ²L` now genuinely depends on the background, closing P44's loop
 
@@ -86,9 +116,26 @@ d²L/dε²|_(ε=0) = δ̇²−(∇δ)² − 3λφ_bg²δ²
 **Confirmed: `L₂` now genuinely depends on `φ_bg`** (script assertion) —
 unlike `P44`'s `V=0` case. This closes the loop `P44` predicted: "is
 *this* solution stable" is now a well-posed, solution-specific question.
-**Not answered here** — that would require evaluating at the actual
-`φ_bg=φ₀(r)` and checking the sign of the resulting mass-squared term,
-which is a genuine next step beyond this three-step authorized sequence.
+
+**[CORRECTED after skeptic review]** The original text left "the sign of
+the resulting mass-squared term" as an unresolved next step — that
+undersold what was already computable from `d²L|_0` alone. Matching
+`d²L/dε²=δ̇²−(∇δ)²−m_eff²δ²`:
+
+```
+m_eff² = 3λφ_bg²
+```
+
+Since `λ>0` (declared throughout) and `φ_bg²≥0` for any real background,
+**`m_eff²≥0` identically — no evaluation at the specific `φ₀(r)` is even
+needed for this much: no tachyonic instability at the linearized level,
+for any background, given `λ>0`.** This is a one-line consequence of
+`λ`'s sign, not a genuine open next step. **What is still genuinely
+open:** `m_eff²→∞` as `r→0` for `φ_bg=φ₀(r)` (the linearized problem is
+singular at the origin, mode analysis not uniformly valid there), and
+positive `m_eff²` alone does not establish full *nonlinear* stability
+(collapse, radiative decay) — a mode-decomposition question genuinely
+beyond this step's scope.
 
 ## Part 4 — is `w_φ=1` still forced?
 
@@ -115,10 +162,13 @@ question not attempted here.
 
 1. A minimal `V(φ)` that satisfies both the requirement `FINDING_P44`
    derived (non-quadratic `V''`) and preserves `FINDING_P35`'s static
-   solution at leading order (Parts 1–2), verified symbolically.
-2. `δ²L` now genuinely depends on the background — the solution-specific
-   stability question `P44` predicted now exists, but is not answered
-   (Part 3).
+   solution *far* from the source (Parts 1–2, corrected direction),
+   verified symbolically, with additional standard justification
+   (boundedness, `Z₂` symmetry) for the specific quartic choice.
+2. `δ²L` now genuinely depends on the background, and — **[CORRECTED]**
+   — `m_eff²=3λφ_bg²≥0` identically for any background given `λ>0`: no
+   tachyonic instability at the linearized level, for *any* background,
+   established directly rather than left as an open question (Part 3).
 3. `w_φ=1` is no longer forced by the theory — both the stiff-fluid dead
    end and a de-Sitter-like limit are structurally available (Part 4).
 4. A prior expected conflict with `FINDING_P11`'s masslessness
@@ -131,20 +181,46 @@ question not attempted here.
    (accelerating) regime** — Part 4 shows the possibility is reopened,
    not realized; that requires solving the modified EOM for specific
    initial conditions.
-2. **Whether the specific static solution `φ(r)=ĝM/(4πr)` is stable once
-   `V` is added** — Part 3 shows the question is now well-posed, not that
-   it has been answered either way.
-3. **A full nonlinear static solution once `λ≠0`** — Part 2 shows `φ₀(r)`
-   is only an approximate solution in the `λφ₀²≪1` regime; the exact
-   modified solution is not derived.
-4. **That `λφ⁴/4` is the unique or "correct" minimal `V(φ)`** — it is *a*
-   choice satisfying the two required properties, explicitly flagged as
-   such; other non-quadratic, massless-at-origin choices (e.g. `φ⁶`)
-   would also qualify and were not compared.
+2. **[CORRECTED]** **Full nonlinear stability of `φ(r)=ĝM/(4πr)` once `V`
+   is added** — the linearized mass-squared is `≥0` everywhere (Part 3,
+   established, not open), but `m_eff²→∞` at `r→0` (singular origin,
+   mode analysis not uniformly valid there) and positive `m_eff²` alone
+   does not rule out nonlinear collapse or radiative decay.
+3. **[CORRECTED]** **A solution valid near the source once `λ≠0`** —
+   Part 2 shows `φ₀(r)` is only approximate *far* from the source
+   (`r≫ĝM√λ/(4π)`); the residual actually *dominates* near the source,
+   the opposite of the originally (wrongly) stated regime, and no
+   near-source solution is derived here.
+4. **That `λφ⁴/4` is the unique minimal `V(φ)`** — narrower than
+   originally stated (§Part 1 correction adds boundedness + `Z₂` as
+   selection criteria) but still not a uniqueness proof; e.g. `φ⁶` would
+   also qualify.
 5. **Anything about the κ (dipole) sector** — monopole (`g`) sector only,
    matching every prior finding in this sub-arc.
 6. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction,
    not a claim about TJB's own unpublished theory.
+
+## Skeptic Verdict (Step 8a, context-blind — claim.md + code only, no session history)
+
+| Sub-claim | Skeptic verdict | Response |
+|---|---|---|
+| Part 1/2 (Euler-Lagrange derivation, sign convention, `λ=0` reduction to P35) | **CONFIRMED** — independently re-derived by hand | No change. |
+| Part 2 ("residual small... near the source") | **FALSIFIED** — exactly backwards; the criterion holds far from, not near, the source | **Fixed.** Independently re-verified (`λφ₀²→∞` as `r→0`, `→0` as `r→∞`, monotonically decreasing) before accepting — matches skeptic exactly. Script now computes the threshold radius explicitly; finding doc corrected with struck-through original claim. |
+| Part 3 (`ρ_φ`/`p_φ` formula, matter coupling not silently dropped) | **CONFIRMED** (minor: re-derivation of Bianchi conservation with `V` included is implicit, not shown) | No change to the claim; noted as a documented limitation already covered by "does NOT establish" #1. |
+| Part 3 (mass-squared sign "left as next step") | **FALSIFIED** — trivially `m_eff²=3λφ_bg²≥0` from `λ>0` alone, no evaluation needed | **Fixed.** Independently re-derived before accepting — matches exactly. Script now computes and states this directly, with the genuine remaining caveats (origin singularity, nonlinear stability) separated out precisely. |
+| Part 1 (`λφ⁴/4` "one choice among several") | **WEAKENED** — hedge is real but understates the standard reasons (boundedness, `Z₂`) that favor the specific choice | **Fixed.** Boundedness-below and `Z₂`-symmetry arguments added explicitly, narrowing (not resolving) the "one choice among several" framing. |
+| Scoping: "does NOT establish" list misses the above | **Confirmed gap** | **Fixed** — items 2–4 rewritten to reflect the corrections above. |
+
+No FALSIFIED verdict here meets the Step 8a "true kill" bar (core
+predicate false, no viable response) — Parts 1 and the core of Part 2/3
+survive; the two FALSIFIED items were precision/direction errors in
+prose claims layered on top of otherwise-correct computations, fixed by
+computing the correct claim explicitly rather than softening language,
+consistent with this campaign's established correction discipline (cf.
+`FINDING_P43`, `FINDING_P44`).
+
+**This closes the "го все по очереди" three-step authorization
+(P43→P44→P45); the standing "one step, slowly" cadence resumes.**
 
 ## Reproduction
 
