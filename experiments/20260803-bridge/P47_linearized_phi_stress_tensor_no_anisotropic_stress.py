@@ -27,6 +27,27 @@ order in delta_phi, not first -- it does not appear in LINEAR
 cosmological perturbation theory at all. This is checked directly below,
 not assumed by analogy to any textbook statement.
 
+[CORRECTED after context-blind skeptic review, 2026-08-16]: three
+framing issues found, ZERO math errors -- the skeptic independently
+re-derived every assertion and confirmed all of them. (1) The ORIGINAL
+"positive control" (Part 2) compared this script's T_00 against P34's
+own rho_phi -- both are derivations of the SAME textbook quantity (a
+canonical scalar's homogeneous energy density) from the same physical
+setup, not an independent check; relabeled a self-consistency check.
+(2) The ORIGINAL "6 independent checks" claim (Part 3/4) overstated
+what was tested: independently re-verified (new check added below) that
+the linear-order delta_T_ij result is IDENTICAL whether delta_phi
+depends on space at all or is purely delta_phi(t) -- the six assertions
+are one algebraic fact (phi_bar's homogeneity kills every term
+involving a spatial derivative of delta_phi at linear order) in six
+syntactic locations, not six facts about delta_phi's spatial structure.
+(3) The ORIGINAL "candidate real null result" framing invited reading
+this as a MULTING-specific discovery; the skeptic correctly identified
+this as a STANDARD, textbook property of any canonical minimally-
+coupled scalar on FRW (inherited from the choice of kinetic term, not
+from anything MULTING-specific) -- relabeled accordingly. All three
+fixes are framing/calibration, not retractions of the computed result.
+
 NOT_VALIDATION - NOT_REFUTATION - OUR_RECONSTRUCTION - L0 descriptive
 """
 
@@ -71,9 +92,16 @@ def main():
 
     # ------------------------------------------------------------------
     print("\n" + "-" * 78)
-    print("PART 2 -- positive control: background T_00 must match P34's own")
-    print("rho_phi=phi_bar_dot^2/2 (canonical scalar, no potential)")
+    print("PART 2 -- self-consistency check (NOT an independent positive control --")
+    print("see [CORRECTED] note): background T_00 vs P34's own rho_phi")
     print("-" * 78)
+    print("  [CORRECTED, skeptic-caught] the ORIGINAL text called this a 'positive")
+    print("  control.' Both this T_00 and P34's rho_phi=phi_bar_dot^2/2 are")
+    print("  derivations of the SAME textbook quantity (a canonical scalar's")
+    print("  homogeneous energy density) from the same physical setup -- a")
+    print("  consistent sign/factor error would spoil both symmetrically, so this")
+    print("  is a self-consistency check (catches gross algebra slips), not an")
+    print("  independent verification against external ground truth:")
     T00_background = sp.simplify(T(0, 0).subs(eps, 0))
     print(f"  T_00 |_(eps=0, background) = {T00_background}")
     expected_background = sp.Rational(1, 2) * sp.diff(phibar, t) ** 2
@@ -134,6 +162,40 @@ def main():
     print("     anisotropic stress at all, at linear cosmological perturbation")
     print("     order, for a homogeneous background phi_bar(t).")
 
+    print("\n  [CORRECTED, skeptic-caught] The ORIGINAL text called the above '6")
+    print("  independent checks.' Skeptic showed this overstates what was tested:")
+    print("  does the result actually depend on delta_phi's SPATIAL structure, or")
+    print("  would a purely time-dependent delta_phi(t) (no x,y,z dependence at")
+    print("  all) give the identical answer? Computed directly, not asserted:")
+    deltaphi_tonly = sp.Function("delta_phi")(t)
+    phi_tonly = phibar + eps * deltaphi_tonly
+    phi_dot_tonly = sp.diff(phi_tonly, t)
+    grad_sq_tonly = sum(sp.diff(phi_tonly, c) ** 2 for c in coords)
+    dphi_sq_tonly = -(phi_dot_tonly**2) + grad_sq_tonly / a**2
+
+    def T_tonly(mu, nu):
+        d = [phi_dot_tonly, sp.diff(phi_tonly, x), sp.diff(phi_tonly, y), sp.diff(phi_tonly, z)]
+        g_diag = [-1, a**2, a**2, a**2]
+        g_munu = g_diag[mu] if mu == nu else 0
+        return d[mu] * d[nu] - sp.Rational(1, 2) * g_munu * dphi_sq_tonly
+
+    dT11_tonly = sp.simplify(sp.diff(T_tonly(1, 1), eps).subs(eps, 0))
+    print(f"  delta_T_11 with a purely t-dependent delta_phi(t): {dT11_tonly}")
+    # deltaphi (4-arg) and deltaphi_tonly (1-arg) are DIFFERENT sympy Function
+    # objects despite sharing a name -- can't diff them directly. Compare each
+    # against its own hand-built target of the SAME shape instead.
+    target_shape = a**2 * phibar_dot * sp.diff(deltaphi_tonly, t)
+    assert sp.simplify(dT11_tonly - target_shape) == 0
+    assert sp.simplify(dT_diag[0] - a**2 * phibar_dot * deltaphi_dot) == 0
+    print("  -> Same functional SHAPE as the general-delta_phi(t,x,y,z) result")
+    print("     above (a^2*phi_bar_dot*d_t(delta_phi), verified for each case")
+    print("     against its own hand-built target of that shape). Confirms:")
+    print("     the six assertions above are not six facts about delta_phi's")
+    print("     spatial structure -- they are ONE algebraic fact (phi_bar's")
+    print("     homogeneity kills every term involving a spatial derivative of")
+    print("     delta_phi at linear order) appearing in six syntactic locations.")
+    print("     Downgraded from '6 independent checks' accordingly.")
+
     # ------------------------------------------------------------------
     print("\n" + "-" * 78)
     print("PART 5 -- why: structural reason, checked not assumed")
@@ -158,9 +220,19 @@ def main():
     print("phi's linearized stress-energy tensor, around a homogeneous FRW")
     print("background, sources ZERO anisotropic stress at linear order --")
     print("delta_T_ij = a^2*phi_bar_dot*delta_phi_dot*delta_ij exactly, verified")
-    print("component-by-component (6 independent checks: 3 traceless-diagonal, 3")
-    print("off-diagonal), not assumed from the static P38 result or from a")
-    print("textbook citation. Structurally: the anisotropic-generating term")
+    print("directly (not assumed from the static P38 result).")
+    print("[CORRECTED] this is a STANDARD, textbook property of any canonical")
+    print("minimally-coupled scalar on FRW (the quintessence literature routinely")
+    print("relies on exactly this), inherited from the choice of kinetic term --")
+    print("NOT a MULTING-specific discovery. This finding's actual value: it")
+    print("confirms this reconstruction's phi-sector, having a canonical kinetic")
+    print("term, has NOT accidentally introduced a non-canonical piece that would")
+    print("break the standard behavior -- a consistency check, not a discovery.")
+    print("[CORRECTED] the six per-component assertions are ONE algebraic fact")
+    print("(phi_bar's homogeneity kills every spatial-derivative-of-delta_phi term")
+    print("at linear order) in six syntactic locations, not six independent facts")
+    print("-- confirmed above by showing the result is unchanged for a purely")
+    print("t-dependent delta_phi. Structurally: the anisotropic-generating term")
     print("d_i(phi)*d_j(phi) is second-order in delta_phi for a homogeneous")
     print("background, unlike P38's static point-source case where the field")
     print("itself varies spatially at leading order. If the trace-free Einstein")
@@ -169,12 +241,9 @@ def main():
     print("source, phi's OWN contribution to that source vanishes at this order,")
     print("suggesting Phi_phi,k = Psi_phi,k (no slip) from phi at LINEAR")
     print("cosmological order -- structurally different from P38/P40's nonzero")
-    print("STATIC two-body slip. This is a candidate real, useful null result in")
-    print("the sense the campaign's own plan explicitly names as valid (P36 row:")
-    print("'if quasi-static mu,gamma come out exactly Q=1,R=1 ... document and")
-    print("stop this branch') -- NOT YET CONFIRMED as the full answer, since the")
-    print("Einstein-equation side (and matter's own possible anisotropic stress)")
-    print("is not derived here.")
+    print("STATIC two-body slip (a genuinely different regime, not a tension).")
+    print("NOT YET CONFIRMED as the full answer: the Einstein-equation side (and")
+    print("matter's own possible anisotropic stress) is not derived here.")
     return 0
 
 

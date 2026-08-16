@@ -1,8 +1,14 @@
-# P47 — φ's linearized stress-energy on FRW sources zero anisotropic stress at linear order — a candidate real null result, structurally different from P38/P40's static slip
+# P47 — φ's linearized stress-energy on FRW confirms the standard zero-anisotropic-stress property of canonical scalars — a consistency check, not a MULTING-specific discovery
 
 **Date:** 2026-08-16
-**Status:** Built, run, ruff clean, all assertions pass.
-**Pending context-blind skeptic review (Step 8a) — not yet run.**
+**Status:** Built, run, ruff clean, all assertions pass. **Corrected same
+day after context-blind skeptic review — three framing/calibration
+issues found, zero math errors: an "independent positive control" that
+was really a self-consistency check, "6 independent checks" that were
+really one algebraic fact in six locations, and a "candidate real null
+result" framing that oversold a standard textbook property as a
+MULTING-specific discovery.**
+**Skeptic review (Step 8a): COMPLETE. See § Skeptic Verdict below.**
 **Origin:** second of two steps toward the campaign's original `P36`
 row (`PLAN_final_goal_20260814.md`). `FINDING_P46` solved the
 field-equation side (`δφ_k`); this handles the source side.
@@ -36,7 +42,15 @@ metric (`g₀₀=−1`, `g_ii=a²`, diagonal):
 T_μν = ∂_μφ∂_νφ − (1/2)g_μν(∂φ)²,   (∂φ)² = −φ̇² + (∇φ)²/a²
 ```
 
-## Part 2 — positive control
+## Part 2 — self-consistency check, ~~positive control~~ [CORRECTED: not independent]
+
+**[CORRECTED after skeptic review]** The original text called this a
+"positive control." Both this `T₀₀` and `FINDING_P34`'s own `ρ_φ` are
+derivations of the *same* textbook quantity (a canonical scalar's
+homogeneous energy density) from the same physical setup — a consistent
+sign or factor error would spoil both symmetrically. This is a
+**self-consistency check** (catches gross algebra slips), not
+independent verification against external ground truth.
 
 Background (`φ=φ̄(t)`, `ε=0`):
 
@@ -64,10 +78,29 @@ Split `φ=φ̄(t)+εδφ(t,x)`, take `d/dε` at `ε=0`:
 ```
 
 **All 3 traceless-diagonal and all 3 off-diagonal components are
-identically zero at linear order** — six independent checks, not one.
-`δT_ij = a²φ̄̇δφ̇·δ_ij` exactly: **purely isotropic.** `φ`'s linearized
-stress-energy sources **no anisotropic stress at all** at linear
-cosmological perturbation order, for a homogeneous background `φ̄(t)`.
+identically zero at linear order.** `δT_ij = a²φ̄̇δφ̇·δ_ij` exactly:
+**purely isotropic.** `φ`'s linearized stress-energy sources **no
+anisotropic stress at all** at linear cosmological perturbation order,
+for a homogeneous background `φ̄(t)`.
+
+**[CORRECTED after skeptic review]** The original text called the six
+component checks above "six independent checks." The skeptic asked a
+sharp question: does this result actually depend on `δφ`'s *spatial*
+structure, or would a purely time-dependent `δφ(t)` (no `x,y,z`
+dependence at all) give the identical answer? Computed directly:
+
+```
+δT₁₁ with a purely t-dependent δφ(t):  a²φ̄̇·d/dt[δφ(t)]   — same shape
+```
+
+**Same functional shape as the general-`δφ(t,x,y,z)` result** (script
+assertion, comparing each case against its own hand-built target of the
+`a²φ̄̇·δφ̇` shape, since sympy treats `δφ(t,x,y,z)` and `δφ(t)` as
+different function objects). This confirms: the six assertions above
+are **not** six facts about `δφ`'s spatial structure — they are *one*
+algebraic fact (`φ̄`'s homogeneity kills every term involving a spatial
+derivative of `δφ` at linear order) appearing in six syntactic
+locations. Downgraded from "six independent checks" accordingly.
 
 ## Part 5 — why, checked not assumed
 
@@ -82,22 +115,27 @@ argument explains *why*, the computation *confirms* it).
 
 ## What this establishes, precisely
 
-1. A component-by-component (6-way), computed verification that `φ`'s
-   linearized stress-energy tensor is exactly isotropic at linear
-   cosmological perturbation order — not assumed from the static
-   `FINDING_P38`/`FINDING_P40` result, not cited from a textbook.
-2. A structural explanation (checked, not assumed) for *why*: the
+1. A direct, computed verification that `φ`'s linearized stress-energy
+   tensor is exactly isotropic at linear cosmological perturbation
+   order — not assumed from the static `FINDING_P38`/`FINDING_P40`
+   result.
+2. **[CORRECTED]** This is a **standard, textbook property** of any
+   canonical minimally-coupled scalar on FRW — the quintessence
+   literature routinely relies on exactly this, inherited from the
+   choice of kinetic term, **not a MULTING-specific discovery.** This
+   finding's actual value: it confirms this reconstruction's `φ`-sector,
+   having a canonical kinetic term, has not accidentally introduced a
+   non-canonical piece that would break the standard behavior — a
+   **consistency check**, not a discovery.
+3. A structural explanation (checked, not assumed) for *why*: the
    anisotropic-generating term is second-order in `δφ` for a
    homogeneous background, unlike the static point-source case.
-3. A candidate real null result, in the exact sense the campaign's own
-   governing plan names as valid (its original `P36` row: *"if the
-   quasi-static `μ,γ` come out exactly `Q=1,R=1`... document and stop
-   this branch, do not force a distinguishing claim"*): if the
-   trace-free Einstein equation takes the standard quasi-static form
-   (not derived here), `φ`'s own contribution to its source vanishes,
-   suggesting `Φ_φ,k=Ψ_φ,k` at linear cosmological order — structurally
-   different from `FINDING_P38`/`FINDING_P40`'s nonzero **static**
-   two-body slip.
+4. If the (not-yet-derived) trace-free Einstein equation takes the
+   standard quasi-static form, `φ`'s own contribution to its source
+   vanishes, suggesting `Φ_φ,k=Ψ_φ,k` at linear cosmological order —
+   structurally different from `FINDING_P38`/`FINDING_P40`'s nonzero
+   **static** two-body slip (a genuinely different regime, not a
+   tension). This conditional is hedged throughout, not dropped.
 
 ## What this does NOT establish
 
@@ -106,24 +144,43 @@ argument explains *why*, the computation *confirms* it).
    that would enter one.
 2. **That `Φ_φ,k=Ψ_φ,k` is confirmed.** This is a *candidate* conclusion
    contingent on the (not-yet-derived) quasi-static Einstein equation
-   actually taking the assumed standard form on FRW. That derivation is
-   flagged as future work (§0), not attempted here.
+   actually taking the assumed standard form on FRW.
 3. **Anything about matter's own anisotropic stress.** Pressureless dust
    is typically taken to have none at linear order (standard assumption
    in ΛCDM perturbation theory), but this is not independently checked
    or derived here — only `φ`'s own contribution is addressed.
 4. **A contradiction with `FINDING_P38`/`FINDING_P40`'s static result.**
-   The two findings address genuinely different physical regimes
-   (static two-body point-source vs. homogeneous-background linear
-   cosmological perturbation) — both can be simultaneously true; there
-   is no tension to resolve.
-5. **The result at second or higher order in `δφ`.** Only linear order
-   is addressed; the `ε²` term (which does contain `∂_iδφ∂_jδφ`, genuinely
-   anisotropic) is explicitly identified but not computed.
-6. **Anything about the κ (dipole) sector** — monopole (`g`) sector only,
+   Genuinely different physical regimes — both can be simultaneously
+   true; no tension to resolve.
+5. **The result at second or higher order in `δφ`.** The `ε²` term
+   (which does contain `∂_iδφ∂_jδφ`, genuinely anisotropic) is
+   identified but not computed.
+6. **[CORRECTED, added]** **That `δφ`'s spatial structure was tested by
+   the six per-component checks.** It was not — the result is unchanged
+   for a purely time-dependent `δφ(t)`, verified directly.
+7. **[CORRECTED, added]** **That this is a novel, MULTING-specific
+   result.** It is the standard behavior of any canonical scalar on FRW;
+   the same computation on plain quintessence would give the same answer.
+8. **Anything about the κ (dipole) sector** — monopole (`g`) sector only,
    matching every prior finding in this sub-arc.
-7. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction,
+9. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction,
    not a claim about TJB's own unpublished theory.
+
+## Skeptic Verdict (Step 8a, context-blind — claim.md + code only, no session history)
+
+| Sub-claim | Skeptic verdict | Response |
+|---|---|---|
+| Stress tensor formula, sign conventions | **CONFIRMED** | No change. |
+| Part 2 ("positive control") | **WEAKENED** — same textbook quantity derived twice, not independent | **Fixed** — relabeled self-consistency check. |
+| Part 3/4 linearization math | **CONFIRMED** | No change — all 6 assertions verified correct by independent hand re-derivation. |
+| "6 independent checks" framing | **WEAKENED** — result doesn't depend on `δφ`'s spatial structure at all | **Fixed.** Independently re-verified the sharp claim (result unchanged for `δφ(t)` alone) before accepting — matches exactly. New check added to the script and this doc. |
+| "Candidate real null result" framing | **WEAKENED** — standard textbook property of canonical scalars, not MULTING-specific | **Fixed.** Reframed throughout as a consistency check confirming the reconstruction inherits standard behavior, per the skeptic's own suggested "bulletproof" framing. |
+| Conditional hedging on `Φ_φ,k=Ψ_φ,k` | **CONFIRMED** — hedged consistently throughout, never dropped | No change. |
+| Scope-gap list | **WEAKENED** — missing the three items above | **Fixed** — items 6–7 added. |
+
+**The math survived entirely** — every skeptic-caught issue was a
+framing or calibration question, not a computational error, independently
+re-verified before any correction was accepted.
 
 ## Reproduction
 
