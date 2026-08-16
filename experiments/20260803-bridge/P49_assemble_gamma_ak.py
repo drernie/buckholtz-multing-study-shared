@@ -120,16 +120,25 @@ def main():
     G22_lin = sp.simplify(sp.diff(G(2, 2), eps).subs(eps, 0))
     G33_lin = sp.simplify(sp.diff(G(3, 3), eps).subs(eps, 0))
 
-    print("  Regression check against P48's own already-verified formulas:")
+    print("  Cross-check against the expected closed-form textbook results")
+    print("  (Ma & Bertschinger 1995-type conformal-Newtonian gauge forms --")
+    print("  hardcoded here as independent targets, NOT copied from P48's")
+    print("  own computed output; the Christoffel/Ricci pipeline itself is")
+    print("  independently re-run in THIS script, so this is really a check")
+    print("  that the algorithm P48 also independently implemented produces")
+    print("  the same textbook answer when rebuilt here -- not merely a")
+    print("  string-comparison against P48's own numbers):")
     expected_G00 = 2 * (
         (sp.diff(Psi, x, 2) + sp.diff(Psi, y, 2) + sp.diff(Psi, z, 2)) / a**2
         - 3 * (sp.diff(a, t) / a) * sp.diff(Psi, t)
     )
-    assert sp.simplify(G00_lin - expected_G00) == 0, "G_00 regression vs P48 failed"
+    assert sp.simplify(G00_lin - expected_G00) == 0, "G_00 does not match expected textbook form"
     expected_G12 = -sp.diff(Phi - Psi, x, y)
-    assert sp.simplify(G12_lin - expected_G12) == 0, "G_12 regression vs P48 failed"
-    print("  -> G_00, G_12 both reproduce P48's own results exactly (guards")
-    print("     against silent drift between the two scripts).")
+    assert sp.simplify(G12_lin - expected_G12) == 0, "G_12 does not match expected textbook form"
+    print("  -> G_00, G_12 both reproduce the expected textbook forms exactly")
+    print("     (and, as a byproduct, match P48's own independently-obtained")
+    print("     results) -- guards against silent drift/copy error before")
+    print("     trusting the NEW components computed below.")
 
     print("\n  NEW (closing Gap 2): the other four independent traceless")
     print("  components -- G_13, G_23 (remaining off-diagonal pairs) and")
@@ -184,14 +193,26 @@ def main():
     print()
     print("  Standard result for ANY Lagrangian PIECE with no explicit")
     print("  derivative-of-field-times-metric structure (same rule that gives")
-    print("  a potential V(phi) its T_munu=-g_munu*V(phi) contribution):")
+    print("  a potential V(phi) its T_munu=-g_munu*V(phi) contribution -- a")
+    print("  STANDARD, citable GR identity (delta(sqrt(-g))=-1/2*sqrt(-g)*")
+    print("  g_munu*delta(g^munu)), NOT derived fresh in this script):")
     print("  a term action = integral d^4x sqrt(-g)*f(phi,rho) contributes")
     print("  T_munu^(that term) = g_munu * f(phi,rho) -- PROPORTIONAL TO")
     print("  g_munu BY CONSTRUCTION, regardless of the overall sign")
     print("  convention chosen for T_munu = -+-(2/sqrt(-g))*delta S/delta g^munu.")
     print("  This structural fact alone already guarantees zero anisotropic")
-    print("  stress from ANY non-derivative interaction term -- checked below")
-    print("  explicitly rather than left as an assertion.")
+    print("  stress from ANY non-derivative interaction term.")
+    print()
+    print("  [SKEPTIC-CAUGHT, Step 8a] The code below encodes this identity's")
+    print("  CONCLUSION directly into the T_int ansatz (T_int(mu,nu) propto")
+    print("  g_bg[mu,nu] by construction), then checks that ansatz's own")
+    print("  internal self-consistency -- NOT an independent re-derivation of")
+    print("  the identity itself from a symbolic functional variation of the")
+    print("  action. The assertions below verify 'does the coded ansatz")
+    print("  correctly implement isotropy', not 'is the g_munu-proportionality")
+    print("  claim itself correct from first principles' -- that rests on the")
+    print("  cited standard GR identity above, same status as how P48 cites")
+    print("  (not re-derives) the standard cosmological Poisson equation.")
 
     rho_bar, delta_rho = sp.symbols("rho_bar delta_rho", real=True)
     phi_bar, delta_phi_sym = sp.symbols("phi_bar delta_phi", real=True)
@@ -221,11 +242,28 @@ def main():
     assert sp.simplify(dT_int[(2, 3)]) == 0
     assert sp.simplify(dT_int[(1, 1)] - dT_int[(2, 2)]) == 0
     assert sp.simplify(dT_int[(2, 2)] - dT_int[(3, 3)]) == 0
-    print("  -> CONFIRMED: all off-diagonal components zero, all diagonal")
-    print("     spatial components equal -- delta_T_ij^(int) is purely")
-    print("     isotropic. Zero anisotropic stress from the interaction term,")
-    print("     verified directly, not assumed from the structural argument")
-    print("     alone.")
+    print("  -> CONFIRMED (of the CODED ANSATZ's self-consistency): all")
+    print("     off-diagonal components zero, all diagonal spatial components")
+    print("     equal -- delta_T_ij^(int) as coded is purely isotropic.")
+    print()
+    print("  [SKEPTIC-CAUGHT, Step 8a] MISSING TERM, stated explicitly: this")
+    print("  computation used the BACKGROUND metric g_bg only. T_int is")
+    print("  EXPLICITLY g_munu-proportional, so a full treatment would also")
+    print("  include a delta(g_munu)*g_hat*rhobar*phibar cross-term (dropped")
+    print("  here, matching P47's own identical convention for the analogous")
+    print("  '-1/2*g_munu*(dphi)^2' piece of its own T_munu -- P47 also never")
+    print("  combined metric perturbations with its own g_munu-proportional")
+    print("  term, consistent with this whole sub-arc's P46-P48 split of")
+    print("  'matter/scalar perturbations' from 'metric perturbations'.")
+    print("  DOES NOT affect the Phi_k=Psi_k conclusion: the dropped term is")
+    print("  proportional to delta(g_munu) itself, which for THIS metric")
+    print("  ansatz (h_00=-2*Phi, h_ii=-2*Psi*a^2*delta_ij) is ALREADY purely")
+    print("  diagonal/isotropic -- including it would still give zero")
+    print("  anisotropic stress. It DOES mean Part 5's delta_T_00^(int)")
+    print("  formula below is incomplete by a further +g_hat*rhobar*phibar*")
+    print("  (-2*Phi) term, on top of the already-flagged delta_rho_k-")
+    print("  dynamics gap -- Part 5 already declines to claim Psi_k is")
+    print("  closed, so this does not change that section's conclusion.")
 
     # ------------------------------------------------------------------
     print("\n" + "-" * 78)
@@ -269,9 +307,36 @@ def main():
         "found a nonzero k where all five traceless coefficients vanish -- "
         "the component set does not actually pin down every mode"
     )
-    print("  -> Confirmed: the ONLY simultaneous solution is k=0. For every")
-    print("     k!=0, at least one of the five conditions has a nonzero")
-    print("     coefficient, forcing Phi_k=Psi_k.")
+    print("  -> sp.solve confirms the ONLY simultaneous solution is k=0.")
+
+    print("\n  [SKEPTIC-CAUGHT, Step 8a] sp.solve's completeness on an")
+    print("  arbitrary polynomial system is not guaranteed by API contract --")
+    print("  a single sp.solve call is not by itself a rigorous proof. Added:")
+    print("  independent brute-force enumeration over a dense integer AND")
+    print("  half-integer grid, checking every candidate directly (no solver")
+    print("  involved at all):")
+    counterexamples = []
+    grid = [v / 2 for v in range(-6, 7)]  # -3, -2.5, ..., 0, ..., 3
+    for a_ in grid:
+        for b_ in grid:
+            for c_ in grid:
+                if (a_, b_, c_) == (0, 0, 0):
+                    continue
+                five = [a_ * b_, a_ * c_, b_ * c_, a_**2 - b_**2, b_**2 - c_**2]
+                if all(abs(v) < 1e-12 for v in five):
+                    counterexamples.append((a_, b_, c_))
+    assert counterexamples == [], (
+        f"brute-force found k!=0 where all five traceless coefficients vanish: {counterexamples}"
+    )
+    print(f"    checked {len(grid) ** 3 - 1} candidate k!=0 points on a half-integer")
+    print(f"    grid in [-3,3]^3 -- counterexamples found: {len(counterexamples)}")
+    print("  -> CONFIRMED by direct enumeration, independent of sp.solve's")
+    print("     internal completeness guarantees. This also matches the")
+    print("     manual algebraic proof: k_x^2=k_y^2=k_z^2 (from the three")
+    print("     difference-conditions) together with 'at most one of")
+    print("     k_x,k_y,k_z nonzero' (from the three product-conditions) forces")
+    print("     all three to zero. For every k!=0, at least one of the five")
+    print("     conditions has a nonzero coefficient, forcing Phi_k=Psi_k.")
 
     # ------------------------------------------------------------------
     print("\n" + "-" * 78)
@@ -292,6 +357,28 @@ def main():
     print("  this standard property rather than accidentally introducing new")
     print("  anisotropic stress -- a consistency result, matching this")
     print("  session's P47 precedent for how to correctly frame such results.")
+    print()
+    print("  [SKEPTIC-CAUGHT, Step 8a] Three scope caveats, stated explicitly:")
+    print("  (1) FLUID-ACTION AMBIGUITY: the '-a^3*rho' piece was treated as a")
+    print("  scalar-density matter action (giving T^(matter)_munu=g_munu*rho-")
+    print("  like structure if derived the same way as T_int); the STANDARD")
+    print("  dust convention T_munu=rho*u_mu*u_nu (from a fluid action with a")
+    print("  4-velocity) is a DIFFERENT, more standard derivation route. Both")
+    print("  give ZERO anisotropic stress (u_mu*u_nu is diag(1,0,0,0) in the")
+    print("  fluid rest frame, same as g_munu's spatial part, both isotropic)")
+    print("  -- so gamma=1 is unaffected either way -- but the T_int split in")
+    print("  Part 2 is not the unique variationally-consistent choice, only a")
+    print("  convenient one that happens to agree with the fluid-action route")
+    print("  on the one property (isotropy) this finding actually needs.")
+    print("  (2) GAUGE DEPENDENCE: Phi, Psi are gauge-dependent quantities in")
+    print("  conformal-Newtonian/longitudinal gauge (implicitly used")
+    print("  throughout, matching P38/P40/P46-P48's own convention). The")
+    print("  gauge-INVARIANT content of this result is 'zero anisotropic")
+    print("  stress' -- 'Phi_k=Psi_k' is the standard way this is stated in")
+    print("  this specific gauge, not itself a gauge-invariant statement.")
+    print("  (3) SCALAR SECTOR ONLY: no vector or tensor perturbation modes")
+    print("  are analyzed here or anywhere in the P46-P49 sub-arc -- gamma=1")
+    print("  is a scalar-sector statement only.")
 
     # ------------------------------------------------------------------
     print("\n" + "-" * 78)
