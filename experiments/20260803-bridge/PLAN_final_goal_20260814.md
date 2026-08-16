@@ -217,3 +217,47 @@ underdetermination result (B), not a blocker to route around by guessing.
   ("proven 2026-08-10" per P1's own docstring) without properly reading
   it first. Deferred to the next session slot, to be done carefully
   rather than quickly.
+- **2026-08-16 housekeeping note: this log was stale from P36 to here —
+  numbering ran on to P45 with content that doesn't match this table's
+  own placeholder names (`P37`, `P_κ`). Documented below so a future
+  session isn't misled into thinking the campaign stalled at P36.**
+  Resuming after the pause above (slower, one-step-at-a-time cadence,
+  each skeptic verdict read and processed before the next build — the
+  exact discipline the end-of-stretch assessment recommended), the
+  campaign continued deepening the `g`-sector's own field-theoretic
+  content rather than immediately executing this table's own `P37`/`P_κ`:
+  **P37** (T_μν anisotropic stress from `φ`'s static solution, corrected
+  after skeptic — core claim survived independent re-derivation) →
+  **P38** (metric slip `Φ−Ψ` from a self-derived linearized Einstein
+  tensor, corrected — G₀₀ overclaim fixed, independent trace-equation
+  cross-check added) → **P39** (dimensional-consistency audit finding
+  P21's "`g` dimensionless" and P33's own `m_eff(φ)` formula mutually
+  inconsistent — a genuine blocker, left as two unresolved readings) →
+  **P40** (00-sector solved for `Ψ_φ`; combined with P38 gives
+  `Φ_φ=0` exactly — a general theorem, not just this solution's
+  property — and the slip ratio `γ:=Ψ/Φ=1−ĝ²M/(16πr)≠1`) → **P41**
+  (verified via two independent literature fetches that this project's
+  own `R:=ψ/ϕ` is `1/γ`, not `γ` — a real notation-inversion catch) →
+  **P42** (found `Ω_φ`'s κ-sector normalization and `Φ−Ψ`'s `g`-sector
+  normalization share the identical missing constant `A/c²`, scoped to
+  P39's Reading 1 after skeptic caught a silently-picked-reading
+  overclaim) → **P43** (Noether symmetry audit — shift symmetry
+  confirmed; full-4D-conservation and dilatation-weight claims both
+  FALSIFIED by skeptic and corrected) → **P44** (second variation `δ²L`
+  — no ghost confirmed and strengthened; "any `V(φ)` breaks
+  background-independence" FALSIFIED, corrected to require non-quadratic
+  `V`) → **P45** (minimal `V(φ)=λφ⁴/4` closes the `w_φ=1`-forced
+  stiff-fluid gap flagged in this file's own P34 entry above and closes
+  P44's stability loop; two precision claims FALSIFIED by skeptic and
+  corrected — a backwards near/far-source regime claim, an undersold
+  mass-squared-sign result). Every step: build → skeptic (Step 8a) →
+  independent re-derivation before accepting → correct → register →
+  commit, per this file's own governing discipline (header). Full detail:
+  `.claude/memory/archive/activeContext_pre-2026-08-14-p34-trim.md`
+  (P37-P41) and `activeContext.md` archive entries (P42-P45).
+  **This table's own P37 (compare derived `γ`/`μ`/`Σ` against the
+  P22/P31 ceiling) and `P_κ` are still genuinely open** — P40 now
+  supplies the `γ` formula that didn't exist when this table was
+  written, making the original P37 finally executable. Next planned
+  step (P46, real numbering): close this table's own P37 using P40's
+  result.
