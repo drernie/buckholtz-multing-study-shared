@@ -76,14 +76,41 @@ def main():
     assert Omega_phi_dim == (1, -1, 0), "does not match P14/P17's own stated kg/m"
     print("  -> matches P14/P17's own stated result (kg/m) exactly.")
 
-    print("\n[STEP 2] Re-derive Phi-Psi's own dimension (P38/P39/P40's own")
-    print("  established result -- re-quoted here, not re-derived from scratch):")
+    print("\n[STEP 2] Re-derive Phi-Psi's own dimension under P39's own READING 1")
+    print("  ONLY (ghat:=g/c, g dimensionless per P21's own stated assumption) --")
+    print("  [CORRECTED after skeptic review: P39 itself left TWO readings of [g]")
+    print("  unresolved, neither privileged over the other. An earlier draft of")
+    print("  this script used reading 1 in a bare code comment without flagging")
+    print("  the reading-dependence in the finding's own prose -- a real overclaim,")
+    print("  fixed here and in Step 2b below, which shows what happens under the")
+    print("  OTHER reading instead of silently picking one]:")
     ghat, M, r = sp.symbols("g_hat M r", positive=True)
     ghat2_reading1 = (0, -2, 2)  # P39's own reading 1: ghat:=g/c, g dimensionless
-    Phi_minus_Psi_dim = ddiv(dmul(dmul(G_N_dim, ghat2_reading1), dpow(MASS, 2)), dpow(LENGTH, 2))
-    print(f"  [Phi-Psi] = {fmt(Phi_minus_Psi_dim)}")
-    assert Phi_minus_Psi_dim == (1, -1, 0), "does not match P39's own stated kg/m"
-    print("  -> matches P39's own stated result (kg/m) exactly -- SAME as Omega_phi.")
+    Phi_minus_Psi_dim_r1 = ddiv(dmul(dmul(G_N_dim, ghat2_reading1), dpow(MASS, 2)), dpow(LENGTH, 2))
+    print(f"  [Phi-Psi]_reading1 = {fmt(Phi_minus_Psi_dim_r1)}")
+    assert Phi_minus_Psi_dim_r1 == (1, -1, 0), "does not match P39's own stated kg/m"
+    print("  -> matches P39's own stated result (kg/m) exactly -- SAME as Omega_phi,")
+    print("     UNDER READING 1 SPECIFICALLY.")
+
+    print("\n[STEP 2b] ADDED after skeptic review -- what happens under P39's own")
+    print("  READING 2 instead (ghat:=g/c, [g] fixed by P33's own m_eff/m formula")
+    print("  requirement, NOT assumed dimensionless)? P39 never privileged reading 1")
+    print("  over reading 2 -- checking both, honestly, rather than picking one:")
+    ghat2_reading2 = (0, -4, 4)  # P39's own reading 2 (script-verified value)
+    Phi_minus_Psi_dim_r2 = ddiv(dmul(dmul(G_N_dim, ghat2_reading2), dpow(MASS, 2)), dpow(LENGTH, 2))
+    print(f"  [Phi-Psi]_reading2 = {fmt(Phi_minus_Psi_dim_r2)}")
+    matches_under_r2 = Phi_minus_Psi_dim_r2 == (1, -1, 0)
+    print(f"  Matches Omega_phi's (1,-1,0) under reading 2?  {matches_under_r2}")
+    assert not matches_under_r2, (
+        "unexpected: reading 2 also matches -- re-check before claiming "
+        "reading-dependence, the correction below would be unnecessary"
+    )
+    print("  -> Does NOT match. The 'identical missing factor' result (Step 3-4")
+    print("     below) holds under READING 1 ONLY -- not established, and in fact")
+    print("     FALSE as stated, under reading 2. This finding's own headline claim")
+    print("     is reading-dependent, not unconditional -- stated explicitly from")
+    print("     here on, not left implicit in a code comment.")
+    Phi_minus_Psi_dim = Phi_minus_Psi_dim_r1
 
     print("\n[STEP 3] Both quantities must be dimensionless (Omega_phi: an energy-")
     print("  density fraction; Phi-Psi: a metric-perturbation combination). What")
@@ -116,7 +143,9 @@ def main():
     print("\n" + "=" * 78)
     print("VERDICT")
     print("=" * 78)
-    print("Both FINDING_P14/P17's Omega_phi (kappa-sector) and FINDING_P38-P40's")
+    print("UNDER P39's READING 1 SPECIFICALLY (ghat:=g/c, g dimensionless per P21's")
+    print("own stated assumption -- NOT established over reading 2, see Step 2b):")
+    print("FINDING_P14/P17's Omega_phi (kappa-sector) and FINDING_P38-P40's")
     print(f"Phi-Psi (g-sector) have IDENTICAL dimensional residuals ({fmt(Omega_phi_dim)}),")
     print("and therefore require the IDENTICAL missing multiplicative factor")
     print(f"(A^{a_power}*c^{b_power} = A/c^2, where A is P21's own already-named,")
@@ -124,7 +153,11 @@ def main():
     print("dimensionless. This mechanically confirms -- not merely echoes -- what")
     print("FINDING_P21 itself already anticipated (Sec.4) but never checked: 'the")
     print("same missing constant A enters' both the g-sector and kappa-sector")
-    print("calculations, because both are built from the same field phi.")
+    print("calculations, because both are built from the same field phi. This")
+    print("confirmation is READING-DEPENDENT, not unconditional -- under reading 2")
+    print("the match fails (Step 2b), so P21's anticipation is confirmed for one")
+    print("candidate reading of [g], not proven true regardless of which reading")
+    print("is eventually correct.")
     return 0
 
 
