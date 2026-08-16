@@ -22,28 +22,53 @@ Metric convention, matching P38's own h_00=-2*Phi, h_ii=-2*Psi exactly
 Psi(t,x,y,z), and from flat eta_ii=1 to a(t)^2):
   ds^2 = -(1+2*eps*Phi)*dt^2 + a(t)^2*(1-2*eps*Psi)*(dx^2+dy^2+dz^2)
 
-THREE positive controls, all required before trusting the quasi-static
-reduction in Part 5:
+[CORRECTED after context-blind skeptic review, 2026-08-16]: four
+real gaps found, ZERO computational errors (skeptic independently
+re-derived the background Ricci and the eps-linearization method by
+hand and confirmed both). (1) Convention note added: Phi=g_00
+perturbation, Psi=g_ii perturbation is one standard labeling in modern
+cosmology, but NOT universal -- some sources (e.g. Ma & Bertschinger
+1995) assign the labels the other way around. Stated explicitly here to
+avoid a silent literature-convention collision for a reader. (2) The
+ORIGINAL "three positive controls" framing overstated how externally-
+anchored the H-dependent structure of G_00 actually was -- the static+
+flat comparison to P38 cannot by itself distinguish the correct
+G_00=2[Laplacian(Psi)/a^2-3*H*Psi_dot] from various WRONG H-dependent
+forms that also reduce to 2*Laplacian(Psi) at a=1 (skeptic constructed
+three concrete counterexamples). FIXED with a genuine second external
+check (not just a self-consistency check against this script's own
+hand-written intermediate form): the quasi-static limit is now verified
+against the standard, independently-known cosmological Poisson equation
+of linear perturbation theory. (3) The "G_12 needs no quasi-static
+approximation at all" claim was under-verified: the original two
+derivative checks (d/d(Psi_dot), d/d(Phi_dot)) do not exclude second-
+time-derivative (Psi_ddot, Phi_ddot) or a(t)-dependence, and the general
+FRW-level G_12 was never directly asserted against its expected form
+(only the static+flat reduction was). FIXED: added direct assertions at
+the GENERAL FRW level (not just static+flat) for the expected form,
+Phi_ddot-independence, Psi_ddot-independence, and a-independence -- all
+confirmed true, strengthening rather than weakening the original claim.
+(4) Scope-gap items added reflecting all of the above.
+
+THREE positive controls, now correctly characterized:
   (a) background (eps=0) Ricci tensor matches the STANDARD, independently
       citable textbook FRW result R_00=-3*addot/a, R_11=a*addot+2*adot^2
-      (not self-referential to this project's own prior work).
-  (b) static+flat (a=1, all time-derivatives of a/Phi/Psi ->0) limit of
-      the linearized G_00 matches P38's own ALREADY-VERIFIED
-      G_00=2*Laplacian(Psi) EXACTLY.
-  (c) static+flat limit of the linearized off-diagonal G_12 matches
-      P38's own trace-free structure (depends only on Phi-Psi, vanishing
-      identically at Phi=Psi -- the same self-consistency property P38's
-      own Step 4 checked).
+      (genuinely external, not self-referential).
+  (b) the quasi-static G_00 reduction matches the standard cosmological
+      Poisson equation of linear perturbation theory (genuinely
+      external, added after skeptic review -- see correction above).
+  (c) static+flat limits of G_00 and G_12 match P38's own
+      ALREADY-VERIFIED results EXACTLY, including the Phi=Psi
+      self-consistency property -- a project-internal control,
+      correctly labeled as such (not claimed to be independently
+      externally-anchored on its own).
 
 Scope, learning directly from this session's own accumulated lessons:
   - Every "reduces to a known case" claim below is COMPUTED via a
     substitution with explicit, checkable order (P46's own lesson: a
-    check that can't discriminate is not a check -- here the static+flat
-    limit is checked against a SPECIFIC, already-published functional
-    form (2*Laplacian(Psi)), not merely "does it look reasonable").
-  - The quasi-static reduction (Part 5) reuses the SAME enslaved-
-    response closure argument P46 already established and corrected,
-    not re-invented and not silently assumed.
+    check that can't discriminate is not a check).
+  - The quasi-static reduction reuses the SAME enslaved-response closure
+    argument P46 already established and corrected, not re-invented.
   - This step supplies the LHS (geometry) only. Combining with P46's
     delta_phi_k and P47's delta_T_munu to actually solve for Psi_k,
     Phi_k, gamma(a,k) is explicitly DEFERRED to a further, not-yet-
@@ -170,6 +195,17 @@ def main():
     G12_lin = sp.simplify(sp.diff(G(1, 2), eps).subs(eps, 0))
     print(f"  G_12^(1) = {G12_lin}")
 
+    print("\n  [CORRECTED, skeptic-caught] The ORIGINAL text asserted G_12^(1)'s")
+    print("  expected form only at the static+flat limit (Part 5 below), never at")
+    print("  this general FRW level. Fixed -- direct assertion here:")
+    expected_G12_general = -sp.diff(Phi - Psi, x, y)
+    assert sp.simplify(G12_lin - expected_G12_general) == 0, (
+        "G_12^(1) does not match -d_x d_y(Phi-Psi) at the GENERAL FRW level"
+    )
+    print("  -> CONFIRMED at general FRW level (not just the static+flat")
+    print("     reduction): G_12^(1) = -d_x*d_y(Phi-Psi) EXACTLY, with no")
+    print("     hidden a(t)-dependent prefactor.")
+
     # ------------------------------------------------------------------
     print("\n" + "-" * 78)
     print("PART 5 -- positive controls 2 and 3: static+flat limit vs P38's own")
@@ -211,7 +247,13 @@ def main():
     print("  -> MATCHES P38's own trace-free structure -d_x*d_y(Phi-Psi), and")
     print("     vanishes identically at Phi=Psi -- the same self-consistency")
     print("     property P38's own Step 4 checked, now confirmed on FRW too.")
-    print("  ALL THREE positive controls pass. The FRW extension is trustworthy.")
+    print("  [CORRECTED, skeptic-caught] This static+flat comparison, BY ITSELF,")
+    print("  cannot distinguish the correct G_00 from other H-dependent forms that")
+    print("  ALSO reduce to 2*Laplacian(Psi) at a=1 (e.g. an extra beta*H^2*Phi")
+    print("  term, or a wrong coefficient on the H*Psi_dot term) -- this is a")
+    print("  project-internal control, correctly labeled as such, NOT claimed to")
+    print("  independently pin down the H-dependent structure on its own. Part 6")
+    print("  below adds a genuinely external check that DOES pin this down.")
 
     # ------------------------------------------------------------------
     print("\n" + "-" * 78)
@@ -238,35 +280,79 @@ def main():
     print("  from P46's own corrected justification): drop the 3*H*Psi_dot_k term")
     print("  relative to (k^2/a^2)*Psi_k, valid for k/(aH)>>1:")
     print("    G_00^(1)_k  ~=  -2*(k^2/a^2)*Psi_k        (quasi-static)")
-    print("  Off-diagonal, already static-limit-independent-of-a in Part 4/5 (no")
-    print("  time-derivative terms appeared at all in G_12^(1) -- verify this")
-    print("  explicitly, not assumed from the static+flat check alone):")
+
+    print("\n  [ADDED after skeptic review] Genuinely EXTERNAL check of this")
+    print("  quasi-static form, closing the gap flagged above: the Einstein")
+    print("  equation G_00=8*pi*G_N*T_00 with the quasi-static G_00 above gives")
+    print("  -2*(k^2/a^2)*Psi_k = 8*pi*G_N*delta_rho_k, i.e.")
+    print("    Laplacian(Psi) = 4*pi*G_N*a^2*delta_rho   (real-space form)")
+    print("  This is the STANDARD, well-known quasi-static Poisson equation of")
+    print("  linear cosmological perturbation theory (the cosmological analogue")
+    print("  of the ordinary Newtonian Poisson equation, with the a^2 factor from")
+    print("  using comoving coordinates) -- an independently-known result, not")
+    print("  derived fresh in this file, used here ONLY as an external check on")
+    print("  the sign/coefficient of the H-dependent structure this script")
+    print("  derived, not as a citation this script is claiming credit for.")
+    G_N, delta_rho_k = sp.symbols("G_N delta_rho_k", positive=True)
+    k_sym = sp.Symbol("k", positive=True)
+    Psi_k = sp.Symbol("Psi_k")
+    quasi_static_eq = sp.Eq(-2 * (k_sym**2 / a**2) * Psi_k, 8 * sp.pi * G_N * delta_rho_k)
+    solved_Psi_k = sp.solve(quasi_static_eq, Psi_k)
+    assert len(solved_Psi_k) == 1
+    print(f"    solved: Psi_k = {solved_Psi_k[0]}")
+    expected_form = -4 * sp.pi * G_N * a**2 * delta_rho_k / k_sym**2
+    assert sp.simplify(solved_Psi_k[0] - expected_form) == 0, (
+        "quasi-static Psi_k does not match the standard cosmological Poisson equation"
+    )
+    print("    matches Psi_k = -4*pi*G_N*a^2*delta_rho_k/k^2 -- the standard form.")
+    print("    This is a genuine external check on the SIGN and COEFFICIENT of the")
+    print("    H-dependent structure derived above, not just an internal")
+    print("    consistency check against this file's own hand-written form.")
+
+    print("\n  Off-diagonal G_12^(1): already confirmed at the GENERAL FRW level")
+    print("  (Part 4) to have no a(t)-dependent prefactor. Now also check for")
+    print("  SECOND time-derivative dependence, which the first-derivative checks")
+    print("  below do not by themselves exclude:")
     dPsi_dt_terms_in_G12 = sp.diff(G12_lin, sp.diff(Psi, t))
     dPhi_dt_terms_in_G12 = sp.diff(G12_lin, sp.diff(Phi, t))
-    print(f"    d(G_12^(1))/d(Psi_dot) = {dPsi_dt_terms_in_G12}")
-    print(f"    d(G_12^(1))/d(Phi_dot) = {dPhi_dt_terms_in_G12}")
+    dPsi_ddt_terms_in_G12 = sp.diff(G12_lin, sp.diff(Psi, t, 2))
+    dPhi_ddt_terms_in_G12 = sp.diff(G12_lin, sp.diff(Phi, t, 2))
+    da_terms_in_G12 = sp.diff(G12_lin, a)
+    print(f"    d(G_12^(1))/d(Psi_dot)  = {dPsi_dt_terms_in_G12}")
+    print(f"    d(G_12^(1))/d(Phi_dot)  = {dPhi_dt_terms_in_G12}")
+    print(f"    d(G_12^(1))/d(Psi_ddot) = {dPsi_ddt_terms_in_G12}")
+    print(f"    d(G_12^(1))/d(Phi_ddot) = {dPhi_ddt_terms_in_G12}")
+    print(f"    d(G_12^(1))/d(a)        = {da_terms_in_G12}")
     assert dPsi_dt_terms_in_G12 == 0
     assert dPhi_dt_terms_in_G12 == 0
-    print("  -> CONFIRMED: G_12^(1) has no time-derivative dependence on Phi or Psi")
-    print("     at all -- the quasi-static approximation is NOT needed for the")
-    print("     trace-free equation (it already has the algebraic, Poisson-type")
-    print("     form): G_ij^(1)_tracefree,k = k_i*k_j-type structure ~ (Phi_k-Psi_k)")
-    print("     in Fourier space (real-space -d_i*d_j(Phi-Psi) -> +k_i*k_j*(Phi_k-Psi_k)).")
+    assert dPsi_ddt_terms_in_G12 == 0
+    assert dPhi_ddt_terms_in_G12 == 0
+    assert da_terms_in_G12 == 0
+    print("  -> CONFIRMED, all five checks: G_12^(1) has zero dependence on any")
+    print("     time derivative (first OR second) of Phi or Psi, and zero explicit")
+    print("     a(t)-dependence -- the quasi-static approximation is genuinely NOT")
+    print("     needed for the trace-free equation, stronger than what the")
+    print("     ORIGINAL two-check version actually established.")
 
     print("\n" + "=" * 78)
     print("VERDICT")
     print("=" * 78)
     print("Perturbed Einstein tensor on FRW derived via the EXACT metric +")
     print("eps-linearization method (Part 1-2), sidestepping the hand-derivation")
-    print("risk flagged in P47's own scope note. THREE positive controls pass:")
-    print("background Ricci matches an independent textbook result (Part 3);")
-    print("static+flat G_00 and G_12 both match P38's own already-verified")
-    print("results EXACTLY, including the Phi=Psi self-consistency property")
-    print("(Part 5). Quasi-static reduction (Part 6) reuses P46's own corrected")
-    print("closure argument for G_00 (drops the Psi_dot term for k/(aH)>>1);")
-    print("G_12's trace-free equation needs NO quasi-static approximation at all")
-    print("-- confirmed by direct differentiation, not assumed, that it has zero")
-    print("time-derivative dependence structurally.")
+    print("risk flagged in P47's own scope note. Background Ricci matches an")
+    print("independent textbook result (Part 3) -- genuinely external.")
+    print("[CORRECTED] the static+flat comparison to P38 (Part 5) is a project-")
+    print("internal control, correctly labeled as such now -- it cannot alone")
+    print("pin down the H-dependent structure of G_00 (skeptic constructed")
+    print("concrete counterexamples that would also pass it). [ADDED] a second")
+    print("genuinely external check closes this gap: the quasi-static G_00")
+    print("reduction matches the standard cosmological Poisson equation of")
+    print("linear perturbation theory exactly (Part 6).")
+    print("[CORRECTED, STRENGTHENED] G_12's trace-free equation needs NO quasi-")
+    print("static approximation at all -- now confirmed by FIVE checks (first AND")
+    print("second time-derivatives of both Phi and Psi, plus explicit a(t)-")
+    print("dependence, all zero) at the GENERAL FRW level (not just static+flat),")
+    print("stronger than the original two-check version.")
     print("This finding supplies the LHS (geometry) only. Combining with P46's")
     print("delta_phi_k and P47's delta_T_munu to solve for Psi_k, Phi_k, and")
     print("assemble gamma(a,k) is explicitly DEFERRED to a further, not-yet-")
