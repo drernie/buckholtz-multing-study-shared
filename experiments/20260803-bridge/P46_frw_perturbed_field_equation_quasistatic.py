@@ -41,13 +41,20 @@ relative to the (k/a)^2 term) -- flagged explicitly as an APPROXIMATION
 with a stated validity regime, not an exact result. Solve the resulting
 algebraic relation for delta_phi_k(a).
 
-PART 5 -- third positive control: does the QUASI-STATIC Fourier solution,
-in the static+flat (a=1) limit, for a point-mass source, reduce via the
-ALREADY-ESTABLISHED (P19, CONFIRMED-REAL) real-space Green's function
-1/(4*pi*r) of the Laplacian to EXACTLY P35's own real-space solution
-phi(r)=g_hat*M/(4*pi*r)? This is the load-bearing consistency check that
-the whole quasi-static machinery connects back to already-verified
-ground, not just a plausible-sounding new construction.
+PART 5 -- does the QUASI-STATIC Fourier solution, in the static+flat
+(a=1) limit, for a point-mass source, reduce via the ALREADY-ESTABLISHED
+(P19, CONFIRMED-REAL) real-space Green's function 1/(4*pi*r) of the
+Laplacian to P35's own real-space solution phi(r)=g_hat*M/(4*pi*r)?
+[CORRECTED after context-blind skeptic review, 2026-08-16]: the ORIGINAL
+version called this the "load-bearing" consistency check. Skeptic gave a
+concrete adversarial counterexample: ANY solution of the form
+delta_phi_k = g_hat*a^n*delta_rho_k/k^2, for ANY power n, reduces to the
+SAME thing at a=1 -- so this check cannot distinguish the correct a^2
+from a wrong a^17. Confirmed independently before accepting. The a=1
+check is downgraded here to a basic sanity check only (does the a->1
+limit fail to blow up); Part 2c below now supplies the check that
+actually pins down the a-power, via a genuinely different derivation
+path.
 
 NOT_VALIDATION - NOT_REFUTATION - OUR_RECONSTRUCTION - L0 descriptive
 """
@@ -147,6 +154,33 @@ def main():
     print("  Both controls PASS -- the general FRW equation correctly contains")
     print("  both previously-established results as limiting cases.")
 
+    print("\n  (c) [ADDED after skeptic review] Neither (a) nor (b) above actually")
+    print("      pins down the SPECIFIC powers of a(t) in the general equation --")
+    print("      skeptic showed (b) evaluated at a=1 cannot distinguish a^2 from")
+    print("      ANY other power that equals 1 at a=1 (e.g. a^17). A genuinely")
+    print("      independent check: re-derive the SAME equation via the standard")
+    print("      covariant d'Alembertian formula box(phi)=(1/sqrt(-g))*d_mu(sqrt(-g)")
+    print("      *g^{mu nu}*d_nu(phi)) -- a completely different method (metric")
+    print("      determinant + inverse-metric contraction, NOT Lagrangian")
+    print("      variation) that pins down BOTH the a^3 (volume) and 1/a^2")
+    print("      (inverse spatial metric) powers independently of Part 1:")
+    sqrtg = a**3
+    time_flux = sqrtg * (-1) * phi_dot
+    d_time_flux = sp.diff(time_flux, t)
+    space_flux_div = sum(sp.diff(sqrtg * (1 / a**2) * sp.diff(phi, c), c) for c in coords)
+    box_phi = sp.simplify((d_time_flux + space_flux_div) / sqrtg)
+    print("      box(phi) = (1/a^3)*[d_t(-a^3*phi_dot) + sum_i d_i(a*d_i(phi))]")
+    print(f"               = {box_phi}")
+    assert sp.simplify(-box_phi - target_form.subs(rho, sp.Integer(0))) == 0, (
+        "independent covariant box(phi) derivation does not match Part 1 (source-free part)"
+    )
+    print("      -> -box(phi) matches Part 1's source-free field equation EXACTLY,")
+    print("         via a genuinely different derivation path. This directly")
+    print("         refutes the skeptic's adversarial counterexample: a WRONG")
+    print("         power of a on either term would NOT have matched this")
+    print("         independently-built formula, regardless of what it gives at")
+    print("         a=1 specifically.")
+
     # ------------------------------------------------------------------
     print("\n" + "-" * 78)
     print("PART 3 -- is 'perturbation theory' here exact or approximate? Check,")
@@ -173,11 +207,24 @@ def main():
     )
     assert sp.simplify(dEdeps_at0 - expected_linear_eq) == 0
     print("  -> CONFIRMED: delta_phi obeys EXACTLY the same functional form as the")
-    print("     full field equation (no extra terms from expanding around phi_bar).")
-    print("     This is a consequence of the field equation being exactly LINEAR")
-    print("     in phi and rho -- no V(phi) term exists at this stage (same fact")
-    print("     P44/P45 already used), so there is no perturbative approximation")
-    print("     in THIS step -- delta_phi's equation is exact, not leading-order.")
+    print("     full field equation (no extra terms from expanding around phi_bar)")
+    print("     -- a consequence of the SCALAR-FIELD equation being exactly linear")
+    print("     in phi and rho (no V(phi) at this stage, same fact P44/P45 used).")
+    print()
+    print("  [CORRECTED, skeptic-caught] The ORIGINAL text overreached from this")
+    print("  narrow fact to 'no perturbative approximation in this step' as a")
+    print("  general claim. Precisely: delta_phi's RESPONSE to a PRESCRIBED")
+    print("  delta_rho is exact -- true, and that is all this Part actually shows.")
+    print("  It does NOT mean the whole perturbation setup is exact or complete:")
+    print("  rho_bar(t) here is NOT required to satisfy the continuity equation")
+    print("  (rho_bar_dot+3*H*rho_bar=0 for dust); a(t) is NOT required to satisfy")
+    print("  the Friedmann constraint; and delta_rho itself has NO dynamical")
+    print("  equation imposed (no continuity/Euler equation for the matter")
+    print("  perturbation) -- it is left as a free external function throughout.")
+    print("  This finding computes a RESPONSE FUNCTION for delta_phi given an")
+    print("  arbitrary delta_rho, not a closed, self-consistent cosmological")
+    print("  perturbation system (that needs the coupled scalar+matter+metric")
+    print("  system, not attempted here).")
 
     # ------------------------------------------------------------------
     print("\n" + "-" * 78)
@@ -188,11 +235,21 @@ def main():
     print("    delta_phi_k_ddot + 3*H*delta_phi_k_dot + (k^2/a^2)*delta_phi_k")
     print("    = g_hat*delta_rho_k")
     print()
-    print("  SUBHORIZON QUASI-STATIC APPROXIMATION (validity: k/(a*H) >> 1 --")
-    print("  the (k/a)^2 term then dominates over delta_phi_ddot ~ H^2*delta_phi")
-    print("  and 3*H*delta_phi_dot ~ H^2*delta_phi by an explicit factor of")
-    print("  (k/(a*H))^2 >> 1 -- standard argument, flagged here as an")
-    print("  APPROXIMATION with a stated regime, not asserted as exact):")
+    print("  SUBHORIZON QUASI-STATIC APPROXIMATION (validity: k/(a*H) >> 1):")
+    print("  [CORRECTED, skeptic-caught] the ORIGINAL justification asserted")
+    print("  'delta_phi_ddot ~ H^2*delta_phi' as if it were a general fact -- it")
+    print("  is not; it is an assumption ABOUT THE SOLUTION's own time-dependence,")
+    print("  not derived from anything above. The actual closure argument")
+    print("  (standard in scalar-tensor QSA literature, stated explicitly here):")
+    print("  delta_phi is taken to be ENSLAVED to delta_rho (source-dominated),")
+    print("  and delta_rho evolves on a Hubble timescale (a fact about matter")
+    print("  clustering, not derived in this finding either) -- so delta_phi")
+    print("  inherits d/dt ~ H, giving delta_phi_ddot ~ H^2*delta_phi. The")
+    print("  resulting solution below is self-consistent with this assumption:")
+    print("  any time-dependence of delta_rho_k transfers directly to")
+    print("  delta_phi_k with no extra derivative operators, matching the")
+    print("  enslaved-response picture. Still an APPROXIMATION with a stated")
+    print("  regime (k/(a*H)>>1), not an exact result:")
     k, a_sym, H_sym, ghat_sym = sp.symbols("k a H g_hat", positive=True)
     deltaphi_k, deltarho_k = sp.symbols("deltaphi_k deltarho_k")
     quasi_static_eq = sp.Eq((k**2 / a_sym**2) * deltaphi_k, ghat_sym * deltarho_k)
@@ -205,40 +262,48 @@ def main():
 
     # ------------------------------------------------------------------
     print("\n" + "-" * 78)
-    print("PART 5 -- load-bearing consistency check: does this reduce back to")
-    print("P35's own real-space static solution?")
+    print("PART 5 -- basic sanity check (NOT load-bearing -- see [CORRECTED] note):")
+    print("does the a=1 limit fail to blow up, and connect notationally to P35?")
     print("-" * 78)
+    print("  [CORRECTED, skeptic-caught] the ORIGINAL text called this the")
+    print("  'load-bearing consistency check.' Skeptic gave a concrete adversarial")
+    print("  counterexample: delta_phi_k=g_hat*a^n*delta_rho_k/k^2 reduces to the")
+    print("  SAME thing at a=1 for ANY power n -- this check cannot distinguish")
+    print("  a^2 (correct) from a^17 (wrong). Confirmed independently before")
+    print("  accepting. Downgraded to a basic sanity check; Part 2c above is what")
+    print("  actually verifies the a-power, via a genuinely different derivation.")
     print("  Static+flat limit of the quasi-static Fourier solution (a=1):")
     static_limit = deltaphi_k_solution.subs(a_sym, 1)
     print(f"    delta_phi_k|_(a=1) = {static_limit}  =  g_hat*delta_rho_k/k^2")
-    print("  This is EXACTLY the standard Fourier-space Green's function relation")
-    print("  for -laplacian(phi)=g_hat*rho (Fourier transform of -laplacian is")
-    print("  +k^2, so 1/k^2 is its Green's function in k-space). Using the")
-    print("  ALREADY-ESTABLISHED (P19, CONFIRMED-REAL) real-space Green's function")
-    print("  laplacian[1/(4*pi*r)] = -delta^3(x), the real-space inverse transform")
-    print("  of g_hat*M/k^2 (point mass, delta_rho_k=M in the standard convention)")
-    print("  is EXACTLY g_hat*M/(4*pi*r) -- P35's own static solution, unchanged.")
-    print("  This is not re-derived symbolically here (the 3D Fourier transform of")
-    print("  1/k^2 -> 1/(4*pi*r) is the SAME already-cited P19 Green's function")
-    print("  fact, just read in the other direction) -- flagged explicitly as")
-    print("  reused, not re-proven, consistent with this project's own established")
-    print("  practice of not re-deriving already-CONFIRMED-REAL building blocks.")
+    print("  Matches the standard Fourier-space Green's function relation for")
+    print("  -laplacian(phi)=g_hat*rho, and via the ALREADY-ESTABLISHED (P19,")
+    print("  CONFIRMED-REAL) real-space Green's function laplacian[1/(4*pi*r)]=")
+    print("  -delta^3(x), connects notationally to P35's own static solution")
+    print("  g_hat*M/(4*pi*r) -- reused, not re-proven, but NOT independent")
+    print("  verification of the a-power specifically (see correction above).")
 
     print("\n" + "=" * 78)
     print("VERDICT")
     print("=" * 78)
     print("General FRW field equation derived via Euler-Lagrange (Part 1), passes")
-    print("BOTH required positive controls exactly (Part 2: homogeneous->P34,")
-    print("static+flat->P35). The linear perturbation delta_phi obeys the exact")
-    print("same equation, not an approximation (Part 3) -- a genuine, checked")
-    print("consequence of this action's own linearity, not assumed. The subhorizon")
-    print("quasi-static solve (Part 4) is the ONLY approximation introduced,")
-    print("explicitly flagged with its validity regime (k/(a*H)>>1). Its static")
-    print("limit reproduces P35's own real-space solution exactly via the already-")
-    print("established P19 Green's function (Part 5) -- the quasi-static machinery")
-    print("connects back to already-verified ground, not a free-floating new")
-    print("construction. delta_phi_k = g_hat*a^2*delta_rho_k/k^2 is the deliverable")
-    print("for the next step (P47: perturbed Einstein equations -> gamma(a,k)).")
+    print("THREE positive controls: homogeneous->P34 (Part 2a), static+flat->P35")
+    print("(Part 2b), and an independently-derived covariant box(phi) operator")
+    print("(Part 2c, added after skeptic review -- the only one of the three that")
+    print("actually pins down the a-power on EACH term separately, refuting a")
+    print("skeptic-supplied adversarial counterexample the a=1 checks could not).")
+    print("[CORRECTED] delta_phi's response to a PRESCRIBED delta_rho is exact")
+    print("(Part 3) -- but this is a response function, NOT a closed cosmological")
+    print("perturbation system: rho_bar has no continuity equation, a(t) has no")
+    print("Friedmann constraint, delta_rho has no dynamics of its own, all left")
+    print("as free external functions. [CORRECTED] the subhorizon quasi-static")
+    print("solve (Part 4) rests on an explicit enslaved-response closure (delta_phi")
+    print("tracks delta_rho's own Hubble-timescale evolution), not an unjustified")
+    print("assertion, with its validity regime (k/(a*H)>>1) stated. [CORRECTED]")
+    print("Part 5's a=1 reduction is a basic sanity check only, not independent")
+    print("verification of the a-power (Part 2c supplies that). delta_phi_k =")
+    print("g_hat*a^2*delta_rho_k/k^2 is the deliverable for the next step")
+    print("(P47: perturbed Einstein equations -> gamma(a,k)) -- itself only a")
+    print("response function until the matter sector's own dynamics are added.")
     return 0
 
 
