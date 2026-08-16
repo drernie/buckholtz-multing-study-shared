@@ -17,14 +17,39 @@ guarantees agreement" pattern already caught and corrected in P34's own
 skeptic review. Presented here only as an explicit symmetry-breaking
 reframing (WHY the field equation has this form), not as a fresh check.
 
-PART B -- genuinely new: full 4D conservation d_mu T^mu_0 = 0, not just
-the STATIC spatial-only d_i T_ij=0 P37 already checked (P37 assumed
-d_t phi=0 throughout, so never tested time-derivative/mixed terms).
+PART B -- full 4D conservation d_mu T^mu_0 = 0 for the static field.
+[CORRECTED after context-blind skeptic review, 2026-08-14]: the ORIGINAL
+docstring/verdict called this "genuinely new coverage" beyond P37's
+static-spatial d_i T_ij=0 check. Skeptic falsified that framing and it
+was independently re-derived here (see the new explicit check just below
+Part B's divergence computation): for ANY static field (d_t phi=0), T_i0
+= d_i(phi)*d_0(phi) = d_i(phi)*0 = 0 IDENTICALLY, and T^0_0 has no
+t-dependence, so d_mu(T^mu_0)=0 is a kinematic triviality of staticity
+alone -- true for ANY T_munu of this two-derivative structural form,
+regardless of whether phi solves its field equation. It exercises none
+of T_munu's dynamical content, unlike P37's own d_i(T_ij)=0 check on the
+SPATIAL components (which does require phi's on-shell field equation).
+Kept as a worked-out negative example, not deleted, since the arithmetic
+itself is correct and the reasoning for why it's empty is instructive.
 
 PART C -- dilatation (scaling) weight analysis: does demanding the
 action be scale-covariant under x->lambda*x, phi->lambda^Delta*phi force
 a specific scaling weight for ghat, and does that weight favor either of
 FINDING_P39's two candidate readings for [ghat] over the other?
+[CORRECTED after context-blind skeptic review, 2026-08-14]: the ORIGINAL
+verdict presented Delta_ghat=+1/2 as "a new independent constraint,
+solved not guessed." Skeptic falsified the "constraint" framing (not the
+arithmetic): the +1/2 depends on two unmotivated choices -- (a) rho's
+scaling weight rho_w=-3 (mass-fixed density) is an input assumption, not
+derived from this action, and other physically-plausible choices give
+different Delta_ghat; (b) restricting the dilatation to SPATIAL-ONLY
+coordinates on a static slice is a nonstandard notion of scale symmetry
+for an action meant to be part of a Lorentz-covariant completion -- the
+natural FULL 4D dilatation x^mu->lambda*x^mu gives a DIFFERENT phi
+weight (Delta=-1, the standard canonical scaling dimension of a 4D
+scalar field) and a different Delta_ghat. Both cross-checks now computed
+explicitly below; Part C is downgraded from "new constraint" to
+"SPECULATIVE, convention- and assumption-dependent, not established."
 
 NOT_VALIDATION - NOT_REFUTATION - OUR_RECONSTRUCTION - L0 descriptive
 """
@@ -100,10 +125,25 @@ def main():
     div_T0 = sp.simplify(div_T0)
     print(f"  d_mu(T^mu_0) = {div_T0}  (for r>0, source-free region)")
     assert div_T0 == 0, "energy is NOT conserved for this static configuration"
-    print("  -> PASSES: zero, for r>0, confirming full 4D conservation, not just")
-    print("     the spatial-only special case P37 already checked. Genuinely new")
-    print("     coverage (P37 assumed d_t(phi)=0 throughout and never exercised")
-    print("     the time-index/mixed terms of the divergence).")
+
+    print("\n  [CORRECTED, skeptic-caught] Is this check content-free? Test directly")
+    print("  whether T_i0 vanishes IDENTICALLY (a kinematic fact of staticity alone,")
+    print("  independent of whether phi solves ANY field equation):")
+    for i, coord_name in enumerate(("x", "y", "z"), start=1):
+        T_i0 = sp.simplify(T_component(i, 0))
+        print(f"    T_{coord_name}0 = {T_i0}")
+        assert T_i0 == 0, f"T_{coord_name}0 should vanish identically for a static field"
+    T_00_val = sp.simplify(T_component(0, 0))
+    dt_T00 = sp.diff(T_00_val, t)
+    print(f"    d_t(T_00) = {dt_T00}  (T_00 has no explicit t-dependence)")
+    assert dt_T00 == 0
+    print("  -> CONFIRMS the skeptic's point: T_i0=0 identically (needs only d_t(phi)=0,")
+    print("     not phi's field equation), and T_00 is manifestly t-independent. So")
+    print("     d_mu(T^mu_0)=0 holds for ANY T_munu of this structural form on ANY")
+    print("     static configuration -- it is a triviality of staticity, NOT a check")
+    print("     of this specific T_munu's dynamical content. Does NOT constitute new")
+    print("     coverage beyond P37's own spatial d_i(T_ij)=0 check (which DOES use")
+    print("     phi's on-shell field equation and is therefore non-trivial).")
 
     # ------------------------------------------------------------------
     print("\n" + "-" * 78)
@@ -158,29 +198,57 @@ def main():
     print(f"  Numerically coincides with reading 1?  {matches_r1}")
     print(f"  Numerically coincides with reading 2?  {matches_r2}")
 
+    print("\n  [CORRECTED, skeptic-caught] Two cross-checks the ORIGINAL verdict")
+    print("  skipped, both of which show Delta_ghat=+1/2 is not a robust constraint:")
+
+    print("\n  (i) Sensitivity to the rho scaling-weight ASSUMPTION (rho_w=-3 was an")
+    print("      unmotivated input, not derived from this action):")
+    for rho_w_alt, label in (
+        (0, "external prescribed source, mass NOT held fixed"),
+        (-3, "mass-fixed density (this script's own choice)"),
+        (-2, "point mass M~lambda^1, rho=M*delta3(r)"),
+    ):
+        ghat_w_alt = sp.Symbol("w")
+        power_alt = 3 + rho_w_alt + ghat_w_alt + Delta_val
+        sol_alt = sp.solve(sp.Eq(power_alt, kinetic_scaling_power), ghat_w_alt)
+        print(f"      rho_w={rho_w_alt:>3} ({label}): Delta_ghat = {sol_alt}")
+    print("      -> Delta_ghat ranges over -5/2, +1/2, -1/2 depending on a choice")
+    print("         this script never derives. The headline +1/2 is one point in")
+    print("         that range, not a unique result.")
+
+    print("\n  (ii) Sensitivity to spatial-only vs FULL 4D dilatation (this action is")
+    print("       meant to be part of a Lorentz-covariant completion, so the natural")
+    print("       symmetry to check is x^mu -> lambda*x^mu, not spatial-only):")
+    kin4d_power = 4 + 2 * Delta - 2
+    Delta4d_sol = sp.solve(sp.Eq(kin4d_power, 0), Delta)
+    assert len(Delta4d_sol) == 1
+    Delta4d_val = Delta4d_sol[0]
+    ghat4d_w = sp.Symbol("Delta_ghat_4d")
+    coupling4d_power = 4 + rho_w + ghat4d_w + Delta4d_val
+    ghat4d_sol = sp.solve(sp.Eq(coupling4d_power, kin4d_power.subs(Delta, Delta4d_val)), ghat4d_w)
+    assert len(ghat4d_sol) == 1
+    print(f"      full 4D: phi's weight Delta = {Delta4d_val} (standard canonical scaling")
+    print("               dimension of a 4D scalar field -- NOT the -1/2 used above)")
+    print(f"      full 4D: g_hat's weight Delta_ghat = {ghat4d_sol[0]} (vs +1/2 spatial-only)")
+    print("      -> Two different, individually defensible notions of dilatation give")
+    print("         two different numbers (+1/2 vs 0). Neither is privileged by")
+    print("         anything in this script. The +1/2 headline is convention-")
+    print("         dependent, not a derived fact about g_hat.")
+
     print("\n" + "=" * 78)
     print("VERDICT")
     print("=" * 78)
     print("Part A: symmetry-breaking term identified explicitly (g_hat*rho), NOT")
     print("claimed as independent verification of P35 (same-premises pattern).")
-    print("Part B: full 4D energy conservation confirmed for the static field --")
-    print("genuinely new coverage beyond P37's spatial-only check.")
-    if matches_r1 and not matches_r2:
-        print("Part C: dilatation weight numerically coincides with READING 1 only --")
-        print("suggestive, but NOT established as disambiguating without first showing")
-        print("dilatation weight and SI exponent are the same kind of number here.")
-    elif matches_r2 and not matches_r1:
-        print("Part C: dilatation weight numerically coincides with READING 2 only --")
-        print("suggestive, but NOT established as disambiguating without first showing")
-        print("dilatation weight and SI exponent are the same kind of number here.")
-    elif matches_r1 and matches_r2:
-        print("Part C: both readings coincide with this weight -- no disambiguation")
-        print("possible either way.")
-    else:
-        print("Part C: dilatation weight (+1/2) coincides with NEITHER reading's SI")
-        print("exponent (-1 or -2). A new, independent constraint on [g_hat] -- but")
-        print("given the caveat above, this is a new open question about how these")
-        print("two dimensional languages relate, not a refutation of either reading.")
+    print("[CORRECTED] Part B: the d_mu(T^mu_0)=0 check is a KINEMATIC TRIVIALITY of")
+    print("staticity alone (T_i0=0 identically, T_00 has no t-dependence) -- it holds")
+    print("for ANY T_munu of this structural form and does NOT constitute new coverage")
+    print("beyond P37's own (non-trivial, on-shell) spatial check.")
+    print("[CORRECTED] Part C: Delta_ghat=+1/2 is NOT a robust, derived constraint --")
+    print("it depends on an unmotivated rho-scaling assumption (alternatives give -5/2,")
+    print("-1/2) AND on restricting to spatial-only rather than full-4D dilatation")
+    print("(which gives 0, not +1/2). Downgraded to SPECULATIVE: convention- and")
+    print("assumption-dependent, not comparable to P39's readings in any established way.")
     return 0
 
 

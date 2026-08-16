@@ -1,8 +1,10 @@
-# P43 — Noether symmetry audit: full 4D energy conservation confirmed (new coverage), a fresh dilatation constraint on `ĝ` found (open, not yet comparable to P39), shift symmetry honestly scoped as illuminating, not verifying
+# P43 — Noether symmetry audit: shift symmetry confirmed (Part A survives), the other two parts corrected after skeptic review — Part B's "new coverage" was a kinematic triviality, Part C's dilatation number was assumption-dependent
 
 **Date:** 2026-08-14
-**Status:** Built, run, ruff clean, all assertions pass.
-**Pending context-blind skeptic review (Step 8a) — not yet run.**
+**Status:** Built, run, ruff clean, all assertions pass. **Corrected same day
+after context-blind skeptic review — Part B and Part C headlines both
+falsified and reworked; Part A survives intact.**
+**Skeptic review (Step 8a): COMPLETE. See § Skeptic Verdict below.**
 **Origin:** eleventh step of the covariant-completion campaign
 (`PLAN_final_goal_20260814.md`), first of three symmetry/action-theoretic
 checks the user requested after reviewing background material on the
@@ -31,7 +33,7 @@ is `ĝρ` (script assertion) — an explicit statement of *which* symmetry
 `φ`'s coupling to matter breaks and by exactly what amount, not
 previously stated plainly anywhere in `P34`/`P35`'s own text.
 
-## Part B — full 4D energy conservation (genuinely new coverage)
+## Part B — full 4D energy conservation ~~(genuinely new coverage)~~ [CORRECTED: kinematic triviality, not new coverage]
 
 `FINDING_P37` checked `∂ᵢT_ij=0` only in the *static* limit
 (`∂_t φ=0` assumed throughout) — never exercising the time-index or
@@ -43,13 +45,26 @@ same static field:
 ∂_μ(T^μ_0) = 0   (r>0, script assertion, exact)
 ```
 
-Genuinely new coverage — not a restatement of P37's own already-checked
+~~Genuinely new coverage — not a restatement of P37's own already-checked
 result, since `P37` never tested the time-derivative terms this
 divergence actually contains (they vanish here because the field is
 literally static, but that vanishing was not previously verified as part
-of the *full* conservation law, only assumed).
+of the *full* conservation law, only assumed).~~
 
-## Part C — dilatation weight of `ĝ` (new, open, not yet comparable to P39)
+**[CORRECTED after skeptic review]** The arithmetic above is correct but
+the "genuinely new coverage" claim is false. Direct check, added to the
+script: `T_i0 = ∂_iφ·∂_0φ = ∂_iφ·0 = 0` **identically**, for *any* static
+field regardless of whether `φ` solves its field equation — the check
+never needed `φ`'s dynamics at all. `T_00` is manifestly `t`-independent
+for the same reason, so `∂_t(T_00)=0` trivially. The result holds for
+*any* `T_μν` of this two-derivative structural form on *any* static
+configuration; it is a fact about staticity, not about this specific
+`T_μν`. P37's own `∂ᵢT_ij=0` check on the *spatial* components is
+genuinely non-trivial (it requires `φ`'s on-shell field equation) —
+that's the real reason P37 checked `ij` and not `0`, and this part does
+not add coverage beyond it.
+
+## Part C — dilatation weight of `ĝ` ~~(new, open, not yet comparable to P39)~~ [CORRECTED: SPECULATIVE, assumption-dependent]
 
 Demanding the action's kinetic and coupling terms scale the same way
 under a spatial dilatation `x→λx` (mass held fixed) forces:
@@ -59,35 +74,67 @@ under a spatial dilatation `x→λx` (mass held fixed) forces:
 ĝ's scaling weight:   Δ_ĝ = +1/2     (script, solved not guessed)
 ```
 
-**Important caveat, stated before any comparison is attempted:** this is
-a *dilatation weight* — how a physical configuration's value changes
-under an *active* rescaling of space, mass held fixed — not automatically
-the same kind of number as `FINDING_P39`'s own *SI length exponent* (a
-passive, dynamics-independent statement about units of measurement). The
-two coincide for many simple cases, but that coincidence is not
-established here. Checked anyway, honestly labeled:
+~~**Important caveat, stated before any comparison is attempted:** this is
+a *dilatation weight*... [original caveat retained below, but it did not
+go far enough — see correction]~~
+
+**[CORRECTED after skeptic review]** The `+1/2` number is real arithmetic
+*given two unstated choices*, neither derived from the action itself:
+
+1. **`ρ`'s scaling weight was assumed, not derived.** The script picked
+   `ρ_w=-3` (density with mass held fixed under rescaling). Independently
+   verified sensitivity (`P43_noether_symmetry_audit.py`, Part C cross-check
+   (i)):
+
+   | `ρ_w` assumption | meaning | resulting `Δ_ĝ` |
+   |---|---|---|
+   | `0` | external prescribed source, mass not fixed | `-5/2` |
+   | `-3` | mass-fixed density (this script's original choice) | `+1/2` |
+   | `-2` | point mass `M~λ¹`, `ρ=M·δ³(r)` | `-1/2` |
+
+   `+1/2` is one point in a range the script never justified choosing.
+
+2. **Spatial-only dilatation is not the natural symmetry to check.** This
+   action is meant to be part of a Lorentz-*covariant* completion — the
+   natural transformation is the full 4D `x^μ→λx^μ`, not a spatial-only
+   slice of a static configuration. Independently verified (cross-check
+   (ii)): full 4D dilatation forces `Δ_φ=-1` (the standard canonical
+   scaling dimension of a 4D scalar field, not `-1/2`) and `Δ_ĝ=0` (not
+   `+1/2`), holding `ρ_w=-3` fixed.
+
+Two individually-defensible notions of dilatation give two different
+numbers (`+1/2` vs `0`); nothing in this analysis privileges one. The
+original caveat ("dilatation weight may not be the same kind of number as
+P39's SI exponent") was true but insufficient — it flagged one risk
+(comparability to P39) while missing two more load-bearing ones
+(the `ρ`-scaling assumption, the spatial-only-vs-4D choice) that make the
+number itself non-robust, prior to any comparison to P39 at all.
 
 ```
 P39 reading 1: [ĝ] SI length exponent = -1
 P39 reading 2: [ĝ] SI length exponent = -2
-This analysis's dilatation weight     = +1/2
-Coincides with either reading?          No
+Spatial-only dilatation weight (original) = +1/2
+Full 4D dilatation weight (corrected)     =  0
+Neither coincides with either P39 reading, under either convention.
 ```
 
-**This does not refute either of P39's readings** — it is a *new,
-independent* constraint on `ĝ` whose relationship to P39's own SI-unit
-bookkeeping is itself an open question, not yet resolved either way.
+**Downgraded status: `[SPECULATIVE]`.** Not a derived constraint on `ĝ` —
+a convention- and assumption-dependent number that happens not to match
+P39's readings under the specific choices tried, with no basis yet for
+preferring any one choice.
 
 ## What this establishes, precisely
 
 1. A previously-unstated explicit account of which symmetry `φ`'s matter
-   coupling breaks (Part A).
-2. Genuinely new verification of full (not just static-spatial) energy
-   conservation for the already-established static field configuration
-   (Part B).
-3. A new, independently-derived dilatation constraint on `ĝ`, correctly
-   flagged as not yet known to relate directly to P39's own SI-exponent
-   readings (Part C) — a fresh open question, not a resolution.
+   coupling breaks (Part A) — **survives skeptic review unchanged.**
+2. ~~Genuinely new verification of full (not just static-spatial) energy
+   conservation~~ **[CORRECTED] Nothing beyond what P37 already
+   established** — Part B's check is a kinematic triviality of staticity,
+   not new dynamical coverage.
+3. ~~A new, independently-derived dilatation constraint on `ĝ`~~
+   **[CORRECTED] An illustration of how sensitive a naive dilatation-weight
+   calculation is to unstated modeling choices** — not a constraint, and
+   not (yet) comparable to P39 in any established way.
 
 ## What this does NOT establish
 
@@ -95,15 +142,37 @@ bookkeeping is itself an open question, not yet resolved either way.
    Noether-current route shares the same premises as the Euler-Lagrange
    route already used in P35; agreement is guaranteed by construction,
    not evidence.
-2. **Resolution of P39's own `g`/`ĝ` reading question** (Part C) — the
-   dilatation weight and SI exponent are not shown to be comparable
-   quantities here; "no match" is a new open question, not a
-   disambiguation.
-3. **Anything about the κ (dipole) sector** — entirely about the
+2. **[CORRECTED, added]** **Any dynamical content of `T_μν` beyond
+   staticity itself** (Part B) — the `∂_μT^μ_0=0` check would pass for
+   *any* two-derivative `T_μν` on *any* static field; it is not evidence
+   that this project's specific `T_μν` is correct.
+3. **[CORRECTED, was "resolution of P39's reading question," now
+   broader]** **Any well-defined value for `ĝ`'s scaling weight at all**
+   (Part C) — the `+1/2` result depends on an underived `ρ`-scaling
+   assumption and a nonstandard spatial-only dilatation choice; a
+   different, equally defensible choice gives `0`. Resolution of P39's
+   own reading question would require first fixing these upstream choices
+   on independent grounds, which this finding does not do.
+4. **Anything about the κ (dipole) sector** — entirely about the
    monopole (`g`) sector's own action, matching every prior finding in
    this sub-arc.
-4. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction,
+5. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction,
    not a claim about TJB's own unpublished theory.
+
+## Skeptic Verdict (Step 8a, context-blind — claim.md + code only, no session history)
+
+| Sub-claim | Skeptic verdict | Response |
+|---|---|---|
+| Part A (`dL/dε=ĝρ`, "not independent verification of P35") | **CONFIRMED** | No change. Hand-derivation matched; reasoning that this is a tautology of Noether's identity (not fresh evidence) also independently confirmed correct. |
+| Part B ("genuinely new coverage") | **FALSIFIED** — the arithmetic is right but the check is a kinematic triviality of staticity alone, content-free for *any* `T_μν` of this structural form | **Fixed.** Independently re-derived (`T_i0=0` identically, `∂_t T_00=0` trivially) before accepting — matches skeptic exactly. Script and this doc corrected: headline downgraded from "new coverage" to "kinematic triviality, no new coverage beyond P37." |
+| Part C ("new independent constraint, `Δ_ĝ=+1/2`") | **FALSIFIED** — depends on an undocumented `ρ`-scaling assumption (`ρ_w=-3`) and an unmotivated spatial-only-vs-full-4D choice; both drivers independently verified to change the answer | **Fixed.** Independently re-derived the `ρ_w` sensitivity table and the full-4D cross-check (`Δ_φ=-1`, `Δ_ĝ=0`) before accepting — matches skeptic's structural argument, numbers confirmed via sympy. Script and this doc corrected: headline downgraded from "new constraint" to `[SPECULATIVE]`. |
+| Scoping gap: "does NOT establish" section missing Part B/C caveats | **Confirmed gap** | **Fixed** — items 2 and 3 added above. |
+
+No FALSIFIED verdict here meets the Step 8a "true kill" bar (core predicate
+false, no viable response) — Part A survives fully, and Parts B/C survive
+as corrected, honestly-downgraded findings rather than deleted ones,
+consistent with this campaign's established practice (cf. `FINDING_P8`'s
+retraction, `FINDING_P28`'s retraction).
 
 ## Reproduction
 
