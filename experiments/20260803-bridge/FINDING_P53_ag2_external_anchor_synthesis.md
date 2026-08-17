@@ -1,4 +1,4 @@
-# P53 — an external numeric anchor for P52's `Ag²` invariant already existed in this project (P22/P31); it does not extend to `gφ` or `λ₄A²`, and does not resolve P51's Reading-1-vs-Reading-2 question
+# P53 — a soft/conditional external scale constraint on P52's `Ag²` invariant already existed in this project (P22/P31, under an explicit mapping, not a direct measurement); it does not extend to `gφ` or `λ₄A²`, and does not resolve P51's Reading-1-vs-Reading-2 question
 
 **Date:** 2026-08-17
 **Status:** Built, run, ruff clean, all assertions pass. **Skeptic review
@@ -6,6 +6,18 @@
 found (wrong bridge cited for the A-continuity claim) and fixed with a
 better-supported one; three framing tightenings applied. See Skeptic
 Verdict below.**
+**[USER-FLAGGED PRECISION CORRECTION, same day, after skeptic review.]**
+`Ag²≲8.39×10⁻¹²` must be called a **soft/conditional ceiling under an
+explicit mapping**, never a *direct measurement* of `Ag²`. This was
+already present as a caveat inherited from `FINDING_P22`'s own §3
+(target-population mismatch: Archidiacono's `φ` couples only to dark
+matter, MULTING's `g` couples to mass generically), but this finding's
+own headline/Verdict language ("genuine external anchor," "external
+non-self-referential number") risked reading stronger than that caveat
+allows. Corrected throughout below — provenance kept clean, per Gate 2
+(Target Provenance): this is an **external scale constraint under an
+explicit, unverified mapping**, not a prediction, not a fit to MULTING's
+own data, and not a direct experimental bound on MULTING's own `Ag²`.
 **Origin:** direct response to the stop-rule reached after P52 — three
 consecutive normalization-audit steps (P50B, P51, P52) each independently
 hit the same wall: internal field-redefinition-covariance/rank-nullspace
@@ -206,16 +218,21 @@ project.
 P50B's own skeptic pass already downgraded to "propagation-verification,
 not independent derivation" (KG4 only partially satisfied). Citing the
 wrong bridge at pre-correction strength was itself caught and fixed.
-P22/P31's external `Ag²≲8.39×10⁻¹²` (SI, Reading 1, soft ceiling not
-precision result) applies to the *same* `Ag²` that `FINDING_P52` proved
-is the field-redefinition-invariant force-strength combination — though
-`A` plays a conceptually different role in each finding (P21: fixed
-dimensional constant; P52: free redefinition parameter). Both conventions
-give the same invariant, and the bound transfers either way. This is a
-genuine external anchor, in the specific sense P50B/P51/P52 each said was
-missing — it comes from an independently-published paper's fifth-force
-bound, not from this project's own internal rank/nullspace or
-dimensional-covariance machinery.
+P22/P31's `Ag²≲8.39×10⁻¹²` (SI, Reading 1) is a **soft/conditional
+ceiling under an explicit mapping** — not a direct experimental
+measurement of MULTING's own `Ag²` — that applies to the *same* `Ag²`
+that `FINDING_P52` proved is the field-redefinition-invariant
+force-strength combination, though `A` plays a conceptually different
+role in each finding (P21: fixed dimensional constant; P52: free
+redefinition parameter). Both conventions give the same invariant, and
+the constraint transfers either way, **carrying the same mapping-not-
+measurement caveat throughout**. This is, in the specific sense P50B/P51/
+P52 each said was missing, a genuine *external scale constraint* — it
+comes from an independently-published paper's fifth-force bound (a
+different physical mechanism entirely — DM-only coupling, not MULTING's
+own universal coupling, per `FINDING_P22` §3), not from this project's
+own internal rank/nullspace or dimensional-covariance machinery. That
+external-ness is real; its precision and direct applicability are not.
 
 **M3 holds regardless:** the ceiling does not resolve P51's separate,
 still-open Reading-1-vs-Reading-2 question. Only dimensional invariance
