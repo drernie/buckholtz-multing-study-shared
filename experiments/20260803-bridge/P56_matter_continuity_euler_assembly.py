@@ -333,12 +333,33 @@ def main():
         "re-confirmed reduction does not match V_x_dot+2*H*V_x -- algebra "
         "error, do not report this form"
     )
-    print("  -> CONFIRMED: V_x_dot + 2*H*V_x = g_hat*d_x(delta_phi)/a^2/rhobar,")
-    print("     i.e. in physical peculiar velocity v:=a*V_x, v_dot+H*v=")
-    print("     g_hat*d_x(delta_phi)/(a^3*rhobar) -- the ordinary single-H")
-    print("     peculiar-velocity redshift, EXACTLY the form Addendum #1")
-    print("     originally derived, now RE-CONFIRMED correct (not merely a")
-    print("     decoupled-limit special case) by FINDING_P58's own audit.")
+    print()
+    print("  [SELF-CAUGHT before this addendum's own commit, prompted by")
+    print("  comparing against the user's own independent restatement] the RHS")
+    print("  Q^1/rhobar was first hand-typed as 'g_hat*d_x(delta_phi)/a^2/rhobar'")
+    print("  (an extra, spurious /rhobar) -- WRONG, since Q^1 itself is already")
+    print("  PROPORTIONAL to rhobar (Q^1=g_hat*rhobar*d_x(delta_phi)/a^2, Part 2")
+    print("  above), so it CANCELS on division. Verified directly, not hand-typed:")
+    Q1_over_rhobar = sp.simplify(Q1 / rhobar)
+    expected_Q1_over_rhobar = ghat * sp.diff(deltaphi, x) / a**2
+    print(f"    Q^1/rhobar = {Q1_over_rhobar}")
+    assert sp.simplify(Q1_over_rhobar - expected_Q1_over_rhobar) == 0, (
+        "Q^1/rhobar does not match g_hat*d_x(delta_phi)/a^2 -- rhobar does not "
+        "cancel as expected, re-check Q^1's own rhobar-proportionality"
+    )
+    print("  -> CONFIRMED: rhobar cancels exactly, no residual rhobar-dependence.")
+    print("     Full equation: V_x_dot + 2*H*V_x = g_hat*d_x(delta_phi)/a^2.")
+    v_from_Vx = sp.Function("v")(t, x)
+    Vx_of_v = v_from_Vx / a
+    lhs_in_v = sp.simplify((sp.diff(Vx, t) + 2 * Hubble * Vx).subs(Vx, Vx_of_v).doit() * a)
+    expected_vdot_Hv = sp.diff(v_from_Vx, t) + Hubble * v_from_Vx
+    rhs_in_v = sp.simplify(expected_Q1_over_rhobar * a)
+    assert sp.simplify(lhs_in_v - expected_vdot_Hv) == 0
+    print(f"     In physical peculiar velocity v:=a*V_x: v_dot+H*v = {rhs_in_v}")
+    print("     -- the ordinary single-H peculiar-velocity redshift, EXACTLY the")
+    print("     form Addendum #1 originally derived, now RE-CONFIRMED correct")
+    print("     (not merely a decoupled-limit special case) by FINDING_P58's")
+    print("     own audit.")
 
     print()
     print("  Full (coupled) Euler equation, force term isolated:")

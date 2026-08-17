@@ -201,10 +201,20 @@ decoupled-limit special case):
 V̇_x + 2HV_x = ĝ∂_xδφ/a²      (Addendum #1's original form, re-confirmed)
 ```
 
-Verified via direct symbolic substitution, zero residual. In physical
-peculiar velocity `v:=aV_x`, this is `v̇+Hv=ĝ∂_xδφ/(a³ρ̄)` — the ordinary
-single-`H` peculiar-velocity redshift, exactly as Addendum #1 originally
-found, before Addendum #2's now-retracted correction.
+**[Self-caught, prompted by comparing against the user's own independent
+restatement]** an earlier version of this paragraph wrote the physical-
+velocity form as `v̇+Hv=ĝ∂_xδφ/(a³ρ̄)` — wrong, an extra spurious
+`1/(a²ρ̄)` factor. `ρ̄` cancels exactly on division (`Q¹` is itself
+proportional to `ρ̄`), verified directly: `Q¹/ρ̄=ĝ∂_xδφ/a²`, no residual
+`ρ̄`-dependence. In physical peculiar velocity `v:=aV_x`, this is exactly
+
+```
+v̇ + Hv = ĝ∂_xδφ/a
+```
+
+— the ordinary single-`H` peculiar-velocity redshift, verified via
+direct symbolic substitution, exactly as Addendum #1 originally found,
+before Addendum #2's now-retracted correction.
 
 `div(T_m^{μ,1})` itself contains **no `ĝ` at all** — the coupling enters
 only through the equation `∇_μT_m^{μ,1}=Q^1`, not through `T_m`'s own
