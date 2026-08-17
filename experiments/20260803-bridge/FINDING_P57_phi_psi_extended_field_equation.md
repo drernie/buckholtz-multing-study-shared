@@ -3,7 +3,14 @@
 **Date:** 2026-08-17
 **Status:** Built, run, ruff clean, all assertions pass, after one genuine
 self-caught sign error (found and fixed before any skeptic review — see
-below). **Skeptic review (Step 8a): PENDING, not yet run.**
+below). **Skeptic review (Step 8a): COMPLETE. Not a true kill — the
+central deliverable independently re-derived by the skeptic via a
+completely different method (divergence form of `box(φ)`, cross-checked
+against the standard Mukhanov-style Newtonian-gauge Klein-Gordon
+equation) and confirmed term-for-term, including the non-trivial `Ψ`-source
+cancellations. Four real scope caveats named (gauge choice, `δρ`
+perturbative-order assumption, equation not yet closed, `ρ` treated as
+external) — see § Skeptic Verdict below.**
 **Origin:** direct response to the user's own physics review of P56
 (2026-08-17), which flagged the `FINDING_P50A` re-scan as the highest-value
 next step. Re-deriving `FINDING_P50A`'s Part 7 continuity equation under
@@ -153,13 +160,48 @@ background equation.
    a shared prerequisite for both open tasks named in P56's own verdict.
 4. **Any numeric value.** `ĝ`, `φ̄`, `ρ̄`, `Φ`, `Ψ` remain symbolic
    throughout.
-5. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction,
+5. **A gauge-invariant statement.** The equation is derived in conformal-
+   Newtonian gauge (`g_0i=0`, no vector/tensor modes) — the same gauge
+   `FINDING_P54`'s own KG-B1b already commits to, now stated explicitly
+   here too (was implicit-only before the skeptic flagged it).
+6. **That `δρ` is at the perturbative order used here.** `δρ=O(ε)` (the
+   same order as `Φ,Ψ,δφ`) is an *assumption*, not derived. If `δρ` were
+   suppressed (e.g. `O(ε²)` under isocurvature), the `-ĝδρ` term would
+   drop from this equation entirely.
+7. **A closed system.** `Φ` and `Ψ` are kept independent — no anisotropic-
+   stress/Einstein-constraint relating them is imposed. This equation
+   alone does not predict `δφ` without the companion Einstein equation
+   (the not-yet-attempted B1↔B2 compatibility check).
+8. **That `ρ` is dynamical.** Treated as an external, bookkept scalar
+   (not `ρ(φ)`) — the *same* closure-condition caveat already named in
+   `FINDING_P55/P56`, inherited here unchanged, not newly discovered.
+9. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction,
    not a claim about TJB's own unpublished theory.
 
 ## Skeptic Verdict (Step 8a, context-blind — claim.md + code only, no session history)
 
-**Pending.** To be completed before this finding is considered closed,
-matching this campaign's standing discipline.
+| Sub-claim | Skeptic verdict | Response |
+|---|---|---|
+| `ε⁰` piece reduces to P34 (`φ̄̈+3Hφ̄̇=ĝρ̄`) | **CONFIRMED-REAL** — independently recomputed by hand | No change. |
+| `Φ=Ψ=0` (functions) reduces to `FINDING_P46`'s own flat-FRW `δφ` equation | **CONFIRMED-REAL** — the skeptic's own hand derivation collapses to the identical equation | No change. |
+| Full `ε¹` equation matches the stated form | **CONFIRMED-REAL** — term-by-term match against an independent derivation *and* the standard Mukhanov-style Newtonian-gauge Klein-Gordon equation (`V_φ→-ĝρ` substitution) | No change. |
+| New source terms `-2Φφ̄̈-6HΦφ̄̇-Φ̇φ̄̇-3Ψ̇φ̄̇` | **CONFIRMED-REAL** — the non-trivial cancellations (`9HΨφ̄̇` and `3Ψφ̄̈` cancelling exactly, leaving only `3Ψ̇φ̄̇`) independently reproduced by hand; a genuine, non-copy-paste result | No change. |
+| On-shell simplification (`Φ`-only `→ -2Φĝρ̄-Φ̇φ̄̇`) | **CONFIRMED-REAL but algebraically shallow** — a one-line consequence of substituting the background equation, not new physics content | **Fixed.** Reworded to note it is bookkeeping, not an independent check. |
+| "Standard rolling-scalar-in-FRW physics, not MULTING-specific" | **CONFIRMED-REAL** | No change. |
+| Sign-flip fix (`box(φ)` carries an overall minus vs P34/P46's forward convention) | **CONFIRMED-REAL** — the reported discrepancy is real, the fix is correct, matches `(-,+,+,+)` signature `□φ` on FRW | No change. |
+| Gauge choice unstated | **WEAKENED** — Newtonian/longitudinal gauge is implicit, not labeled | **Fixed.** KG-B1b label added explicitly, matching `FINDING_P54`'s own convention. |
+| `δρ` perturbative order unstated | **WEAKENED** — a real, unstated assumption; if `δρ=O(ε²)` the `-ĝδρ` term vanishes | **Fixed.** Assumption stated explicitly. |
+| Equation not closed (`Φ,Ψ` independent, no Einstein constraint) | **WEAKENED (scope)** — correct as far as it goes, this file is a field equation for `δφ` alone, not a full solution | **Fixed.** Stated explicitly as an open item (the not-yet-attempted B1↔B2 check). |
+| `ρ` treated as external, not `ρ(φ)` | **WEAKENED (scope)** — real, but skeptic could not audit context-blind whether MULTING implies otherwise | **Fixed.** Tied explicitly to the already-established P55/P56 closure caveat, not presented as new. |
+| "Positive control chain is internal" (checks against `FINDING_P46`'s own inline-copied formula, not an independent re-audit of P46 itself) | **NOTED, not a defect** — consistent with how every prior finding in this sub-arc (P48, P54) has scoped its own reused checks | No change — inherited scope, matching precedent. |
+
+**True kill assessment:** no. The central `Φ,Ψ`-extended field equation
+survives fully — independently re-derived by the skeptic via a completely
+different method (divergence form of `box(φ)` from first principles,
+cross-checked against a standard textbook result) and confirmed
+term-for-term, including the hardest-to-get-right part (the `Ψ`-source
+cancellations). What required correction was four scope caveats, all
+fixed with explicit statements, none with new computation.
 
 ## Reproduction
 
