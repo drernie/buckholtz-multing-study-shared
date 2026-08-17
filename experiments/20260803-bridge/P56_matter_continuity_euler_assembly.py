@@ -275,38 +275,73 @@ def main():
     print("  -> CONFIRMED against the geodesic-verified form.")
 
     print()
-    print("  [ADDENDUM, prompted by user's own physics review after this file's")
-    print("  first commit -- independently re-verified before writing, not just")
-    print("  taken on the user's own algebra] The '5H' coefficient is a property")
-    print("  of the MOMENTUM-DENSITY bookkeeping (rhobar*V_x combined), not an")
+    print("  [ADDENDUM #1, prompted by user's own physics review after this")
+    print("  file's first commit] The '5H' coefficient is a property of the")
+    print("  MOMENTUM-DENSITY bookkeeping (rhobar*V_x combined), not an")
     print("  independent physical statement -- convention-sensitive, not")
-    print("  anomalous. Dividing the momentum-density Euler equation by rhobar")
-    print("  and eliminating rhobar_dot via the BACKGROUND continuity equation")
-    print("  (rhobar_dot=-3*H*rhobar) collapses it to a genuinely standard form:")
+    print("  anomalous. Dividing by rhobar and eliminating rhobar_dot reduces")
+    print("  it to a velocity equation.")
+    print()
+    print("  [CORRECTED after a SECOND round of user physics review, same day]")
+    print("  the ORIGINAL version of this addendum used the UNCOUPLED background")
+    print("  continuity rhobar_dot=-3*H*rhobar to do that reduction, giving")
+    print("  V_x_dot+2*H*V_x (and, in physical peculiar velocity v:=a*V_x,")
+    print("  v_dot+H*v=0). The user's own re-review correctly flagged this as a")
+    print("  'decoupled-control variable conversion' mislabeled as a general")
+    print("  coupled reduction: the SAME closure this file's own Euler equation")
+    print("  rests on (nabla_mu T_m^munu=Q^nu) ALSO applies at BACKGROUND order,")
+    print("  not just the linear order P55/P56 computed -- independently checked")
+    print("  BEFORE accepting the user's claim, per audit-verification-gate.md:")
     Hubble = sp.diff(a, t) / a
-    rhobar_dot_bg = -3 * Hubble * rhobar
+    box_phibar = -(sp.diff(phibar, t, 2) + 3 * Hubble * sp.diff(phibar, t))
+    d0_phibar = -sp.diff(phibar, t)  # g^00 * phibar_dot on the unperturbed metric
+    div_Tphi_0_background_raw = sp.simplify(box_phibar * d0_phibar)
+    phibar_ddot_onshell = ghat * rhobar - 3 * Hubble * sp.diff(phibar, t)
+    div_Tphi_0_onshell = sp.simplify(
+        div_Tphi_0_background_raw.subs(sp.diff(phibar, t, 2), phibar_ddot_onshell)
+    )
+    print("  nabla_mu T_phi^(mu,0) at BACKGROUND order (phi=phibar only, general")
+    print(f"  covariant identity box(phi)*d^0(phi)) = {sp.expand(div_Tphi_0_background_raw)}")
+    expected_Q0_bg = ghat * rhobar * sp.diff(phibar, t)
+    assert sp.simplify(div_Tphi_0_onshell - expected_Q0_bg) == 0, (
+        "background-order div(T_phi) does not reduce to g_hat*rhobar*phibar_dot "
+        "on P34's own background field equation -- re-check before trusting "
+        "the coupled background continuity claim"
+    )
+    print("  ON P34's own background equation of motion (phibar_ddot+3*H*")
+    print(f"  phibar_dot=g_hat*rhobar), this becomes exactly {expected_Q0_bg}")
+    print("  -> So Q^0_background := -nabla_mu T_phi^(mu,0)|_bg,onshell =")
+    print(f"     {sp.simplify(-expected_Q0_bg)}, and the closure nabla_mu")
+    print("     T_m^(mu,0)=Q^0 gives a COUPLED background continuity equation:")
+    print("     rhobar_dot = -3*H*rhobar - g_hat*rhobar*phibar_dot")
+    print("     (NOT the standard uncoupled rhobar_dot=-3*H*rhobar) -- a genuine,")
+    print("     new implication of this file's own closure, not previously")
+    print("     checked (P55/P56 only ever computed the LINEAR-order Q^0/Q^1,")
+    print("     never the background-order piece of the SAME general identity).")
+    rhobar_dot_coupled = -3 * Hubble * rhobar - ghat * rhobar * sp.diff(phibar, t)
     euler_momentum_density = sp.diff(rhobar * Vx, t) + 5 * Hubble * rhobar * Vx
-    lhs_reduced = sp.simplify(
-        sp.expand(euler_momentum_density).subs(sp.diff(rhobar, t), rhobar_dot_bg) / rhobar
+    lhs_reduced_coupled = sp.simplify(
+        sp.expand(euler_momentum_density).subs(sp.diff(rhobar, t), rhobar_dot_coupled) / rhobar
     )
-    expected_velocity_form = sp.diff(Vx, t) + 2 * Hubble * Vx
-    print("  d/dt(rhobar*V_x)+5*H*rhobar*V_x, divided by rhobar after using")
-    print(f"  rhobar_dot=-3*H*rhobar  ->  {lhs_reduced}")
-    assert sp.simplify(lhs_reduced - expected_velocity_form) == 0, (
-        "5H momentum-density form does not reduce to the 2H velocity form "
-        "under the background continuity substitution -- algebra error"
+    expected_coupled_form = sp.diff(Vx, t) + (2 * Hubble - ghat * sp.diff(phibar, t)) * Vx
+    print()
+    print("  CORRECTED reduction, using the COUPLED background continuity:")
+    print(f"    {lhs_reduced_coupled} = Q^1/rhobar")
+    assert sp.simplify(lhs_reduced_coupled - expected_coupled_form) == 0, (
+        "coupled reduction does not match V_x_dot+(2*H-g_hat*phibar_dot)*V_x "
+        "-- algebra error, do not report this corrected form"
     )
-    print("  -> CONFIRMED: reduces EXACTLY to V_x_dot+2*H*V_x (the same 2H")
-    print("  coefficient already independently confirmed via the geodesic")
-    print("  equation above). In PHYSICAL peculiar velocity v:=a*V_x (the")
-    print("  standard cosmology definition), this is v_dot+H*v=0 -- the")
-    print("  ordinary single-H peculiar-velocity redshift found in any")
-    print("  textbook (Peebles, Padmanabhan). The 5H headline number is thus")
-    print("  correct as written (for the rhobar*V_x variable this file uses)")
-    print("  but should not be compared directly to standard-literature Euler")
-    print("  equations (typically written for v or theta:=div(v), which carry")
-    print("  a single H) without this reduction -- noted explicitly here to")
-    print("  prevent that exact misreading.")
+    print("  -> CONFIRMED: V_x_dot + (2*H - g_hat*phibar_dot)*V_x = g_hat*")
+    print("     d_x(delta_phi)/a^2 -- the coupling MODIFIES THE FRICTION TERM")
+    print("     itself (2*H -> 2*H-g_hat*phibar_dot), not just a separate")
+    print("     force on the RHS -- matching the standard structure of coupled-")
+    print("     quintessence Euler equations in the literature (Amendola-style,")
+    print("     already this campaign's own cited context via FINDING_P49).")
+    print("     The EARLIER addendum's V_x_dot+2*H*V_x=... form is NOT wrong as")
+    print("     a decoupled-limit statement (it matches P56's own g_hat=0")
+    print("     positive control exactly) but is WRONG if read as the general")
+    print("     coupled reduction -- retracted as a general claim, correct only")
+    print("     at g_hat=0.")
 
     print()
     print("  Full (coupled) Euler equation, force term isolated:")

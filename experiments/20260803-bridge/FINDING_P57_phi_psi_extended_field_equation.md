@@ -38,6 +38,18 @@ re-scan, and the B1↔B2 compatibility check against `FINDING_P54`'s own
 `Φ`-inclusive `G_0i`) — a direct application of the Cheapest Differentiating
 Test Protocol: one calculation, two blockers closed.
 
+**`V=0` truncation (added after user physics review, Gate 1):** this file
+reuses `FINDING_P46`'s own field equation relation `box(φ)=-ĝρ`, derived
+from P34/P35's *original* Lagrangian — **without** `FINDING_P45`'s own
+`V(φ)=λ₄φ⁴/4` quartic potential. This file is therefore **also** in the
+`V=0` (kinetic + monopole `g`-sector only) truncation, not the field
+equation of the full committed monopole action. Verified (not asserted):
+linearizing `V'(φ)=λ₄φ³` gives `V''(φ̄)δφ=3λ₄φ̄²δφ` exactly. The general
+`V`-inclusive extension of this file's own `ε¹` equation would add
+`+V''(φ̄)δφ=+3λ₄φ̄²δφ` to the LHS — not built here, an explicit future
+step, needed before this equation can be called the field equation of
+"the full committed monopole action."
+
 ## Method
 
 Same single perturbation parameter used throughout this whole campaign
@@ -175,8 +187,13 @@ background equation.
 8. **That `ρ` is dynamical.** Treated as an external, bookkept scalar
    (not `ρ(φ)`) — the *same* closure-condition caveat already named in
    `FINDING_P55/P56`, inherited here unchanged, not newly discovered.
-9. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction,
-   not a claim about TJB's own unpublished theory.
+9. **The field equation of the full committed monopole action.** This
+   file is a `V=0` truncation (kinetic + monopole `g`-sector only),
+   excluding `FINDING_P45`'s own `λ₄φ⁴/4` potential — the general
+   `V`-inclusive extension (`+3λ₄φ̄²δφ` added to the LHS, verified) is a
+   separate, not-yet-built step.
+10. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction,
+    not a claim about TJB's own unpublished theory.
 
 ## Skeptic Verdict (Step 8a, context-blind — claim.md + code only, no session history)
 

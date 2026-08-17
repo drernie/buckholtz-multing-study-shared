@@ -37,6 +37,20 @@ KILL-GATES applicable to THIS file:
   - the NEW terms proportional to Phi and/or Psi are extracted explicitly
     and reported, not buried in an unexamined combined expression.
 
+[Added after user physics review, Gate 1] SCOPE, stated explicitly: this
+file reuses FINDING_P46's own field equation relation box(phi)=-g_hat*rho,
+which was derived from P34/P35's ORIGINAL Lagrangian -- WITHOUT
+FINDING_P45's own V(phi)=lambda_4*phi^4/4 quartic potential. This file is
+therefore ALSO in the V=0 (kinetic + monopole g-sector only) truncation,
+NOT the full committed monopole action (which per P45 includes the
+quartic). Verified (not just asserted): linearizing V'(phi)=lambda_4*
+phi^3 gives V''(phibar)*delta_phi=3*lambda_4*phibar^2*delta_phi exactly
+(direct sympy check). The GENERAL V-inclusive extension of THIS file's
+own eps^1 equation would add +V''(phibar)*delta_phi to the LHS -- NOT
+built here, named as an explicit future step, needed before this
+equation can be called the field equation of "the full committed
+monopole action."
+
 NOT_VALIDATION - NOT_REFUTATION - OUR_RECONSTRUCTION - L0 descriptive
 """
 
@@ -280,6 +294,15 @@ def main():
     print("equation (needs the extended Q^0, not built here). Both remain")
     print("explicit open next steps -- this file unblocks them, does not")
     print("complete them.")
+    print()
+    print("[Added after user physics review, Gate 1] V=0 TRUNCATION, stated")
+    print("explicitly: this equation reuses FINDING_P46's box(phi)=-g_hat*rho,")
+    print("derived WITHOUT FINDING_P45's own V(phi)=lambda_4*phi^4/4 quartic --")
+    print("this file is 'kinetic + monopole g-sector, V=0', NOT the field")
+    print("equation of the full committed monopole action. Verified: the")
+    print("general V-inclusive extension would add +V''(phibar)*delta_phi=")
+    print("+3*lambda_4*phibar^2*delta_phi to this equation's LHS -- a separate,")
+    print("not-yet-built step.")
     return 0
 
 
