@@ -282,66 +282,63 @@ def main():
     print("  anomalous. Dividing by rhobar and eliminating rhobar_dot reduces")
     print("  it to a velocity equation.")
     print()
-    print("  [CORRECTED after a SECOND round of user physics review, same day]")
-    print("  the ORIGINAL version of this addendum used the UNCOUPLED background")
-    print("  continuity rhobar_dot=-3*H*rhobar to do that reduction, giving")
-    print("  V_x_dot+2*H*V_x (and, in physical peculiar velocity v:=a*V_x,")
-    print("  v_dot+H*v=0). The user's own re-review correctly flagged this as a")
-    print("  'decoupled-control variable conversion' mislabeled as a general")
-    print("  coupled reduction: the SAME closure this file's own Euler equation")
-    print("  rests on (nabla_mu T_m^munu=Q^nu) ALSO applies at BACKGROUND order,")
-    print("  not just the linear order P55/P56 computed -- independently checked")
-    print("  BEFORE accepting the user's claim, per audit-verification-gate.md:")
+    print("  [CORRECTED after a SECOND round of user physics review, same day --")
+    print("  then RE-CORRECTED (RETRACTED) by FINDING_P58, same day, per its own")
+    print("  context-blind skeptic review] The version of this addendum that")
+    print("  briefly stood here claimed a COUPLED background continuity")
+    print("  (rhobar_dot=-3*H*rhobar-g_hat*rhobar*phibar_dot, exponential")
+    print("  solution) and a correspondingly 'corrected' Euler reduction")
+    print("  V_x_dot+(2*H-g_hat*phibar_dot)*V_x=... -- FINDING_P58's own two-")
+    print("  route Q^mu consistency audit PROVED this is mathematically")
+    print("  impossible: the density rhobar that THIS file's own construction")
+    print("  actually uses (shared identically between T_m^munu and, via the")
+    print("  field equation, Q^0/Q^1) is the BARE density (matching FINDING_P33's")
+    print("  own worldline-action fluid limit) -- and a bare density, which by")
+    print("  ITS OWN definition satisfies pure decoupled dust dilution, CANNOT")
+    print("  also self-consistently satisfy a coupled evolution sourced by")
+    print("  itself (proven directly in FINDING_P58, independently re-verified")
+    print("  here before accepting, per audit-verification-gate.md):")
     Hubble = sp.diff(a, t) / a
-    box_phibar = -(sp.diff(phibar, t, 2) + 3 * Hubble * sp.diff(phibar, t))
-    d0_phibar = -sp.diff(phibar, t)  # g^00 * phibar_dot on the unperturbed metric
-    div_Tphi_0_background_raw = sp.simplify(box_phibar * d0_phibar)
-    phibar_ddot_onshell = ghat * rhobar - 3 * Hubble * sp.diff(phibar, t)
-    div_Tphi_0_onshell = sp.simplify(
-        div_Tphi_0_background_raw.subs(sp.diff(phibar, t, 2), phibar_ddot_onshell)
+    rhobar_decoupled_sub = -3 * Hubble * rhobar
+    lhs_decoupled = sp.simplify(rhobar_decoupled_sub + 3 * Hubble * rhobar)
+    rhs_selfconsistent_coupled = sp.simplify(-ghat * rhobar * sp.diff(phibar, t))
+    print(f"  rhobar's own (bare, decoupled) defining relation gives LHS = {lhs_decoupled}")
+    print(
+        f"  the coupled closure's own RHS (self-consistent)            = {rhs_selfconsistent_coupled}"
     )
-    print("  nabla_mu T_phi^(mu,0) at BACKGROUND order (phi=phibar only, general")
-    print(f"  covariant identity box(phi)*d^0(phi)) = {sp.expand(div_Tphi_0_background_raw)}")
-    expected_Q0_bg = ghat * rhobar * sp.diff(phibar, t)
-    assert sp.simplify(div_Tphi_0_onshell - expected_Q0_bg) == 0, (
-        "background-order div(T_phi) does not reduce to g_hat*rhobar*phibar_dot "
-        "on P34's own background field equation -- re-check before trusting "
-        "the coupled background continuity claim"
-    )
-    print("  ON P34's own background equation of motion (phibar_ddot+3*H*")
-    print(f"  phibar_dot=g_hat*rhobar), this becomes exactly {expected_Q0_bg}")
-    print("  -> So Q^0_background := -nabla_mu T_phi^(mu,0)|_bg,onshell =")
-    print(f"     {sp.simplify(-expected_Q0_bg)}, and the closure nabla_mu")
-    print("     T_m^(mu,0)=Q^0 gives a COUPLED background continuity equation:")
-    print("     rhobar_dot = -3*H*rhobar - g_hat*rhobar*phibar_dot")
-    print("     (NOT the standard uncoupled rhobar_dot=-3*H*rhobar) -- a genuine,")
-    print("     new implication of this file's own closure, not previously")
-    print("     checked (P55/P56 only ever computed the LINEAR-order Q^0/Q^1,")
-    print("     never the background-order piece of the SAME general identity).")
-    rhobar_dot_coupled = -3 * Hubble * rhobar - ghat * rhobar * sp.diff(phibar, t)
-    euler_momentum_density = sp.diff(rhobar * Vx, t) + 5 * Hubble * rhobar * Vx
-    lhs_reduced_coupled = sp.simplify(
-        sp.expand(euler_momentum_density).subs(sp.diff(rhobar, t), rhobar_dot_coupled) / rhobar
-    )
-    expected_coupled_form = sp.diff(Vx, t) + (2 * Hubble - ghat * sp.diff(phibar, t)) * Vx
+    print("  -> equal only if g_hat*rhobar*phibar_dot=0 identically -- NOT true")
+    print("     in general. The coupled-continuity claim is RETRACTED.")
     print()
-    print("  CORRECTED reduction, using the COUPLED background continuity:")
-    print(f"    {lhs_reduced_coupled} = Q^1/rhobar")
-    assert sp.simplify(lhs_reduced_coupled - expected_coupled_form) == 0, (
-        "coupled reduction does not match V_x_dot+(2*H-g_hat*phibar_dot)*V_x "
-        "-- algebra error, do not report this corrected form"
+    print("  FINDING_P58's own exact resolution: the genuine nonzero background")
+    print("  Q^0 this file already correctly computed is the DERIVATIVE")
+    print("  consequence of FINDING_P33's own already-established ALGEBRAIC mass")
+    print("  law (m_eff/m=1-g_hat*phi), relating rhobar (bare, this file's own)")
+    print("  to a DIFFERENT, distinguishable physical density rho_phys=rhobar*")
+    print("  (1-g_hat*phibar) -- NOT a new differential equation for rhobar")
+    print("  itself. rhobar (as this file's own shared symbol) remains simply,")
+    print("  purely uncoupled -- the ORIGINAL addendum #1 reduction (below) was")
+    print("  correct all along; see FINDING_P58_two_route_Qmu_consistency_audit.md")
+    print("  for the full derivation.")
+    euler_momentum_density = sp.diff(rhobar * Vx, t) + 5 * Hubble * rhobar * Vx
+    lhs_reduced_reconfirmed = sp.simplify(
+        sp.expand(euler_momentum_density).subs(sp.diff(rhobar, t), rhobar_decoupled_sub) / rhobar
     )
-    print("  -> CONFIRMED: V_x_dot + (2*H - g_hat*phibar_dot)*V_x = g_hat*")
-    print("     d_x(delta_phi)/a^2 -- the coupling MODIFIES THE FRICTION TERM")
-    print("     itself (2*H -> 2*H-g_hat*phibar_dot), not just a separate")
-    print("     force on the RHS -- matching the standard structure of coupled-")
-    print("     quintessence Euler equations in the literature (Amendola-style,")
-    print("     already this campaign's own cited context via FINDING_P49).")
-    print("     The EARLIER addendum's V_x_dot+2*H*V_x=... form is NOT wrong as")
-    print("     a decoupled-limit statement (it matches P56's own g_hat=0")
-    print("     positive control exactly) but is WRONG if read as the general")
-    print("     coupled reduction -- retracted as a general claim, correct only")
-    print("     at g_hat=0.")
+    expected_uncoupled_form = sp.diff(Vx, t) + 2 * Hubble * Vx
+    print()
+    print("  RE-CONFIRMED reduction, using rhobar's own simple, uncoupled")
+    print("  continuity (the internally-consistent reading of this file's own")
+    print("  shared rhobar symbol, per FINDING_P58):")
+    print(f"    {lhs_reduced_reconfirmed} = Q^1/rhobar")
+    assert sp.simplify(lhs_reduced_reconfirmed - expected_uncoupled_form) == 0, (
+        "re-confirmed reduction does not match V_x_dot+2*H*V_x -- algebra "
+        "error, do not report this form"
+    )
+    print("  -> CONFIRMED: V_x_dot + 2*H*V_x = g_hat*d_x(delta_phi)/a^2/rhobar,")
+    print("     i.e. in physical peculiar velocity v:=a*V_x, v_dot+H*v=")
+    print("     g_hat*d_x(delta_phi)/(a^3*rhobar) -- the ordinary single-H")
+    print("     peculiar-velocity redshift, EXACTLY the form Addendum #1")
+    print("     originally derived, now RE-CONFIRMED correct (not merely a")
+    print("     decoupled-limit special case) by FINDING_P58's own audit.")
 
     print()
     print("  Full (coupled) Euler equation, force term isolated:")

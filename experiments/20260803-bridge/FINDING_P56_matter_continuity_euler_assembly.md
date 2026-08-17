@@ -10,13 +10,29 @@ coefficient independently confirmed via two separate derivation routes
 caveat inherited from P55 but not restated here, and — most
 significant — a genuine cross-finding drift with `FINDING_P50A`'s own
 (now superseded) continuity equation. See Skeptic Verdict below.**
-**Addendum #2 (2026-08-17, second round of user physics review):** the
-background matter continuity equation is itself **coupled**
-(`ρ̄̇=-3Hρ̄-ĝρ̄φ̄̇`, not the standard uncoupled form) — a genuine new
-implication of this file's own closure at background order, previously
-unchecked. This corrects Addendum #1's `5H→2H→H` reduction (valid only
-at `ĝ=0`, not as a general claim) to `V̇_x+(2H-ĝφ̄̇)V_x=ĝ∂_xδφ/a²`. See
-Part 5 for the full derivation and verification.
+**Addendum #2 (2026-08-17, second round of user physics review) — since
+RETRACTED, see Addendum #3:** ~~the background matter continuity equation
+is itself **coupled** (`ρ̄̇=-3Hρ̄-ĝρ̄φ̄̇`, not the standard uncoupled form)
+— a genuine new implication of this file's own closure at background
+order, previously unchecked. This corrects Addendum #1's `5H→2H→H`
+reduction (valid only at `ĝ=0`, not as a general claim) to
+`V̇_x+(2H-ĝφ̄̇)V_x=ĝ∂_xδφ/a²`.~~
+**Addendum #3 (2026-08-17, same day — `FINDING_P58`'s own two-route
+`Q^μ` consistency audit) — RETRACTS Addendum #2:** Addendum #2's coupled
+background continuity is **mathematically impossible**: the density this
+file actually uses (shared identically between `T_m^{μν}` and, via the
+field equation, `Q^0`/`Q^1`) is the *bare* density (matching
+`FINDING_P33`'s own worldline-action fluid limit), and a bare density —
+which by its own definition satisfies pure decoupled dust dilution —
+cannot also self-consistently satisfy a coupled evolution sourced by
+itself (proven in `FINDING_P58`, independently re-verified here before
+accepting). **Addendum #1's original `5H→2H→H` reduction is
+re-confirmed correct**, not merely a decoupled special case. The genuine
+nonzero background-order `Q^0` this file found is real — its correct
+interpretation is the derivative consequence of `FINDING_P33`'s own
+already-established *algebraic* mass law, not a new differential
+equation. See `FINDING_P58_two_route_Qmu_consistency_audit.md` for the
+full derivation, and Part 5 below (updated to match).
 **Origin:** direct continuation of `FINDING_P55` (B2 Part 1, which
 derived only `Q⁰`). This file derives `Q¹` (spatial source, same method,
 new index) and assembles the actual continuity + Euler equations from
@@ -108,7 +124,8 @@ file's first commit:** the `5H` coefficient is a property of the
 physical statement — convention-sensitive, not anomalous. Dividing by
 `ρ̄` and eliminating `ρ̄̇` reduces it to a velocity equation.
 
-**[CORRECTED after a second round of user physics review, same day]**
+**[CORRECTED after a second round of user physics review, same day —
+then RETRACTED by `FINDING_P58`, same day]**
 ~~Dividing the momentum-density Euler equation by `ρ̄` and eliminating
 `ρ̄̇` via the background continuity equation (`ρ̄̇=-3Hρ̄`) collapses it
 exactly to `V̇_x+2HV_x=F_φ/ρ̄`... in physical peculiar velocity `v:=aV_x`,
@@ -124,55 +141,70 @@ linear order `FINDING_P55/P56` actually computed.
 `audit-verification-gate.md`): computing `∇_μT_φ^{μ,0}` at background
 order (`φ=φ̄(t)` only, general covariant identity `(□φ)·∂^0φ`) gives
 `φ̄̇φ̄̈+3Hφ̄̇²`. Substituting `FINDING_P34`'s own background field equation
-(`φ̄̈+3Hφ̄̇=ĝρ̄`) on-shell collapses this exactly to `ĝρ̄φ̄̇`. This means
-`Q⁰_background:=-∇_μT_φ^{μ,0}|_{bg,onshell}=-ĝρ̄φ̄̇`, and the closure
-`∇_μT_m^{μ,0}=Q^0` — applied consistently at background order —
+(`φ̄̈+3Hφ̄̇=ĝρ̄`) on-shell collapses this exactly to `ĝρ̄φ̄̇`. This part
+**survives** — the nonzero background-order `Q^0` computation itself was
+and remains correct.
+
+~~This means `Q⁰_background:=-∇_μT_φ^{μ,0}|_{bg,onshell}=-ĝρ̄φ̄̇`, and the
+closure `∇_μT_m^{μ,0}=Q^0` — applied consistently at background order —
 implies a **coupled background continuity equation**:
+`ρ̄̇=-3Hρ̄-ĝρ̄φ̄̇` (NOT the standard uncoupled `ρ̄̇=-3Hρ̄`)... This solves to
+`ρ̄(t)=ρ̄_0a^{-3}\exp[-ĝ(φ̄(t)-φ̄_0)]` rather than pure `a^{-3}` dilution.~~
+
+**RETRACTED by `FINDING_P58`'s own two-route `Q^μ` consistency audit**,
+same day: `ρ̄` (as this file's own construction shares it identically
+between `T_m^{μν}` and, via the field equation, `Q^0`/`Q^1`) is the
+*bare* density (matching `FINDING_P33`'s own worldline-action fluid
+limit — verified there as `m_eff/m=1-ĝφ`, *exact*). A bare density, by
+its own definition, satisfies pure decoupled dust dilution
+(`ρ̄̇+3Hρ̄=0`), and — proven directly in `FINDING_P58`, independently
+re-verified here before accepting, per `audit-verification-gate.md` — it
+**cannot** also self-consistently satisfy a coupled evolution sourced by
+itself (`ρ̄̇+3Hρ̄=-ĝρ̄φ̄̇` and `ρ̄̇+3Hρ̄=0` agree only if `ĝρ̄φ̄̇=0`
+identically, not true in general). The "coupled background continuity"
+and its exponential solution are **mathematically impossible** for this
+file's own `ρ̄`, not merely unverified.
+
+`FINDING_P58`'s own exact resolution: the genuine nonzero
+`Q⁰_background=-ĝρ̄φ̄̇` is the *derivative consequence* of an
+already-existing **algebraic** relation (`FINDING_P33`'s own
+`m_eff/m=1-ĝφ`) between this file's `ρ̄` (bare) and a *different*,
+distinguishable physical density `ρ_phys:=ρ̄(1-ĝφ̄)` — not a new
+differential equation for `ρ̄` itself. `ρ̄` remains simply, purely
+uncoupled.
+
+**Context-blind skeptic review of Addendum #2's own claim** (before the
+retraction was found) independently re-derived the full chain by hand
+and reported CONFIRMED-REAL, no sign error, no circularity — but that
+review, like this file's own original construction, never questioned
+*which* density `ρ̄` was, treating the self-consistent single-symbol
+reading as the only one to check. `FINDING_P58`'s later, deeper audit
+(prompted by a *third* round of user physics review, testing `Q^μ`
+against `FINDING_P33`'s independently-established worldline mass law)
+is what surfaced the actual resolution — a good illustration that even
+a clean, independently-confirmed skeptic pass can still share an
+unexamined premise with the finding it reviewed.
+
+**Retroscan check (still valid, unaffected by the retraction)**: grepped
+the bridge experiments directory for prior uses of the uncoupled
+`ρ̄̇=-3Hρ̄` substitution: found exactly one, `FINDING_P50A`'s own script
+line 273 (`P50A_structural_mu_ak.py`). Given the retraction above, this
+uncoupled form is now **confirmed correct** for `FINDING_P50A`'s own
+`ρ̄`, not a site requiring the (retracted) coupled substitution.
+
+**Re-confirmed reduction**, using `ρ̄`'s own simple, uncoupled continuity
+(`FINDING_P58`'s own resolution — this is the internally-consistent
+reading of this file's own shared `ρ̄` symbol, not merely a
+decoupled-limit special case):
 
 ```
-ρ̄̇ = -3Hρ̄ - ĝρ̄φ̄̇   (NOT the standard uncoupled ρ̄̇=-3Hρ̄)
+V̇_x + 2HV_x = ĝ∂_xδφ/a²      (Addendum #1's original form, re-confirmed)
 ```
 
-A genuine implication of this file's own closure, previously unchecked
-within this project — `FINDING_P55/P56` only ever computed the
-*linear-order* `Q⁰`/`Q¹`, never the background-order piece of the same
-general identity. This solves to `ρ̄(t)=ρ̄_0a^{-3}\exp[-ĝ(φ̄(t)-φ̄_0)]`
-rather than pure `a^{-3}` dilution.
-
-**Context-blind skeptic review of this specific claim, independently
-re-derived the full chain by hand from first principles (metric,
-Christoffels, direct covariant divergence of `T_φ^μν` and `T_m^μν`, cross-
-checked against the general identity) — CONFIRMED-REAL, no sign error, no
-circularity.** Two flags from that review, both addressed: **(1) framing
-— this is a *reproduction*, within this project's own framework, of a
-known result, not a novel physical mechanism.** The structure
-`ρ̄∝a^{-3}\exp[-ĝ(φ̄-φ̄_0)]` is exactly the standard coupled-quintessence
-matter dilution (Wetterich 1995, *mass-varying particles*; Amendola,
-*Coupled quintessence*, Phys. Rev. D 62, 043511 (2000), Eq. 5–6 —
-already this campaign's own cited literature context via `FINDING_P49`).
-**(2) retroscan check** — grepped the bridge experiments directory for
-prior uses of the uncoupled `ρ̄̇=-3Hρ̄` substitution: found exactly one,
-`FINDING_P50A`'s own script line 273 (`P50A_structural_mu_ak.py`), used
-as an intermediate step deriving its own (already-flagged-for-re-scan)
-Part 7 continuity equation. Not a new, separate finding — confirms and
-localizes the *existing* `FINDING_P50A` re-scan dependency (this specific
-line is exactly where the coupled substitution needs to replace the
-uncoupled one), not an additional undiscovered drift site.
-
-**Corrected reduction**, using the coupled background continuity:
-
-```
-V̇_x + (2H - ĝφ̄̇)V_x = ĝ∂_xδφ/a²
-```
-
-Verified via direct symbolic substitution, zero residual against the
-expected form. The coupling **modifies the friction term itself**
-(`2H → 2H-ĝφ̄̇`), not merely a separate force term on the RHS — the
-standard structure of coupled-quintessence Euler equations. The earlier
-`V̇_x+2HV_x=...`/`v̇+Hv=...` form is **not wrong as a decoupled-limit
-statement** (it matches this file's own `ĝ=0` positive control exactly)
-but is **wrong if read as the general coupled reduction** — retracted as
-a general claim, correct only at `ĝ=0`.
+Verified via direct symbolic substitution, zero residual. In physical
+peculiar velocity `v:=aV_x`, this is `v̇+Hv=ĝ∂_xδφ/(a³ρ̄)` — the ordinary
+single-`H` peculiar-velocity redshift, exactly as Addendum #1 originally
+found, before Addendum #2's now-retracted correction.
 
 `div(T_m^{μ,1})` itself contains **no `ĝ` at all** — the coupling enters
 only through the equation `∇_μT_m^{μ,1}=Q^1`, not through `T_m`'s own
@@ -224,12 +256,15 @@ underlying a prior finding is applied immediately, not deferred
 silently), flagged explicitly here as an open item — `FINDING_P50A`'s
 own Part 7 needs a re-scan against this closure before its continuity
 equation is reused anywhere further. Not attempted in this file.
-**Now a three-part dependency** (per Addendum #2 above): the `FINDING_P50A`
-re-scan needs (a) the `Φ,Ψ`-extended `Q^0` (`FINDING_P57` supplies the
-field equation prerequisite, not yet the extended `Q^0` itself), and (b)
-the **coupled background continuity** discovered in Addendum #2
-(`ρ̄̇=-3Hρ̄-ĝρ̄φ̄̇`), since `FINDING_P50A`'s own background solution
-implicitly assumed the uncoupled `ρ̄∝a^{-3}`.
+**Updated per Addendum #3** (`FINDING_P58`'s retraction of Addendum #2):
+the `FINDING_P50A` re-scan needs (a) the `Φ,Ψ`-extended `Q^0`
+(`FINDING_P57` supplies the field equation prerequisite, not yet the
+extended `Q^0` itself), and (b) the **algebraic** bare-vs-physical
+density relation (`ρ_phys=ρ̄(1-ĝφ̄)`, `FINDING_P58`) rather than any
+differential background-continuity correction — `FINDING_P50A`'s own
+background solution using the uncoupled `ρ̄∝a^{-3}` is, per the
+retraction, correctly scoped as-is for `ρ̄` (bare); only its *physical*
+interpretation (if needed downstream) picks up the `(1-ĝφ̄)` factor.
 
 The Euler equation's decoupled limit correctly has no gravitational
 force term, because this scope has no `Φ` to source one — a direct,
