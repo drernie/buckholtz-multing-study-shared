@@ -95,6 +95,22 @@ d/dt(ρ̄V_x) + 5H·ρ̄V_x = ĝρ̄·∂_xδφ/a²
 geodesic-verified momentum-density dilution form (`5H`, not the
 originally-guessed `3H`) exactly.
 
+**Addendum, prompted by the user's own physics review after this file's
+first commit — independently re-verified with sympy before writing this
+in, not taken on the user's own algebra:** the `5H` coefficient is a
+property of the *momentum-density* bookkeeping (`ρ̄V_x` combined), not an
+independent physical statement — convention-sensitive, not anomalous.
+Dividing the momentum-density Euler equation by `ρ̄` and eliminating
+`ρ̄̇` via the background continuity equation (`ρ̄̇=-3Hρ̄`) collapses it
+exactly to `V̇_x+2HV_x=F_φ/ρ̄` — the *same* `2H` already independently
+confirmed via the geodesic equation above. In physical peculiar velocity
+`v:=aV_x` (the standard cosmology definition), this is `v̇+Hv=F_φ/(aρ̄)` —
+the ordinary single-`H` peculiar-velocity redshift found in any textbook
+(Peebles, Padmanabhan). The `5H` headline is correct as written for the
+`ρ̄V_x` variable this file uses, but should not be compared directly to
+standard-literature Euler equations (typically written for `v` or
+`θ:=div(v)`, which carry a single `H`) without this reduction.
+
 `div(T_m^{μ,1})` itself contains **no `ĝ` at all** — the coupling enters
 only through the equation `∇_μT_m^{μ,1}=Q^1`, not through `T_m`'s own
 construction. So the force term is simply `Q¹` itself, moved to the RHS:
@@ -165,6 +181,10 @@ explicit consequence of scope, not evidence gravity is missing.
    assertion failing, independently re-derived from first principles
    (the geodesic equation), and fixed with the correct physics — not
    patched to whatever sympy happened to output.
+5. That the `5H` momentum-density coefficient is equivalent, under the
+   background continuity relation, to the standard single-`H` peculiar-
+   velocity redshift (`v̇+Hv=0` for physical peculiar velocity) — a
+   convention clarification, independently verified, not a new result.
 
 ## What this does NOT establish
 

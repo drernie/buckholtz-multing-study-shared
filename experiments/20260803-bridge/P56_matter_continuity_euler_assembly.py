@@ -275,6 +275,40 @@ def main():
     print("  -> CONFIRMED against the geodesic-verified form.")
 
     print()
+    print("  [ADDENDUM, prompted by user's own physics review after this file's")
+    print("  first commit -- independently re-verified before writing, not just")
+    print("  taken on the user's own algebra] The '5H' coefficient is a property")
+    print("  of the MOMENTUM-DENSITY bookkeeping (rhobar*V_x combined), not an")
+    print("  independent physical statement -- convention-sensitive, not")
+    print("  anomalous. Dividing the momentum-density Euler equation by rhobar")
+    print("  and eliminating rhobar_dot via the BACKGROUND continuity equation")
+    print("  (rhobar_dot=-3*H*rhobar) collapses it to a genuinely standard form:")
+    Hubble = sp.diff(a, t) / a
+    rhobar_dot_bg = -3 * Hubble * rhobar
+    euler_momentum_density = sp.diff(rhobar * Vx, t) + 5 * Hubble * rhobar * Vx
+    lhs_reduced = sp.simplify(
+        sp.expand(euler_momentum_density).subs(sp.diff(rhobar, t), rhobar_dot_bg) / rhobar
+    )
+    expected_velocity_form = sp.diff(Vx, t) + 2 * Hubble * Vx
+    print("  d/dt(rhobar*V_x)+5*H*rhobar*V_x, divided by rhobar after using")
+    print(f"  rhobar_dot=-3*H*rhobar  ->  {lhs_reduced}")
+    assert sp.simplify(lhs_reduced - expected_velocity_form) == 0, (
+        "5H momentum-density form does not reduce to the 2H velocity form "
+        "under the background continuity substitution -- algebra error"
+    )
+    print("  -> CONFIRMED: reduces EXACTLY to V_x_dot+2*H*V_x (the same 2H")
+    print("  coefficient already independently confirmed via the geodesic")
+    print("  equation above). In PHYSICAL peculiar velocity v:=a*V_x (the")
+    print("  standard cosmology definition), this is v_dot+H*v=0 -- the")
+    print("  ordinary single-H peculiar-velocity redshift found in any")
+    print("  textbook (Peebles, Padmanabhan). The 5H headline number is thus")
+    print("  correct as written (for the rhobar*V_x variable this file uses)")
+    print("  but should not be compared directly to standard-literature Euler")
+    print("  equations (typically written for v or theta:=div(v), which carry")
+    print("  a single H) without this reduction -- noted explicitly here to")
+    print("  prevent that exact misreading.")
+
+    print()
     print("  Full (coupled) Euler equation, force term isolated:")
     print("  [NOTE] div(T_m^(mu,1)) itself contains NO g_hat at all -- the")
     print("  coupling enters ONLY through the equation div(T_m^(mu,1))=Q^1,")
