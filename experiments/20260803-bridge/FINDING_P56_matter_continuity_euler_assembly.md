@@ -1,6 +1,8 @@
 # P56 — Step B2 Part 2: the matter Euler equation `d/dt(ρ̄V)+5Hρ̄V=Q¹=ĝρ̄∂_xδφ/a²`, assembled from `∇_μT_m^{μν}=Q^ν`
 
-**Date:** 2026-08-17
+**Date:** 2026-08-17. **Addendum #4 (2026-08-18): Part 4/Part 5's headline
+equations are SUPERSEDED for physical/downstream use** — see Addendum #4
+below and `FINDING_P59_perturbed_Qmu_density_semantics_explicit.md`.
 **Status:** Built, run, ruff clean, all assertions pass, after a genuine
 in-build self-caught bug (see below — a hand-derivation error in a test
 assertion, kept visible, not silently patched). **Skeptic review (Step
@@ -315,14 +317,107 @@ explicit consequence of scope, not evidence gravity is missing.
    `FINDING_P55`, it is a closure condition a genuine matter model must
    satisfy, not established here.
 6. **Consistency with `FINDING_P50A`'s own continuity equation.**
-   `FINDING_P50A`'s `∇_μT_m^{μ,0}=0` is now superseded by this file's own
-   `∇_μT_m^{μ,0}=Q⁰` — a real, unresolved cross-finding drift, flagged
-   explicitly, not fixed here.
+   `FINDING_P50A`'s `∇_μT_m^{μ,0}=0` needs re-scanning against **Addendum
+   #4's** corrected closure (`∇_μT_m^{μ,0}(ρ̄)=0` also, once `T_m` is
+   understood to physically require `ρ_phys`, not `ρ̄`, for its own
+   closure with `Q⁰`) — a real, unresolved cross-finding drift, flagged
+   explicitly, not fixed here. This is the decisive `D1/D2/D3` test the
+   user proposed as the next step (`FINDING_P60`, not yet started).
 7. **A fully general 3-component velocity field.** Only `V_x` is
    populated (sufficient for the x-Euler equation specifically); `θ:=
    div(V)` in full is not assembled.
 8. Per NO_AUTHOR_ERROR: entirely about this project's own reconstruction,
    not a claim about TJB's own unpublished theory.
+
+## Addendum #4 (2026-08-18) — propagates `FINDING_P59`'s linear-order results into Part 4/Part 5
+
+**Not new physics.** `FINDING_P59` already performed the Route-B (`ρ_phys`)
+tensor construction and its own context-blind skeptic review (Step 8a,
+independently re-derived the whole chain from Christoffels up, confirmed).
+This addendum re-verifies the *propagation* of that result into this
+file's own Part 4/Part 5 equations, reusing this file's own already-computed
+quantities directly wherever possible rather than re-running P59's heavier
+machinery. This file's shared `ρ̄`/`δρ` symbols **are** `ρ̄_A`/`δρ_A` in
+P59's more precise later naming — established already by `FINDING_P58`'s
+own retraction (Addendum #3 above), not asserted new here.
+
+**Why Part 4/Part 5 need superseding, not just citing:** both equations
+above assumed the closure `∇_μ[T_φ+T_m(ρ̄)]=0` applies to `T_m` built
+*directly* from `ρ̄` (bare, per `FINDING_P58`). But `FINDING_P33` already
+establishes `ρ_phys=ρ̄(1-ĝφ̄)` is the *actual* physical, gravitating mass
+density — the physically meaningful closure is on `T_m(ρ_phys)`, not
+`T_m(ρ̄)` directly. `FINDING_P59` tested exactly this (Route B) and found
+the corrected forms below.
+
+**[Corrected continuity, `ν=0`]** — self-contained proof, reusing Part 4's
+own already-computed `div_Tm_0` (`T_m(ρ̄)`'s own divergence): `div_Tm_0`
+contains **no `ĝ` at all** (`T_m`'s kinematic construction never used `ĝ`
+— already implicit in Part 4's own `ĝ=0` check, since that check left
+`div_Tm_0` itself unchanged). Verified directly:
+`div_Tm_0 (general) == ρ̄∂_xV_x+δρ̇+3Hδρ`, `ĝ`-independent, confirmed by
+sympy assertion, not inferred.
+
+`FINDING_P59`'s own Route-B comparison (not reproduced here — requires the
+`ρ_phys` tensor construction, absent from this file) shows
+`[div_Tm_0(ρ_phys)-Q⁰_A]`, on `ρ̄`'s own on-shell relation, factors *exactly*
+as `(1-ĝφ̄)·div_Tm_0(ρ̄)` — i.e. `(1-ĝφ̄)` times this file's own `div_Tm_0`,
+just shown `ĝ`-independent above. Since `(1-ĝφ̄)` is generically nonzero,
+the *physical* closure (on `T_m(ρ_phys)`, not `T_m(ρ̄)`) forces
+`div_Tm_0(ρ̄)=0` — **not** `div_Tm_0(ρ̄)=Q⁰` as Part 4 above assumed. Part
+4's original closure equation is thus **superseded** (not merely
+re-derived in a different variable) by:
+
+```
+ρ̄∂_xV_x + δρ̇ + 3Hδρ = 0      [SIMPLE, UNCOUPLED, no ĝ-source at all]
+```
+
+matching `FINDING_P59`'s own `ν=0` result exactly.
+
+**[Corrected Euler, `ν=1`, `W`-variable]** — Part 5 above's `V_x`-form is
+**relabeled Route-A-only** (an exact statement, but valid only if `T_m` is
+built directly from `ρ̄`, not the physically relevant closure). Addendum
+#3's own already-established on-shell reduction (`div_Tm_1`, using `ρ̄`'s
+uncoupled relation, divided by `ρ̄`) is exactly `V̇_x+2HV_x` — reused
+directly, not recomputed, and re-verified here: `div_Tm_1` (on-shell)
+`== ρ̄(V̇_x+2HV_x)`, matching Addendum #3's own reduction exactly.
+
+`FINDING_P59`'s own Route-B comparison (not reproduced here, same reason
+as `ν=0`) found this quantity does **not** simply factor out of
+`[div_Tm_1(ρ_phys)-Q¹_A]` the way `div_Tm_0` did for `ν=0` — a genuine
+extra term survives in the raw `V_x` variable. The exact corrected form,
+in `W_x:=(1-ĝφ̄)V_x` (`=ρ_phys·V_x/ρ̄`, momentum-per-bare-mass —
+`FINDING_P59` Part 4-5):
+
+```
+Ẇ_x + 2HW_x = ĝ∂_xδφ/a²
+```
+
+**Consistency check available from this file's own quantities:** the RHS
+above must equal `Q¹/ρ̄` (Part 2's own already-verified `Q¹`, already shown
+to cancel `ρ̄` exactly earlier in this file's own Addendum #3) — verified,
+confirmed exactly. The LHS's own `W_x`-rescaling derivation (*why* the
+`1/(1-ĝφ̄)` factor cancels) is `FINDING_P59`'s own Part 5 result, **not**
+re-derived here — it requires the `ρ_phys` tensor construction only P59
+performs; re-running that machinery here would duplicate P59's own
+already-skeptic-reviewed work for no new epistemic content.
+
+**Pre-answered skeptic concerns** (per the Falsification Ladder's own
+`SKEPTIC-PRE-ANSWERED` shortcut — this addendum is propagation of
+`FINDING_P59`'s own already-skeptic-reviewed result into P56's own
+equations, not new tensor algebra; both checks above are genuine, reused
+directly from this file's own already-computed `div_Tm_0`/`div_Tm_1`/`Q¹`,
+not asserted):
+
+1. `ρ̄`/`δρ` here `=` `ρ̄_A`/`δρ_A` in P59's naming — established by
+   `FINDING_P58`'s own retraction, not new here.
+2. Part 4/Part 5's *original* equations are not "wrong" on their own
+   premise (`T_m` built directly from `ρ̄`) — relabeled Route-A-only,
+   superseded for physical/downstream use by the corrected forms above,
+   matching `FINDING_P59`'s own Verdict wording exactly ("correct only if
+   `T_m` is built from `ρ_A` directly").
+3. No double-counting risk: only the corrected (`ρ_phys`-closure) forms
+   above should be used downstream (e.g. `FINDING_P50A`'s Poisson
+   relation) — stated explicitly here, not left ambiguous.
 
 ## Skeptic Verdict (Step 8a, context-blind — claim.md + code only, no session history)
 
