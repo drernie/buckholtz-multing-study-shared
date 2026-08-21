@@ -90,6 +90,41 @@ the `V=0` truncation."* P69 established that by removing the truncation on one
 axis; P81 arrives at the same wall from a systematic two-parameter scan that was
 not built to look for it. **A second route to a standing result, not a new one.**
 
+> #### ⚠ NARROWED BY `FINDING_P83` — the wall is **initial-condition dependent**
+>
+> P83 re-ran this edge under the `φ̄̇(1)` lever and the classification **flips**:
+>
+> | lever | `λ=0` at `ĝ=0.75` | kinetic fraction |
+> |---|---|---|
+> | ×0.1 | **viable** | 0.056 % |
+> | ×0.25 | **viable** | 0.349 % |
+> | ×0.5 | **viable** | 1.38 % |
+> | ×1 | not viable | 5.31 % |
+> | ×2 | not viable | 18.3 % |
+> | ×4 | not viable | 47.3 % |
+>
+> The flip sits **between ×0.5 and ×1, inside the matter-dominated range**, so it
+> is not a change of cosmological regime.
+>
+> **But the flip is far less dramatic than it looks, and the first version of
+> this note over-read it.** P83's boundary function gives
+> `ĝ_crit(λ=0) = 0.776737 → 0.738209` from `×0.1` to `×1` — the boundary moves
+> **~5 %** across a ten-fold lever change. The cell above flips only because
+> `ĝ = 0.75` happens to sit within a few percent of `ĝ_crit ≈ 0.76`. **A grid
+> point on a knife edge, not a wall on wheels.**
+>
+> **What this corrects:** the sentence above reads as though `V=0` is fatal at
+> `ĝ ≥ 0.75` full stop. It is fatal there **only when the scalar's initial
+> velocity is large enough** — and the `ĝ` at which that switches over is itself
+> stable to ~5 %. `V=0` alone is not the killer; `V=0` *together with* sufficient
+> `φ̄̇(1)` is.
+>
+> **What this does NOT do** (Gate 1 — a verdict on one artifact does not transfer
+> to another): it does not refute or narrow `FINDING_P69` itself. P69 worked at
+> the P65–P68 arc's own parameters, not at `(ĝ, λ) = (0.75, 0)`. Testing P69's
+> claim under its own settings was **not done here**, and no such claim is made.
+> What is narrowed is **this file's wording**, which over-generalised.
+
 ### What *is* new: the `ĝ` boundary
 
 P69 never scanned `ĝ`. P81 locates a second edge: at small `λ`, the completion

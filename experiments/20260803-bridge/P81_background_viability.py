@@ -90,7 +90,7 @@ def background_rhs(g_hat, lam):
     return rhs
 
 
-def viability(g_hat, lam, n_probe=3000):
+def viability(g_hat, lam, n_probe=3000, phidot0=None):
     """Return the four predicate quantities, or a NAMED non-viable / unresolved state.
 
     THREE outcomes, not two -- this is the Substrate Gate rule applied to a scan.
@@ -102,6 +102,13 @@ def viability(g_hat, lam, n_probe=3000):
 
     Every quantity is measured on the SAME trajectory over the SAME span, so a
     point that genuinely fails does so for a named reason.
+
+    # phidot0 was added for FINDING_P83, which asks whether this predicate's
+    # boundary is a property of the completion or of the initial data. It is
+    # threaded in HERE rather than reimplemented there on purpose: two copies
+    # of a predicate drift, and then P83 would be measuring the movement of a
+    # boundary P81 never had. Default None reproduces P81 exactly -- asserted,
+    # not assumed, in P83's control C0.
     """
     a0 = A3_INIT ** (1.0 / 3.0)
     with np.errstate(all="ignore"):  # overflow IS the signal here, not a bug
@@ -109,7 +116,7 @@ def viability(g_hat, lam, n_probe=3000):
             s = solve_ivp(
                 background_rhs(g_hat, lam),
                 (T0, T_END),
-                [a0, 0.0, PHIDOT],
+                [a0, 0.0, PHIDOT if phidot0 is None else phidot0],
                 rtol=1e-10,
                 atol=1e-22,
                 dense_output=True,
