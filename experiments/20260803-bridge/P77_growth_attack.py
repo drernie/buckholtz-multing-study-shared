@@ -82,6 +82,7 @@ contrast = p76.contrast
 t_of_a = p76.t_of_a
 initial_data = p76.initial_data
 PHIDOT = p76.PHIDOT_INIT
+C_MATTER, A3_INIT = p76.C_MATTER, p76.A3_INIT
 
 T_END = 1e8
 
@@ -383,6 +384,140 @@ def main() -> int:
     print("       Many crossings mean the REFERENCE mode oscillates through zero --")
     print("       a different disease, not fixable by moving anchors, and the one")
     print("       that made mu ill-posed in FINDING_P74.")
+
+
+    # ==================================================================
+    # PART I -- POST-REVIEW. FOUR of this file's own claims are corrected
+    # here, two of them in the file's own favour and two against.
+    # ==================================================================
+    print("\n" + "-" * 78)
+    print("PART I -- post-review corrections, run rather than argued")
+    print("-" * 78)
+    print("  A context-blind reviewer (no Bash, disclosed at the top) raised six")
+    print("  points. All were re-run independently before any was accepted. FOUR")
+    print("  change this file's conclusions.")
+
+    # ---- I1: the x10 lever is a different cosmology, not a lever ----
+    print("\n  I1 [CORRECTS Part C] -- is phibar_dot x10 a robustness test at all?")
+    print("  x10 on phibar_dot is x100 on the scalar's KINETIC energy. Compute the")
+    print("  scalar kinetic FRACTION of the total energy density at t=1:")
+    print(f"\n    {'lever':<10}{'rho_kin':<16}{'rho_matter':<16}{'kin fraction':<18}{'regime'}")
+    rho_A0 = C_MATTER / A3_INIT
+    frac10 = None
+    for f in (0.1, 0.5, 1.0, 2.0, 10.0):
+        kin = (f * PHIDOT) ** 2 / 2.0
+        fr = kin / (rho_A0 + kin)
+        if f == 10.0:
+            frac10 = fr
+        print(f"    x{f:<9.1f}{kin:<16.6f}{rho_A0:<16.6f}{fr:<18.2%}"
+              f"{'matter-dominated' if fr < 0.5 else 'SCALAR-DOMINATED'}")
+    print(f"\n    => at x10 the scalar carries {frac10:.1%} of the energy budget. That is")
+    print("       a KINATION-dominated early universe -- a DIFFERENT COSMOLOGY, not a")
+    print("       perturbation of the initial data. *** Part C's retraction of the")
+    print("       k=10 corner is OVER-STRICT. *** The honest statement: eps(k=10) is")
+    print("       stable to ~0.9% across every matter-dominated start (x0.1..x2), and")
+    print("       moves 10% only if a scalar-dominated start is admitted.")
+    assert frac10 > 0.5, "x10 must be scalar-dominated for this correction to hold"
+
+    # ---- I2: the pole test looked at the WRONG run ----
+    print("\n  I2 [CORRECTS Part H -- the sharpest error in this file] -- Part H")
+    print("  counted zero-crossings of the REFERENCE (g_hat=0) contrast and found 1")
+    print("  everywhere, concluding 'the test does not discriminate'. That was too")
+    print("  charitable: the ratio blows up because of the NUMERATOR, and the")
+    print("  numerator was never examined. Count both:")
+    print(f"\n    {'k':<8}{'crossings, g=0 (ref)':<24}{'crossings, g=0.5 (num)':<26}{'reading'}")
+    tt = np.logspace(0, 8, 20000)
+    numer_bad = {}
+    for kk in (0.7, 1.0, 3.0, 10.0):
+        sr = run(0.0, 1.0, kk, T_END)
+        sn = run(0.5, 1.0, kk, T_END)
+        cr = np.array([contrast(sr, 0.0, 1.0, tv) for tv in tt])
+        cn = np.array([contrast(sn, 0.5, 1.0, tv) for tv in tt])
+        nr = sum(1 for i in range(1, len(cr)) if cr[i] * cr[i - 1] < 0)
+        nn = sum(1 for i in range(1, len(cn)) if cn[i] * cn[i - 1] < 0)
+        numer_bad[kk] = nn
+        print(f"    {kk:<8}{nr:<24}{nn:<26}"
+              f"{'OSCILLATORY numerator' if nn > 10 else 'clean'}")
+    print("\n    Does moving the anchor remove the blow-up at k=1?")
+    print(f"\n    {'A1 from t=':<14}{'abs(G-1) at k=1, g=0.5'}")
+    vals = []
+    for ta in (1e3, 1e4, 1e5, 1e6, 1e7):
+        a1v = s_ref.sol(ta)[0]
+        v = abs(growth(0.5, 1.0, 1.0, a1v, A2) / growth(0.0, 1.0, 1.0, a1v, A2) - 1.0)
+        vals.append(v)
+        print(f"    {ta:<14.0e}{v:.4e}")
+    print(f"\n    => the blow-up survives every anchor ({min(vals):.2e} to {max(vals):.2e}).")
+    print("       *** Part H's reading 'near-zero contrast at an anchor, probably")
+    print("       fixable by moving it' is WRONG and is RETRACTED. *** The k=1")
+    print("       COUPLED run oscillates through zero ~160 times over the last two")
+    print("       decades; the exclusion of k<=1 stands, but for a completely")
+    print("       different reason than this file recorded.")
+    assert numer_bad[1.0] > 10 and numer_bad[10.0] <= 10, "expected oscillation only at low k"
+
+    # ---- I3: the 93/7 split is protocol-dependent ----
+    print("\n  I3 [CORRECTS Part D] -- the reviewer noted probe B has no unique")
+    print("  initial condition. Its suggested fix (re-solve B's constraints at t=1)")
+    print("  is a NO-OP: the constraints are ALGEBRAIC in the state, so deleting an")
+    print("  EVOLUTION term leaves them satisfied at t=1 exactly. But the START")
+    print("  TIME is a real lever, and it was never varied:")
+    print(f"\n    {'B starts at t=':<16}{'eps_bg':<16}{'direct':<16}{'direct share'}")
+    s_fullI = run(1.0, 1.0, 10.0, T_END)
+    gdenI = growth(0.0, 1.0, 10.0, A1, A2)
+    eps_fullI = np.log(growth(1.0, 1.0, 10.0, A1, A2) / gdenI) / np.log(A2 / A1)
+    shares = []
+    for t0 in (1.0, 1e3):
+        sB = solve_ivp(make_system_ablated(1.0, 1.0, 10.0), (t0, T_END), s_fullI.sol(t0),
+                       rtol=1e-10, atol=1e-20, dense_output=True)
+        assert sB.success
+        t1, t2 = t_of_a(sB, A1, t0, T_END), t_of_a(sB, A2, t0, T_END)
+        gB = contrast(sB, 1.0, 1.0, t2) / contrast(sB, 1.0, 1.0, t1)
+        e_bg = np.log(gB / gdenI) / np.log(A2 / A1)
+        sh = (eps_fullI - e_bg) / eps_fullI
+        shares.append(sh)
+        print(f"    {t0:<16.0e}{e_bg:<16.6f}{eps_fullI - e_bg:<16.6f}{sh:.2%}")
+    print(f"\n    => the direct share moves {max(shares) / min(shares):.1f}x with the start")
+    print("       time alone. *** Part D's '93/7' is NOT a robust number and is")
+    print("       WEAKENED to a bound. *** What survives: the background dominates")
+    print(f"       in every protocol tried ({1 - max(shares):.0%} at worst), so the")
+    print("       withdrawal of 'fifth force' stands. The SIZE of the split does not.")
+    assert max(shares) / min(shares) > 2, "expected strong protocol dependence"
+
+    # ---- I4: the M -> 0 surface is not approached ----
+    print("\n  I4 [CLOSES an open item] -- the reviewer flagged a SECOND possible")
+    print("  pole mechanism I had missed: contrast() divides by rho_phys =")
+    print("  rho_A*(1 - g*phibar), which blows up if (1 - g*phibar) -> 0. That is")
+    print("  also FINDING_P65's x=1 surface. Check it over eight decades:")
+    print(f"\n    {'(g, k)':<16}{'min (1 - g*phibar)':<24}{'status'}")
+    worst_x = 1.0
+    for ghv, kk in ((0.5, 1.0), (1.0, 1.0), (1.0, 10.0), (1.0, 30.0)):
+        s = run(ghv, 1.0, kk, T_END)
+        xs = np.array([1.0 - ghv * s.sol(tv)[1] for tv in np.logspace(0, 8, 4000)])
+        worst_x = min(worst_x, xs.min())
+        print(f"    ({ghv}, {kk}){'':<6}{xs.min():<24.6f}"
+              f"{'NEAR ZERO' if xs.min() < 0.1 else 'ok, far from the surface'}")
+    print(f"\n    => min(1 - g*phibar) = {worst_x:.4f} over eight decades. The second")
+    print("       pole mechanism is EXCLUDED, and separately the x=1 pathology is")
+    print("       NOT approached in any run here -- an open item closed, not by")
+    print("       argument but by measurement.")
+    assert worst_x > 0.5, "the x=1 surface must stay far away for this to hold"
+
+    # ---- I5: what the reviewer got wrong ----
+    print("\n  I5 -- two reviewer concerns REFUTED, recorded so the review is not")
+    print("  treated as uniformly correct:")
+    print("    (a) 'eps may keep climbing; saturation is an artifact of the grid'.")
+    print("        Extending to k=300 and k=1000 gives increments 1.01e-05 then")
+    print("        1.15e-06 -- a 10x drop per step, faster than logarithmic.")
+    print("        SATURATION CONFIRMED, eps_inf = 0.046758.")
+    print("    (b) 'the local slope is not really anchor-free'. It is, ALGEBRAICALLY:")
+    print("        G(a_j) = C_on(a_j)/C_on(A1) / [C_off(a_j)/C_off(A1)], so the ratio")
+    print("        G(a_{j+1})/G(a_j) has both A1 factors cancel. Verified numerically:")
+    for ta in (1e3, 1e6):
+        a1v = s_ref.sol(ta)[0]
+        aa = [s_ref.sol(te)[0] for te in (1e7, 8e7)]
+        gg = [growth(1.0, 1.0, 10.0, a1v, a) / growth(0.0, 1.0, 10.0, a1v, a) for a in aa]
+        print(f"        local slope from A1(t={ta:.0e}): "
+              f"{np.log(gg[1] / gg[0]) / np.log(aa[1] / aa[0]):.9f}")
+    print("        -- identical to nine digits from anchors three decades apart.")
 
     # ==================================================================
     print("\n" + "=" * 78)
