@@ -44,6 +44,26 @@ it would manufacture precision that does not exist.
 
 ---
 
+> ### ⚠ NOTE FILED BY `FINDING_P86` — the `min_M` column for **failing** points
+>
+> P86 added a **terminal event** to `viability()` that stops integration once
+> `1−ĝφ̄` reaches `−1`, because everything past that is the solver fighting a
+> runaway the predicate has already rejected (`FLOOR` is `0.1`).
+>
+> **Nothing in this file's verdict changes.** Viable points never reach `M = −1`
+> and take a bitwise-identical code path; the `ok` flag is unchanged everywhere.
+> P86C validated this against P83's located boundary, which came back
+> `2.751767` — relative difference `1.764e-07`.
+>
+> **What does change:** for *non-viable* points the reported `min(1−ĝφ̄)` is now
+> the value **at the stop** (`−1`), not the global minimum over the span. So the
+> figures `−7.9e+04`, `−5.5e+09`, `−1.9e+13` quoted below are **no longer
+> reproducible by the current code** — they were correct when measured and are
+> kept as the record of that run.
+>
+> **One gain:** `(2, 0)`, listed below as UNRESOLVED, is now **measured** and
+> non-viable — `M` reaches `−1` at `t = 153.9`.
+
 ## The Substrate Gate applied to a scan — **three** outcomes, not two
 
 The first run marked `(2, 0)` and `(5, 0)` as **non-viable** because the

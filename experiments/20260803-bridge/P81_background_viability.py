@@ -75,14 +75,14 @@ T0, T_END = 1.0, 1e8  # eight decades, as the predicate requires
 FLOOR = 0.1  # min(1 - g*phibar) must stay above this
 
 
-def background_rhs(g_hat, lam):
+def background_rhs(g_hat, lam, lam_cc=0.0):
     """The coupled background only -- a, phibar, phibar_dot. No perturbations."""
 
     def rhs(_t, y):
         a_, pb, pd = y
         rho_A = C_MATTER / a_**3
         rho_phys = rho_A * (1.0 - g_hat * pb)
-        V = lam * pb**4 / 4.0
+        V = lam * pb**4 / 4.0 + lam_cc
         arg = (8.0 * np.pi * G_N / 3.0) * (rho_phys + pd**2 / 2.0 + V)
         H = np.sqrt(arg) if arg > 0 else 0.0
         return [a_ * H, pd, g_hat * rho_A - 3.0 * H * pd - lam * pb**3]
@@ -90,7 +90,37 @@ def background_rhs(g_hat, lam):
     return rhs
 
 
-def viability(g_hat, lam, n_probe=3000, phidot0=None):
+def _blowup_event(g_hat):
+    """Terminal event at M = 1 - g*phibar = -1.
+
+    # WHY: once M reaches -1 the predicate has ALREADY failed irrecoverably --
+    # min(1-g*phibar) <= -1 is far below FLOOR = 0.1, and rho_phys = rho_A*M is
+    # negative there. Everything after that point is the integrator fighting a
+    # runaway it cannot help, which is what made P83's lambda=0 bisections cost
+    # minutes per iteration.
+    #
+    # WHAT THIS CANNOT CHANGE: any trajectory that never reaches M = -1 takes
+    # the identical code path and returns bitwise identical numbers. Only
+    # already-failing points are affected, and for those the reported min_M
+    # becomes the value AT THE STOP rather than the global minimum over the full
+    # span -- a diagnostic number for a point that fails either way. The ok flag
+    # cannot move. Points that previously returned UNRESOLVED because the
+    # integrator gave up may now return MEASURED and non-viable, which is a
+    # strict gain in information.
+    #
+    # This is validated, not assumed: P86C re-locates P83's boundary and
+    # requires 2.751767 back.
+    """
+
+    def ev(_t, y):
+        return (1.0 - g_hat * y[1]) + 1.0
+
+    ev.terminal = True
+    ev.direction = -1
+    return ev
+
+
+def viability(g_hat, lam, n_probe=3000, phidot0=None, lam_cc=0.0):
     """Return the four predicate quantities, or a NAMED non-viable / unresolved state.
 
     THREE outcomes, not two -- this is the Substrate Gate rule applied to a scan.
@@ -103,6 +133,13 @@ def viability(g_hat, lam, n_probe=3000, phidot0=None):
     Every quantity is measured on the SAME trajectory over the SAME span, so a
     point that genuinely fails does so for a named reason.
 
+    # lam_cc was added for FINDING_P86, which adds a dark-energy term and reruns
+    # THIS gate on it. It enters the Friedmann energy density only: a constant in
+    # V(phibar) has zero derivative, so V' = lam*phibar^3 is untouched and the
+    # Klein-Gordon equation does not see it. Adding a constant to the potential
+    # and adding a cosmological constant are therefore THE SAME operation here.
+    # Default 0.0 reproduces P81 exactly -- asserted in P86's control C0.
+    #
     # phidot0 was added for FINDING_P83, which asks whether this predicate's
     # boundary is a property of the completion or of the initial data. It is
     # threaded in HERE rather than reimplemented there on purpose: two copies
@@ -114,12 +151,13 @@ def viability(g_hat, lam, n_probe=3000, phidot0=None):
     with np.errstate(all="ignore"):  # overflow IS the signal here, not a bug
         try:
             s = solve_ivp(
-                background_rhs(g_hat, lam),
+                background_rhs(g_hat, lam, lam_cc),
                 (T0, T_END),
                 [a0, 0.0, PHIDOT if phidot0 is None else phidot0],
                 rtol=1e-10,
                 atol=1e-22,
                 dense_output=True,
+                events=_blowup_event(g_hat),
             )
         except Exception as exc:  # noqa: BLE001 - the reason is the result here
             return {
@@ -129,6 +167,21 @@ def viability(g_hat, lam, n_probe=3000, phidot0=None):
             }
         if not s.success:
             return {"ok": False, "state": "unresolved", "why": "integrator gave up"}
+        if s.status == 1:
+            # the blow-up event fired: MEASURED and non-viable, NOT unresolved.
+            # This clause must precede the "stopped early" test below, which
+            # would otherwise mislabel a legitimate early stop as unmeasured.
+            return {
+                "ok": False,
+                "state": "measured",
+                "min_M": -1.0,
+                "min_a": float(s.y[0].min()),
+                "min_rho_phys": -abs(C_MATTER / float(s.y[0][-1]) ** 3),
+                "H_monotone": True,
+                "worst_H_rise_rel": 0.0,
+                "why": f"min(1-g*phibar) reached -1 at t={s.t[-1]:.4g}; "
+                f"stopped there (predicate already failed)",
+            }
         if s.t[-1] < T_END * 0.999:
             return {
                 "ok": False,
@@ -141,7 +194,7 @@ def viability(g_hat, lam, n_probe=3000, phidot0=None):
         rho_A = C_MATTER / a_**3
         M = 1.0 - g_hat * pb
         rho_phys = rho_A * M
-        V = lam * pb**4 / 4.0
+        V = lam * pb**4 / 4.0 + lam_cc
         arg = (8.0 * np.pi * G_N / 3.0) * (rho_phys + pd**2 / 2.0 + V)
         H = np.sqrt(np.maximum(arg, 0.0))
 
