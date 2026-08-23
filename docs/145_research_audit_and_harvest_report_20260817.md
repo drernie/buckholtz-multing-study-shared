@@ -308,83 +308,105 @@ skeptic'ом, P129's overclaim пойман skeptic'ом снова (друго�
 
 ---
 
-## Часть 6 — Update, 2026-08-24: P132-P138, все 3 bottleneck'а получили
-## вердикт, round-2 strategic arbiter закрыт
+## Часть 6 — Round-2 bottleneck campaign closure (2026-08-24)
 
-**Что произошло между 2026-08-23 и 2026-08-24.** После housekeeping-паузы
-(докс/145 Часть 5 → docs/146 → docs/147 → activeContext trim → pearl_registry
-unification, все 2026-08-23) кампания прошла полный `/hypothesis-arbiter`
-цикл (round 1) среди 3 санкционированных bottleneck'ов `docs/147`, затем
-исполнила выбранное направление, затем прошла ВТОРОЙ, более глубокий
-`/hypothesis-arbiter` цикл (round 2) уже с обновлёнными вердиктами всех
-трёх bottleneck'ов, и наконец `/gate-check`, который дал STOP на дальнейшую
-физику и рекомендовал именно эту синтез-запись.
+### Цель
 
-**Round-1 arbiter → H4 (DESI-era литературный поиск) → P132.** Три
-независимых DESI-эры (2024-2026) growth-rate/modified-gravity источника,
-структурно сверенных ДО численного сравнения (μ(a,k)=1↔GR подтверждено
-эквивалентным Q=1 Bean&Tangmatitham через прямой WebFetch их eq.3.2/eq.6):
-все ~40-50× слабее существующего потолка `Ag²≤8.39e-12`. **NULL RESULT**,
-закрывает флагированный gap P31 честно, не оставляет его открытым
-бесконечно.
+После первого strategic arbiter и housekeeping-паузы были повторно атакованы
+оставшиеся bottleneck'и bridge-to-observables кампании. Целью было не
+"продолжить вычисления", а определить, появился ли хотя бы один новый
+различающий механизм, оправдывающий reopening ранее заблокированных веток.
 
-**P133 — формальный Identifiability Audit, bottleneck 3 закрыт структурным
-вердиктом.** θ=(A,g,κ), Jacobian rank=2<3 доказано символьно (sympy exact,
-positive-control-tested, два независимых метода согласны). Точное тождество
-`O2=O1·O3²` найдено — кандидат-связь `FINDING_P24`'s η=κ/g не спасает
-идентифицируемость, вырождена алгебраически, не по совпадению. Вердикт:
-**`H3-NOT-IDENTIFIABLE-AS-CURRENTLY-POSED`** (BLOCKED, не REFUTED) —
-переиспользуемый критерий дан для любого будущего observable
-(exponent-vector independence test).
+### Итог по bottleneck'ам
 
-**P134 — синтез bottleneck 2, с самокоррекцией.** Первая гипотеза («уже
-есть сигнал в сторону underdetermination») оказалась НЕВЕРНОЙ — `P122`'s
-«MODEL-AMBIGUOUS» про другой вопрос (амплитудная ветка, не completion
-uniqueness), пойман по методу «прочитай содержание, не заголовок» ДО
-записи вердикта. Реальный синтез `P74`-`P79`: `P75` доказал
-completion-blindness только структурного слоя (узко), `P78`'s кажущийся
-сигнал отозван `P79` (3 из 5 gate-проверок, IC-artifact, явно НЕ evidence
-degeneracy). Вердикт: **`BOTTLENECK-2-GENUINELY-OPEN`** — ни уникальность,
-ни underdetermination не установлены.
+1. External / bridge bottleneck:
+   остаётся BLOCKED. Нового внешнего факта, который разрешал бы переоткрыть
+   уже исчерпанную прямую F→H_MULT(z) линию, не появилось.
 
-**Round-2 arbiter → H1 (P135+P136, механизм) и H3 (P137, литература) →
-оба вернулись null.** P135: гипотеза «pole at anchor» (`FINDING_P76`)
-опровергнута количественно, positive-control-tested (первая версия метрики
-сама провалила control, поймано и исправлено до вывода). P136: гипотеза
-«накопленная чувствительность через ранний транзиент» тоже опровергнута —
-`docs/147`'s REDIRECT-правило сработало (2 последовательных kill'а без
-нового механизма). P137: 2 прицельных литературных запроса для 4-й связи
-bottleneck 3 (fifth-force UV-complete scalar-tensor, string-theory
-quintessence normalization) — оба структурно проверены ДО числового
-сравнения, ни один не подошёл. **NULL RESULT**, соответствует низкому
-ожидаемому yield самого arbiter'а.
+2. IC-robust observable / IC-sensitivity bottleneck:
+   остаётся GENUINELY OPEN.
 
-**H2 (design IC-robust observable) — 3-я попытка, design-limited.** P138:
-horizon-crossing-relative anchoring спроектирован (per-k re-anchoring на
-e-folds после `k=a·H`), но санити-чек показал: только k=1 пересекает
-горизонт ВНУТРИ численного домена `[1,T_END]` — k=2,3,10 уже все под
-горизонтом на старте интегрирования (`aH(1)≈1.84`). Основной тест не мог
-запуститься как спроектирован для 3 из 4 k. Честно зафиксировано как
-`DESIGN-LIMITED, STOP AND REPORT`, не как физический вердикт в любую
-сторону.
+   Три конкретных механизма/дизайна были проверены:
 
-**`/gate-check` (2026-08-24) → STOP.** Три content-полных попытки H2
-подряд в одной сессии без прорыва — момент, где "momentum ≠ правильное
-направление" фильтр сработал явно. Рекомендация: синтезировать эту часть,
-не открывать 4-ю попытку без явного нового содержательного предложения
-пользователя или его согласия продолжать со знанием паттерна.
+   - P135: pole-based explanation — REFUTED.
+   - P136: early-transient-amplitude explanation — REFUTED.
+   - P138: horizon-relative anchor — DESIGN-LIMITED.
 
-**Итоговое состояние всех трёх bottleneck'ов на 2026-08-24:**
+   P138 установил:
+       aH(t=1) ≈ 1.84
 
-| Bottleneck | Статус | Что могло бы его переоткрыть |
-|---|---|---|
-| 1. F→H_MULT(z) | BLOCKED | Ответ TJB (k_A(z)/r_A(z)/D_cAB(z)) или новая публикация |
-| 2. Unique completion | GENUINELY OPEN, 3 механизма исключены (pole, early-transient, horizon-crossing-in-domain) | Генуинно новая гипотеза механизма ИЛИ реальный дизайн observable без известного механизма |
-| 3. Absolute scale | STRUCTURALLY BLOCKED (proven degeneracy) | Non-monomial observable, exponent-independent O4, или теоретически зафиксированное A — критерий в P133 |
+   и поэтому внутри доступного численного диапазона полноценное horizon
+   crossing имеется только для k=1. Уже при старте:
 
-**Round-2 strategic arbiter workstream закрыт этой записью.** Полный
-список: P132-P138 (7 шагов), 3 docs-коррекции (docs/147 bottleneck
-wording), activeContext обновлён построчно по каждому шагу.
+       k/aH(1):
+       k=1  -> 0.54
+       k=2  -> 1.09
+       k=3  -> 1.63
+       k=10 -> 5.43
+
+   Следовательно k=2,3,10 уже sub-horizon при t=1, и предложенная схема
+   "измерять observable через фиксированное число e-folds после crossing"
+   не может быть симметрично применена ко всем четырём модам.
+
+   Наблюдаемое соответствие между k/aH(1) и порядком IC-чувствительности
+   остаётся только наводящим наблюдением; механизм не установлен.
+
+3. Structural-normalization bottleneck:
+   остаётся STRUCTURALLY BLOCKED. Нового независимого relation, снимающего
+   идентификационную недоопределённость, в этом раунде не получено.
+
+4. P137:
+   отдельная проверенная ветка вернула NULL; она не создала нового основания
+   для reopening заблокированных направлений.
+
+### Что исключено
+
+Round-2 не установил механизм IC-чувствительности, но сузил пространство
+кандидатов: pole, simple early-transient amplitude и straightforward
+horizon-crossing anchoring больше не являются поддержанными объяснениями
+в проверенной постановке.
+
+Это отрицательный, но различающий результат.
+
+### Gate verdict
+
+STOP / SYNTHESIZE.
+
+Три последовательные попытки на одном IC-observable bottleneck не дали
+нового механизма, причём третья оказалась design-limited ещё до полноценного
+physics test. Продолжение четвёртой incremental-попыткой создаёт высокий
+Ruling-Theory / momentum risk.
+
+Backward extrapolation of aH(t) to t<1 PARKED, not rejected.
+Причина: потенциально проверяемо, но требует экстраполяции за
+верифицированный численный домен и пока не имеет достаточного ожидаемого
+information gain.
+
+### Reopen conditions
+
+Round-2 reopening разрешается только при хотя бы одном из условий:
+
+- появляется новый механизм IC-чувствительности, не эквивалентный
+  pole / early-transient / horizon-anchor гипотезам;
+- появляется новый внешний VERIFIED-REAL факт, меняющий один из
+  заблокированных bottleneck'ов;
+- появляется принципиально новый observable/estimand с заранее
+  определённой construct-validity связью с claim;
+- пользователь явно санкционирует exploratory fourth attempt с пониманием
+  текущего diminishing-return риска.
+
+Иначе новые P-скрипты по этой линии не запускать.
+
+### Workstream verdict
+
+[WS: round-2-strategic-arbiter] CLOSED
+
+Эпистемический итог:
+- два bottleneck'а закрыты/заблокированы на текущем information set;
+- один bottleneck остаётся genuinely open;
+- три конкретных объяснения/дизайна для него исключены или оказались
+  нетестируемыми в текущем домене;
+- нового PROMOTE-tier physics claim этот раунд не дал.
 
 ---
 
