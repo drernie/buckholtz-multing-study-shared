@@ -101,10 +101,15 @@ literature/buckholtz_preprint_v6.md
 literature/mech_q*.json
 literature/related_work_IDM.md
 
-# Claude internal state (auto-generated)
+# Claude internal state (auto-generated). Anchored root-level entries kept
+# for clarity; the recursive globs catch nested occurrences too (this has
+# now happened twice -- paper/.claude/ and experiments/20260803-bridge/.claude/
+# -- apparently whenever a hook runs with cwd set to a subdirectory).
 .claude/state/
 .claude/memory/_auto/
 paper/.claude/
+**/.claude/state/
+**/.claude/memory/_auto/
 
 # /graphify skill output cache (regenerable AST cache, not source)
 graphify-out/
