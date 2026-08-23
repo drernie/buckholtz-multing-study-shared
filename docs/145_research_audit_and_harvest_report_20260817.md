@@ -197,14 +197,15 @@ multivariate-регрессия с первого шага; (4) **pearl_registry
 
 ### Немедленно, дёшево (< 1 день каждое)
 
-1. **Консолидировать Eq.32-mechanism-hunt в одну `null_results`-запись**
-   с явным revival condition («только НЕ post-hoc конструкция с новым
-   независимо проверяемым предсказанием»). Закрывает zombie-риск №1.
-2. **Явно объявить или продлить P52's stop-rule** для bridge-кампании:
-   после двух true-kill подряд — либо явный переход к внешнему источнику
-   (как в P53), либо явная фиксация «underdetermination — легитимный
-   промежуточный итог» в PLAN_final_goal, а не молчаливое продолжение
-   P-шагов.
+1. ~~Консолидировать Eq.32-mechanism-hunt в одну `null_results`-запись~~
+   — **DONE** (уже была выполнена 2026-08-17, `null_results/20260817-
+   nr019-lie-group-numerology-eq32-mechanism-consolidated.md`, confirmed
+   при gate-check 2026-08-23). Zombie-риск №1 закрыт.
+2. ~~Явно объявить или продлить P52's stop-rule~~ — **DONE 2026-08-23**,
+   `docs/147_campaign_stop_rule.md` (GO/STOP/REDIRECT/PROMOTE критерии +
+   3 поимённых bottleneck'а + явный запрет продолжать уже закрытый
+   `[WS: derive-amplitude-mechanism]` без нового факта/механизма/
+   противоречия).
 3. ~~Собрать 11-категорийную таксономию failure-modes~~ — **DONE
    2026-08-23**, `docs/146_failure_mode_taxonomy.md` (11 категорий,
    независимый синтез общим агентом, spot-checked против исходников).
