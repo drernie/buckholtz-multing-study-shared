@@ -1,3 +1,16 @@
+> **[SUPERSEDED, 2026-08-23]** This plan's own status log stops at
+> "next planned step: P46" (2026-08-16). The campaign continued well
+> past that — P46-P59 (γ/μ/Σ derivation + ceiling synthesis, P53),
+> then the `[WS: bridge-to-observables]` arc (P93-P122), then the
+> amplitude-mechanism sub-arc (P127-P131, closed `VPP-ONLY-REFUTED`,
+> see `.claude/memory/activeContext.md`). **Do not treat this file's
+> own status log as current** — for the real state, read
+> `docs/145_research_audit_and_harvest_report_20260817.md` (updated
+> 2026-08-23, Часть 5) and `.claude/memory/activeContext.md`'s own
+> `## Auto-commit log`. Left in place, un-edited below, as the
+> historical record of what was planned and why (Hindsight Distortion
+> Gap Heuristic — don't silently rewrite an old plan to look current).
+
 # Plan — toward a minimal covariant completion of MULTING (or a proof of underdetermination)
 
 **Date:** 2026-08-14
