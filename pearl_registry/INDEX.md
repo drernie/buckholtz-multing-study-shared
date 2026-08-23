@@ -2,6 +2,44 @@
 # NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION
 # Entries added only after tool-verification of numbers.
 # [HARVEST-CANDIDATE R=X P=Y] → include in /harvest scan at project pause
+#
+# SCHEMA UNIFICATION (docs/145 item #6, 2026-08-23, docs/147 stop-rule
+# priority 3): this file's own 238 existing rows use a 7-column
+# structure (below) that predates and diverges from the GLOBAL Pearl
+# Registry protocol in `~/.claude/rules/falsification-ladder.md`, which
+# specifies 8 columns with an explicit `impact_score` (0-10) field
+# between `falsifiable_prediction` and `trigger_condition`. This file's
+# own local convention instead embeds an informal proxy,
+# `[HARVEST-CANDIDATE R=X P=Y]` (each 1-5), inside the `status` cell —
+# present on 104 of 238 rows; the other 134 (including this project's
+# own P100-P131 entries) have neither R/P nor impact_score.
+#
+# RESOLUTION, deliberately NOT a mass rewrite of the 238 existing rows:
+# 26 of them contain escaped pipes (`\|`, conditional-probability
+# notation like `r(x, y \| z)`) that a naive column-count-based rewrite
+# script would silently corrupt — the exact "big risky refactor on a
+# 484KB file" this item was ranked third and lowest-priority for. A
+# header-only documentation fix carries none of that risk:
+#   - CANONICAL MAPPING for existing rows: where `R=X P=Y` is present,
+#     treat `impact_score := R+P` (both 1-5, giving a 2-10 range that
+#     fits the global 0-10 scale) — this is the OFFICIAL retroactive
+#     interpretation for any future query/script needing impact_score
+#     from these rows, WITHOUT physically restructuring the table.
+#   - Rows with neither R/P nor impact_score: `impact_score = unscored`
+#     — not fabricated, not defaulted to 0 or a guess.
+#   - GOING FORWARD (any row added from 2026-08-23 onward): use the
+#     FULL global 8-column schema below, `impact_score` assigned at
+#     write time per falsification-ladder.md's own 0-10 criteria table,
+#     as its own explicit field — not a bracket tag in `status`.
+#   - LENGTH GUIDELINE, forward-only (docs/145's own recommendation,
+#     400-600 characters per entry, to keep this file a fast reference
+#     rather than a research log): applies to NEW rows only. Existing
+#     rows are NOT retroactively shortened — that would be lossy, and
+#     this project's own AMENDMENT-transparency discipline has favored
+#     completeness over brevity in every FINDING doc so far.
+#
+# CANONICAL SCHEMA for new rows (matches falsification-ladder.md exactly):
+# | date | source_experiment_id | observation | falsifiable_prediction | impact_score | trigger_condition | next_check | status |
 
 | date | source_experiment | observation | falsifiable_prediction | trigger_condition | next_check | status |
 |------|------------------|-------------|----------------------|-------------------|------------|--------|
