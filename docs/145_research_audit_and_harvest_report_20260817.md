@@ -308,6 +308,86 @@ skeptic'ом, P129's overclaim пойман skeptic'ом снова (друго�
 
 ---
 
+## Часть 6 — Update, 2026-08-24: P132-P138, все 3 bottleneck'а получили
+## вердикт, round-2 strategic arbiter закрыт
+
+**Что произошло между 2026-08-23 и 2026-08-24.** После housekeeping-паузы
+(докс/145 Часть 5 → docs/146 → docs/147 → activeContext trim → pearl_registry
+unification, все 2026-08-23) кампания прошла полный `/hypothesis-arbiter`
+цикл (round 1) среди 3 санкционированных bottleneck'ов `docs/147`, затем
+исполнила выбранное направление, затем прошла ВТОРОЙ, более глубокий
+`/hypothesis-arbiter` цикл (round 2) уже с обновлёнными вердиктами всех
+трёх bottleneck'ов, и наконец `/gate-check`, который дал STOP на дальнейшую
+физику и рекомендовал именно эту синтез-запись.
+
+**Round-1 arbiter → H4 (DESI-era литературный поиск) → P132.** Три
+независимых DESI-эры (2024-2026) growth-rate/modified-gravity источника,
+структурно сверенных ДО численного сравнения (μ(a,k)=1↔GR подтверждено
+эквивалентным Q=1 Bean&Tangmatitham через прямой WebFetch их eq.3.2/eq.6):
+все ~40-50× слабее существующего потолка `Ag²≤8.39e-12`. **NULL RESULT**,
+закрывает флагированный gap P31 честно, не оставляет его открытым
+бесконечно.
+
+**P133 — формальный Identifiability Audit, bottleneck 3 закрыт структурным
+вердиктом.** θ=(A,g,κ), Jacobian rank=2<3 доказано символьно (sympy exact,
+positive-control-tested, два независимых метода согласны). Точное тождество
+`O2=O1·O3²` найдено — кандидат-связь `FINDING_P24`'s η=κ/g не спасает
+идентифицируемость, вырождена алгебраически, не по совпадению. Вердикт:
+**`H3-NOT-IDENTIFIABLE-AS-CURRENTLY-POSED`** (BLOCKED, не REFUTED) —
+переиспользуемый критерий дан для любого будущего observable
+(exponent-vector independence test).
+
+**P134 — синтез bottleneck 2, с самокоррекцией.** Первая гипотеза («уже
+есть сигнал в сторону underdetermination») оказалась НЕВЕРНОЙ — `P122`'s
+«MODEL-AMBIGUOUS» про другой вопрос (амплитудная ветка, не completion
+uniqueness), пойман по методу «прочитай содержание, не заголовок» ДО
+записи вердикта. Реальный синтез `P74`-`P79`: `P75` доказал
+completion-blindness только структурного слоя (узко), `P78`'s кажущийся
+сигнал отозван `P79` (3 из 5 gate-проверок, IC-artifact, явно НЕ evidence
+degeneracy). Вердикт: **`BOTTLENECK-2-GENUINELY-OPEN`** — ни уникальность,
+ни underdetermination не установлены.
+
+**Round-2 arbiter → H1 (P135+P136, механизм) и H3 (P137, литература) →
+оба вернулись null.** P135: гипотеза «pole at anchor» (`FINDING_P76`)
+опровергнута количественно, positive-control-tested (первая версия метрики
+сама провалила control, поймано и исправлено до вывода). P136: гипотеза
+«накопленная чувствительность через ранний транзиент» тоже опровергнута —
+`docs/147`'s REDIRECT-правило сработало (2 последовательных kill'а без
+нового механизма). P137: 2 прицельных литературных запроса для 4-й связи
+bottleneck 3 (fifth-force UV-complete scalar-tensor, string-theory
+quintessence normalization) — оба структурно проверены ДО числового
+сравнения, ни один не подошёл. **NULL RESULT**, соответствует низкому
+ожидаемому yield самого arbiter'а.
+
+**H2 (design IC-robust observable) — 3-я попытка, design-limited.** P138:
+horizon-crossing-relative anchoring спроектирован (per-k re-anchoring на
+e-folds после `k=a·H`), но санити-чек показал: только k=1 пересекает
+горизонт ВНУТРИ численного домена `[1,T_END]` — k=2,3,10 уже все под
+горизонтом на старте интегрирования (`aH(1)≈1.84`). Основной тест не мог
+запуститься как спроектирован для 3 из 4 k. Честно зафиксировано как
+`DESIGN-LIMITED, STOP AND REPORT`, не как физический вердикт в любую
+сторону.
+
+**`/gate-check` (2026-08-24) → STOP.** Три content-полных попытки H2
+подряд в одной сессии без прорыва — момент, где "momentum ≠ правильное
+направление" фильтр сработал явно. Рекомендация: синтезировать эту часть,
+не открывать 4-ю попытку без явного нового содержательного предложения
+пользователя или его согласия продолжать со знанием паттерна.
+
+**Итоговое состояние всех трёх bottleneck'ов на 2026-08-24:**
+
+| Bottleneck | Статус | Что могло бы его переоткрыть |
+|---|---|---|
+| 1. F→H_MULT(z) | BLOCKED | Ответ TJB (k_A(z)/r_A(z)/D_cAB(z)) или новая публикация |
+| 2. Unique completion | GENUINELY OPEN, 3 механизма исключены (pole, early-transient, horizon-crossing-in-domain) | Генуинно новая гипотеза механизма ИЛИ реальный дизайн observable без известного механизма |
+| 3. Absolute scale | STRUCTURALLY BLOCKED (proven degeneracy) | Non-monomial observable, exponent-independent O4, или теоретически зафиксированное A — критерий в P133 |
+
+**Round-2 strategic arbiter workstream закрыт этой записью.** Полный
+список: P132-P138 (7 шагов), 3 docs-коррекции (docs/147 bottleneck
+wording), activeContext обновлён построчно по каждому шагу.
+
+---
+
 ## What this does NOT establish
 
 1. Не решает сам физический вопрос (существует ли мост F→H_MULT(z)) —
