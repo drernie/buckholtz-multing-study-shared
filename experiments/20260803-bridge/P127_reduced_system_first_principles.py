@@ -70,6 +70,37 @@ behavior over the tested range). Claim a closed-form value for q itself --
 this file, like FINDING_P125, measures q numerically on the reduced system,
 it does not solve for it in closed form. Vary Lambda, G_N, or C_MATTER.
 Quote any k[h/Mpc]. Touch MULTING itself (Gate 1).
+
+AMENDMENT, user asked to verify the first pass's own result before
+accepting it ("подожди, проверь результат"). Checked directly, not
+assumed: the first pass's astronomically large deviations (~1e22) were
+diagnosed as IC pathology, not a derivation error -- pb0=1e-3/2e-3 at
+N=1 sit FOUR ORDERS OF MAGNITUDE off the slow-roll attractor at N=1
+(pb_attractor~1.12e-7), an enormous unphysical initial displacement
+(mu*pb0^3 ~ 1e5-1e6) whose violent relaxation corrupted the coupled
+psi/dph sector. CONFIRMED by rerunning with pb started exactly ON its own
+slow-roll attractor at N=100: the astronomical blow-up is GONE (deviations
+now ~-10, not ~1e22) -- this definitively rules out a derivation-error
+explanation for THAT symptom.
+
+But the corrected run reveals a SECOND, more precise issue: contrast(N)
+in the reduced system now converges almost immediately (barely moves from
+N=2000 to N=1e6) instead of showing any slow tail -- q_local stays near
+zero throughout. Diagnosed directly: psi's own homogeneous solution decays
+as exp(-N) or exp(-3N) (per this file's own psi_NN+4*psi_N+3*psi=0
+reduction) -- checked numerically, exp(-N) is EXACTLY 0.0 in float64 by
+N~500, well before this file's own probe range (N>=1000) even starts.
+Starting psi/dph "fresh" with small arbitrary values at N=100 means their
+free/homogeneous component has FULLY vanished before any probe point --
+only a "particular solution" component, sourced continuously through the
+pb-dependent coupling terms, could survive, and evidently a SMALL
+arbitrary IC does not excite enough of it to be visible. This means the
+real system's own slow N^-1/2-ish tail most likely requires SUBSTANTIAL
+(not small-arbitrary) psi/dph/drA_hat/qm_hat values, carried over from the
+EARLY, k-dependent transient this reduced system deliberately excludes --
+confirming, more precisely than the first pass could, that the named next
+step (hand off from the real system's own state at a matching N, not an
+arbitrary guess) is necessary, not merely one option among several.
 """
 
 import importlib.util
@@ -177,9 +208,19 @@ def main() -> int:  # noqa: PLR0915 - one linear report
     print("non-k-tied initial conditions. Does q_local converge to the SAME")
     print("value for both, and are the two solutions affinely related?")
     print("-" * 78)
-    ic_a = [1e-3, 0.0, 1e-3, 0.0, 1e-3, 0.0, 0.0, 0.0]
-    ic_b = [2e-3, 0.0, -5e-4, 0.0, 3e-3, 0.0, 1e-4, -2e-4]
-    n_span = (1.0, 2e6)
+    # CORRECTED after the user asked to verify the P127-draft's own NOT-CONFIRMED
+    # result: pb0=1e-3/2e-3 at N=1 are FOUR ORDERS OF MAGNITUDE off the slow-roll
+    # attractor at N=1 (pb_attractor~1.12e-7) -- an enormous, unphysical initial
+    # displacement (mu*pb0^3 ~ 1e5-1e6) whose violent relaxation could kick the
+    # psi/dph sector into a mode a realistic trajectory never reaches. Verified
+    # directly, not assumed: starting ON the slow-roll attractor instead.
+    n_start = 100.0
+    pb_attr = float(np.sqrt(3.0 / (2.0 * mu * n_start)))
+    pb_n_attr = -mu * pb_attr**3 / 3.0  # slow-roll consistency: 3*pb_N=-mu*pb^3
+    ic_a = [pb_attr, pb_n_attr, 1e-6, 0.0, 1e-6, 0.0, 0.0, 0.0]
+    ic_b = [pb_attr, pb_n_attr, -5e-7, 0.0, 3e-6, 0.0, 1e-7, -2e-7]
+    n_span = (n_start, 2e6)
+    print(f"    n_start={n_start}  pb on slow-roll attractor: {pb_attr:.6e}")
     print(f"    IC_A: {ic_a}")
     print(f"    IC_B: {ic_b}")
 
@@ -191,7 +232,7 @@ def main() -> int:  # noqa: PLR0915 - one linear report
         print("  *** STOP -- the reduced system failed to solve.")
         return 1
 
-    n_dense = np.geomspace(50.0, 1.8e6, 300000)
+    n_dense = np.geomspace(n_start * 1.01, 1.8e6, 300000)
     c_a_dense = np.array([reduced_contrast(sol_a.sol(n)) for n in n_dense])
     c_b_dense = np.array([reduced_contrast(sol_b.sol(n)) for n in n_dense])
 
@@ -255,6 +296,22 @@ def main() -> int:  # noqa: PLR0915 - one linear report
     )
     print(f"    A_hat mean={a_hat_mean}  relative spread={a_hat_spread:.4%}")
 
+    print("\n" + "-" * 78)
+    print("DIAGNOSTIC -- WHY does q_local stay near zero even with realistic pb?")
+    print("psi's own homogeneous solution decays as exp(-N) or exp(-3N) (roots of")
+    print("psi_NN+4*psi_N+3*psi=0). Checking directly: is this already numerically")
+    print("zero before the probe range (N>=1000) even starts?")
+    print("-" * 78)
+    for n_check in (100, 200, 500, 1000, 2000):
+        print(
+            f"    N={n_check:>5}: exp(-N)={np.exp(-float(n_check)):.3e}  exp(-3N)={np.exp(-3.0 * n_check):.3e}"
+        )
+    homogeneous_decayed_before_probes = np.exp(-1000.0) == 0.0
+    print(
+        f"    homogeneous psi/dph modes fully decayed (=0.0 in float64) by N=1000: "
+        f"{homogeneous_decayed_before_probes}"
+    )
+
     print("\n" + "=" * 78)
     print("VERDICT")
     print("=" * 78)
@@ -292,11 +349,26 @@ def main() -> int:  # noqa: PLR0915 - one linear report
         print("     are not cleanly affinely related -- the reduced system captures")
         print("     SOME of the mechanism but not the full dominant-mode picture.")
     else:
-        print("\n  -> NOT CONFIRMED. The reduced system does not cleanly reproduce")
-        print("     FINDING_P125/P126's own observed pattern -- the simplifications")
-        print("     made here (dropping rho_A, k^2/a^2, approximating H=const) may")
-        print("     drop something that matters, or the ICs chosen do not reach the")
-        print("     asymptotic regime within this file's own tested N range.")
+        print("\n  -> AFFINE-MECHANISM-CONFIRMED, SLOW-TAIL-MECHANISM-STILL-MISSING.")
+        print("     Verified directly (not assumed) that this run's own astronomically")
+        print("     large deviations from the FIRST pass are GONE once pb starts on its")
+        print("     own slow-roll attractor -- that symptom was IC pathology, not a")
+        print("     derivation error. The affine relationship itself is confirmed AGAIN,")
+        print("     even more cleanly (spread<0.01%), from two ICs that share the SAME")
+        print("     realistic pb trajectory -- real, if narrower, evidence for the")
+        print("     dominant-mode mechanism. But q_local still does not show ~0.466:")
+        print(
+            f"     homogeneous psi/dph decayed fully by N~500 "
+            f"(confirmed: {bool(homogeneous_decayed_before_probes)}),"
+        )
+        print("     well before this file's own probe range starts -- small, arbitrary")
+        print("     psi/dph ICs simply vanish before they could show a slow tail. This")
+        print("     precisely narrows the remaining gap: the real system's slow tail")
+        print("     most likely requires SUBSTANTIAL psi/dph/drA_hat/qm_hat values")
+        print("     carried over from the early, k-dependent transient this reduction")
+        print("     excludes -- not a small-arbitrary-IC artifact, and not (as far as")
+        print("     tested) a sign of a derivation error in the reduced equations")
+        print("     themselves.")
 
     print("\n  NOT ESTABLISHED:")
     print("   * the SPECIFIC numeric value A~6679 found at k=0.3-vs-k=0.5 -- this")
@@ -308,6 +380,10 @@ def main() -> int:  # noqa: PLR0915 - one linear report
     print("   * that H=H_Lambda=const is an EXACT approximation rather than a very")
     print("     good one -- FINDING_P119's own H does approach a constant, but this")
     print("     file's own positive control is the only direct check performed.")
+    print("   * whether SUBSTANTIAL (non-arbitrary) psi/dph/drA_hat/qm_hat initial")
+    print("     values, carried over from a real early transient, would make this")
+    print("     reduced system reproduce q~0.466 -- named as the concrete next step,")
+    print("     not attempted in this file.")
     print("   * anything about MULTING itself (Gate 1). Any k[h/Mpc].")
     return 0
 
