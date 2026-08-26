@@ -410,6 +410,119 @@ Round-2 reopening разрешается только при хотя бы од�
 
 ---
 
+## Часть 7 — Round-3: macro-locality + parallel harvest/audit, 4th mechanism
+## exhausted, session closed honestly (2026-08-24, same day)
+
+### Что произошло
+
+После round-2's закрытия пользователь попросил продумать более широкую
+skill-архитектуру. Запущено два трека параллельно:
+
+**Трек B (фоновый агент, harvest + research-audit, свежий взгляд).**
+Полный отчёт: см. `pearl_registry` пробел ниже. Ключевые находки:
+1. **Pearl-registry health-hook имеет реальный, самодиагностированный, но
+   не исправленный баг** — `research_health_loop.py` разбивает строки по
+   литеральной `" | "`, ломаясь на escaped `\|` в математической нотации.
+   Проект сам это диагностировал в `DIAMOND_SCAN_P79_P83.md` (2026-08-21,
+   «37 из 181 строк невидимы для health hook»), но 2026-08-23's
+   schema-unification был намеренно header-only и НЕ чинил read-side баг.
+   Найдено: 6 pending строк с уже просроченным `next_check` сейчас
+   невидимы этому хуку.
+2. **P133's exponent-vector критерий — НЕ новая математика** [INFERRED/
+   WEAK, не проверено полным литературным поиском]: та же техника, что
+   Buckingham Π dimensional analysis и structural identifiability
+   power-law моделей (Bellman/Åström-era). Ценность — не в теореме, а в
+   **дисциплинированной упаковке** (positive control + cross-check),
+   которая переносима в другие проекты пользователя с
+   multi-parameter-degeneracy задачами.
+3. **P134/136/137/138 не имеют записей в pearl_registry** — коммит
+   "record P134/P135" не пережил себя для P134 конкретно; дешёвый
+   backfill, не сделан.
+4. **Zombie-check: чисто.** Ни один из 3 round-2 механизмов не повторяет
+   более раннюю (P74-P92) попытку под другим именем.
+5. **docs/147 stop-rule сработал** — 15/20 portable process asset,
+   рекомендован к продвижению как reusable паттерн.
+6. **Именован 5-й, явно спекулятивный кандидат** для bottleneck 2 — P82's
+   "common envelope `A(η)`" route (собрал коллапс 0.390, не чистую
+   единицу, для родственного но не идентичного вопроса) — НЕ
+   верифицирован даже самим агентом, флагирован для справки, не
+   действие.
+
+**Трек A (macro-locality → 4-й кандидат-механизм для bottleneck 2, сам
+исполнитель).** `macro-locality` skill: boundary audit нашёл, что gauge
+choice (`conformal-Newtonian/longitudinal`, `FINDING_P49`'s собственное
+«implicitly used throughout») — неисследованная посылка всей цепочки
+`P38→P79`. Вердикт: `PART-OF-MACROSYSTEM`, `SURVIVING_HYPOTHESIS=M3`
+(gauge artifact). Прогнаны дополнительно `novelty-assessment` (NOVEL —
+единственное упоминание в pearl_registry/null_results — тот же P49
+caveat, никогда не тестировался как активная гипотеза), `decision-gate`
+(ACCEPT, score 7.6/10), `claim-decomposer` (нашёл `C3` — общий физический
+факт про gauge artifacts near horizon crossing — как `[MEMORY]`,
+требующий верификации до траты усилий), `pareto-leverage-scan` (ACT,
+строить сейчас параллельно Треку B), `multi-lens` (альтернативные линзы:
+probabilistic/ensemble-averaging framing, multi-stability/bifurcation —
+названы, не преследованы).
+
+**`FINDING_P139` (без нового `.py` — code-tracing, не численный
+эксперимент).** `C3` верифицирован внешне (`WebSearch`, textbook-уровень:
+«density contrast grows in synchronous gauge but remains constant in
+conformal-Newtonian gauge before horizon crossing» — Bardeen 1980).
+Дальше — три независимые линии рассуждения, прослеженные до
+первоисточников кода (не по памяти — первая попытка вспомнить знак в
+формуле `qm` дала неверный знак, пойманный прямой проверкой `P73`'s
+собственного кода):
+1. `contrast()`'s формула (`δρ_m − 3H·Q_m`, `qm`≡`Q_m` подтверждено через
+   `P73`'s `dq_tot=-φ̄̇δφ+Q_m`) структурно совпадает со стандартной
+   comoving-gauge density contrast — известной в цитируемой этим же
+   проектом (P49) литературе (Amendola coupled-quintessence) как
+   kinematically gauge-invariant.
+2. Newtonian gauge — **полностью** фиксированная калибровка (обе
+   скалярные gauge-степени использованы `B=E=0`), в отличие от
+   synchronous — генерически нет остаточной свободы такого рода.
+3. `Φ=Ψ` — установленный физический результат (`P49`, zero anisotropic
+   stress), не свободный gauge-выбор; под общим `ξ⁰` трансформируются
+   по-разному, значит сохранение `Φ=Ψ` уже съедает почти всю freedom,
+   которую искала гипотеза.
+
+**Вердикт `FINDING_P139`: `M3-WEAKENED-BY-REASONING`** — не формально
+опровергнута (полный from-scratch символьный вывод для ИМЕННО этой
+M(φ)-связи признан слишком рискованным для завершения безопасно в этой
+сессии), но три независимые линии рассуждения сходятся в одном
+направлении.
+
+### Итог: 4 кандидата-механизма исчерпаны в этой сессии
+
+| # | Механизм | Вердикт |
+|---|---|---|
+| 1 | Pole at anchor (P135) | REFUTED, positive-control-tested |
+| 2 | Early-transient amplitude (P136) | REFUTED, positive-control-tested |
+| 3 | Horizon-crossing anchoring (P138) | DESIGN-LIMITED, не REJECT |
+| 4 | Gauge artifact (P139) | WEAKENED-BY-REASONING, не formal REFUTED |
+
+5-й кандидат (P82-envelope, Track B) назван, явно спекулятивен, не
+преследован — пользователь решил зафиксировать честно и остановиться,
+а не гнаться за пятой попыткой.
+
+### Bottleneck 2 итоговый статус
+
+**GENUINELY OPEN**, с 4 явно исключёнными механизмами и переиспользуемым
+знанием о том, ПОЧЕМУ каждый не сработал (а не просто «не сработало»).
+Реоткрытие требует: генуинно новый механизм (не эквивалентный этим 4),
+новый внешний факт, или явное согласие пользователя на 5-ю попытку зная
+diminishing-return паттерн.
+
+### Отдельные housekeeping-находки Трека B (не физика, не действие в этой сессии)
+
+- Health-hook parsing bug — самодиагностирован 2026-08-21, не исправлен;
+  затрагивает НЕ только этот проект (глобальный хук).
+- P134/136/137/138 отсутствуют в pearl_registry — дешёвый backfill.
+- docs/147 stop-rule — кандидат на продвижение в reusable паттерн.
+
+Ничего из этого не выполнено в рамках этой сессии — зафиксировано для
+будущей ссылки, по решению пользователя не действовать сейчас.
+
+---
+
 ## What this does NOT establish
 
 1. Не решает сам физический вопрос (существует ли мост F→H_MULT(z)) —
