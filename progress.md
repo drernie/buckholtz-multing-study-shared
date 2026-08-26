@@ -6,7 +6,10 @@
 (session-by-session narrative). This file exists to answer "what phase are we in" at a
 glance — do not duplicate detailed numbers here; update the pointer, not the content.
 
-Last synced: 2026-07-18, commit `61e7b00`.
+Last synced: 2026-07-18, commit `61e7b00`. [Stale pointer noted 2026-08-26,
+boyko-project-radar — content design is fine (correctly defers to
+activeContext.md/pearl_registry/null_results, does not duplicate), only this
+sync date is behind. Not rewritten here; update on next real phase change.]
 
 ---
 

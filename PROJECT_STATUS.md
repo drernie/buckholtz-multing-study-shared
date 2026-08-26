@@ -1,5 +1,20 @@
 # Project Status — Buckholtz IDM/MULTING Verification MVP
 
+> ⚠️ **SUPERSEDED SNAPSHOT (flagged 2026-08-26, boyko-project-radar).** Everything
+> below describes the **v0.3.0 MVP state as of 2026-06-01** — before Discord
+> contact with TJB was established, before the growth-rate bridge campaign
+> (`experiments/20260803-bridge/`, P1-P141), before the Table A1 = AI-output
+> finding, before the FL stop-rule / `docs/145-148` methodology layer existed.
+> **858 tests / 12 docs / "beta definitions unclear" primary blocker are all
+> stale numbers.** Kept as a historical snapshot, not rewritten — see the
+> no-silent-correction convention in `~/.claude/CLAUDE.md`.
+>
+> **Current state (2026-08-26):** `.claude/memory/activeContext.md` (live,
+> updated per commit) · `docs/145_research_audit_and_harvest_report_20260817.md`
+> (comprehensive audit, updated through today, Part 8) ·
+> `docs/147_campaign_stop_rule.md` (live bottleneck map) · 881 tests passing,
+> ruff clean [VERIFIED this session].
+
 **Version:** v0.3.0 (reference-grade hardening)
 **Date:** 2026-06-01
 **Status:** ✅ ENGINEERING-HARDENED — collaboration active, awaiting author response
