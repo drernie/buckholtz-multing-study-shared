@@ -160,3 +160,32 @@ Corrected order: internal consistency (P149) → observable mapping
 2. Does not run P149/P150/P151 — framing and status recording only.
 3. Does not resolve the Q2b mirror-symmetric/intrinsic-dipole stability
    tension — recorded as open, not attempted here.
+
+## Update, 2026-08-26 (same day) — P149 (Q4) completed and skeptic-corrected
+
+`P149` executed and independently re-reviewed by a second skeptic pass.
+**Result: `MASSIVE-MEDIATOR-NEAR-FIELD-RATIO-INVARIANT-COMPATIBLE`** (label
+corrected from an initial `...-NEAR-FIELD-COMPATIBLE` — "the ladder
+survives" overclaimed; only the convention-independent ratio invariant
+`Λ(s)` was actually tested, per `P1`'s own finding that only the ratio is
+physical). Deviation from `Λ=3/2` is `10⁻⁷`-`10⁻⁴`% at cluster scale
+(where `β_d=2, β_q=√6` was derived), growing to `~15%` only at the Hubble
+radius and asymptoting toward a bounded `~33%`, never diverging.
+
+The skeptic's own proposed stress-test on the ratio-only reduction (could
+`β_d(μ)`, `β_q(μ)` individually drift while cancelling in the ratio?) was
+answered in the strongest possible direction: `Λ`'s own drift is `O(x²)`,
+*larger* than either individual tier's own drift (`O(x³)`, `O(x⁴)`) —
+the ratio-only check is the *strictest* available, not a looser one that
+could hide drift.
+
+A real, if numerically inconsequential, math error was also caught and
+fixed: the small-`(μs)` expansion quoted from `P1`'s own script was
+missing a real `+(μs)³` term (P1's own `sp.series` truncated before that
+order) — corrected in both `FINDING_P149` and (with a dated correction
+note, not silently) in `FINDING_P1_two_field_closure.md` itself.
+
+**Q4 status: `RESOLVED`, precisely scoped.** Next: `P150` (Q3a, fifth-
+force experimental mapping gate) — does MULTING's own `p_i=κk_ir_i/c²`
+even map onto a real composition-dependent fifth-force observable before
+any numerical bound is attempted, per the user's own corrected ordering.

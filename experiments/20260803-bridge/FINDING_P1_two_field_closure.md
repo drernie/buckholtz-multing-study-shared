@@ -50,6 +50,16 @@ Lambda(r) = K'''(r) K'(r) / K''(r)^2
 | massless, `K = 1/s` | **3/2, exactly, at every r** |
 | Yukawa, `K = e^{-μs}/s`, small `μr` | `3/2 − (3/4)μ²r²` — **r-dependent, ≠ 3/2** |
 
+**[CORRECTED 2026-08-26, `P149` skeptic review]** the Yukawa row above is
+an *incomplete* expansion — this script's own `sp.series` call truncated
+before the next term, silently dropping a real `+(μr)³` contribution. The
+correct expansion is `Λ = 3/2 − (3/4)(μr)² + (μr)³ − (5/8)(μr)⁴ + O((μr)⁵)`,
+independently reverified in `FINDING_P149_massive_mediator_nearfield_hierarchy.md`
+§0. Does not change this file's own conclusion (only the ratio is
+physical; `β_q/β_d=√6/2` iff massless) — the cubic term is negligible at
+every scale this project has used the small-`μr` limit for — but the
+truncated quote should not be cited further without this correction.
+
 **`β_q/β_d = √6/2` if and only if the mediator has no mass on the relevant
 scale.** That is the physical content of the prediction — not the point-charge
 scaffolding, which was only the calculational route to it. This reframes the

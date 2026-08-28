@@ -50,20 +50,47 @@ if sp.simplify(lam0 - sp.Rational(3, 2)) != 0:
     raise SystemExit(1)
 print("  -> PASSED.")
 
-print("\n[POSITIVE CONTROL 2] small-(mu*s) expansion must match P1/P11's own")
-print("  Lambda = 3/2 - (3/4)(mu*s)^2 + O((mu*s)^4)")
+print("\n[POSITIVE CONTROL 2] small-(mu*s) expansion, checked to O((mu*s)^4)")
+print("  CORRECTED (per independent skeptic review): P1/P11's own quoted")
+print("  expansion 'Lambda = 3/2 - (3/4)(mu*s)^2 + O((mu*s)^4)' is INCOMPLETE")
+print("  -- it silently drops a real +(mu*s)^3 term (P1's own script truncated")
+print("  the series before that order, hiding it; propagated uncorrected into")
+print("  the first draft of this file too). The correct expansion is:")
+print("    Lambda = 3/2 - (3/4)x^2 + x^3 - (5/8)x^4 + O(x^5),  x = mu*s")
+print("  Checked here to O(x^4), all four nonzero coefficients required exact.")
 mus = sp.Symbol("x", positive=True)  # x = mu*s
 Lambda_of_x = Lambda.subs(mu, mus / s)
 series_check = sp.expand(sp.series(Lambda_of_x, mus, 0, 5).removeO())
 print(f"  series in (mu*s) = {series_check}")
-coeff0 = sp.simplify(series_check.coeff(mus, 0) - sp.Rational(3, 2))
-coeff2 = sp.simplify(series_check.coeff(mus, 2) - (-sp.Rational(3, 4)))
-print(f"  coeff(mu*s, 0) - 3/2    = {coeff0}  (must be 0)")
-print(f"  coeff(mu*s, 2) - (-3/4) = {coeff2}  (must be 0)")
-if coeff0 != 0 or coeff2 != 0:
+expected_coeffs = {
+    0: sp.Rational(3, 2),
+    2: -sp.Rational(3, 4),
+    3: sp.Integer(1),
+    4: -sp.Rational(5, 8),
+}
+all_ok = True
+for power, expected in expected_coeffs.items():
+    diff = sp.simplify(series_check.coeff(mus, power) - expected)
+    print(f"  coeff(mu*s, {power}) - {expected} = {diff}  (must be 0)")
+    all_ok = all_ok and (diff == 0)
+if not all_ok:
     print("  *** FAILED. STOP. ***")
     raise SystemExit(1)
-print("  -> PASSED, matches P1/P11's own hand-derived expansion.")
+print("  -> PASSED (corrected expansion, all 4 coefficients exact).")
+
+print("\n[ITEM-4 CHECK, per skeptic review] does the ratio Lambda hide drift")
+print("that the INDIVIDUAL tier coefficients don't show (or vice versa)?")
+print("Compare each tier's own Yukawa/massless ratio, small-x expansion:")
+beta_d_ratio = sp.series(sp.exp(-mus) * (mus**2 + 2 * mus + 2) / 2, mus, 0, 6).removeO()
+beta_q2_ratio = sp.series(
+    sp.exp(-mus) * (mus**3 + 3 * mus**2 + 6 * mus + 6) / 6, mus, 0, 6
+).removeO()
+print(f"  beta_d(mu)/beta_d(0)   = {sp.expand(beta_d_ratio)}   (leading drift O(x^3))")
+print(f"  beta_q^2(mu)/beta_q^2(0) = {sp.expand(beta_q2_ratio)}   (leading drift O(x^4))")
+print("  Lambda(mu)/Lambda(0) leading drift is O(x^2) -- STRICTER than either")
+print("  individual tier (O(x^3), O(x^4)). The ratio-only check is therefore")
+print("  the MOST sensitive of the three at leading order, not a looser one")
+print("  that could hide drift -- confirmed here, not just asserted.")
 
 print("\n" + "=" * 78)
 print("[THE DECISIVE TEST] Lambda(mu*r) at realistic separations, mu=H0/c")
@@ -82,13 +109,21 @@ for r_mpc in [0.5, 1.0, 3.0, 10.0, 100.0, 1000.0, 4283.0, 8566.0, 42830.0]:
     print(f"{r_mpc:>12.1f} {mu_r:>14.3e} {lam_val:>16.10f} {dev_pct:>14.6e}%")
 
 print("""
-VERDICT CRITERION (per P148/Q4): if the deviation of Lambda from 3/2 (and
-hence of beta_q/beta_d from sqrt(6)/2) stays negligible at cluster scale
-(r ~ 0.5-10 Mpc, where this project's own beta_d=2, beta_q=sqrt(6) result
-was derived and where it would need to be measured) and only grows toward
-O(1) near the Hubble radius (r ~ 1/H0), this is
-MASSIVE-MEDIATOR-NEAR-FIELD-COMPATIBLE -- P11's mu~H0/c candidate does not
-break the near-field ladder it needs to preserve. If the deviation is
+VERDICT CRITERION (per P148/Q4, wording corrected per skeptic review):
+what is actually tested is the convention-independent RATIO-invariant
+Lambda(s), per P1's own finding that only the ratio beta_q/beta_d is
+physical -- NOT that the individual power-law tiers F_km~1/r^3, F_kk~1/r^4
+survive unmodified (they do not, for any mu>0: each picks up its own
+exp(-mu*r)*polynomial(mu*r) deformation, confirmed above to be smaller
+than Lambda's own deviation at leading order, but still a real deformation
+of the pure power-law form).
+
+If Lambda's deviation from 3/2 stays negligible at cluster scale
+(r ~ 0.5-10 Mpc, where beta_d=2, beta_q=sqrt(6) was derived and measured)
+and only grows toward O(1) near the Hubble radius, this is
+MASSIVE-MEDIATOR-NEAR-FIELD-RATIO-INVARIANT-COMPATIBLE -- P11's mu~H0/c
+candidate does not break the one convention-independent quantity this
+construction's physical content actually reduces to. If the deviation is
 already non-negligible at cluster scale, this is
 MASS-SCALE-ESCAPE-LOAD-BEARING/INCOMPATIBLE.
 """)
