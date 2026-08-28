@@ -11,6 +11,15 @@ of this file so the record is not orphaned outside the repo).
 **Status: `[VERIFIED]` Part A, `[FALSIFIED-AS-STATED, CORRECTED]` Part B, per an
 independent context-blind skeptic pass — see §4.**
 
+> **[UPDATE 2026-08-28]** Of the two escape routes named in §7 below (S1:
+> non-gradient-sourced moment; S2: screened/distinct propagator), **S1 is
+> now closed** — for constructions that reproduce MULTING's near-field
+> ladder via `docs/125`'s own exhibited bilinear factorization, at the
+> `r→∞` symbolic-limit level — see
+> `FINDING_P152_S1_general_pairkernel_background_closure.md` for the full,
+> twice-skeptic-corrected result and its exact scope. **S2 remains open**,
+> per the user's own stated next-priority order.
+
 ---
 
 ## 1. The question
