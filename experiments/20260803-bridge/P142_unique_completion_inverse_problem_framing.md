@@ -123,3 +123,35 @@ differs by construction class, which is itself informative but not the same as
 (e.g. a two-scalar construction, or the still-open TeVeS/Horndeski routes named in
 `docs/123`'s own STILL-OPEN list) needed before this file's decision tree can be
 honestly applied.
+
+## Update, 2026-08-26 (same day) — P144, a search-space narrowing step
+
+Before building a third numerical alternative, `P144`
+(`FINDING_P144_static_mediator_scope_narrowing.md`) asked a cheaper question
+first: does `docs/131`'s "vector/antisymmetric sector" residual branch name
+one open alternative, or several distinct ones — and are they all genuinely
+untested? Two reasoning-based arguments (no new numerics — a
+structural/logical finding, same class as `FINDING_P139`):
+
+- A tensor/2-form mediator at monopole order would repeat `P143`'s own
+  `Δα=1` conclusion (spin-independent power-counting fact), or has no
+  natural minimal point-source coupling at all — not a genuine third
+  alternative either way.
+- A vector field entering at dipole order, given MULTING's dipole is
+  source-confirmed *static* (`docs/131` line 68), reduces to Branch S's own
+  `cosθ` angular structure (a static source has no vector/magnetic
+  character to give it a genuinely different sign-preference) — collapses
+  into the already-tested EP-tension, not a new escape.
+
+Leaves one specific, still-untested candidate: a **non-minimally-coupled**
+vector construction (vector structure engineered without relying on source
+motion) — not yet attempted, likely to inherit a `P143`-style
+derivative-coupling cost of its own, per this file's own scope note.
+
+**Status: independent context-asymmetric skeptic review CONFIRMED** the
+bottom line (all `docs/131` quotes verified exact, all physics re-derived
+independently, no missed escape route). Three precision repairs applied
+same-day — none changed the conclusion. Matches this project's own
+precedent (`P143` §3a) of not
+treating a reasoning-heavy physics claim as final before independent
+context-asymmetric check.
