@@ -221,3 +221,41 @@ operator, `λ~1/M²` suppression) added as a **third** open axis alongside
 sign and ghost-freedom — "reaches the power law" ≠ "reaches the target
 magnitude." `P142`'s decision tree: two operators genuinely open, neither
 a confirmed escape, neither justifies `P146` yet.
+
+
+## Update, 2026-08-26 (same day) — P146, literature check resolves both
+## open operators (via Source Trace, not derivation)
+
+Per `P145`'s own recommendation and the user's explicit instruction:
+`P146` (`FINDING_P146_literature_check_nonminimal_vector_ghost_status.md`)
+runs a proper Source Trace (`falsification-ladder.md` Step -4) against 3
+real papers — Horndeski (1976, J. Math. Phys. 17, 1980), Heisenberg
+(2014, arXiv:1402.7026, Generalized Proca), Hell (2024/2025,
+arXiv:2403.18673) — rather than attempting an original derivation.
+
+**Two mutually-reinforcing findings close both of `P145`'s open threads:**
+- **If `A_μ` is a gauge field** (matching `P143`'s own "conserved
+  current" baseline): Horndeski's 1976 theorem uniquely fixes the
+  gauge-invariant, ghost-free non-minimal vector-curvature coupling as a
+  term built entirely from `F_μν`, never bare `A_μ` — `R_μνA^μA^ν` is
+  simply **not gauge-invariant**, hence not an admissible operator at all,
+  independent of any sign/magnitude question.
+- **If `A_μ` is Proca-type instead**: Generalized Proca theory
+  (Heisenberg 2014) shows `R_μνA^μA^ν` and `(∇_μA^μ)²` are **not
+  independent operators** — tied by the Ricci identity with a fixed
+  relative coefficient — and ghost-freedom needs a special, non-generic
+  tuning, not automatic for a free `λ`. Even correctly tuned, Hell
+  (2024/2025) shows a further strong-coupling pathology persists unless a
+  disformal compensator is added.
+
+**Verdict: `NO-HEALTHY-MINIMAL-VECTOR-ESCAPE`** — read narrowly: neither
+reading of what `A_μ` is gives a *minimal* healthy non-minimal operator,
+matching the user's own explicit "минимальный" framing. **One genuinely
+new, still-open candidate surfaced**: Horndeski's own gauge-invariant term
+(`F_μκF^νκR^μ_ν`-type) was never checked by `P145` (which tested the
+wrong, non-gauge-invariant operator) — a real `P147` candidate if the
+gauge-field reading is the right one to pursue further.
+
+Skeptic review dispatched (Source-Trace verification: are the 3 citations
+real, accurately quoted, and does the disjunctive argument actually cover
+the space) — result pending.
