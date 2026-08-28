@@ -1,10 +1,15 @@
 # FINDING P147 — Horndeski's own gauge-invariant vector-curvature
-# coupling fails on power law, not sign — and has no free coefficient
-# left to fix it
+# coupling fails on power law, not sign — no relative or overall
+# coefficient rescaling can fix a wrong shape
 
 **Date:** 2026-08-26
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · L0 math
-**Verdict:** `HORNDESKI-VECTOR-WRONG-POWER-LAW-NO-FREE-PARAMETER`
+**Verdict:** `HORNDESKI-VECTOR-WRONG-POWER-LAW` — split by confidence, per
+second independent skeptic review (§0 below): the Ricci-based piece is
+`RIGOROUSLY-WRONG-POWER-LAW` (`1/r⁵`, exact symbolic computation,
+independently re-verified by hand for a general axis); the Weyl-based
+piece is `WRONG-POWER-LAW-PER-DIMENSIONAL-ESTIMATE` (`1/r⁴`, explicitly
+not a full derivation, cross-checked but not proven).
 **Origin:** the one genuinely new, unexamined candidate `P146` surfaced —
 Horndeski's (1976) uniquely-fixed, gauge-invariant non-minimal vector-
 curvature coupling, checked here at the same leading (monopole) order
@@ -12,6 +17,32 @@ curvature coupling, checked here at the same leading (monopole) order
 **Script:** `P147_horndeski_vector_powercounting.py` (2 checks — one exact
 symbolic computation, one explicitly-labeled dimensional estimate — ruff
 clean, does not touch the 881-test suite)
+
+## 0. Second independent skeptic review (same day) — read this first
+
+Independently re-derived both computations by hand — for Part 1, using a
+**general** separation axis (not just the script's `x̂`-axis choice), and
+confirmed the `F_μκF^νκR^μ_ν=0` cancellation is axis-independent, not a
+coordinate artifact; for Part 2, cross-checked the dimensional estimate
+via an independent momentum-space argument and a position-space
+near-A/near-B/middle region decomposition, both agreeing with the file's
+`1/r⁴` estimate and confirming the near-A (file's own) contribution
+dominates at long range. **Verdict CONFIRMED to survive, with two
+precision fixes applied** (folded into §3/§4 below): (1) the original
+verbal explanation of *why* the Ricci-tensor term cancels was flat-out
+wrong (claimed "oppositely-signed, traceless Maxwell-stress structure" —
+actually same-signed and not traceless; the real mechanism is entirely
+`R^μ_ν`'s own alternating sign under index-raising) — the *arithmetic*
+was always right, only the prose explanation was wrong, now corrected;
+(2) "no free coefficient left to adjust" overstated things — Horndeski's
+theorem fixes the *relative* coefficients among its three terms, not an
+overall Wilson coefficient, though rescaling that overall coefficient
+cannot change a power law either, so the substantive conclusion is
+unaffected. The skeptic also confirmed the logical structure is sound: a
+positive result in *either* part (not both) would have overturned the
+"no escape" framing, since the softer power law dominates at long range —
+so the file's own requirement that *both* parts fail is the right
+standard, not an inflated one.
 
 ---
 
@@ -64,15 +95,27 @@ matching structure), stated as an estimate, not a proof.
 ## exactly
 
 Computing `F_μκF^νκR^μ_ν`'s delta-function coefficient gave **exactly
-zero** — not approximately small, an exact symbolic cancellation. Tracing
-why: for a purely "electric"-type `F_μν` (only `F_0i` nonzero), the
-contraction `F_μκF^νκ` is diagonal with equal-magnitude but
-oppositely-signed timelike/spacelike-along-field entries — this is the
-familiar tracelessness structure of the Maxwell stress tensor for a pure
-field — and `R^μ_ν`'s own mixed-index coefficients (`R^0_0=−4πGM_Bδ³` vs.
-`R^i_i=+4πGM_Bδ³`) alternate sign in exactly the pattern needed to cancel
-it. A clean structural fact, verified by direct symbolic computation, not
-assumed.
+zero** — not approximately small, an exact symbolic cancellation,
+independently re-verified by hand (§0, second skeptic pass below) for a
+general separation axis, not just the script's `x̂`-axis choice, so this
+isn't a coordinate-choice artifact either.
+
+**Mechanism, corrected (per second independent skeptic review — the
+original description here was wrong, both parts of it):** for a purely
+"electric"-type `F_μν` (only `F_0i` nonzero), the contraction
+`F_μκF^νκ` is diagonal with entries `(−E²,−E²,0,0)` — **same-sign**
+timelike and along-field-spacelike components, *not* oppositely-signed,
+and this object is *not* traceless (its trace is `−2E²=F²≠0`; true
+Maxwell-stress tracelessness requires subtracting `¼η^μ_νF²`, which this
+raw contraction doesn't have). The actual cancellation comes entirely
+from `R^μ_ν`'s own alternating sign under index-raising
+(`R^0_0=−4πGM_Bδ³` vs. `R^i_i=+4πGM_Bδ³`, from `η^00=−1` vs. `η^ii=+1`):
+the timelike piece (`FF[0,0]×R^0_0`, both negative → positive product)
+exactly cancels the spatial trace piece (`Σ_iFF[i,i]×R^i_i`, negative
+times positive → negative product, same magnitude). A clean structural
+fact, verified by direct symbolic computation and confirmed by an
+independent by-hand rederivation — but the earlier "Maxwell tracelessness"
+framing was a wrong just-so explanation for a correctly-computed number.
 
 Only the Ricci-*scalar* term (`F_μνF^μνR`) survives, giving
 
@@ -102,12 +145,17 @@ For Part 2 (the Weyl-based estimate): `V_Weyl(r) ~ (const) × GM_B/r³`
   disformal fix).
 - **This file (Horndeski's own term):** reaches neither `Δα=0` nor a
   power law fixable by retuning a coefficient — the functional form is
-  simply wrong (`1/r⁵` and `1/r⁴`, not `1/r³`), and **there is no free
-  parameter left to adjust**, since Horndeski's coefficient is uniquely
-  fixed by the theorem that makes the term admissible in the first place.
-  Unlike every other candidate in this chain, this isn't a "wrong sign"
-  or "needs tuning" failure — it's a "wrong shape, structurally, with
-  nothing left to turn" failure.
+  simply wrong (`1/r⁵` and `1/r⁴`, not `1/r³`). **Wording corrected per
+  second skeptic review:** Horndeski's theorem fixes the *relative*
+  coefficients among the three terms (`1, −4, 1`) — it does not forbid an
+  overall Wilson coefficient `ξ` multiplying the whole combination.
+  Rescaling `ξ` changes the interaction's *magnitude*, never its
+  *r-power* — so the substantive point survives exactly as stated, just
+  with the right reason: no *relative* tuning among Horndeski's fixed
+  terms, and no *overall* rescaling either, can turn a `1/r⁴`-`1/r⁵`
+  result into `1/r³`. Unlike every other candidate in this chain, this
+  isn't a "wrong sign" or "needs tuning" failure — it's a "wrong shape,
+  and no knob (relative or overall) changes a shape" failure.
 
 ## 5. What this file does NOT establish
 

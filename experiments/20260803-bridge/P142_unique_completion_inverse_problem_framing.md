@@ -313,3 +313,23 @@ checked in this chain (`P143`, `P145`, `P146`, `P147`) has now failed,
 each for a genuinely different structural reason. Skeptic review
 dispatched (re-run the script, independently verify the exact
 cancellation and the dimensional estimate) — result pending.
+
+**Second independent skeptic review of P147: CONFIRMED survives, 2
+precision fixes applied.** Independently re-derived both computations by
+hand — Part 1 (Ricci-based) with a general separation axis, not just the
+script's own x-axis choice, confirming the exact cancellation is not a
+coordinate artifact; Part 2 (Weyl-based estimate) cross-checked via an
+independent momentum-space argument and a position-space region
+decomposition, both agreeing with the file's own r^-4 estimate. Two
+fixes: (1) the file's verbal explanation of *why* the Ricci-tensor piece
+cancels was wrong (claimed "traceless Maxwell-stress structure,
+oppositely-signed" — actually same-signed and not traceless; the real
+mechanism is entirely R^mu_nu's own alternating sign under index-raising)
+-- arithmetic was always right, only the prose was wrong; (2) "no free
+coefficient" overstated things -- Horndeski fixes the *relative*
+coefficients among its three terms, not an overall Wilson coefficient,
+though rescaling that can't change a power law either, so the substance
+survives. Skeptic also confirmed the logical structure: a positive result
+in *either* part (not both) would overturn the "no escape" framing, since
+the softer power law dominates at long range -- so requiring both parts
+to fail is the right standard, not inflated.
