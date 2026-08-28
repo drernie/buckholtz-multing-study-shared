@@ -12,13 +12,19 @@ of this file so the record is not orphaned outside the repo).
 independent context-blind skeptic pass — see §4.**
 
 > **[UPDATE 2026-08-28]** Of the two escape routes named in §7 below (S1:
-> non-gradient-sourced moment; S2: screened/distinct propagator), **S1 is
-> now closed** — for constructions that reproduce MULTING's near-field
-> ladder via `docs/125`'s own exhibited bilinear factorization, at the
-> `r→∞` symbolic-limit level — see
-> `FINDING_P152_S1_general_pairkernel_background_closure.md` for the full,
-> twice-skeptic-corrected result and its exact scope. **S2 remains open**,
-> per the user's own stated next-priority order.
+> non-gradient-sourced moment; S2: screened/distinct propagator), **both
+> are now closed for the background channel.** S1 — for constructions
+> that reproduce MULTING's near-field ladder via `docs/125`'s own
+> exhibited bilinear factorization, at the `r→∞` symbolic-limit level —
+> see `FINDING_P152_S1_general_pairkernel_background_closure.md` (twice
+> skeptic-corrected). S2 — for the Shtanov–Sahni background channel
+> specifically, confirmed by two independent methods (the `r→∞` `G_eff`
+> limit and a finite-`r` isotropic population average) across both
+> MULTING tiers — see `FINDING_P153_S2_screened_propagator_window_gate.md`
+> and `FINDING_P154_screened_C1_isotropic_population_average.md` (three
+> skeptic rounds). **Neither closure overturns P11's own separate,
+> still-live near-field finding**, which remains an open structure-
+> formation/second-order lead, not a background-`H(z)` one.
 
 ---
 
