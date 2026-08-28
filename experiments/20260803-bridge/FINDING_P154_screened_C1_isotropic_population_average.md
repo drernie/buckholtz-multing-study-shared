@@ -170,9 +170,11 @@ this project never claimed to have.
    reduced statistics** (`N_REAL_SCAN=800` for `R_MAX∈{1,2,5,10}`; only
    `R_MAX=20`, the largest z-score, was reconfirmed at full `N=4000`,
    per §4).
-5. **The quadrupole check (§4) verifies only the elementary
-   `E[n̂_A·n̂_P]=0` claim**, not a full force-level N-body sum analogous
-   to `P154`'s own dipole Step 2 — proportionate given the mechanism is
-   a textbook independence fact, not a claim requiring numerical force
-   integration, but a full quadrupole-force N-body analog (a `P155`, if
-   ever warranted) was not built.
+5. **[Closed 2026-08-28, `P155`]** The quadrupole check (§4) originally
+   verified only the elementary `E[n̂_A·n̂_P]=0` claim — a full
+   force-level N-body sum was subsequently built and run
+   (`P155_quadrupole_forcelevel_nbody.py`), skeptic-reviewed. Its own
+   result: numerically consistent with the elementary claim here, but
+   (per `P155`'s own §0 correction) analytically *reducible* to it via
+   linearity, not a mechanistically independent second confirmation —
+   see `FINDING_P155` for the full, correctly-scoped result.
