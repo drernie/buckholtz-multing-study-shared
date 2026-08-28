@@ -1,17 +1,58 @@
-# FINDING P146 — literature check resolves P145's two open operators:
-# neither is a healthy, minimal escape
+# FINDING P146 — literature check resolves P145's two open operators
+# specifically; Horndeski's own gauge-invariant term remains untested
 
 **Date:** 2026-08-26
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · L0 literature
 (Source Trace, `falsification-ladder.md` Step -4 — external claims, verified
 against real papers, not asserted from memory)
-**Verdict:** `NO-HEALTHY-MINIMAL-VECTOR-ESCAPE` (via literature, not via a
-flawed computation this time — see §6 for exact scope)
+**Verdict:** `NO-HEALTHY-MINIMAL-ESCAPE-AMONG-P145'S-CANDIDATES` — corrected
+from an earlier draft's broader `NO-HEALTHY-MINIMAL-VECTOR-ESCAPE`, per
+independent skeptic review (§0a below): the original verdict line
+oversold what §6.2 itself already admitted (Horndeski's own gauge-invariant
+term was never checked). This verdict applies **only** to `R_μνA^μA^ν` and
+`(∇_μA^μ)²` — `P145`'s two candidates — not to the whole space of
+non-minimal vector-curvature operators.
 **Origin:** the "next cheap step" `P145` itself named: resolve `R_μνA^μA^ν`'s
 sign/magnitude and `(∇_μA^μ)²`'s ghost status via literature check rather
 than original derivation, per the user's own instruction this turn.
 
 ---
+
+## 0a. Correction (same day, skeptic review) — read this first
+
+An independent skeptic review of this file's source-trace disclosed its own
+tool limitation up front (no WebSearch/WebFetch available to it that
+dispatch) and, honestly, could not perform a true independent fetch — it
+assessed plausibility from training-data familiarity instead, marking
+results `[MEMORY-HIGH]`/`[UNVERIFIED-QUOTE]`/`[UNKNOWN]` rather than
+pretending to have verified. Within that limit it still caught two real
+issues, both fixed here:
+
+1. **Marker honesty.** The Horndeski *exact formula* (§3, the three-term
+   `F F R` combination) was obtained via a `WebSearch` synthesis, not a
+   direct single-page `WebFetch` I personally read — it should carry the
+   same `[VERIFIED-SYNTHESIS]` marker already honestly used for Claim B,
+   not `[VERIFIED-QUOTE]`. Downgraded in §1/§3 below. The qualitative claim
+   underneath it (Horndeski's admissible term is built from `F_μν`, never
+   bare `A_μ`) remains well-supported — corroborated across multiple
+   independent search results, and the gauge-non-invariance of
+   `R_μνA^μA^ν` itself is directly checkable by hand (`§3` now shows the
+   computation), not dependent on the exact formula's coefficients.
+2. **Verdict-language overreach.** The original headline verdict read as
+   if it closed the whole space of non-minimal vector-curvature couplings;
+   §6.2 itself already said otherwise (Horndeski's own F-based term "not
+   yet closed"). Fixed by narrowing the verdict label itself, not just the
+   fine print — same class of error as `P143`/`P144`/`P145`'s own
+   corrections: a narrow true finding stated with broader-than-earned
+   verdict language.
+
+**Independently re-verified, addressing the skeptic's biggest flagged
+uncertainty:** Claim C (Hell 2024/2025) was re-fetched a second time,
+independently, directly from `arxiv.org/abs/2403.18673` — confirmed real:
+author Anamaria Hell, journal reference *Progress of Theoretical and
+Experimental Physics* **2025**, 013E01, abstract opening matches what was
+quoted in §5. This is now doubly `[VERIFIED-QUOTE]`, not resting on a
+single fetch.
 
 ## 0. Method note
 
@@ -27,7 +68,7 @@ a single fetched page), `[WEAK]` (a single indirect source, stated as such).
 
 | Claim | Source | Confidence |
 |---|---|---|
-| Horndeski (1976) derived the *unique* gauge-invariant, second-order (ghost-free) non-minimal coupling of a U(1) vector to curvature, built entirely from `F_μν` | Horndeski, *Conservation of Charge and the Einstein–Maxwell Field Equations*, J. Math. Phys. **17**, 1980 (1976); cross-confirmed via [arXiv:1308.1867](https://arxiv.org/abs/1308.1867) "Stability of Horndeski vector-tensor interactions" | `[VERIFIED-QUOTE]` — exact term quoted §3 below |
+| Horndeski (1976) derived the *unique* gauge-invariant, second-order (ghost-free) non-minimal coupling of a U(1) vector to curvature, built entirely from `F_μν` (qualitative claim) | Horndeski, *Conservation of Charge and the Einstein–Maxwell Field Equations*, J. Math. Phys. **17**, 1980 (1976); cross-confirmed via [arXiv:1308.1867](https://arxiv.org/abs/1308.1867) "Stability of Horndeski vector-tensor interactions" | Qualitative claim `[VERIFIED-SYNTHESIS]` (corrected from `[VERIFIED-QUOTE]` per skeptic review, §0a — corroborated across multiple independent search results, but the exact 3-term formula in §3 was not read from a single fetched page). The *logical* argument (`R_μνA^μA^ν` breaks gauge invariance) does not depend on the exact formula and is independently hand-verified in §3. |
 | Generalized Proca theory: the most general local, ghost-free (3 physical d.o.f., 2nd-order EOM) massive-vector-tensor theory; curvature coupling and a `(∇·A)²`-type term are tied by a **fixed, non-free coefficient relation**, not independent operators; ghost-freedom requires a "special choice of coefficients" (Hessian degeneracy condition), not automatic | L. Heisenberg, *Generalization of the Proca Action*, [arXiv:1402.7026](https://arxiv.org/abs/1402.7026), JCAP **05** (2014) 015 | `[VERIFIED-SYNTHESIS]` — abstract-level synthesis, cross-checked across 2 independent search passes; exact Lagrangian coefficients not directly quote-verified from a fetched PDF (fetch attempts returned corrupted/unreadable PDF text) — see §4 caveat |
 | Even a Generalized-Proca-consistent (ghost-free in the Ostrogradsky sense) non-minimal Proca-curvature coupling generically produces a **strong-coupling pathology** (longitudinal and tensor modes strongly coupled at the same scale, independent of how small the vector mass is) unless a further disformal compensating structure is added | A. Hell, *Unveiling the inconsistency of the Proca theory with non-minimal coupling to gravity*, [arXiv:2403.18673](https://arxiv.org/abs/2403.18673), PTEP **2025**, 013E01 | `[VERIFIED-QUOTE]` — abstract fetched and quoted directly, §5 below |
 
@@ -53,11 +94,22 @@ field, then Horndeski's own 1976 result settles the question outright:
 
 is the **unique** local, second-order (ghost-free), *gauge-invariant*
 non-minimal coupling of a U(1) vector field to curvature — built entirely
-from the field strength `F_μν`, never from the bare potential `A_μ`. A
-term like `R_μνA^μA^ν` is not gauge-invariant (`A_μ→A_μ+∂_μχ` changes it),
-so it is **not a legal operator in the gauge-invariant sector at all** —
-not a question of tuning `λ`'s sign or magnitude, it is excluded by
-symmetry before any dynamics is considered.
+from the field strength `F_μν`, never from the bare potential `A_μ`.
+
+**This part is independently hand-verifiable, not resting on the exact
+formula's quote status:** under `A_μ → A_μ + ∂_μχ`,
+
+```
+δ(R_μνA^μA^ν) = R_μν(∂^μχ)A^ν + R_μνA^μ(∂^νχ) = 2R_μνA^μ∂^νχ
+```
+
+(using `R_μν`'s symmetry to combine the two terms). This is **not**
+identically zero — it vanishes only in the non-generic special case
+`R_μνA^μ=0` — so `R_μνA^μA^ν` genuinely is not gauge-invariant, confirmed
+by direct computation, independent of which exact paper states Horndeski's
+own admissible alternative. It is **not a legal operator in the
+gauge-invariant sector at all** — not a question of tuning `λ`'s sign or
+magnitude, it is excluded by symmetry before any dynamics is considered.
 
 **Consequence:** `P145` tested the wrong operator, *if* `A_μ` is meant to
 stay a gauge field consistent with `P143`'s own baseline. The
@@ -117,7 +169,13 @@ to simply set to a convenient value.
 
 ## 6. Verdict
 
-**`NO-HEALTHY-MINIMAL-VECTOR-ESCAPE`** — read narrowly, exactly as scoped:
+**`NO-HEALTHY-MINIMAL-ESCAPE-AMONG-P145'S-CANDIDATES`** — corrected label
+(§0a): this is narrower than "no non-minimal vector escape exists at
+all." It closes exactly the two operators `P145` tested
+(`R_μνA^μA^ν`, `(∇_μA^μ)²`) and explicitly leaves Horndeski's own
+gauge-invariant term open (§6.2) — that exclusion is stated here, in the
+verdict itself, not only in the fine print below. Read narrowly, exactly
+as scoped:
 
 - If `A_μ` is a gauge field: `R_μνA^μA^ν` is inadmissible by symmetry,
   full stop (§3). The gauge-invariant alternative (`F_μκF^νκR^μ_ν`-type)
@@ -176,7 +234,13 @@ coupling — genuinely new, not a repeat of anything in this chain so far.
    were not directly quote-verified from a single fetched source.
 3. **Does not touch MULTING itself** (Gate 1) — every operator discussed
    is this project's own candidate completion.
-4. **Does not resolve `P142`'s overall verdict.** `P143` (derivative-cost
+4. **Abelian only.** The gauge/Proca disjunction in §6 covers a `U(1)`
+   vector, matching `P143`'s own baseline (`A_μJ^μ` for a scalar-charge
+   current). A non-abelian internal index (`A_μ ∈ 𝔰𝔲(N)`) is not
+   addressed, has no motivation from anything established in this
+   project's own charge structure `(m_i, k_ir_i)`, and is left explicitly
+   out of scope rather than silently assumed covered.
+5. **Does not resolve `P142`'s overall verdict.** `P143` (derivative-cost
    for minimal vector coupling), `P144` (static-vector-dipole collapse to
    Branch S), and now `P146` (non-minimal vector-curvature couplings
    inadmissible/non-generic) together narrow the space further, but

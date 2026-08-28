@@ -259,3 +259,21 @@ gauge-field reading is the right one to pursue further.
 Skeptic review dispatched (Source-Trace verification: are the 3 citations
 real, accurately quoted, and does the disjunctive argument actually cover
 the space) — result pending.
+
+**Correction (same day, skeptic review of P146): verdict-language narrowed
++ marker fixed.** The skeptic dispatch itself lacked WebSearch/WebFetch
+that turn (disclosed honestly, not faked) — it assessed plausibility from
+training-data familiarity rather than true independent fetch. Within that
+limit it still caught two real issues: (1) the Horndeski exact-formula
+marker was `[VERIFIED-QUOTE]` when it was actually obtained via WebSearch
+synthesis, not a page I personally read — downgraded to
+`[VERIFIED-SYNTHESIS]`, matching the honesty standard already used for the
+Generalized Proca claim; the *logical* argument (gauge non-invariance of
+`R_μνA^μA^ν`) doesn't depend on the exact formula and is now hand-verified
+in the file itself. (2) The headline verdict `NO-HEALTHY-MINIMAL-VECTOR-
+ESCAPE` oversold what §6.2 already admitted — Horndeski's own F-based term
+was never checked. Renamed to `NO-HEALTHY-MINIMAL-ESCAPE-AMONG-P145'S-
+CANDIDATES`, with the P147 exclusion now stated in the verdict line itself,
+not buried. Separately, re-fetched Claim C (Hell 2024/2025) a second,
+independent time — confirmed real (author, journal ref match). Added an
+explicit non-abelian out-of-scope note per the skeptic's own flagged gap.
