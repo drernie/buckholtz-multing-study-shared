@@ -189,3 +189,25 @@ note, not silently) in `FINDING_P1_two_field_closure.md` itself.
 force experimental mapping gate) — does MULTING's own `p_i=κk_ir_i/c²`
 even map onto a real composition-dependent fifth-force observable before
 any numerical bound is attempted, per the user's own corrected ordering.
+
+## Update, 2026-08-26 (same day) — P150 (Q3a) drafted, skeptic review pending
+
+`P150` (`FINDING_P150_fifthforce_mapping_gate.md`) works through the
+user's own 7 sub-questions for the fifth-force experimental mapping gate.
+Found MULTING's own preprint supplies no formula for `k_A` applied to
+ordinary matter (already flagged by this project's own earlier audit,
+`docs/29/30/34` — author question sent, never answered). This project's
+own one prior attempt to extend `k_A` beyond clusters (`docs/118`,
+2026-06-17, `k_Sun=E_corona/c²`) does not generalize to laboratory test
+masses (solids have no corona). A more literal reading (bulk internal
+thermal/vibrational energy, worked out fresh here) does generalize and
+gives a real, composition-dependent (~4× Ti vs Pt, from atomic mass
+alone) MICROSCOPE-relevant signal. **Verdict: `MAPPING-AMBIGUOUS`** —
+two internally-coherent readings diverge sharply on whether `Q3a` even
+clears; neither is licensed by MULTING's own text as the intended one.
+
+Skeptic review dispatched — specifically asked to stress-test whether a
+THIRD reading (virial-type internal kinetic energy, which for a rigid
+solid could be argued to be ~zero, unlike a gas cloud's constituent
+motions) would favor `MAPPING-UNAVAILABLE` more decisively than the
+finding's "ambiguous, two readings" framing allows — result pending.
