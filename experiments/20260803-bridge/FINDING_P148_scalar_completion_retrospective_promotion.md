@@ -211,3 +211,38 @@ THIRD reading (virial-type internal kinetic energy, which for a rigid
 solid could be argued to be ~zero, unlike a gas cloud's constituent
 motions) would favor `MAPPING-UNAVAILABLE` more decisively than the
 finding's "ambiguous, two readings" framing allows — result pending.
+
+## Update, 2026-08-26 (same day) — P150 skeptic-corrected: third reading
+## added, verdict rebalanced
+
+Skeptic review of `P150` found the original A-vs-B framing was not
+exhaustive: a third reading (C, virial/self-gravitating internal kinetic
+energy — the kinetic energy of a body's own sub-parts insofar as it
+supports the body against its own self-gravity) is at least as
+physically motivated as A or B for a *gravity* theory, and independently
+gives `k≈0` for solid laboratory test masses (a 100g test mass is
+EM-bound, not self-gravitating) — the same conclusion as Reading A, via
+a structurally different, arguably more principled route. **Two of
+three defensible readings now converge on `MAPPING-UNAVAILABLE` for
+solids; only Reading B allows `P151` to proceed at all.**
+
+Also fixed: (1) a "13 orders of magnitude" figure conflated the `k/M`
+ratio (~10.5 orders, independently reverified) with `docs/118`'s own
+separate `F_d/F_m` dipole-correction-ratio figure; (2) `docs/118`'s
+corona choice was characterized uncharitably (it states an explicit ICM-
+analogy principle, not an unmotivated number-shopping choice — the weak
+point is the analogy, not the arithmetic); (3) Reading B was never
+applied *consistently* to the Sun in the original draft — doing so gives
+`k_Sun/M_☉≈GM_☉/(R_☉c²)≈2.1×10⁻⁶` (independently computed here), on the
+SAME order as clusters, not 14 orders of magnitude safer as `docs/118`
+concluded using its corona-only value — meaning `docs/118`'s own
+Cassini-safety conclusion does not survive under Reading B and needs
+independent re-checking in `P151`, not reuse.
+
+**Verdict corrected: `MAPPING-DEFINITION-DEPENDENT, LEANING UNAVAILABLE`**
+(from the original `MAPPING-AMBIGUOUS`, which implied a misleading
+symmetric split). `P151`, if it proceeds, must (a) carry Reading B's
+label explicitly as "the one of three readings that allows any signal
+at all," not "the more defensible option," and (b) re-check the
+solar-system-scale (Cassini-type) constraint under Reading B, since
+`docs/118`'s own prior safety margin does not carry over.
