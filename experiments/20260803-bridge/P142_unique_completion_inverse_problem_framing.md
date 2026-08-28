@@ -98,3 +98,28 @@ context (or at minimum a fresh turn budget) is the right place for it, per this
 project's own discipline against cramming heavy derivation onto an already-long
 session (today: full radar, 53-card re-score, contradiction-scan, claim-decomposer,
 TJB letter draft, this framing — six substantial deliverables already).
+
+## Update, 2026-08-26 (same day, user said "продолжай P142") — first alternative done
+
+**`P143`** (`FINDING_P143_vector_mediator_powercounting.md`) — the first of the
+2-3 alternative ansätze, chosen because it was the one residual branch `docs/131`
+argued qualitatively rather than computed (vector-mediated, not scalar). Result:
+`VECTOR-MONOPOLE-ROUTE-REQUIRES-AT-LEAST-ONE-EXTRA-DERIVATIVE` — a positive-
+control-tested (exponent AND coefficient, exact match to the textbook Newton/
+Coulomb `1/(4π)` normalization) Riesz-potential power-counting derivation, upgrading
+`docs/131`'s vector-mediator dismissal from asserted to derived, but only for its
+*first* premise (the derivative-count requirement) — an independent skeptic review
+caught an early-draft overreach conflating "≥1 extra derivative" with Ostrogradsky
+"higher-derivative", corrected same-day (see `FINDING_P143` §3a).
+
+**Reading against this file's own decision tree (§ above):** this is one data
+point, not yet a verdict — one alternative construction (vector, monopole-order)
+hits a DIFFERENT obstacle (derivative-coupling cost) than the scalar branches
+(EP-tension), at an EARLIER stage (can't even reach the right power law cheaply,
+before the sign question is even asked). Consistent with, not yet proof of, the
+"tension is structural across constructions" hypothesis — the specific obstacle
+differs by construction class, which is itself informative but not the same as
+2-3 alternatives all hitting literally the SAME EP-tension. 1-2 more alternatives
+(e.g. a two-scalar construction, or the still-open TeVeS/Horndeski routes named in
+`docs/123`'s own STILL-OPEN list) needed before this file's decision tree can be
+honestly applied.
