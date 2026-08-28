@@ -155,3 +155,56 @@ same-day — none changed the conclusion. Matches this project's own
 precedent (`P143` §3a) of not
 treating a reasoning-heavy physics claim as final before independent
 context-asymmetric check.
+
+## Update, 2026-08-26 (same day) — P145, the operator-basis gate on P144's
+## one surviving candidate
+
+Per the user's own explicit, detailed protocol (a cheap structural gate
+before any full numerical construction): `P145`
+(`FINDING_P145_nonminimal_vector_operator_gate.md` +
+`P145_nonminimal_vector_operator_gate.py`) classified the user's 4 proposed
+non-minimal vector operators (`A_μJ^μ`, `F_μνF^μν`, `R_μνA^μA^ν`,
+`(∇_μA^μ)²`) against 6 admissibility criteria, added one more (a
+magnetization-current coupling, directly motivated by `P144`'s own flagged
+"static = steady-state, currents permitted" loophole), and computed the two
+candidates that survived qualitative filtering:
+
+- `R_μνA^μA^ν`: **closed by computation** — linearized Ricci tensor
+  verified (sympy) to vanish identically in the two-body static vacuum
+  configuration (positive control: `∇²(1/r)=0` for `r≠0`).
+- Magnetization-current (permanent-dipole) coupling: **closed by
+  computation** — dipole-dipole interaction energy's global minimum
+  (verified both symbolically and by an 8M-point numerical grid-search
+  robustness check) is the attractive "head-to-tail" configuration; the
+  repulsive "head-to-head" configuration is the unstable energy maximum —
+  same qualitative structure as `docs/131`'s own Branch S, for a genuinely
+  different angular form.
+- `(∇_μA^μ)²`: **left explicitly unresolved** — splits into a
+  gauge-artifact reading (no new physics) and a genuine-physics reading
+  whose ghost-freedom needs a literature-grounded or constrained-Hamiltonian
+  check this step's own "cheap gate" scope doesn't cover; not force-closed.
+
+**Correction (same day, independent skeptic review): the `R_μνA^μA^ν`
+closure was WRONG.** The skeptic caught the error precisely — checking
+`R_μν=0` for `r≠0` verifies vacuum Ricci-flatness *away* from a source, but
+`R_μν` is proportional to `T_μν` by the field equations themselves and has
+delta-function support *at* each source (`R_00=4πGMδ³(x)`). Evaluating the
+operator's contribution properly (independently re-derived, not just
+accepted — divergence-theorem check confirms the delta-function
+normalization) gives a genuine `1/r³` force with a *free-sign* coupling
+`λ` — the target power law reached directly (`Δα=0`), not zero at all.
+Separately, the magnetization-current closure (§4) was WEAKENED: it closes
+a *dipole-dipole* configuration, not a matched re-test of `docs/131`'s own
+*monopole-dipole* Branch S — a qualitative parallel, not an equivalence.
+
+**Corrected verdict: `TWO-OPERATORS-OPEN`**, not `NO-HEALTHY-VECTOR-ESCAPE`.
+`R_μνA^μA^ν` (sign of `λ` unconstrained by anything established) and
+`(∇_μA^μ)²` (ghost status unresolved) both remain genuinely open — neither
+closed, neither confirmed as a working escape. Next cheap step before
+`P146`: resolve these two via literature check (EFT positivity bounds;
+Einstein-aether-type no-ghost conditions), not original re-derivation.
+Both files corrected in place, same-day, per this project's own
+no-silent-correction convention (matches `P143` §3a, `P144` §0/1a). A
+**second, independent skeptic review of the corrected version** is now
+dispatched (fresh context, does not just check the correction was
+applied) — result pending.
