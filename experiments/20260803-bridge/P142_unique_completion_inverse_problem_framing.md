@@ -198,13 +198,26 @@ a *dipole-dipole* configuration, not a matched re-test of `docs/131`'s own
 *monopole-dipole* Branch S — a qualitative parallel, not an equivalence.
 
 **Corrected verdict: `TWO-OPERATORS-OPEN`**, not `NO-HEALTHY-VECTOR-ESCAPE`.
-`R_μνA^μA^ν` (sign of `λ` unconstrained by anything established) and
-`(∇_μA^μ)²` (ghost status unresolved) both remain genuinely open — neither
-closed, neither confirmed as a working escape. Next cheap step before
-`P146`: resolve these two via literature check (EFT positivity bounds;
-Einstein-aether-type no-ghost conditions), not original re-derivation.
-Both files corrected in place, same-day, per this project's own
-no-silent-correction convention (matches `P143` §3a, `P144` §0/1a). A
-**second, independent skeptic review of the corrected version** is now
-dispatched (fresh context, does not just check the correction was
-applied) — result pending.
+`R_μνA^μA^ν` (sign AND magnitude of `λ` unconstrained by anything
+established) and `(∇_μA^μ)²` (ghost status unresolved) both remain
+genuinely open — neither closed, neither confirmed as a working escape.
+Next cheap step before `P146`: resolve these two via literature check
+(EFT positivity bounds; Einstein-aether-type no-ghost conditions), not
+original re-derivation. Both files corrected in place, same-day, per this
+project's own no-silent-correction convention (matches `P143` §3a, `P144`
+§0/1a).
+
+**Second, independent skeptic review of the corrected version: CONFIRMED
+survives.** Fresh context, re-derived `R_00=4πGMδ³(x)` two independent
+ways, confirmed the interaction-potential arithmetic line-by-line, found
+no overclaim in the verdict language, confirmed the dipole-dipole caveat
+on §4 is material (stated 4 times) not token. Found 3 additional
+presentational gaps, none verdict-changing, folded in same-day: (1) the
+calculation only used one of two symmetric curvature-times-field terms
+(doubling coefficient, not changing power law/sign); (2) self-force/
+renormalization structure (standard point-particle EFT, doesn't undermine
+the result) named explicitly; (3) `λ`'s natural EFT magnitude (dim-6
+operator, `λ~1/M²` suppression) added as a **third** open axis alongside
+sign and ghost-freedom — "reaches the power law" ≠ "reaches the target
+magnitude." `P142`'s decision tree: two operators genuinely open, neither
+a confirmed escape, neither justifies `P146` yet.

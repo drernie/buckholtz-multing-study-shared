@@ -45,6 +45,21 @@ attractive stable / repulsive unstable structure) is correct as a
 *separate* finding, but is not a matched calculation of the same target
 configuration — stated explicitly in §4 below, not implied as identical.
 
+**Second independent skeptic review (same day, fresh context, evaluating
+this corrected version on its own merits — not just checking the fix was
+applied):** independently re-derived `R_00=4πGMδ³(x)` via two separate
+routes (directly from the trace-reversed Einstein equation, and
+cross-checked against this file's own linearized-Ricci computation),
+confirmed the `V(r)=λGM_Bk_A²/(4πr²)` arithmetic line-by-line, confirmed
+the verdict language does not overclaim (the "reaches target power law"
+phrasing is immediately qualified by the correct disclaimer that an
+unconstrained free parameter is not a positive result), and confirmed §4's
+dipole-dipole caveat is stated materially in four separate places, not as
+token cover. **Verdict CONFIRMED to survive.** Flagged three additional
+scope notes (setup asymmetry; self-force/renormalization not named;
+`λ`'s natural EFT magnitude as a third open axis alongside sign and
+ghost-freedom) — none change the verdict, all three folded into §3 below.
+
 ---
 
 ## 1. Question, exactly as posed
@@ -115,13 +130,35 @@ its sign (the `k_A`-is-energy argument that fixed the *minimal*-coupling
 sign in `docs/131` §(5) does not apply here — `λ` multiplies a genuinely
 new operator, not `k_A` itself).
 
+**Three scope notes (added per second independent skeptic review, which
+confirmed the arithmetic above but flagged these as unstated):**
+
+1. **Setup asymmetry.** The calculation above computes only the
+   `R_B·A_A²` contribution (curvature from body B, field of body A). By
+   translation symmetry, body A's own curvature sourced against body B's
+   field (`R_A·A_B²`) contributes an equal term — doubling the coefficient,
+   not changing the power law or the sign-of-`λ` conclusion.
+2. **Self-force pieces, not computed here.** The `R_B·A_B²` and `R_A·A_A²`
+   terms (a body's curvature against its *own* field) are UV-divergent
+   self-energies — standard point-particle EFT (Goldberger-Rothstein-type)
+   counterterms absorbed into each body's renormalized mass, not a
+   pairwise effect. This is the textbook treatment, not a gap in the
+   result above, but it is worth naming rather than leaving implicit.
+3. **Magnitude is a third open axis, not just sign.** "Reaches the target
+   power law" is not the same claim as "reaches the target *magnitude*."
+   `R_μνA^μA^ν` is a dimension-6 operator; natural EFT power-counting for
+   its coefficient would give `λ ~ 1/M²` for some UV scale `M`, which
+   could suppress `V(r)` well below what MULTING's own force law needs.
+
 **Consequence: NOT closed.** `R_μνA^μA^ν` is a live `VECTOR-ESCAPE-CANDIDATE`
-by the power-law criterion — its fate hinges entirely on whether its
-coefficient `λ` is constrained in sign by ghost-freedom or EFT positivity
-bounds (unitarity/causality constraints on higher-dimension operator
-coefficients, e.g. the kind of argument in Adams et al.-type positivity-
-bound literature) — a check this file does not perform, same open status
-as `(∇_μA^μ)²` below.
+by the power-law criterion only — promoting it further requires **three**
+separate checks to all pass, not one: sign compatibility with
+ghost-freedom/EFT-positivity-bounds (unitarity/causality constraints on
+higher-dimension operator coefficients, e.g. the kind of argument in
+Adams et al.-type positivity-bound literature), a natural magnitude
+compatible with the target force scale, and ghost-freedom itself. None of
+the three is checked here — same open status as `(∇_μA^μ)²` below, now
+on more axes than originally stated.
 
 ## 4. Magnetization-current coupling — closed on its own terms, a
 ## qualitative (not matched) parallel to Branch S
@@ -211,25 +248,27 @@ Per the three-verdict system specified for this step:
   `R_μνA^μA^ν` reaches the right power law with a free-sign coupling (§3) —
   a real candidate on the power-law criterion — but "escape candidate"
   per the user's own success criterion requires a demonstrated stable
-  repulsive branch, which needs `λ`'s sign to be shown compatible with
-  ghost-freedom/positivity, not merely undetermined by what's checked so
-  far. An unconstrained free parameter is not the same claim as a
-  positive result.
+  repulsive branch, which needs `λ`'s sign AND natural magnitude to be
+  shown compatible with ghost-freedom/positivity, not merely undetermined
+  by what's checked so far. An unconstrained free parameter is not the
+  same claim as a positive result.
 - `DYNAMIC-ONLY-ESCAPE` — not directly tested here (would require dropping
   staticity, `docs/131`'s branch 3 territory, out of this step's scope).
 
-**Corrected verdict: `TWO-OPERATORS-OPEN`, not `NO-HEALTHY-VECTOR-ESCAPE`.**
-Two operators — `R_μνA^μA^ν` (sign of `λ` unconstrained) and `(∇_μA^μ)²`
-(ghost status unresolved) — remain genuinely undecided pending checks this
-"cheap gate" step was not scoped to perform. Per the user's own stated
-success criterion, this state of affairs does **not** yet justify a `P146`
-full numerical construction either — but for a different reason than the
-original draft gave: not because both candidates are closed, but because
-neither open candidate has been shown to actually *work* (only that neither
-has been shown *not* to). The next cheap step, before `P146`, is resolving
-`R_μνA^μA^ν`'s sign constraint and `(∇_μA^μ)²`'s ghost status — likely via
-a literature check (EFT positivity bounds; Einstein-aether-type no-ghost
-conditions) rather than original derivation, given both are established
+**Corrected verdict: `TWO-OPERATORS-OPEN`, not `NO-HEALTHY-VECTOR-ESCAPE`
+— second independent skeptic review confirms this survives (§0).**
+Two operators — `R_μνA^μA^ν` (sign AND magnitude of `λ` unconstrained, §3)
+and `(∇_μA^μ)²` (ghost status unresolved) — remain genuinely undecided
+pending checks this "cheap gate" step was not scoped to perform. Per the
+user's own stated success criterion, this state of affairs does **not**
+yet justify a `P146` full numerical construction either — but for a
+different reason than the original draft gave: not because both
+candidates are closed, but because neither open candidate has been shown
+to actually *work* (only that neither has been shown *not* to). The next
+cheap step, before `P146`, is resolving `R_μνA^μA^ν`'s sign/magnitude
+constraint and `(∇_μA^μ)²`'s ghost status — likely via a literature check
+(EFT positivity bounds; Einstein-aether-type no-ghost conditions) rather
+than original derivation, given both are established
 technical literatures this project should consult rather than re-derive.
 
 ## 7. Competing hypotheses (M0–M3), scored against what was found
@@ -261,9 +300,11 @@ technical literatures this project should consult rather than re-derive.
    principle surface further candidates.
 2. **Does not resolve `(∇_μA^μ)²`'s ghost status** — left open, not
    force-closed, per §5.
-3. **Does not resolve `R_μνA^μA^ν`'s coupling sign** — reaches the right
-   power law (§3), but whether `λ` can consistently take the sign needed
-   for a *stable* repulsive branch (not just any sign) is unchecked.
+3. **Does not resolve `R_μνA^μA^ν`'s coupling sign or magnitude** —
+   reaches the right power law (§3), but whether `λ` can consistently take
+   the sign needed for a *stable* repulsive branch, at a magnitude
+   compatible with MULTING's own force scale (not suppressed away by
+   natural dim-6 EFT counting, `λ~1/M²`), is unchecked on both axes.
 4. **Does not touch `docs/131`'s branch 3** (driven non-equilibrium /
    non-static) — M3 is a different physical target, not this step's
    question.
