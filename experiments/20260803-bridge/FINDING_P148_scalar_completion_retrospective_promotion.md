@@ -247,15 +247,41 @@ at all," not "the more defensible option," and (b) re-check the
 solar-system-scale (Cassini-type) constraint under Reading B, since
 `docs/118`'s own prior safety margin does not carry over.
 
-## Update, 2026-08-26 (same day) — P151 (Q3b) drafted, skeptic review pending
+## Update, 2026-08-26 (same day) — P151 (Q3b) complete, two skeptic rounds, Cassini check UNRESOLVED
 
 `P151` computes the actual bound check, Reading B only, using the
 project's own established force law (not kappa plugged directly into a
 bound). MICROSCOPE: predicted eta ~2e-37 vs. observed ~1.5e-15 -- ~22
-orders of magnitude below sensitivity, no constraint at all. Solar-system
-(Cassini-type), redone with Reading B applied consistently to the Sun
-(not docs/118's corona-only value): margin shrinks from docs/118's
-claimed 14 orders of magnitude to just ~3. Own-caught error fixed before
-skeptic dispatch: an early draft used Earth's radius instead of the Sun's
-own radius as the lever arm for the Cassini check. Skeptic review
-dispatched -- result pending.
+orders of magnitude below sensitivity, no constraint at all. Confirmed by
+two independent skeptic reviews, no changes needed.
+
+Solar-system (Cassini-type) check went through two rounds. Own-caught
+error fixed before first skeptic dispatch: an early draft used Earth's
+radius instead of the Sun's own radius as the lever arm. First skeptic
+round confirmed the corrected derivation and reported a margin of ~3.1
+orders of magnitude (docs/118's claimed 14-order margin does not survive
+under Reading B's internally-consistent k_Sun). A **second** independent
+skeptic review then found this WEAKENED for two further reasons: (a) a
+category error -- comparing this construction's 1/r^3 force ratio to the
+PPN parameter gamma is not comparing two versions of one observable with
+different error bars; gamma characterizes spacetime curvature/light-
+bending, not a term in the standard PPN force expansion at all; (b) a
+geometric misnomer -- D=1 AU is not the actual Cassini-type geometry; the
+real 2002 solar-conjunction Shapiro-delay measurement (Bertotti, Iess &
+Tortora 2003) used minimum impact parameter b_min=1.6 R_sun, independently
+WebSearch-verified here. Recomputed at the correct geometry: the margin
+collapses from ~3.07 orders to ~0.94 orders -- under one order of
+magnitude -- with the disputed force-to-gamma mapping held fixed
+throughout. This is not a corrected number; it demonstrates the whole
+check is too fragile/geometry-dependent to report as a real margin either
+way. Verdict renamed `MICROSCOPE-SILENT-CASSINI-UNRESOLVED` (from the
+overclaiming `...-MARGIN-SHRUNK`). Script and finding file both updated;
+ruff clean, 881/881 tests pass.
+
+**P151 (Q3b) is now closed.** Net result of the P149-Q4 -> P150-Q3a ->
+P151-Q3b chain: internal consistency survives (P149); the observable
+mapping itself is disputed, leaning unavailable, definition-dependent
+(P150); and even under the one reading that lets any signal exist,
+external constraints are either silent (MICROSCOPE) or unresolved
+(Cassini) -- no external bound was established either for or against this
+project's own scalar-completion candidate.

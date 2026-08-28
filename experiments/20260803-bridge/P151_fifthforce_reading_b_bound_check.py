@@ -146,28 +146,38 @@ k_Sun_docs118 = 3e-17 * M_sun
 print(f"  k_Sun (docs/118, corona-only) = {k_Sun_docs118:.4e} kg")
 print(f"  ratio (Reading B / docs/118)  = {k_Sun_readingB / k_Sun_docs118:.3e}")
 
-print("\nDipole-to-monopole force ratio at Earth-Sun separation (D=1 AU).")
-print("The surviving term is the SUN's own k-charge (k_P m_A r_P, P=Sun,")
-print("A=Earth) -- its lever arm is the SUN's OWN radius R_sun, matching")
-print("docs/118's own formula F_d/F_m = beta_d*(k_Sun/M_sun)*(R_sun/D)")
-print("(NOT R_earth -- an error in an earlier draft of this script, caught")
-print("and fixed before this ran against the skeptic):")
+print("\n[CORRECTED per second skeptic review] This check rests on TWO")
+print("unverified steps this file's own text must not let slip past the")
+print("caveat: (a) mapping a 1/r^3 anomalous FORCE ratio onto the PPN")
+print("parameter gamma (which characterizes spacetime curvature / light")
+print("bending -- a physically DIFFERENT observable, not a term in the")
+print("standard PPN force expansion at all) is a category-level leap,")
+print("not merely 'uncertain'; (b) 'D=1 AU' is a geometric misnomer for")
+print("a Cassini-type bound -- the actual 2002 solar-conjunction Shapiro-")
+print("delay measurement used a minimum impact parameter b_min=1.6 R_sun")
+print("(WebSearch-verified), not Earth's orbital distance. Demonstrating")
+print("(b)'s sensitivity, even taking (a) at face value:")
 
-F_d_over_Fm = beta_d * (k_Sun_readingB / M_sun) * (R_sun / AU)
-print(f"  F_d/F_m = beta_d*(k_Sun/M_sun)*(R_sun/D) = {F_d_over_Fm:.4e}")
+F_d_over_Fm_AU = beta_d * (k_Sun_readingB / M_sun) * (R_sun / AU)
+D_conjunction = 1.6 * R_sun
+F_d_over_Fm_conjunction = beta_d * (k_Sun_readingB / M_sun) * (R_sun / D_conjunction)
+cassini_bound = 2.3e-5  # Bertotti, Iess & Tortora 2003, as cited in docs/118
 
-cassini_bound = 2.3e-5  # Bertotti et al. 2003, as cited in docs/118
-print("  Cassini bound on anomalous force ratio (Bertotti et al. 2003,")
-print(f"  as cited in docs/118): < {cassini_bound:.1e}")
-ratio2 = F_d_over_Fm / cassini_bound
-print(f"\n  F_d/F_m / Cassini_bound = {ratio2:.4e}")
-if ratio2 < 1:
-    print(f"  -> still below the Cassini bound, by {sp.log(1 / ratio2, 10).evalf():.1f}")
-    print("     orders of magnitude -- SAFE, but by a much smaller margin than")
-    print("     docs/118's own (stale, corona-based) 14-orders-of-magnitude claim.")
-else:
-    print("  *** EXCEEDS the Cassini bound -- Reading B, applied consistently,")
-    print("  *** would be EXCLUDED at the solar-system scale. ***")
+print("\n  at D=1 AU (geometrically wrong for Cassini):")
+print(f"    F_d/F_m = {F_d_over_Fm_AU:.4e}")
+print(f"    margin  = {sp.log(cassini_bound / F_d_over_Fm_AU, 10).evalf():.2f} orders of magnitude")
+print("\n  at D=1.6 R_sun (the ACTUAL 2002 conjunction geometry):")
+print(f"    F_d/F_m = {F_d_over_Fm_conjunction:.4e}")
+print(
+    f"    margin  = {sp.log(cassini_bound / F_d_over_Fm_conjunction, 10).evalf():.2f} orders of magnitude"
+)
+print()
+print("  -> the claimed 'safety margin' swings from ~3.1 orders to under 1")
+print("  order of magnitude depending SOLELY on which geometry is used --")
+print("  with the (dubious) force-to-gamma mapping held fixed throughout.")
+print("  This is not a corrected bound; it is a demonstration that the")
+print("  whole check is too fragile to report as a real margin either way.")
+print("  VERDICT for this check: UNRESOLVED, not 'safe by ~3 orders'.")
 
 print()
 print("=" * 78)

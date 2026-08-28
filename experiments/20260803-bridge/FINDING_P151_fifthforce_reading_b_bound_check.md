@@ -1,12 +1,14 @@
 # FINDING P151 — Q3b: under Reading B only, MICROSCOPE is silent (~22
-# orders below sensitivity), but the Cassini safety margin shrinks from
-# docs/118's claimed 14 orders to just ~3
+# orders below sensitivity); the Cassini-type check does NOT establish a
+# safety margin at all — it is geometry- and mapping-fragile to the point
+# of being UNRESOLVED, not "safe by ~3 orders"
 
-**Date:** 2026-08-26
+**Date:** 2026-08-26 (corrected same day, second skeptic review)
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · L0 math
 (external constraint, per `P148`'s corrected internal-consistency →
 observable-mapping → external-constraint order)
-**Verdict:** `MICROSCOPE-SILENT-CASSINI-MARGIN-SHRUNK`
+**Verdict:** `MICROSCOPE-SILENT-CASSINI-UNRESOLVED` (renamed from an
+overclaiming `MICROSCOPE-SILENT-CASSINI-MARGIN-SHRUNK` — see §0)
 **Origin:** `P150`'s own explicit finding — Q3b is attemptable *only*
 under Reading B (the one of three defensible readings that lets any
 laboratory-scale signal exist at all), and *only* with the
@@ -15,6 +17,49 @@ own Cassini-safety conclusion does not survive under Reading B.
 **Script:** `P151_fifthforce_reading_b_bound_check.py` (positive control +
 2 checks against real, WebSearch-verified external bounds, ruff clean,
 does not touch the 881-test suite)
+
+## 0. Correction (second independent skeptic review, same day)
+
+The first pass of this file (and the script's original Check 2) reported
+a Cassini-type "safety margin" of `~3.1` orders of magnitude at `D=1 AU`
+and treated it as a real, if thin, constraint. A second context-asymmetric
+skeptic review (claim.md + code only, no session history) found this
+WEAKENED for two independent reasons, neither of which is "the number is
+slightly off":
+
+1. **Category error, not merely an uncertain mapping.** Comparing this
+   construction's `1/r³` anomalous *force* ratio to the PPN parameter `γ`
+   is not comparing two versions of the same observable with different
+   error bars — `γ` characterizes spacetime curvature / light-bending
+   (Shapiro delay), and is not a term in the standard PPN *force*
+   expansion at all. The original "unverified mapping" caveat in §3/§4
+   underweighted this as ordinary uncertainty when it is a structural
+   mismatch of observable *kind*.
+2. **Geometric misnomer.** `D=1 AU` is not the geometry of an actual
+   Cassini-type bound. The real 2002 solar-conjunction Shapiro-delay
+   measurement (Bertotti, Iess & Tortora 2003) used minimum impact
+   parameter `b_min=1.6 R_☉` — independently WebSearch-verified here,
+   confirmed exactly matching the skeptic's own recalled figure.
+
+Recomputing at the *correct* geometry, with the (still-disputed) force-to-γ
+mapping held fixed for comparison:
+
+```
+D = 1 AU        (wrong geometry):  F_d/F_m = 1.97×10⁻⁸   margin = 3.07 orders
+D = 1.6 R_sun   (actual conjunction): F_d/F_m = 2.65×10⁻⁶   margin = 0.94 orders
+```
+
+The claimed margin **swings from ~3.1 orders to under 1 order of
+magnitude purely from which geometry is used**, with everything else held
+fixed. This is not a matter of picking the "right" number between two
+candidates — it demonstrates the whole check is too fragile/geometry-
+dependent to report as any kind of real, defensible safety margin, in
+either direction. Per the skeptic's own suggested framing, adopted here:
+**this check is UNRESOLVED, not "safe by ~3 orders."** The script
+(`P151_fifthforce_reading_b_bound_check.py`) now computes and prints both
+geometries side by side with this conclusion; §3 and §4 below are rewritten
+accordingly. The MICROSCOPE check (§2) was independently reconfirmed by
+the same skeptic review and required no changes.
 **Scope, stated as prominently as `P150` requires:** every number below
 is a bound on *this project's own candidate construction*, under *one of
 three* disputed readings of an underspecified textual definition — not a
@@ -94,7 +139,9 @@ ratio = 7.08×10¹⁰   — confirms P150's own flagged ~10-order gap
 ```
 
 ```
-F_d/F_m = β_d(k_Sun/M_☉)(R_☉/D) = 1.97×10⁻⁸   (D = 1 AU)
+F_d/F_m = β_d(k_Sun/M_☉)(R_☉/D)
+        = 1.97×10⁻⁸    at D = 1 AU        (geometrically WRONG for Cassini)
+        = 2.65×10⁻⁶    at D = 1.6 R_☉     (the ACTUAL 2002 conjunction geometry)
 ```
 
 Compared against the Cassini bound **`γ−1=(2.1±2.3)×10⁻⁵`** (Bertotti,
@@ -102,31 +149,41 @@ Iess & Tortora 2003, *Nature* **425**, 374 — independently WebSearch-
 verified, not recalled from memory): `docs/118`'s own framing treats
 this `2.3×10⁻⁵` figure as a generic "anomalous force ratio" bound;
 **this mapping (a PPN light-bending/Shapiro-delay parameter constraining
-a `1/r³` dipole *force* ratio) is itself unverified and inherited
-uncritically from `docs/118`, not independently derived here** — flagged
-explicitly, not silently reused.
+a `1/r³` dipole *force* ratio) is a category-level leap, not merely an
+unverified numeric mapping** — `γ` is not a term in the standard PPN
+*force* expansion at all (see §0).
 
-Taking the number at face value regardless: `F_d/F_m / bound ≈ 8.6×10⁻⁴`
-— **still below the bound, by ~3.1 orders of magnitude, not the ~5
-orders an intermediate (Earth-radius) draft gave, and nowhere near
-`docs/118`'s original 14-orders-of-magnitude margin.**
+At `D=1 AU` the ratio gives a margin of `~3.07` orders of magnitude; at
+the geometrically correct `D=1.6 R_☉` (minimum impact parameter of the
+actual 2002 solar-conjunction Shapiro-delay measurement, independently
+WebSearch-verified here) the margin collapses to **`~0.94` orders — under
+one order of magnitude** — with the disputed force-to-γ mapping held
+fixed throughout. **This is not a corrected bound; it is a demonstration
+that the whole check is too fragile to report as a real margin either
+way.** See §0 for the full correction history.
 
 ## 4. Verdict
 
-**`MICROSCOPE-SILENT-CASSINI-MARGIN-SHRUNK`** — under Reading B, the one
-of three defensible readings this construction can even be tested under:
+**`MICROSCOPE-SILENT-CASSINI-UNRESOLVED`** — under Reading B, the one of
+three defensible readings this construction can even be tested under:
 
 - MICROSCOPE gives **no constraint at all** on this construction — the
   predicted composition-dependent signal is ~22 orders of magnitude
-  below current experimental sensitivity.
-- The solar-system-scale margin is real but **far thinner than `docs/118`
-  reported** — `~3` orders of magnitude, not `14` — because `docs/118`
-  used an internally-inconsistent, ad hoc sub-component (corona energy)
-  instead of Reading B's own consistent total-energy prescription. This
-  confirms `P150`'s own flagged concern was not merely theoretical.
+  below current experimental sensitivity. This result is solid — two
+  independent skeptic reviews confirmed it, no changes needed.
+- The solar-system-scale check does **not** establish a safety margin in
+  either direction. `docs/118`'s own claimed 14-order margin does not
+  survive under Reading B's internally-consistent `k_Sun` (confirming
+  `P150`'s flagged concern was not merely theoretical) — but the
+  replacement number this file first reported (`~3.1` orders, "safe") is
+  itself an artifact of using the wrong conjunction geometry, and swings
+  to under 1 order at the correct geometry. **Whether any defensible
+  solar-system bound applies to this construction at all is UNRESOLVED**,
+  not "safe by ~3 orders."
 - The Cassini-bound *mapping itself* (force ratio vs. PPN `γ`) is a
-  further layer of unverified construct validity, inherited from
-  `docs/118`, not resolved here.
+  category-level leap, not merely an unverified numeric mapping — a
+  further, deeper problem than the geometry issue, and also not resolved
+  here.
 
 ## What this file does NOT establish
 
@@ -134,17 +191,23 @@ of three defensible readings this construction can even be tested under:
    1) — this bounds only this project's own Reading-B reconstruction,
    one of three disputed readings `P150` found, itself only
    `LEANING`-favored over the other two, not established.
-2. **Does not validate Reading B** by virtue of surviving these two
-   checks — surviving a bound is necessary, not sufficient, for a
+2. **Does not validate Reading B** by virtue of surviving the MICROSCOPE
+   check — surviving one bound is necessary, not sufficient, for a
    reading's own construct validity, which remains `P150`'s separate,
-   unresolved question.
-3. **The Cassini γ-vs-force-ratio mapping is unverified** — inherited
-   from `docs/118` at face value, explicitly flagged, not independently
-   derived (§3). A proper PPN-level derivation of what a `1/r³` dipole
-   force actually implies for γ was not attempted.
-4. **`r_test`, Ti/Pt atomic-mass-only approximation, and `T=300`K are all
+   unresolved question. The solar-system check establishes nothing
+   either way (§0, §3, §4).
+3. **The Cassini γ-vs-force-ratio mapping is a category error**, not
+   merely unverified — inherited from `docs/118` at face value,
+   explicitly flagged, not independently derived (§0, §3). A proper
+   PPN-level derivation of what a `1/r³` dipole force actually implies
+   for γ (if anything) was not attempted, and may not exist.
+4. **The solar-system "margin" is not a number this file can report** —
+   it swings by more than 2 orders of magnitude depending solely on
+   geometry (§0). Neither `~3.1` orders nor `~0.94` orders should be
+   cited elsewhere as "the" Cassini margin for this construction.
+5. **`r_test`, Ti/Pt atomic-mass-only approximation, and `T=300`K are all
    order-of-magnitude inputs** (per `P150`'s own §5 flag) — real heat
    capacities, exact test-mass geometry, and the alloys' minority
    constituents (Al, V, Rh) were not used.
-5. Nothing about MULTING itself (Gate 1) — entirely this project's own
+6. Nothing about MULTING itself (Gate 1) — entirely this project's own
    reconstruction, evaluated under its own disputed extension choice.
