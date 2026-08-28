@@ -277,3 +277,39 @@ CANDIDATES`, with the P147 exclusion now stated in the verdict line itself,
 not buried. Separately, re-fetched Claim C (Hell 2024/2025) a second,
 independent time — confirmed real (author, journal ref match). Added an
 explicit non-abelian out-of-scope note per the skeptic's own flagged gap.
+
+## Update, 2026-08-26 (same day) — P147, Horndeski's own gauge-invariant
+## term checked: wrong power law, no free parameter to fix it
+
+Per `P146`'s own §6.2 (the one candidate its literature check left
+genuinely open): `P147`
+(`FINDING_P147_horndeski_vector_powercounting.md` +
+`P147_horndeski_vector_powercounting.py`) checks Horndeski's (1976)
+uniquely-fixed, gauge-invariant vector-curvature coupling at the same
+leading (monopole) order `P143` used for its own baseline.
+
+**Split by structure:** the Ricci-based part of the term (rigorous,
+symbolic) gives an *exact* result — one of its two pieces
+(`F_μκF^νκR^μ_ν`) cancels to **exactly zero** (a clean structural
+cancellation between the Maxwell-stress-tensor trace structure and
+`R^μ_ν`'s alternating sign pattern), leaving only the Ricci-scalar term,
+which gives `V(r)~1/r⁴` — two powers steeper than the `1/r²` target
+potential. The Weyl/Riemann-tensor piece (explicitly labeled as a
+dimensional-scaling *estimate*, not a full point-particle EFT matching —
+the same category of subtlety the second `P145` skeptic review flagged)
+gives `force~1/r⁴` — one power steeper than target.
+
+**Neither piece reaches MULTING's target `1/r³` force**, and — unlike
+every other candidate in this chain — Horndeski's coefficient is fixed by
+the theorem itself, so there's no `λ` left to retune. **Verdict:
+`HORNDESKI-VECTOR-WRONG-POWER-LAW-NO-FREE-PARAMETER`** — a different
+class of failure than `P143` (fixable derivative gap), `P145`/`P146`
+(right power law, wrong admissibility), or `docs/131`'s Branch S (right
+power law, wrong sign): wrong shape, structurally, with nothing left to
+turn.
+
+**Cumulative picture:** every vector-mediator construction actually
+checked in this chain (`P143`, `P145`, `P146`, `P147`) has now failed,
+each for a genuinely different structural reason. Skeptic review
+dispatched (re-run the script, independently verify the exact
+cancellation and the dimensional estimate) — result pending.
