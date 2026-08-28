@@ -246,3 +246,16 @@ label explicitly as "the one of three readings that allows any signal
 at all," not "the more defensible option," and (b) re-check the
 solar-system-scale (Cassini-type) constraint under Reading B, since
 `docs/118`'s own prior safety margin does not carry over.
+
+## Update, 2026-08-26 (same day) — P151 (Q3b) drafted, skeptic review pending
+
+`P151` computes the actual bound check, Reading B only, using the
+project's own established force law (not kappa plugged directly into a
+bound). MICROSCOPE: predicted eta ~2e-37 vs. observed ~1.5e-15 -- ~22
+orders of magnitude below sensitivity, no constraint at all. Solar-system
+(Cassini-type), redone with Reading B applied consistently to the Sun
+(not docs/118's corona-only value): margin shrinks from docs/118's
+claimed 14 orders of magnitude to just ~3. Own-caught error fixed before
+skeptic dispatch: an early draft used Earth's radius instead of the Sun's
+own radius as the lever arm for the Cassini check. Skeptic review
+dispatched -- result pending.
