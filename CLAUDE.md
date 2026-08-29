@@ -17,10 +17,24 @@
    "what has this project established, and how well."
 3. `docs/147_campaign_stop_rule.md` — the 4 named bottlenecks
    (F→H_MULT(z) / Unique completion / Absolute scale / IC-sensitivity), their
-   current status, and the explicit reopen conditions for each.
+   current status, and the explicit reopen conditions for each. **[2026-08-30]
+   bottleneck 1's own named reopen condition ("a new publication [from TJB]
+   supplying k_A(z)/r_A(z)/D_cAB(z)") has been met — see `docs/149`.**
 4. `PROJECT_STATUS.md` — **superseded snapshot** (v0.3, 2026-06-01). Kept for
    history, banner-flagged, not the current state. Do not treat its numbers
    (858 tests, "beta unclear" blocker) as live.
+
+## SOURCE PREPRINT VERSION — v6 for everything already built, v82 going forward
+This project's entire F_oP/dipole/quadrupole/S–S-background reconstruction
+(`docs/124`-`127`, `two_charge_completion.py`, `two_field_action_closure.py`,
+`P1`-`P155`) is built on **v6** (`data/source_material/buckholtz_
+preprints202511.0598.v6.pdf`). TJB's own current work is a **different,
+substantially expanded document**, `data/source_material/buckholtz_
+202608.0943v1.v82.pdf` ("Multi-Tier Newtonian Gravity...," Zenodo 22004287)
+— see `docs/149_v82_preprint_study.md` for the full structural comparison
+and `data/source_material/README.md` for the version-provenance note. **Cite
+v6 for anything already established; cite v82 for anything new going
+forward; never conflate the two without checking.**
 
 ## METHODOLOGY
 This project runs the full FL/EstimandOps stack from `~/.claude/rules/`
@@ -50,9 +64,15 @@ v6 report) — never reconstruct the bridge by fitting against it.
   only the *mechanism search* is exhausted.
 
 ## STANDING CONSTRAINTS
-- **No TJB correspondence in this phase** (user instruction, 2026-08-14,
-  unrevoked as of this file's writing). Do not draft or send anything to
-  Dr. Buckholtz without an explicit, current request.
+- **TJB correspondence: active as of 2026-08-30**, superseding the
+  2026-08-14 "no correspondence" note (that note is historical — the user
+  sent a full progress-report email 2026-08-27, TJB replied 2026-08-29
+  proposing a video call, and the user explicitly requested a drafted
+  reply 2026-08-30). Still draft only on an explicit, current request —
+  never send unilaterally, and still follow the standing tone/content
+  rules (formal address, no evaluative-authority words, share results
+  rather than auditing, minimize questions — see global memory
+  `feedback_tjb_*` entries and `lessons_learned.md`'s 2026-08-29 entry).
 - `NO_AUTHOR_ERROR`: every finding is about this project's own
   reconstruction, never a claim about Dr. Buckholtz's own unpublished theory.
 
