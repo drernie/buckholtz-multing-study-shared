@@ -131,6 +131,45 @@ prose (not table cells) resolved it. If a vault write is rejected with a generic
 warning and the content is plainly benign markdown, suspect this before assuming the
 content itself is the problem.
 
+## 2026-08-29 — TJB's own reply caught two errors that this project's internal review
+## process did not: prose paraphrase can silently drift from the finding it summarizes,
+## and correspondence needs its own artifact-provenance check, separate from the analysis
+
+The 2026-08-27 progress-report email to TJB (`correspondence/draft_tjb_report_20260826.md`,
+confirmed actually sent) survived triage, contradiction-scan, and claim-decomposer before
+being sent — and still contained two real problems, both caught by TJB himself in his
+2026-08-29 reply, neither caught internally.
+
+**(a) Word-choice drift when translating a finding into prose.** The letter described the
+Shtanov-Sahni background-zero result as producing "an ordinary matter-dominated universe."
+The actual finding it paraphrases (`FINDING_P85_internal_time_to_redshift.md`) says
+"matter-dominated, **no dark energy**" — never "ordinary." The word "ordinary" was added
+at letter-drafting time, presumably for readability, and changed the physical meaning:
+dark matter's cosmological effect is roughly 5x ordinary matter's in standard cosmology, so
+"ordinary matter-dominated" reads as a much stronger (and wrong) claim than "matter-
+dominated" does. **Pattern:** every review pass this project ran (triage, contradiction-
+scan, claim-decomposer) checked the letter's claims against *each other* and against the
+underlying experiment files' *conclusions* — none of them diffed the letter's exact prose
+against the cited finding's exact prose, word for word. A conclusion can be correctly
+summarized in substance while a single added adjective changes what it says. Any future
+external-facing prose that paraphrases an internal finding should get one more pass:
+read the finding's own sentence back-to-back with the letter's sentence describing it, not
+just re-verify the finding is still true.
+
+**(b) Correspondence needs its own version/artifact-provenance check, not just the
+analysis's.** The letter's entire content is built on `data/source_material/
+buckholtz_preprints202511.0598.v6.md` (v6) — established as the working source many weeks
+earlier and never revisited before this letter was sent. TJB's own reply revealed he was
+thinking of a newer version ("...v82", Zenodo 22004287, the same preprint examined
+separately in `docs/144` for an unrelated question) and could not tell which version the
+letter's remarks addressed. `artifact-provenance-gates.md`'s Gate 1 (Artifact Identity) is
+usually applied to artifacts *inside* the analysis (a chart, a table, a dataset) — this is
+the same gate applied to the **correspondence itself**: before sending an update about "your
+work" to an author whose work you last pinned down weeks or months ago, re-confirm which
+version you are actually referencing, especially if there is any chance the author has
+revised or published a newer one in the interim. This is cheap (one question, or one check
+against the author's own most recent public output) and was skipped here.
+
 ## Standing gaps flagged but not yet acted on (tracked, not forgotten)
 
 - `symbols.md` variable registry — flagged 2026-07-01 (research-methodology.md's own gap
