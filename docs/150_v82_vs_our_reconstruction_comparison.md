@@ -141,11 +141,23 @@ at all, since v6 never published a comparably worked-out fit.
    identifiability degeneracy** `FINDING_P133` proved for our own
    `(A,g,κ)`? Not checked — would require reading v82's own units
    convention carefully enough to set up the same Jacobian-rank test.
-2. **Does TJB's own accretion-kinematics F→H(z) bridge agree or disagree
-   with this project's own Shtanov–Sahni `G_eff=0` result**, once both
-   are expressed in comparable terms? These are structurally different
-   mechanisms answering adjacent but not identical questions (§1's
-   bridge row) — not yet reconciled.
+2. **[WORKED, 2026-08-30, `experiments/20260803-bridge/FINDING_P156`]**
+   Does TJB's own accretion-kinematics F→H(z) bridge agree or disagree
+   with this project's own Shtanov–Sahni `G_eff=0` result? **Partially
+   sharpened, not closed.** `P156` found: (a) v82's own force-law tiers
+   match our own kernel structure exactly ([VERIFIED-PDF]+[VERIFIED-sympy]
+   re-derivation), and our closure criterion zeroes the same
+   dipole/quadrupole tiers when applied to v82's own printed kernels; (b)
+   an initial claim that v82 asserts `s(z)=d₀/(1+z)` exactly is **false**
+   — v82's own text (p.5–6) explicitly disclaims this reading, using
+   `a(z)` only as a redshift-mapping device, not as a statement about
+   `s(t)`'s own force-sourced trajectory; (c) the genuinely open question
+   — whether our isotropic-average/`r→∞` closure criterion says anything
+   about v82's finite-separation, single-pair, externally-oriented
+   dipole construction — is **not** answered by `P156` either, and is
+   named there as the concrete next calculation. This is exactly the
+   case `docs/127`'s own scope caveat (pearled 2026-08-30) flagged as
+   untested.
 3. **Would this project's own covariant-completion tensions (`P148`,
    `docs/131`) survive being re-expressed in v82's own node/kinematic
    language**, or are they specific to the particular construction
