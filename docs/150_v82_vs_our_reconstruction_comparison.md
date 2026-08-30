@@ -157,7 +157,15 @@ at all, since v6 never published a comparably worked-out fit.
    dipole construction — is **not** answered by `P156` either, and is
    named there as the concrete next calculation. This is exactly the
    case `docs/127`'s own scope caveat (pearled 2026-08-30) flagged as
-   untested.
+   untested. **Addendum, `FINDING_P164` (2026-08-30):** of `P160`'s own
+   3 leftover open items, 2 are directly addressed by v82's own Sec. IV.H
+   limitations catalogue (temporal lag: closed, via TJB's own "retarded
+   times... formal limit" statement; real-node anisotropy: elevated to a
+   TJB-acknowledged, still-unquantified limitation, not resolved) and 1
+   (node-dependent `κ(x)`) is closed within the "typical node" scope this
+   project's own work and v82's own fit itself both operate in (v82's
+   own Eq. 10, a single baseline `m_0` for both nodes), though it remains
+   open for a hypothetical real, diverse-cluster application.
 3. **[WORKED, 2026-08-30, `experiments/20260803-bridge/FINDING_P162`]**
    Would this project's own covariant-completion tensions (`P148`,
    `docs/131`) survive being re-expressed in v82's own node/kinematic
