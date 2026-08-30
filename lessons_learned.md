@@ -170,6 +170,59 @@ version you are actually referencing, especially if there is any chance the auth
 revised or published a newer one in the interim. This is cheap (one question, or one check
 against the author's own most recent public output) and was skipped here.
 
+## 2026-08-30 — One file, three sequential errors, all avoidable by checking
+## this project's own prior work before generating new analysis
+
+Building `FINDING_P157` (a follow-up to `P156`, working through the "does our
+Shtanov-Sahni closure apply to v82's own bridge" question), three distinct errors
+were caught in sequence, in the same file, within one session:
+
+1. **Provenance failure #1**: presented a primary-source passage (v82 Sec. IV.H,
+   "Typical objects, not distributions") as newly found, when `docs/149` §4 item 4
+   (written the *prior* session) already quoted it verbatim and had already noted
+   its relevance to this project's own isotropic-averaging work.
+2. **Provenance failure #2 (found while fixing #1)**: the file's *entire core
+   reframing* — "our G_eff=0 result and v82's bridge answer structurally different
+   questions" — was ALSO already stated, almost verbatim, in `docs/149` §3, written
+   before `FINDING_P156` even existed. `P156` itself had failed to build on that
+   observation and used a looser framing instead.
+3. **Mechanism-transfer failure (found by a deliberately-dispatched context-
+   asymmetric skeptic)**: having found `docs/127`'s `C1` result (isotropic
+   population-average of a *vector* dipole force washes out to zero) as the
+   "closest available analogy," the file used its collapse-to-zero *shape* to
+   argue "stakes" for v82's own `F^(1)` force term — without checking that `F^(1)`
+   (`Gβ₁(k_A m_P r_A + k_P m_A r_P)/(2c²s³)`) is a pure product of **scalars**,
+   with no angular variable for `C1`'s angular-cancellation mechanism to act on.
+   The two results share only a broad, largely uninformative umbrella
+   ("representative value ≠ population average" — true of nearly any nonlinear
+   statistic), not a shared mechanism. The mechanically appropriate tool
+   (Jensen's inequality / covariance over the scalar mass distribution) was never
+   applied.
+
+**Why this matters, generalized (not just "check facts more"):** #1/#2 are the
+same root cause as the already-recorded 2026-08-29 lesson ("prose paraphrase can
+drift from the finding it summarizes") one level upstream — that lesson was about
+drifting from a *source's* exact wording; this is about failing to grep the
+*project's own* existing findings before generating new analysis on the same
+question, so work already done gets silently re-presented as new. #3 is a
+different, sharper failure: reaching for the nearest *available* prior result as
+an analogy without checking whether its *mechanism* — not just its topic — applies
+to the new context. Thematic similarity ("both are about representative values vs.
+populations") is not mechanistic compatibility, and the gap between them is
+exactly where an overclaim hides, because the borrowed result's *specific,
+quantified* shape (a definite ±9.9 vs. a null 0.15σ) reads as far more informative
+than a same-magnitude claim actually licenses once the mechanism is checked.
+
+**How to apply going forward:** (a) before writing any new analysis on a topic
+this project has plausibly already touched, `grep` the relevant `docs/*` and
+`experiments/*/FINDING_*` files FIRST — a single grep is orders of magnitude
+cheaper than writing, then discovering, then correcting a duplicated finding;
+(b) when reusing a prior result as an analogy for a *new* formula/claim, write out
+the new formula/claim first and check literally whether the borrowed mechanism's
+own preconditions (here: an angular/directional degree of freedom to average
+over) are present in it — "same general category" is not sufficient license to
+transfer a specific quantitative shape.
+
 ## Standing gaps flagged but not yet acted on (tracked, not forgotten)
 
 - `symbols.md` variable registry — flagged 2026-07-01 (research-methodology.md's own gap
