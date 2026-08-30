@@ -158,10 +158,29 @@ at all, since v6 never published a comparably worked-out fit.
    named there as the concrete next calculation. This is exactly the
    case `docs/127`'s own scope caveat (pearled 2026-08-30) flagged as
    untested.
-3. **Would this project's own covariant-completion tensions (`P148`,
+3. **[WORKED, 2026-08-30, `experiments/20260803-bridge/FINDING_P162`]**
+   Would this project's own covariant-completion tensions (`P148`,
    `docs/131`) survive being re-expressed in v82's own node/kinematic
-   language**, or are they specific to the particular construction
-   `two_field_action_closure.py` chose?
+   language, or are they specific to the particular construction
+   `two_field_action_closure.py` chose? **Not specific to our
+   construction — the tension survives, and no working mechanism (standard
+   or exotic) was identified.** `P162` found: the force law both
+   `docs/130`/`docs/131` tested is unchanged in v82 (`P159`); v82's own
+   Sec. IV.F "pressure sources gravity" passage, read as its single most
+   literal candidate mechanism (Tolman/Komar active mass, `ρ+3P/c²`),
+   fails for ordinary positive thermal pressure — but that mechanism is
+   monopole-level while the passage motivates a dipole effect, and v82's
+   own explicit denial of internal anisotropy ("no intrinsic axis")
+   forecloses the standard bridge between the two, so the failure is
+   illustrative rather than a direct refutation. v82's own many-body node
+   ontology does **not** supply a new escape route via simple statistical/
+   mean-field averaging (that reduces to the same tested mechanism, a
+   point the first draft got wrong and a dispatched skeptic caught); the
+   one genuinely distinct remaining channel — correlation/fluctuation-
+   induced (gravitational-Casimir-type) forces — is unspecified, not
+   built here or known to exist in the literature, and its nearest EM
+   precedent (Casimir/van der Waals between similar media) is
+   attractive, not favorable to the needed sign.
 4. **Do the `A·g²` growth-rate ceiling (bottleneck 3) and v82's own fit
    parameters connect at all**, once unit conventions are reconciled?
 
