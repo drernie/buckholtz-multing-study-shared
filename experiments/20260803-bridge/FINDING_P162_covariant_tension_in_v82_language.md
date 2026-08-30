@@ -33,15 +33,20 @@ reduces to exactly the same ρ+3P/c² mechanism already tested (this is
 what the Tolman formula itself already is). A genuinely different class
 of physics — CORRELATION/FLUCTUATION-INDUCED forces between the two
 extended nodes (a gravitational analogue of the Casimir/van der Waals
-effect) — is not excluded by anything in this file, but is UNSPECIFIED
-rather than "untested and promising": no such GR construction exists here
-or (to this project's knowledge) in the literature, and its nearest
-physical precedent (EM Casimir/van der Waals between similar media) is
-generically ATTRACTIVE, not favorable to the needed sign. Re-expression
-in v82's language neither resolves nor dissolves the tension, and does
-NOT surface a clean untested escape route — it sharpens that no working
-mechanism, standard or exotic, has been identified anywhere in this
-project's work.`
+effect) — is NOT UNSPECIFIED, per a 2026-08-30 literature-check
+correction (below): it is a real, peer-reviewed effect ("gravitational
+Casimir-Polder," Ford-Hertzberg-Karouby PRL 2016, `arXiv:1512.07632`),
+directly verified — but it is ATTRACTIVE for similar-composition bodies
+(matching the EM precedent's own sign, not contradicting it), the one
+known repulsive channel (`arXiv:2501.02470`) is explicitly subdominant
+for identical polarizabilities, and the entire effect is a one-loop
+quantum-gravity correction, astronomically negligible at galaxy-cluster
+mass/distance scales regardless of sign. Re-expression in v82's language
+neither resolves nor dissolves the tension, and does NOT surface a
+usable escape route — the one channel initially left unspecified has now
+been checked against the literature and found both wrong-signed and too
+small; no working mechanism, standard or exotic, has been identified
+anywhere in this project's work.`
 **Correction (2026-08-30, context-asymmetric skeptic-caught, four points,
 all independently re-verified before being applied — not accepted on the
 skeptic's word alone):** the first draft (a) treated the ρ+3P/c² reading
@@ -241,21 +246,57 @@ gravitational analogue of the Casimir or (thermal) van der Waals effect,
 sourced by correlations in the many-body matter distribution that are
 *not* captured by the mean fields alone — are a structurally distinct
 class of physics from anything `docs/130`/`docs/131`/§3 above tested.
-**This file does not construct or test such a mechanism** — no GR
-analogue of a gravitational Casimir effect is attempted here, and none
-is known to this project to exist in the literature. It should be
-labeled **unspecified**, not "untested and promising": there is no
-worked-out candidate to evaluate, only a name for a class of physics
-that has not been built. Its *nearest available physical precedent* is
-also not favorable: ordinary EM Casimir and thermal van der Waals forces
-between two bodies of **similar** material are generically
-**attractive** (Lifshitz theory) — a sign reversal (as in the
-Dzyaloshinskii–Lifshitz–Pitaevskii configuration) requires an
-*asymmetric* three-medium geometry that has no obvious analogue named
-for two similar galaxy-cluster nodes. This does not exclude a
-correlation/fluctuation channel — it means the one available precedent
-points the wrong way, so it cannot be presented as a favorable or even
-neutral open door.
+
+**Correction (2026-08-30, literature check — this file's original claim
+"none is known to this project to exist in the literature" was checked
+and found FALSE, not merely unverified):** a real, peer-reviewed
+"gravitational Casimir-Polder" literature exists and is directly on
+point. `[VERIFIED-arXiv, direct abstract fetch, not agent-report alone]`:
+Ford, Hertzberg & Karouby, *Quantum Gravitational Force Between
+Polarizable Objects*, Phys. Rev. Lett. 116, 151301 (2016),
+`arXiv:1512.07632` — computes exactly this class of effect (a quantum
+correction to the gravitational potential between two distant,
+polarizable extended bodies, from induced quadrupole moments via
+two-graviton exchange, "in close analogy to the Casimir-Polder... force
+between a pair of atoms"). Its own far-field result, quoted directly from
+the abstract: `V(r) = −3987·ℏcG²α_1S·α_2S/(4π·r¹¹)` — **negative**, i.e.
+**attractive**, for two bodies with the same-sign (ordinary, positive)
+static gravitational quadrupole polarizability. A follow-on line of work
+(Hao, Hu & Yu, *Repulsive quantum gravitoelectric-gravitomagnetic
+interaction*, `arXiv:2501.02470`, 2025) finds one genuine repulsive
+channel — a cross-coupling between gravitoelectric and gravitomagnetic
+polarizability — but its own abstract, quoted directly: "for two
+isotropically polarizable objects with **identical** gravitoelectric and
+gravitomagnetic polarizabilities... the repulsive quantum interaction
+**cannot surpass** the attractive interactions." Since MULTING's own two
+nodes are modeled as same-type objects (both ordinary galaxy-cluster
+thermal-energy sources, no asymmetry named anywhere in v82's own
+construction), this is exactly the "identical polarizabilities" case in
+which the one known repulsive channel is explicitly subdominant.
+Separately: every result in this literature is a **one-loop quantum-
+gravity correction** (two-graviton exchange, `ℏ`-suppressed by
+construction) — astronomically far below any classical, macroscopic
+effect at galaxy-cluster mass and distance scales, regardless of sign.
+**Corrected label: this channel is SPECIFIED in the literature, not
+unspecified — but remains sign-unfavorable (attractive for similar
+bodies; the one known repulsive term is explicitly subdominant for
+identical polarizabilities) and separately magnitude-irrelevant
+(quantum-loop-suppressed, not a candidate classical mechanism at all at
+these scales).** This strengthens, not weakens, this section's own
+conclusion — the escape route is not merely unbuilt, it is built,
+checked, and found both wrong-signed and far too small.
+
+Its *nearest available physical precedent* was already correctly
+characterized as unfavorable even before this correction: ordinary EM
+Casimir and thermal van der Waals forces between two bodies of
+**similar** material are generically **attractive** (Lifshitz theory) —
+a sign reversal (as in the Dzyaloshinskii–Lifshitz–Pitaevskii
+configuration) requires an *asymmetric* three-medium geometry that has
+no obvious analogue named for two similar galaxy-cluster nodes. The
+literature check above confirms this EM intuition transfers correctly to
+the gravitational case: the actual gravitational-Casimir-Polder result
+is attractive for similar bodies, matching the EM precedent's own sign,
+not contradicting it.
 
 ## 5. Answer to item 3
 
@@ -271,13 +312,16 @@ the needed effect (§3). v82's own many-body node ontology does not, on
 correct inspection, supply a new escape route via simple statistical
 averaging (§4) — that reduces to the same tested mechanism. The one
 genuinely distinct class of physics that remains conceivable
-(correlation/fluctuation-induced forces) is unspecified, not built here,
-and its nearest physical precedent is unfavorable rather than open.
-**Re-expressing in v82's language does not dissolve the tension, and
-does not surface a clean, promising, untested escape route** — the
-honest state is: no mechanism has been found, and the one remaining
-speculative class of physics that hasn't been tried has a precedent
-pointing against it, not for it.
+(correlation/fluctuation-induced forces) is, per the 2026-08-30
+literature-check correction in §4, not unspecified — it has been built,
+in the published literature, and checked directly: attractive for
+similar-composition bodies, the one repulsive term subdominant for
+identical polarizabilities, and quantum-loop-suppressed in magnitude
+regardless of sign. **Re-expressing in v82's language does not dissolve
+the tension, and does not surface a usable escape route** — the honest
+state is: no mechanism has been found, and the one remaining speculative
+class of physics, now actually checked against the published literature
+rather than merely named, is confirmed both wrong-signed and too small.
 
 ## What this file does NOT establish
 
@@ -285,11 +329,12 @@ pointing against it, not for it.
    §0) — v82's own force law does not depend on the Sec. IV.F passage
    this file checked; that passage's status (motivation vs. derivation)
    is TJB's own to characterize, not this project's to judge.
-2. **Does not construct or test a correlation/fluctuation-induced
-   (gravitational-Casimir-type) mechanism** — §4 only names the class and
-   notes its nearest EM precedent is unfavorable; a genuine GR
-   construction of such an effect, if one is even possible, is
-   substantial new physics well beyond this file's scope.
+2. **Does not independently re-derive the gravitational-Casimir-Polder
+   result cited in §4's correction** — the abstracts of `arXiv:1512.07632`
+   and `arXiv:2501.02470` were fetched and quoted directly, not re-derived
+   from first principles; this file trusts the published result's own
+   stated sign and scaling, standard practice for citing an established
+   literature result rather than reproducing it.
 3. **Does not re-examine `docs/130`'s own two "residual open branches"**
    (a `k_A` that is somehow not its own mass-energy; a driven
    non-equilibrium theory) beyond what `docs/131` already concluded.

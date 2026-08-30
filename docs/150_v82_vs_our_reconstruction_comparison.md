@@ -177,10 +177,16 @@ at all, since v6 never published a comparably worked-out fit.
    mean-field averaging (that reduces to the same tested mechanism, a
    point the first draft got wrong and a dispatched skeptic caught); the
    one genuinely distinct remaining channel — correlation/fluctuation-
-   induced (gravitational-Casimir-type) forces — is unspecified, not
-   built here or known to exist in the literature, and its nearest EM
-   precedent (Casimir/van der Waals between similar media) is
-   attractive, not favorable to the needed sign.
+   induced (gravitational-Casimir-type) forces — is **not unspecified**,
+   per a literature-check correction (2026-08-30): a real, peer-reviewed
+   "gravitational Casimir-Polder" effect exists (Ford-Hertzberg-Karouby,
+   PRL 116, 151301, 2016, `arXiv:1512.07632`) and is attractive for
+   similar-composition bodies (matching the EM precedent's own sign); the
+   one known repulsive term (`arXiv:2501.02470`, Hao-Hu-Yu 2025) is
+   explicitly subdominant for identical polarizabilities; and the entire
+   effect is a one-loop quantum-gravity correction, negligible at
+   galaxy-cluster scales regardless of sign — checked, not merely
+   unbuilt, and confirmed wrong-signed and too small.
 4. **[WORKED, 2026-08-30, `experiments/20260803-bridge/FINDING_P163`]**
    Do the `A·g²` growth-rate ceiling (bottleneck 3) and v82's own fit
    parameters connect at all, once unit conventions are reconciled?
