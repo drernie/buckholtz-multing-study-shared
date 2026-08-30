@@ -64,12 +64,70 @@ def test_our_kernel_matches_v82_term_structure():
     assert sp.simplify(f2_v82 - f2_ours) == 0
 
 
+def test_v6_raw_equations_independently_match_v82():
+    """Round-2 fix (skeptic-caught circularity in Round 1): compare v82's
+    own Eqs (2)-(4) not against OUR kernel (factorization_gate.py, which
+    was itself built by substituting v6's Eqs 18-20 into a template --
+    not independent), but against v6's own RAW Eqs (14)-(17)
+    [VERIFIED-grep, v6 lines 780-811], BEFORE v6's own Eqs (18)-(20)
+    substitute beta_d, beta_q in. Two genuinely separate primary sources.
+    """
+    G, c, beta_d, beta_q, beta1, beta2 = sp.symbols("G c beta_d beta_q beta1 beta2", positive=True)
+    kA, kP, mA, mP, rA, rP, r = sp.symbols("kA kP mA mP rA rP r", positive=True)
+
+    Fm = mA * mP / r**2
+    # v6's raw Eqs 14-16 (G folded out, ratio to Fm taken) then its own
+    # Eq 18-20 substitution: r_dA=beta_d*rA, r_dP=beta_d*rP, r_qAB^2=beta_q^2*rA*rP
+    Fd_over_Fm_v6 = sp.simplify(
+        (kA / c**2 * mP * (beta_d * rA) / r**3 + kP / c**2 * mA * (beta_d * rP) / r**3) / Fm
+    )
+    Fq_over_Fm_v6 = sp.simplify((kA * kP / c**4 * (beta_q**2 * rA * rP) / r**4) / Fm)
+
+    # v82's own Eqs 2-4, directly [VERIFIED-PDF p.4-5]
+    Fd_over_Fm_v82 = sp.simplify(
+        (beta1 * (kA / c**2 * mP * rA / r**3 + mA * kP / c**2 * rP / r**3)) / Fm
+    )
+    Fq_over_Fm_v82 = sp.simplify((beta2 * kA * kP / c**4 * rA * rP / r**4) / Fm)
+
+    assert sp.simplify(Fd_over_Fm_v6.subs(beta_d, beta1) - Fd_over_Fm_v82) == 0
+    assert sp.simplify(Fq_over_Fm_v6.subs(beta_q, sp.sqrt(beta2)) - Fq_over_Fm_v82) == 0
+
+
+def test_kappa_cancels_in_ratio():
+    """Resolves the second Round-1 gap: two_charge_completion.py's own
+    kappa (an undetermined normalization, never assigned a value/dimension
+    anywhere in this project) enters beta_d, beta_q identically and
+    cancels exactly in their ratio -- confirmed by matching the
+    two-point-charge construction's own tiers against v6's RAW (pre-Eq
+    18-20) force law and solving for beta_d, beta_q in terms of kappa.
+    """
+    kappa, beta_d, beta_q = sp.symbols("kappa beta_d beta_q", positive=True)
+    kA, kP, mA, mP, rA, rP, c = sp.symbols("kA kP mA mP rA rP c", positive=True)
+
+    uA = kappa * kA * rA / (c**2 * mA)
+    uB = kappa * kP * rP / (c**2 * mP)
+    ell_d = 2 * (uA + uB)  # two_charge_completion.py's own verified result
+    ell_q2 = 6 * uA * uB
+
+    lhs_d = beta_d * (kA * rA / (c**2 * mA) + kP * rP / (c**2 * mP))
+    sol_beta_d = sp.solve(sp.Eq(lhs_d, ell_d), beta_d)[0]
+    lhs_q2 = beta_q**2 * (kA * kP * rA * rP / (c**4 * mA * mP))
+    sol_beta_q = sp.sqrt(sp.solve(sp.Eq(lhs_q2, ell_q2), beta_q**2)[0])
+
+    assert sp.simplify(sol_beta_d - 2 * kappa) == 0
+    assert sp.simplify(sol_beta_q - kappa * sp.sqrt(6)) == 0
+
+    ratio = sp.simplify(sol_beta_q / sol_beta_d)
+    assert sp.simplify(ratio - sp.sqrt(6) / 2) == 0
+    return sol_beta_d, sol_beta_q, ratio
+
+
 def test_ratio_comparison():
     """The unit-independent, structurally-correct comparison: our own
-    derived (not fitted) ratio beta_q/beta_d = sqrt(6)/2, from
-    two_charge_completion.py [VERIFIED-file, line 171], versus v82's own
-    fitted analog sqrt(beta2)/beta1 [VERIFIED-PDF, Table II best-fit row,
-    beta1~1.4e10, beta2~7.7e17, per docs/149].
+    derived (not fitted) ratio beta_q/beta_d = sqrt(6)/2 (kappa-independent,
+    per test_kappa_cancels_in_ratio), versus v82's own fitted analog
+    sqrt(beta2)/beta1 [VERIFIED-PDF, Table II best-fit row, beta1~1.4e10,
+    beta2~7.7e17, per docs/149].
     """
     beta1_v82 = 1.4e10
     beta2_v82 = 7.7e17
@@ -90,6 +148,15 @@ if __name__ == "__main__":
     test_our_kernel_matches_v82_term_structure()
     print("\nOur own kernel (factorization_gate.py) matches v82's printed F1/F2")
     print("exactly under beta_d->beta1 (linear), beta_q^2->beta2 (squared): PASS")
+    print("(Round 1 -- later found circular, see test below)")
+
+    test_v6_raw_equations_independently_match_v82()
+    print("\nv6's own RAW Eqs 14-17 (pre-beta_d/beta_q substitution), matched")
+    print("independently against v82's own Eqs 2-4: EXACT MATCH (Round 2, non-circular): PASS")
+
+    sol_beta_d, sol_beta_q, ratio = test_kappa_cancels_in_ratio()
+    print(f"\nkappa resolution: beta_d(TJB) = {sol_beta_d}, beta_q(TJB) = {sol_beta_q}")
+    print(f"  ratio beta_q/beta_d = {ratio}  -- kappa cancels exactly: PASS")
 
     ratio_ours, ratio_v82, discrepancy = test_ratio_comparison()
     print("\nUnit-independent ratio comparison:")

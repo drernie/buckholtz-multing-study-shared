@@ -5,21 +5,31 @@
 **Date:** 2026-08-30
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·
 NO_AUTHOR_ERROR · L0 math (dimensional analysis + symbolic verification)
-**Verdict (final, post-skeptic):** `[HYPOTHESIS]-LEVEL-TENSION-NOT-A-
-CONFIRMED-MISMATCH; RATIO-IS-STILL-THE-RIGHT-KIND-OF-TEST-BUT-TWO-LOAD-
-BEARING-GAPS-REMAIN-OPEN: (1) THE-TWO-"INDEPENDENT"-ROUTES-ARE-NOT-
-INDEPENDENT — ROUTE-A-WAS-CONSTRUCTED-FROM-ROUTE-B, (2) κ'S-DIMENSION-
-AND-VALUE-ARE-NEVER-PINNED-DOWN-ANYWHERE-IN-THIS-PROJECT, SO "β_d=2" IS
-CONTINGENT-ON-AN-UNSTATED-CHOICE. THE-19.5×-RATIO-GAP-IS-REAL-GIVEN-
-THOSE-TWO-ASSUMPTIONS-AND-ROBUST-TO-UNIFORM-LEVER-ARM-RESCALING
-(VERIFIED), BUT-IS-NOT-A-SETTLED-FINDING.`
-**Correction (2026-08-30, context-asymmetric skeptic-caught, two
-independent points confirmed by direct re-reading of this project's own
-files):** the original verdict claimed the structural correspondence
-(`β1↔β_d`, `β2↔β_q²`) was "confirmed two independent ways" and presented
-the `19.5×` ratio gap as "a genuine, unit-independent mismatch — not a
-rounding-level disagreement." Both claims were overstated. §2 and §2.1
-below correct them in place.
+**Verdict (final, second correction — both open gaps resolved by
+finding v6's own RAW equations):** `RATIO-COMPARISON-CONFIRMED-BY-TWO-
+GENUINELY-INDEPENDENT-PRIMARY-SOURCES (v6's OWN Eqs 14-17, BEFORE
+β_d/β_q substitution, MATCHED DIRECTLY AGAINST v82's OWN Eqs 2-4 —
+sympy-exact, no circularity); β_d(TJB)=2κ, β_q(TJB)=κ√6 (κ = this
+project's own undetermined two-point-charge normalization — NOT TJB's
+notation at all, confirmed absent from v6); κ CANCELS EXACTLY in the
+ratio β_q/β_d=√6/2, independent of κ's value or dimension. The `19.5×`
+gap between this ratio and v82's fitted analog `√β2/β1` is real and
+well-grounded, not contingent on the two gaps a skeptic found in the
+first draft — both are now resolved (§2, §2.1).
+**Correction history (2026-08-30, two rounds, both resolved in place, not
+silently):** Round 1 (original draft) claimed "confirmed two independent
+ways" and an unconditional "genuine mismatch" — a dispatched skeptic
+found the two "independent" routes were circular (one built from the
+other) and that an internal parameter `κ` was never pinned down, making
+`"β_d=2"` contingent on an unstated choice. Round 2 (this update, at the
+user's own direction: "найди определение u_A у TJB, проверь κ") located
+`u_A` in v6's primary text — it does not exist there; it is this
+project's own internal symbol. But the search surfaced v6's own **raw**
+Eqs. 14-17 (page/lines below), which supply a second, genuinely
+independent primary source, and matching them against v82's Eqs. 2-4
+directly (sympy, both simplified separately, compared, exact match)
+resolves both Round-1 gaps at once: independence is real (§2), and `κ`'s
+role is now precisely known — it cancels in the ratio (§2.1).
 **Continues:** `docs/150` §6 item 4 ("Do the `A·g²` growth-rate ceiling and
 v82's own fit parameters connect... once unit conventions are reconciled?")
 and `docs/149` §2's own flagged-but-unchecked note ("These are not
@@ -64,85 +74,97 @@ dimensional bookkeeping entirely**. Both are true, unit-system-independent
 dimensionless numbers — not "dimensional, large-magnitude values" as an
 earlier, uncorrected note in `docs/149` §2 speculated without checking.
 
-## 2. Structural correspondence — ONE route, not two (corrected)
+## 2. Structural correspondence — resolved via v6's own RAW equations (Round 2)
 
-**Original claim (retracted): "confirmed two independent ways."**
-A dispatched skeptic pointed out that "Route A" (`scripts/
-factorization_gate.py`) and "Route B" (v6's own defining equations)
-might not be independent — and re-reading `factorization_gate.py`'s own
-comment settles it `[VERIFIED-file, lines 38-39]`:
+**`u_A` is not TJB's notation.** `[VERIFIED-grep]`: zero hits for `u_A`,
+`uA`, `u_P` anywhere in v6's text. It is this project's own internal
+symbol (`two_charge_completion.py` line 162), invented to help derive a
+candidate value for `β_d`, `β_q` — not something to look up in TJB's own
+work. Searching for it, though, surfaced something better: v6's own
+**pre-substitution** force law.
+
+**v6's own raw equations** (`data/source_material/buckholtz_
+preprints202511.0598.v6_pymupdf-clean.md`, lines 780-811, `[VERIFIED-
+grep]`), quoted in full because they turn out to be the key:
 
 ```
-#   dipole    F_d ~ B/r^3,  B = (G beta_d/c^2)(k_i r_i m_j + k_j r_j m_i)   [r_dA=beta_d r_A]
-#   quadrupole F_q ~ C/r^4, C = (G beta_q^2/c^4)(k_i r_i)(k_j r_j)          [r_qAB^2=beta_q^2 r_A r_P]
+F_m = G m_A m_P / r^2                                              (14)
+F_d = (G k_A c^-2 m_P |r_dA| / r^3) + (G k_P c^-2 m_A |r_dP| / r^3)  (15)
+F_q = G k_A k_P c^-4 |r_qAB|^2 / r^4                                (16)
+F_oP = F_m - F_d + F_q                                              (17)
+...
+r_dA = β_d r_A     (18)      r_dP = β_d r_P     (19)
+|r_qAB|^2 = (β_q)^2 r_A r_P                                        (20)
 ```
 
-The bracketed citations `[r_dA=beta_d r_A]`, `[r_qAB^2=beta_q^2 r_A r_P]`
-are v6's own defining relations (§below) — **this kernel was built BY
-substituting v6's own relations into a generic dipole-moment force
-template** (moment = charge × displacement, with `r_dA` as the
-displacement). It is not independent corroboration; it is v6's own
-relation, restated in kernel-matrix notation. The apparent "two routes"
-were one route.
+Eqs. (14)-(17) give `F_d`, `F_q` in terms of the **undetermined**
+lengths `r_dA`, `r_dP`, `r_qAB` — *before* Eqs. (18)-(20) fix them via
+`β_d`, `β_q`. This is genuinely independent of anything this project's
+own `factorization_gate.py` built (that file's kernel, per §0's original
+finding, was constructed BY substituting Eqs. 18-20 into a generic
+template — one route, not two). v6's Eqs. (14)-(17) are TJB's own,
+pre-substitution primary source.
 
-**v6's own defining equations** (`data/source_material/
-buckholtz_preprints202511.0598.v6_pymupdf-clean.md`, lines 805-811,
-`[VERIFIED-grep]`) remain the **sole** source for the linear/squared
-split:
+**Substituting Eqs. (18)-(20) into (15)-(16) and comparing directly
+against v82's own Eqs. (3)-(4)** `[VERIFIED-sympy]`: both simplified
+independently (v6's own `F_d/F_m`, `F_q/F_m` from its raw equations;
+v82's own `F^(1)/F^(0)`, `F^(2)/F^(0)` from its printed equations), then
+compared — **exact symbolic match** under `β_d→β1`, `β_q²→β2`:
 
-> "We posit... Eqs. (18) through (20). βd and βq are nonnegative...
-> `rdA = βdrA`... `rdP = βdrP`... `|rqAB|² = (βq)²rArP`"
-
-`β_d` is defined via a **linear** length relation (`r_dA=β_d·r_A`);
-`β_q` via a **squared** one. The identification `β1 (v82) ↔ β_d`
-(linear), `β2 (v82) ↔ β_q²` (squared) still stands — it is a correct
-reading of v6's own equations — but rests on **one** source, not two, and
-the earlier "confirmed independently" language is withdrawn.
-
-## 2.1 A second, more serious open gap: κ's dimension and value are never pinned down
-
-`two_charge_completion.py`'s own derivation carries an auxiliary
-parameter `κ` throughout (introduced via `q_A = -κ·k_A/c²`, line 158),
-and reads off `β_d=2, β_q=√6` from `u_A ≡ κ·k_A·r_A/(c²·m_A)` treated as
-*already equal to* v6's own dimensionless quantity — i.e. implicitly
-**`κ=1`** in whatever units make that true. `[VERIFIED-grep]`: `κ` is
-never assigned a numerical value or an explicit dimension anywhere in
-`two_charge_completion.py`, `docs/125`, or `docs/130` — it is used as a
-free bookkeeping symbol and never resolved.
-
-Whether `κ=1` is a harmless normalization (because it is genuinely
-dimensionless and v6's own `u_A` is defined the same way) or a **hidden,
-unstated length-scale choice** (if `κ` in fact carries dimension) cannot
-be settled without v6's own explicit definition of `u_A`, which this
-file has not located and re-verified independently. **`β_d=2, β_q=√6`
-should therefore be read as contingent on this unresolved choice, not as
-settled numbers ready for comparison against anything external.**
-
-**What survives this gap, verified independently `[VERIFIED-sympy]`**:
-the **ratio** `β_q/β_d` is invariant under the specific, one-parameter
-generalization "lever arm `d_A = α·r_A`" for any `α` (not just `α=1`) —
 ```
-β_d(α) = 2α,  β_q(α) = α√6  =>  β_q(α)/β_d(α) = √6/2, independent of α
+v6  (after its own Eq.18-20):  F_d/F_m = β_d·(k_A m_P r_A + k_P m_A r_P)/(c² m_A m_P r)
+v82 (Eq. 3, directly):         F^(1)/F^(0) = β1·(k_A m_P r_A + k_P m_A r_P)/(c² m_A m_P r)   -- IDENTICAL
+
+v6  (after its own Eq.18-20):  F_q/F_m = β_q²·k_A k_P r_A r_P/(c⁴ m_A m_P r²)
+v82 (Eq. 4, directly):         F^(2)/F^(0) = β2·k_A k_P r_A r_P/(c⁴ m_A m_P r²)              -- IDENTICAL
 ```
-— re-derived and confirmed here, not merely asserted by the skeptic.
-This is a real, if partial, robustness result: at least *this* specific
-degree of freedom (uniform lever-arm rescaling) cannot be the source of
-the `19.5×` gap in §3. Other degrees of freedom the skeptic named
-(angular/orientation-averaging factors, `κ_A≠κ_P` asymmetry) are **not**
-checked here and could move the ratio by a comparable order of magnitude
-— this file does not know by how much.
+
+This is genuine, two-source, non-circular corroboration: `β1(v82) =
+β_d(v6)` directly, `β2(v82) = β_q(v6)²` (squared) — confirmed from each
+paper's own equations, not from this project's own kernel construction.
+
+## 2.1 κ resolved: it cancels exactly in the ratio, confirmed by the same match
+
+Matching `two_charge_completion.py`'s own construction (`q_A=-κk_A/c²`,
+lever arm `d_A=r_A`) against v6's **raw** `F_d`, `F_q` (§2, before Eq.
+18-20 fixes the numbers) — not against an assumed target — and solving
+for what `β_d`, `β_q` must be `[VERIFIED-sympy]`:
+
+```
+β_d(TJB) = 2κ           (not "2" — the "2" printed by two_charge_
+β_q(TJB) = κ√6            completion.py silently dropped this factor)
+
+β_q(TJB)/β_d(TJB) = κ√6/(2κ) = √6/2   -- κ CANCELS EXACTLY
+```
+
+This resolves the Round-1 gap precisely, rather than leaving it open:
+`"β_d=2"` on its own was imprecise notation (missing a factor of `κ`, an
+undetermined normalization of this project's own two-point-charge
+model's effective coupling) — but the **ratio**, which is what §3
+actually compares, is unconditionally `κ`-independent. This also
+explains, retroactively, why the earlier uniform-lever-arm-rescaling
+check (`d_A=α·r_A`) found the ratio `α`-invariant: `α` and `κ` enter the
+construction the same way (both are overall normalizations of the
+"effective charge" `q_A`), and both must cancel in a ratio built from
+one power of each tier.
+
+**What remains genuinely unchecked** (real, not resolved by this round):
+angular/orientation-averaging factors and `κ_A≠κ_P` (asymmetric coupling
+between the two nodes) — a skeptic-named concern this file still does
+not address. These are structurally different from the `α`/`κ`
+normalization (which is proven to cancel); whether they also cancel in
+the ratio is not established here.
 
 ## 3. The ratio comparison — real under stated assumptions, not a settled mismatch
 
 `[VERIFIED-file, two_charge_completion.py line 171]`: this project's own
-derivation gives `β_d=2, β_q=√6` **not as a fit to any data** — as a pure
-combinatorial consequence of Taylor-expanding an exact two-point-charge
-(mirror-symmetric dipole) Coulomb interaction to second order in the
-lever-arm/radius ratio, **contingent on the §2.1 caveat about `κ`**. The
-file's own printed line: `"PREDICTION beta_q/beta_d = 1.2247"` — this
-ratio is the construction's actual falsifiable output, not the raw
-`β_d`, `β_q` values individually (which, per §2.1, may not even be
-well-defined pure numbers independent of an implicit unit/scale choice).
+derivation gives `β_d(TJB)=2κ, β_q(TJB)=κ√6` **not as a fit to any
+data** — as a pure combinatorial consequence of Taylor-expanding an
+exact two-point-charge (mirror-symmetric dipole) Coulomb interaction to
+second order in the lever-arm/radius ratio, with `κ` an undetermined
+overall normalization (§2.1) that **cancels exactly** in the ratio. The
+ratio, not the individual values, is the construction's genuinely
+falsifiable, unit/normalization-independent output:
 
 ```
 our derived ratio:        β_q/β_d = √6/2       = 1.2247
@@ -152,14 +174,15 @@ v82's fitted analog:      √β2/β1  = √(7.7e17)/1.4e10 = 0.0627
 discrepancy factor:                                    19.5×
 ```
 
-`[VERIFIED-sympy+python]`, `P159` script §3, arithmetic only. **Given**
-(a) `β1↔β_d`, `β2↔β_q²` (§2, resting on one source now, not two) and
-(b) `κ` resolves to a value/dimension consistent with `β_d=2, β_q=√6`
-being the intended comparison target (§2.1, unresolved) — this `19.5×`
-gap is real and, per §2.1, robust to uniform lever-arm rescaling
-specifically. It is **not**, contrary to the original draft, established
-as "a genuine, unit-independent mismatch" outright — that language
-presumed both (a) and (b) were settled, and only (a) is (partially).
+`[VERIFIED-sympy+python]`, `P159` script §3, arithmetic only. **Both
+Round-1 gaps are now closed**: (a) `β1↔β_d`, `β2↔β_q²` is confirmed by
+two genuinely independent primary sources (v6's own Eqs. 14-20, v82's
+own Eqs. 2-4 — §2); (b) `κ`'s exact role is now known (§2.1) — it enters
+`β_d`, `β_q` identically and cancels in their ratio. The `19.5×` gap
+stands as a real, well-grounded discrepancy in this specific
+falsifiable ratio, under the two_charge_completion.py's own stated
+construction (mirror-symmetric two-point-charge, uniform lever-arm
+normalization — §5 below lists what is NOT ruled out by this).
 
 ## 4. Important caveat: v6's own β_d, β_q are not a stable anchor either — `[VERIFIED-grep, v6 lines 2215-2516]`
 
@@ -207,47 +230,40 @@ structurally different explanations remain open, none tested here:
    the specific fitted point is not uniquely meaningful to begin with;
    not checked here (this is `docs/150` §6 item 1, still open).
 
-**Does mean, at HYPOTHESIS confidence given §2/§2.1's open gaps**: this
-project's own first-principles, non-fit prediction for the
-dipole-to-quadrupole coupling ratio does not land near where v82's own
-best fit to real `H(z)` data landed. This is a real, precise, falsifiable
-number under the stated construction — but not yet a confirmed tension
-between the frameworks, because the construction's own status (§2.1) is
-itself unresolved.
+**Does mean**: this project's own first-principles, non-fit prediction
+for the dipole-to-quadrupole coupling ratio does not land near where
+v82's own best fit to real `H(z)` data landed — a real, precise,
+falsifiable tension, now grounded in two independent primary sources
+(v6's own raw equations, v82's own equations — §2) with the construction's
+only free normalization (`κ`) shown to cancel exactly (§2.1). This is the
+strongest-supported form the finding has reached this session.
 
 ## What this file does NOT establish
 
 1. Not a claim about v82's own theory being wrong (`NO_AUTHOR_ERROR`) —
    only that this project's own two-point-charge construction's
-   prediction and v82's own fit disagree on this specific ratio, under
-   assumptions this file has not fully verified.
+   prediction and v82's own fit disagree on this specific ratio.
 2. Does not check whether `β1`, `β2` are jointly identifiable in v82's
    own fit (analogous to `FINDING_P133` for this project's own `(A,g,κ)`)
    — named in §5 as a real possibility, not tested.
-3. **Does not establish that Route A/B are independent** (§2, corrected)
-   — only one source (v6's own `r_dA=β_d·r_A` relation) grounds the
-   linear/squared correspondence; the "second route" was the first,
-   restated.
-4. **Does not pin down `κ`'s dimension or value** (§2.1) — `β_d=2,
-   β_q=√6` are contingent numbers, not yet shown to be the unique,
-   unit-independent output of the construction. Two concrete follow-ups
-   named, neither attempted here: (a) locate v6's own explicit definition
-   of its `u_A`-type dimensionless quantity and check whether `κ=1`
-   follows from it or is an extra assumption; (b) redo §1's dimensional
-   check on `κ` itself (not just on `β1`, `β2`) to settle whether it must
-   carry a length-scale dimension.
-3. Does not address the RAW magnitude of `β1` (`~10¹⁰`) on its own terms
+3. **Does not check angular/orientation-averaging factors or `κ_A≠κ_P`
+   asymmetry** (skeptic-named, §2.1) — unlike the `κ`/`α` normalization
+   (proven to cancel in the ratio, §2.1), these are structurally
+   different degrees of freedom whose effect on the ratio is not derived
+   here. A genuinely different, currently-unknown-magnitude source of
+   the `19.5×` gap.
+4. Does not address the RAW magnitude of `β1` (`~10¹⁰`) on its own terms
    — only the ratio, which is the part guaranteed unit-independent. Why
    `β1` itself is so large (a genuine physical coupling, vs. an artifact
    of v82's own practical unit choices for `k_A` in keV, `m_A` in `M_☉`,
    `r_A` in Mpc not being carried through with fully consistent `G`, `c`
    values) cannot be determined from the manuscript alone — would require
    the Zenodo supplementary code, not checked here.
-4. Does not re-examine whether `two_charge_completion.py`'s own
+5. Does not re-examine whether `two_charge_completion.py`'s own
    mirror-symmetric-orientation requirement (needed to reproduce
    MULTING's sign rule at all, per that file's own derivation) is itself
    the unique construction consistent with v82's specific fitted values —
    only that its magnitude prediction, taken at face value, doesn't match.
-5. Closes `docs/149` §2's flagged-but-unchecked note. Does **not** close
+6. Closes `docs/149` §2's flagged-but-unchecked note. Does **not** close
    `docs/150` §6 item 4 (the `A·g²`/v82-parameter connection) — a related
    but distinct question this file does not attempt.
