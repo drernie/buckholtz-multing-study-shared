@@ -49,6 +49,13 @@ validation target (Gate 2). Table A1 in the TJB preprint is confirmed
 **AI-output**, not a MULTING calculation (`docs/145` Part 8 / Secция 8 of the
 v6 report) — never reconstruct the bridge by fitting against it.
 
+**`docs/151_status_separation_rule.md`** — every claim's verdict
+separates Empirical/Model status from Ontological-interpretation status
+from Causal-claim status, three fields, never collapsed into one. A
+good `H(z)` fit (empirical) is not thereby a confirmed mechanism
+(ontological) or a confirmed bottom-up causal story (causal) —
+parameter-identifiable ≠ causally identifiable.
+
 ## CLOSED WORKSTREAMS — do not reopen without the stated condition
 - `[WS: round-2-strategic-arbiter]` — CLOSED 2026-08-24 (`docs/145` Part 6).
 - `BOTTLENECK-4-NATURAL-CLOSURE` (IC-sensitivity) — CLOSED 2026-08-26
