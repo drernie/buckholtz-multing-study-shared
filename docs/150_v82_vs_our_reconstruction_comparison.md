@@ -181,8 +181,23 @@ at all, since v6 never published a comparably worked-out fit.
    built here or known to exist in the literature, and its nearest EM
    precedent (Casimir/van der Waals between similar media) is
    attractive, not favorable to the needed sign.
-4. **Do the `A·g²` growth-rate ceiling (bottleneck 3) and v82's own fit
-   parameters connect at all**, once unit conventions are reconciled?
+4. **[WORKED, 2026-08-30, `experiments/20260803-bridge/FINDING_P163`]**
+   Do the `A·g²` growth-rate ceiling (bottleneck 3) and v82's own fit
+   parameters connect at all, once unit conventions are reconciled?
+   **No — not merely a units gap, a tier mismatch.** `A·g²` is a
+   monopole-tier quantity in this project's own construction
+   (`F_MULT(r)=A·c_G·g²·m₁m₂/r²`), but v82's own monopole term carries
+   zero free coefficient (`F⁽⁰⁾=−Gm_Am_P/s²`, Eq. 2) — only `β1, β2,
+   H0,anchor` are fitted, and all three live at the dipole/quadrupole
+   tiers. There is no v82-native number occupying the tier `A·g²`
+   constrains. Reinforced by `β1, β2` being a structurally different kind
+   of object (dimensionless directly-fitted coefficients, no field
+   theory behind them) than `A, g, κ` (couplings in a never-completed
+   covariant Lagrangian). A skeptic-caught correction narrowed the
+   verdict to v82's *written model structure* specifically — whether
+   v82's overall statistical fit could practically be degenerate with an
+   unmodeled monopole effect via `H0,anchor` is a distinct, unexamined
+   question.
 
 None of these is answered in this document — per the project's own
 standing methodology, each would need its own claim/estimand and
