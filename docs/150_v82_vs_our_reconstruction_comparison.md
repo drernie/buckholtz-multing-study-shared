@@ -210,8 +210,22 @@ at all, since v6 never published a comparably worked-out fit.
    covariant Lagrangian). A skeptic-caught correction narrowed the
    verdict to v82's *written model structure* specifically — whether
    v82's overall statistical fit could practically be degenerate with an
-   unmodeled monopole effect via `H0,anchor` is a distinct, unexamined
-   question.
+   unmodeled monopole effect via `H0,anchor` was left as a distinct,
+   unexamined question. **Followed up, `FINDING_P165` (2026-08-30):**
+   investigated, not closed — sharpened toward "plausible degeneracy."
+   An idealized local calculation naively suggests `H0,anchor` cannot
+   absorb such an effect, but v82's own real fitting procedure
+   contradicts this: SH0ES is anchored at `z=0.0233` not `z=0`, all
+   three parameters `(H0,anchor,β1,β2)` are jointly optimized against
+   all 33 points (Sec. II.G), `H0,anchor` is explicitly retained as "a
+   free-floating third fit parameter" because it could not be pinned
+   independently (Sec. IV.M), and v82's own Table II reports `H0,anchor`
+   varying over a real ~8.6% range with `(β1,β2)` co-optimized to
+   comparable fit quality — direct empirical evidence for exactly the
+   kind of degeneracy the naive local math said was impossible. A
+   separate, independent local result (at fixed `H0,anchor`) also finds
+   a genuine `β1`-`β2` compensation direction for a monopole effect.
+   Magnitude (negligible vs. dangerous) remains undetermined.
 
 None of these is answered in this document — per the project's own
 standing methodology, each would need its own claim/estimand and
