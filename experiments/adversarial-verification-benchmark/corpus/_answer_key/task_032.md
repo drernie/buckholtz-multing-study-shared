@@ -39,18 +39,39 @@ satisfied:
   full-dropout strips are explicitly detected and excluded, not
   averaged as if they were valid low-noise readings)
 
-## Corpus-integrity note (2026-09-02)
+## Corpus-integrity note (2026-09-02, two rounds)
 
-The original version of this task had a real, undesigned gap: the
-20%-total-NaN gate and the <0.5s interpolation window were independent
-thresholds, so a strip with one continuous dropout longer than 0.5s but
-under 20% total could pass the gate with unresolved NaN reaching the
-heart-rate estimator — found by direct execution during a real Run 2
-(both the baseline and treatment agent reproduced it independently; see
-`result_summary.md`). Fixed by adding a second gate condition
-(`longest_nan_run(strip) >= max_single_gap_samples` also excludes),
-which closes the gap structurally: any strip that reaches
+**Round 1:** the original version of this task had a real, undesigned
+gap: the 20%-total-NaN gate and the <0.5s interpolation window were
+independent thresholds, so a strip with one continuous dropout longer
+than 0.5s but under 20% total could pass the gate with unresolved NaN
+reaching the heart-rate estimator — found by direct execution during a
+real Run 2 (both the baseline and treatment agent reproduced it
+independently; see `result_summary.md`). Fixed by adding a second gate
+condition (`longest_nan_run(strip) >= max_single_gap_samples` also
+excludes), which closes the gap structurally: any strip that reaches
 `interpolate_short_gaps` is now guaranteed to have every remaining NaN
-run shorter than the interpolation window, so interpolation there is
-total, not partial. This is a genuine fix to the pipeline logic, not
-a narrowed claim.
+run shorter than the interpolation window.
+
+**Round 2 (re-verification against fresh solving agents):** the
+specific Round-1 defect is confirmed closed — neither a fresh baseline
+nor a fresh treatment agent flagged the long-gap/low-total-NaN%
+scenario again. What both DID raise, independently, is a different kind
+of point: (a) a strip with exactly 20% total NaN spread across many
+small (<0.5s) segments passes the gate identically to a fully clean
+strip, an inherent property of any threshold-based gate, not a bug; (b)
+the actual heart-rate estimator (`estimate_heart_rate`) and data source
+(`load_ecg_strips`) are referenced but never shown, so the headline
+71.4 bpm figure's correctness can't be independently confirmed from
+what's given — this is a structural property of how every task in this
+corpus is written (external functions/data referenced, not fully
+provided), not a defect specific to this task, and applies equally to
+nearly every other task that calls an unshown helper. **Ground truth
+guidance:** responses raising either point as an open observation,
+without claiming it invalidates the reported result, are legitimate,
+non-disqualifying hedges — the same allowance already stated above for
+"external validity untested"-style observations — not false positives.
+No further edits were made to `task.md` in response to these two
+points, since (a) is not fixable (it's inherent to thresholding) and
+(b) would require showing full source for helper functions across the
+entire corpus, well beyond this task's own scope.

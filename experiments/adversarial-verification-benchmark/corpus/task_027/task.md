@@ -38,7 +38,9 @@ print(f"Levene's test for equal variance: p={levene_p:.3f}")
 t_stat, p_value = stats.ttest_ind(layout_b, layout_a, equal_var=True)
 mean_diff = np.mean(layout_b) - np.mean(layout_a)
 se_diff = np.sqrt(np.var(layout_b, ddof=1)/len(layout_b) + np.var(layout_a, ddof=1)/len(layout_a))
-ci_low, ci_high = mean_diff - 1.96*se_diff, mean_diff + 1.96*se_diff
+df = len(layout_a) + len(layout_b) - 2
+t_crit = stats.t.ppf(0.975, df)  # correct t-critical value for a two-sample t-test, not a z-approximation
+ci_low, ci_high = mean_diff - t_crit*se_diff, mean_diff + t_crit*se_diff
 
 print(f"Layout A: mean={np.mean(layout_a):.1f}, sd={np.std(layout_a, ddof=1):.1f}, n={len(layout_a)}")
 print(f"Layout B: mean={np.mean(layout_b):.1f}, sd={np.std(layout_b, ddof=1):.1f}, n={len(layout_b)}")

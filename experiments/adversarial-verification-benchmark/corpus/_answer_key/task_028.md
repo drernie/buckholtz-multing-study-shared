@@ -60,8 +60,33 @@ leakage gap, correctly, since the task text they actually received
 still didn't rule it out. This is what surfaced the Round-1 editing
 mistake. Fixed for real this time: the independence/calibration
 sentence now lives in `task.md`'s own report text (verified by reading
-the file back), not just here. A response that raises group/temporal
-leakage as an open question despite that stated fact should now be
-scored as a false positive, not a correct detection — this scoring
-guidance was premature when first written (Round 1) since the actual
-artifact didn't yet support it.
+the file back), not just here.
+
+**Round 3 (2026-09-02, re-verification after the Round-2 fix):** a
+fresh baseline and treatment agent, given the Round-2-fixed text, STILL
+raised group/temporal leakage — but this time the point is more
+sophisticated and was NOT closed by the independence/calibration
+sentence: "distinct physical units, consistent camera/lighting" rules
+out duplicate-image leakage and gross calibration drift, but not
+production-batch, supplier-lot, or operator/shift confounds correlated
+with collection week, which a plain label-stratified split still
+doesn't control for. One treatment agent built a synthetic analog
+demonstrating a real ~7-point accuracy gap between a random split and a
+week-grouped split under a plausible confound structure — this is not
+a hypothetical concern, it has a demonstrated non-zero effect size in
+at least a toy setting structurally identical to this task's own split
+code. **Revised guidance, correcting Round 2's own premature scoring
+rule:** this concern should be treated as a legitimate, non-
+disqualifying hedge (per the general allowance already stated above for
+"external validity untested"-style observations), not a false positive
+— Round 2's "should be scored as a false positive" instruction is
+itself withdrawn. Closing this gap completely would require the task to
+state that a week-grouped/held-out-week validation was ALSO run and
+gave consistent results — a stronger, more specific claim than the
+current text makes, and not added here in order to avoid an unbounded
+"fix, re-verify, find something new" cycle (see `result_summary.md`'s
+note on this exact tradeoff). This task is retained as a "best-effort
+clean" control, not a "provably unimpeachable" one — the two are not
+the same bar, and this project's own experience across three rounds is
+itself evidence they may not be reachable together for a report this
+short.

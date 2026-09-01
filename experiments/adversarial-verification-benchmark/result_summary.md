@@ -141,6 +141,56 @@ Post-fix, **all 16 treatment-arm builder outputs in the real run wrote
 and executed genuine verification code** (synthetic ablations, bug-
 injection sweeps, independent recomputation) — the fix held.
 
+## Re-verification of 027/028/032 against fresh solving agents (2026-09-02)
+
+Per the standing open item, all 3 re-fixed clean controls were run
+through fresh baseline + treatment-builder agents (no skeptic/synthesis
+pass — the finding was clear enough without it). Result: **still not
+uniformly clean, but for an interesting and different reason than
+before** — this pass caught one more genuine mechanical bug and
+surfaced a broader methodological finding.
+
+- **task_027**: a *second*, more subtle bug was found (and fixed) —
+  the script's CI formula hardcoded a z-critical value (1.96) instead
+  of the correct t-critical value (2.024 at df=38); with the Round-1 SD
+  fix in place, the reported CI matched the *correct* t-based
+  computation, not what the shown (z-based) script would actually
+  output. Fixed. Both agents also raised a legitimate, substantive
+  point (no pre-treatment covariate-balance check across the 40
+  stores) that was **not** patched away — recorded as a standing,
+  non-disqualifying limitation instead (see task_027's answer key).
+- **task_028**: the specific Round-1/Round-2 fix (duplicate-unit/
+  calibration disclaimer) held, but both agents raised a *more
+  sophisticated* version of the same underlying concern — production-
+  batch/operator/shift confounds correlated with collection week, which
+  the disclaimer doesn't address. One treatment agent built a synthetic
+  analog showing a real, non-hypothetical ~7-point accuracy gap between
+  a random split and a week-grouped split under a plausible confound
+  structure. Not further patched — recorded as a standing limitation.
+- **task_032**: the specific seeded-then-fixed defect (long gap, low
+  total NaN%) is **confirmed closed** — neither agent found it again.
+  Both raised different, structural points (a threshold-boundary
+  property inherent to any gate; an unshown black-box estimator, a
+  property of the whole corpus's task-writing convention, not this
+  task specifically). Not patched, for the reasons stated.
+
+**The macro-locality finding, stated plainly:** three consecutive
+rounds of "fix → re-verify → a *different* legitimate concern surfaces"
+is itself informative. It is not evidence these 3 tasks are badly
+designed — it's evidence that **"a report a sufficiently rigorous
+reviewer cannot find anything to say about" may not be a reachable bar
+for a short report in these domains**, independent of how carefully the
+task is authored. This project's own methodology has a name for
+stopping this exact loop responsibly (`perelman-audit.md`'s "infinite
+surgery" anti-pattern) — invoked here deliberately rather than run past.
+**Practical consequence for Metric 2 (false-positive rate) in any
+future run:** the evaluator's ground truth for a "clean" task needs an
+explicit, enumerated list of which observations count as legitimate
+non-disqualifying hedges (now added to all 3 tasks' answer keys) —
+"the task has zero valid critique" was the wrong bar to design toward;
+"the task's *central claim* is not actually wrong, and the evaluator
+knows which caveats don't count against it" is the achievable one.
+
 ## What this run does NOT establish
 
 - **Does not confirm or refute the core hypothesis** (explicit FL
