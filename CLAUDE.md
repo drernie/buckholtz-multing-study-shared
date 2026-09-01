@@ -17,9 +17,16 @@
    "what has this project established, and how well."
 3. `docs/147_campaign_stop_rule.md` — the 4 named bottlenecks
    (F→H_MULT(z) / Unique completion / Absolute scale / IC-sensitivity), their
-   current status, and the explicit reopen conditions for each. **[2026-08-30]
-   bottleneck 1's own named reopen condition ("a new publication [from TJB]
-   supplying k_A(z)/r_A(z)/D_cAB(z)") has been met — see `docs/149`.**
+   current status, and the explicit reopen conditions for each. **[2026-09-01]
+   Bottleneck 1's gate decision is now made — see `docs/153`.** The original
+   2026-08-23 framing ("no published bridge exists") is CLOSED, superseded
+   by fact (v82 published one — `docs/149`). It is RESTATED, not simply
+   reopened: the new, precisely-scoped question is whether this project's
+   own S-S closure result (isotropic-average, r→∞) is compatible with v82's
+   own finite-r, single-pair bridge construction — GO-eligible per `docs/147`'s
+   own criterion 2, but not authorized to run without a separate explicit
+   go-ahead. `docs/147`'s own bottleneck-1 entry is annotated with a pointer,
+   not rewritten.
 4. `PROJECT_STATUS.md` — **superseded snapshot** (v0.3, 2026-06-01). Kept for
    history, banner-flagged, not the current state. Do not treat its numbers
    (858 tests, "beta unclear" blocker) as live.
