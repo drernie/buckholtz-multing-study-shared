@@ -83,6 +83,27 @@ Every fix above was independently re-computed after editing to confirm
 `/tmp/verify2.py`, `/tmp/verify4.py` outputs (session transcript) —
 all 9 fixes confirmed to match on re-check.
 
+## Addendum (2026-09-02): the gap this check itself had
+
+This check's own §"Method" reasoned that tasks stating only summary
+statistics (mean/SD/n) without raw data arrays were "not independently
+checkable," and skipped them. That reasoning was wrong: a two-sample
+t-test's statistic, p-value, and CI are deterministic functions of
+(mean, SD, n) per group — no raw array is needed to verify them. This
+exact gap let task_027 through with a severe, undetected bug (its
+reported t=3.12/p=0.003 didn't follow from its own reported mean/SD/n
+at all) — found live during a real Run 2, independently by three
+agents with zero coordination (see `result_summary.md`). A systematic
+corpus-wide re-scan for this specific pattern, done immediately after,
+found no other instance in the remaining 31 tasks — task_027 was
+uniquely vulnerable. Fixed (SD values solved for and verified via
+`scipy.stats` so the reported statistics now actually follow from the
+reported inputs); see the task's own answer key for the exact numbers.
+The lesson generalizes past this one bug: "not literally executable
+without external data" is not the same claim as "not independently
+checkable" — always ask whether a *derived* quantity is checkable from
+what *is* given, separately from whether the *raw* data is available.
+
 ## What this sanity check does NOT establish
 
 - Does not re-run the corpus through Run 2's actual solving agents —

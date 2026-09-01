@@ -39,14 +39,29 @@ correct-flagging solving agent should confirm are actually satisfied:
 
 - **defect_location:** none
 - **defect_type:** none — this is a clean task; a correct response
-  should not flag data leakage or any other defect here. **Dry-run
-  note (2026-09-01):** the original version of this task (12 FN / 19
-  FP, no unit/session-independence statement) had a real, unintended
-  arithmetic bug (94.2% did not reconcile with the confusion matrix) —
-  found independently by both a baseline- and a treatment-arm dry-run
-  agent, neither of which had been told this was a "clean" task. Fixed
-  per `corpus_sanity_check.md`'s addendum. The group/temporal-leakage
-  concern both agents also raised was a legitimate gap in the
-  *original* task specification, not evaluator/agent over-caution —
-  closed by the added independence/calibration statement above, not by
-  discounting the finding.
+  should not flag data leakage or any other defect here.
+
+## Corpus-integrity note (dated, two rounds)
+
+**Round 1 (2026-09-01, N=2 dry run):** the original version of this
+task (12 FN / 19 FP, no unit/session-independence statement) had a
+real, unintended arithmetic bug (94.2% did not reconcile with the
+confusion matrix) — found independently by both a baseline- and a
+treatment-arm dry-run agent, neither told this was a "clean" task.
+Confusion matrix fixed to 13 FN / 22 FP. An independence/calibration
+sentence was *intended* to close the group/temporal-leakage gap both
+agents also raised, but — an organizer error caught only in Round 2
+below — that sentence was added to this answer key file only, never
+to the actual `corpus/task_028/task.md` that solving agents see.
+
+**Round 2 (2026-09-02, real Run 2):** both the baseline and treatment
+agent independently re-found the identical, still-open group/temporal-
+leakage gap, correctly, since the task text they actually received
+still didn't rule it out. This is what surfaced the Round-1 editing
+mistake. Fixed for real this time: the independence/calibration
+sentence now lives in `task.md`'s own report text (verified by reading
+the file back), not just here. A response that raises group/temporal
+leakage as an open question despite that stated fact should now be
+scored as a false positive, not a correct detection — this scoring
+guidance was premature when first written (Round 1) since the actual
+artifact didn't yet support it.

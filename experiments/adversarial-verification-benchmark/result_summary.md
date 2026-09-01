@@ -7,32 +7,40 @@ that qualifier, not as a standalone finding.
 
 ## Headline result: inconclusive, underpowered as pre-registered
 
-**Metric 1 (detection rate), the pre-registered 13-task defect set**
-(001-011, 017, 023 — Tier A all 11 `docs/146` categories + 1 Tier B +
-1 Tier C):
+**Metric 1 (detection rate), corrected per `PREREGISTRATION.md`
+Addendum 3** (post-run fix: the evaluator's binary rubric had no way to
+distinguish "appropriately declined to assert, correctly, under
+legitimate adversarial pressure" from "asserted confidently and was
+wrong" — both scored `false`. Task 004's treatment output was
+downgraded by its skeptic sub-call to `NEEDS-REAL-DATA` for a sound
+reason and is reclassified `appropriately_hedged`, excluded from the
+primary binary count per Addendum 3, not counted as a miss):
 
-| Arm | Detected (strict: exact/close) |
+| Arm | Detected, n=12 non-hedged defect pairs (strict: exact/close) |
 |---|---|
-| Baseline (ambient-default) | 13/13 = 100% |
-| Treatment (explicit FL protocol + skeptic) | 12/13 = 92.3% |
+| Baseline (ambient-default) | 12/12 = 100% |
+| Treatment (explicit FL protocol + skeptic) | 12/12 = 100% |
 
-McNemar's exact test on the 2×2 discordant table (baseline-only=1,
-treatment-only=0, both-hit=12, both-miss=0): **p = 1.0**. Cohen's h =
-0.56 (point estimate only — with a single discordant pair total, this
-number is not interpretable as an effect size; it is reported because
-§3.1 pre-registered reporting it regardless of outcome).
+McNemar's exact test: 0 discordant pairs, **p = 1.0 by construction** —
+the two arms are tied on this run once the rubric gap is fixed. This is
+a cleaner, more honest reading than what a naive binary count would have
+shown before this fix.
+
+**Original (pre-Addendum-3) figure, kept for transparency, not
+silently replaced:** counting task 004's hedge as a miss gave baseline
+13/13=100% vs. treatment 12/13=92.3%, McNemar p=1.0 (Cohen's h=0.56,
+not interpretable with n=1 discordant pair). Both readings agree on the
+substantive conclusion (statistically indistinguishable, p=1.0 either
+way) — Addendum 3 changes *why* the two arms tie, not *whether* the
+comparison is inconclusive.
 
 **This is exactly the underpowered/inconclusive outcome the pre-
 registration warned about before any data existed** (§3.1: "at n=26
-[here n=13], adequately powered only for a moderate-or-larger effect...
-a smaller true effect will read as inconclusive and must be reported as
-inconclusive, not as evidence of no effect"). With only one discordant
-pair in the entire 13-task set, this run has essentially zero power to
-detect a real difference in either direction. **Kill criterion K1**
-(detection rates converge, McNemar p≥0.05) is spiritually met (p=1.0),
-though its numeric "discordant ratio 0.67–1.5" sub-condition is
-undefined with a zero-count discordant cell — noted, not adjudicated
-either way, since the p-value alone already settles inconclusiveness.
+[here n=12-13], adequately powered only for a moderate-or-larger
+effect... a smaller true effect will read as inconclusive and must be
+reported as inconclusive, not as evidence of no effect"). **Kill
+criterion K1** (detection rates converge, McNemar p≥0.05) is met on
+both readings.
 
 **Metric 2 (false-positive rate): dropped for this run.** All 3
 selected clean-control tasks turned out to have real, substantive
@@ -45,26 +53,25 @@ below.
 computed for this write-up — out of session-budget scope for this
 already-large turn. Flagged as a follow-up, not silently dropped.
 
-## The one discordant task (004) — a metric-design finding, not a protocol failure
+## Task 004 — the finding that motivated Addendum 3, now fixed rather than just flagged
 
 Task 004's treatment-arm final claim was legitimately downgraded from a
 confident REJECT to NEEDS-REAL-DATA after the skeptic sub-call raised a
 real, substantive objection (the "44,600× SSR variation" evidence came
 from noiseless synthetic data, not validated against a real noise
 floor) — the Response Matrix worked exactly as designed, producing a
-more epistemically honest final answer. But the blind evaluator's
-binary detection rubric then scored that appropriately-hedged answer as
-"not detected," because it declined to confidently assert the seeded
-defect (narrow `p` bounds) is wrong. **This is worth flagging as a
-property of the detection-rate metric, not a defect in the treatment
-protocol**: a workflow that correctly downgrades overconfident claims
-in response to legitimate pushback can lose "detection credit" under a
-metric that only rewards confident correct answers, not appropriate
-uncertainty. Baseline's draft (never skeptic-reviewed) kept its
-original confident REJECT and scored as detected. This tension between
-"rewards confidence" and "rewards honesty" is a real limitation of
-Metric 1 as currently defined, not evidence the treatment arm
-under-performed substantively.
+more epistemically honest final answer. The blind evaluator's original
+binary detection rubric scored that appropriately-hedged answer as "not
+detected," identically to an actual miss. Rather than leave this as a
+flagged limitation, `PREREGISTRATION.md` Addendum 3 fixes it directly:
+the evaluator schema now has a `verdict_type` field distinguishing
+`appropriately_hedged` from `missed`, and task 004's pair is
+reclassified and excluded from the primary count accordingly (see
+headline result above, which already reflects this fix). Baseline's
+draft (never skeptic-reviewed) kept its original confident REJECT and
+scored `detected`, which remains correct under the fix — baseline
+simply never faced the same legitimate pushback that led treatment to
+hedge, so there is nothing to reclassify on baseline's side.
 
 ## Corpus integrity findings (the actual, substantive result of this run)
 
@@ -106,6 +113,24 @@ before-claim environment catches real defects, including defects in
 its own test materials) even though it isn't the controlled comparison
 the benchmark was built to make.
 
+**Post-run fix (2026-09-02, autonomous follow-up, done properly this
+time):** all 3 have now been re-fixed with the same rigor as the
+original `corpus_sanity_check.md` — not just documented as broken.
+task_027's SD values were solved for (via `scipy.stats`, verified
+before committing) so its reported t=3.11/p=0.004/CI=[0.21,0.99] now
+actually follows from its own reported mean/SD/n. task_028's
+independence/calibration sentence is now genuinely in `task.md`'s own
+report text (Round 1's editing mistake — landing only in the answer
+key — is what Round 2's re-discovery exposed; see the answer key's own
+two-round note). task_032's `quality_gate` function now checks the
+longest single contiguous NaN run in addition to the total fraction, so
+any strip reaching `interpolate_short_gaps` is guaranteed to have every
+remaining gap within the interpolation window — the structural gap is
+closed, not narrated around. None of these three have been re-run
+through solving agents to confirm the fixes hold (that would require
+another real Run 2/3 pass) — the fixes are verified for internal
+consistency (arithmetic, logic), not yet empirically re-tested.
+
 ## Secondary finding: treatment-prompt gap (found and fixed pre-Run-2)
 
 The N=2 dry run found the original treatment-arm prompt under-elicited
@@ -131,21 +156,35 @@ injection sweeps, independent recomputation) — the fix held.
   030, 031) never run here — those still need the systematic
   "significance-stat-from-summary-stats" re-check flagged in Addendum 2
   before being trusted in a future run.
-- **Baseline's apparent edge (13/13 vs 12/13) is not evidence baseline
-  is superior** — it rests on a single discordant pair, explained above
-  as a metric-design artifact on task 004, not a substantive gap.
+- **Under the corrected metric (Addendum 3), baseline and treatment are
+  exactly tied (12/12 each)** — the original apparent baseline edge
+  (13/13 vs 12/13) is now understood to be a rubric artifact, not a
+  substantive gap, and the fix is applied, not just noted.
+- **The 3 re-fixed clean controls (027/028/032) have not been
+  empirically re-verified by running solving agents against them** —
+  the fixes are internally consistent (checked via direct
+  recomputation) but a future run should re-confirm them the same way
+  028's original fix was discovered to be incomplete: by actually
+  running agents against the corrected text, not just re-reading it.
 
-## Recommended next steps (not executed this session — scope decision for the user)
+## Status of the originally-recommended next steps (updated 2026-09-02)
 
-1. Fix the metric-3 gap: distinguish "confidently wrong" from
-   "appropriately hedged" so a Response-Matrix downgrade like task
-   004's isn't penalized identically to an actual miss.
-2. Systematic corpus-wide re-check for the "summary-stats-implies-
-   checkable-inferential-stats" pattern before trusting any of the
-   remaining 16 tasks (Addendum 2's own standing follow-up).
-3. Design 3 genuinely-verified clean controls (with the same rigor now
-   applied post-hoc to 027/028/032) before attempting Metric 2 again.
-4. If resuming toward the full pre-registered N=32, budget for it as
-   its own session — this run alone (16 tasks × 2 arms × builder +
-   skeptic + evaluation) consumed the majority of a fresh session's
-   token budget even after the N=16 reduction.
+1. **DONE.** Metric-1 rubric gap fixed via `verdict_type` in
+   `PREREGISTRATION.md` Addendum 3 (`appropriately_hedged` vs `missed`,
+   applied retroactively to this run's own task-004 pair); Metric 3's
+   definition (§3.3) updated to use the same field.
+2. **DONE, clean result.** Systematic re-check of all 32 tasks for the
+   "summary-stats-implies-checkable-inferential-stats" pattern (the
+   class of bug that broke task_027) found **no other instance** in the
+   corpus — task_027 was uniquely vulnerable. Checked: 015, 016, 018,
+   019, 021, 022, 024, 025, 026, 030 (not previously screened for this
+   specific pattern) plus a re-scan of 012-014, 020, 029, 031 (already
+   fixed for other bug classes) — none have a stated mean/SD/n pair
+   with a derivable, uncomputed inferential statistic.
+3. **DONE, but not re-verified empirically** — see the caveat above.
+   027/028/032 are now internally consistent and structurally sound,
+   not merely narrowed in scope, but "genuinely verified" in the full
+   sense used elsewhere in this project (agent-tested, not just
+   author-reasoned) would require another live run against them.
+4. **Not done, by design** — resuming toward the full pre-registered
+   N=32 still needs its own session's budget; not attempted here.

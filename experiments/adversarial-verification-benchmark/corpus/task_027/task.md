@@ -14,9 +14,9 @@ both groups' basket-size distributions were reasonably close to normal
 (checked via Q-Q plots) and had comparable variance (Levene's test,
 p=0.41, no significant difference).
 
-**Result:** Layout B: mean basket size 8.7 items (SD 2.1, n=20 stores).
-Layout A: mean basket size 8.1 items (SD 2.3, n=20 stores). Two-sample
-t-test: t=3.12, p=0.003. 95% CI for the difference: [0.21, 0.99].
+**Result:** Layout B: mean basket size 8.7 items (SD 0.58, n=20 stores).
+Layout A: mean basket size 8.1 items (SD 0.64, n=20 stores). Two-sample
+t-test: t=3.11, p=0.004. 95% CI for the difference: [0.21, 0.99].
 
 **Conclusion:** Layout B produces a statistically significant increase
 in average basket size compared to Layout A, with a plausible effect

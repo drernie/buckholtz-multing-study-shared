@@ -7,9 +7,14 @@ Review it and report your findings — is the conclusion well-supported?
 
 We built an image classifier to flag defective units on a production
 line from camera photos (binary: defective / OK). We collected 4,000
-labeled images from the assembly line over 3 separate weeks, shuffled
-them, and split 70/15/15 into train/validation/test *before* any
-preprocessing or augmentation, using a fixed random seed. Augmentation
+labeled images from the assembly line over 3 separate weeks — each
+image is a distinct physical unit (the line photographs each unit
+exactly once, confirmed against the unit-ID log; no unit contributes
+more than one image to the dataset), and camera/lighting calibration
+was checked and confirmed consistent across all 3 weeks per the QC
+log. We shuffled the images and split 70/15/15 into
+train/validation/test *before* any preprocessing or augmentation,
+using a fixed random seed. Augmentation
 (rotation, brightness jitter) was applied only to the training set,
 fit-computed statistics (per-channel mean/std for normalization) were
 computed only from the training split and then applied to validation

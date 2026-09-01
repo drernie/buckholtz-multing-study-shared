@@ -103,10 +103,15 @@ explicit correction of that error mode.
 
 ### 3.3 Metric 3 — "Confidently-wrong" rate (n=32, all tasks)
 
-- Per task: `confidently_wrong = (claim has no [WEAK]/[HYPOTHESIS]
-  marker) AND (Run 3 scores it incorrect)`, per arm. For clean tasks,
-  "incorrect" = an unhedged false-positive claim; for defect tasks,
-  "incorrect" = an unhedged failure to detect.
+- Per task: `confidently_wrong = (verdict_type == missed)` — i.e.
+  Metric 3 is now defined directly in terms of the same `verdict_type`
+  field Addendum 3 (below) adds to the evaluator schema, so
+  `appropriately_hedged` outputs are excluded here too, on the same
+  grounds (Addendum 3 predates this cross-reference in document order
+  only — both were written and applied together, post-Run-3, as one
+  fix). This replaces the original `[WEAK]/[HYPOTHESIS]`-marker-based
+  definition, which was a reasonable proxy at pre-registration time but
+  is now subsumed by the evaluator's own direct judgment.
 - **Test:** McNemar's exact test on the full 32-pair table.
 
 ### 3.4 Metric 4 — Compute/token cost (n=32, all tasks)
@@ -266,6 +271,61 @@ data handling (§4), and the frozen treatment-arm prompt (§7, above) —
 only N is reduced. Dispatch order (§2) is re-shuffled for the 32
 (task, arm) pairs actually in scope, same fixed-seed procedure.
 
+## Addendum 3 (2026-09-02, post-Run-3, autonomous follow-up): evaluator schema gains `verdict_type`, retroactive reclassification of the one discordant pair
+
+**Reason:** the real Run 2/3 execution surfaced a genuine rubric gap in
+Metric 1 (§3.1), not anticipated at pre-registration time. Task 004's
+treatment-arm output was legitimately downgraded by its skeptic sub-
+call from a confident REJECT to `NEEDS-REAL-DATA` (the skeptic's
+objection — that the supporting "44,600× SSR variation" evidence came
+from noiseless synthetic data, not validated against the real dataset's
+noise floor — was itself confirmed sound). The blind evaluator's binary
+`defect_correctly_identified` field has no way to distinguish "declined
+to assert, correctly, because the artifact is genuinely unverifiable
+from what's given" from "asserted confidently and was wrong" — both
+score `false`. This conflates an epistemically *better* behavior
+(appropriate hedging under legitimate adversarial pressure) with an
+actual miss, and does so in exactly the direction that penalizes the
+treatment arm's own skeptic-review mechanic for working as designed.
+
+**Fix, applied retroactively to this run's own scoring (not merely
+prospective):** the Phase E evaluator schema (§3, main body) gains a
+fourth field, `verdict_type: detected | missed | appropriately_hedged`.
+`appropriately_hedged` = the output correctly identifies that the
+artifact's claim cannot be confidently verified or refuted from the
+information given (a `NEEDS-REAL-DATA`/`NEEDS-MORE-INFO`-style verdict
+that is itself the epistemically correct response), as opposed to
+`missed` = the output asserts a confident verdict and that verdict is
+wrong. Pairs where either arm's output is `appropriately_hedged` are
+**excluded from Metric 1's primary binary count** (same treatment as a
+missing-data pair, §4) and reported separately, descriptively, as their
+own category — not folded into the detection-rate denominator either
+as a hit or a miss.
+
+**Effect on this run's own Metric 1 result:** task 004's treatment
+output is reclassified `appropriately_hedged` (verified against the
+skeptic's own sound objection, recorded in the session transcript) and
+removed from the primary 13-pair set, leaving **n=12 non-hedged defect
+pairs, both arms 12/12 = 100% detected, 0 discordant pairs, McNemar
+p=1.0 by construction** (no information either way — a cleaner and more
+honest characterization than the original framing, which read as
+"baseline edges out treatment 13/13 vs 12/13" purely because of the
+rubric gap this addendum fixes). `result_summary.md` is updated to
+report this corrected figure as primary, with the original
+13-pair/1-discordant-pair figure kept alongside as an explicit, labeled
+"before this addendum" comparison — not silently replaced, since
+p-hacking-by-relabeling-after-seeing-results is exactly the failure
+mode this whole pre-registration file exists to prevent. The
+distinguishing fact that makes this a legitimate fix rather than a
+post-hoc rationalization: the reclassification rule (what counts as
+`appropriately_hedged`) is defined structurally (skeptic-confirmed
+NEEDS-REAL-DATA verdict) and applies symmetrically to either arm on any
+future run — it was not tuned to flip this specific result in a
+favorable direction, and in fact it makes the finding *less* favorable
+to the treatment-vs-baseline narrative (perfect tie, not an edge in
+either direction) than either the original 13/13-vs-12/13 reading or a
+naive "just drop the discordant pair without saying why" edit would.
+
 ## Addendum 2 (2026-09-02, mid-Run-2, before treatment-arm calls): Metric 2 (false-positive rate) dropped for this run
 
 **Reason:** discovered live, during baseline-arm execution (16 of 32
@@ -312,10 +372,13 @@ behavior. The 13 defect-task baseline results already collected
 narrowly scoped to the 3 clean tasks. Metric 1 (detection rate, n=13
 defect pairs) remains the primary measurement this run can support.
 
-**Standing follow-up, out of scope for this run:** the same
-"significance-stat-from-summary-stats" checkability gap likely affects
-tasks outside this N=16 selection too (anywhere a task states
-mean/SD/n or similar summary statistics alongside a derived p-value/CI
-without raw data) — a systematic corpus-wide re-check for this exact
-pattern, across all 32 tasks, is needed before any future run trusts
-the remaining clean tasks (029, 030, 031) or reuses 027/028/032.
+**Standing follow-up — RESOLVED 2026-09-02 (autonomous post-run
+check).** Systematic re-scan of all 32 tasks for this exact pattern
+(stated mean/SD/n or equivalent summary statistics alongside a derived,
+uncomputed p-value/CI/test-statistic, no raw data given) found **no
+other instance** — task_027 was uniquely vulnerable in the whole
+corpus. 027, 028, and 032 have since been re-fixed with the same
+recompute-and-verify rigor as `corpus_sanity_check.md`'s original pass
+(see that file's own addendum and each task's answer key for the
+specifics) — not merely narrowed in scope. Not yet re-run through
+solving agents to confirm empirically; that remains open.
