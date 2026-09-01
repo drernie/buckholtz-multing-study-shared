@@ -225,3 +225,43 @@ the treatment-arm prompt is frozen here in its corrected form:
 This exact text (step 4 is the addition) is what Run 2's treatment arm
 uses — any further change requires a new dated addendum to this file,
 not a silent edit.
+
+## Addendum (2026-09-02, before Run 2 launch): scope reduced to N=16
+
+**Reason:** session token-budget constraint. This session's own observed
+per-`Agent`-call cost (100-165K tokens, driven by the global CLAUDE.md +
+always-on rules loading into every call — the same channel identified
+in the leakage pilot) projected the full N=32 design (96 solving-side
+calls + ~13 Run-3 evaluation batches + the K5 recheck) at roughly
+14-15M tokens against a ~15M remaining budget — no real margin for
+retries or `result_summary.md` itself. Flagged to the user before
+launch (not discovered mid-run); explicit decision: reduce to N=16 now,
+logged here as a deviation rather than silently downsized.
+
+**Selected 16 of the 32 tasks** (13 defect + 3 clean, stratified):
+- Tier A, one non-repeat task per `docs/146` category (all 11 covered):
+  001, 002, 003, 004, 005, 006, 007, 008, 009, 010, 011.
+- Tier B: 017 (control-at-trivial-zero, closer lift).
+- Tier C: 023 (target leakage, ML, cross-domain).
+- Clean (3 of 6): 027 (stats), 028, 032 — the latter two deliberately
+  chosen because both received corpus-sanity-check fixes (028's
+  confusion-matrix arithmetic, found via the dry run; 032's per-patient
+  independence statement, applied proactively) and this run doubles as
+  their first real-conditions check.
+
+**Statistical consequence, stated now (not after seeing results):**
+power is reduced further below the original N=32 design's own already-
+limited power. At n=13 defect pairs, McNemar's exact test needs an even
+larger effect than the original design's Cohen's h≳0.5 threshold to
+reach significance. **This run is exploratory, not confirmatory** —
+`result_summary.md` must say so in its own words, every time a number
+from this run is reported, not just by reference to this addendum. The
+n=3 clean-task FP-rate check has essentially no power (a single
+discordant pair is already a 1/3 swing) and is reported descriptively
+only, same treatment as §3.2's n=6 caveat, more so.
+
+**Unchanged:** test choice (McNemar exact / Wilcoxon), the Holm-
+Bonferroni family (§3.6), all kill-criteria thresholds (§5), missing-
+data handling (§4), and the frozen treatment-arm prompt (§7, above) —
+only N is reduced. Dispatch order (§2) is re-shuffled for the 32
+(task, arm) pairs actually in scope, same fixed-seed procedure.
