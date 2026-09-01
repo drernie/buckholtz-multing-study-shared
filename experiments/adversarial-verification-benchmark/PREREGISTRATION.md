@@ -1,0 +1,227 @@
+# Statistical Pre-Registration — Adversarial Verification Benchmark
+
+**Status at commit time:** written and committed to git BEFORE Run 2
+launches — no Run 2 output exists yet, no test statistic has been
+computed, no result has been seen. Any change to this document after
+Run 2 starts must be logged as a deviation in `result_summary.md` with
+its own reasoning, never silently edited. This is the file the
+project's own Falsification Ladder methodology requires before any
+"expensive test" (Phase H's own escape-route discipline) — its git
+commit timestamp is the record that this was fixed in advance.
+
+## 0. What this pre-registers
+
+Everything in Phases F–H of the approved plan (`Plan: Adversarial
+Verification Methodology — Benchmark Research Program`), made numeric,
+unambiguous, and resolved where the plan itself left an open question.
+Two ambiguities are resolved explicitly below (§3.5, §4) rather than
+left to be decided after seeing results.
+
+## 1. Estimand (recap, not re-derived)
+
+Already gated causal at plan-authoring time (EstimandOps L0, plan
+Context section): does the explicit FL Standard-Ladder protocol +
+skeptic sub-call (treatment) *cause* a higher correct-defect-detection
+rate than the same ambient-default environment without that explicit
+instruction (baseline — reframed 2026-09-01 per the pilot leakage
+test's own finding, see plan Phase C), holding task and underlying
+model constant. Identifiability by design: every one of the 32 tasks
+receives BOTH arms (matched pairs, not a per-task coin flip) —
+exchangeability holds by construction, not by post-hoc adjustment.
+
+## 2. Design
+
+- N=32 tasks (26 defect-seeded, 6 clean), per `CORPUS_MANIFEST.md`,
+  corpus-sanity-checked (`corpus_sanity_check.md`) and dry-run-validated
+  on 2 of the 32 (`dry_run_n2_results.md`) before this file was written.
+- Every task × both arms = 64 `Agent` calls in Run 2 (baseline,
+  treatment-builder+skeptic+synthesis per task).
+- **Dispatch order** (resolves an ambiguity the plan left implicit —
+  Context section mentions "randomized wave assignment" without a
+  procedure): the 64 (task, arm) pairs are shuffled once, with a fixed
+  seed, before Run 2 starts, and dispatched in that fixed order. Seed
+  and resulting order are written to `manifest.json` at Run 2 launch
+  time, before any call is made — this guards against any systematic
+  ordering effect (e.g., all-baseline-then-all-treatment interacting
+  with time-of-day model-state drift) without needing true
+  non-reproducible randomness. Procedure: Python `random.Random(20260901).shuffle(...)`
+  on the 64-item list, seed fixed to today's date (`YYYYMMDD` as int)
+  for reproducibility and auditability — not re-rolled if Run 2 needs
+  to restart partway.
+- Run 3 (blind evaluation): one evaluator pass per (task, output),
+  organizer-private arm mapping, per Phase D/E. Evaluator model:
+  different from whichever model runs Run 2's arms (Independent
+  Verification Strength Ladder — already the design used in the
+  evaluator pilot, `evaluator_pilot_results.md`).
+
+## 3. Primary outcome metrics — exact test specification
+
+All four below are **matched-pairs** designs (same task through both
+arms) — McNemar's test, not a two-proportion z-test, per the plan's own
+explicit correction of that error mode.
+
+### 3.1 Metric 1 — Detection rate (n=26 defect tasks)
+
+- Per task: `detected = (defect_correctly_identified AND match ∈
+  {exact, close})`, per arm.
+- 2×2 discordant table: `(baseline=0,treatment=1)` vs
+  `(baseline=1,treatment=0)`, concordant pairs uninformative to
+  McNemar and reported separately (both arms hit / both arms miss).
+- **Test:** McNemar's **exact** test (binomial on the discordant
+  pairs), not the chi-square approximation — with only 26 pairs and a
+  plausibly small discordant count, the chi-square approximation is
+  not reliable. `statsmodels.stats.contingency_tables.mcnemar(table,
+  exact=True)`.
+- **Effect size:** Cohen's h on the two marginal detection rates, and
+  the McNemar odds ratio (ratio of the two discordant cell counts).
+- **Power (pre-registered, not revisited after data):** at n=26 pairs,
+  adequately powered only for a moderate-or-larger effect (Cohen's h
+  ≳ 0.5 — the plan's own stated benchmark, roughly Cross-Context
+  Review's own effect magnitude, arXiv:2603.12123). A smaller true
+  effect reads as **inconclusive**, and must be reported as
+  inconclusive — never as evidence of no effect. This is stated here,
+  before any data exists, specifically so it cannot be revised after
+  seeing a null result.
+- Sensitivity band: report both the strict (`exact`/`close`) and
+  lenient (`exact`/`close`/`vague`) detection-rate definitions, per the
+  plan's Phase F metric 1 — the strict band is primary, lenient is a
+  pre-registered sensitivity check, not an alternate primary metric.
+
+### 3.2 Metric 2 — False-positive rate (n=6 clean tasks)
+
+- Per task: `false_positive_flagged`, per arm.
+- **Test:** McNemar's exact test, same procedure as 3.1.
+- **Power caveat (stated now, not after seeing the result):** n=6 pairs
+  has essentially no power to detect anything short of a near-total
+  reversal — a single discordant pair out of 6 is already a 1/6≈16.7%
+  swing. This metric is reported with its p-value and effect size like
+  the others, but the write-up must explicitly flag the granularity
+  limitation every time it's cited, and must not describe a
+  non-significant result here as "confirms no false-positive cost."
+- Always reported paired with Metric 1, per the plan's own rule — never
+  detection rate alone.
+
+### 3.3 Metric 3 — "Confidently-wrong" rate (n=32, all tasks)
+
+- Per task: `confidently_wrong = (claim has no [WEAK]/[HYPOTHESIS]
+  marker) AND (Run 3 scores it incorrect)`, per arm. For clean tasks,
+  "incorrect" = an unhedged false-positive claim; for defect tasks,
+  "incorrect" = an unhedged failure to detect.
+- **Test:** McNemar's exact test on the full 32-pair table.
+
+### 3.4 Metric 4 — Compute/token cost (n=32, all tasks)
+
+- Per task, per arm: summed input+output tokens across all `Agent`
+  calls for that (task, arm) — for treatment, this includes the
+  builder call AND the skeptic sub-call (both count toward treatment's
+  cost, since the skeptic call is part of what treatment's protocol
+  requires).
+- **Cost-per-correct-detection** (used by the Phase H kill criterion,
+  §5): `total tokens for that arm across all 26 defect tasks / number
+  of those 26 correctly detected by that arm`. Computed once per arm
+  after Run 3 scoring is complete, not per-task-then-averaged (a
+  per-task ratio is undefined when a task is not detected).
+- **Test:** paired Wilcoxon signed-rank test on the 32 per-task
+  (treatment_tokens − baseline_tokens) differences —
+  `scipy.stats.wilcoxon`. Chosen over a paired t-test because token
+  cost is right-skewed (a few tasks needing extra treatment-arm
+  back-and-forth create outliers); the sign test's own robustness to
+  that skew is preferred to relying on the CLT at n=32.
+
+### 3.5 Metric 5 — Correction latency (descriptive only, NOT part of the Holm-corrected family)
+
+**Resolves an internal inconsistency in the approved plan**, flagged
+explicitly rather than silently picked: Phase G's own text says "Holm-
+Bonferroni correction across the 5 primary outcome metrics," but Phase
+F's own definition of metric 5 states baseline is "single-pass by
+construction" — i.e., baseline's correction-latency value is
+structurally undefined/zero for every task, not a real random variable
+to run a paired test against. A paired test with one arm's value fixed
+at a structural constant is not a meaningful significance test.
+**Resolution, pre-registered now:** metric 5 is reported descriptively
+(treatment's own mean/median additional-call count across the 26
+defect tasks, and the qualitative fact "baseline has no correction
+mechanism by design") and is **excluded from the Holm-Bonferroni
+family** — the corrected family is Metrics 1–4 (m=4), not 5. This
+decision is made here, before Run 2, specifically so it cannot be
+second-guessed after seeing whether metric 5 "would have helped."
+
+### 3.6 Multiple-comparison correction
+
+Holm-Bonferroni step-down correction across the 4 p-values from
+Metrics 1–4 (§3.1–3.4). `statsmodels.stats.multitest.multipletests(
+pvals, method="holm")`. Metric 6 (cross-domain transfer, Tier A vs Tier
+C effect-size comparison) and every per-`docs/146`-category
+stratification (Phase B's own stratification) are `[EXPLORATORY]`
+only — reported without correction, never treated as confirmatory,
+per the plan's own explicit instruction.
+
+## 4. Handling of missing/excluded data (resolves a second gap the plan left implicit)
+
+- **Run 2 call failure** (an `Agent` call errors out after retries):
+  that (task, arm) pair is excluded from every metric, logged by ID in
+  `result_summary.md`, and the corresponding McNemar/Wilcoxon table
+  drops that pair entirely (not imputed, not treated as a miss). If
+  more than 2 of the 64 pairs fail this way, that is itself reported as
+  a finding (something about the harness, not the hypothesis) before
+  any headline number is presented.
+- **Run 3 evaluator failure / `ORACLE_INADEQUATE` on a specific pair**:
+  same treatment — excluded, logged, not imputed as either a hit or a
+  miss.
+- **No interim looks, no optional stopping.** Run 2 executes to
+  completion (all 64 calls) before Run 3 begins; Run 3 executes to
+  completion (all output pairs scored) before any test statistic in
+  §3 is computed. This is a single fixed-N batch design, not a
+  sequential one — consistent with this project's own prior decision
+  (`pearl_registry/INDEX.md`, entry on E-value/sequential testing) that
+  sequential-testing machinery was out of scope here.
+
+## 5. Kill criteria (verbatim from the approved plan, Phase H, made numerically precise)
+
+| # | Pattern | Precise threshold | Consequence |
+|---|---|---|---|
+| K1 | Detection rates converge | McNemar exact test (§3.1) p≥0.05 **AND** discordant ratio (larger discordant cell / smaller discordant cell) between 0.67 and 1.5 | **KILL** — report as null, not inconclusive, only if BOTH conditions hold |
+| K2 | Advantage vanishes after compute control | cost-per-correct-detection ratio (§3.4) ≥3.0 **AND** raw detection-rate delta (treatment − baseline, percentage points, strict band) <10pp | **KILL** (or explicit downgrade to "not compute-efficient" if only the cost condition holds and the delta is ≥10pp) |
+| K3 | High false-alarm rate | Treatment FP rate (§3.2) exceeds baseline FP rate by ≥15 percentage points (i.e., ≥1 of 6 clean tasks net swing) | **PARTIAL KILL** — falsifies the "fewer confidently-wrong conclusions" half of the hypothesis even if K1 does not fire |
+| K4 | Human-in-the-loop dependency | N/A — out of scope for this design (no human-in-the-loop per task) | Stated as an explicit limitation, not evaluated |
+| K5 (highest priority, checked FIRST, before K1–K3) | Evaluator fails its own oracle-adequacy pilot | Already checked pre-Run-2 (`evaluator_pilot_results.md`) — reproducibility 90%, decision-relevant fields 100% agreement. **If the real Run 3 20-pair reproducibility re-check (below) falls below 90%,** K5 fires retroactively | Headline comparison **withheld entirely**, not reported as null or positive, until a second independently-designed evaluator reproduces it |
+
+**K5's real-run re-check** (per Phase E, not yet executed): re-run the
+Run 3 evaluator twice on a 20-pair random subsample of the actual 64
+Run 2 outputs (not the pilot's 10 hand-authored pairs), fresh calls,
+check ≥90% exact-match reproducibility before trusting any headline
+number from §3.
+
+## 6. What gets reported regardless of outcome
+
+Per the plan's own Verification item 6 (unchanged, restated here for
+completeness): `result_summary.md` reports detection rate and FP rate
+paired (never one alone), states the McNemar p-value and effect size
+for every one of Metrics 1–4, explicitly labels Metric 6 and every
+per-category breakdown `[EXPLORATORY]`, states plainly whether any of
+K1–K5 fired, and states Metric 5 descriptively per §3.5's resolution.
+
+## 7. Frozen treatment-arm prompt (Phase A/C, updated post-dry-run)
+
+Per the dry run's own secondary finding (`dry_run_n2_results.md`) —
+without an explicit verification directive, treatment under-performed
+its own baseline by reasoning about a check instead of running one —
+the treatment-arm prompt is frozen here in its corrected form:
+
+> "You are reviewing a research assistant's analysis using a
+> disciplined Falsification-Ladder Standard-Ladder protocol. Work
+> through it explicitly: 1. State the falsifiable claim being made in
+> the report. 2. Check for a positive control and a negative control —
+> does the report supply either? 3. Look specifically for:
+> circular/tautological validation, target leakage, silently-fixed
+> parameters, or any other reason the reported result could be
+> misleading. 4. **Wherever the artifact's own claim is checkable by
+> running code (recomputing a stated number from given inputs, an
+> ablation, a synthetic negative control) — write and execute that
+> check, don't just describe what it would show.** 5. State your
+> verdict. 6. End with a SELF-CONTAINED 'DRAFT CLAIM' paragraph (3-6
+> sentences) for blind handoff to an independent reviewer."
+
+This exact text (step 4 is the addition) is what Run 2's treatment arm
+uses — any further change requires a new dated addendum to this file,
+not a silent edit.
