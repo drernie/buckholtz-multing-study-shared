@@ -1,0 +1,20 @@
+{
+  "seed": 20260901,
+  "n_tasks": 16,
+  "generated": "2026-09-02, before any Run 2 call",
+  "scope_note": "N=16 subset per PREREGISTRATION.md addendum (2026-09-02)",
+  "tasks": [
+    "001", "002", "003", "004", "005", "006", "007", "008",
+    "009", "010", "011", "017", "023", "027", "028", "032"
+  ],
+  "dispatch_order": [
+    "001-treatment", "008-treatment", "002-baseline", "023-treatment",
+    "004-treatment", "017-baseline", "032-baseline", "028-baseline",
+    "010-baseline", "008-baseline", "004-baseline", "027-treatment",
+    "003-baseline", "007-treatment", "011-baseline", "006-treatment",
+    "002-treatment", "005-baseline", "032-treatment", "007-baseline",
+    "003-treatment", "006-baseline", "010-treatment", "023-baseline",
+    "005-treatment", "009-treatment", "011-treatment", "017-treatment",
+    "009-baseline", "027-baseline", "001-baseline", "028-treatment"
+  ]
+}

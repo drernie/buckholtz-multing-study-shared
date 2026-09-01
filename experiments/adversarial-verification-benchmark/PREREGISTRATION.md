@@ -265,3 +265,57 @@ Bonferroni family (§3.6), all kill-criteria thresholds (§5), missing-
 data handling (§4), and the frozen treatment-arm prompt (§7, above) —
 only N is reduced. Dispatch order (§2) is re-shuffled for the 32
 (task, arm) pairs actually in scope, same fixed-seed procedure.
+
+## Addendum 2 (2026-09-02, mid-Run-2, before treatment-arm calls): Metric 2 (false-positive rate) dropped for this run
+
+**Reason:** discovered live, during baseline-arm execution (16 of 32
+solving calls complete), that all 3 selected clean tasks (027, 028,
+032) have real, substantive problems — not agent over-caution:
+
+- **task_027**: the reported significance test does not follow from
+  its own reported summary statistics. `t=3.12, p=0.003, CI=[0.21,
+  0.99]` is claimed for Layout A (mean=8.1, SD=2.3, n=20) vs Layout B
+  (mean=8.7, SD=2.1, n=20) — recomputing the pooled-variance t-test
+  from exactly those numbers gives `t=0.86, p=0.39, CI=[-0.81, 2.01]`
+  [VERIFIED via `scipy.stats`, independent of and prior to any Run 2
+  agent's own finding of the same thing]. This is the same class of
+  bug as the corpus-sanity-check/dry-run findings (a claimed statistic
+  not reconciling with its own stated inputs) — missed originally
+  because `corpus_sanity_check.md` reasoned that tasks without raw
+  data arrays weren't independently checkable, which is **wrong**: a
+  two-sample t-test is a deterministic function of (mean, SD, n) per
+  group, no raw array needed. This blind spot was not caught by the
+  N=2 dry run either (which used 023/028, not 027).
+- **task_028**: the group/temporal-leakage-closing sentence intended
+  to make this task genuinely clean was, on review, only ever applied
+  to `_answer_key/task_028.md` (the private ground truth) — never to
+  `corpus/task_028/task.md` (what solving agents actually see). The
+  gap solving agents are flagging is real and still open in the
+  artifact; this is an organizer editing error, not agent
+  over-caution.
+- **task_032**: a genuine, previously-unconsidered structural gap — a
+  strip with total NaN fraction under the 20% exclusion threshold but
+  containing one continuous run longer than the 0.5s interpolation
+  window is neither excluded nor properly interpolated. Not something
+  deliberately seeded; a real design oversight, confirmed by direct
+  reproduction in the reviewing agent's own output.
+
+**Decision (user, AskUserQuestion, 2026-09-02):** continue Run 2 to
+completion using the corpus as currently instantiated — do not spend
+further budget re-fixing/re-verifying the clean tasks mid-run. Instead,
+**Phase F metric 2 (false-positive rate) is dropped from this run's
+Holm-Bonferroni family** (§3.6's family is now Metrics 1, 3, 4 — m=3,
+not 4) and reported, if at all, only as a qualitative note that the
+clean-task arm of this run could not validly measure false-positive
+behavior. The 13 defect-task baseline results already collected
+(batches 1-2) are unaffected and remain valid — this problem is
+narrowly scoped to the 3 clean tasks. Metric 1 (detection rate, n=13
+defect pairs) remains the primary measurement this run can support.
+
+**Standing follow-up, out of scope for this run:** the same
+"significance-stat-from-summary-stats" checkability gap likely affects
+tasks outside this N=16 selection too (anywhere a task states
+mean/SD/n or similar summary statistics alongside a derived p-value/CI
+without raw data) — a systematic corpus-wide re-check for this exact
+pattern, across all 32 tasks, is needed before any future run trusts
+the remaining clean tasks (029, 030, 031) or reuses 027/028/032.
