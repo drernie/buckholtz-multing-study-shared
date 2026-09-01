@@ -67,6 +67,30 @@ kinematic\|F→H(z) bridge"` across all of `FINDING_P175`-`P187` returns
 F→H(z) bridge, or accretion-kinematics language at all. The row's evidence
 marker is upgraded from activeContext-summary to `[VERIFIED-BASH]`.
 
+## Addendum (2026-09-01, user review, applied after the skeptic pass above)
+
+The user's own review (independent of the skeptic dispatch) confirmed
+this document's central move — restating rather than solving the
+bottleneck — and flagged two real wording risks, both fixed:
+
+1. **§2's "Empirical/Model status: VERIFIED"** could be misread as
+   "confirmed by data," when what is actually established is narrower
+   — that a published mechanism exists, not that it is empirically
+   adequate. Fixed: the field's canonical name (`docs/151`'s fixed,
+   greppable schema) is unchanged, but its content now says explicitly
+   what "VERIFIED" does and does not cover.
+2. **§3's bare "CLOSED, superseded by fact"** on the old bottleneck
+   risked being read, in isolation, as "F→H(z) is solved." Fixed:
+   replaced with an explicit `OLD-FORMULATION-SUPERSEDED` tag (kills
+   only the "bridge absent" claim) paired with an explicit instruction
+   that it must always be read alongside the new, OPEN causal-
+   compatibility tag — never alone.
+
+Also incorporated: the user's own refinement of what the eventual
+decisive test should compare (matched intermediate physical
+quantities from both routes, not final fitted `H(z)` curves) — added
+to §3a as a forward-looking methodological note, not acted on now.
+
 ---
 
 ## 0. The question being decided
@@ -102,11 +126,18 @@ The reopen decision is not one claim but three separable ones, exactly
 the pattern `docs/151` was written to keep from being silently
 collapsed. Answered here as three explicit fields, per the rule:
 
-> **Empirical/Model status:** VERIFIED — TJB has published a real,
-> explicit F→H(z) derivation (v82, Sec. II.B-C), read directly from
-> the PDF, not from a markdown conversion or a summary. `docs/147`'s
-> own named reopen condition is satisfied as a plain factual matter.
-> This is not in dispute and requires no further checking to accept.
+> **Empirical/Model status:** VERIFIED, narrowly — what is verified is
+> **published-mechanism existence**, not empirical adequacy: TJB has
+> published a real, explicit F→H(z) derivation (v82, Sec. II.B-C),
+> read directly from the PDF, not from a markdown conversion or a
+> summary. `docs/147`'s own named reopen condition (a new publication
+> supplying the bridge + evolution laws) is satisfied as a plain
+> factual matter. **This field does NOT say the bridge is empirically
+> adequate** — whether v82's own fit actually explains the observed
+> `H(z)` data to any standard is a separate, unexamined question; "a
+> published mechanism exists" and "that mechanism is confirmed by
+> data" are different claims, and only the first is what this field
+> asserts.
 >
 > **Ontological/mechanistic interpretation status:** REJECTED-AS-SAME,
 > OPEN-AS-COMPATIBLE — v82's bridge is **not** the same mechanism as
@@ -154,22 +185,34 @@ implicitly assumed to.
 **GO — bottleneck 1 is formally RESTATED, not simply reopened:**
 
 ```
-OLD (docs/147, 2026-08-23): "F→H_MULT(z) — central bridge not
-established in published form." — CLOSED, superseded by fact
-(docs/149). Retained in docs/147 as historical record, not deleted.
+OLD-FORMULATION-SUPERSEDED (docs/147, 2026-08-23): "F→H_MULT(z) —
+central bridge not established in published form." This specific
+CLAIM ("bridge absent") is refuted by fact (docs/149) — the wording
+itself is retired, retained in docs/147 as historical record, not
+deleted. This tag is deliberately NOT "bottleneck 1 solved" or
+"F→H(z) established" — read literally, it says only that "no bridge
+exists" is false, not that any bridge is physically correct.
 
-NEW (this document, 2026-09-01): "F→H_MULT(z), finite-r/single-pair
-compatibility — does this project's own S-S closure criterion
-(isotropic-average, r→∞) say anything about v82's own bridge
-construction (finite separation ~40-45 Mpc, single oriented pair, no
-population averaging)? Does v82's bridge, worked through on its own
-terms in that regime, reintroduce k_A(z)-dependence in a way `docs/
-127`'s own G_eff=0 result would consider a violation?" — OPEN,
-GO-eligible under docs/147's own criterion 2. Concrete next
+NEW, CAUSAL-COMPATIBILITY BOTTLENECK, OPEN (this document, 2026-09-01):
+"F→H_MULT(z), finite-r/single-pair compatibility — does this project's
+own S-S closure criterion (isotropic-average, r→∞) say anything about
+v82's own bridge construction (finite separation ~40-45 Mpc, single
+oriented pair, no population averaging)? Does v82's bridge, worked
+through on its own terms in that regime, reintroduce k_A(z)-dependence
+in a way `docs/127`'s own G_eff=0 result would consider a violation?"
+— OPEN, GO-eligible under docs/147's own criterion 2. Concrete next
 calculation named by FINDING_P156's own FINITE-R-ANISOTROPIC-REGIME-
 REMAINS-OPEN tag: a finite-r, non-averaged, single-pair version of
 the closure calculation this project has not yet built.
 ```
+
+**The two tags above must always be read together, never the first
+alone.** `OLD-FORMULATION-SUPERSEDED` kills exactly one claim
+("bridge absent") — it is not a verdict on `F→H(z)` itself, which
+remains a live, open causal-compatibility question under the second
+tag. A future reader grepping only "bottleneck 1... superseded" and
+concluding the physics is settled would be repeating precisely the
+silent-collapse `docs/151` exists to prevent.
 
 This is **not** an instruction to run that calculation now — per
 `docs/147`'s own stop-rule, naming a GO-eligible next step is not the
@@ -203,6 +246,22 @@ are answered here:
 
 A future "go" on this specific calculation should answer these three
 first, not treat this document's own framing as sufficient preparation.
+
+**Methodological note for the eventual decisive test, once §3a's three
+pre-conditions are answered** (user's own refinement, 2026-09-01, not
+yet acted on — pre-conditions above still gate this): the sharpest
+version of this test would NOT compare the two routes' final, fitted
+`H(z)` curves — a match or mismatch there is downstream of enough free
+parameters and fitting choices on both sides to be ambiguous either
+way. Instead, take one shared physical ensemble/population model and
+compute the **same intermediate physical quantity** by both routes:
+(1) via v82's finite-pair/accretion-kinematics bridge, (2) via this
+project's own population-averaged S-S closure. If the two routes
+already disagree at that intermediate level, the question about final
+`H(z)` becomes secondary — a much sharper test than comparing two
+output curves. Naming the correct intermediate quantity is itself
+part of pre-condition 1 above (whether a finite-r analog exists in
+closed form), not solved by this note.
 
 ## 4. What changes in `docs/147`'s own bottleneck tracking
 

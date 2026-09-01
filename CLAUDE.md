@@ -19,10 +19,12 @@
    (F→H_MULT(z) / Unique completion / Absolute scale / IC-sensitivity), their
    current status, and the explicit reopen conditions for each. **[2026-09-01]
    Bottleneck 1's gate decision is now made — see `docs/153`.** The original
-   2026-08-23 framing ("no published bridge exists") is CLOSED, superseded
-   by fact (v82 published one — `docs/149`). It is RESTATED, not simply
-   reopened: the new, precisely-scoped question is whether this project's
-   own S-S closure result (isotropic-average, r→∞) is compatible with v82's
+   2026-08-23 framing ("no published bridge exists") is `OLD-FORMULATION-
+   SUPERSEDED` (v82 published one — `docs/149`) — this tag kills exactly
+   that one claim, it is NOT "F→H(z) is solved" or "the bridge is correct."
+   It is RESTATED, not simply reopened: the new, precisely-scoped, still-
+   OPEN question is whether this project's own S-S closure result
+   (isotropic-average, r→∞) is compatible with v82's
    own finite-r, single-pair bridge construction — GO-eligible per `docs/147`'s
    own criterion 2, but not authorized to run without a separate explicit
    go-ahead. `docs/147`'s own bottleneck-1 entry is annotated with a pointer,
