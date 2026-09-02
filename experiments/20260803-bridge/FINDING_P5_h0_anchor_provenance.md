@@ -207,3 +207,29 @@ Circularity finding itself  : UNCHANGED -- Sec. IV.M's own argument (peculiar
   check, compute).
 - `experiments/20260810-zenodo-archive/refs/cbg1994_figure3_recolored.pdf`
   / `.png` — the recovered figure.
+
+## Round 2 addendum — Figures 1, 2, 4 also recovered (same session)
+
+The same white-stroke bug (confirmed, not assumed, per-page) affects
+Figures 1, 2, and 4 identically. `recolor_remaining_figures()` in the same
+script recovers all three: `cbg1994_figure{1,2,4}_recolored.pdf`/`.png` in
+`refs/`. Visually confirmed legible (labels, curves, error bars all
+readable) — not yet digitized into numbers, since none currently feed a
+project computation the way Figure 3's `v12(r)` does.
+
+**Attempted, not completed:** digitizing Figure 4's `σ12(r)` (Ω=0.3 CDM
+curve) as a bonus check, using the same pipeline. Unlike Figure 3, the
+cross-check against the one independently-known anchor
+(`σ12(5h⁻¹Mpc)=487` km/s, CBG's own Table 1, already `[VERIFIED]` in
+Round 1) did **not** cleanly reproduce: the PBI and LCDM curves' error
+bars visually cross/touch near `r~5`, and the two candidate drawing paths
+share a vertex there — the digitized midpoint (450.3) is 7.5% off the
+known 487, well outside Figure 3's 0.057% match. This is a genuine
+curve-identification ambiguity at this one separation, not a pipeline
+bug (the far point, `r~123`, gives 332.7 vs. the known `σ12(100)=327`,
+1.7% off — consistent). **Not reported as a number** — σ12 doesn't feed
+the H0_anchor formula directly anyway (only v12 does, already read
+cleanly from Figure 3), so there was no need to force a weak result into
+the record. Left as an open, low-priority item if a future session wants
+it (would need a sturdier curve-separation method near the crossing,
+e.g. tracking line continuity vertex-by-vertex rather than x-banding).

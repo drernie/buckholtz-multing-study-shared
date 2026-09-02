@@ -66,14 +66,18 @@ def fetch_original_source(dest_path):
     urllib.request.urlretrieve(ARXIV_SRC_URL, dest_path)
 
 
-def recolor_and_extract(pageno=FIGURE3_PAGE_INDEX):
+def recolor_page(pageno, out_pdf, out_png):
+    """Re-stroke one page's white-on-white vector paths in black.
+
+    Generic across all four figure pages (Figs 1, 2, 3, 4 all carry the
+    same stroke-color bug, confirmed below rather than assumed for each).
+    """
     src = fitz.open(REF_PDF)
     page = src[pageno]
     drawings = page.get_drawings()
 
-    # sanity: confirm the white-stroke bug is present, as found (not assumed)
     colors = {dr.get("color") for dr in drawings}
-    assert colors == {(1.0, 1.0, 1.0)}, f"unexpected colors: {colors}"
+    assert colors == {(1.0, 1.0, 1.0)}, f"page {pageno}: unexpected colors: {colors}"
 
     out = fitz.open()
     newpage = out.new_page(width=page.rect.width, height=page.rect.height)
@@ -88,12 +92,42 @@ def recolor_and_extract(pageno=FIGURE3_PAGE_INDEX):
                 shape.draw_rect(item[1])
         shape.finish(color=(0, 0, 0), fill=None, width=0.6)
     shape.commit()
-    out.save(OUT_PDF)
+    out.save(out_pdf)
 
     pix = out[0].get_pixmap(matrix=fitz.Matrix(4, 4), colorspace=fitz.csGRAY)
-    pix.save(OUT_PNG)
+    pix.save(out_png)
 
     return drawings
+
+
+def recolor_and_extract(pageno=FIGURE3_PAGE_INDEX):
+    return recolor_page(pageno, OUT_PDF, OUT_PNG)
+
+
+# Figures 1, 2, 4 -- pages 5, 6, 9 of the paper (0-indexed 4, 5, 8).
+# Figure 3 (page 8, 0-indexed 7) is handled by recolor_and_extract() above.
+OTHER_FIGURES = {
+    1: 4,
+    2: 5,
+    4: 8,
+}
+
+
+def recolor_remaining_figures():
+    """Restore Figures 1, 2, 4 the same way as Figure 3 (visual recovery
+    only -- no per-curve digitization, since none of the three currently
+    feed a specific project computation the way Figure 3's v12(r) does).
+    """
+    results = {}
+    for fig_num, pageno in OTHER_FIGURES.items():
+        out_pdf = f"experiments/20260810-zenodo-archive/refs/cbg1994_figure{fig_num}_recolored.pdf"
+        out_png = f"experiments/20260810-zenodo-archive/refs/cbg1994_figure{fig_num}_recolored.png"
+        drawings = recolor_page(pageno, out_pdf, out_png)
+        results[fig_num] = {"pageno": pageno, "n_drawings": len(drawings), "out_pdf": out_pdf}
+        print(
+            f"Figure {fig_num} (page {pageno + 1}): recovered, {len(drawings)} paths -> {out_pdf}"
+        )
+    return results
 
 
 def digitize_curve(drawings, drawing_index):
@@ -128,6 +162,9 @@ def digitize_curve(drawings, drawing_index):
 
 
 def main():
+    recolor_remaining_figures()
+    print()
+
     drawings = recolor_and_extract()
     curve = digitize_curve(drawings, LCDM_DRAWING_INDEX)
 
