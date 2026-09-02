@@ -1,0 +1,26 @@
+{
+  "seed": 20260902,
+  "n": 20,
+  "pairs": [
+    "task_012_A",
+    "task_013_A",
+    "task_013_B",
+    "task_015_B",
+    "task_016_A",
+    "task_016_B",
+    "task_018_B",
+    "task_020_A",
+    "task_020_B",
+    "task_021_B",
+    "task_022_A",
+    "task_022_B",
+    "task_024_A",
+    "task_025_B",
+    "task_029_A",
+    "task_029_B",
+    "task_030_A",
+    "task_030_B",
+    "task_031_A",
+    "task_031_B"
+  ]
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "task": "task_012",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.97,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies that k_reverse is algebraically derived from the same dG value via the same thermodynamic relation, shows k_forward cancels analytically and via sympy/numeric sweep, and notes the report's own admission contradicts its conclusion — matches the answer key's tautological-control defect precisely."
+  },
+  {
+    "task": "task_013",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Correctly names the shared ZP=25.340 as the source of non-independence, demonstrates numerically that the distance ratio is invariant to a shared zero-point shift, and explicitly reverses the report's backwards 'coincidence' argument — matches the answer key exactly. Secondary notes (small-N RRL sample, no extinction correction) are reasonable unverified caveats, not contradicted claims."
+  },
+  {
+    "task": "task_013",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": true,
+    "confidence": 0.85,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies the shared ZP=25.340 as the core non-independence defect with a strong perturbation/decoupling experiment matching the answer key. However, it also claims the 'ZP variable sits unused' and magnitudes are 'hardcoded' — this contradicts the answer key's own statement that ZP is used in both methods' magnitude conversions, and is internally inconsistent with the output's own perturbation results (which show ZP changes do move both distances)."
+  },
+  {
+    "task": "task_015",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Correctly names max_iter=1 as silently fixed across the sweep and empirically shows that allowing convergence (max_iter=200) makes LR sensitivity appear, directly falsifying the generalization claim — matches the answer key's silently-fixed-parameter defect exactly."
+  },
+  {
+    "task": "task_016",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.97,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies that phi_route2/g_route2 are defined by algebraic construction to cancel lambda, cites the code's own comment, and adds a discriminating counter-check (non-reciprocal redefinition) proving the agreement is an artifact of the chosen substitution — matches the answer key precisely."
+  },
+  {
+    "task": "task_016",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.97,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies the same tautological field redefinition, generalizes with an arbitrary f(lambda) ablation, and includes a constructed negative control showing the check-machinery has discriminating power but was never exercised on a genuine alternative construction — matches the answer key exactly."
+  },
+  {
+    "task": "task_018",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.97,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies g(x) as a provably non-negative sum of squares (proving the sign claim false without computation) and separately diagnoses the numerical failure as float64 overflow near x~1.34e154, validated against mpmath ground truth — matches the answer key's numerical-artifact-mistaken-for-physics defect exactly, with unusually thorough independent verification."
+  },
+  {
+    "task": "task_020",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies that alpha_log_range=(2.0,8.0) excludes the null baseline's neighborhood, notes alpha_best=100 sits exactly on the range's lower boundary as a signature of a boundary-truncated search, and correctly reframes the conclusion as a search-artifact rather than a genuine finding — matches the answer key exactly."
+  },
+  {
+    "task": "task_020",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.96,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies the box-excluded-optimum defect, confirms alpha=100 equals the range floor exactly, and reproduces the exact reported pattern synthetically to show range restriction alone explains it — matches the answer key exactly, with a legitimate additional in-sample-overfitting caveat not contradicted by the key."
+  },
+  {
+    "task": "task_021",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.96,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies the ZeroDivisionError on an empty scores list, reproduces it directly and in a synthetic realistic population, and correctly frames '0 exceptions on this run' as a property of the dataset rather than proof of robustness — matches the answer key's empty_input defect exactly, with an additional legitimate NaN-corruption finding not contradicted by the key."
+  }
+]

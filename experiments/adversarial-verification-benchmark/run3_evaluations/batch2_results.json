@@ -1,0 +1,82 @@
+[
+  {
+    "task": "task_016",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Names the exact mechanism: phi_route2=phi_R1/lam and g_route2=g_R1*lam are chosen specifically to cancel lambda, citing the code's own comment, and correctly rejects the 'independent confirmation' framing as tautological."
+  },
+  {
+    "task": "task_016",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Same core mechanism identified (definitional rescaling making the product invariant by construction, cited comment), with additional ablation (arbitrary f(lambda)) and a constructed negative control confirming the checking machinery could detect real disagreement."
+  },
+  {
+    "task": "task_018",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies g(x) as a sum of squares (non-negative), pinpoints the reported negative G(1e205) as impossible, and attributes it to float64 overflow rather than a physical/asymptotic effect, matching the answer key's mechanism."
+  },
+  {
+    "task": "task_018",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Same sum-of-squares/overflow diagnosis as the key, additionally verifying against mpmath ground truth and explicitly noting the un-checked err_estimate, which the key calls out as the correct first move."
+  },
+  {
+    "task": "task_019",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Correctly names the mutable-default-argument bug (tags=[]), demonstrates shared-list contamination across process_batch() calls, and notes the existing test's structural inability to catch it — matches the key precisely."
+  },
+  {
+    "task": "task_019",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Same mutable-default-argument diagnosis, confirmed via id() identity across the three profiles and a corrected None-sentinel version that doesn't reproduce the bug — matches the key precisely."
+  },
+  {
+    "task": "task_020",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.9,
+    "verdict_type": "detected",
+    "reasoning": "Identifies the alpha_log_range=(2.0,8.0) boundary exclusion and that alpha_best=100 sits exactly on the range floor, correctly reframing the 'underperformance' claim as a box-excluded-optimum artifact per the key."
+  },
+  {
+    "task": "task_020",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Same box-excluded-optimum mechanism identified with the exact boundary match (10**2.0==100.0) plus a synthetic reconstruction showing range restriction alone reproduces the reported pattern, closely matching the key's own recommended verification."
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "task": "task_022",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Names the exact mechanism: respondent_id assigned independently/sequentially in each file, drop_duplicates(subset='respondent_id', keep='last') silently overwrites early-bird rows for colliding IDs. Quantifies ~3211 lost rows and the 8214 vs 5003 arithmetic tell, matching the key precisely."
+  },
+  {
+    "task": "task_022",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.97,
+    "verdict_type": "detected",
+    "reasoning": "Identifies the identical collision mechanism with executable verification reproducing 5003/7.74 vs. the true 8214-row union/7.4336 average, and explicitly notes 5003 is the mathematically forced outcome of the bug rather than evidence of completeness — matches the key exactly."
+  },
+  {
+    "task": "task_024",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.93,
+    "verdict_type": "detected",
+    "reasoning": "Explicitly states np.sqrt(np.nanmean(all-NaN window**2)) = NaN, and NaN > threshold = False, so every dropped (all-NaN) window is silently classified 'not drifting' — the exact mechanism and location named in the key."
+  },
+  {
+    "task": "task_025",
+    "output_id": "B",
+    "defect_correctly_identified": false,
+    "defect_description_match": "vague",
+    "false_positive_flagged": false,
+    "confidence": 0.45,
+    "verdict_type": "missed",
+    "reasoning": "Mentions the directed/asymmetric matrix issue only as one aside ('directionality claimed but never exercised/tested against M+M^T') without developing or verifying it; both controls, the executed check, and the final DRAFT CLAIM instead build an entirely different, unconfirmed 'popularity confound' narrative absent from the answer key, so the seeded mechanism never becomes the delivered verdict."
+  },
+  {
+    "task": "task_029",
+    "output_id": "A",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.8,
+    "verdict_type": "missed",
+    "reasoning": "Task is a clean control where quad's error check and the historical cross-check are both legitimate and parameters are stated as independently validated; output instead rejects reliability via a parameter-sensitivity argument and casts the 'validated against historical gauge data' claim as an unresolved circularity risk, contradicting the key's explicit endorsement of that claim."
+  },
+  {
+    "task": "task_029",
+    "output_id": "B",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.82,
+    "verdict_type": "missed",
+    "reasoning": "Same clean task; output issues a confident REJECT ('precision theater') using a discriminating-power sweep and a circularity suspicion about gauge-data provenance, both contradicting the key's statement that the historical cross-check and parameter validation are genuinely satisfied rather than open questions."
+  },
+  {
+    "task": "task_030",
+    "output_id": "A",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.75,
+    "verdict_type": "missed",
+    "reasoning": "Task is a clean control where the key explicitly credits CV≈test RMSE agreement as legitimate evidence against overfitting; output builds a driver-leakage argument via sklearn reproduction and concludes the report's safeguard/non-overfitting claim is false, directly contradicting the key's endorsement of that inference."
+  },
+  {
+    "task": "task_030",
+    "output_id": "B",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.75,
+    "verdict_type": "missed",
+    "reasoning": "Same clean task; output runs its own synthetic leakage simulation and delivers a REJECT verdict on the grouping justification and CV/test agreement, again contradicting the key's explicit statement that this comparison is a legitimate, appropriately-scoped inference here."
+  },
+  {
+    "task": "task_031",
+    "output_id": "A",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.7,
+    "verdict_type": "missed",
+    "reasoning": "Task is a clean control with fully-cited, non-circular, appropriately-hedged inputs per the key; output marks the report's stated citations '[UNKNOWN]' and elevates a growth/terminal-rate reconciliation nuance into a 'genuine, checkable inconsistency,' concluding only partial credibility — contradicting the key's clean verdict."
+  },
+  {
+    "task": "task_031",
+    "output_id": "B",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.72,
+    "verdict_type": "missed",
+    "reasoning": "Same clean task; output delivers 'REQUIRES-CHECK, not PROMOTE,' citing missing citations, an undisclosed discounting convention, and a growth-rate discontinuity as confirmed unresolved problems, contradicting the key's assertion that inputs are properly cited, non-circular, and already appropriately hedged."
+  }
+]

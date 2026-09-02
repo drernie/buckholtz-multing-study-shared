@@ -1,0 +1,82 @@
+[
+  {
+    "task": "task_026",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.92,
+    "verdict_type": "detected",
+    "reasoning": "Names the exact mechanism: test_images vs. incoming_scanned_image distribution mismatch, zero input validation in the inference path, and empirically demonstrates reshape crashes on plausible cropper outputs."
+  },
+  {
+    "task": "task_026",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.93,
+    "verdict_type": "detected",
+    "reasoning": "Same core mechanism identified (distribution shift, no input validation, hard-coded shape assumption) plus additional executed checks (crash and silent-corruption cases); matches the answer key's named defect precisely."
+  },
+  {
+    "task": "task_029",
+    "output_id": "A",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.75,
+    "verdict_type": "missed",
+    "reasoning": "Answer key says this is a clean task where quad's reliability check is valid and gauge-data validation is accepted as stated; output instead issues a confident 'unsupported' verdict built on an unresolved-circularity/precision-vs-accuracy critique the key does not corroborate."
+  },
+  {
+    "task": "task_029",
+    "output_id": "B",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.75,
+    "verdict_type": "missed",
+    "reasoning": "Same false-positive pattern as A, argued more elaborately (discriminating-power sweep, circularity flag) and reaching an explicit REJECT verdict on a task the key marks as clean with no defect."
+  },
+  {
+    "task": "task_030",
+    "output_id": "A",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.7,
+    "verdict_type": "missed",
+    "reasoning": "Answer key lists this as a clean grid-search analysis (interior optimum, held-out test, no excluded baseline) with no mention of a grouping/leakage defect; output asserts a HIGH-severity data-leakage finding (order-ID grouping) and concludes 'not well-supported', diverging from the key's clean verdict."
+  },
+  {
+    "task": "task_030",
+    "output_id": "B",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.7,
+    "verdict_type": "missed",
+    "reasoning": "Same leakage-based REJECT verdict as A, independently reproduced with a synthetic simulation; not supported by the answer key's description of this task as a clean, correctly-executed sweep."
+  },
+  {
+    "task": "task_031",
+    "output_id": "A",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.68,
+    "verdict_type": "missed",
+    "reasoning": "Answer key states inputs are sourced/cited and terminal growth is independently derived; output instead flags an unverifiable-citation issue and a terminal-vs-trend growth discontinuity (2.87% vs 2.1%) not corroborated by the key, concluding the credibility claim is unverified."
+  },
+  {
+    "task": "task_031",
+    "output_id": "B",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.68,
+    "verdict_type": "missed",
+    "reasoning": "Same growth-discontinuity and provenance-gap critique as A (same specific figures), issuing a REQUIRES-CHECK/not-PROMOTE verdict that diverges from the answer key's clean, appropriately-hedged verdict."
+  }
+]

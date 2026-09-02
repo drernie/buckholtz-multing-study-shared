@@ -1,0 +1,102 @@
+[
+  {
+    "task": "task_022",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Correctly names respondent_id as independently/sequentially assigned per-file (not a shared key), explains drop_duplicates(keep='last') silently overwrites early-bird rows, and derives the exact 8,214 vs 5,003 arithmetic mismatch as the tell."
+  },
+  {
+    "task": "task_022",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Same core mechanism identified with executable reproduction confirming exactly 3,211 early-bird rows discarded and ground-truth union of 8,214 rows; matches answer key mechanism precisely."
+  },
+  {
+    "task": "task_024",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies np.nanmean on all-NaN window returning NaN, NaN>threshold evaluating False, and every dropped window being silently folded into 'not drifting' -- matches answer key mechanism exactly."
+  },
+  {
+    "task": "task_025",
+    "output_id": "B",
+    "defect_correctly_identified": false,
+    "defect_description_match": "vague",
+    "false_positive_flagged": false,
+    "confidence": 0.55,
+    "verdict_type": "missed",
+    "reasoning": "A single line notes 'directionality claimed but never exercised/tested against M+M^T', which brushes the seeded mechanism, but the executed analysis and final DRAFT CLAIM center entirely on a different issue (popularity confound in PC1-PC3), never returning to or developing the asymmetric-matrix point as the actual finding."
+  },
+  {
+    "task": "task_029",
+    "output_id": "A",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.7,
+    "verdict_type": "missed",
+    "reasoning": "Answer key states this is a clean task where the report's own cross-check (historical range) and parameter validation are legitimate and sufficient, explicitly noting parameters were validated against gauge data 'not free-fit'; the output nonetheless raises an unresolved circularity risk and builds its REJECT verdict on a sensitivity argument the key does not support."
+  },
+  {
+    "task": "task_029",
+    "output_id": "B",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.7,
+    "verdict_type": "missed",
+    "reasoning": "Same false-positive pattern as A, reinforced with a discriminating-power sweep; treats the provenance/circularity question as open ([HYPOTHESIS]) when the answer key explicitly states parameters were independently validated, and concludes REJECT on a clean task."
+  },
+  {
+    "task": "task_030",
+    "output_id": "A",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.75,
+    "verdict_type": "missed",
+    "reasoning": "Answer key explicitly states 'a correct response should not flag ... an overfitting concern here'; the output builds a confident, empirically-verified REJECT specifically on an overfitting/leakage argument (order-ID grouping providing no protection), directly contradicting the clean verdict."
+  },
+  {
+    "task": "task_030",
+    "output_id": "B",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.75,
+    "verdict_type": "missed",
+    "reasoning": "Same false-positive pattern as A, with an additional synthetic simulation reinforcing an overfitting conclusion; answer key's explicit 'should not flag ... overfitting concern' directly rules this verdict out for this clean task."
+  },
+  {
+    "task": "task_031",
+    "output_id": "A",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.6,
+    "verdict_type": "missed",
+    "reasoning": "Answer key lists sourcing, non-circularity, and hedged conclusion as all satisfied; the output treats category-level source labels as insufficient citation and flags a 'genuine inconsistency' between year-9/10 trend growth (~2.9%) and terminal growth (2.1%) that is standard DCF practice (terminal growth capped near long-run GDP), not a defect the key recognizes."
+  },
+  {
+    "task": "task_031",
+    "output_id": "B",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": true,
+    "confidence": 0.6,
+    "verdict_type": "missed",
+    "reasoning": "Raises several findings (terminal-value share, discounting convention, growth-rate 'cliff') none of which the clean answer key treats as defects, and concludes 'REQUIRES-CHECK, not PROMOTE' where the key calls for accepting the report's already-adequate sourcing, sensitivity table, and hedged conclusion."
+  }
+]

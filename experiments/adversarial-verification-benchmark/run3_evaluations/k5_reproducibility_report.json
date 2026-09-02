@@ -1,0 +1,20 @@
+{
+  "n_pairs": 20,
+  "full_row_exact_match_pct": 95.0,
+  "field_agreement_pct": {
+    "defect_correctly_identified": 100.0,
+    "false_positive_flagged": 95.0,
+    "verdict_type": 100.0
+  },
+  "disagreements": {
+    "defect_correctly_identified": [],
+    "false_positive_flagged": [
+      [
+        "task_013_B",
+        true,
+        false
+      ]
+    ],
+    "verdict_type": []
+  }
+}

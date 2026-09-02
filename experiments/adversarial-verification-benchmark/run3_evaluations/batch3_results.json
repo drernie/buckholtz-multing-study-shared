@@ -1,0 +1,82 @@
+[
+  {
+    "task": "task_021",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.97,
+    "verdict_type": "detected",
+    "reasoning": "Directly executes daily_summary_score([]) and reproduces ZeroDivisionError, naming the exact seeded empty-input defect and correctly reframing '0 exceptions' as a property of that day's data rather than robustness."
+  },
+  {
+    "task": "task_021",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.97,
+    "verdict_type": "detected",
+    "reasoning": "Reproduces the same ZeroDivisionError directly and via a synthetic population with a realistic dormant-customer rate, explicitly naming the unhandled empty-scores case as the core failure — matches the answer key precisely."
+  },
+  {
+    "task": "task_022",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.97,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies that respondent_id is a batch-local, non-unique-across-sources key and that drop_duplicates(keep='last') silently overwrites early-bird rows with colliding late-respondent rows, and flags the merged-count fingerprint (5003 vs expected 8214) exactly as the answer key does."
+  },
+  {
+    "task": "task_022",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.98,
+    "verdict_type": "detected",
+    "reasoning": "Names the identical mechanism with additional precision — quantifies exactly 3,211 discarded early-bird rows and runs a ground-truth-union comparison (7.4336 vs reported 7.74) — fully matching the answer key's defect and arithmetic."
+  },
+  {
+    "task": "task_024",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies and verifies that nanmean on an all-NaN window returns NaN, that NaN>threshold is False, and that this silently folds dropped windows into 'not drifting' — matching the answer key's mechanism exactly."
+  },
+  {
+    "task": "task_024",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Independently confirms the same NaN-masking mechanism via direct execution (RuntimeWarning observed) and ties it explicitly to the known network-hiccup dropout issue, matching the answer key precisely."
+  },
+  {
+    "task": "task_025",
+    "output_id": "A",
+    "defect_correctly_identified": false,
+    "defect_description_match": "absent",
+    "false_positive_flagged": false,
+    "confidence": 0.85,
+    "verdict_type": "missed",
+    "reasoning": "Builds an entire (plausible) case around a popularity confound in raw-count PCA, but never engages with the seeded defect — that M is asymmetric/directed and standard PCA discards that directional structure; no mention of M vs M.T, directionality, or M+M^T/M-M^T decomposition."
+  },
+  {
+    "task": "task_025",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "close",
+    "false_positive_flagged": false,
+    "confidence": 0.6,
+    "verdict_type": "detected",
+    "reasoning": "Explicitly names the seeded mechanism ('Directionality claimed (order-sensitive matrix) but never exercised/tested against M + M^T'), matching the answer key's specific fix, but this is a single passing bullet — the executed tests and final verdict instead pursue and center on the popularity-confound narrative, so the correct defect is named but not developed."
+  }
+]

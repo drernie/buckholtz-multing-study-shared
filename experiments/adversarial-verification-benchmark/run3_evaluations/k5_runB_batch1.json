@@ -1,0 +1,102 @@
+[
+  {
+    "task": "task_012",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.97,
+    "verdict_type": "detected",
+    "reasoning": "Output names the exact mechanism: k_reverse is algebraically derived from the same dG via k_reverse = k_forward*exp(dG/RT), causing k_forward to cancel and Route 2 to reduce identically to Route 1's formula. Verified numerically (sweep over k_forward) and symbolically (sympy simplification), matching the answer key's ground truth precisely."
+  },
+  {
+    "task": "task_013",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.97,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies the shared ZP=25.340 as the root cause, explicitly inverts the report's 'coincidence' framing exactly as the key demands, and empirically demonstrates (varying delta_ZP) that the distance ratio is invariant to a shared zero-point error. Matches defect_location and defect_type exactly."
+  },
+  {
+    "task": "task_013",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.93,
+    "verdict_type": "detected",
+    "reasoning": "Names the shared ZP=25.340 as the deterministic (not coincidental) shared-machinery defect, with a perturbation sweep and a negative control (decoupled ZPs) showing real independence would diverge. Also raises a secondary claim that ZP is unused/hardcoded in the formulas, which the answer key neither confirms nor contradicts, so it is not scored as a clear false positive, but it is an unverified addition."
+  },
+  {
+    "task": "task_015",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Directly names the silently-fixed max_iter=1 across the entire learning-rate sweep as the defect, matching the key's defect_location and defect_type exactly, and backs it with an executed ablation (max_iter=200) showing the 'robustness' disappears once training is allowed to converge."
+  },
+  {
+    "task": "task_016",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.97,
+    "verdict_type": "detected",
+    "reasoning": "Identifies that phi_route2 = phi_R1/lam and g_route2 = g_R1*lam are defined specifically to cancel lambda, citing the code's own comment, and proves the tautology further with a non-reciprocal counter-substitution that breaks the identity. Matches defect_location and defect_type exactly."
+  },
+  {
+    "task": "task_016",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.97,
+    "verdict_type": "detected",
+    "reasoning": "Same exact mechanism identified (Route 2 fields algebraically rescaled from Route 1 to force invariance), reinforced with an f(lambda) generalization and a constructed negative control showing the check-machinery could detect disagreement in principle but was never exercised. Matches the key precisely."
+  },
+  {
+    "task": "task_018",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Correctly proves g(x) is a sum of squares hence G(x) is provably positive everywhere, and attributes the reported negative value to float64 overflow at extreme x, matching the key's defect_type (numerical artifact mistaken for physics) and defect_location exactly; also independently found the report's specific number isn't even reproducible under standard overflow settings, a consistent elaboration rather than a contradiction."
+  },
+  {
+    "task": "task_020",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Identifies alpha_log_range=(2.0,8.0) as excluding alpha near zero and flags alpha_best=100 as sitting exactly on the search range's lower edge — the textbook boundary-optimum signature the key describes — matching defect_location and defect_type exactly."
+  },
+  {
+    "task": "task_020",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.93,
+    "verdict_type": "detected",
+    "reasoning": "Same box-excluded-optimum defect identified exactly, reinforced with a synthetic reconstruction showing range restriction alone reproduces the reported pattern; additional in-sample-overfitting concerns raised are supplementary, not contradicting the key."
+  },
+  {
+    "task": "task_021",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.95,
+    "verdict_type": "detected",
+    "reasoning": "Directly reproduces the ZeroDivisionError from an empty scores list and correctly argues '0 exceptions on this run' reflects the dataset's composition rather than code robustness, matching the key's defect_location and defect_type exactly; the additional NaN silent-corruption finding is a bonus defect, not a contradiction of the key."
+  }
+]

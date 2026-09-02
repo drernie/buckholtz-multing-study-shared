@@ -1,0 +1,82 @@
+[
+  {
+    "task": "task_012",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.98,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies that k_reverse is algebraically derived from Route 1's same dG value, that k_forward cancels out entirely, and quotes the report's own admission as the giveaway — matches the answer key's exact mechanism, verified via symbolic simplification and a k_forward sweep."
+  },
+  {
+    "task": "task_012",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.98,
+    "verdict_type": "detected",
+    "reasoning": "Same exact mechanism identified (k_forward cancels, Route 2 reduces to exp(-dG/RT)), with added dG-sweep and a synthetic independent-noise negative control demonstrating what real independence would look like — fully matches the answer key."
+  },
+  {
+    "task": "task_013",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.97,
+    "verdict_type": "detected",
+    "reasoning": "Correctly names the shared ZP=25.340 as the common upstream input, shows the distance ratio is exactly invariant to a hypothetical zero-point shift, and explicitly calls out the report's 'coincidence' framing as inverted logic — matches the answer key's Category 3 pattern precisely."
+  },
+  {
+    "task": "task_013",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.97,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies the shared ZP=25.340 and demonstrates via perturbation sweep (shared vs. decoupled ZP) that the agreement test has zero power against the calibration error — matches the answer key; a secondary finding (ZP unused in formula) is additional but doesn't detract from the correct core identification."
+  },
+  {
+    "task": "task_014",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.98,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies the reused/copied bounds (5.0, 45.0), that x*=5.0 lands exactly at the lower bound, and computes the true unconstrained optimum (~4.32 cm) both analytically and via re-running with wider bounds — exact match to the answer key."
+  },
+  {
+    "task": "task_014",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.98,
+    "verdict_type": "detected",
+    "reasoning": "Same exact mechanism (stale copied bounds causing a lower-bound boundary artifact), with an additional boundary-sensitivity sweep demonstrating success=True fires regardless of truncation — exact match to the answer key."
+  },
+  {
+    "task": "task_015",
+    "output_id": "A",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.96,
+    "verdict_type": "detected",
+    "reasoning": "Correctly names max_iter=1 as fixed across every learning rate and shows via ablation (max_iter=200) that the flat curve is an artifact of the single-epoch cap rather than genuine robustness — matches the answer key's Category 4 pattern."
+  },
+  {
+    "task": "task_015",
+    "output_id": "B",
+    "defect_correctly_identified": true,
+    "defect_description_match": "exact",
+    "false_positive_flagged": false,
+    "confidence": 0.96,
+    "verdict_type": "detected",
+    "reasoning": "Correctly identifies the silently-fixed max_iter=1 and demonstrates via a converged (max_iter=200) ablation that LR sensitivity actually worsens once training is allowed to run — matches the answer key and directly falsifies the production-generalization claim."
+  }
+]
