@@ -27,6 +27,7 @@
 | NR-018 | 2026-08-03 | naive-pair-fluid-virial-mapping | REJECT | positive-density virial mapping of U~r^-n gives w=n/3, so no dark-energy EoS; Ground2 CONDITIONAL: Omega_pair ~1e-7 [1e-8,1e-6] per independent impl; our 3.9e-5 and '46 R_H' RETRACTED (abundance = 252% of matter). SCOPE: closes ONE mapping, NOT generalized Layzer-Irvine, NOT all bridges |
 | NR-019 | 2026-08-17 | lie-group-numerology-eq32-mechanism-consolidated | REJECT (consolidated, 3 attempts) | S³ (NR-009), F₄/G₂/J₃(O) (f4-eq32-synthesis C10), SM-gauge-dim (pearl 06-24) all post-hoc relabel {4/3,12}; no single invariant gives both, no independent prediction; Eq.32 itself survives unexplained |
 | NR-020 | 2026-09-02 | eq32-numerology-negative-space-mining | REJECT (H1 timing-axis, skeptic-falsified) | Balmer 1885 counter-example kills a-priori/post-hoc timing rule; DoF-based fallback survives, unattacked, applied to Eq.32 |
+| NR-021 | 2026-09-02 | h1prime-formalization-data-collection | REJECT/INCONCLUSIVE (real N=11 not 60, DoF-ratio not reliably codeable) | Blind inter-rater check: DoF-ratio estimates diverge 2-6x between coders; regression point estimate runs OPPOSITE H1's predicted direction (not significant, N too small) |
 
 ---
 
