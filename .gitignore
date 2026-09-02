@@ -3,6 +3,13 @@ literature/papers/
 literature/sci_index/
 # Digitized full-text of third-party arXiv papers (kept local: licensing + repo bloat; re-extractable from PDFs)
 literature/refs_digitized/
+# Recovered/recolored third-party reference figures (regenerable from the
+# source PDF + digitize_figure3_v12.py; same local-only convention as above)
+experiments/20260810-zenodo-archive/refs/
+
+# Auto-generated commit history log (post_commit_memory hook) — pure
+# redirect of `git log`, not source content
+.claude/memory/history/
 
 # Python
 __pycache__/
