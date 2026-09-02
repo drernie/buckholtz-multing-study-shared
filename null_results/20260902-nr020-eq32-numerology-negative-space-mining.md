@@ -2,6 +2,24 @@
 # negative-space-mining decisive test (timing-based H1 FALSIFIED; DoF-based
 # fallback applied)
 
+**CORRECTION (2026-09-02, same day, found while running `/consilience` to
+synthesize this file with NR-019 and the project's own look-elsewhere
+result):** Stage 7's claim "Eq.32 has made no subsequent out-of-sample
+prediction using its own fixed parameters" is **WRONG**. This project's own
+`experiments/20260810-eq32-look-elsewhere/FINDING_eq32_look_elsewhere.md`
+(2026-08-10, not cross-referenced when this file was written) already names
+one: **m_τ = 1776.840 MeV if Eq.32 is exact.** Checked against Belle II's
+2023 measurement (1777.09 ± 0.08 ± 0.11 MeV, arXiv:2305.19116/PhysRevD.108.
+032006 — genuinely independent, predates and does not reference Eq.32):
+**1.84σ tension** — not a clean confirmation, not a decisive rejection.
+Stage 7's applied verdict below is otherwise unaffected (DoF/prediction-
+structure still places Eq.32 in the "hasn't cleared the survivor bar"
+region — the correction *sharpens* that reading, since a checked, mildly-
+tense prediction is weaker for the hypothesis than an as-yet-unmade one,
+not stronger) — but "zero predictions" must be read as "one prediction,
+checked, ambiguous," not "none exist." Full synthesis with this correction
+folded in: `experiments/20260803-bridge/CONSILIENCE_eq32.md`.
+
 **Date:** 2026-09-02
 **Skill:** `/negative-space-miner`, requested by user, run in full (Stages
 -1 through 8, Attack delegated per Context Asymmetry Rule).
