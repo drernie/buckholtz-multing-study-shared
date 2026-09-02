@@ -4,8 +4,7 @@ Manifest: manifest2.json (seed 20260902). No isolation="worktree" (broken hook
 in this environment) -- plain background Agent calls, consistent with the
 project's own verified-clean no-isolation baseline.
 
-## RESUMED in new session (2026-09-02) -- solving arm now 31/32 complete.
-## Only task030-treatment still outstanding (dispatched, running).
+## RESUMED in new session (2026-09-02) -- solving arm now 32/32 COMPLETE.
 
 ## Solving calls -- status this checkpoint
 - [x] 012 both saved
@@ -22,7 +21,7 @@ project's own verified-clean no-isolation baseline.
 - [x] 025 both saved
 - [x] 026 both saved
 - [x] 029 both saved
-- [x] 030 -- baseline saved, treatment PENDING (dispatched, not yet returned)
+- [x] 030 both saved
 - [x] 031 both saved
 
 ## Why the prior checkpoint stopped: real, measured budget wall
@@ -36,18 +35,19 @@ estimated and scoped down for.
 
 ## What actually exists after this checkpoint (real, usable results)
 
-31 of 32 target solving-arm outputs for the "other half" of the corpus (task
-pairs 012-031) are now saved to disk (this directory), with real,
+All 32 of 32 target solving-arm outputs for the "other half" of the corpus
+(task pairs 012-031) are now saved to disk (this directory), with real,
 tool-verified defect-catches or well-reasoned REJECT verdicts in every
-completed output. Only task030-treatment remains outstanding.
+completed output. The full N=32 solving arm (all 32 tasks x 2 arms = 64
+calls total across both the original run and this extension) is COMPLETE.
 
-NOT run: skeptic sub-calls, blind Run-3 scoring, K5 recheck. These 31(-32)
-raw outputs are NOT yet scored against ground truth and are NOT part of any
+NOT run: skeptic sub-calls, blind Run-3 scoring, K5 recheck. These 32 raw
+outputs are NOT yet scored against ground truth and are NOT part of any
 statistical claim -- they are solving-arm transcripts only.
 
 ## Next step (per standing agreement with user)
-Once task030-treatment lands: commit the batch, then STOP and report
-completion to the user. Do NOT proceed to skeptic sub-calls / Run-3 blind
-evaluation / K5 recheck without a separate, explicit go-ahead -- these are
-the most expensive remaining stages and the user asked to gate them
-individually given the real cost this run has demonstrated.
+Solving arm complete. STOPPING here and reporting completion to the user.
+Do NOT proceed to skeptic sub-calls / Run-3 blind evaluation / K5 recheck
+without a separate, explicit go-ahead -- these are the most expensive
+remaining stages and the user asked to gate them individually given the
+real cost this run has demonstrated.
