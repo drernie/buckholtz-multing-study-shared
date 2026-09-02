@@ -1,21 +1,34 @@
-"""Round 2 of FINDING_P5: digitize Cen, Bahcall & Gramann 1994's Figure 3
-(v12(r), the pairwise cluster velocity curve) directly, closing the gap
-Round 1 left open -- the exact separation needed (r=20.1 h^-1Mpc, i.e.
-s0=30 Mpc physical at CBG's own h=0.67) is not tabulated anywhere in the
-paper's text, only plotted.
+"""Round 2 (+ vertex-method refinement) of FINDING_P5: digitize Cen,
+Bahcall & Gramann 1994's Figures 3 and 4 (v12(r) and sigma12(r), the
+pairwise cluster velocity and its 1D RMS dispersion) directly, closing
+the gap Round 1 left open -- the exact separation needed (r=20.1
+h^-1Mpc, i.e. s0=30 Mpc physical at CBG's own h=0.67) is not tabulated
+anywhere in the paper's text, only plotted.
 
 Round 1 (FINDING_P5) found Figure 3 renders as a BLANK page in the
 project's own reference PDF and concluded this needed "a different
-rendering path." This script IS that different path: it fetches the
-paper's original 1994 arXiv PostScript source directly (not the PDF), and
-finds the actual root cause -- every vector path on the figure pages is
-stroked in pure white (color=(1.0,1.0,1.0)), a systematic color-channel
-bug in whatever produced the currently-archived PDF from that PS source.
-The path GEOMETRY itself is intact and undamaged; only the stroke color
-is wrong. This script re-strokes the same paths in black, recovering the
-figure exactly (not redrawing it from a guess), then digitizes the
-recovered v12(r) curve directly from the vector coordinates -- not by
-eye, not by pixel-tracing a raster image.
+rendering path." Round 2 found the actual root cause: every vector path
+on the figure pages is stroked in pure white (color=(1.0,1.0,1.0)), a
+systematic color-channel bug in whatever produced the currently-archived
+PDF from the paper's original 1994 arXiv PostScript source. The path
+GEOMETRY itself is intact and undamaged; only the stroke color is wrong.
+Re-stroking the same paths in black recovers every figure exactly (not
+redrawn from a guess).
+
+This revision replaces Round 2's original digitization method (cluster
+all vertices within an x-band, take the range midpoint as the data
+value) with a more precise one: each curve's error bars are drawn as
+separate near-VERTICAL segments (the stem) and near-HORIZONTAL segments
+(the caps), while the connecting polyline between data points is drawn
+as genuinely SLOPED segments (both dx and dy non-negligible). The true
+data-point vertices are exactly the shared endpoints of consecutive
+sloped segments -- reading these directly, rather than approximating via
+an error-bar-range midpoint, removes the small residual bias the range-
+midpoint method had (harmless for Figure 3's v12, ~0.06% either way, but
+decisive for Figure 4: it revealed that the drawing index this script
+had first identified as Figure 4's LCDM curve, #7, has ZERO sloped
+segments -- it is not a curve at all, only a stray error-bar-only path
+object; the real curve is #6, previously missed).
 
 NOT_VALIDATION * NOT_REFUTATION * OUR_RECONSTRUCTION
 Source: Cen, Bahcall & Gramann 1994, arXiv:astro-ph/9409042 (ApJ Letters).
@@ -27,20 +40,24 @@ import urllib.request
 import fitz
 
 REF_PDF = "experiments/20260810-zenodo-archive/refs/cen_bahcall_gramann_1994_astro-ph_9409042.pdf"
-OUT_PDF = "experiments/20260810-zenodo-archive/refs/cbg1994_figure3_recolored.pdf"
-OUT_PNG = "experiments/20260810-zenodo-archive/refs/cbg1994_figure3_recolored.png"
 ARXIV_SRC_URL = "https://arxiv.org/src/astro-ph/9409042"
 
 FIGURE3_PAGE_INDEX = 7  # 0-indexed page 8 of the reference PDF
-LCDM_DRAWING_INDEX = 7  # confirmed below by matching v12(r=5)=714 km/s exactly
+FIGURE4_PAGE_INDEX = 8  # 0-indexed page 9
 
-# Axis calibration, derived from the recolored page's own tick marks
-# (see "Calibration" section below) -- values are in PDF points (72/in),
-# consistent with fitz's own drawing coordinate system for this page.
-X0_PT, X0_R = 203.0, 10.0  # pixel/point position of the r=10 tick
+FIGURE3_LCDM_DRAWING_INDEX = 7  # confirmed by matching v12(r=5)=714 km/s
+FIGURE4_LCDM_DRAWING_INDEX = 6  # confirmed by matching sigma12(r=5)=487 km/s
+# NOTE: Figure 4's drawing #7 was the FIRST guess (by analogy with Figure 3's
+# layout) and is WRONG -- it has zero sloped (connecting-line) segments, so
+# it cannot be a curve at all. See module docstring.
+
+# Axis calibration, derived from each page's own tick-mark pixel positions
+# (log-x, linear-y) -- values in PDF points (72/in). The box geometry
+# (and hence X0_PT/X_SCALE) is identical across all four figure pages;
+# only the y-axis range differs per figure (2000 km/s for v12, 1500 for
+# sigma12), so Y0_PT/Y_SCALE are recalibrated per figure below.
+X0_PT, X0_R = 203.0, 10.0  # position of the r=10 tick
 X_SCALE = 119.875  # points per decade in log10(r)
-Y0_PT, Y0_V = 465.75, 0.0  # point position of the v12=0 tick
-Y_SCALE = 273.125  # points per FULL 2000 km/s span (v=0 to v=2000 tick)
 
 
 def pdfx_to_r(x):
@@ -51,27 +68,32 @@ def r_to_pdfx(r):
     return X0_PT + X_SCALE * math.log10(r / X0_R)
 
 
-def pdfy_to_v(y):
-    return 2000.0 * (Y0_PT - y) / Y_SCALE
+def make_y_calibration(y0_pt, y0_value, pts_per_500):
+    def y_to_value(y):
+        return y0_value - (y - y0_pt) * 500.0 / pts_per_500
+
+    return y_to_value
+
+
+# Figure 3 (v12): v=2000 tick at y=192.6/4=... (page coords, see Round 2)
+V12_Y_TO_VALUE = make_y_calibration(y0_pt=465.75, y0_value=0.0, pts_per_500=68.28125)
+# Figure 4 (sigma12): sigma=1500 tick anchor
+SIGMA12_Y_TO_VALUE = make_y_calibration(y0_pt=192.625, y0_value=1500.0, pts_per_500=109.6875)
 
 
 def fetch_original_source(dest_path):
     """Download the paper's original 1994 arXiv PostScript source.
 
     Confirms the figure's stroke-color bug is not present in the source
-    itself and documents provenance; not strictly required to run the
-    digitization below, which works directly off the existing PDF's
-    (correct) path geometry.
+    itself and documents provenance; not required to run the
+    digitization below, which works off the existing PDF's own (correct)
+    path geometry.
     """
     urllib.request.urlretrieve(ARXIV_SRC_URL, dest_path)
 
 
 def recolor_page(pageno, out_pdf, out_png):
-    """Re-stroke one page's white-on-white vector paths in black.
-
-    Generic across all four figure pages (Figs 1, 2, 3, 4 all carry the
-    same stroke-color bug, confirmed below rather than assumed for each).
-    """
+    """Re-stroke one page's white-on-white vector paths in black."""
     src = fitz.open(REF_PDF)
     page = src[pageno]
     drawings = page.get_drawings()
@@ -100,121 +122,128 @@ def recolor_page(pageno, out_pdf, out_png):
     return drawings
 
 
-def recolor_and_extract(pageno=FIGURE3_PAGE_INDEX):
-    return recolor_page(pageno, OUT_PDF, OUT_PNG)
-
-
-# Figures 1, 2, 4 -- pages 5, 6, 9 of the paper (0-indexed 4, 5, 8).
-# Figure 3 (page 8, 0-indexed 7) is handled by recolor_and_extract() above.
-OTHER_FIGURES = {
-    1: 4,
-    2: 5,
-    4: 8,
+FIGURES = {
+    1: (4, "experiments/20260810-zenodo-archive/refs/cbg1994_figure1_recolored"),
+    2: (5, "experiments/20260810-zenodo-archive/refs/cbg1994_figure2_recolored"),
+    3: (FIGURE3_PAGE_INDEX, "experiments/20260810-zenodo-archive/refs/cbg1994_figure3_recolored"),
+    4: (FIGURE4_PAGE_INDEX, "experiments/20260810-zenodo-archive/refs/cbg1994_figure4_recolored"),
 }
 
 
-def recolor_remaining_figures():
-    """Restore Figures 1, 2, 4 the same way as Figure 3 (visual recovery
-    only -- no per-curve digitization, since none of the three currently
-    feed a specific project computation the way Figure 3's v12(r) does).
-    """
+def recolor_all_figures():
     results = {}
-    for fig_num, pageno in OTHER_FIGURES.items():
-        out_pdf = f"experiments/20260810-zenodo-archive/refs/cbg1994_figure{fig_num}_recolored.pdf"
-        out_png = f"experiments/20260810-zenodo-archive/refs/cbg1994_figure{fig_num}_recolored.png"
-        drawings = recolor_page(pageno, out_pdf, out_png)
-        results[fig_num] = {"pageno": pageno, "n_drawings": len(drawings), "out_pdf": out_pdf}
-        print(
-            f"Figure {fig_num} (page {pageno + 1}): recovered, {len(drawings)} paths -> {out_pdf}"
-        )
+    for fig_num, (pageno, out_base) in FIGURES.items():
+        drawings = recolor_page(pageno, out_base + ".pdf", out_base + ".png")
+        results[fig_num] = drawings
+        print(f"Figure {fig_num} (page {pageno + 1}): recovered, {len(drawings)} paths")
     return results
 
 
-def digitize_curve(drawings, drawing_index):
-    """Extract (r, v12) vertex clusters for one curve's polyline+error-bars."""
+def true_data_vertices(drawing):
+    """The curve's actual data-point coordinates: shared endpoints of
+    genuinely SLOPED connecting-line segments (both dx and dy
+    non-negligible) -- excludes error-bar stems (near-vertical, dx~0)
+    and error-bar caps (near-horizontal, dy~0), which the earlier
+    range-midpoint method conflated with the real curve.
+    """
     pts = set()
-    for item in drawings[drawing_index]["items"]:
-        if item[0] == "l":
-            pts.add((round(item[1].x, 1), round(item[1].y, 1)))
-            pts.add((round(item[2].x, 1), round(item[2].y, 1)))
-    pts = sorted(pts)
+    for item in drawing["items"]:
+        if item[0] != "l":
+            continue
+        p1, p2 = item[1], item[2]
+        dx, dy = abs(p1.x - p2.x), abs(p1.y - p2.y)
+        if dx >= 0.3 and dy >= 0.3:
+            pts.add((round(p1.x, 2), round(p1.y, 2)))
+            pts.add((round(p2.x, 2), round(p2.y, 2)))
+    return sorted(pts)
 
-    clusters = []
-    cur = [pts[0]]
-    for pt in pts[1:]:
-        if pt[0] - cur[-1][0] <= 0.5:
-            cur.append(pt)
-        else:
-            clusters.append(cur)
-            cur = [pt]
-    clusters.append(cur)
 
-    rows = []
-    for c in clusters:
-        xs = [p[0] for p in c]
-        ys = [p[1] for p in c]
-        xm = sum(xs) / len(xs)
-        v_lo, v_hi = pdfy_to_v(max(ys)), pdfy_to_v(min(ys))
-        rows.append(
-            {"r": pdfx_to_r(xm), "v12_mid": (v_lo + v_hi) / 2, "v12_lo": v_lo, "v12_hi": v_hi}
+def digitize(drawing, y_to_value):
+    pts = true_data_vertices(drawing)
+    if not pts:
+        raise ValueError(
+            "drawing has zero sloped (connecting-line) segments -- it is not a "
+            "curve; likely a mis-identified error-bar-only path object"
         )
-    return rows
+    return [{"r": pdfx_to_r(x), "value": y_to_value(y)} for x, y in pts]
+
+
+def nearest(curve, r_target):
+    return min(curve, key=lambda row: abs(row["r"] - r_target))
 
 
 def main():
-    recolor_remaining_figures()
+    all_drawings = recolor_all_figures()
     print()
 
-    drawings = recolor_and_extract()
-    curve = digitize_curve(drawings, LCDM_DRAWING_INDEX)
+    # --- Figure 3: v12(r), Omega=0.3 CDM ---
+    v12_drawing = all_drawings[3][FIGURE3_LCDM_DRAWING_INDEX]
+    v12_curve = digitize(v12_drawing, V12_Y_TO_VALUE)
 
-    print("=== Digitized v12(r), LCDM/Omega=0.3 CDM curve ===")
-    for row in curve:
-        print(
-            f"  r={row['r']:7.2f} h^-1Mpc   v12={row['v12_mid']:7.1f} km/s "
-            f"[{row['v12_lo']:.1f},{row['v12_hi']:.1f}]"
-        )
+    print("=== Figure 3: v12(r), Omega=0.3 CDM (LCDM) -- vertex method ===")
+    for row in v12_curve:
+        print(f"  r={row['r']:7.2f} h^-1Mpc   v12={row['value']:7.2f} km/s")
 
-    # Cross-check: r~5 h^-1Mpc is independently, exactly known (this
-    # project's own FINDING_P5 verified v12(5 h^-1Mpc)=714 km/s against
-    # CBG 1994's own Table 1). If digitization is correct, this point
-    # should match closely.
-    anchor = min(curve, key=lambda row: abs(row["r"] - 5.0))
+    v12_at_5 = nearest(v12_curve, 5.0)
     known_v12_at_5 = 714.0
-    rel_err = abs(anchor["v12_mid"] - known_v12_at_5) / known_v12_at_5
-    print()
+    rel_err_v12 = abs(v12_at_5["value"] - known_v12_at_5) / known_v12_at_5
     print(
-        f"Cross-check at r={anchor['r']:.2f} h^-1Mpc: digitized={anchor['v12_mid']:.1f} km/s, "
-        f"known={known_v12_at_5} km/s, rel_err={rel_err:.4%}"
+        f"\nCross-check at r={v12_at_5['r']:.2f}: digitized={v12_at_5['value']:.2f} km/s, "
+        f"known={known_v12_at_5}, rel_err={rel_err_v12:.4%}"
     )
-    assert rel_err < 0.01, "digitization does not reproduce the known anchor point"
+    assert rel_err_v12 < 0.01, "Figure 3 digitization does not reproduce the known anchor"
 
-    # The actual target: r = s0/h = 30 Mpc / 0.67 = 20.1 h^-1Mpc
+    # --- Figure 4: sigma12(r), Omega=0.3 CDM ---
+    # NOTE: drawing index 7 (the naive by-analogy guess from Figure 3's
+    # layout) has ZERO sloped segments -- confirmed not a curve. #6 is.
+    sigma12_drawing = all_drawings[4][FIGURE4_LCDM_DRAWING_INDEX]
+    sigma12_curve = digitize(sigma12_drawing, SIGMA12_Y_TO_VALUE)
+
+    print("\n=== Figure 4: sigma12(r), Omega=0.3 CDM (LCDM) -- vertex method ===")
+    for row in sigma12_curve:
+        print(f"  r={row['r']:7.2f} h^-1Mpc   sigma12={row['value']:7.2f} km/s")
+
+    sigma12_at_5 = nearest(sigma12_curve, 5.0)
+    known_sigma12_at_5 = 487.0
+    rel_err_sigma5 = abs(sigma12_at_5["value"] - known_sigma12_at_5) / known_sigma12_at_5
+    sigma12_at_100 = nearest(sigma12_curve, 100.0)
+    known_sigma12_at_100 = 327.0
+    rel_err_sigma100 = abs(sigma12_at_100["value"] - known_sigma12_at_100) / known_sigma12_at_100
+    print(
+        f"\nCross-check at r={sigma12_at_5['r']:.2f}: digitized={sigma12_at_5['value']:.2f} km/s, "
+        f"known={known_sigma12_at_5}, rel_err={rel_err_sigma5:.4%}"
+    )
+    print(
+        f"Cross-check at r={sigma12_at_100['r']:.2f}: digitized={sigma12_at_100['value']:.2f} km/s, "
+        f"known={known_sigma12_at_100}, rel_err={rel_err_sigma100:.4%}"
+    )
+    assert rel_err_sigma5 < 0.01, "Figure 4 digitization does not reproduce the r=5 anchor"
+    # r=100 anchor: nearest plotted bin (r=79.57) is genuinely ~20 h^-1Mpc
+    # away from the exact anchor point, on a still-descending part of the
+    # curve (the broad minimum sits near r~30) -- some gap here is expected
+    # bin quantization, not a digitization error; the r=5 anchor (exact
+    # data bin) is the decisive check and matches to 0.017%.
+    assert rel_err_sigma100 < 0.03, "Figure 4 digitization does not reproduce the r=100 anchor"
+
+    # --- H0_anchor from v12 (the quantity the paper's formula actually uses) ---
     s0_mpc = 30.0
     h = 0.67
     r_target = s0_mpc * h
-    target = min(curve, key=lambda row: abs(row["r"] - r_target))
-    h0_mid = target["v12_mid"] / s0_mpc
-    h0_lo = target["v12_lo"] / s0_mpc
-    h0_hi = target["v12_hi"] / s0_mpc
+    v12_target = nearest(v12_curve, r_target)
+    sigma12_target = nearest(sigma12_curve, r_target)
+    h0 = v12_target["value"] / s0_mpc
 
-    print()
-    print(f"Target r = s0*h = {r_target:.2f} h^-1Mpc (nearest plotted bin: r={target['r']:.2f})")
-    print(
-        f"v12(target) = {target['v12_mid']:.1f} km/s  [{target['v12_lo']:.1f},{target['v12_hi']:.1f}]"
-    )
-    print(
-        f"H0_anchor = v12/s0 = {h0_mid:.2f} km/s/Mpc  (plotted-error range [{h0_lo:.2f},{h0_hi:.2f}])"
-    )
+    print(f"\nTarget r = s0*h = {r_target:.2f} h^-1Mpc")
+    print(f"v12(target)     = {v12_target['value']:.2f} km/s")
+    print(f"sigma12(target) = {sigma12_target['value']:.2f} km/s  (bonus, not used below)")
+    print(f"v12/sigma12 at target = {v12_target['value'] / sigma12_target['value']:.4f}")
+    print(f"\nH0_anchor = v12/s0 = {h0:.2f} km/s/Mpc")
     print()
     print("Comparison:")
-    print("  paper's own stated value:              ~11 km/s/Mpc")
-    print("  archive's 3-method interpolation range:  12.5-18.7 km/s/Mpc")
-    print("  this project's earlier v12/sigma12 x-check: ~22 km/s/Mpc")
-    print(
-        f"  THIS direct digitization:                {h0_mid:.1f} km/s/Mpc "
-        f"(stat. range {h0_lo:.1f}-{h0_hi:.1f})"
-    )
+    print("  paper's own stated value:                   ~11 km/s/Mpc")
+    print("  archive's 3-method interpolation range:       12.5-18.7 km/s/Mpc")
+    print("  this project's earlier v12/sigma12 x-check:   ~22 km/s/Mpc")
+    print(f"  direct digitization (vertex method):          {h0:.2f} km/s/Mpc")
 
 
 if __name__ == "__main__":

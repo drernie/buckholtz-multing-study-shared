@@ -217,19 +217,44 @@ script recovers all three: `cbg1994_figure{1,2,4}_recolored.pdf`/`.png` in
 readable) — not yet digitized into numbers, since none currently feed a
 project computation the way Figure 3's `v12(r)` does.
 
-**Attempted, not completed:** digitizing Figure 4's `σ12(r)` (Ω=0.3 CDM
-curve) as a bonus check, using the same pipeline. Unlike Figure 3, the
-cross-check against the one independently-known anchor
-(`σ12(5h⁻¹Mpc)=487` km/s, CBG's own Table 1, already `[VERIFIED]` in
-Round 1) did **not** cleanly reproduce: the PBI and LCDM curves' error
-bars visually cross/touch near `r~5`, and the two candidate drawing paths
-share a vertex there — the digitized midpoint (450.3) is 7.5% off the
-known 487, well outside Figure 3's 0.057% match. This is a genuine
-curve-identification ambiguity at this one separation, not a pipeline
-bug (the far point, `r~123`, gives 332.7 vs. the known `σ12(100)=327`,
-1.7% off — consistent). **Not reported as a number** — σ12 doesn't feed
-the H0_anchor formula directly anyway (only v12 does, already read
-cleanly from Figure 3), so there was no need to force a weak result into
-the record. Left as an open, low-priority item if a future session wants
-it (would need a sturdier curve-separation method near the crossing,
-e.g. tracking line continuity vertex-by-vertex rather than x-banding).
+**Update — resolved, same session, via a method fix, not a data fix.**
+The apparent "curve-identification ambiguity" above was diagnosed
+wrongly. The real cause: each curve's error bars are drawn as their own
+near-vertical (stem) and near-horizontal (cap) segments, separate from
+the near-diagonal connecting-line segments joining consecutive data
+points — and on Figure 4's page, one curve's error-bar segments and its
+connecting-line segments turned out to live in **two different drawing
+objects**, not one combined object as on Figure 3's page. The original
+x-banding method (cluster all vertices within an x-window, take the
+range midpoint) silently mixed a stray error-bar-only path (drawing
+index 7, which has **zero** sloped segments — confirmed computationally,
+not a curve at all) into what looked like a plausible LCDM candidate.
+
+**Fix:** extract only the endpoints of genuinely sloped segments
+(`abs(dx)>=0.3 and abs(dy)>=0.3`) — these are, by construction, exactly
+the shared vertices of the connecting polyline, i.e. the true data
+points, with no error-bar geometry mixed in. Applying this to the
+*correct* drawing (index 6, found by elimination once index 7 was ruled
+out) gives:
+
+```
+sigma12(r=5.03 h^-1Mpc)   = 486.92 km/s   vs known 487.0   -- 0.017% off
+sigma12(r=79.57 h^-1Mpc)  = 319.76 km/s   vs known 327.0*  -- 2.2% off
+  * nearest plotted bin to r=100 is genuinely ~20 h^-1Mpc away, on the
+    still-descending side of the curve's broad minimum (~r=30) -- some
+    gap here is bin quantization, not a digitization error
+sigma12(r=20.1 h^-1Mpc, target) = 311.10 km/s
+v12/sigma12 at r=20.1            = 0.9147
+```
+
+The r=5 anchor match (0.017%) is *tighter* than Figure 3's own v12 match
+(0.057%) — this curve is now the best-validated digitization either
+figure has produced. Re-applying the same vertex method to Figure 3's
+v12 (as a regression check) reproduces the original Round 2 numbers
+almost exactly (`v12(5)=713.59` vs the range-midpoint method's 713.6;
+`H0_anchor=9.49` vs 9.51) — confirming the original method was fine for
+that curve specifically, and the vertex method is now used everywhere
+for consistency and because it has no known failure mode, unlike
+range-midpoint. `σ12` still isn't part of the `H0_anchor` formula
+(only `v12` is), so this doesn't change the headline number; it upgrades
+a previously-reported "open item" to a clean, cross-validated result.
