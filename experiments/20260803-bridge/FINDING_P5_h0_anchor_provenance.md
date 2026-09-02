@@ -249,7 +249,23 @@ v12/sigma12 at r=20.1            = 0.9147
 
 The r=5 anchor match (0.017%) is *tighter* than Figure 3's own v12 match
 (0.057%) — this curve is now the best-validated digitization either
-figure has produced. Re-applying the same vertex method to Figure 3's
+figure has produced.
+
+**Also digitized: Figure 1's `psi_v(r)`** (Ω=0.3 CDM), same vertex
+method, drawing index 7 (same index as Figure 3's LCDM curve — a
+coincidence of this page's own object ordering, not assumed):
+`psi_v(r=5.03)=-87.73` vs. the known Table-1 anchor `psi_v(5)=-87.0`,
+0.84% off. Larger relative error than v12/sigma12's own anchors,
+expected and not a red flag — `psi_v` crosses zero near this separation,
+so the same small absolute pixel offset that gave 0.017%–0.057% on
+curves that stay far from zero reads as a bigger percentage next to a
+small denominator. Full 11-point curve in the script's own output.
+**Figure 2 restored (visually legible) but not digitized** — it breaks
+`psi_v(r)` down by richness (R≥1/R≥0/groups) × 2 densities = 6 curves on
+a different 8-point r-grid (first bin ~r=3.9, not the other figures'
+shared 11-point grid starting ~r=3.5), so there's no single directly
+comparable r=5 bin to anchor against, and no open project question needs
+a number from it. Re-applying the same vertex method to Figure 3's
 v12 (as a regression check) reproduces the original Round 2 numbers
 almost exactly (`v12(5)=713.59` vs the range-midpoint method's 713.6;
 `H0_anchor=9.49` vs 9.51) — confirming the original method was fine for

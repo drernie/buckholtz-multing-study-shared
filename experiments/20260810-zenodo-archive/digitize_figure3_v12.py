@@ -1,9 +1,11 @@
 """Round 2 (+ vertex-method refinement) of FINDING_P5: digitize Cen,
-Bahcall & Gramann 1994's Figures 3 and 4 (v12(r) and sigma12(r), the
-pairwise cluster velocity and its 1D RMS dispersion) directly, closing
-the gap Round 1 left open -- the exact separation needed (r=20.1
-h^-1Mpc, i.e. s0=30 Mpc physical at CBG's own h=0.67) is not tabulated
-anywhere in the paper's text, only plotted.
+Bahcall & Gramann 1994's Figures 1, 3 and 4 (psi_v(r), v12(r) and
+sigma12(r) -- the velocity correlation function, pairwise cluster
+velocity, and its 1D RMS dispersion) directly, closing the gap Round 1
+left open -- the exact separation needed (r=20.1 h^-1Mpc, i.e. s0=30 Mpc
+physical at CBG's own h=0.67) is not tabulated anywhere in the paper's
+text, only plotted. (Figure 2 is recolored/restored but not digitized --
+see the FIGURE1_LCDM_DRAWING_INDEX comment below for why.)
 
 Round 1 (FINDING_P5) found Figure 3 renders as a BLANK page in the
 project's own reference PDF and concluded this needed "a different
@@ -42,14 +44,24 @@ import fitz
 REF_PDF = "experiments/20260810-zenodo-archive/refs/cen_bahcall_gramann_1994_astro-ph_9409042.pdf"
 ARXIV_SRC_URL = "https://arxiv.org/src/astro-ph/9409042"
 
+FIGURE1_PAGE_INDEX = 4  # 0-indexed page 5
 FIGURE3_PAGE_INDEX = 7  # 0-indexed page 8 of the reference PDF
 FIGURE4_PAGE_INDEX = 8  # 0-indexed page 9
 
+FIGURE1_LCDM_DRAWING_INDEX = 7  # confirmed by matching psi_v(r=5)=-87 km/s
 FIGURE3_LCDM_DRAWING_INDEX = 7  # confirmed by matching v12(r=5)=714 km/s
 FIGURE4_LCDM_DRAWING_INDEX = 6  # confirmed by matching sigma12(r=5)=487 km/s
 # NOTE: Figure 4's drawing #7 was the FIRST guess (by analogy with Figure 3's
 # layout) and is WRONG -- it has zero sloped (connecting-line) segments, so
 # it cannot be a curve at all. See module docstring.
+#
+# Figure 2 is NOT digitized here: it breaks the same psi_v(r) down by
+# cluster richness (R>=1 / R>=0 / groups) x 2 densities = 6 curves on a
+# DIFFERENT r-grid (8 points, first bin ~r=3.9) than Figures 1/3/4's
+# shared 11-point grid -- so there is no single "the LCDM curve" at a
+# directly comparable r=5 bin to anchor against, and no open project
+# question needs a number from it. Recolored and visually confirmed
+# legible (see refs/cbg1994_figure2_recolored.pdf) but left undigitized.
 
 # Axis calibration, derived from each page's own tick-mark pixel positions
 # (log-x, linear-y) -- values in PDF points (72/in). The box geometry
@@ -75,6 +87,8 @@ def make_y_calibration(y0_pt, y0_value, pts_per_500):
     return y_to_value
 
 
+# Figure 1 (psi_v): psi=1000 tick anchor
+PSI_V_Y_TO_VALUE = make_y_calibration(y0_pt=192.625, y0_value=1000.0, pts_per_500=76.78125)
 # Figure 3 (v12): v=2000 tick at y=192.6/4=... (page coords, see Round 2)
 V12_Y_TO_VALUE = make_y_calibration(y0_pt=465.75, y0_value=0.0, pts_per_500=68.28125)
 # Figure 4 (sigma12): sigma=1500 tick anchor
@@ -174,6 +188,28 @@ def nearest(curve, r_target):
 
 def main():
     all_drawings = recolor_all_figures()
+    print()
+
+    # --- Figure 1: psi_v(r), Omega=0.3 CDM ---
+    psi_v_drawing = all_drawings[1][FIGURE1_LCDM_DRAWING_INDEX]
+    psi_v_curve = digitize(psi_v_drawing, PSI_V_Y_TO_VALUE)
+
+    print("=== Figure 1: psi_v(r), Omega=0.3 CDM (LCDM) -- vertex method ===")
+    for row in psi_v_curve:
+        print(f"  r={row['r']:7.2f} h^-1Mpc   psi_v={row['value']:8.2f} km/s")
+
+    psi_v_at_5 = nearest(psi_v_curve, 5.0)
+    known_psi_v_at_5 = -87.0
+    rel_err_psi = abs(psi_v_at_5["value"] - known_psi_v_at_5) / abs(known_psi_v_at_5)
+    print(
+        f"\nCross-check at r={psi_v_at_5['r']:.2f}: digitized={psi_v_at_5['value']:.2f} km/s, "
+        f"known={known_psi_v_at_5}, rel_err={rel_err_psi:.4%}"
+    )
+    # psi_v crosses zero near this separation, so a small absolute pixel
+    # offset is a larger relative error than for v12/sigma12 (which never
+    # approach zero at their own r=5 anchors) -- 5% is still a decisive
+    # curve-identity confirmation, not a loose tolerance.
+    assert rel_err_psi < 0.05, "Figure 1 digitization does not reproduce the known anchor"
     print()
 
     # --- Figure 3: v12(r), Omega=0.3 CDM ---
