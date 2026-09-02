@@ -109,3 +109,101 @@ ApJ Letters version, or a direct image fetch of the arXiv figure files rather
 than the combined PDF — then read `v₁₂(20.1 h⁻¹Mpc)` off it directly. Until
 then, `Result 11`'s status stays exactly where the archive left it: an
 order-of-magnitude, qualitatively-supported claim, not a verified number.
+
+---
+
+## Round 2 (2026-09-02) — the figure recovered, `v₁₂` read directly, not interpolated
+
+**Root cause found, not just worked around.** Fetched the paper's original
+1994 arXiv PostScript source directly (`https://arxiv.org/src/astro-ph/9409042`
+— a single `dvips`-produced PS file, confirmed `[VERIFIED-BASH]`), and
+inspected the reference PDF's own vector path data (`PyMuPDF.Page.get_drawings()`)
+rather than its rendered pixels. **Every stroked path on Figures 1–4's pages
+is drawn in pure white** (`color=(1.0,1.0,1.0)`), a systematic stroke-color
+bug in whatever pipeline produced the currently-archived PDF from that PS
+source — the path *geometry* is completely intact, only the color channel is
+wrong. This is a different, more specific diagnosis than Round 1's "did not
+render as extractable graphics" — that was the correct symptom, this is the
+mechanism. Re-stroking the exact same paths in black recovers Figure 3
+exactly (not a redrawing from a guess): `experiments/20260810-zenodo-archive/
+refs/cbg1994_figure3_recolored.pdf`.
+
+**Digitized directly from the recovered vector coordinates**, not by eye and
+not by pixel-tracing a raster image — script: `experiments/20260810-zenodo-
+archive/digitize_figure3_v12.py`. Axis calibration derived from the page's
+own tick-mark pixel positions (log-x, linear-y), verified internally
+consistent (v=500/1000/1500 ticks land within 0.1–1.4 km/s of their nominal
+positions under the fitted calibration).
+
+**Cross-check against the one independently-known anchor** (Round 1's own
+`[VERIFIED]` `v₁₂(5 h⁻¹Mpc)=714` km/s, from CBG's own Table 1): digitized
+value **713.6 km/s, 0.057% relative error** `[VERIFIED-BASH]`. This
+confirms both the calibration and the curve-identity assignment (of the
+three plotted models, the digitized curve matching this anchor is `Ω=0.3
+CDM` — the model CBG's own text and this paper's own citation both mean by
+"LCDM").
+
+**The actual target bin exists in the plotted data** — `r=19.97 h⁻¹Mpc` is
+close enough to the needed `r=20.10` (=`s₀·h`=30 Mpc×0.67) that this is a
+direct reading, not an interpolation across a gap:
+
+```
+v12(r=19.97 h^-1Mpc) = 285.2 km/s   [plotted error range: 273.5-296.9]
+H0_anchor = v12/s0 = 285.2/30 = 9.51 km/s/Mpc   (range 9.12-9.90)
+```
+
+**Comparison across every estimate this project and the archive have
+produced for this same number:**
+
+| source | H0_anchor (km/s/Mpc) |
+|---|---|
+| paper's own stated value | ~11 |
+| archive's Result 11 (3 interpolation methods) | 12.5 – 18.7 |
+| this project's Round 1 independent cross-check (v₁₂/σ₁₂ ratio) | ~22 |
+| **this Round 2 (direct digitization of the actual curve)** | **9.5 (9.1–9.9)** |
+
+The direct reading is the closest of any reconstruction to the paper's own
+stated ~11 — and, unlike every prior estimate, it did not require choosing
+an interpolation scheme, because the needed separation happens to sit almost
+exactly on one of the paper's own plotted bins.
+
+## Updated verdict
+
+```
+Figure 3 digitisation      : DONE. Root cause of the earlier blank render
+                              (white-stroke bug in the archived PDF, not a
+                              missing/corrupt figure) identified and fixed
+                              by re-stroking the original vector paths.
+v12(20.1 h^-1Mpc)           : 285.2 km/s [273.5, 296.9] -- direct reading,
+                              cross-validated to 0.057% against the one
+                              independently-known anchor point
+H0_anchor                   : 9.5 km/s/Mpc [9.1, 9.9] -- tightest estimate
+                              of this number produced by this project or
+                              the archive to date
+Circularity finding itself  : UNCHANGED -- Sec. IV.M's own argument (peculiar
+                              velocity requires assuming H0 to extract) is
+                              untouched by pinning down the number more
+                              precisely; a tighter reconstruction of a
+                              circular quantity is still circular
+```
+
+## What this does NOT establish
+
+1. Does not resolve the underlying circularity the paper itself identifies
+   (Sec. IV.M) — this only tightens the *reconstructed number*, which the
+   paper's own text says it does not rely on for its main results (`H0_anchor`
+   is retained as a free-floating fit parameter precisely because of this).
+2. Digitization uncertainty (sub-pixel calibration precision, estimated
+   ≲0.2 km/s/Mpc from the tick-matching residuals) is much smaller than the
+   plotted N-body statistical error bar (9.1–9.9) — the dominant uncertainty
+   remains CBG 1994's own simulation error, not this project's reading of it.
+3. Does not check whether `s₀~30 Mpc` (Basilakos 2004) is itself robust —
+   Round 1's own scope note (#2) still applies unchanged.
+
+## Artifacts (Round 2)
+
+- `experiments/20260810-zenodo-archive/digitize_figure3_v12.py` — full
+  pipeline, reproducible end to end (fetch note, recolor, digitize, cross-
+  check, compute).
+- `experiments/20260810-zenodo-archive/refs/cbg1994_figure3_recolored.pdf`
+  / `.png` — the recovered figure.
