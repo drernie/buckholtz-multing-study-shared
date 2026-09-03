@@ -416,6 +416,28 @@ reading of this test in full).
 Partial derivatives verified against finite differences to $10^{-7}$ precision.
 \reconstruction
 
+\paragraph{Belle~II has already measured $m_\tau$ (added 2026-09-03).}
+The projection above treated Belle~II as a purely future test; it is not.
+Belle~II's own 2023 measurement~\cite{belleii2023taumass} gives
+$m_\tau = 1777.09 \pm 0.08\,\mathrm{(stat)} \pm 0.11\,\mathrm{(syst)}$~MeV
+(combined $0.136$~MeV). Checked directly against Eq.~(\ref{eq:c9})'s exact
+prediction of $1776.840$~MeV, this single, genuinely independent
+measurement — unlike the PDG-2024 world average used above, which itself
+already folds in this and other measurements, and is therefore not an
+independent check of an anchor built against an earlier world average —
+gives
+\begin{equation}
+  |m_\tau^\mathrm{Belle~II} - m_\tau^\mathrm{Eq.~(\ref{eq:c9})}| / \sigma
+  = 1.84\sigma .
+\end{equation}
+This is neither a clean confirmation nor a decisive rejection: it sits
+between the $1.0\sigma$ PDG-world-average figure above and the
+$8.54\sigma$ hypothetical target-precision projection, and should be
+read as the honest current state of the direct experimental test, not
+as a resolved result. Belle~II Run~2 (data-taking since 2024-02-20) may
+sharpen this tension in either direction.
+\reconstruction
+
 \paragraph{Sensitivity to $G$ measurements.}
 Different precision measurements of $G$ yield deviations of Eq.~(\ref{eq:c9})
 ranging from $+0.049\%$ \cite{luo2009} to $+0.079\%$ \cite{quinn2013},
@@ -1101,8 +1123,13 @@ If Eq.~(32) is taken as exact, it predicts
 $m_\tau^\mathrm{exact} = 1776.840$~MeV,
 which differs from the PDG 2024 value ($1776.93 \pm 0.09$~MeV) by
 $-0.090$~MeV $= 1.00\sigma$.
-Future Belle~II measurements targeting $\sigma_{m_\tau} < 0.01$~MeV
-will provide a definitive test of whether Eq.~(32) is exact or approximate.
+Belle~II has already measured $m_\tau$ once, in 2023~\cite{belleii2023taumass}:
+$1777.09 \pm 0.08\,\mathrm{(stat)} \pm 0.11\,\mathrm{(syst)}$~MeV, a
+$1.84\sigma$ tension with the exact-relation value above (added 2026-09-03;
+see \S\ref{ssec:eq32} for the full computation) --- ambiguous, not
+decisive. Future Belle~II Run~2 measurements targeting
+$\sigma_{m_\tau} < 0.01$~MeV will sharpen this toward a definitive test of
+whether Eq.~(32) is exact or approximate.
 \reconstruction
 
 \textbf{Joint Koide--Eq.~(32) constraint.}
@@ -1233,8 +1260,8 @@ updates in DESI DR2 or Planck PR4 may shift central values.}
 \begin{tabular}{p{5.5cm}p{3.5cm}p{2.5cm}l}
 Prediction & Observable & Instrument & Timeline \\
 \hline
-$m_\tau^\mathrm{exact} = 1776.840$~MeV if Eq.~(32) exact ($-1.00\sigma$ from PDG) &
-$m_\tau$ to $\pm0.01$~MeV & Belle~II~\cite{belleii2019} & 2027 \\
+$m_\tau^\mathrm{exact} = 1776.840$~MeV if Eq.~(32) exact ($-1.00\sigma$ from PDG; already $1.84\sigma$ from Belle~II's own 2023 measurement~\cite{belleii2023taumass}) &
+$m_\tau$ to $\pm0.01$~MeV & Belle~II Run~2~\cite{belleii2019} & 2027 \\
 $\Delta N_\mathrm{eff} \approx 0.26$ if IDM + MSSM decoupling ($g_{*S} \approx 228$) &
 $\Delta N_\mathrm{eff}$ & Simons Obs. & 2026--2027 \\
 $N_\mathrm{opt} = 5.31 \pm 0.05$--$0.09$ (3.3--5.9$\sigma$ from $N{=}5$) if $\sigma_{\omega_m}$ drops $\sqrt{2}$--$3\times$ from DR1 &
@@ -1272,7 +1299,7 @@ input and are not endorsed here as fixes.}
 Component & Status & Evidence & Path to resolution / next test \\
 \hline
 Eq.~31 (7:9:17 bosons) & $\triangle$ $m_W/m_H$ at $0.04\%$; $1.14\sigma$ (H), $3.8\sigma$ (W); trials-corrected $p = 0.0051 \pm 0.0002_\mathrm{MC}$ ($a,b,c \le 20$), but $\sigma_\mathrm{spec}$ spans $0.003$--$0.077$; isolation test $P=0.34$ (negative) & PDG 2024 $+$ 997-triple null & $W$-mass world average (LHC Run~3); $m_H$ precision also binds \\
-Eq.~32 (fermion-gravity) & $\checkmark$ $1.0\sigma$; trials-corrected $p = 0.16$ & PDG 2024 $+$ 35\,672-expression null & Belle~II $m_\tau$ (2027) sharpens exact vs.\ approximate \\
+Eq.~32 (fermion-gravity) & $\checkmark$ $1.0\sigma$ (PDG); $1.84\sigma$ (Belle~II 2023, independent, ambiguous); trials-corrected $p = 0.16$ & PDG 2024 $+$ 35\,672-expression null $+$ Belle~II 2023 direct check & Belle~II Run~2 $m_\tau$ (2027) sharpens exact vs.\ approximate \\
 Eqs.~21--24 (fermion masses) & $\checkmark$ muon $0.47\%$, quarks $<0.31\%$ & PDG 2024 & confirmed asset \\
 Inflaton $m_Z/3 = 30.4$~GeV & ? undetected & LEP/LHC null & precision/collider search \\
 Cassini constraint & $\checkmark$ pass & $\varepsilon \sim 10^{-19}$ & satisfied \\
