@@ -46,3 +46,8 @@
 - [NR-014: H1e AGN feedback confound — killed](20260713-nr014-h1e-agn-feedback-confound.md)
 - [NR-015: T_X shared-variable artifact — reclassifies NR-011/012/014](20260718-nr015-tx-shared-variable-artifact.md)
 - [NR-017: 7:9:17 RG boundary condition — rejected, exhausts mechanism search](20260722-nr017-79-17-rg-boundary-condition.md)
+- [NR-016: Shtanov-Sahni bridge naive mapping — rejected](20260719-nr016-shtanov-bridge-naive-mapping.md)
+- [NR-018: pair-potential effective-fluid virial mapping — rejected](20260803-nr018-pair-potential-effective-fluid.md)
+- [NR-019: Lie-group numerology Eq.32 mechanism, consolidated — rejected](20260817-nr019-lie-group-numerology-eq32-mechanism-consolidated.md)
+- [NR-020: Eq.32 numerology negative-space-mining — H1 falsified, DoF fallback](20260902-nr020-eq32-numerology-negative-space-mining.md)
+- [NR-021: H1' formalization data collection — real N=11, coding-reliability problem](20260902-nr021-h1prime-formalization-data-collection.md)
