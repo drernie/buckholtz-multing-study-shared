@@ -4,7 +4,6 @@ Test assumption dependency graph functionality.
 Purpose: Ensure key dependencies are documented and graph functions work.
 """
 
-
 from src.assumption_graph import (
     check_circular_dependency,
     get_all_dependencies,
@@ -74,9 +73,9 @@ def test_circular_dependency_detection():
     # But test the function works
 
     # Test between two unrelated nodes (should be False)
-    assert not check_circular_dependency(
-        "beta_d", "beta_q"
-    ), "beta_d and beta_q should not be circular"
+    assert not check_circular_dependency("beta_d", "beta_q"), (
+        "beta_d and beta_q should not be circular"
+    )
 
     # Test self-dependency (would be circular if existed)
     assert not check_circular_dependency("H(z) fit", "H(z) fit"), "No self-dependency should exist"
@@ -106,9 +105,9 @@ def test_ppn_constraints_exist():
     ppn_parents = {dep.parent for dep in ppn_deps}
 
     assert "MULTING dipole term" in ppn_parents, "MULTING dipole should depend on PPN constraints"
-    assert (
-        "MULTING quadrupole term" in ppn_parents
-    ), "MULTING quadrupole should depend on PPN constraints"
+    assert "MULTING quadrupole term" in ppn_parents, (
+        "MULTING quadrupole should depend on PPN constraints"
+    )
 
 
 def test_eq15_dependencies_exist():
@@ -119,9 +118,9 @@ def test_eq15_dependencies_exist():
 
     dep_children = {dep.child for dep in eq15_deps}
 
-    assert (
-        "exponent 6 mechanism" in dep_children or "prefactor 4/3 mechanism" in dep_children
-    ), "Eq.15 should depend on mechanism explanations"
+    assert "exponent 6 mechanism" in dep_children or "prefactor 4/3 mechanism" in dep_children, (
+        "Eq.15 should depend on mechanism explanations"
+    )
 
 
 def test_idm_isomer_dependencies():

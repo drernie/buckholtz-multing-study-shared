@@ -5,7 +5,6 @@ Purpose: Verify algebraic consistency of Hamiltonian bridge H²(a) reconstructio
 Safety: All tests verify internal reconstruction, NOT source-confirmed model
 """
 
-
 from src.deep_bridge_verification import (
     ForceComponent,
     H2ScalingDerivation,

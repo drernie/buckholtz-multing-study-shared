@@ -120,9 +120,7 @@ def run_parametric_grid_search(
             physical_mask[ia, ig] = res.physically_admissible
             if best_unc is None or res.mae < best_unc.mae:
                 best_unc = res
-            if res.physically_admissible and (
-                best_phys is None or res.mae < best_phys.mae
-            ):
+            if res.physically_admissible and (best_phys is None or res.mae < best_phys.mae):
                 best_phys = res
 
     return GridSearchSummary(

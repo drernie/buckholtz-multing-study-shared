@@ -66,7 +66,7 @@ class ClosureCandidate:
 PHI_Z_SCALING_CANDIDATE = ClosureCandidate(
     name="Phi(z) Heuristic Scaling",
     formula_text=(
-        "Phi(z) = A_m(z) - A_d(z) + A_q(z)\n" "H_MULT²(z) = H_anchor² × [Phi(z) / Phi(z_anchor)]"
+        "Phi(z) = A_m(z) - A_d(z) + A_q(z)\nH_MULT²(z) = H_anchor² × [Phi(z) / Phi(z_anchor)]"
     ),
     formula_latex=(
         r"\Phi(z) = A_m(z) - A_d(z) + A_q(z)\\"

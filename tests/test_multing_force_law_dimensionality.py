@@ -1,6 +1,5 @@
 """Tests for MULTING force-law records — dimensional integrity checks."""
 
-
 from src.multing_force_law_records import (
     CodePermission,
     ProvenanceStatus,
@@ -45,18 +44,18 @@ class TestForceLawRecords:
         force_laws = get_all_force_laws()
 
         for fl in force_laws:
-            assert (
-                fl.status == ProvenanceStatus.SOURCE_CANDIDATE
-            ), f"{fl.name} should be SOURCE_CANDIDATE until manually verified"
+            assert fl.status == ProvenanceStatus.SOURCE_CANDIDATE, (
+                f"{fl.name} should be SOURCE_CANDIDATE until manually verified"
+            )
 
     def test_all_force_laws_have_correct_units(self):
         """All force laws pass dimensional analysis (units status CORRECT)."""
         force_laws = get_all_force_laws()
 
         for fl in force_laws:
-            assert (
-                fl.units_status == UnitsStatus.CORRECT
-            ), f"{fl.name} dimensional analysis should be CORRECT"
+            assert fl.units_status == UnitsStatus.CORRECT, (
+                f"{fl.name} dimensional analysis should be CORRECT"
+            )
 
     def test_no_force_law_is_hz_ready(self):
         """No force law has code permission for H(z) modeling."""
@@ -104,9 +103,9 @@ class TestLengthScaleRecords:
         scales = get_all_length_scales()
 
         for s in scales:
-            assert (
-                s.code_permission == CodePermission.ALLOWED_FOR_RECORD_ONLY
-            ), f"{s.name} should be RECORD_ONLY (no computation)"
+            assert s.code_permission == CodePermission.ALLOWED_FOR_RECORD_ONLY, (
+                f"{s.name} should be RECORD_ONLY (no computation)"
+            )
 
 
 class TestClosureRequirements:
@@ -126,9 +125,9 @@ class TestClosureRequirements:
             "friedmann_equation",
             "likelihood_function",
         }
-        assert expected_types.issubset(
-            types
-        ), f"Missing closure requirements: {expected_types - types}"
+        assert expected_types.issubset(types), (
+            f"Missing closure requirements: {expected_types - types}"
+        )
 
     def test_critical_blockers_exist(self):
         """At least 4 CRITICAL-severity blockers."""
@@ -142,18 +141,18 @@ class TestClosureRequirements:
 
         for req in requirements:
             assert req.requirement_type, f"Closure requirement {req} missing requirement_type"
-            assert (
-                req.description
-            ), f"Closure requirement {req.requirement_type} missing description"
-            assert (
-                req.blocker_severity
-            ), f"Closure requirement {req.requirement_type} missing blocker_severity"
-            assert (
-                req.what_we_need
-            ), f"Closure requirement {req.requirement_type} missing what_we_need"
-            assert (
-                req.example_from_lcdm
-            ), f"Closure requirement {req.requirement_type} missing example_from_lcdm"
+            assert req.description, (
+                f"Closure requirement {req.requirement_type} missing description"
+            )
+            assert req.blocker_severity, (
+                f"Closure requirement {req.requirement_type} missing blocker_severity"
+            )
+            assert req.what_we_need, (
+                f"Closure requirement {req.requirement_type} missing what_we_need"
+            )
+            assert req.example_from_lcdm, (
+                f"Closure requirement {req.requirement_type} missing example_from_lcdm"
+            )
 
     def test_hz_closure_explicitly_missing(self):
         """H(z) closure is documented as missing."""
@@ -165,9 +164,9 @@ class TestClosureRequirements:
         )
 
         assert friedmann_req is not None, "Friedmann equation requirement must exist"
-        assert (
-            friedmann_req.blocker_severity == "CRITICAL"
-        ), "Friedmann equation blocker must be CRITICAL"
+        assert friedmann_req.blocker_severity == "CRITICAL", (
+            "Friedmann equation blocker must be CRITICAL"
+        )
 
 
 class TestHzModelingBlocker:
@@ -192,9 +191,9 @@ class TestHzModelingBlocker:
 
         assert "MISSING" in summary["cosmological_closure"], "Closure should be MISSING"
         assert "BLOCKED" in summary["mcmc_readiness"], "MCMC should be BLOCKED"
-        assert (
-            "allowed_for_dimensional_check ONLY" in summary["code_permission"]
-        ), "Code permission should restrict to dimensional check only"
+        assert "allowed_for_dimensional_check ONLY" in summary["code_permission"], (
+            "Code permission should restrict to dimensional check only"
+        )
 
 
 class TestSourceVerificationStatus:
@@ -206,14 +205,14 @@ class TestSourceVerificationStatus:
         scales = get_all_length_scales()
 
         for fl in force_laws:
-            assert (
-                fl.status == ProvenanceStatus.SOURCE_CANDIDATE
-            ), f"{fl.name} should await manual verification"
+            assert fl.status == ProvenanceStatus.SOURCE_CANDIDATE, (
+                f"{fl.name} should await manual verification"
+            )
 
         for s in scales:
-            assert (
-                s.status == ProvenanceStatus.SOURCE_CANDIDATE
-            ), f"{s.name} should await manual verification"
+            assert s.status == ProvenanceStatus.SOURCE_CANDIDATE, (
+                f"{s.name} should await manual verification"
+            )
 
     def test_source_notes_mention_manual_verification(self):
         """All source notes mention 'awaiting manual PDF verification'."""
@@ -221,14 +220,14 @@ class TestSourceVerificationStatus:
         scales = get_all_length_scales()
 
         for fl in force_laws:
-            assert (
-                "awaiting manual" in fl.source_note.lower()
-            ), f"{fl.name} source note should mention manual verification"
+            assert "awaiting manual" in fl.source_note.lower(), (
+                f"{fl.name} source note should mention manual verification"
+            )
 
         for s in scales:
-            assert (
-                "awaiting manual" in s.source_note.lower()
-            ), f"{s.name} source note should mention manual verification"
+            assert "awaiting manual" in s.source_note.lower(), (
+                f"{s.name} source note should mention manual verification"
+            )
 
 
 class TestSafeConclusion:
@@ -246,12 +245,12 @@ class TestSafeConclusion:
         forbidden_words = ["validates", "refutes", "proves", "disproves", "ruled out", "excluded"]
 
         for word in forbidden_words:
-            assert (
-                word not in conclusion.lower()
-            ), f"Safe conclusion should NOT contain '{word}': {conclusion}"
+            assert word not in conclusion.lower(), (
+                f"Safe conclusion should NOT contain '{word}': {conclusion}"
+            )
 
         # Safe conclusion SHOULD mention what is provided and what is missing
         assert "pairwise force law" in conclusion.lower(), "Should mention force law"
-        assert (
-            "do not provide" in conclusion.lower() or "missing" in conclusion.lower()
-        ), "Should mention what is missing"
+        assert "do not provide" in conclusion.lower() or "missing" in conclusion.lower(), (
+            "Should mention what is missing"
+        )

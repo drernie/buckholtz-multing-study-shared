@@ -30,7 +30,7 @@ def test_beta_d_ratio_close_to_11_over_2():
     assert relative_error < 0.01, (
         f"Candidate relation: beta_d_1 ≈ (11/2) × beta_d_2. "
         f"Actual ratio: {ratio:.4f}, expected: {expected_ratio}, "
-        f"error: {relative_error*100:.2f}%"
+        f"error: {relative_error * 100:.2f}%"
     )
 
 
@@ -44,7 +44,7 @@ def test_beta_q_ratio_close_to_128_over_3():
     assert relative_error < 0.001, (
         f"Candidate relation: beta_q_1 ≈ (128/3) × beta_q_2. "
         f"Actual ratio: {ratio:.4f}, expected: {expected_ratio:.4f}, "
-        f"error: {relative_error*100:.2f}%"
+        f"error: {relative_error * 100:.2f}%"
     )
 
 
@@ -57,7 +57,7 @@ def test_beta_q_over_beta_d_candidate_1():
     assert relative_error < 0.005, (
         f"Candidate relation: beta_q_1 / beta_d_1 ≈ 19/10. "
         f"Actual: {ratio:.4f}, expected: {expected_ratio}, "
-        f"error: {relative_error*100:.2f}%"
+        f"error: {relative_error * 100:.2f}%"
     )
 
 
@@ -70,7 +70,7 @@ def test_beta_q_over_beta_d_candidate_2():
     assert relative_error < 0.03, (
         f"Candidate relation: beta_q_2 / beta_d_2 ≈ 1/4. "
         f"Actual: {ratio:.4f}, expected: {expected_ratio}, "
-        f"error: {relative_error*100:.2f}%"
+        f"error: {relative_error * 100:.2f}%"
     )
 
 
@@ -83,7 +83,7 @@ def test_cross_product_beta_d1_times_beta_q2():
     assert relative_error < 0.04, (
         f"Candidate relation: beta_d_1 × beta_q_2 ≈ beta_d_2. "
         f"Actual product: {product:.4f}, expected: {expected}, "
-        f"error: {relative_error*100:.2f}%"
+        f"error: {relative_error * 100:.2f}%"
     )
 
 
@@ -108,13 +108,13 @@ def test_hidden_scale_extraction_consistency():
         f"Hidden scale hypothesis: L_ref from beta_d and beta_q should match. "
         f"L_ref(beta_d) = {L_ref_from_d:.3f}, "
         f"L_ref(beta_q) = {L_ref_from_q:.3f}, "
-        f"difference: {relative_difference*100:.1f}%"
+        f"difference: {relative_difference * 100:.1f}%"
     )
 
     # Check that L_ref is in plausible range for galaxy group scale
-    assert (
-        2.0 < L_ref_from_d < 3.0
-    ), f"L_ref ~ {L_ref_from_d:.2f} Mpc is in galaxy group scale range (2–3 Mpc)"
+    assert 2.0 < L_ref_from_d < 3.0, (
+        f"L_ref ~ {L_ref_from_d:.2f} Mpc is in galaxy group scale range (2–3 Mpc)"
+    )
 
 
 def test_all_candidate_relations_are_marked():

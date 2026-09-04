@@ -75,23 +75,23 @@ class TestBranchDispatch:
 
     def test_branch_a_matches_h_no_accretion(self) -> None:
         s, z = 50.0, 0.5
-        assert h_branch("A", s, z, BETA1, BETA2, M0_WORKING, R0_WORKING, H0_ANCHOR) == pytest.approx(
-            h_no_accretion(s, z, BETA1, BETA2, M0_WORKING, R0_WORKING)
-        )
+        assert h_branch(
+            "A", s, z, BETA1, BETA2, M0_WORKING, R0_WORKING, H0_ANCHOR
+        ) == pytest.approx(h_no_accretion(s, z, BETA1, BETA2, M0_WORKING, R0_WORKING))
 
     def test_branch_b_matches_h_accretion_frozen_anchor(self) -> None:
         s, z = 50.0, 0.5
         expected = h_accretion_frozen_anchor(s, z, BETA1, BETA2, M0_WORKING, R0_WORKING, H0_ANCHOR)
-        assert h_branch("B", s, z, BETA1, BETA2, M0_WORKING, R0_WORKING, H0_ANCHOR) == pytest.approx(
-            expected
-        )
+        assert h_branch(
+            "B", s, z, BETA1, BETA2, M0_WORKING, R0_WORKING, H0_ANCHOR
+        ) == pytest.approx(expected)
 
     def test_branch_c_matches_h_self_consistent(self) -> None:
         s, z = 50.0, 0.5
         expected = h_self_consistent(s, z, BETA1, BETA2, M0_WORKING, R0_WORKING)
-        assert h_branch("C", s, z, BETA1, BETA2, M0_WORKING, R0_WORKING, H0_ANCHOR) == pytest.approx(
-            expected
-        )
+        assert h_branch(
+            "C", s, z, BETA1, BETA2, M0_WORKING, R0_WORKING, H0_ANCHOR
+        ) == pytest.approx(expected)
 
     def test_unknown_branch_raises(self) -> None:
         with pytest.raises(ValueError, match="Unknown branch"):
@@ -135,7 +135,14 @@ class TestBranchAblationRegression:
         peaks = {}
         for branch in ("A", "B", "C"):
             z_arr, h_arr = integrate_h_of_z(
-                BETA1, BETA2, H0_ANCHOR, M0_WORKING, R0_WORKING, z_max=2.5, n_eval=100, branch=branch
+                BETA1,
+                BETA2,
+                H0_ANCHOR,
+                M0_WORKING,
+                R0_WORKING,
+                z_max=2.5,
+                n_eval=100,
+                branch=branch,
             )
             peaks[branch] = float(np.nanmax(h_arr))
 
@@ -145,7 +152,14 @@ class TestBranchAblationRegression:
     def test_all_three_branches_are_non_monotonic(self) -> None:
         for branch in ("A", "B", "C"):
             z_arr, h_arr = integrate_h_of_z(
-                BETA1, BETA2, H0_ANCHOR, M0_WORKING, R0_WORKING, z_max=2.5, n_eval=100, branch=branch
+                BETA1,
+                BETA2,
+                H0_ANCHOR,
+                M0_WORKING,
+                R0_WORKING,
+                z_max=2.5,
+                n_eval=100,
+                branch=branch,
             )
             assert not np.all(np.diff(h_arr) >= -1e-6), f"branch {branch} unexpectedly monotonic"
 

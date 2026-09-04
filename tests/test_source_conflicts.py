@@ -13,7 +13,6 @@ These tests enforce "no silent mixing" rule — values from different
 sources must never be combined without explicit resolution.
 """
 
-
 import pytest
 
 from src.conflict_resolver import (

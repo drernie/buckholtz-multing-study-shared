@@ -1,4 +1,5 @@
 """Bridge Phi — shared forward-bridge math. NOT_VALIDATION."""
+
 from __future__ import annotations
 
 import math
@@ -57,8 +58,8 @@ def rms_sigma_h(
         for hp, ho, sh in zip(H_pred, H_obs, sigma_H, strict=True)
         if not math.isnan(hp) and sh > 0
     ]
-    return 999.0 if not residuals else float(
-        math.sqrt(sum(r**2 for r in residuals) / len(residuals))
+    return (
+        999.0 if not residuals else float(math.sqrt(sum(r**2 for r in residuals) / len(residuals)))
     )
 
 

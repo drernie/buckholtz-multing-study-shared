@@ -118,19 +118,14 @@ def run_k_a_closure_test(
             gamma_D=gamma_req if arm == "D_eff" else None,
         )
 
-    params_indep = cluster_rows_to_params_list(
-        cluster_rows, D_override=D_vals, k_override=k_ind
-    )
+    params_indep = cluster_rows_to_params_list(cluster_rows, D_override=D_vals, k_override=k_ind)
     rms_indep = rms_sigma_h(
         h_mult_from_params_list(params_indep, beta_d, beta_q, H_anchor),
         H,
         sig,
     )
 
-    eps_q = [
-        _eps_q(r.k_A, beta_q, r.r_A, r.m_A, r.D)
-        for r in cluster_rows
-    ]
+    eps_q = [_eps_q(r.k_A, beta_q, r.r_A, r.m_A, r.D) for r in cluster_rows]
     eps_q_mean = float(sum(e for e in eps_q if not math.isnan(e)) / len(eps_q))
 
     threshold = PASS_RMS_MULTIPLIER * baseline_rms

@@ -77,7 +77,7 @@ def test_no_source_confirmed_without_manuscript_citation():
     source_confirmed = get_source_confirmed_candidates()
     for c in source_confirmed:
         assert c.source_file is not None, (
-            f"Candidate {c.candidate_id} marked SOURCE_CONFIRMED " f"but source_file is None"
+            f"Candidate {c.candidate_id} marked SOURCE_CONFIRMED but source_file is None"
         )
         assert "preprints202511.0598" in c.source_file, (
             f"Candidate {c.candidate_id} marked SOURCE_CONFIRMED "
@@ -151,7 +151,7 @@ def test_overfitting_risk_valid_values():
     valid_risks = {"EXTREME", "HIGH", "MEDIUM", "LOW", "NONE"}
     for c in CANDIDATES:
         assert c.overfitting_risk in valid_risks, (
-            f"Candidate {c.candidate_id} has invalid overfitting_risk: " f"{c.overfitting_risk}"
+            f"Candidate {c.candidate_id} has invalid overfitting_risk: {c.overfitting_risk}"
         )
 
 
@@ -163,9 +163,9 @@ def test_overfitting_risk_valid_values():
 def test_all_candidates_pass_dimensional_check():
     """All candidates must pass dimensional analysis"""
     for c in CANDIDATES:
-        assert (
-            c.dimensional_check_passes is True
-        ), f"Candidate {c.candidate_id} fails dimensional check"
+        assert c.dimensional_check_passes is True, (
+            f"Candidate {c.candidate_id} fails dimensional check"
+        )
 
 
 # ============================================================================
@@ -214,19 +214,19 @@ def test_status_distribution_reasonable():
     counts = count_candidates_by_status()
 
     # At least one AI_TRANSCRIPT_REPORTED (Phi(z) scaling found in docs/35)
-    assert (
-        counts.get(AlgorithmStatus.AI_TRANSCRIPT_REPORTED, 0) >= 1
-    ), "Should have at least 1 AI_TRANSCRIPT_REPORTED candidate (Phi(z) scaling)"
+    assert counts.get(AlgorithmStatus.AI_TRANSCRIPT_REPORTED, 0) >= 1, (
+        "Should have at least 1 AI_TRANSCRIPT_REPORTED candidate (Phi(z) scaling)"
+    )
 
     # At least one MVB_CANDIDATE (virial pressure route in docs/37)
-    assert (
-        counts.get(AlgorithmStatus.MVB_CANDIDATE, 0) >= 1
-    ), "Should have at least 1 MVB_CANDIDATE (discrete lattice + virial pressure)"
+    assert counts.get(AlgorithmStatus.MVB_CANDIDATE, 0) >= 1, (
+        "Should have at least 1 MVB_CANDIDATE (discrete lattice + virial pressure)"
+    )
 
     # At least one PHENOMENOLOGICAL (spline fit, polynomial fit)
-    assert (
-        counts.get(AlgorithmStatus.PHENOMENOLOGICAL_TABLE_REPRODUCTION_ONLY, 0) >= 1
-    ), "Should have at least 1 PHENOMENOLOGICAL candidate (table fit)"
+    assert counts.get(AlgorithmStatus.PHENOMENOLOGICAL_TABLE_REPRODUCTION_ONLY, 0) >= 1, (
+        "Should have at least 1 PHENOMENOLOGICAL candidate (table fit)"
+    )
 
 
 # ============================================================================
@@ -258,9 +258,9 @@ def test_get_implementable_candidates():
     """get_implementable_candidates() excludes BLOCKED candidates"""
     implementable = get_implementable_candidates()
     for c in implementable:
-        assert (
-            c.code_permission != CodePermission.BLOCKED
-        ), f"Candidate {c.candidate_id} is BLOCKED but returned as implementable"
+        assert c.code_permission != CodePermission.BLOCKED, (
+            f"Candidate {c.candidate_id} is BLOCKED but returned as implementable"
+        )
 
 
 # ============================================================================
@@ -327,12 +327,12 @@ def test_w_eff_diagnostic_is_post_hoc():
 def test_all_candidates_have_required_inputs_list():
     """Every candidate has non-empty required_inputs list"""
     for c in CANDIDATES:
-        assert isinstance(
-            c.required_inputs, list
-        ), f"Candidate {c.candidate_id} required_inputs is not a list"
-        assert (
-            len(c.required_inputs) > 0
-        ), f"Candidate {c.candidate_id} has empty required_inputs list"
+        assert isinstance(c.required_inputs, list), (
+            f"Candidate {c.candidate_id} required_inputs is not a list"
+        )
+        assert len(c.required_inputs) > 0, (
+            f"Candidate {c.candidate_id} has empty required_inputs list"
+        )
 
 
 def test_phi_z_requires_amplitude_tables():
@@ -387,9 +387,9 @@ def test_beta_values_remain_fitted_not_derived():
     for c in CANDIDATES:
         if "beta_d" in str(c.formula_latex).lower():
             # If beta_d appears in formula, check notes mention "fitted"
-            assert (
-                "fitted" in c.notes.lower() or "table" in c.notes.lower()
-            ), f"Candidate {c.candidate_id} uses beta_d but does not note it's fitted"
+            assert "fitted" in c.notes.lower() or "table" in c.notes.lower(), (
+                f"Candidate {c.candidate_id} uses beta_d but does not note it's fitted"
+            )
 
 
 # ============================================================================

@@ -4,7 +4,6 @@ Test that all beta definitions have required fields.
 Purpose: Ensure epistemic registry discipline is maintained.
 """
 
-
 from src.beta_definitions import get_all_beta_definitions
 
 

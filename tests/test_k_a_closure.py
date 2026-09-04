@@ -84,7 +84,9 @@ def test_solve_D_required_anchor_roundtrip():
 def test_gamma_req_z_ge_04(claude_rows):
     table = build_d_required_table(rows=claude_rows, H_obs=H_OBS, sigma_H=SIGMA_H)
     high = [r for r in table if r.z >= 0.4]
-    _d0, gamma, _r2 = fit_gamma([r.z for r in high], [r.D_required for r in high], D0=table[0].D_csv)
+    _d0, gamma, _r2 = fit_gamma(
+        [r.z for r in high], [r.D_required for r in high], D0=table[0].D_csv
+    )
     assert 2.0 <= gamma <= 2.6
 
 

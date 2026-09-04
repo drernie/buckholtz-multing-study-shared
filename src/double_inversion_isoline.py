@@ -107,26 +107,51 @@ def scan_isoline_bin(
     for D in D_grid:
         for k_A in k_grid:
             res = isoline_residual(
-                float(D), float(k_A), row.m_A, row.r_A,
-                beta_d, beta_q, phi_anchor, H_anchor, H_target,
+                float(D),
+                float(k_A),
+                row.m_A,
+                row.r_A,
+                beta_d,
+                beta_q,
+                phi_anchor,
+                H_anchor,
+                H_target,
             )
             if abs(res) <= rel_tol * H_target:
                 near_isoline.append((float(D), float(k_A), abs(res)))
                 if physical_box_ok(
-                    float(D), float(k_A), row.r_A,
-                    row.k_A_lo, row.k_A_hi, row.D_lo, row.D_hi,
+                    float(D),
+                    float(k_A),
+                    row.r_A,
+                    row.k_A_lo,
+                    row.k_A_hi,
+                    row.D_lo,
+                    row.D_hi,
                 ):
                     admissible.append((float(D), float(k_A)))
 
     csv_ok = physical_box_ok(
-        row.D, row.k_A, row.r_A, row.k_A_lo, row.k_A_hi, row.D_lo, row.D_hi,
+        row.D,
+        row.k_A,
+        row.r_A,
+        row.k_A_lo,
+        row.k_A_hi,
+        row.D_lo,
+        row.D_hi,
     )
     csv_dist = min(
         (abs(r[2]) for r in near_isoline),
         default=abs(
             isoline_residual(
-                row.D, row.k_A, row.m_A, row.r_A,
-                beta_d, beta_q, phi_anchor, H_anchor, H_target,
+                row.D,
+                row.k_A,
+                row.m_A,
+                row.r_A,
+                beta_d,
+                beta_q,
+                phi_anchor,
+                H_anchor,
+                H_target,
             )
         ),
     )

@@ -86,9 +86,7 @@ def k_a_schedule_independent(
     alpha: float | None = None,
 ) -> list[float]:
     alpha_use = alpha if alpha is not None else fit_alpha_at_z0(rows, cosmo)
-    return [
-        k_a_press_schechter_virial(r.z, r.m_A, r.r_A, cosmo, alpha_use) for r in rows
-    ]
+    return [k_a_press_schechter_virial(r.z, r.m_A, r.r_A, cosmo, alpha_use) for r in rows]
 
 
 def load_k_a_csv_inferred(
@@ -104,9 +102,7 @@ def k_a_nbody_from_catalog(
     """Scaffold: load external halo catalog CSV with columns z, k_A_msun."""
     path = Path(catalog_path)
     if not path.exists():
-        raise FileNotFoundError(
-            f"N-body catalog not found: {path}. See data/README_nbody_k_a.md"
-        )
+        raise FileNotFoundError(f"N-body catalog not found: {path}. See data/README_nbody_k_a.md")
     with path.open(newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:

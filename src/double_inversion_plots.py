@@ -45,9 +45,7 @@ def plot_isoline_for_z(
     ax.contour(DD, KK, Z, levels=[0], colors="C0", linewidths=2)
     ax.contourf(DD, KK, Z, levels=20, alpha=0.35, cmap="coolwarm")
     phys = np.vectorize(
-        lambda d, k: physical_box_ok(
-            d, k, row.r_A, row.k_A_lo, row.k_A_hi, row.D_lo, row.D_hi
-        )
+        lambda d, k: physical_box_ok(d, k, row.r_A, row.k_A_lo, row.k_A_hi, row.D_lo, row.D_hi)
     )(DD, KK)
     ax.contour(DD, KK, phys.astype(float), levels=[0.5], colors="green", linestyles="--")
     ax.scatter([row.D], [row.k_A], c="red", s=60, label="CSV schedule", zorder=5)

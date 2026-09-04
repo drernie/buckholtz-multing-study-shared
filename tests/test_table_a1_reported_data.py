@@ -96,9 +96,9 @@ def test_table_a1_has_expected_columns(table_a1_df):
         "notes",
     ]
     actual_columns = list(table_a1_df.columns)
-    assert (
-        actual_columns == expected_columns
-    ), f"Column mismatch.\nExpected: {expected_columns}\nActual: {actual_columns}"
+    assert actual_columns == expected_columns, (
+        f"Column mismatch.\nExpected: {expected_columns}\nActual: {actual_columns}"
+    )
 
 
 def test_table_a1_column_count(table_a1_df):
@@ -146,9 +146,9 @@ def test_z_is_numeric(table_a1_df):
 def test_h_mult_is_numeric(table_a1_df):
     """H_MULT column parses as numeric"""
     h_mult_numeric = pd.to_numeric(table_a1_df["H_MULT"], errors="coerce")
-    assert (
-        h_mult_numeric.notna().all()
-    ), "H_MULT column has non-numeric or NA values (should be numeric for all rows)"
+    assert h_mult_numeric.notna().all(), (
+        "H_MULT column has non-numeric or NA values (should be numeric for all rows)"
+    )
 
 
 def test_sigma_mult_is_numeric_or_na(table_a1_df):
@@ -173,9 +173,9 @@ def test_z_values_are_monotonic(table_a1_df):
     is_increasing = (z_clean.diff().dropna() >= 0).all()
     is_decreasing = (z_clean.diff().dropna() <= 0).all()
 
-    assert (
-        is_increasing or is_decreasing
-    ), "z values are not monotonic (should increase or decrease consistently)"
+    assert is_increasing or is_decreasing, (
+        "z values are not monotonic (should increase or decrease consistently)"
+    )
 
 
 def test_z_range_covers_expected(table_a1_df):
@@ -221,9 +221,9 @@ def test_time_gyr_positive(table_a1_df):
     time_gyr_clean = time_gyr_numeric.dropna()
 
     if len(time_gyr_clean) > 0:
-        assert (
-            time_gyr_clean > 0
-        ).all(), "time_gyr has non-positive values (cosmic time must be > 0)"
+        assert (time_gyr_clean > 0).all(), (
+            "time_gyr has non-positive values (cosmic time must be > 0)"
+        )
 
 
 def test_time_gyr_less_than_age_of_universe(table_a1_df):
@@ -246,23 +246,23 @@ def test_time_gyr_less_than_age_of_universe(table_a1_df):
 
 def test_beta_d_in_metadata(table_a1_raw_text):
     """beta_d = 4.5 is present in CSV metadata (comment lines)"""
-    assert (
-        "beta_d = 4.5" in table_a1_raw_text or "beta_d=4.5" in table_a1_raw_text
-    ), "beta_d = 4.5 not found in CSV metadata (should be in comment lines)"
+    assert "beta_d = 4.5" in table_a1_raw_text or "beta_d=4.5" in table_a1_raw_text, (
+        "beta_d = 4.5 not found in CSV metadata (should be in comment lines)"
+    )
 
 
 def test_beta_q_in_metadata(table_a1_raw_text):
     """beta_q = 18.0 is present in CSV metadata (comment lines)"""
-    assert (
-        "beta_q = 18.0" in table_a1_raw_text or "beta_q=18.0" in table_a1_raw_text
-    ), "beta_q = 18.0 not found in CSV metadata (should be in comment lines)"
+    assert "beta_q = 18.0" in table_a1_raw_text or "beta_q=18.0" in table_a1_raw_text, (
+        "beta_q = 18.0 not found in CSV metadata (should be in comment lines)"
+    )
 
 
 def test_provenance_marked_fitted(table_a1_raw_text):
     """Beta provenance is marked as FITTED_PHENOMENOLOGICAL in metadata"""
-    assert (
-        "FITTED_PHENOMENOLOGICAL" in table_a1_raw_text
-    ), "Beta provenance should be marked as FITTED_PHENOMENOLOGICAL in CSV comments"
+    assert "FITTED_PHENOMENOLOGICAL" in table_a1_raw_text, (
+        "Beta provenance should be marked as FITTED_PHENOMENOLOGICAL in CSV comments"
+    )
 
 
 # ============================================================================
@@ -278,12 +278,12 @@ def test_h_mult_is_table_reported_not_computed():
     # Check: no module has function named compute_H_MULT or compute_Hz_source_confirmed
     import src.hmult_algorithm_candidates as candidates_module
 
-    assert not hasattr(
-        candidates_module, "compute_H_MULT"
-    ), "Module has function compute_H_MULT — H_MULT should be TABLE_REPORTED only"
-    assert not hasattr(
-        candidates_module, "compute_Hz_source_confirmed"
-    ), "Module has function compute_Hz_source_confirmed — formula not source-confirmed"
+    assert not hasattr(candidates_module, "compute_H_MULT"), (
+        "Module has function compute_H_MULT — H_MULT should be TABLE_REPORTED only"
+    )
+    assert not hasattr(candidates_module, "compute_Hz_source_confirmed"), (
+        "Module has function compute_Hz_source_confirmed — formula not source-confirmed"
+    )
 
 
 def test_no_h_mult_computation_in_codebase():
@@ -332,9 +332,9 @@ def test_h_flrw_positive(table_a1_df):
     h_flrw_clean = h_flrw_numeric.dropna()
 
     if len(h_flrw_clean) > 0:
-        assert (
-            h_flrw_clean > 0
-        ).all(), "H_FLRW has non-positive values (ΛCDM expansion rate must be > 0)"
+        assert (h_flrw_clean > 0).all(), (
+            "H_FLRW has non-positive values (ΛCDM expansion rate must be > 0)"
+        )
 
 
 def test_w_eff_reasonable_range(table_a1_df):
@@ -394,9 +394,9 @@ def test_table_a1_ready_for_reverse_engineering(table_a1_df):
     """Table A1 has minimum columns needed for reverse engineering"""
     required_columns = ["z", "H_MULT"]
     for col in required_columns:
-        assert (
-            col in table_a1_df.columns
-        ), f"Required column {col} missing — needed for reverse engineering"
+        assert col in table_a1_df.columns, (
+            f"Required column {col} missing — needed for reverse engineering"
+        )
 
     # Check these columns have no NA values
     z = pd.to_numeric(table_a1_df["z"], errors="coerce")

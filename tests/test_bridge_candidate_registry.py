@@ -50,9 +50,9 @@ class TestZeroSourceSupportedBridges:
         """No source-supported bridge routes found."""
         source_supported = get_source_supported_bridges()
 
-        assert (
-            len(source_supported) == 0
-        ), "Should have ZERO source-supported bridges (critical blocker)"
+        assert len(source_supported) == 0, (
+            "Should have ZERO source-supported bridges (critical blocker)"
+        )
 
     def test_all_non_source_supported_have_reason(self):
         """All non-source-supported bridges document why."""
@@ -60,9 +60,9 @@ class TestZeroSourceSupportedBridges:
 
         for candidate in candidates:
             if candidate.status != BridgeStatus.SOURCE_SUPPORTED:
-                assert (
-                    len(candidate.why_not_source_supported) > 0
-                ), f"{candidate.name} should document why not source-supported"
+                assert len(candidate.why_not_source_supported) > 0, (
+                    f"{candidate.name} should document why not source-supported"
+                )
 
 
 class TestBridgeStatusClassification:
@@ -114,9 +114,9 @@ class TestMCMCBlocked:
         candidates = get_all_bridge_candidates()
 
         for candidate in candidates:
-            assert (
-                not candidate.mcmc_ready
-            ), f"{candidate.name} should have mcmc_ready=False (no source support)"
+            assert not candidate.mcmc_ready, (
+                f"{candidate.name} should have mcmc_ready=False (no source support)"
+            )
 
 
 class TestPredictiveModelingBlocked:
@@ -131,9 +131,9 @@ class TestPredictiveModelingBlocked:
         candidates = get_all_bridge_candidates()
 
         for candidate in candidates:
-            assert (
-                not candidate.predictive_use_allowed
-            ), f"{candidate.name} should have predictive_use_allowed=False"
+            assert not candidate.predictive_use_allowed, (
+                f"{candidate.name} should have predictive_use_allowed=False"
+            )
 
 
 class TestPriorityZeroQuestion:
@@ -215,9 +215,9 @@ class TestCriticalNuances:
         assert route_a is not None
         nuance_lower = route_a.critical_nuance.lower()
         assert "averaging" in nuance_lower, "Route A should mention averaging"
-        assert (
-            "not a refutation" in nuance_lower or "not refut" in nuance_lower
-        ), "Route A should clarify this is NOT a refutation"
+        assert "not a refutation" in nuance_lower or "not refut" in nuance_lower, (
+            "Route A should clarify this is NOT a refutation"
+        )
 
     def test_route_f_has_regime_nuance(self):
         """Route F documents wrong regime issue."""
@@ -246,9 +246,9 @@ class TestNoForwardModelFunction:
         ]
 
         for name in forbidden_names:
-            assert not hasattr(
-                module, name
-            ), f"Function {name} should NOT exist (no source-supported bridge)"
+            assert not hasattr(module, name), (
+                f"Function {name} should NOT exist (no source-supported bridge)"
+            )
 
 
 class TestStatusSummary:
@@ -283,9 +283,9 @@ class TestStatusSummary:
         """Summary states MCMC is blocked."""
         summary = get_bridge_status_summary()
 
-        assert (
-            "0 routes" in summary["mcmc_ready"] or "BLOCKED" in summary["mcmc_ready"]
-        ), "Summary should state MCMC blocked"
+        assert "0 routes" in summary["mcmc_ready"] or "BLOCKED" in summary["mcmc_ready"], (
+            "Summary should state MCMC blocked"
+        )
 
     def test_summary_mentions_q0(self):
         """Summary mentions Q0 as priority zero question."""
@@ -313,9 +313,9 @@ class TestSafeWording:
             ).lower()
 
             for word in forbidden_words:
-                assert (
-                    word not in combined_text or "not a refutation" in combined_text
-                ), f"{candidate.name} should avoid '{word}' or clarify 'not a refutation'"
+                assert word not in combined_text or "not a refutation" in combined_text, (
+                    f"{candidate.name} should avoid '{word}' or clarify 'not a refutation'"
+                )
 
     def test_summary_uses_safe_language(self):
         """Summary uses safe language (clarification, blocker, not refutation)."""

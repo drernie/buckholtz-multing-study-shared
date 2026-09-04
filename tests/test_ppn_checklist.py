@@ -23,16 +23,16 @@ class TestPPNChecks:
             assert check.name, f"Check {check.check_id} missing name"
             assert check.description, f"Check {check.check_id} missing description"
             assert check.pnn_parameter, f"Check {check.check_id} missing pnn_parameter"
-            assert (
-                check.observational_constraint
-            ), f"Check {check.check_id} missing observational_constraint"
+            assert check.observational_constraint, (
+                f"Check {check.check_id} missing observational_constraint"
+            )
             assert check.status, f"Check {check.check_id} missing status"
             assert check.risk_level, f"Check {check.check_id} missing risk_level"
             assert check.blocker, f"Check {check.check_id} missing blocker"
             assert check.author_question, f"Check {check.check_id} missing author_question"
-            assert (
-                check.interpretation_branch
-            ), f"Check {check.check_id} missing interpretation_branch"
+            assert check.interpretation_branch, (
+                f"Check {check.check_id} missing interpretation_branch"
+            )
             assert check.safe_wording, f"Check {check.check_id} missing safe_wording"
             assert check.unsafe_wording, f"Check {check.check_id} missing unsafe_wording"
 
@@ -55,9 +55,9 @@ class TestPPNChecks:
         for check in checks:
             safe_lower = check.safe_wording.lower()
             for keyword in refutation_keywords:
-                assert (
-                    keyword not in safe_lower
-                ), f"{check.check_id} safe_wording contains '{keyword}': {check.safe_wording}"
+                assert keyword not in safe_lower, (
+                    f"{check.check_id} safe_wording contains '{keyword}': {check.safe_wording}"
+                )
 
     def test_no_claims_of_validation(self):
         """Safe wording never claims MULTING passes tests."""
@@ -71,9 +71,9 @@ class TestPPNChecks:
                 # Allow "consistent with" in context of "cannot assess"
                 if keyword == "consistent" and "cannot" in safe_lower:
                     continue
-                assert (
-                    keyword not in safe_lower
-                ), f"{check.check_id} safe_wording contains '{keyword}': {check.safe_wording}"
+                assert keyword not in safe_lower, (
+                    f"{check.check_id} safe_wording contains '{keyword}': {check.safe_wording}"
+                )
 
     def test_blocked_checks_have_blocker_text(self):
         """Every BLOCKED check has non-empty blocker description."""
@@ -85,9 +85,9 @@ class TestPPNChecks:
 
         for check in blocked:
             assert len(check.blocker) > 10, f"{check.check_id} blocker text too short"
-            assert (
-                "missing" in check.blocker.lower() or "unclear" in check.blocker.lower()
-            ), f"{check.check_id} blocker should mention what is missing/unclear"
+            assert "missing" in check.blocker.lower() or "unclear" in check.blocker.lower(), (
+                f"{check.check_id} blocker should mention what is missing/unclear"
+            )
 
     def test_high_risk_checks_are_blocked(self):
         """HIGH or CRITICAL risk checks must be BLOCKED (cannot proceed without info)."""
@@ -96,9 +96,9 @@ class TestPPNChecks:
         high_risk = [c for c in checks if c.risk_level in (RiskLevel.HIGH, RiskLevel.CRITICAL)]
 
         for check in high_risk:
-            assert (
-                check.status == CheckStatus.BLOCKED
-            ), f"{check.check_id} is {check.risk_level.value} risk but status is {check.status.value}"
+            assert check.status == CheckStatus.BLOCKED, (
+                f"{check.check_id} is {check.risk_level.value} risk but status is {check.status.value}"
+            )
 
 
 class TestBlockersSummary:
@@ -161,9 +161,9 @@ class TestAuthorQuestions:
 
         for question in questions:
             question_text = question.split(":** ", 1)[1]
-            assert question_text.endswith(
-                "?"
-            ), f"Author question should end with '?': {question_text}"
+            assert question_text.endswith("?"), (
+                f"Author question should end with '?': {question_text}"
+            )
 
 
 class TestInterpretationBranches:
@@ -174,9 +174,9 @@ class TestInterpretationBranches:
         checks = get_ppn_checks()
 
         for check in checks:
-            assert (
-                "branch" in check.interpretation_branch.lower()
-            ), f"{check.check_id} should reference a Branch"
+            assert "branch" in check.interpretation_branch.lower(), (
+                f"{check.check_id} should reference a Branch"
+            )
 
     def test_gamma_beta_map_to_metric_branches(self):
         """γ and β checks map to metric-related interpretation branches."""
@@ -230,9 +230,9 @@ class TestSafeUnsafeWording:
             # At least one forbidden pattern should appear in unsafe wording
             has_forbidden = any(pattern in unsafe_lower for pattern, _ in forbidden_patterns)
 
-            assert (
-                has_forbidden
-            ), f"{check.check_id} unsafe wording should contain a forbidden claim"
+            assert has_forbidden, (
+                f"{check.check_id} unsafe wording should contain a forbidden claim"
+            )
 
     def test_safe_wording_mentions_blocker_or_requirement(self):
         """Safe wording mentions what is missing or required."""
@@ -254,18 +254,18 @@ class TestSafeUnsafeWording:
 
             has_blocker_mention = any(keyword in safe_lower for keyword in blocker_keywords)
 
-            assert (
-                has_blocker_mention
-            ), f"{check.check_id} safe wording should mention what is missing/required"
+            assert has_blocker_mention, (
+                f"{check.check_id} safe wording should mention what is missing/required"
+            )
 
     def test_safe_and_unsafe_are_different(self):
         """Safe and unsafe wordings are different for each check."""
         checks = get_ppn_checks()
 
         for check in checks:
-            assert (
-                check.safe_wording != check.unsafe_wording
-            ), f"{check.check_id} safe and unsafe wording are identical"
+            assert check.safe_wording != check.unsafe_wording, (
+                f"{check.check_id} safe and unsafe wording are identical"
+            )
 
             # Should differ by more than just punctuation
             safe_words = set(check.safe_wording.lower().split())
@@ -273,9 +273,9 @@ class TestSafeUnsafeWording:
 
             overlap = len(safe_words & unsafe_words) / max(len(safe_words), len(unsafe_words))
 
-            assert (
-                overlap < 0.7
-            ), f"{check.check_id} safe and unsafe wording are too similar ({overlap:.0%} overlap)"
+            assert overlap < 0.7, (
+                f"{check.check_id} safe and unsafe wording are too similar ({overlap:.0%} overlap)"
+            )
 
 
 class TestRealWorldScenarios:
@@ -288,9 +288,9 @@ class TestRealWorldScenarios:
         gamma_beta_checks = [c for c in checks if c.pnn_parameter in ("gamma", "beta")]
 
         for check in gamma_beta_checks:
-            assert (
-                check.status != CheckStatus.APPLICABLE
-            ), f"{check.check_id} should not be APPLICABLE without metric"
+            assert check.status != CheckStatus.APPLICABLE, (
+                f"{check.check_id} should not be APPLICABLE without metric"
+            )
 
     def test_cluster_scale_only_makes_ppn_not_applicable(self):
         """If dipole is cluster-scale only, PPN checks may be NOT_APPLICABLE."""
@@ -300,15 +300,15 @@ class TestRealWorldScenarios:
 
         # Currently UNKNOWN, but interpretation branch 5 (cluster-scale only)
         # would make it NOT_APPLICABLE
-        assert (
-            "cluster-scale only" in applicability_check.interpretation_branch.lower()
-        ), "Should have cluster-scale interpretation branch"
+        assert "cluster-scale only" in applicability_check.interpretation_branch.lower(), (
+            "Should have cluster-scale interpretation branch"
+        )
 
     def test_all_checks_have_author_question(self):
         """Every check can be unblocked by sending author question."""
         checks = get_ppn_checks()
 
         for check in checks:
-            assert (
-                len(check.author_question) > 0
-            ), f"{check.check_id} has no path to resolution (empty author_question)"
+            assert len(check.author_question) > 0, (
+                f"{check.check_id} has no path to resolution (empty author_question)"
+            )

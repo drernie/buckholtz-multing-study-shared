@@ -135,8 +135,7 @@ def test_b_mult_sigma_consistency_passes():
     # If 1 outlier, verify it's Row 1 (z=0)
     if len(failed_rows) == 1:
         assert failed_rows[0].row == 1, (
-            f"Expected outlier at Row 1 (z=0), got Row {failed_rows[0].row} "
-            f"(z={failed_rows[0].z})"
+            f"Expected outlier at Row 1 (z=0), got Row {failed_rows[0].row} (z={failed_rows[0].z})"
         )
         assert failed_rows[0].z == 0.0, f"Expected outlier at z=0, got z={failed_rows[0].z}"
 
@@ -165,8 +164,7 @@ def test_b_flrw_sigma_consistency_passes():
     # If 1 outlier, verify it's Row 1 (z=0)
     if len(failed_rows) == 1:
         assert failed_rows[0].row == 1, (
-            f"Expected outlier at Row 1 (z=0), got Row {failed_rows[0].row} "
-            f"(z={failed_rows[0].z})"
+            f"Expected outlier at Row 1 (z=0), got Row {failed_rows[0].row} (z={failed_rows[0].z})"
         )
 
 
@@ -188,13 +186,13 @@ def test_b_adaptive_tolerance_reasonable():
     df = load_table_a1()
     results = diagnostic_b_sigma_consistency(df, use_adaptive_tolerance=True)
     for audit in results["mult"].row_audits:
-        assert (
-            0.0015 <= audit.tolerance <= 0.15
-        ), f"Row {audit.row} tolerance {audit.tolerance} out of range"
+        assert 0.0015 <= audit.tolerance <= 0.15, (
+            f"Row {audit.row} tolerance {audit.tolerance} out of range"
+        )
     for audit in results["flrw"].row_audits:
-        assert (
-            0.0015 <= audit.tolerance <= 0.15
-        ), f"Row {audit.row} tolerance {audit.tolerance} out of range"
+        assert 0.0015 <= audit.tolerance <= 0.15, (
+            f"Row {audit.row} tolerance {audit.tolerance} out of range"
+        )
 
 
 def test_b_no_tolerance_over_0_2():
@@ -234,7 +232,7 @@ def test_c_high_correlation():
     df = load_table_a1()
     result = diagnostic_c_relation_to_flrw(df)
     assert result.correlation_h > 0.95, (
-        f"Correlation H_MULT vs H_FLRW is {result.correlation_h:.4f} " f"(expected > 0.95)"
+        f"Correlation H_MULT vs H_FLRW is {result.correlation_h:.4f} (expected > 0.95)"
     )
 
 
@@ -262,7 +260,7 @@ def test_d_phi_anchor_is_one():
     df = load_table_a1()
     result = diagnostic_d_inferred_phi_z(df, anchor_row=0)
     assert np.isclose(result.phi_relative.iloc[0], 1.0, atol=1e-6), (
-        f"Phi_relative at anchor should be 1.0, " f"got {result.phi_relative.iloc[0]:.6f}"
+        f"Phi_relative at anchor should be 1.0, got {result.phi_relative.iloc[0]:.6f}"
     )
 
 
@@ -456,7 +454,7 @@ def test_h_mult_residuals_reasonable():
     results = diagnostic_a_closeness_to_observed(df)
     mult_residual = results["mult"].mean_absolute_residual
     assert 0 < mult_residual < 10, (
-        f"H_MULT mean absolute residual is {mult_residual:.2f} km/s/Mpc " f"(expected 0 < x < 10)"
+        f"H_MULT mean absolute residual is {mult_residual:.2f} km/s/Mpc (expected 0 < x < 10)"
     )
 
 
@@ -501,12 +499,12 @@ def test_diagnostics_integrity_summary():
     # Test B: sigma consistency (allow ≤1 outlier row)
     mult_failed = sum(1 for r in results["test_b"]["mult"].row_audits if not r.passes)
     flrw_failed = sum(1 for r in results["test_b"]["flrw"].row_audits if not r.passes)
-    assert (
-        mult_failed <= 1
-    ), f"sigma_MULT: {mult_failed} rows failed (expected ≤1, known outlier Row 1)"
-    assert (
-        flrw_failed <= 1
-    ), f"sigma_FLRW: {flrw_failed} rows failed (expected ≤1, known outlier Row 1)"
+    assert mult_failed <= 1, (
+        f"sigma_MULT: {mult_failed} rows failed (expected ≤1, known outlier Row 1)"
+    )
+    assert flrw_failed <= 1, (
+        f"sigma_FLRW: {flrw_failed} rows failed (expected ≤1, known outlier Row 1)"
+    )
 
     # Test C: high correlation
     assert results["test_c"].correlation_h > 0.95, "H_MULT vs H_FLRW correlation too low"
@@ -515,20 +513,20 @@ def test_diagnostics_integrity_summary():
     assert len(results["test_d"].phi_relative) == 12, "Phi_relative has wrong length"
 
     # Test E: blocked
-    assert (
-        results["test_e"].status == DiagnosticStatus.BLOCKED_MISSING_CLUSTER_VARIABLES
-    ), "Force ratio should be BLOCKED"
+    assert results["test_e"].status == DiagnosticStatus.BLOCKED_MISSING_CLUSTER_VARIABLES, (
+        "Force ratio should be BLOCKED"
+    )
 
     # Test F: w_eff is post-hoc
-    assert (
-        results["test_f"].status == DiagnosticStatus.POST_HOC_DIAGNOSTIC_ONLY
-    ), "w_eff should be POST_HOC"
+    assert results["test_f"].status == DiagnosticStatus.POST_HOC_DIAGNOSTIC_ONLY, (
+        "w_eff should be POST_HOC"
+    )
 
     # Test G: polynomial fits are phenomenological
     for key in ["test_g_deg1", "test_g_deg2", "test_g_deg3"]:
-        assert (
-            results[key].status == DiagnosticStatus.PHENOMENOLOGICAL_FIT_ONLY
-        ), f"{key} should be PHENOMENOLOGICAL"
+        assert results[key].status == DiagnosticStatus.PHENOMENOLOGICAL_FIT_ONLY, (
+            f"{key} should be PHENOMENOLOGICAL"
+        )
 
     # Summary generates
     summary = generate_summary_markdown(results)

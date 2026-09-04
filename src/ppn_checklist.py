@@ -73,8 +73,7 @@ def get_ppn_checks() -> list[PPNCheck]:
             risk_level=RiskLevel.HIGH,
             blocker="Weak-field metric missing. Cannot extract γ parameter.",
             author_question=(
-                "Does MULTING have a weak-field metric? If so, what is γ_MULTING "
-                "for Solar System?"
+                "Does MULTING have a weak-field metric? If so, what is γ_MULTING for Solar System?"
             ),
             interpretation_branch=("Branch 1 (local mass dipole), Branch 4 (metric modification)"),
             safe_wording=(
@@ -96,8 +95,7 @@ def get_ppn_checks() -> list[PPNCheck]:
             risk_level=RiskLevel.HIGH,
             blocker="Weak-field metric missing. Cannot extract β parameter.",
             author_question=(
-                "Does MULTING have a weak-field metric? If so, what is β_MULTING "
-                "for Solar System?"
+                "Does MULTING have a weak-field metric? If so, what is β_MULTING for Solar System?"
             ),
             interpretation_branch=("Branch 1 (local mass dipole), Branch 4 (metric modification)"),
             safe_wording=(
@@ -138,7 +136,7 @@ def get_ppn_checks() -> list[PPNCheck]:
             check_id="PPN-4",
             name="CMB Dipole (α₂ parameter)",
             description=(
-                "Check if MULTING modifies CMB dipole amplitude. Constraint: " "|α₂| < 4×10⁻⁷."
+                "Check if MULTING modifies CMB dipole amplitude. Constraint: |α₂| < 4×10⁻⁷."
             ),
             pnn_parameter="alpha2",
             observational_constraint="|α₂| < 4×10⁻⁷ (CMB dipole)",
@@ -146,7 +144,7 @@ def get_ppn_checks() -> list[PPNCheck]:
             risk_level=RiskLevel.CRITICAL,
             blocker="Same as PPN-3: k_A, COM frame, preferred frame unclear.",
             author_question=(
-                "Does MULTING dipole term affect CMB dipole observations? What is " "α₂_MULTING?"
+                "Does MULTING dipole term affect CMB dipole observations? What is α₂_MULTING?"
             ),
             interpretation_branch="Branch 3 (velocity-dependent)",
             safe_wording=(
@@ -168,7 +166,7 @@ def get_ppn_checks() -> list[PPNCheck]:
             risk_level=RiskLevel.NONE,
             blocker=("Cutoff function missing. Unclear if dipole ~ f(r/r_d) with f(r << r_d) → 0."),
             author_question=(
-                "Does dipole term vanish for r << r_d (Solar System scale << cluster " "scale)?"
+                "Does dipole term vanish for r << r_d (Solar System scale << cluster scale)?"
             ),
             interpretation_branch="Branch 5 (cluster-scale only)",
             safe_wording=(

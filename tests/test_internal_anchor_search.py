@@ -72,9 +72,9 @@ def test_beta_d1_reconstruction():
 
     # Check if 17/4 is among matches
     expressions = [c.expression for c in good_matches]
-    assert any(
-        "seventeen" in expr and "four" in expr for expr in expressions
-    ), "17/4 should be among top matches"
+    assert any("seventeen" in expr and "four" in expr for expr in expressions), (
+        "17/4 should be among top matches"
+    )
 
 
 def test_beta_d2_reconstruction():
@@ -94,9 +94,9 @@ def test_beta_d2_reconstruction():
 
     # Check if 7/9 is among matches
     best_match = good_matches[0]
-    assert (
-        best_match.error < 0.01
-    ), f"Best match should be < 1% error, got {best_match.error*100:.2f}%"
+    assert best_match.error < 0.01, (
+        f"Best match should be < 1% error, got {best_match.error * 100:.2f}%"
+    )
 
 
 def test_beta_q1_reconstruction():
@@ -140,9 +140,9 @@ def test_beta_q2_reconstruction():
     else:
         # If found, check complexity
         best_match = non_rejected[0]
-        assert (
-            best_match.complexity >= 1.5
-        ), f"Beta_q_2 match should require complexity >= 1.5, got {best_match.complexity}"
+        assert best_match.complexity >= 1.5, (
+            f"Beta_q_2 match should require complexity >= 1.5, got {best_match.complexity}"
+        )
 
 
 def test_uniqueness_score_computation():
@@ -262,7 +262,7 @@ def test_no_false_verified_claims():
         for c in verified:
             assert c.error < 0.001, (
                 f"{beta_name}: {c.expression} marked verified_arithmetic "
-                f"but error = {c.error*100:.3f}% (> 0.1%)"
+                f"but error = {c.error * 100:.3f}% (> 0.1%)"
             )
 
 
@@ -292,7 +292,7 @@ def test_structured_numerology_warning():
 
     score = compute_uniqueness_score(many_alternatives)
 
-    assert (
-        score["verdict"] == "structured_numerology"
-    ), "Many alternatives should trigger structured_numerology verdict"
+    assert score["verdict"] == "structured_numerology", (
+        "Many alternatives should trigger structured_numerology verdict"
+    )
     assert score["uniqueness_score"] < 0.5, "Uniqueness score should be low"

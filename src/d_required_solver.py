@@ -112,9 +112,7 @@ def gamma_sensitivity(
         H = (row.h_data_nominal or H_anchor) + sign * (row.h_data_sigma or 0.0)
         if H <= 0:
             continue
-        d_req = solve_D_required(
-            row.m_A, row.k_A, row.r_A, H, H_anchor, phi0, beta_d, beta_q
-        )
+        d_req = solve_D_required(row.m_A, row.k_A, row.r_A, H, H_anchor, phi0, beta_d, beta_q)
         if not math.isnan(d_req):
             z_vals.append(row.z)
             d_vals.append(d_req)
@@ -141,9 +139,7 @@ def build_d_required_table(
         if i == 0:
             d_req = row.D
         else:
-            d_req = solve_D_required(
-                row.m_A, row.k_A, row.r_A, H, H_anchor, phi0, beta_d, beta_q
-            )
+            d_req = solve_D_required(row.m_A, row.k_A, row.r_A, H, H_anchor, phi0, beta_d, beta_q)
         ratio = d_req / row.D if (not math.isnan(d_req) and row.D > 0) else math.nan
         out.append(
             DRequiredRow(

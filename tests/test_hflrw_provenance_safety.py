@@ -42,9 +42,9 @@ def test_no_author_error_wording_in_reports():
         content = file_path.read_text(encoding="utf-8").lower()
 
         for phrase in forbidden_positive_phrases:
-            assert (
-                phrase.lower() not in content
-            ), f"Found forbidden phrase '{phrase}' in {report_file}"
+            assert phrase.lower() not in content, (
+                f"Found forbidden phrase '{phrase}' in {report_file}"
+            )
 
 
 def test_provenance_mismatch_labels_present():
@@ -115,9 +115,9 @@ def test_no_validation_refutation_wording():
         content = file_path.read_text(encoding="utf-8").lower()
 
         for phrase in forbidden_phrases:
-            assert (
-                phrase.lower() not in content
-            ), f"Found forbidden validation/refutation phrase '{phrase}' in {report_file}"
+            assert phrase.lower() not in content, (
+                f"Found forbidden validation/refutation phrase '{phrase}' in {report_file}"
+            )
 
 
 def test_diagnostic_script_has_safety_labels():
@@ -261,6 +261,6 @@ def test_internal_diagnostic_only_label():
 
         content = file_path.read_text(encoding="utf-8")
 
-        assert (
-            "INTERNAL" in content and "DIAGNOSTIC" in content
-        ), f"Missing INTERNAL_DIAGNOSTIC label in {report_file}"
+        assert "INTERNAL" in content and "DIAGNOSTIC" in content, (
+            f"Missing INTERNAL_DIAGNOSTIC label in {report_file}"
+        )

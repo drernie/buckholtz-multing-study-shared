@@ -36,9 +36,9 @@ def test_beta_d_1_provenance():
     prov = get_beta_provenance("beta_d_1")
 
     assert prov.value == 4.25
-    assert (
-        prov.provenance_status == "audit_reconstruction"
-    ), "17/4 is OUR reconstruction, not Buckholtz's statement"
+    assert prov.provenance_status == "audit_reconstruction", (
+        "17/4 is OUR reconstruction, not Buckholtz's statement"
+    )
     assert prov.use_permission_status == "do_not_use_for_modeling"
     assert "17/4" in prov.first_known_appearance
     assert "7 alternative formulas" in prov.evidence_trail  # Uniqueness warning
@@ -103,9 +103,9 @@ def test_no_beta_allowed_for_modeling():
     If this fails → either registry was updated (good) or test is wrong (bad).
     """
     for beta_name in get_all_beta_names():
-        assert (
-            is_allowed_for_modeling(beta_name) is False
-        ), f"{beta_name} marked as allowed for modeling, but provenance audit says NO"
+        assert is_allowed_for_modeling(beta_name) is False, (
+            f"{beta_name} marked as allowed for modeling, but provenance audit says NO"
+        )
 
 
 def test_audit_reconstruction_count():
@@ -133,25 +133,25 @@ def test_provenance_status_counts():
 
     assert counts.get("audit_reconstruction", 0) == 3, "3 audit reconstructions"
     assert counts.get("source_missing", 0) == 1, "1 source missing"
-    assert (
-        counts.get("manuscript_reported_fitted", 0) == 2
-    ), "2 manually verified fitted values (beta_d_A1=4.5, beta_q_A1=18.0)"
+    assert counts.get("manuscript_reported_fitted", 0) == 2, (
+        "2 manually verified fitted values (beta_d_A1=4.5, beta_q_A1=18.0)"
+    )
     assert counts.get("source_confirmed", 0) == 0, "ZERO source confirmed (fitted ≠ confirmed)"
-    assert (
-        counts.get("buckholtz_stated", 0) == 0
-    ), "ZERO buckholtz_stated (no emails/drafts available)"
+    assert counts.get("buckholtz_stated", 0) == 0, (
+        "ZERO buckholtz_stated (no emails/drafts available)"
+    )
 
 
 def test_use_permission_counts():
     """4 beta values blocked, 2 allowed for fit reproduction only."""
     counts = count_by_use_permission()
 
-    assert (
-        counts.get("do_not_use_for_modeling", 0) == 4
-    ), "4 beta values BLOCKED (audit/source_missing)"
-    assert (
-        counts.get("allowed_for_fit_reproduction_only", 0) == 2
-    ), "2 allowed for fit reproduction (beta_d_A1, beta_q_A1)"
+    assert counts.get("do_not_use_for_modeling", 0) == 4, (
+        "4 beta values BLOCKED (audit/source_missing)"
+    )
+    assert counts.get("allowed_for_fit_reproduction_only", 0) == 2, (
+        "2 allowed for fit reproduction (beta_d_A1, beta_q_A1)"
+    )
     assert counts.get("source_confirmed", 0) == 0, "ZERO allowed for predictive modeling"
 
 
@@ -160,14 +160,14 @@ def test_blocking_summary_contains_key_info():
     summary = get_blocking_summary()
 
     assert "BLOCKED" in summary, "Must state H(z) is blocked"
-    assert (
-        "0/6" in summary or "Source confirmed: 0" in summary
-    ), "Must show 0 source-confirmed betas out of 6 total"
+    assert "0/6" in summary or "Source confirmed: 0" in summary, (
+        "Must show 0 source-confirmed betas out of 6 total"
+    )
     assert "Audit reconstruction" in summary or "audit_recon" in summary.lower()
     assert "beta_q_1" in summary, "Must mention beta_q_1 (source_missing, highest priority)"
-    assert (
-        "Pending verification" in summary or "NotebookLM" in summary
-    ), "Must mention NotebookLM candidates"
+    assert "Pending verification" in summary or "NotebookLM" in summary, (
+        "Must mention NotebookLM candidates"
+    )
 
 
 def test_no_phantom_beta_values():
@@ -223,9 +223,9 @@ def test_beta_q_1_highest_priority_flag():
     """
     prov = get_beta_provenance("beta_q_1")
 
-    assert (
-        "HIGHEST PRIORITY" in prov.recommended_action.upper()
-    ), "beta_q_1 (source_missing, no reconstruction) must be highest priority"
+    assert "HIGHEST PRIORITY" in prov.recommended_action.upper(), (
+        "beta_q_1 (source_missing, no reconstruction) must be highest priority"
+    )
 
 
 # NEW TESTS: NotebookLM candidates
@@ -236,9 +236,9 @@ def test_beta_d_A1_provenance():
     prov = get_beta_provenance("beta_d_A1")
 
     assert prov.value == 4.5
-    assert (
-        prov.provenance_status == "manuscript_reported_fitted"
-    ), "Manually verified from preprints202511.0598.v6.pdf, Appendix A.3, Table A1"
+    assert prov.provenance_status == "manuscript_reported_fitted", (
+        "Manually verified from preprints202511.0598.v6.pdf, Appendix A.3, Table A1"
+    )
     assert prov.use_permission_status == "allowed_for_fit_reproduction_only"
     assert "MANUALLY VERIFIED" in prov.evidence_trail
     assert "Table A1" in prov.evidence_trail or "Appendix" in prov.evidence_trail
@@ -253,9 +253,9 @@ def test_beta_q_A1_provenance():
     prov = get_beta_provenance("beta_q_A1")
 
     assert prov.value == 18.0
-    assert (
-        prov.provenance_status == "manuscript_reported_fitted"
-    ), "Manually verified from preprints202511.0598.v6.pdf, Appendix A.3, Table A1"
+    assert prov.provenance_status == "manuscript_reported_fitted", (
+        "Manually verified from preprints202511.0598.v6.pdf, Appendix A.3, Table A1"
+    )
     assert prov.use_permission_status == "allowed_for_fit_reproduction_only"
     assert "MANUALLY VERIFIED" in prov.evidence_trail
     assert "Table A1" in prov.evidence_trail or "Appendix" in prov.evidence_trail
@@ -310,9 +310,9 @@ def test_notebooklm_candidates_fitted_context():
             and "not derived" in evidence_lower
         ), f"{beta_name}: must explicitly state fitted (NOT derived) status"
 
-        assert (
-            prov.derivation_status == "fitted_not_derived"
-        ), f"{beta_name}: derivation_status must be 'fitted_not_derived'"
+        assert prov.derivation_status == "fitted_not_derived", (
+            f"{beta_name}: derivation_status must be 'fitted_not_derived'"
+        )
 
 
 def test_h_z_modeling_still_blocked_with_notebooklm():

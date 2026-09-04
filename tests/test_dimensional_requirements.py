@@ -6,7 +6,6 @@ mathematically consistent.
 """
 
 
-
 def test_monopole_units():
     """Monopole term in gravitational potential requires mass dimension [M]."""
     # Monopole: Phi ~ G*M/r
@@ -102,13 +101,13 @@ def test_hidden_scale_plausibility():
     L_ref_from_q = (BETA_Q_CANDIDATE_1.value / BETA_Q_CANDIDATE_2.value) ** (1 / 4)
 
     # Check both are in plausible range
-    assert (
-        1.0 < L_ref_from_d < 5.0
-    ), f"L_ref from beta_d = {L_ref_from_d:.2f} Mpc should be in galaxy group range (1–5 Mpc)"
+    assert 1.0 < L_ref_from_d < 5.0, (
+        f"L_ref from beta_d = {L_ref_from_d:.2f} Mpc should be in galaxy group range (1–5 Mpc)"
+    )
 
-    assert (
-        1.0 < L_ref_from_q < 5.0
-    ), f"L_ref from beta_q = {L_ref_from_q:.2f} Mpc should be in galaxy group range (1–5 Mpc)"
+    assert 1.0 < L_ref_from_q < 5.0, (
+        f"L_ref from beta_q = {L_ref_from_q:.2f} Mpc should be in galaxy group range (1–5 Mpc)"
+    )
 
 
 def test_friedmann_equation_dimensional_consistency():
@@ -149,9 +148,9 @@ def test_no_dimensional_formulas_without_explicit_units():
         content = doc_path.read_text(encoding="utf-8")
 
         # Check that document explicitly marks relations as candidates
-        assert (
-            "candidate_relation" in content.lower()
-        ), "docs/11_beta_normalization_math.md must mark relations as 'candidate_relation'"
+        assert "candidate_relation" in content.lower(), (
+            "docs/11_beta_normalization_math.md must mark relations as 'candidate_relation'"
+        )
 
         # Check that document does NOT claim to establish facts
         forbidden_phrases = [
@@ -162,6 +161,6 @@ def test_no_dimensional_formulas_without_explicit_units():
         ]
 
         for phrase in forbidden_phrases:
-            assert (
-                phrase.lower() not in content.lower()
-            ), f"Document must not overclaim. Found: '{phrase}'"
+            assert phrase.lower() not in content.lower(), (
+                f"Document must not overclaim. Found: '{phrase}'"
+            )

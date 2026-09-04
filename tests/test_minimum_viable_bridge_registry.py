@@ -92,9 +92,9 @@ class TestRequiredInputs:
         mvb = get_mvb_candidate()
 
         assert len(mvb.required_inputs) > 0, "MVB should have required inputs"
-        assert all(
-            isinstance(inp, RequiredInput) for inp in mvb.required_inputs
-        ), "All inputs should be RequiredInput instances"
+        assert all(isinstance(inp, RequiredInput) for inp in mvb.required_inputs), (
+            "All inputs should be RequiredInput instances"
+        )
 
     def test_critical_inputs_present(self):
         """Critical inputs are present."""
@@ -128,18 +128,18 @@ class TestRisksDocumented:
         mvb = get_mvb_candidate()
 
         assert len(mvb.risks) > 0, "MVB should have risks documented"
-        assert all(
-            isinstance(risk, RiskItem) for risk in mvb.risks
-        ), "All risks should be RiskItem instances"
+        assert all(isinstance(risk, RiskItem) for risk in mvb.risks), (
+            "All risks should be RiskItem instances"
+        )
 
     def test_critical_risk_present(self):
         """Critical risk about not being Buckholtz model is present."""
         mvb = get_mvb_candidate()
         risk_descriptions = [risk.risk_description.lower() for risk in mvb.risks]
 
-        assert any(
-            "our model" in desc or "buckholtz" in desc for desc in risk_descriptions
-        ), "Should document risk of MVB becoming 'our model' not Buckholtz's"
+        assert any("our model" in desc or "buckholtz" in desc for desc in risk_descriptions), (
+            "Should document risk of MVB becoming 'our model' not Buckholtz's"
+        )
 
     def test_all_risks_have_severity(self):
         """All risks have severity assigned."""
@@ -232,9 +232,9 @@ class TestNoForwardModelFunction:
         ]
 
         for name in forbidden_names:
-            assert not hasattr(
-                module, name
-            ), f"Function {name} should NOT exist (MVB not source-confirmed)"
+            assert not hasattr(module, name), (
+                f"Function {name} should NOT exist (MVB not source-confirmed)"
+            )
 
 
 class TestStatusSummary:

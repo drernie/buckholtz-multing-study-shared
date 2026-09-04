@@ -54,9 +54,9 @@ class TestClosureStatus:
         candidates = get_all_closure_candidates()
 
         for candidate in candidates:
-            assert (
-                candidate.status != ClosureStatus.THEORETICALLY_DERIVED
-            ), f"{candidate.name} should NOT be marked theoretically derived (no rigorous derivation)"
+            assert candidate.status != ClosureStatus.THEORETICALLY_DERIVED, (
+                f"{candidate.name} should NOT be marked theoretically derived (no rigorous derivation)"
+            )
 
 
 class TestUsePermissions:
@@ -72,27 +72,27 @@ class TestUsePermissions:
 
     def test_table_reproduction_is_candidate(self):
         """Table reproduction is a candidate (allowed IF cluster variables provided)."""
-        assert (
-            is_table_reproduction_candidate()
-        ), "Table reproduction should be candidate (not guaranteed)"
+        assert is_table_reproduction_candidate(), (
+            "Table reproduction should be candidate (not guaranteed)"
+        )
 
     def test_use_permission_includes_not_allowed_for_prediction(self):
         """Use permission list includes NOT_ALLOWED_FOR_PREDICTION."""
         candidates = get_all_closure_candidates()
 
         for candidate in candidates:
-            assert (
-                UsePermission.NOT_ALLOWED_FOR_PREDICTION in candidate.use_permission
-            ), f"{candidate.name} should have NOT_ALLOWED_FOR_PREDICTION"
+            assert UsePermission.NOT_ALLOWED_FOR_PREDICTION in candidate.use_permission, (
+                f"{candidate.name} should have NOT_ALLOWED_FOR_PREDICTION"
+            )
 
     def test_use_permission_includes_not_allowed_for_mcmc(self):
         """Use permission list includes NOT_ALLOWED_FOR_MCMC."""
         candidates = get_all_closure_candidates()
 
         for candidate in candidates:
-            assert (
-                UsePermission.NOT_ALLOWED_FOR_MCMC in candidate.use_permission
-            ), f"{candidate.name} should have NOT_ALLOWED_FOR_MCMC"
+            assert UsePermission.NOT_ALLOWED_FOR_MCMC in candidate.use_permission, (
+                f"{candidate.name} should have NOT_ALLOWED_FOR_MCMC"
+            )
 
 
 class TestRequiredInputs:
@@ -143,17 +143,17 @@ class TestNoComputeHzFunction:
         forbidden_names = ["compute_Hz", "model_Hz", "Hz_forward", "H_MULT", "solve_friedmann"]
 
         for name in forbidden_names:
-            assert not hasattr(
-                module, name
-            ), f"Function {name} should NOT exist (H(z) computation blocked)"
+            assert not hasattr(module, name), (
+                f"Function {name} should NOT exist (H(z) computation blocked)"
+            )
 
     def test_only_record_function_exists(self):
         """Only record_hmult_closure_candidate function exists (no computation)."""
         import src.hmult_closure_candidates as module
 
-        assert hasattr(
-            module, "record_hmult_closure_candidate"
-        ), "record_hmult_closure_candidate should exist"
+        assert hasattr(module, "record_hmult_closure_candidate"), (
+            "record_hmult_closure_candidate should exist"
+        )
 
         # Check it returns a record, not a number
         result = module.record_hmult_closure_candidate()
@@ -169,9 +169,9 @@ class TestMissingItems:
         candidates = get_all_closure_candidates()
 
         for candidate in candidates:
-            assert (
-                len(candidate.missing_items) > 0
-            ), f"{candidate.name} should have missing_items list"
+            assert len(candidate.missing_items) > 0, (
+                f"{candidate.name} should have missing_items list"
+            )
 
     def test_missing_items_include_formal_derivation(self):
         """Missing items include 'formal derivation'."""
@@ -179,9 +179,9 @@ class TestMissingItems:
 
         for candidate in candidates:
             missing_text = " ".join(candidate.missing_items).lower()
-            assert (
-                "derivation" in missing_text or "field equations" in missing_text
-            ), f"{candidate.name} should mention missing formal derivation"
+            assert "derivation" in missing_text or "field equations" in missing_text, (
+                f"{candidate.name} should mention missing formal derivation"
+            )
 
     def test_missing_items_include_uncertainty_estimates(self):
         """Missing items include uncertainty estimates (sigma_MULT)."""
@@ -189,9 +189,9 @@ class TestMissingItems:
 
         for candidate in candidates:
             missing_text = " ".join(candidate.missing_items).lower()
-            assert (
-                "sigma" in missing_text or "uncertainty" in missing_text
-            ), f"{candidate.name} should mention missing uncertainty estimates"
+            assert "sigma" in missing_text or "uncertainty" in missing_text, (
+                f"{candidate.name} should mention missing uncertainty estimates"
+            )
 
 
 class TestSafeWording:
@@ -213,9 +213,9 @@ class TestSafeWording:
         for candidate in candidates:
             safe_lower = candidate.safe_wording.lower()
             for phrase in forbidden_phrases:
-                assert (
-                    phrase not in safe_lower
-                ), f"{candidate.name} safe_wording should NOT contain '{phrase}'"
+                assert phrase not in safe_lower, (
+                    f"{candidate.name} safe_wording should NOT contain '{phrase}'"
+                )
 
     def test_safe_wording_mentions_phenomenological_or_heuristic(self):
         """Safe wording mentions 'phenomenological' or 'heuristic'."""
@@ -223,9 +223,9 @@ class TestSafeWording:
 
         for candidate in candidates:
             safe_lower = candidate.safe_wording.lower()
-            assert (
-                "phenomenological" in safe_lower or "heuristic" in safe_lower
-            ), f"{candidate.name} safe_wording should mention phenomenological or heuristic"
+            assert "phenomenological" in safe_lower or "heuristic" in safe_lower, (
+                f"{candidate.name} safe_wording should mention phenomenological or heuristic"
+            )
 
     def test_unsafe_wording_contains_forbidden_phrases(self):
         """Unsafe wording contains forbidden phrases as examples of what NOT to say."""
@@ -233,9 +233,9 @@ class TestSafeWording:
 
         for candidate in candidates:
             unsafe_lower = candidate.unsafe_wording.lower()
-            assert (
-                "do not say" in unsafe_lower or "not allowed" in unsafe_lower
-            ), f"{candidate.name} unsafe_wording should contain 'do not say' examples"
+            assert "do not say" in unsafe_lower or "not allowed" in unsafe_lower, (
+                f"{candidate.name} unsafe_wording should contain 'do not say' examples"
+            )
 
 
 class TestStatusSummary:
@@ -263,9 +263,9 @@ class TestStatusSummary:
         """Summary states predictive modeling is NOT ALLOWED."""
         summary = get_closure_status_summary()
 
-        assert (
-            "NOT ALLOWED" in summary["predictive_modeling"]
-        ), "Summary should state predictive modeling NOT ALLOWED"
+        assert "NOT ALLOWED" in summary["predictive_modeling"], (
+            "Summary should state predictive modeling NOT ALLOWED"
+        )
 
     def test_summary_says_mcmc_blocked(self):
         """Summary states MCMC is BLOCKED."""
@@ -291,15 +291,15 @@ class TestFormulaNotMarkedSourceDerived:
         candidates = get_all_closure_candidates()
 
         for candidate in candidates:
-            assert (
-                candidate.status != ClosureStatus.SOURCE_CONFIRMED
-            ), f"{candidate.name} should NOT be SOURCE_CONFIRMED (AI transcript)"
+            assert candidate.status != ClosureStatus.SOURCE_CONFIRMED, (
+                f"{candidate.name} should NOT be SOURCE_CONFIRMED (AI transcript)"
+            )
 
     def test_formula_not_theoretically_derived(self):
         """Formula is NOT marked THEORETICALLY_DERIVED (no rigorous derivation)."""
         candidates = get_all_closure_candidates()
 
         for candidate in candidates:
-            assert (
-                candidate.status != ClosureStatus.THEORETICALLY_DERIVED
-            ), f"{candidate.name} should NOT be THEORETICALLY_DERIVED (heuristic scaling)"
+            assert candidate.status != ClosureStatus.THEORETICALLY_DERIVED, (
+                f"{candidate.name} should NOT be THEORETICALLY_DERIVED (heuristic scaling)"
+            )

@@ -73,9 +73,7 @@ def load_claude_cluster_params(
                     h_data_nominal=float(row["h_data_nominal"])
                     if row.get("h_data_nominal")
                     else None,
-                    h_data_sigma=float(row["h_data_sigma"])
-                    if row.get("h_data_sigma")
-                    else None,
+                    h_data_sigma=float(row["h_data_sigma"]) if row.get("h_data_sigma") else None,
                     k_A_lo=k_lo,
                     k_A_hi=k_hi,
                     D_lo=d_lo,

@@ -83,12 +83,8 @@ def test_candidate_b_prediction_blocked():
 
 def test_phi_heuristic_not_physical_bridge():
     """Phi heuristic is TABLE_REPRODUCTION_HEURISTIC_ONLY"""
-    assert (
-        BridgeStatus.TABLE_REPRODUCTION_HEURISTIC_ONLY in CANDIDATE_PHI.status
-    )
-    assert (
-        BridgeStatus.BEST_INTERNAL_CANDIDATE not in CANDIDATE_PHI.status
-    )
+    assert BridgeStatus.TABLE_REPRODUCTION_HEURISTIC_ONLY in CANDIDATE_PHI.status
+    assert BridgeStatus.BEST_INTERNAL_CANDIDATE not in CANDIDATE_PHI.status
 
 
 def test_phi_heuristic_dimensional_issue():

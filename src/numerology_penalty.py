@@ -180,8 +180,7 @@ def _generate_warnings(candidate: CandidateRelation, score: float, rel_error: fl
 
     if not candidate.has_physical_mechanism:
         warnings.append(
-            "No physical mechanism provided. "
-            "Numerical agreement alone does not establish physics."
+            "No physical mechanism provided. Numerical agreement alone does not establish physics."
         )
 
     if rel_error < 0.01 and score < 5:

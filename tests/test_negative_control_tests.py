@@ -3,9 +3,11 @@
 Tests only deterministic behavior and output structure.
 """
 
+
 def test_random_seed_deterministic():
     """Test that random seed produces deterministic results."""
     import numpy as np
+
     np.random.seed(42)
     sample1 = np.random.rand(5)
 
@@ -41,7 +43,7 @@ def test_synthetic_lcdm_formula():
     OL = 0.685
     z = np.array([0, 0.5, 1.0])
 
-    h_lcdm = H0 * np.sqrt(Om * (1 + z)**3 + OL)
+    h_lcdm = H0 * np.sqrt(Om * (1 + z) ** 3 + OL)
 
     # At z=0: H(0) = H0 * sqrt(Om + OL) = H0 * sqrt(1) = H0
     assert np.isclose(h_lcdm[0], H0), "H(z=0) should equal H0"

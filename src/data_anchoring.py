@@ -86,7 +86,7 @@ WEAK_LENSING_S8 = DataAnchor(
     what_it_tests="Matter distribution, sigma_8",
     used_as="constraint",
     leakage_risk="medium",
-    notes=("S8 = sigma_8 * sqrt(Omega_m/0.3). " "Constrains matter clustering amplitude."),
+    notes=("S8 = sigma_8 * sqrt(Omega_m/0.3). Constrains matter clustering amplitude."),
 )
 
 # Fundamental constants (SAFE to use)
@@ -96,9 +96,7 @@ PDG_PARTICLE_MASSES = DataAnchor(
     what_it_tests="Fundamental particle properties",
     used_as="input",
     leakage_risk="none",
-    notes=(
-        "Electron, tau, muon masses from PDG. " "Safe to use as inputs for Eq.15-style relations."
-    ),
+    notes=("Electron, tau, muon masses from PDG. Safe to use as inputs for Eq.15-style relations."),
 )
 
 CODATA_CONSTANTS = DataAnchor(
