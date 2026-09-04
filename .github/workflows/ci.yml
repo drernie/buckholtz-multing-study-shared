@@ -32,11 +32,14 @@ jobs:
       - name: Lint (ruff)
         run: ruff check .
 
-      - name: Type check (mypy, advisory)
-        # Gradual typing: disallow_untyped_defs = false. mypy runs as an
-        # advisory signal and must not fail the build on pre-existing legacy
-        # type gaps in the diagnostic modules.
-        continue-on-error: true
+      - name: Format check (ruff)
+        run: ruff format --check src tests
+
+      - name: Type check (mypy)
+        # Blocking as of 2026-09-05: the pre-existing 24-error legacy debt
+        # that justified running this as advisory-only is fixed (see
+        # docs/155_engineering_debt_cleanup_20260905.md). disallow_untyped_defs
+        # stays false (gradual typing), but a *regression* now fails CI.
         run: mypy src
 
       - name: Tests + coverage
