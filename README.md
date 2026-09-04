@@ -4,7 +4,7 @@
 ![python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
-<sub>Quality snapshot (verified 2026-09-05, local py3.13): **901 tests pass · 0 skipped · 0 failed · coverage 87% · ruff clean · mypy clean (0 errors)**. The CI badge above is the authoritative live status; this line is a dated snapshot, not a self-updating metric.</sub>
+<sub>Quality snapshot (verified 2026-09-05, local py3.13): **908 tests pass · 0 skipped · 0 failed · coverage 91% · ruff clean · mypy clean (0 errors, blocking in CI)**. The CI badge above is the authoritative live status; this line is a dated snapshot, not a self-updating metric.</sub>
 
 **For "what is the current state of this project," start at
 [`CURRENT_EVIDENCE_STATE.md`](CURRENT_EVIDENCE_STATE.md)** — a 2-page

@@ -135,3 +135,32 @@ whoever next touches merger exclusion.
 - `pyproject.toml` version bump — a release decision.
 - Any TJB correspondence.
 - New physics bottleneck research.
+
+## Addendum — external review fix round (2026-09-05, same day)
+
+An external review of the pass above (verdict 8.5/10) found 7 issues.
+Verified each against the actual repo state before acting — 6 confirmed
+real, 1 (parent-repo dirty state) correctly out of scope. Fixed:
+
+| # | Issue | Fix | Commit |
+|---|---|---|---|
+| P1 | `CURRENT_EVIDENCE_STATE.md`/`CLAUDE.md`/`README.md` still showed the pre-cleanup numbers (24 mypy errors, 83% coverage, both target files 0%) | Synced to real numbers, twice — once after the mypy/goals/coverage commits, again after this fix round's own coverage expansion | `7c46224` |
+| P1 | Fisher-forecast test (bottleneck 3) was ambiguously worded — `activeContext.md` said "nothing pre-authorized beyond §5," which by exclusion implies §5 *is* authorized, though §5 itself never claims that | Applied the "RECOMMENDED, NOT AUTHORIZED" convention this project already uses for bottleneck 1 (`docs/153`) to bottleneck 3 as well, consistently across `CURRENT_EVIDENCE_STATE.md`, `activeContext.md`, `goals.md` | `7c46224` |
+| P2 | CI's `mypy` step had `continue-on-error: true` (justified by debt that's now gone); no `ruff format --check` step existed | Made `mypy` blocking, added the format-check step | `a0a3cbe` |
+| P2 | `cluster_data_pipeline.py`'s "29%, rest is network I/O" was too conservative — `step4_export` has zero network dependency, and the other steps' real transformation logic is separable from the actual I/O call | Monkeypatched only `_vizier_download`/`requests.get` (the real I/O boundary), not whole step functions — 29% → 93% | `0234e3b` |
+| P3 | `double_inversion_plots.py`'s `plot_grid_heatmap` raised a `UserWarning` calling `legend()` with no labeled artists | Guarded on `best_physical`/`best_unconstrained` presence | `64c70d4` |
+| P3 | `internal_anchor_search.py`'s mypy fix widened to bare `list[tuple]`, losing element-shape information | Added `RawFormula = tuple[str, float, float, tuple[str, ...]]`, applied consistently (return types + `all_formulas` + each generator's local `formulas` list, which needed its own annotation — mypy's list invariance narrows an unannotated local to the literal types actually appended) | `64c70d4` |
+| P3 | Parent repo (`H - 11 Dr. Thomas J. Buckholtz`, one level up) has pre-existing uncommitted changes | Correctly identified by the review as out of scope — not touched | — |
+
+One bug found while writing the new tests, in the test fixture itself
+(not the source): an out-of-range `dec_deg=999` on a deliberately-
+non-matching row broke `SkyCoord` construction for the *entire*
+coordinate-fallback batch (built once for all unmatched rows together),
+not just that row. Caught by the test failing, fixed to a valid-but-
+distant coordinate — a small real lesson about `step2_psz2`'s batching
+behavior, worth knowing if anyone extends `_crossmatch_idx`'s callers.
+
+Final state after this fix round: 908 tests passing (901 → 908),
+coverage 91% (87% → 91%), `cluster_data_pipeline.py` 93% (29% → 93%),
+mypy/ruff/format all clean and now enforced in CI. 4 additional commits:
+`7c46224`, `a0a3cbe`, `64c70d4`, `0234e3b`.

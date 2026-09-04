@@ -1,13 +1,15 @@
 # Current Evidence State — buckholtz-idm-multing-mvp
 
-**Date:** 2026-09-03, quality snapshot refreshed 2026-09-05 (see
+**Date:** 2026-09-03, quality snapshot refreshed 2026-09-05, then again
+after an external review's fix round the same day (see
 `docs/155_engineering_debt_cleanup_20260905.md` for the full cleanup
-report) · **Verified:** `pytest tests/` 901 passed, `ruff check .` clean,
-`ruff format --check src tests` clean, `mypy src` 0 errors/38 files,
-coverage 87% (`src/double_inversion_plots.py` 100%,
-`src/cluster_data_pipeline.py` 29% — the remaining 71% is real network
-I/O against VizieR/GitLab, deliberately not mocked into meaninglessness;
-see docs/155 for the scope reasoning).
+report and its own addendum) · **Verified:** `pytest tests/` 908 passed,
+`ruff check .` clean, `ruff format --check src tests` clean, `mypy src`
+0 errors/38 files, coverage 91% (`src/double_inversion_plots.py` 100%,
+`src/cluster_data_pipeline.py` 93% — the remaining 7% is `_vizier_
+download`'s own real body, two hard-to-trigger ImportError fallbacks,
+and main()'s astroquery-missing SystemExit path; see docs/155 for the
+scope reasoning).
 **Supersedes as the entry point:** `README.md`'s dated quality-snapshot
 line, `PROJECT_STATUS.md` (already self-flagged superseded),
 `.claude/memory/goals.md` (43× stale repeated pending item from 2026-06-12).
@@ -126,14 +128,17 @@ shortcut. None of these change the status of the central claims —
 
 ## Known engineering debt (updated 2026-09-05, see docs/155)
 
-**Closed 2026-09-05:** `mypy` 24→0 errors; `ruff format` clean;
-`src/double_inversion_plots.py` 0%→100% coverage;
-`src/cluster_data_pipeline.py` 0%→29% coverage (pure functions only —
-see docs/155 for why the network-I/O steps stay uncovered);
-`.claude/memory/goals.md`'s 43 stale duplicate entries removed and
-archived. CI's `mypy` step still has `continue-on-error: true` and there
-is no `ruff format --check` step — both now safe to make blocking since
-the underlying debt is gone, not yet done as of this snapshot.
+**Closed 2026-09-05 (cleanup pass + same-day external-review fix
+round):** `mypy` 24→0 errors, now blocking in CI (was advisory);
+`ruff format` clean, now enforced in CI via a new `ruff format --check`
+step (there wasn't one); `src/double_inversion_plots.py` 0%→100%
+coverage; `src/cluster_data_pipeline.py` 0%→93% coverage (only the
+real network I/O boundary is monkeypatched — `_vizier_download`,
+`requests.get` — everything downstream runs for real; see docs/155 for
+the reasoning and its addendum for why the first pass's 29% was too
+conservative); `.claude/memory/goals.md`'s 43 stale duplicate entries
+removed and archived; a real authorization ambiguity around the
+Fisher-forecast test fixed (see docs/155 addendum).
 
 **Still open:** `pyproject.toml` version frozen at `0.3.0` since the MVP
 era (a release decision, out of scope for engineering-hygiene passes).
