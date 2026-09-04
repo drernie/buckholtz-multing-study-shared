@@ -104,7 +104,11 @@ def plot_grid_heatmap(summary: GridSearchSummary, out_path: Path) -> None:
     ax.set_xlabel("gamma  (D ~ (1+z)^-gamma)")
     ax.set_ylabel("alpha  (k_A ~ (1+z)^-alpha)")
     ax.set_title("Double inversion grid  [VERIFIED_DIAGNOSTIC]")
-    ax.legend(loc="upper right")
+    # WHY guard: best_physical/best_unconstrained are Optional -- with both
+    # None, no scatter above got a label, and legend() on zero labeled
+    # artists raises a UserWarning.
+    if summary.best_physical or summary.best_unconstrained:
+        ax.legend(loc="upper right")
     fig.tight_layout()
     fig.savefig(out_path, dpi=120)
     plt.close(fig)

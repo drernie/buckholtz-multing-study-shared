@@ -14,6 +14,11 @@ import itertools
 from dataclasses import dataclass
 from typing import Literal
 
+# (expression, value, complexity, anchor_names) -- the raw shape shared by
+# all four generate_* functions below, before search_anchor_formulas turns
+# them into real CandidateFormula objects.
+RawFormula = tuple[str, float, float, tuple[str, ...]]
+
 # Buckholtz internal anchors from Eq.20 and N' formalism
 ANCHORS = {
     "one": 1,
@@ -60,22 +65,21 @@ class CandidateFormula:
     anchor_names: tuple[str, ...]  # Which anchors were used
 
 
-def generate_simple_ratios() -> list[tuple]:
+def generate_simple_ratios() -> list[RawFormula]:
     """
     Generate simple a/b ratios from anchor pairs.
 
     Complexity = 1 (simplest possible formula).
 
-    Returns raw (expression, value, complexity, anchor_names) tuples, same
-    convention as generate_simple_products/generate_simple_sums/
-    generate_ratio_of_products below -- callers build the real
-    CandidateFormula objects (WHY: the return type here previously said
-    `list[CandidateFormula]`, which was wrong and made mypy's type
-    inference in search_anchor_formulas' tuple-unpacking loop cascade
-    into 10 unrelated-looking errors; the function's actual behavior
-    never changed, only this stale annotation).
+    Returns raw RawFormula tuples, same convention as
+    generate_simple_products/generate_simple_sums/generate_ratio_of_products
+    below -- callers build the real CandidateFormula objects (WHY: the
+    return type here previously said `list[CandidateFormula]`, which was
+    wrong and made mypy's type inference in search_anchor_formulas' tuple-
+    unpacking loop cascade into 10 unrelated-looking errors; the function's
+    actual behavior never changed, only this stale annotation).
     """
-    formulas = []
+    formulas: list[RawFormula] = []
     anchor_items = list(ANCHORS.items())
 
     for (name_a, val_a), (name_b, val_b) in itertools.combinations(anchor_items, 2):
@@ -108,13 +112,13 @@ def generate_simple_ratios() -> list[tuple]:
     return formulas
 
 
-def generate_simple_products() -> list[tuple]:
+def generate_simple_products() -> list[RawFormula]:
     """
     Generate simple a*b products from anchor pairs.
 
     Complexity = 1.5 (slightly more complex than ratios).
     """
-    formulas = []
+    formulas: list[RawFormula] = []
     anchor_items = list(ANCHORS.items())
 
     for (name_a, val_a), (name_b, val_b) in itertools.combinations(anchor_items, 2):
@@ -132,7 +136,7 @@ def generate_simple_products() -> list[tuple]:
     return formulas
 
 
-def generate_ratio_of_products() -> list[tuple]:
+def generate_ratio_of_products() -> list[RawFormula]:
     """
     Generate (a*b)/(c*d) formulas from anchor quadruples.
 
@@ -140,7 +144,7 @@ def generate_ratio_of_products() -> list[tuple]:
 
     WARNING: Combinatorial explosion — limit to selected pairs.
     """
-    formulas = []
+    formulas: list[RawFormula] = []
     anchor_items = list(ANCHORS.items())
 
     # Only use meaningful pairs to avoid explosion
@@ -166,13 +170,13 @@ def generate_ratio_of_products() -> list[tuple]:
     return formulas
 
 
-def generate_simple_sums() -> list[tuple]:
+def generate_simple_sums() -> list[RawFormula]:
     """
     Generate a+b and a-b from anchor pairs.
 
     Complexity = 2.0 (sums are less natural for dimensionless ratios).
     """
-    formulas = []
+    formulas: list[RawFormula] = []
     anchor_items = list(ANCHORS.items())
 
     for (name_a, val_a), (name_b, val_b) in itertools.combinations(anchor_items, 2):
@@ -243,7 +247,7 @@ def search_anchors_for_target(
     Returns:
     - List of CandidateFormula sorted by error then complexity
     """
-    all_formulas = []
+    all_formulas: list[RawFormula] = []
 
     # Generate candidates by complexity level
     all_formulas.extend(generate_simple_ratios())
