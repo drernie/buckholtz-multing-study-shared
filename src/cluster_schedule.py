@@ -112,11 +112,11 @@ def fit_power_law_D(
 
 
 def D_power_law(z: float, D0: float, gamma: float) -> float:
-    return D0 * (1.0 + z) ** (-gamma)
+    return float(D0 * (1.0 + z) ** (-gamma))
 
 
 def k_a_power_law(z: float, k0: float, alpha: float) -> float:
-    return k0 * (1.0 + z) ** (-alpha)
+    return float(k0 * (1.0 + z) ** (-alpha))
 
 
 def load_claude_params_list(

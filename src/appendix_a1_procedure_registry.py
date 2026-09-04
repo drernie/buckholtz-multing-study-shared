@@ -320,8 +320,10 @@ class TableA1Row:
     sigma_h_data: float
     h_flrw: float
     sigma_flrw: float  # standard deviations from H-data
-    h_mult: float
-    sigma_mult: float
+    # WHY optional: the z=0 anchor row genuinely reports no MULTING value
+    # (see TABLE_A1 row 1 below) -- real source data, not a missing-value bug.
+    h_mult: float | None
+    sigma_mult: float | None
     w_eff: float
     h_w_eff: float
     sigma_w_eff: float

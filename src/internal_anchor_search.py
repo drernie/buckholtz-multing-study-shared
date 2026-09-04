@@ -60,11 +60,20 @@ class CandidateFormula:
     anchor_names: tuple[str, ...]  # Which anchors were used
 
 
-def generate_simple_ratios() -> list[CandidateFormula]:
+def generate_simple_ratios() -> list[tuple]:
     """
     Generate simple a/b ratios from anchor pairs.
 
     Complexity = 1 (simplest possible formula).
+
+    Returns raw (expression, value, complexity, anchor_names) tuples, same
+    convention as generate_simple_products/generate_simple_sums/
+    generate_ratio_of_products below -- callers build the real
+    CandidateFormula objects (WHY: the return type here previously said
+    `list[CandidateFormula]`, which was wrong and made mypy's type
+    inference in search_anchor_formulas' tuple-unpacking loop cascade
+    into 10 unrelated-looking errors; the function's actual behavior
+    never changed, only this stale annotation).
     """
     formulas = []
     anchor_items = list(ANCHORS.items())

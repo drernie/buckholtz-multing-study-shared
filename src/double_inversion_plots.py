@@ -66,12 +66,12 @@ def plot_grid_heatmap(summary: GridSearchSummary, out_path: Path) -> None:
         summary.mae_grid,
         origin="lower",
         aspect="auto",
-        extent=[
+        extent=(
             summary.gamma_values[0],
             summary.gamma_values[-1],
             summary.alpha_values[0],
             summary.alpha_values[-1],
-        ],
+        ),
         cmap="viridis",
     )
     ax.contour(

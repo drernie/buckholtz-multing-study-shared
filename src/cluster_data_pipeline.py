@@ -125,7 +125,10 @@ def e_thermal_path_b(y500_arcmin2: float, z: float) -> float:
     y_sr = y500_arcmin2 * (np.pi / 10800.0) ** 2  # arcmin² → steradians
     d_a_m = Planck18.angular_diameter_distance(z).to(u.m).value
     e_joules = y_sr * d_a_m**2 * (_ME_KG * _C2 / _SIGMA_T)
-    return e_joules / (_MSUN_KG * _C2)
+    # WHY float(): astropy lacks type stubs, so .value is typed Any -- this
+    # is a real numeric scalar at runtime, float() makes the static type
+    # match the declared return type without changing behavior.
+    return float(e_joules / (_MSUN_KG * _C2))
 
 
 # ── Angular cross-match ─────────────────────────────────────────────────────

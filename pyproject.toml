@@ -86,6 +86,10 @@ ignore_missing_imports = true
 module = ["pandas", "pandas.*"]
 ignore_missing_imports = true
 
+[[tool.mypy.overrides]]
+module = ["astropy", "astropy.*", "astroquery", "astroquery.*"]
+ignore_missing_imports = true
+
 [tool.coverage.run]
 source = ["src"]
 omit = ["*/__pycache__/*"]

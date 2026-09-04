@@ -360,7 +360,10 @@ def print_hmult_closure_status():
 
         src_path = Path(__file__).parent
         sys.path.insert(0, str(src_path))
-        from hmult_closure_candidates import (
+        # WHY: hmult_closure_candidates.py exists (src/hmult_closure_candidates.py)
+        # -- this is a real, working runtime fallback for direct-script execution;
+        # mypy can't trace the sys.path.insert() above, hence the ignore, not a bug.
+        from hmult_closure_candidates import (  # type: ignore[import-not-found]
             get_all_closure_candidates,
             get_closure_status_summary,
             get_critical_blockers,

@@ -51,7 +51,10 @@ def k_a_ps_virial(m_A: float, r_A: float) -> float:
 def characteristic_mass_msun(z: float, cosmo: CosmoParams) -> float:
     """Press-Schechter M_* ~ M_char (1+z)^(-3/2) scaling (diagnostic only)."""
     m_char = 1.0e14 * (cosmo.omega_m / 0.3) ** (-1) * (cosmo.h / 0.7) ** (-2)
-    return m_char * (1.0 + z) ** (-1.5)
+    # WHY float(): a fractional exponent makes typeshed's float.__pow__ return
+    # Any (a negative base could yield complex) -- real numeric value at
+    # runtime, float() just restores the static type.
+    return float(m_char * (1.0 + z) ** (-1.5))
 
 
 def k_a_press_schechter_virial(
@@ -65,7 +68,8 @@ def k_a_press_schechter_virial(
     _ = cosmo or CosmoParams()
     m_star = characteristic_mass_msun(z, cosmo or CosmoParams())
     mass_factor = (m_A / m_star) ** (2.0 / 3.0) * (1.0 + z)
-    return alpha * k_a_virial_kinetic(m_A, r_A) * mass_factor / (1.0 + z)
+    # WHY float(): same fractional-exponent Any-return as characteristic_mass_msun above.
+    return float(alpha * k_a_virial_kinetic(m_A, r_A) * mass_factor / (1.0 + z))
 
 
 def fit_alpha_at_z0(
