@@ -4,7 +4,13 @@
 ![python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
-<sub>Quality snapshot (verified 2026-07-12, local py3.13): **867 tests pass · 0 skipped · 0 failed · coverage 83% · ruff clean**. The CI badge above is the authoritative live status; this line is a dated snapshot, not a self-updating metric.</sub>
+<sub>Quality snapshot (verified 2026-09-03, local py3.13): **881 tests pass · 0 skipped · 0 failed · coverage 83% · ruff clean**. The CI badge above is the authoritative live status; this line is a dated snapshot, not a self-updating metric.</sub>
+
+**For "what is the current state of this project," start at
+[`CURRENT_EVIDENCE_STATE.md`](CURRENT_EVIDENCE_STATE.md)** — a 2-page
+canonical snapshot (reproduced / refuted / open bottlenecks / next test /
+what cannot be claimed publicly). `PROJECT_STATUS.md` below is an older,
+explicitly-superseded snapshot kept for history only.
 
 **Personal study notes and reproducibility scaffolding for understanding Thomas J. Buckholtz's IDM/MULTING framework.**
 

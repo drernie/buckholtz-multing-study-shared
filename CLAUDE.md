@@ -10,6 +10,11 @@
 - **Tests:** `pytest tests/ -q` (881 passing) · `ruff check .` (clean).
 
 ## CANONICAL CONTEXT — read in this order at session start
+0. **`CURRENT_EVIDENCE_STATE.md`** (added 2026-09-03) — 2-page canonical
+   snapshot: reproduced / refuted-or-weakened / what changed after v82 /
+   4 open bottlenecks / one next differentiating test / what cannot be
+   claimed publicly. The fast-orientation entry point; read this first,
+   then go deeper via the items below as needed.
 1. `.claude/memory/activeContext.md` — live, updated per commit. Source of
    truth for "what are we doing right now."
 2. `docs/145_research_audit_and_harvest_report_20260817.md` — comprehensive
