@@ -1,9 +1,13 @@
 # Current Evidence State — buckholtz-idm-multing-mvp
 
-**Date:** 2026-09-03 · **Verified this session:** `pytest tests/` 881 passed,
-`ruff check .` clean, `ruff format --check src tests` 34 files would
-reformat, `mypy src` 24 errors/7 files, coverage 83% (`src/cluster_data_
-pipeline.py` and `src/double_inversion_plots.py` both 0%).
+**Date:** 2026-09-03, quality snapshot refreshed 2026-09-05 (see
+`docs/155_engineering_debt_cleanup_20260905.md` for the full cleanup
+report) · **Verified:** `pytest tests/` 901 passed, `ruff check .` clean,
+`ruff format --check src tests` clean, `mypy src` 0 errors/38 files,
+coverage 87% (`src/double_inversion_plots.py` 100%,
+`src/cluster_data_pipeline.py` 29% — the remaining 71% is real network
+I/O against VizieR/GitLab, deliberately not mocked into meaninglessness;
+see docs/155 for the scope reasoning).
 **Supersedes as the entry point:** `README.md`'s dated quality-snapshot
 line, `PROJECT_STATUS.md` (already self-flagged superseded),
 `.claude/memory/goals.md` (43× stale repeated pending item from 2026-06-12).
@@ -77,10 +81,16 @@ this file is the slower-moving strategic layer above it).
 |---|---|---|---|
 | 1 | F→H_MULT(z) bridge | BLOCKED | z≥1 needs nonlinear-bias/N-body, not another analytic substitution |
 | 2 | Unique completion | Untouched, `docs/134` | — |
-| 3 | Absolute scale / observable mapping | STRUCTURALLY BLOCKED, sharpened by P190 | Fisher-forecast on synthetic high-z H(z) points (pearled, not started) |
+| 3 | Absolute scale / observable mapping | STRUCTURALLY BLOCKED, sharpened by P190 | Fisher-forecast on synthetic high-z H(z) points — RECOMMENDED, NOT AUTHORIZED (pearled, not started, needs explicit go-ahead — see §5) |
 | 4 | IC-sensitivity | CLOSED (campaign exhausted, question genuinely open) | A genuinely new mechanism class, not a 6th variant of the 5 already excluded |
 
 ## 5. One next differentiating test
+
+**RECOMMENDED, NOT AUTHORIZED — requires an explicit user go-ahead
+before starting**, same convention `docs/153` §3a already uses for
+bottleneck 1 ("GO-eligible... but not authorized to run without a
+separate explicit go-ahead"). Being the best-scoped candidate is not
+the same as being pre-approved to run.
 
 **Fisher-information forecast for bottleneck 3** (pearled, `pearl_registry/
 INDEX.md` next_check 2026-11-15): does adding synthetic H(z) points at
@@ -114,12 +124,16 @@ existing code; a new MCMC run; a 5th variant of the bottleneck-1 bridge
 shortcut. None of these change the status of the central claims —
 `docs/147`'s own stop-rule already governs this.
 
-## Known engineering debt (real, verified, not urgent)
+## Known engineering debt (updated 2026-09-05, see docs/155)
 
-`mypy` 24 errors/7 files (advisory in CI, not blocking); `ruff format`
-34 files not yet reformatted; `src/cluster_data_pipeline.py` and
-`src/double_inversion_plots.py` at 0% test coverage (the former is a
-real data pipeline, not just a plotting layer — higher priority of the
-two); `pyproject.toml` version frozen at `0.3.0` since the MVP era;
-`.claude/memory/goals.md` carries 43 repeats of a 2026-06-12 stale
-pending item, never cleaned across ~90 days of compaction cycles.
+**Closed 2026-09-05:** `mypy` 24→0 errors; `ruff format` clean;
+`src/double_inversion_plots.py` 0%→100% coverage;
+`src/cluster_data_pipeline.py` 0%→29% coverage (pure functions only —
+see docs/155 for why the network-I/O steps stay uncovered);
+`.claude/memory/goals.md`'s 43 stale duplicate entries removed and
+archived. CI's `mypy` step still has `continue-on-error: true` and there
+is no `ruff format --check` step — both now safe to make blocking since
+the underlying debt is gone, not yet done as of this snapshot.
+
+**Still open:** `pyproject.toml` version frozen at `0.3.0` since the MVP
+era (a release decision, out of scope for engineering-hygiene passes).
