@@ -35,6 +35,17 @@ this file is the slower-moving strategic layer above it).
 - **Cen, Bahcall & Gramann (1994) Figure 3 recovery** — digitized,
   cross-validated to 0.057% against the paper's own Table 1 anchor;
   sent to TJB 2026-09-03.
+- **P191: a Fisher-information forecast shows bottleneck 3's "in-
+  principle openness" (P190) is practically buildable** — synthetic
+  H(z) points at z∈{3,5,7,10} would shrink v82's own (β1,β2) degeneracy
+  ellipse by 73%/46%/14% at 1%/3%/10% assumed relative precision
+  (MCID met at all three, though only marginally at 10%). A real bug
+  (sparse-grid integration silently zeroing one point's Fisher
+  information) was caught and fixed by a context-blind Step 8a skeptic
+  pass before this number was trusted — see docs/145-style correction
+  in `FINDING_P191` itself. Side finding: the (β1,β2) level-set slope
+  peaks near z≈3 and *declines* thereafter — not monotonic, not simply
+  saturating, as `CLAIM_P191`'s own outcome table had anticipated.
 
 ## 2. What is refuted or weakened
 
@@ -83,24 +94,29 @@ this file is the slower-moving strategic layer above it).
 |---|---|---|---|
 | 1 | F→H_MULT(z) bridge | BLOCKED | z≥1 needs nonlinear-bias/N-body, not another analytic substitution |
 | 2 | Unique completion | Untouched, `docs/134` | — |
-| 3 | Absolute scale / observable mapping | STRUCTURALLY BLOCKED, sharpened by P190 | Fisher-forecast on synthetic high-z H(z) points — RECOMMENDED, NOT AUTHORIZED (pearled, not started, needs explicit go-ahead — see §5) |
+| 3 | Absolute scale / observable mapping | STRUCTURALLY BLOCKED, but P191 shows a quantified, buildable path exists | A real high-z H(z) survey at z∈{3,5,7,10}, 1-10% precision (P191); or a 2nd Fisher-forecast at different z's (pearled, `pearl_registry` next_check 2026-12-01) — see §5 |
 | 4 | IC-sensitivity | CLOSED (campaign exhausted, question genuinely open) | A genuinely new mechanism class, not a 6th variant of the 5 already excluded |
 
 ## 5. One next differentiating test
 
-**RECOMMENDED, NOT AUTHORIZED — requires an explicit user go-ahead
-before starting**, same convention `docs/153` §3a already uses for
-bottleneck 1 ("GO-eligible... but not authorized to run without a
-separate explicit go-ahead"). Being the best-scoped candidate is not
-the same as being pre-approved to run.
+**DONE 2026-09-05, with an explicit user go-ahead** — `FINDING_P191`.
+Result: adding synthetic H(z) points at z∈{3,5,7,10} would shrink the
+(β1,β2) degeneracy ellipse by 73%/46%/14% at 1%/3%/10% assumed relative
+precision — MCID (≥10% shrink) met at all three, marginally at 10%.
+Does **not** resolve bottleneck 3 (no real high-z data exists; the
+absolute-scale/observable-mapping question, `docs/134`, is untouched) —
+it shows the "in-principle openness" P190 found is practically
+buildable, and quantifies the cost/benefit as a function of assumed
+precision.
 
-**Fisher-information forecast for bottleneck 3** (pearled, `pearl_registry/
-INDEX.md` next_check 2026-11-15): does adding synthetic H(z) points at
-z>2 (where P190's single-z slope diverges furthest from the low-z end)
-measurably rotate/shrink the (β1,β2) degeneracy ellipse? This is the one
-open bottleneck with a concrete, not-externally-blocked, not-yet-attempted
-next step — everything else either needs external data (Belle II Run 2,
-TJB's own β_d derivation) or a genuinely new idea, not another rerun.
+**RECOMMENDED, NOT AUTHORIZED, next candidate** (same convention
+`docs/153` §3a uses for bottleneck 1 — being the best-scoped candidate
+is not pre-approval to run): a **second** Fisher-forecast using
+synthetic z's past the level-set slope's own peak found in P191
+(z∈{20,30,50} or similar, where the slope is declining steeply) —
+pearled, `pearl_registry/INDEX.md` next_check 2026-12-01. The P191
+machinery is already positive-controlled and reusable; this would only
+need a different `synth_zs` argument.
 
 ## 6. What cannot be claimed publicly right now
 
@@ -117,6 +133,9 @@ TJB's own β_d derivation) or a genuinely new idea, not another rerun.
   way until bottleneck 1 or 3 actually resolves.
 - Any AVB benchmark result as confirming or refuting the treatment-vs-
   baseline hypothesis — N=25, McNemar p=1.0, underpowered by design.
+- That P191's Fisher-forecast establishes real high-z H(z) data at the
+  assumed precision is achievable, or that bottleneck 3 is resolved —
+  it only shows a quantified, in-principle path exists (see §5).
 
 ## Exclusion zone (do not start without a new triggering fact)
 
