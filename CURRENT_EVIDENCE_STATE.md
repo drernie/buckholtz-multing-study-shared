@@ -64,6 +64,21 @@ this file is the slower-moving strategic layer above it).
   Two rounds of context-blind Step 8a skeptic review, both real issues
   found and fixed (a 100% unit-conversion bug; a methodological gap in
   the cross-validation's own scope).
+- **P194: a dense information-profile scan of the (10,16.957) window**
+  confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
+  the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
+  its own pre-written correction that greedy top-N points are not
+  guaranteed jointly optimal — P193's specific {12,14,16} beats the
+  naive greedy top-3 at tight precision (1%, 3%) and loses narrowly at
+  loose precision (10%), a real mixed result, not a clean win either
+  way. A second, more targeted Step 8a skeptic pass (round 2, same day)
+  found round 1's own fix incomplete: the rise is **not** uniquely a
+  1/H(z) boundary-singularity effect — measured directly, cumulative
+  E1(z)/E2(z) growth (2.3-2.4×) and 1/H(z)² boundary-proximity growth
+  (7.0×) are comparable order of magnitude, both real, neither
+  negligible. P193's own numbers are unaffected; only the mechanism
+  attributed to them is now honestly qualified as entangled, not
+  resolved. See `FINDING_P194`.
 
 ## 2. What is refuted or weakened
 
@@ -112,7 +127,7 @@ this file is the slower-moving strategic layer above it).
 |---|---|---|---|
 | 1 | F→H_MULT(z) bridge | BLOCKED | z≥1 needs nonlinear-bias/N-body, not another analytic substitution |
 | 2 | Unique completion | Untouched, `docs/134` | — |
-| 3 | Absolute scale / observable mapping | STRUCTURALLY BLOCKED, quantified buildable path exists and CONFIRMED stronger further from baseline (P191→P193), within a known domain limit (P192: z<16.957) | A real high-z H(z) survey — z∈{12,14,16} (P193, best confirmed) or z∈{3,5,7,10} (P191) at 1-10% precision — see §5 |
+| 3 | Absolute scale / observable mapping | STRUCTURALLY BLOCKED, quantified buildable path exists and CONFIRMED stronger further from baseline (P191→P193), within a known domain limit (P192: z<16.957); P194 mapped the full information profile across the window and found the "further is better" mechanism is entangled (not resolved) between 3 co-varying candidates | A real high-z H(z) survey — z∈{12,14,16} (P193) is competitive but not uniformly better than a denser greedy set (P194); precision-dependent — see §5 |
 | 4 | IC-sensitivity | CLOSED (campaign exhausted, question genuinely open) | A genuinely new mechanism class, not a 6th variant of the 5 already excluded |
 
 ## 5. One next differentiating test
@@ -147,12 +162,30 @@ standard finite-difference Hessian computation does not converge at
 independent analytic Fisher matrix, itself cross-validated to <0.15%
 agreement wherever finite-difference converges.
 
-**RECOMMENDED, NOT AUTHORIZED, next candidate**: a fourth Fisher-
-forecast scanning the full `(10, 17)` window more densely (not just 3
-points), or applying the now-available analytic Fisher matrix as the
-default method near any future domain boundary — pearled,
-`pearl_registry/INDEX.md` next_check 2026-12-15 (methodological
-finding) and the confirmed-pearl row (physics finding, same date).
+**DONE 2026-09-05 (same day), with an explicit user go-ahead** —
+`FINDING_P194`. A dense scan of the full (10, 16.5) window confirms the
+information profile rises monotonically toward the boundary (16.24%→
+75.12% shrinkage at σ=10%) and directly confirms the claim's own
+pre-written correction: the greedy top-3/top-4 set does **not**
+uniformly beat P193's {12,14,16} — it wins at loose precision (σ=10%)
+and loses at tight precision (σ=1%,3%), a genuinely mixed result. A
+second, more targeted Step 8a skeptic pass found the rise is **not**
+uniquely a 1/H(z) boundary-singularity effect as a first fix suggested
+— measured directly, cumulative E1(z)/E2(z) growth (2.3-2.4×) and
+1/H(z)² boundary-proximity growth (7.0×) are comparable order of
+magnitude. P193's raw numbers are unaffected; the causal story behind
+them is now honestly qualified as entangled among ≥3 co-varying
+candidates, not resolved to one.
+
+**RECOMMENDED, NOT AUTHORIZED, next candidate**: none named yet for
+bottleneck 3 — P191→P194 has mapped the buildable path and its
+information profile thoroughly; further work here would need either a
+genuinely new question (not another z-set variant) or a decision to
+apply the analytic Fisher matrix as the default method near any future
+domain boundary elsewhere in the project. Pearled,
+`pearl_registry/INDEX.md` next_check 2026-12-15 (3 rows: P193's
+numerical-methods lesson, P194's confounded-single-coordinate-scan
+lesson, and the confirmed-pearl chain P191→P193).
 
 ## 6. What cannot be claimed publicly right now
 
