@@ -78,6 +78,21 @@ this file is the slower-moving strategic layer above it).
   floor choice — sign/threshold-robust, magnitude varies up to ~30×
   across tested alternatives (Step 8a skeptic-caught, honestly reported
   rather than smoothed into a bare "robust").
+- **`FINDING_P196` (new thread, separate from the 4 named bottlenecks
+  — TJB's own letter, 2026-08-30, pointing at v82 Section II.F's
+  Class III circularity)**: an independent rebuild of a comparison
+  first attempted in a different, inaccessible chat session (Girardi
+  1998's velocity-dispersion-only `R_vir` vs a `ρ_crit(z)`-based
+  radius, on 123 real HeCS-SZ clusters). The correlation reproduces
+  robustly (`r≈0.88`), but the prior session's own headline "mean
+  ratio 1.128" could **not** be reproduced — this session's rebuild
+  gives 1.61 (Δ=200, matching the prior session's stated method) or
+  2.49 raw / 1.47 after correction (Δ=500, v82's own actual stated
+  target). Strong circumstantial arithmetic (`1.61×h(0.7)=1.127`)
+  suggests the prior number had a units bug plus a wrong overdensity
+  target — not certain, since that session's code no longer exists.
+  **Not ready for TJB** — the corrected 1.47× residual is itself
+  unexplained. See `CLAIM_P196`/`FINDING_P196`.
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
