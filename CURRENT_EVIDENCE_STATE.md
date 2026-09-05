@@ -115,6 +115,17 @@ this file is the slower-moving strategic layer above it).
   structurally ruled out** as an explanation for the residual — next
   candidates are `M200c`'s own measurement systematics or Girardi's
   own intrinsic scatter, not concentration modeling.
+  **`FINDING_P197` (same day)**: tested candidate 1 (mass-measurement
+  systematics) using HeCS-SZ's own second, independent mass column
+  (`MSZ`, Planck SZ). A real Δ=200-vs-Δ=500 bug was found and fixed
+  (`[VERIFIED-arXiv:1507.08289]`). Result: `M200c` and `MSZ` disagree
+  by a real, large, unexplained `2.5×` — and substituting `MSZ` moves
+  the downstream ratio closer to `1.0` (`1.4665→1.1710`) but **still
+  fails the pre-registered MCID band**, and the shift is mostly
+  explained by simple mass-rescaling arithmetic, not validated new
+  physics (a second skeptic pass caught this too). Candidate 1: real
+  effect, does not close the gap. Candidate 2 (Girardi's own intrinsic
+  scatter) is next.
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
