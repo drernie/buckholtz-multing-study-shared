@@ -93,6 +93,16 @@ this file is the slower-moving strategic layer above it).
   target — not certain, since that session's code no longer exists.
   **Not ready for TJB** — the corrected 1.47× residual is itself
   unexplained. See `CLAIM_P196`/`FINDING_P196`.
+  **`FINDING_P196_ADDENDUM` (same day)**: propagated Duffy et al.
+  (2008)'s own quoted concentration scatter (`σ(log₁₀c)=0.15`, Monte
+  Carlo, `N=2000`/cluster) through the shape-correction step — explains
+  essentially none of the residual (mean shift `=0.0000`, exactly as
+  predicted; `0.1%` of the `11.1%` scatter, vs a `30%` materiality
+  threshold). A clean null result, ruling out one specific candidate.
+  Remaining candidate, not yet tested: Duffy et al.'s own Fig. 4 shows
+  real X-ray-observed cluster concentrations run systematically
+  *higher* than their simulated median — a one-directional bias, not
+  scatter, which this check could not address.
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
