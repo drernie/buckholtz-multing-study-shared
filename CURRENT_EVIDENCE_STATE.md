@@ -167,6 +167,29 @@ this file is the slower-moving strategic layer above it).
   mass proxies routinely disagree at the `10-150%+` level), not a
   local bug or a MULTING-specific anomaly. Six candidate mechanisms
   now tested total across `P196`-`P201`; none closes the gap alone.
+- **New thread (same day), `experiments/20260906-evidence-authority/`,
+  `E1`-`E4`: TJB's own 2026-08-30 invitation to develop "de-conflating
+  evidence from authority" as an independent line (v82 §II.F cited as
+  one example — see project memory `project_tjb_evidence_authority_
+  invitation_20260830.md`).** `E1` found the topic is a mature,
+  decades-deep cosmology subfield (Visser's "cosmography," Clarkson/
+  Bassett/Lu FLRW-consistency tests, distance-duality-relation tests) —
+  not open ground. `E2` found a SECOND circularity, self-diagnosed by
+  TJB in his own Section IV.M: `H₀,anchor = ṡ₀/s₀`, an attempted
+  direct-data grounding gives `~11 km/s/Mpc` (implausible), because the
+  peculiar-velocity data used already assumes an `H₀` to subtract the
+  Hubble flow first — TJB's own words, "circular in the same sense" as
+  `r_X(z)`. `E3` tested whether TJB's own "not fixable" verdict on this
+  is too strong; a Step 8a skeptic pass found one real, scale-matched
+  structural exception (kSZ's velocity channel, real ACT-collaboration
+  data at `30-230 Mpc`, overlapping the needed scale) but showed it
+  relocates rather than removes the assumed-cosmology dependence — a
+  second candidate (redshift drift) was FALSIFIED as a counterexample
+  and withdrawn (wrong observable, wrong regime). `E4` completed the
+  Class I/II/III map of v82's inputs and found TJB's own THIRD named
+  limitation (`β₁`/`β₂` near-cancellation, v82 p.33) is not new ground
+  for this project — `P133`/`P176`/`P190`-`P194` already constitute a
+  substantial, tool-verified body of work on exactly this item.
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
