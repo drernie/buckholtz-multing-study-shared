@@ -46,6 +46,13 @@ this file is the slower-moving strategic layer above it).
   in `FINDING_P191` itself. Side finding: the (β1,β2) level-set slope
   peaks near z≈3 and *declines* thereafter — not monotonic, not simply
   saturating, as `CLAIM_P191`'s own outcome table had anticipated.
+- **P192: TJB's own real fitted (β1,β2) make H²(z) go negative
+  (mathematically undefined) at z≈16.957** — grid-converged (4
+  densities), straddle-confirmed, skeptic CONFIRMED-REAL. The
+  reconstructed model cannot even be evaluated past this boundary,
+  regardless of what question is being asked there — a standing
+  precondition for any future high-z work on this reconstruction, not
+  a one-off caveat.
 
 ## 2. What is refuted or weakened
 
@@ -94,7 +101,7 @@ this file is the slower-moving strategic layer above it).
 |---|---|---|---|
 | 1 | F→H_MULT(z) bridge | BLOCKED | z≥1 needs nonlinear-bias/N-body, not another analytic substitution |
 | 2 | Unique completion | Untouched, `docs/134` | — |
-| 3 | Absolute scale / observable mapping | STRUCTURALLY BLOCKED, but P191 shows a quantified, buildable path exists | A real high-z H(z) survey at z∈{3,5,7,10}, 1-10% precision (P191); or a 2nd Fisher-forecast at different z's (pearled, `pearl_registry` next_check 2026-12-01) — see §5 |
+| 3 | Absolute scale / observable mapping | STRUCTURALLY BLOCKED, quantified buildable path exists (P191) within a now-known domain limit (P192: z<16.957) | A real high-z H(z) survey at z∈{3,5,7,10}, 1-10% precision (P191); or a 3rd Fisher-forecast at z∈(10,17), the last window before the found boundary (pearled, `pearl_registry` next_check 2026-12-15) — see §5 |
 | 4 | IC-sensitivity | CLOSED (campaign exhausted, question genuinely open) | A genuinely new mechanism class, not a 6th variant of the 5 already excluded |
 
 ## 5. One next differentiating test
@@ -109,14 +116,25 @@ it shows the "in-principle openness" P190 found is practically
 buildable, and quantifies the cost/benefit as a function of assumed
 precision.
 
+**DONE 2026-09-05 (same day), with an explicit user go-ahead** —
+`FINDING_P192`. The requested second Fisher-forecast at z∈{20,30,50}
+was **TASK_INFEASIBLE as specified**: TJB's own real fitted (β1,β2)
+make `H²(z)` go negative (mathematically undefined) at z≈16.957 —
+grid-converged, straddle-confirmed, skeptic CONFIRMED-REAL. All three
+requested z sit past this boundary. Does not falsify P191's own pearl
+prediction (the test that would confirm/deny it was never constructible
+at these z) — it identifies a prior domain-of-validity constraint any
+future z-choice past P191's z≤10 must respect.
+
 **RECOMMENDED, NOT AUTHORIZED, next candidate** (same convention
 `docs/153` §3a uses for bottleneck 1 — being the best-scoped candidate
-is not pre-approval to run): a **second** Fisher-forecast using
-synthetic z's past the level-set slope's own peak found in P191
-(z∈{20,30,50} or similar, where the slope is declining steeply) —
-pearled, `pearl_registry/INDEX.md` next_check 2026-12-01. The P191
-machinery is already positive-controlled and reusable; this would only
-need a different `synth_zs` argument.
+is not pre-approval to run): a **third** Fisher-forecast using
+synthetic z in the last remaining well-defined window, `(10, 17)` —
+between P191's own z≤10 and P192's found boundary at z≈16.957 (e.g.
+z∈{12,14,16}) — pearled, `pearl_registry/INDEX.md` next_check
+2026-12-15. The P191/P192 machinery is already positive-controlled and
+reusable; this would only need a different `synth_zs` argument, already
+checked to stay within the domain of validity.
 
 ## 6. What cannot be claimed publicly right now
 
