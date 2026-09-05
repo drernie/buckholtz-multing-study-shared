@@ -1,5 +1,28 @@
 # docs/153 — Bottleneck 1 (F→H_MULT(z)) reopen gate decision
 
+**[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
+document's §3a explicitly required that "a future 'go' ... should
+answer these [pre-conditions] first, not treat this document's own
+framing as sufficient preparation." `docs/156` is that check, run after
+an explicit user go-ahead on 2026-09-05. Its finding: **this
+document's own §3 "finite-r/single-pair calculation," as literally
+worded, is not buildable** — this project's own S-S closure route has
+no finite-r closed form independent of v82 (a proven non-uniqueness
+lemma, `docs/126`, plus two independent prior BLOCKED/FALSIFIED
+attempts, `docs/124`/`docs/125`, all predating this document and not
+cited here). `docs/156` also found this document cited only
+`FINDING_P156` for its precondition-1 evidence, missing `FINDING_P157`/
+`P158` — written the same day as `P156`, already in the repository
+when this document was written the next day, and directly relevant.
+The mechanically-correct alternative those two files identify and
+build (Jensen's inequality on v82's own mass-derived scalar chain) is
+what this section's §3a actually licensed pursuing, and what
+`docs/156`→`FINDING_P195` continued. Read `docs/156` alongside this
+document, not as a replacement for it — this document's own reasoning
+(§0-§2, the restated bottleneck itself) stands unaffected; only §3's
+specific proposed next calculation and §3a's own citation completeness
+are corrected.
+
 **Date:** 2026-09-01
 **Origin:** explicit user request ("go" on the recommendation from
 `boyko-project-radar`'s atomize scan) to close the outstanding gate

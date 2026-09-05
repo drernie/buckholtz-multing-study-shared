@@ -64,6 +64,20 @@ this file is the slower-moving strategic layer above it).
   Two rounds of context-blind Step 8a skeptic review, both real issues
   found and fixed (a 100% unit-conversion bug; a methodological gap in
   the cross-validation's own scope).
+- **`docs/156` + `FINDING_P195` (bottleneck 1, causal-compatibility
+  sub-question)**: `docs/153`'s own §3a preconditions, checked against
+  pre-existing same-day prior work it did not cite, show its literal
+  "finite-r/single-pair calculation" is not buildable (`docs/126`'s
+  proven non-uniqueness lemma + two independent prior BLOCKED/
+  FALSIFIED attempts, `docs/124`/`docs/125`). The mechanically-correct
+  alternative (`FINDING_P157`'s Jensen's-inequality reframing,
+  `FINDING_P158`'s calculation, `ADDENDUM2`'s real halo-mass-function
+  grounding) gives a real result for `z≤0.5`: population-averaging
+  favors `F^(2)` over `F^(1)`, via a computed `ρ>0`. `FINDING_P195`
+  stress-tested that result's sensitivity to an arbitrary population-
+  floor choice — sign/threshold-robust, magnitude varies up to ~30×
+  across tested alternatives (Step 8a skeptic-caught, honestly reported
+  rather than smoothed into a bare "robust").
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
@@ -119,13 +133,33 @@ this file is the slower-moving strategic layer above it).
   The restated, still-open question: is this project's own isotropic-
   average Shtanov-Sahni closure compatible with v82's finite-r,
   single-pair construction? `docs/153` §3a names 3 preconditions; none
-  are resolved (4 attempts today, all REJECT/WEAKENED — see §2).
+  were resolved on 2026-09-01 (4 attempts that day, all REJECT/WEAKENED
+  — see §2).
+- **`docs/156` (2026-09-05) checked `docs/153`'s own §3a preconditions
+  against prior work `docs/153` itself did not cite** (`FINDING_P157`/
+  `P158`, same day as `FINDING_P156`, predating `docs/153`). Finding:
+  `docs/153`'s own literally-proposed "finite-r/single-pair calculation"
+  (comparing an intermediate quantity via v82's route AND this
+  project's own S-S closure route) is **not buildable** — the project's
+  own S-S closure route has no closed-form finite-r analog, independent
+  of v82, proven by `docs/126`'s own non-uniqueness-of-closure lemma
+  (no evolution law for `q_i=k_i r_i` exists in the corpus) and
+  confirmed by two prior independent attempts (`docs/124` FALSIFIED,
+  `docs/125` BLOCKED). The mechanically-correct alternative
+  `FINDING_P157` identified — Jensen's inequality on v82's own
+  mass-derived scalar chain — was already built (`P158`) and partly
+  literature-grounded (`ADDENDUM2`, real `ρ>0` for `z≤0.5`).
+  `FINDING_P195` (same day) then checked that `z≤0.5` result's own
+  sensitivity to an arbitrary population-floor choice: sign- and
+  threshold-robust (never approaches `P158`'s `ρ>−0.5` decision
+  boundary), but the magnitude varies up to ~30× across tested floor
+  choices — reported honestly, not smoothed over.
 
 ## 4. Four open bottlenecks (per `docs/147`)
 
 | # | Bottleneck | Status | What would move it |
 |---|---|---|---|
-| 1 | F→H_MULT(z) bridge | BLOCKED | z≥1 needs nonlinear-bias/N-body, not another analytic substitution |
+| 1 | F→H_MULT(z) bridge | BLOCKED (restated 2026-09-01, `docs/153`); `docs/153`'s own literal next-step disproven as buildable, `docs/156` (2026-09-05) — mechanically-correct alternative line (`P157`→`P158`→`ADDENDUM2`→`P195`) gives a real, narrow, `z≤0.5`-only, magnitude-uncertain result | `z≥1` (or `z≥1.07` on this alternative line) needs nonlinear-bias/N-body work, not another analytic substitution — same conclusion reached independently on two separate lines of attack |
 | 2 | Unique completion | Untouched, `docs/134` | — |
 | 3 | Absolute scale / observable mapping | STRUCTURALLY BLOCKED, quantified buildable path exists and CONFIRMED stronger further from baseline (P191→P193), within a known domain limit (P192: z<16.957); P194 mapped the full information profile across the window and found the "further is better" mechanism is entangled (not resolved) between 3 co-varying candidates | A real high-z H(z) survey — z∈{12,14,16} (P193) is competitive but not uniformly better than a denser greedy set (P194); precision-dependent — see §5 |
 | 4 | IC-sensitivity | CLOSED (campaign exhausted, question genuinely open) | A genuinely new mechanism class, not a 6th variant of the 5 already excluded |
@@ -176,6 +210,18 @@ uniquely a 1/H(z) boundary-singularity effect as a first fix suggested
 magnitude. P193's raw numbers are unaffected; the causal story behind
 them is now honestly qualified as entangled among ≥3 co-varying
 candidates, not resolved to one.
+
+**Bottleneck 1, separate line — DONE 2026-09-05, with an explicit user
+go-ahead** ("начни финитно-r/single-pair расчёт по docs/153 итд
+автономно"), reinterpreted per `docs/156`'s own precondition check —
+`docs/156` + `FINDING_P195`. `docs/153`'s literal proposed calculation
+is not buildable; the mechanically-correct alternative line
+(`P157`→`P158`→`ADDENDUM2`→`P195`) gives a real, sign-robust,
+magnitude-uncertain `z≤0.5`-only result. **RECOMMENDED, NOT AUTHORIZED,
+next candidate for this line**: extending trustworthy `ρ` coverage to
+`z≥1.07` would require nonlinear halo-bias or direct N-body pair
+statistics — a materially larger, more specialized undertaking than
+anything attempted so far on this line, not a quick follow-up.
 
 **RECOMMENDED, NOT AUTHORIZED, next candidate**: none named yet for
 bottleneck 3 — P191→P194 has mapped the buildable path and its
