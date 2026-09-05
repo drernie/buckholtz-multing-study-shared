@@ -137,6 +137,36 @@ this file is the slower-moving strategic layer above it).
   independent confirmation. **Both named candidates (1 and 2) are now
   tested: each real, neither sufficient alone. The `1.47×` residual
   remains substantially unexplained.**
+  **5-step autonomous follow-up (same day, explicit go-ahead: "го все
+  по очереди автономно"), `P199`-`P202`:** `FINDING_P199` (Gate 1/2
+  provenance re-check) confirmed the `Δ=500` target is genuinely
+  grounded in v82's own text (not a handoff misattribution), and found
+  TJB's own paper already self-flags this radius construction as
+  "Class III, circular... the most serious residual dependence."
+  `FINDING_P200` (literature search) found a real, same-research-group,
+  quantified caustic-mass sparse-sampling bias (Logan et al. 2022,
+  `M_X/M_C=1.12` best case) — directionally consistent, direct
+  within-dataset test `BLOCKED-INFRASTRUCTURE` (no real galaxy-count
+  column available). `FINDING_P201` — a genuinely new hypothesis found
+  by connecting two prior findings — tested real X-ray concentration in
+  `P197`'s own `MSZ→M200` conversion step: real, mechanistically
+  confirmed, MCID-crossing for one of two sources (Schmidt&Allen+07,
+  robust to a skeptic-identified extrapolation confound, re-tested on a
+  restricted sub-sample), but a second, more consequential skeptic
+  finding shows scatter (`74.5%`, dominant component of the residual)
+  is **structurally invariant** to any population-mean concentration
+  correction — such corrections can only ever move a mean, never touch
+  per-cluster scatter. `FINDING_P202` (synthesis: claim-decomposer +
+  macro-locality applied to `P196`-`P201`'s accumulated evidence)
+  concludes **`PART-OF-MACROSYSTEM`**: four independent, non-MULTING
+  cluster mass/radius/concentration proxy comparisons this project
+  produced (caustic-vs-SZ `2.5×`, caustic-vs-hydrostatic `1.12×`,
+  concentration-source choice `15-32%`, Girardi-vs-NFW `1.47×` itself)
+  all disagree by comparable, real amounts — the residual is best read
+  as an instance of a well-documented, field-wide phenomenon (cluster
+  mass proxies routinely disagree at the `10-150%+` level), not a
+  local bug or a MULTING-specific anomaly. Six candidate mechanisms
+  now tested total across `P196`-`P201`; none closes the gap alone.
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
