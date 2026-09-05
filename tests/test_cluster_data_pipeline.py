@@ -282,8 +282,17 @@ class TestStep5Hz:
     def test_live_fetch_used_when_available(
         self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
     ) -> None:
+        # WHY this fixture is comma-separated: the upstream file this step fetches
+        # (gitlab.com/mmoresco/CCcovariance, data/HzTable_MM_BC03.dat) is CSV, verified
+        # by fetching it directly 2026-09-06. The previous fixture used whitespace,
+        # matching a path (data/CC_Hubble.dat) that now 404s -- so the old fixture
+        # asserted a format that does not exist at the live URL. Assertions unchanged.
         class _FakeResponse:
-            text = "# header comment\n0.10 70.0 5.0\n0.20 75.0 6.0\n"
+            text = (
+                "# z,Hz,errHz,stat,met,reference\n"
+                "0.10,70.0,5.0,4.0,3.0,Moresco et al. (2012)\n"
+                "0.20,75.0,6.0,5.0,3.3,Moresco et al. (2012)\n"
+            )
 
             def raise_for_status(self) -> None:
                 return None
@@ -294,6 +303,42 @@ class TestStep5Hz:
         assert len(df) == 2  # only the 2 real data lines, comment skipped
         assert df.iloc[0]["z"] == pytest.approx(0.10)
         assert df.iloc[1]["Hz_km_s_Mpc"] == pytest.approx(75.0)
+
+    def test_whitespace_payload_is_not_silently_accepted(
+        self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """A payload in the OLD whitespace format must not parse into garbage --
+        it must fall back to the hardcoded table. Guards the exact failure mode
+        found 2026-09-06: a dead URL whose error was swallowed, leaving the
+        fallback running while the logs claimed a live fetch."""
+
+        class _FakeResponse:
+            text = "# header comment\n0.10 70.0 5.0\n0.20 75.0 6.0\n"
+
+            def raise_for_status(self) -> None:
+                return None
+
+        monkeypatch.setattr("requests.get", lambda *a, **k: _FakeResponse())
+        df = step5_hz(tmp_path)
+
+        assert len(df) == len(cdp._HZ_CC_DATA)
+        assert df["Hz_km_s_Mpc"].max() > 100.0  # real table spans to z~2, not a 2-row stub
+
+    def test_sigma_column_is_flagged_as_excluding_sps_systematic(
+        self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """sigma_Hz is sqrt(stat^2 + met^2) upstream -- it does NOT include the
+        stellar-population-synthesis modelling systematic (Moresco+2020, mean 8.91%
+        of H, fully correlated across bins). The flag exists so a downstream chi^2
+        cannot treat this column as the full uncertainty without noticing."""
+
+        def _raise_get(*a: object, **k: object) -> object:
+            raise ConnectionError("offline")
+
+        monkeypatch.setattr("requests.get", _raise_get)
+        df = step5_hz(tmp_path)
+
+        assert (df["sigma_excludes_sps_systematic"]).all()
 
 
 class TestMain:

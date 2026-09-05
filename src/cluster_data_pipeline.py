@@ -376,7 +376,14 @@ def step5_hz(data_dir: Path) -> pd.DataFrame:
     try:
         import requests  # type: ignore[import]
 
-        url = "https://gitlab.com/mmoresco/CCcovariance/-/raw/master/data/CC_Hubble.dat"
+        # WHY: the previous path (data/CC_Hubble.dat) has been returning HTTP 404
+        # since at least 2026-09-06 -- raise_for_status() swallowed it and the
+        # hardcoded fallback below was silently what actually ran. The repository's
+        # real tables are HzTable_MM_BC03.dat / HzTable_MM_M11.dat, comma-separated,
+        # NOT whitespace-separated as the old parser assumed. BC03 is chosen to match
+        # the Moresco+2022 compilation this pipeline reports as its source; switching
+        # to M11 shifts H(z) by a uniform ~+6.8% (see FINDING_E5).
+        url = "https://gitlab.com/mmoresco/CCcovariance/-/raw/master/data/HzTable_MM_BC03.dat"
         resp = requests.get(url, timeout=10)
         resp.raise_for_status()
         rows = []
@@ -384,7 +391,7 @@ def step5_hz(data_dir: Path) -> pd.DataFrame:
             line = line.strip()
             if not line or line.startswith("#"):
                 continue
-            parts = line.split()
+            parts = line.split(",")
             if len(parts) >= 3:
                 rows.append((float(parts[0]), float(parts[1]), float(parts[2])))
         if rows:
@@ -399,7 +406,16 @@ def step5_hz(data_dir: Path) -> pd.DataFrame:
 
     df_hz["source"] = "Moresco+2022_arXiv:2201.07241"
     df_hz["method"] = "cosmic_chronometer"
+    # WHY: True means specifically "does not assume an expansion history" -- the CC
+    # method measures differential galaxy ages, so no FLRW/Friedmann input enters.
+    # It does NOT mean assumption-free: the same measurements carry a ~6.8% uniform
+    # systematic from the stellar-population-synthesis model choice alone, and
+    # Moresco+2020's modelling covariance (mean 8.91% of H, fully correlated across
+    # redshift bins) is NOT in the sigma_Hz column above -- that column is
+    # sqrt(stat^2 + met^2) only. Anything doing chi^2 with sigma_Hz alone is
+    # under-quoting model uncertainty. See FINDING_E5.
     df_hz["FLRW_independent"] = True
+    df_hz["sigma_excludes_sps_systematic"] = True
     out = data_dir / "hz_cc.csv"
     df_hz.to_csv(out, index=False)
     log.info(f"  → saved to {out.name}")
