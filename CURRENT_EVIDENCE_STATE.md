@@ -53,6 +53,17 @@ this file is the slower-moving strategic layer above it).
   regardless of what question is being asked there — a standing
   precondition for any future high-z work on this reconstruction, not
   a one-off caveat.
+- **P193: the P191 pearl's own prediction is CONFIRMED** — z∈{12,14,16}
+  gives up to **5.4× more** shrinkage than P191's own z∈{3,5,7,10} at
+  matched precision (72.87% vs 13.6% at σ=10%, both finite-difference,
+  apples-to-apples). Separate real methodological finding: standard
+  finite-difference Hessian computation (this project's default since
+  P176) does not converge at σ∈{1%,3%} this close to P192's found
+  boundary — resolved with an independent analytic Fisher matrix,
+  cross-validated at 0.1% agreement in the one case both methods reach.
+  Two rounds of context-blind Step 8a skeptic review, both real issues
+  found and fixed (a 100% unit-conversion bug; a methodological gap in
+  the cross-validation's own scope).
 
 ## 2. What is refuted or weakened
 
@@ -101,7 +112,7 @@ this file is the slower-moving strategic layer above it).
 |---|---|---|---|
 | 1 | F→H_MULT(z) bridge | BLOCKED | z≥1 needs nonlinear-bias/N-body, not another analytic substitution |
 | 2 | Unique completion | Untouched, `docs/134` | — |
-| 3 | Absolute scale / observable mapping | STRUCTURALLY BLOCKED, quantified buildable path exists (P191) within a now-known domain limit (P192: z<16.957) | A real high-z H(z) survey at z∈{3,5,7,10}, 1-10% precision (P191); or a 3rd Fisher-forecast at z∈(10,17), the last window before the found boundary (pearled, `pearl_registry` next_check 2026-12-15) — see §5 |
+| 3 | Absolute scale / observable mapping | STRUCTURALLY BLOCKED, quantified buildable path exists and CONFIRMED stronger further from baseline (P191→P193), within a known domain limit (P192: z<16.957) | A real high-z H(z) survey — z∈{12,14,16} (P193, best confirmed) or z∈{3,5,7,10} (P191) at 1-10% precision — see §5 |
 | 4 | IC-sensitivity | CLOSED (campaign exhausted, question genuinely open) | A genuinely new mechanism class, not a 6th variant of the 5 already excluded |
 
 ## 5. One next differentiating test
@@ -126,15 +137,22 @@ prediction (the test that would confirm/deny it was never constructible
 at these z) — it identifies a prior domain-of-validity constraint any
 future z-choice past P191's z≤10 must respect.
 
-**RECOMMENDED, NOT AUTHORIZED, next candidate** (same convention
-`docs/153` §3a uses for bottleneck 1 — being the best-scoped candidate
-is not pre-approval to run): a **third** Fisher-forecast using
-synthetic z in the last remaining well-defined window, `(10, 17)` —
-between P191's own z≤10 and P192's found boundary at z≈16.957 (e.g.
-z∈{12,14,16}) — pearled, `pearl_registry/INDEX.md` next_check
-2026-12-15. The P191/P192 machinery is already positive-controlled and
-reusable; this would only need a different `synth_zs` argument, already
-checked to stay within the domain of validity.
+**DONE 2026-09-05 (same day), with an explicit user go-ahead** —
+`FINDING_P193`. z∈{12,14,16} gives up to 5.4× more shrinkage than
+P191's own z∈{3,5,7,10} at matched precision — the P191 pearl's own
+prediction CONFIRMED, more strongly than its own wording required.
+Surfaced a real, separate methodological finding along the way:
+standard finite-difference Hessian computation does not converge at
+σ∈{1%,3%} this close to P192's found boundary — resolved with an
+independent analytic Fisher matrix, itself cross-validated to <0.15%
+agreement wherever finite-difference converges.
+
+**RECOMMENDED, NOT AUTHORIZED, next candidate**: a fourth Fisher-
+forecast scanning the full `(10, 17)` window more densely (not just 3
+points), or applying the now-available analytic Fisher matrix as the
+default method near any future domain boundary — pearled,
+`pearl_registry/INDEX.md` next_check 2026-12-15 (methodological
+finding) and the confirmed-pearl row (physics finding, same date).
 
 ## 6. What cannot be claimed publicly right now
 
