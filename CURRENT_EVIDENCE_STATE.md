@@ -124,8 +124,19 @@ this file is the slower-moving strategic layer above it).
   fails the pre-registered MCID band**, and the shift is mostly
   explained by simple mass-rescaling arithmetic, not validated new
   physics (a second skeptic pass caught this too). Candidate 1: real
-  effect, does not close the gap. Candidate 2 (Girardi's own intrinsic
-  scatter) is next.
+  effect, does not close the gap.
+  **`FINDING_P198` (same day)**: tested candidate 2 (Girardi's own
+  internal `R_c` inconsistency — their published formula used an
+  earlier paper's `R_c=0.17 h⁻¹Mpc`, while their own improved
+  centering method, same 1998 paper §4.3, finds `R_c=0.05`). Result:
+  real `~14%` shift (`ratio_2b` `1.4665→1.2587`), still outside the
+  MCID band. A skeptic pass found this substitution is a `~3.3×`
+  extrapolation beyond where the underlying formula was calibrated,
+  and that the 123-cluster re-run is arithmetically predetermined by
+  the single coefficient ratio — reframed honestly, not presented as
+  independent confirmation. **Both named candidates (1 and 2) are now
+  tested: each real, neither sufficient alone. The `1.47×` residual
+  remains substantially unexplained.**
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
