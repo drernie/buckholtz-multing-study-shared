@@ -103,6 +103,18 @@ this file is the slower-moving strategic layer above it).
   real X-ray-observed cluster concentrations run systematically
   *higher* than their simulated median — a one-directional bias, not
   scatter, which this check could not address.
+  **`FINDING_P196_ADDENDUM2` (same day)**: substituted two real
+  X-ray-measured concentration relations (Buote et al. 2007, Schmidt &
+  Allen 2007) for Duffy et al.'s simulated median — both confirm the
+  documented direction (real `c` runs 2-3.4× higher), but the final
+  ratio barely moves (`1.4665→1.4703→1.4747`, `<0.6%`). A Step 8a
+  skeptic pass found the mechanistic reason: `P196`'s own `ratio_2b`
+  formula algebraically cancels `R500` entirely, reducing to
+  `r_vir_2a/R178` — no concentration source could have moved it much,
+  by construction. **Concentration (scatter and source) is now
+  structurally ruled out** as an explanation for the residual — next
+  candidates are `M200c`'s own measurement systematics or Girardi's
+  own intrinsic scatter, not concentration modeling.
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
