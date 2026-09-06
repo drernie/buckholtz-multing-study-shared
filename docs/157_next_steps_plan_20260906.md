@@ -155,6 +155,30 @@ reinforcing `P202`'s qualitative macro verdict without the disqualified
 mechanism-specific sub-rule. `FINDING_P202_ADDENDUM_proxy_disagreement_
 meta_analysis.md`.
 
-**Only remaining named items:** the two open sub-items inside `E17`
-(`σ`-sensitivity sweep; exclusion-fraction decomposition) and the TJB
-reply draft's send decision (separately gated).
+**Only remaining named item:** the TJB reply draft's send decision
+(separately gated).
+
+## 2026-09-06, later still same day — `E17`'s own 2 open items closed
+
+**`σ`-sensitivity sweep:** MATERIAL — `Addendum 2`'s own `~1.82×`
+divergence headline is real but `σ(log10 c)`-sensitive (`29.8%`/`22.9%`
+shift at `z=2.33`/`2.00` on a defensible `±0.05` dex bracket, not just
+an extreme endpoint). No single divergence number is trustworthy going
+forward, only a range. A better real `σ` value was searched for (Dutton
+& Macciò 2014) and `SOURCE_NOT_FOUND` — only a different quantity (Einasto
+shape scatter) was quoted, not NFW concentration scatter.
+
+**Exclusion-fraction decomposition:** not material — the `1.401×`
+Duffy→Correa-III shrinkage is stable to `<0.1%` (5-seed noise ceiling
+`0.08%`) regardless of lower-c-tail truncation aggressiveness. Getting
+here required a real, disclosed self-correction: the original exclude-
+vs-clip design hit a genuine mathematical singularity in Correa's own
+formula (confirmed by running it, not assumed) and was replaced with a
+percentile-cut method — which Step 8a skeptic then also corrected (the
+"matched rate" framing overclaimed what percentile truncation actually
+equalises). `FINDING_E17_ADDENDUM3_sigma_sweep_and_exclusion_
+decomposition.md`.
+
+**Only remaining named item, project-wide:** the TJB reply draft's send
+decision (separately gated, never covered by a general autonomy
+instruction).
