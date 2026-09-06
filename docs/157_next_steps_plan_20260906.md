@@ -128,7 +128,33 @@ this thread (`σ`-sensitivity sweep; exclusion-fraction decomposition) —
 named, not attempted.
 
 **What's actually left, if anyone picks any of it up:** (a) the two
-items just named inside the `E17` thread; (b) bottleneck-1 `ρ` coverage
-to `z≥1.07` (`docs/156`→`P195`); (c) `P202`'s cluster-proxy
-meta-analysis; (d) the TJB reply draft's send decision. None authorized
-without a fresh explicit go-ahead.
+items just named inside the `E17` thread; (b) the TJB reply draft's
+send decision. None authorized without a fresh explicit go-ahead.
+
+## 2026-09-06, later same day — items (b)/(c) from the prior list closed
+
+**Bottleneck-1 `ρ` coverage to `z≥1.07`:** bounded real literature
+search (2 arXiv queries, 12 results, Tinker et al. 2010's own abstract
+read) found no validated nonlinear/high-peak-height halo-bias extension
+covering `ν=10.6-50` (v82's own 4 high-z target points). `SOURCE_NOT_
+FOUND`, with an explicit physical reason (exponential rarity of
+high-`ν` peaks vs. finite N-body simulation volume) — a legitimate null
+result per this project's own standing rule ("a null literature search
+can be a strong result if there's an explicit physical reason for the
+absence"). Genuinely still blocked, consistent with `docs/156`'s own
+2026-09-05 assessment, not contradicting it.
+`FINDING_P195_ADDENDUM_high_z_bias_literature_search.md`.
+
+**`P202`'s own named cluster-proxy meta-analysis:** done, corrected
+after Step 8a skeptic. First-draft formal statistical comparison was
+`WEAKENED` on 5 real grounds (all accepted); corrected, narrower
+statement survives: `P197`'s own `2.5×`/`74.5%` caustic-vs-SZ
+disagreement sits well outside the `4-26%` bias / `~12%` scatter range
+spanned by real, independent, published WL-vs-X-ray comparisons —
+reinforcing `P202`'s qualitative macro verdict without the disqualified
+mechanism-specific sub-rule. `FINDING_P202_ADDENDUM_proxy_disagreement_
+meta_analysis.md`.
+
+**Only remaining named items:** the two open sub-items inside `E17`
+(`σ`-sensitivity sweep; exclusion-fraction decomposition) and the TJB
+reply draft's send decision (separately gated).
