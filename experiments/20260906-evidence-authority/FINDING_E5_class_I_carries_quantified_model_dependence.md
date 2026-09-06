@@ -149,6 +149,10 @@ roughly the size of the point errors themselves.**
    is not, and it cuts both ways rather than favouring either model.
 2. Does not establish that our own `P191`-`P194` Fisher forecasts
    (which assumed `σ=10%`) change materially — flagged, not rerun.
+   **→ Partially addressed same day by `FINDING_E8`:** the baseline
+   degeneracy those forecasts were measured against is `4-7.6×` more
+   severe under this covariance; the forecasts themselves are still not
+   rerun.
 3. **Does not show the CC community is hiding anything** — the opposite.
    Every number here is theirs, published, and this project found it by
    reading their own repository. The finding is "use the covariance

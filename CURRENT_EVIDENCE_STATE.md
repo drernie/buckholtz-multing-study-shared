@@ -190,6 +190,28 @@ this file is the slower-moving strategic layer above it).
   limitation (`β₁`/`β₂` near-cancellation, v82 p.33) is not new ground
   for this project — `P133`/`P176`/`P190`-`P194` already constitute a
   substantial, tool-verified body of work on exactly this item.
+  **`E5`-`E8` (same day, second option set):** `E5` measured that
+  switching only the stellar-population model on Moresco's own two
+  published tables shifts CC `H(z)` by a uniform `+6.80%` (12/15 points,
+  spread `0.99` pp) — inside the community's own `8.91%` modelling
+  budget, which is `100%` correlated across bins and NOT in `errHz`;
+  neither v82 nor this project used it. **`E8` propagated that
+  covariance through `P176`: the `(β₁,β₂)` small eigenvalue drops
+  `4.0-7.6×` while the large one drops `9%` — `P190`'s degeneracy
+  DIRECTION stands (`+0.6%`), its SEVERITY was understated `4-8×`;
+  `P191`-`P194`'s forecasts sit on a baseline that optimistic (rerun
+  named, not done).** The `21.2` χ² gap vs fixed Planck ΛCDM is
+  `+22.03` from SH0ES alone, `−0.76` from the 31 CC points — quantifying
+  v82's own reading. A sign flip vs free ΛCDM fired, survived
+  re-optimisation, then was **demoted by the skeptic's kill test**: on
+  Moresco's own 15 points MULTING keeps `+1.2`; the flip needs the 16
+  non-Moresco points, which disagree with his 15. Robust statement:
+  `|Δχ²| ∈ [−1.3, +2.6]` on `15-31` dof — **no discrimination between
+  MULTING and free ΛCDM in either direction.** `E6`-`E7`: two-field
+  classification (avoided/incurred), 3 external examples, one exact
+  cross-domain match (LLM-as-judge); novelty check found the framework
+  is NOT new (theory-ladenness, Doboszewski & Elder 2025) — only the
+  `+6.8%` measurement is ours.
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
