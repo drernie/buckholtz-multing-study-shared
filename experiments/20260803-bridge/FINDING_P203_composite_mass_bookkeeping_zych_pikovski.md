@@ -200,14 +200,89 @@ kinetic internal energy's own coupling unaddressed. Confirming that
 requires actually reading Racine–Flanagan and/or Kopeikin's derivations
 — a real, scoped next step, not attempted here.
 
+## Addendum 2 (2026-09-07) — Racine & Flanagan read IN FULL:
+## scope-limit #1 is CLOSED, and the requirement on MULTING is now
+## much sharper than "new physics needed"
+
+`[VERIFIED-arXiv: gr-qc/0404101v3 read in full, 256,514/256,514
+characters]`. This is the mutual N-body case, done properly: explicit
+post-1-Newtonian translational equations of motion for `N`
+**mutually-interacting, arbitrarily-structured** bodies, with coupling
+to **all** mass and current multipole moments, valid for arbitrarily
+strong internal gravity (black holes not excluded).
+
+**Four findings, in ascending order of consequence for MULTING:**
+
+1. **Internal energy is inside the mass multipoles, explicitly.** The
+   post-Newtonian mass moment is defined (Eq. 63) as
+   `pn_M_L = ∫ {[pn_T⁰⁰ + n_T^jj + ...] x^<L> - ...} d³x`. The
+   `n_T^jj` term is the trace of the spatial stress tensor — i.e.
+   **pressure and internal kinetic (thermal) energy**. So thermal
+   energy enters exactly where Zych–Rudnicki–Pikovski's single-body
+   result says it should: inside `M`, at PN order. Same one channel,
+   now confirmed in the mutual case.
+2. **The equations of motion close on the multipoles and nothing
+   else.** Eq. (7a), made explicit in Eq. (198):
+   `z̈^A_i = F^A_i[z^B, ż^B, M^B_L, Ṁ^B_L, M̈^B_L, S^B_L, Ṡ^B_L]`.
+   No other property of a body's interior appears anywhere. The stated
+   organizing idea (§I.2): *"the equations of motion are determined
+   entirely by the local field equations in weak field regions between
+   the bodies"* — each body is surrounded by a vacuum **buffer
+   region**, and everything about it that can reach the others is
+   encoded in that region's multipole expansion.
+3. **There is no mass dipole at all.** `n_M^A_i = pn_M^A_i = 0`
+   identically (Eqs. 82, 87, 150), by the mass-centering gauge that
+   defines the centre-of-mass worldline. Mass corrections start at
+   `l=2`; the schematic force expansion (Eq. 1) is
+   `F ~ (M²/D²){1 + O(M/D) + O(M²/D²) + ... + O[(R/D)^l] + ...}` with
+   minimum `l=2` for Newtonian tidal coupling (`l=1/2` post-Newtonian,
+   from gravitomagnetic spin-orbit). Truncating to monopoles recovers
+   the Lorentz–Droste–Einstein–Infeld–Hoffmann equations.
+4. **The decisive one — the theorem does not assume GR inside the
+   bodies.** Footnote to Eq. (111), quoted verbatim: *"a different
+   theory of gravity could be applicable in the strong field region
+   `r<r_-`, with the correction to the field equations being
+   incorporated into the definition of `T^μν`. **Our application of the
+   conservation law (111) to derive the equation of motion (104b) will
+   therefore apply to any theory of gravity for which the vacuum field
+   equations coincide with those of general relativity.**"*
+
+**What (4) does to the question this FINDING was asking.** The
+requirement on a `k_A`-sourced `F^(1)~k_A r_A/s³` term is no longer
+the vague "MULTING needs some new mechanism." It is specific: **such a
+term requires modifying the VACUUM field equations in the region
+BETWEEN the clusters** — modifying the internal physics of clusters is
+provably not enough. If v82's vacuum equations agree with GR's, then
+Racine–Flanagan applies verbatim to its own node pairs, and the mutual
+force is exhausted by the multipole moments, inside which the thermal
+energy already sits as part of `M`. That is a sharp, checkable
+condition, and checking it is a question about v82's own construction
+rather than about the literature.
+
+**Honest limits of this addendum:**
+- Post-1-Newtonian. That is not a problem for the target regime —
+  cluster compactness `GM/Rc² ~ 10⁻⁵`-`10⁻⁶` (this project's own
+  `FINDING_P172` number) and `v/c ~ 10⁻³` sit comfortably inside PN
+  validity — but it does mean nothing here constrains post-2-Newtonian
+  and higher terms.
+- Requires non-intersecting buffer regions and multipole convergence,
+  i.e. `R/D < 1`. For v82's own node pairs (`R` a few Mpc, `D~40-45`
+  Mpc) this holds with room to spare, but it is an assumption, not a
+  theorem-free statement.
+- Says nothing about theories that DO modify the vacuum equations —
+  by construction, that is exactly the escape hatch it identifies.
+- **NOT CHECKED:** whether v82 in fact modifies its vacuum field
+  equations. That is the next step, it is cheap, and it is a question
+  about v82's own text — not about this literature. `NO_AUTHOR_ERROR`
+  applies throughout: nothing here is a claim that v82 is wrong.
+
 ## Pearl Registry / next step
 
-The two-body/mutual generalization this FINDING originally flagged as
-unexamined **does exist** (DSX/Racine-Flanagan/Kopeikin/effacing-
-principle line, above) — the open step is now narrower: read at least
-one of these derivations (Racine & Flanagan, `gr-qc/0404101`, is the
-most directly relevant — explicit equations of motion, extends DSX to
-strongly self-gravitating bodies) to confirm whether THERMAL/KINETIC
-internal energy specifically (not just geometric shape multipoles)
-gets the same single-channel treatment there, closing this FINDING's
-own scope-limit #1.
+Scope-limit #1 is closed. The single, cheap, well-posed next step is
+now: **read v82's own construction to determine whether it modifies
+the vacuum field equations between node pairs, or only the physics
+inside/at the nodes.** Racine–Flanagan's own universality footnote
+makes that binary the whole question — if the vacuum sector is GR,
+the `k_A`-sourced separate channel has no room in the mutual dynamics
+at post-1-Newtonian order; if it is not GR, the theorem is silent and
+the term is unconstrained by any of this.
