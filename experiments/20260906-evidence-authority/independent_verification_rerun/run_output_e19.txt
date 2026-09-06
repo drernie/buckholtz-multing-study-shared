@@ -1,0 +1,87 @@
+======================================================================
+PART 1: single test point (no fitting)
+======================================================================
+beta_1 = 1.433500e+10, beta_2 = 7.806700e+17, H0_anchor = 73.22 km/s/Mpc
+z_test = 0.5
+
+  M(z)            = 7.637829e+44 kg
+  T(z)            = 3.325329e+00 keV
+  Mgas(z)         = 9.195815e+43 kg
+  k(z)            = 7.322805e+55 J
+  R(z)            = 2.902296e+22 m
+  d(z)            = 9.257033e+23 m
+  F0 (monopole)   = -4.543415e+31 N
+  F1 (dipole)     = -4.356584e+34 N
+  F2 (quadrupole) = -3.967546e+34 N
+  F_accretion     = 2.679688e+32 N
+  F_total         = 3.576983e+33 N
+  spec. accel term= 1.011824e-35 1/s^2
+  H(z=0.5)        = 89.724072 km/s/Mpc
+
+======================================================================
+PART 2: joint fit of beta_1, beta_2, H0_anchor (33 points)
+======================================================================
+  beta_1     = 1.433479e+10
+  beta_2     = 7.806760e+17
+  H0_anchor  = 73.2160 km/s/Mpc
+  chi2_33    = 15.7515
+  r_33       = 0.9659
+
+======================================================================
+PART 3: comparison to fitted_configurations.unconstrained_spotlighted
+======================================================================
+  quantity              my fit          stated
+  H0_anchor            73.2160         73.2200
+  chi2_33              15.7515         15.7500
+  r_33                  0.9659          0.9659
+PC1 [real, non-trivial] synthetic toy function's known minimum (z=0.15, H=70.0) recovered: PASS
+PC2 [TRIVIAL-BY-CONSTRUCTION] H(z_SHOES) recovers H0_anchor: PASS
+SC1 dH/dz changes sign exactly once over z in [1e-6,5] (no other minimum found): PASS
+RC1 [numerical convergence only, not physical validation] z_min stable across grid density: n=200 -> 0.09883, n=2000 -> 0.09883, n=20000 -> 0.09883: PASS
+
+====================================================================================================
+PART A -- independently-located H(z) minimum, both TJB Table II configurations
+====================================================================================================
+  unconstrained_spotlighted:
+    H0_anchor (z=0.0233)  = 73.2200 km/s/Mpc
+    minimum at z            = 0.09883
+    H_min                   = 72.3576 km/s/Mpc
+    H(z=0, today)           = 73.8471 km/s/Mpc
+    dip depth, absolute     = 1.4895 km/s/Mpc
+  sh0es_anchored_0pct:
+    H0_anchor (z=0.0233)  = 73.0400 km/s/Mpc
+    minimum at z            = 0.09631
+    H_min                   = 72.2358 km/s/Mpc
+    H(z=0, today)           = 73.6476 km/s/Mpc
+    dip depth, absolute     = 1.4118 km/s/Mpc
+
+====================================================================================================
+PART A2 -- direct comparison against TJB's own Claude session's claimed values
+(NOT attributed to either side's error without further checking -- see interpretation)
+====================================================================================================
+  unconstrained_spotlighted: project z_min=0.09883 vs TJB Claude z~0.086 -> +14.9% (project is HIGHER)
+  sh0es_anchored_0pct: project z_min=0.09631 vs TJB Claude's stated range [0.085,0.09] -> OUTSIDE (above)
+
+  Both configurations show the project's own z_min ABOVE TJB's Claude-session value/range -- a COHERENT, ONE-SIDED offset, not scattered in both directions. This is reported as an unresolved, one-sided discrepancy, not attributed to 'TJB's imprecision' -- candidate explanations on EITHER side (a coarser age-redshift conversion on TJB's Claude session's side vs an unverified definitional subtlety on this project's side) are both possible and neither is confirmed here.
+
+====================================================================================================
+PART B -- real CC data's own redshift coverage vs the found minimum location
+====================================================================================================
+  Lowest-z CC data point:  z=0.07, H=69.0+-19.6 km/s/Mpc
+  2nd-lowest-z CC point:   z=0.09, H=69.0+-12.0 km/s/Mpc
+  SH0ES anchor point:      z=0.0233 (below the CC data's own lowest z)
+
+  Found minimum location: z_min=0.0988
+  -> z_min (0.0988) sits just past the CC data's 2nd-lowest sampled point (z=0.09) -- technically inside the data's own min-max z range, but in a SPARSELY-SAMPLED interval between two individually noisy points, not on dense coverage. This is a weaker statement than 'well-constrained by data' -- it means 'not on a future-extrapolated curve,' nothing stronger. [Reworded per Step 8a skeptic point 3.]
+
+====================================================================================================
+PART C -- signal (absolute dip) vs real, quoted noise (absolute CC sigma) at nearby points
+[Fixed per Step 8a skeptic point 1: absolute km/s/Mpc ratio, not percentage-of-percentage]
+====================================================================================================
+  Dip depth, absolute:                1.490 km/s/Mpc
+  Real quoted sigma at nearest points: 19.6 km/s/Mpc (z=0.07), 12.0 km/s/Mpc (z=0.09)
+  Ratio (dip_abs / sigma_abs):        0.076x (vs lowest-z point), 0.124x (vs 2nd-lowest)
+
+  CAVEAT [per Step 8a skeptic point 2, not resolved here]: this compares the dip against RAW, individual CC point sigma -- NOT against the fit's own parameter-covariance-propagated uncertainty on H_min itself, which requires propagating beta1/beta2/H0_anchor's joint covariance through the nonlinear H(z) function (out of this experiment's scope). The fit's OWN uncertainty on H_min could in principle be TIGHTER than any single raw data point's own sigma (that is the general point of fitting many points jointly) -- so this ratio is a LOWER BOUND on how hard the dip would be to detect against the fit's own best uncertainty, not a final word. What IS established: measured against the actual, individual, quoted uncertainty of the two real data points nearest the claimed minimum, the dip is well below one sigma at both.
+
+  Also note [circularity caveat, per Step 8a skeptic point 6]: this project's own H_min value agrees closely with TJB's Claude session's claimed H_min (~72.4) largely because both evaluate the SAME closed-form MULTING H(z) formula with the SAME published beta values -- agreement on the VALUE at a roughly-known z is close to forced. The genuinely diagnostic quantity is z_min itself (Part A2), where the two do NOT agree.
