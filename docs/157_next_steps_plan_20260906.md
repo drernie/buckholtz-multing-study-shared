@@ -119,10 +119,16 @@ closed and should stay closed absent new input. Item 5 (the letter) is
 orthogonal to all of the above and can be decided independently at any
 time.
 
-**What's actually left, if anyone picks any of it up:** (a) a
-cluster-scale-calibrated concentration-mass relation to replace
-`E17`'s Duffy-extrapolation at high `z` (named in the addendum, not
-attempted); (b) bottleneck-1 `ρ` coverage to `z≥1.07`
-(`docs/156`→`P195`); (c) `P202`'s cluster-proxy meta-analysis; (d) the
-TJB reply draft's send decision. None authorized without a fresh
-explicit go-ahead.
+**Item (a) is also now DONE — `FINDING_E17_ADDENDUM2`.** Correa+2015
+Paper III's own cluster-valid concentration-mass relation replaces the
+Duffy extrapolation; the offset divergence shrinks from `~5×` to `~1.8×`
+(a 2nd Step 8a skeptic pass caught and fixed a real arithmetic error in
+the first correction attempt). Two items remain explicitly open within
+this thread (`σ`-sensitivity sweep; exclusion-fraction decomposition) —
+named, not attempted.
+
+**What's actually left, if anyone picks any of it up:** (a) the two
+items just named inside the `E17` thread; (b) bottleneck-1 `ρ` coverage
+to `z≥1.07` (`docs/156`→`P195`); (c) `P202`'s cluster-proxy
+meta-analysis; (d) the TJB reply draft's send decision. None authorized
+without a fresh explicit go-ahead.

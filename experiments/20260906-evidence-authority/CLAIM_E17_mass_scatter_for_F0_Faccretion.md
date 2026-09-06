@@ -166,3 +166,54 @@ Correa's own model-comparison discussion) — exactly where the Jensen
 correction was found `MATERIAL`. Magnitudes at those two points carry
 more uncertainty than the Monte Carlo convergence check alone showed;
 direction and the `z≤0.25` points are less affected.
+
+## CLAIM ADDENDUM 2 — replace the Duffy+2008 extrapolation with a
+## cluster-range-valid concentration-mass model (pre-registered before code)
+
+**Date:** 2026-09-06. Continues the Addendum 1 finding above; explicit
+go-ahead given.
+
+**EstimandOps L0: Descriptive** — does using a concentration-mass
+relation that is not extrapolated beyond its own stated validity range
+change the magnitude of `E17`'s Jensen correction/offset at this
+project's own `M0=6.0×10^14 M_☉`?
+
+**Real source found:** Correa, Wyithe, Schaye & Duffy (2015), *"The
+accretion history of dark matter halos III: A physical model for the
+concentration-mass relation,"* `[VERIFIED-arXiv:1502.00391]` — Paper III
+of the SAME series `E17` already used (Paper II, `1501.04382`), same
+authors. Unlike Duffy et al. (2008)'s narrow power-law fit
+(`10^10-10^14 M_☉`), this is an EPS-theory-based semi-analytic model the
+authors state explicitly "can be applied to wide ranges in mass,
+redshift and cosmology" — no narrow fitted-range ceiling by
+construction. Their own Planck-cosmology fitting function (Section
+"Fitting functions for the c-M relation," valid `z≤4`, "at all halo
+masses"):
+```
+log10(c) = α + β·log10(M/M☉)·[1 + γ·(log10 M/M☉)²]
+α = 1.7543 − 0.2766(1+z) + 0.02039(1+z)²
+β = 0.2753 + 0.00351(1+z) − 0.3038(1+z)^0.0269
+γ = −0.01537 + 0.02102(1+z)^(−0.1475)
+```
+
+**Method:** replace ONLY `duffy2008_concentration_median` with this
+formula in `E17`'s own Monte Carlo — everything else (Correa Paper II's
+`z_{-2}`/`α`/`β`/`M(z)` chain, `SIGMA_LOG10_C200_DUFFY08=0.15` as the
+scatter WIDTH around the new median, `v82_M_ref`, `REAL_DATA_ZS`,
+`decompose_offset_and_jensen`) stays unchanged, isolating the effect of
+the median-relation choice specifically. Using Duffy's own scatter width
+around a different median is an explicit, stated simplification — this
+paper does not give an equally simple standalone `σ(log10 c)` scalar
+(its own scatter is tied into the same `z_{-2}`/MAH machinery Paper II
+already provides).
+
+**Pre-registered MCID:** MATERIAL if the Jensen correction or offset at
+`z=2.00` or `z=2.33` (Addendum 1's flagged points) shifts by `>20%`
+relative to `E17`'s original Duffy-extrapolated values.
+
+**Controls:** (1) zero-scatter identity check (same as `E17`'s own PC1);
+(2) `z=0` boundary (same as PC2); (3) plausibility check — the new
+`c(M,z)` formula must return a concentration in a physically sane range
+(`1<c<20`) at `E17`'s own `(M0,z)` points, since no external Fig-4 data
+point from the source paper was directly reproduced (a real, named,
+weaker control than a full reproduction — stated, not hidden).
