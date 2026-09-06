@@ -276,13 +276,80 @@ rather than about the literature.
   about v82's own text — not about this literature. `NO_AUTHOR_ERROR`
   applies throughout: nothing here is a claim that v82 is wrong.
 
+## Addendum 3 (2026-09-07) — the v82 vacuum-sector check: it does not
+## modify the vacuum field equations, because it states none at all
+
+`[VERIFIED-BASH]`, grep over `data/source_material/buckholtz_
+202608.0943v1.v82.md`:
+
+| term | hits | what they are |
+|---|---|---|
+| `vacuum` | **0** | — |
+| `field equation` | **1** | describes **ΛCDM**, not MULTING: *"ΛCDM's mathematical structure is Eulerian in character: a smooth energy-density field... sourcing a single metric via a global field equation solved everywhere at once."* |
+| `Poisson` | **0** | — |
+| `Lagrangian` | **1** | the **fluid-dynamics** sense (Lagrangian vs Eulerian description), not a field-theory Lagrangian: *"MULTING, by contrast, is Lagrangian in character: individually-identified nodes, each with its own trajectory, interacting through local, pairwise forces, in the same spirit as an N-body simulation."* |
+| `postulat` | 0 | — |
+
+And v82's own opening states its status directly: *"The Multi-tier
+Newtonian Gravity (MULTING) framework models cosmic expansion **not as
+a global space-time metric expansion**, but as a bottom-up,
+macroscopic **phenomenological force law** governing the relative
+kinematics of localized cosmic-web nodes."*
+
+**Verdict: the question as posed has no answer in v82's text, and that
+is itself the finding.** v82 neither modifies nor preserves the vacuum
+field equations — it specifies no vacuum sector at all, because it is
+by its own description a force law between discrete nodes rather than
+a metric theory.
+
+**Three consequences, kept separate:**
+
+1. **Racine–Flanagan's antecedent cannot be evaluated against v82 as
+   written.** The theorem requires the post-1-Newtonian *vacuum field
+   equations* to hold in the buffer regions between bodies. With no
+   vacuum sector specified, the theorem is neither satisfied nor
+   violated — it is **NOT-APPLICABLE-AS-WRITTEN**. Per this stack's
+   own third-outcome discipline (`falsification-ladder.md`, Steps
+   2a/2b), that is a distinct status and must not be recorded as
+   evidence either for or against the `F^(1)` term.
+2. **v82's own self-positioning points toward GR compatibility, but
+   does not assert it.** §IV.O: *"The patch-wise starting point this
+   suggests is not in tension with general relativity; it is built on
+   structure general relativity itself already guarantees. The
+   equivalence principle ensures only that spacetime looks locally
+   flat... it does not, by itself, determine how those local patches
+   must be stitched into a single global structure."* Read at face
+   value — local physics is GR's, only the global FLRW stitching is
+   declined — the inter-node vacuum would be GR's and Racine–Flanagan
+   would bite. But v82 does not say that, and it is not this project's
+   place to say it on its behalf (`NO_AUTHOR_ERROR`).
+3. **This explains, rather than adds to, the project's own history.**
+   `docs/123`'s covariant-completion search, `docs/131`'s
+   `CANDIDATE-L1`, `FINDING_P171`/`P172`'s residual branch — all of it
+   was an effort to *construct* precisely the object Racine–Flanagan
+   requires as input. The specification gap is not news; what is new
+   is knowing exactly why it is load-bearing.
+
+**The sharp, transferable consequence for the completion programme:**
+combining Racine–Flanagan's universality footnote with (1) above —
+**any covariant completion of MULTING that supplies a GR-matching
+vacuum sector between nodes cannot also retain a separately-sourced
+`F^(1)~k_A r_A/s³`**, because in that case the mutual force is
+exhausted by the multipole moments, inside which the thermal energy
+already sits as part of `M`. So a completion that keeps `F^(1)` must
+have a **non-GR vacuum sector between the nodes** — which is a new,
+independent constraint to set beside `docs/131`'s already-identified
+EP / ghost-freeness / staticity trilemma, and it is testable against
+any concrete completion proposal.
+
 ## Pearl Registry / next step
 
-Scope-limit #1 is closed. The single, cheap, well-posed next step is
-now: **read v82's own construction to determine whether it modifies
-the vacuum field equations between node pairs, or only the physics
-inside/at the nodes.** Racine–Flanagan's own universality footnote
-makes that binary the whole question — if the vacuum sector is GR,
-the `k_A`-sourced separate channel has no room in the mutual dynamics
-at post-1-Newtonian order; if it is not GR, the theorem is silent and
-the term is unconstrained by any of this.
+The v82 check is done; the open question moved one level up, from the
+paper to the completion programme. The next well-posed step is to take
+that new constraint — *a completion retaining `F^(1)` requires a
+non-GR vacuum sector* — and check it against the specific completion
+candidates this project has already examined (`docs/131`'s
+`CANDIDATE-L1`, and the Blanchet–Le Tiec-type constructions in
+`docs/123`), to see whether any of them was already implicitly
+choosing a non-GR vacuum sector without that being noticed at the
+time.
