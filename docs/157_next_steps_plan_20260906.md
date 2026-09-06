@@ -61,6 +61,16 @@ already-published fit's parameters change under a stated, real correction
 to one input's treatment," not a causal claim about MULTING's physics.
 
 ### 4. Unblock `E10` (second SNe-Ia example) via Taylor et al. 2023 SALT2/SALT3
+**Status: DONE 2026-09-06, `experiments/20260906-evidence-authority/
+FINDING_E10_ADDENDUM_taylor2023_unblocked.md`.** Turned out to need no
+reconstruction at all — Taylor+2023 already publishes the per-object
+comparison itself (308 common SNe Ia, DES-SN3YR). Real result:
+`Δw=+0.001±0.005`, per-object μ agree to `≈0.1` mag (binned average
+`≲0.01` mag), z-trend consistent with 0. This is ~2 orders of magnitude
+smaller than Kessler+2009's `Δw≈0.20` (MLCS2k2 vs SALT-II) — the
+fitter-choice risk shrank as the field converged on the SALT family.
+Pearl Registry entry added (methodology-convergence pattern).
+
 **EstimandOps L0:** Descriptive — comparing two published fitter outputs
 on the same objects, not a causal claim.
 **Status:** `BLOCKED` — VizieR's `DMe` column turned out not to be
