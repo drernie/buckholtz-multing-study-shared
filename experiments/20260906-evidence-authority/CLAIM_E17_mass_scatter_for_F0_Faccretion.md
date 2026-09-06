@@ -217,3 +217,67 @@ relative to `E17`'s original Duffy-extrapolated values.
 (`1<c<20`) at `E17`'s own `(M0,z)` points, since no external Fig-4 data
 point from the source paper was directly reproduced (a real, named,
 weaker control than a full reproduction — stated, not hidden).
+
+## CLAIM ADDENDUM 3 (2026-09-06, explicit go-ahead given)
+
+Closes the two caveats `FINDING_E17_ADDENDUM2` deliberately left open.
+
+**Part (a) — σ-sensitivity sweep.** `Addendum 2` kept Duffy et al.
+(2008)'s own `σ(log10 c)=0.15` scatter WIDTH even after replacing its
+MEDIAN with Correa Paper III's cluster-valid relation. Question: is the
+headline divergence figure (`~1.82×` at `z=2.33`) robust to that width
+choice? A real, better-sourced cluster-scale `σ(log10 c)` was searched
+for (Dutton & Macciò 2014, `arXiv:1402.7073`, Planck-cosmology NFW/
+Einasto fits spanning dwarf galaxies to clusters) — their own abstract
+quotes only a `0.2 dex` scatter in the Einasto SHAPE parameter, a
+different quantity, not a directly usable `σ(log10 c)` for NFW
+concentration. `SOURCE_NOT_FOUND` for a superior real replacement value
+— this stays a parametric sensitivity sweep (`σ∈{0.05,0.10,0.15,0.20,
+0.25,0.30}`, bracketing Duffy's own `0.15`), not a "correct value" swap.
+
+**Part (b) — exclusion-fraction decomposition.** `Addendum 2` reported
+the excluded-draw fraction changed `5.65%→1.02%` between Duffy and
+Correa-III medians, without checking whether this differential
+truncation itself drives part of the reported divergence shift. Method:
+compare the current "exclude" treatment (drop draws with unphysical
+`z_{-2}<0`) against a "clip" treatment (floor `z_{-2}` at `0`, the
+natural physical boundary — do not drop the draw), applied to the SAME
+random `c` draws for both Duffy and Correa-III sources, so the only
+thing that differs is the missing-data strategy, not the random sample.
+
+**Pre-registered MCID:**
+- (a) MATERIAL if the `z=2.33` divergence figure varies by `>20%`
+  (relative to the `σ=0.15` baseline) anywhere across the sweep.
+- (b) MATERIAL if the "old→new" (Duffy→Correa-III) divergence SHIFT
+  computed under "clip" differs by `>20%` (relative) from the same
+  shift computed under "exclude" — i.e., if the missing-data strategy
+  choice changes the headline conclusion.
+
+**Controls:** originally planned as a clip-treatment control at `σ=0`
+(exclude vs clip must agree with no scatter). **Superseded during
+execution** (documented in the script's own module docstring, not
+silently dropped): "clip" (floor `z_{-2}` at the physical boundary
+instead of dropping the draw) is not numerically viable — Correa's own
+`alpha` formula has a genuine mathematical singularity as `z_{-2}→0+`
+(confirmed by running both an exact-`0` clip and a `1e-6`-epsilon clip,
+both giving `NaN`). Replaced with a percentile-matched-truncation
+method instead (real control used: percentile truncation at a source's
+own natural exclusion rate must reproduce the direct physical cut to
+`<1%`, confirming `z_{-2}(c)` is monotonic in `c` — the basis for the
+corrected method).
+
+**Step 8a skeptic pass (2026-09-06), WEAKENED-then-fixed, 4 real points,
+none dismissed:** (1) the sweep's own `σ=0.05` bottom endpoint is not a
+physically defensible population scatter and the original "63% max
+shift" headline leaned on it — fixed by reporting the defensible `±0.05`
+dex bracket (`σ∈{0.10,0.20}`) as the primary MCID evidence instead;
+(2) the "forced to the other source's rate" framing in Part (b)
+overclaimed what percentile truncation at a different rate actually
+equalises (neither forced row equalises both sides' EFFECTIVE
+truncation) — relabelled to accurately describe lower-tail percentile-
+cut sensitivity, the underlying "not a truncation artefact" conclusion
+survives via this route; (3) no seed-variance check existed for Part
+(b)'s tiny reported shifts — added, 5 seeds, noise ceiling `0.08%`,
+confirming the near-zero shift is real, not MC noise; (4) only `z=2.33`
+was checked — `z=2.00` added, MCID confirmed MATERIAL there too
+(`22.9%` on the defensible bracket).
