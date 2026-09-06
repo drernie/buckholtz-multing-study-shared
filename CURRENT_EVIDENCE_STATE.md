@@ -211,7 +211,16 @@ this file is the slower-moving strategic layer above it).
   classification (avoided/incurred), 3 external examples, one exact
   cross-domain match (LLM-as-judge); novelty check found the framework
   is NOT new (theory-ladenness, Doboszewski & Elder 2025) — only the
-  `+6.8%` measurement is ours.
+  `+6.8%` measurement is ours. **`E9`:** `provenance_audit` run over
+  v82's full 10-input chain — `CIRCULAR=2` (both TJB's own diagnoses,
+  re-derived), `OUTSIDE_SIGMA=1` (CC), `UNQUANTIFIED=6`, clean `1`
+  (SH0ES, the input carrying the model gap). **`E10`:** the SNe-Ia
+  two-fitter example is `BLOCKED` on data — VizieR's `DMe` column is a
+  sample-combination modulus, not SALT-II (ReadMe + opposite `z`-trend
+  to Kessler's own mechanism), and no `m_B` exists to reconstruct it;
+  stays a citation (`w=−0.76` vs `−0.96`, Kessler+2009). The near-miss
+  (a wrong number with the right sign) was caught by reading the column
+  definition — same discipline that caught `E3` and `E5`.
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
