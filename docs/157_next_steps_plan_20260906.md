@@ -95,10 +95,15 @@ physics work above.
 ## Recommended priority, if any physics step is authorized next
 
 **Item 3 (E15 propagation) is DONE — see `FINDING_E16` above.** Its own
-Pearl Registry follow-up (measuring `M(z)`'s own population scatter, to
-check `F0`/`F_accretion`'s un-scoped Jensen corrections) is now the
-cheapest next item in that specific thread, if anyone picks it up. Item
-**4** (E10/Taylor) has unknown cost until the source is actually checked.
-Items 1/2 are closed and should stay closed absent new input. Item 5 (the
-letter) is orthogonal to all of the above and can be decided independently
-at any time.
+Pearl Registry follow-up (measuring `M(z)`'s own population scatter) is
+**also DONE — `FINDING_E17`**, same day, explicit go-ahead given. Took two
+Step 8a skeptic rounds (`FALSIFIED` then `WEAKENED`, both fixed in place):
+the Jensen correction for `F0`/`F_accretion` is real and MATERIAL at
+`z≥1`, but smaller than `F1,F2`'s own; a large, separate systematic
+offset between v82's own assumed `M(z)` law and a real MAH model was
+found as a side-effect and logged, un-validated against the source
+paper, as its own Pearl Registry Caveat Gate entry. Item **4** (E10/Taylor)
+has unknown cost until the source is actually checked. Items 1/2 are
+closed and should stay closed absent new input. Item 5 (the letter) is
+orthogonal to all of the above and can be decided independently at any
+time.
