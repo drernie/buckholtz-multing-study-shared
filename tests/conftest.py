@@ -22,8 +22,9 @@ import pytest
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 _BRIDGE_DIR = _REPO_ROOT / "experiments" / "20260803-bridge"
 _EVIDENCE_DIR = _REPO_ROOT / "experiments" / "20260906-evidence-authority"
+_E18_DIR = _EVIDENCE_DIR / "independent_verification_rerun"
 
-for _p in (_BRIDGE_DIR, _EVIDENCE_DIR):
+for _p in (_BRIDGE_DIR, _EVIDENCE_DIR, _E18_DIR):
     if str(_p) not in sys.path:
         sys.path.insert(0, str(_p))
 

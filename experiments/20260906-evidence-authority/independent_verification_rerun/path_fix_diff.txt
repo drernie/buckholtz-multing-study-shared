@@ -1,0 +1,220 @@
+10a11,12
+> import os
+> 
+18c20,21
+< A = yaml.safe_load(open("/tmp/assumptions.yaml"))
+---
+> _HERE = os.path.dirname(os.path.abspath(__file__))
+> A = yaml.safe_load(open(os.path.join(_HERE, "assumptions.yaml")))
+20,23c23,26
+< uc   = A["unit_conversions"]
+< pc   = A["physical_constants"]
+< slp  = A["scaling_law_parameters"]
+< acc  = A["accretion_correction_parameters"]
+---
+> uc = A["unit_conversions"]
+> pc = A["physical_constants"]
+> slp = A["scaling_law_parameters"]
+> acc = A["accretion_correction_parameters"]
+27,29c30,32
+< MSUN_TO_KG   = uc["MSUN_TO_KG"]
+< MPC_TO_M     = uc["MPC_TO_M"]
+< KEV_TO_J     = uc["KEV_TO_J"]
+---
+> MSUN_TO_KG = uc["MSUN_TO_KG"]
+> MPC_TO_M = uc["MPC_TO_M"]
+> KEV_TO_J = uc["KEV_TO_J"]
+37,39c40,42
+< Om_planck     = A["lcdm_comparison_planck"]["Om"]       # 0.315
+< H0_planck_kms = A["lcdm_comparison_planck"]["H0_kms"]    # 67.4
+< H0_planck_si  = H0_planck_kms * KMSMPC_TO_SI
+---
+> Om_planck = A["lcdm_comparison_planck"]["Om"]  # 0.315
+> H0_planck_kms = A["lcdm_comparison_planck"]["H0_kms"]  # 67.4
+> H0_planck_si = H0_planck_kms * KMSMPC_TO_SI
+42,43c45,46
+< M0_kg         = slp["M0_kg"]
+< d0_m          = slp["d0_Mpc"] * MPC_TO_M
+---
+> M0_kg = slp["M0_kg"]
+> d0_m = slp["d0_Mpc"] * MPC_TO_M
+45,52c48,55
+< T0_keV        = slp["T0_keV"]
+< mu_mol        = slp["mu_mol"]
+< m_proton_kg   = slp["m_proton_kg"]
+< T_piv_keV     = slp["T_piv_keV"]
+< Mgas_piv_kg   = slp["Mgas_piv_Msun"] * MSUN_TO_KG
+< z_piv         = slp["z_piv"]
+< B_slope       = slp["B_slope"]
+< C_exponent    = slp["C_exponent"]
+---
+> T0_keV = slp["T0_keV"]
+> mu_mol = slp["mu_mol"]
+> m_proton_kg = slp["m_proton_kg"]
+> T_piv_keV = slp["T_piv_keV"]
+> Mgas_piv_kg = slp["Mgas_piv_Msun"] * MSUN_TO_KG
+> z_piv = slp["z_piv"]
+> B_slope = slp["B_slope"]
+> C_exponent = slp["C_exponent"]
+55,57c58,60
+< f_merge         = acc["f_merge"]
+< f_coh           = acc["f_coh"]
+< mdot_coeff      = acc["mdot_coefficient"]   # the "1.1"
+---
+> f_merge = acc["f_merge"]
+> f_coh = acc["f_coh"]
+> mdot_coeff = acc["mdot_coefficient"]  # the "1.1"
+60c63,64
+< z_SHOES = anch["SH0ES"]["z_used"]           # 0.0233
+---
+> z_SHOES = anch["SH0ES"]["z_used"]  # 0.0233
+> 
+66c70,71
+<     return np.sqrt(Om_planck * (1.0 + z)**3 + (1.0 - Om_planck))
+---
+>     return np.sqrt(Om_planck * (1.0 + z) ** 3 + (1.0 - Om_planck))
+> 
+69c74,75
+<     return M0_kg * (1.0 + z)**mass_exponent
+---
+>     return M0_kg * (1.0 + z) ** mass_exponent
+> 
+73c79,80
+<     return T0_keV * (M_of_z(z) / M0_kg)**(2.0/3.0) * E_of_z(z)**(2.0/3.0)
+---
+>     return T0_keV * (M_of_z(z) / M0_kg) ** (2.0 / 3.0) * E_of_z(z) ** (2.0 / 3.0)
+> 
+76,78c83,86
+<     return (Mgas_piv_kg
+<             * (T_of_z(z) / T_piv_keV)**B_slope
+<             * (E_of_z(z) / E_of_z(z_piv))**C_exponent)
+---
+>     return (
+>         Mgas_piv_kg * (T_of_z(z) / T_piv_keV) ** B_slope * (E_of_z(z) / E_of_z(z_piv)) ** C_exponent
+>     )
+> 
+81c89
+<     T_J = T_of_z(z) * KEV_TO_J                       # keV -> Joules
+---
+>     T_J = T_of_z(z) * KEV_TO_J  # keV -> Joules
+83a92
+> 
+84a94,95
+> 
+> 
+86c97,98
+<     return rho_crit0 * E_of_z(z)**2
+---
+>     return rho_crit0 * E_of_z(z) ** 2
+> 
+89c101,102
+<     return (3.0 * M_of_z(z) / (4.0 * np.pi * 500.0 * rho_crit_of_z(z)))**(1.0/3.0)
+---
+>     return (3.0 * M_of_z(z) / (4.0 * np.pi * 500.0 * rho_crit_of_z(z))) ** (1.0 / 3.0)
+> 
+92c105,106
+<     return d0_m * (1.0 + z)**(-1.0)
+---
+>     return d0_m * (1.0 + z) ** (-1.0)
+> 
+96a111
+> 
+108c123
+<     F2 = beta_2 * (-G) * (k / c**2)**2 * (R**2 / d**2) / d**2
+---
+>     F2 = beta_2 * (-G) * (k / c**2) ** 2 * (R**2 / d**2) / d**2
+115a131
+> 
+122a139
+> 
+126a144
+> 
+138c156
+<     I = np.trapezoid(integ, grid)
+---
+>     I = np.trapezoid(integ, grid)  # noqa: E741 -- TJB's own original variable name, preserved verbatim
+141a160
+> 
+154,155c173
+<     cum = np.concatenate([[0.0],
+<                           np.cumsum((integ[1:] + integ[:-1]) / 2.0 * np.diff(master))])
+---
+>     cum = np.concatenate([[0.0], np.cumsum((integ[1:] + integ[:-1]) / 2.0 * np.diff(master))])
+159a178
+> 
+166,175c185,195
+< z_sh, H_sh, s_sh = (anch["SH0ES"]["z_used"],
+<                     anch["SH0ES"]["H0_kms"],
+<                     anch["SH0ES"]["sigma_kms"])
+< z_de, H_de, s_de = (anch["DESI_DR2_Lya"]["z_eff"],
+<                     anch["DESI_DR2_Lya"]["H_kms"],
+<                     anch["DESI_DR2_Lya"]["sigma_kms"])
+< 
+< z_all  = np.concatenate([z_cc, [z_sh, z_de]])
+< H_all  = np.concatenate([H_cc, [H_sh, H_de]])
+< s_all  = np.concatenate([s_cc, [s_sh, s_de]])
+---
+> z_sh, H_sh, s_sh = (anch["SH0ES"]["z_used"], anch["SH0ES"]["H0_kms"], anch["SH0ES"]["sigma_kms"])
+> z_de, H_de, s_de = (
+>     anch["DESI_DR2_Lya"]["z_eff"],
+>     anch["DESI_DR2_Lya"]["H_kms"],
+>     anch["DESI_DR2_Lya"]["sigma_kms"],
+> )
+> 
+> z_all = np.concatenate([z_cc, [z_sh, z_de]])
+> H_all = np.concatenate([H_cc, [H_sh, H_de]])
+> s_all = np.concatenate([s_cc, [s_sh, s_de]])
+> 
+179c199,200
+<     return np.sum(((Hmod - H_all) / s_all)**2), Hmod
+---
+>     return np.sum(((Hmod - H_all) / s_all) ** 2), Hmod
+> 
+189,194c210,215
+< M_t   = M_of_z(z_t)
+< T_t   = T_of_z(z_t)
+< Mg_t  = Mgas_of_z(z_t)
+< k_t   = k_of_z(z_t)
+< R_t   = R_of_z(z_t)
+< d_t   = d_of_z(z_t)
+---
+> M_t = M_of_z(z_t)
+> T_t = T_of_z(z_t)
+> Mg_t = Mgas_of_z(z_t)
+> k_t = k_of_z(z_t)
+> R_t = R_of_z(z_t)
+> d_t = d_of_z(z_t)
+196,197c217,218
+< sa_t  = specific_accel(z_t, b1_t, b2_t)
+< H_t   = H_of_z_single(z_t, b1_t, b2_t, H0a_t)
+---
+> sa_t = specific_accel(z_t, b1_t, b2_t)
+> H_t = H_of_z_single(z_t, b1_t, b2_t, H0a_t)
+223a245,246
+> 
+> 
+234a258
+> 
+238,242c262,266
+<     [1.40,   7.5,    73.0 ],
+<     [1.30,   7.0,    71.0 ],
+<     [1.50,   8.5,    74.0 ],
+<     [1.10,   5.8,    67.4 ],
+<     [1.60,   9.0,    75.0 ],
+---
+>     [1.40, 7.5, 73.0],
+>     [1.30, 7.0, 71.0],
+>     [1.50, 8.5, 74.0],
+>     [1.10, 5.8, 67.4],
+>     [1.60, 9.0, 75.0],
+246,248c270,275
+<     res = minimize(objective, np.array(s), method="Nelder-Mead",
+<                    options={"xatol": 1e-8, "fatol": 1e-8, "maxiter": 20000,
+<                             "maxfev": 20000})
+---
+>     res = minimize(
+>         objective,
+>         np.array(s),
+>         method="Nelder-Mead",
+>         options={"xatol": 1e-8, "fatol": 1e-8, "maxiter": 20000, "maxfev": 20000},
+>     )

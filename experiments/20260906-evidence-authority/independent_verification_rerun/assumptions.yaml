@@ -1,0 +1,203 @@
+# assumptions.yaml
+#
+# Every fixed numerical input used anywhere in multing_core.py or
+# generate_all_results.py, with its source and where it appears in the
+# paper. This file is the single source of truth for VALUES; edit here,
+# not in the .py files, if a value needs to change.
+#
+# "grounding" field:
+#   data       = fit directly to real, published, external measurement
+#   theory     = self-similar / theoretical scaling assumption
+#   definition = follows by definition from other quantities, not independently chosen
+
+unit_conversions:
+  MSUN_TO_KG: 1.98847e+30
+  MPC_TO_M: 3.08567758e+22
+  KEV_TO_J: 1.602176634e-16
+  KMSMPC_TO_SI: 3.24077929e-20
+  GYR_TO_S: 3.15576e+16
+
+physical_constants:
+  G: 6.674e-11
+  c: 299792458.0
+
+lcdm_comparison_planck:
+  Om: 0.315
+  OL: 0.685
+  H0_kms: 67.4
+  grounding: data
+  source: "Planck 2018 (Aghanim et al. 2020)"
+  paper_location: "Introduction; extant LCDM benchmark, Sec. Results"
+
+data_anchors:
+  SH0ES:
+    H0_kms: 73.04
+    sigma_kms: 1.04
+    z_used: 0.0233
+    grounding: data
+    source: "Riess et al. 2022 (SH0ES); Brout et al. 2022 (Pantheon+)"
+    note: "z=0.0233 is the lower bound of the real Hubble-flow sample (0.0233<z<0.15), adopted as a defensible single-point choice, not SH0ES's own reported effective redshift (no such single value is reported). See Sec. subsec:SH0ES-z-robustness."
+  DESI_DR2_Lya:
+    H_kms: 236.1
+    sigma_kms: 2.8
+    z_eff: 2.33
+    grounding: data
+    source: "Abdul-Karim et al. 2025 (DESI DR2 Results I)"
+    note: "z_eff=2.33 IS DESI's own directly-computed effective redshift (unlike SH0ES); underlying Lya forest/quasar sample spans 1.77<z<4.16."
+
+scaling_law_parameters:
+  M0_kg: 1.193082e+45
+  M0_note: "Node mass normalization M(z=0). Theoretical input; not independently data-grounded."
+  d0_Mpc: 45.0
+  d0_note: "Node-pair separation normalization d(z=0)=s(z=0). Fixed by the framework's own kinematic-translation protocol."
+  mass_exponent: -1.1
+  T0_keV: 3.7163
+  T0_note: "Temperature normalization, RECALIBRATED from an earlier value of 6.0 keV. Chosen so implied gas fraction is realistic (~0.13 at z=0); this in turn implies cluster temperatures ~3.3-3.6 keV, noticeably below independent weak-lensing-calibrated M-T relations (~7 keV) for the same mass. See paper Sec. II.C for full discussion of this unresolved tension."
+  T0_grounding: theory
+  mu_mol: 0.6
+  mu_mol_grounding: definition
+  m_proton_kg: 1.67262192e-27
+  T_piv_keV: 2.27
+  Mgas_piv_Msun: 2.28e+13
+  z_piv: 0.25
+  B_slope: 2.24
+  B_slope_sigma: 0.03
+  C_exponent: -1.00
+  C_exponent_sigma_plus: 0.29
+  C_exponent_sigma_minus: 0.30
+  MgasT_grounding: data
+  MgasT_source: "Ramos-Ceja et al. 2025 (eRASS1, 3061 clusters, 0.05<z<1.07)"
+
+accretion_correction_parameters:
+  f_merge: 0.25
+  f_coh: 0.3333333333
+  mdot_coefficient: 1.1
+  grounding: theory
+  note: "Calibrated from present-day and observed-past structure formation; applied unchanged at z<0 (future). Whether the local density of accruable material itself might decline in the future is an unaddressed assumption -- see Sec. domain of validity."
+
+fitted_configurations:
+  # Table II rows. beta_1, beta_2 are the ONLY two free parameters fit in
+  # each row; H0_anchor is either free (unconstrained/spotlighted row) or
+  # fixed at the stated target (all other rows).
+  unconstrained_spotlighted:
+    H0_anchor_kms: 73.22
+    beta_1: 1.4335e+10
+    beta_2: 7.8067e+17
+    chi2_33: 15.75
+    r_33: 0.9659
+    note: "Lowest chi2_33 of any row; this paper's featured/spotlighted result."
+  sh0es_anchored_0pct:
+    H0_anchor_kms: 73.04
+    beta_1: 1.4233e+10
+    beta_2: 7.7443e+17
+    chi2_33: 15.78
+    r_33: 0.9660
+    note: "H0_anchor fixed to hit SH0ES exactly (at z=0.0233)."
+  pct_25:
+    H0_anchor_kms: 71.63
+    beta_1: 1.3427e+10
+    beta_2: 7.2479e+17
+    chi2_33: 18.14
+    r_33: 0.9660
+  pct_50:
+    H0_anchor_kms: 70.22
+    beta_1: 1.2632e+10
+    beta_2: 6.7582e+17
+    chi2_33: 24.26
+    r_33: 0.9660
+  pct_75:
+    H0_anchor_kms: 68.81
+    beta_1: 1.1848e+10
+    beta_2: 6.2754e+17
+    chi2_33: 34.14
+    r_33: 0.9659
+  pct_90:
+    H0_anchor_kms: 67.96
+    beta_1: 1.1383e+10
+    beta_2: 5.9890e+17
+    chi2_33: 41.87
+    r_33: 0.9658
+  planck_exact_100pct:
+    H0_anchor_kms: 67.40
+    beta_1: 1.1075e+10
+    beta_2: 5.7995e+17
+    chi2_33: 47.77
+    r_33: 0.9656
+
+lcdm_benchmarks:
+  extant_fixed_planck:
+    H0_kms: 67.4
+    Om: 0.315
+    chi2_33: 36.96
+    r_33: 0.9636
+  adjusted_freely_optimized:
+    H0_kms: 71.83
+    Om: 0.2724
+    chi2_33: 16.31
+    r_33: 0.9632
+  apples_to_apples_sh0es_anchored:
+    H0_kms: 73.04
+    Om: 0.2679
+    chi2_33: 16.60
+    r_33: 0.9631
+    note: "H0 fixed exactly at SH0ES's value (at z=0.0233), Om free."
+
+optimizer:
+  method: "Nelder-Mead, multi-start"
+  fallback: "bounded differential evolution (never triggered for any result in this paper)"
+
+h0_anchor_circularity_check:
+  s0_Mpc: 30.0
+  s0_source: 'Basilakos 2004 (cluster-cluster correlation length)'
+  v12_at_5hinvMpc_kms: 714.0
+  v12_source: 'Cen, Bahcall & Gramann 1994, Omega=0.3 CDM model (their own h=0.67)'
+  v12_fades_to_zero_by_hinvMpc: [50, 100]
+  reconstruction_method: 'approximate -- interpolated between Cen et al. tabulated anchor points; exact figure requires their Figure 3 directly'
+  reconstructed_range_kms_Mpc: [12.5, 18.7]
+  paper_stated_value_kms_Mpc: 11
+  grounding: 'external literature, approximately reconstructed'
+
+force_growth_factors_z1965_to_z070:
+  m_X: 3.07
+  r_X: 2.94
+  d: 2.77
+  k_X: 3.30
+  F0_growth: 1.23
+  F0_max_share_pct: 0.058
+  note: 'r_X and k_X here were corrected from earlier paper drafts stale values (2.90, 3.38), which were computed under an old Om=0.30 before the Om=0.30->0.315 correction was propagated. Confirmed root cause by re-deriving under Om=0.30, which reproduces the stale numbers almost exactly.'
+
+cosmic_chronometer_data:
+  # 31-point compilation, also at ../data/cosmic_chronometer_31pt.csv
+  # Columns: z, H (km/s/Mpc), sigma (km/s/Mpc)
+  points:
+    - [0.07, 69.0, 19.6]
+    - [0.09, 69.0, 12.0]
+    - [0.12, 68.6, 26.2]
+    - [0.17, 83.0, 8.0]
+    - [0.179, 75.0, 4.0]
+    - [0.199, 75.0, 5.0]
+    - [0.2, 72.9, 29.6]
+    - [0.27, 77.0, 14.0]
+    - [0.28, 88.8, 36.6]
+    - [0.352, 83.0, 14.0]
+    - [0.38, 83.0, 13.5]
+    - [0.4, 95.0, 17.0]
+    - [0.4, 77.0, 10.2]
+    - [0.425, 87.1, 11.2]
+    - [0.45, 92.8, 12.9]
+    - [0.47, 89.0, 49.6]
+    - [0.478, 80.9, 9.0]
+    - [0.48, 97.0, 62.0]
+    - [0.593, 104.0, 13.0]
+    - [0.68, 92.0, 8.0]
+    - [0.781, 105.0, 12.0]
+    - [0.875, 125.0, 17.0]
+    - [0.88, 90.0, 40.0]
+    - [0.9, 117.0, 23.0]
+    - [1.037, 154.0, 20.0]
+    - [1.3, 168.0, 17.0]
+    - [1.363, 160.0, 33.6]
+    - [1.43, 177.0, 18.0]
+    - [1.53, 140.0, 14.0]
+    - [1.75, 202.0, 40.0]
+    - [1.965, 186.5, 50.4]

@@ -1,0 +1,91 @@
+E:\Проверка Гипотез\работаю над проверкой гипотез\H - 11 Dr. Thomas J. Buckholtz\buckholtz-idm-multing-mvp\experiments\20260906-evidence-authority\independent_verification_rerun\multing_fit_rerun.py:176: RuntimeWarning: invalid value encountered in sqrt
+  return np.sqrt(H2_si) / KMSMPC_TO_SI
+======================================================================
+PART 1: single test point (no fitting)
+======================================================================
+beta_1 = 1.433500e+10, beta_2 = 7.806700e+17, H0_anchor = 73.22 km/s/Mpc
+z_test = 0.5
+
+  M(z)            = 7.637829e+44 kg
+  T(z)            = 3.325329e+00 keV
+  Mgas(z)         = 9.195815e+43 kg
+  k(z)            = 7.322805e+55 J
+  R(z)            = 2.902296e+22 m
+  d(z)            = 9.257033e+23 m
+  F0 (monopole)   = -4.543415e+31 N
+  F1 (dipole)     = -4.356584e+34 N
+  F2 (quadrupole) = -3.967546e+34 N
+  F_accretion     = 2.679688e+32 N
+  F_total         = 3.576983e+33 N
+  spec. accel term= 1.011824e-35 1/s^2
+  H(z=0.5)        = 89.724072 km/s/Mpc
+
+======================================================================
+PART 2: joint fit of beta_1, beta_2, H0_anchor (33 points)
+======================================================================
+  beta_1     = 1.433479e+10
+  beta_2     = 7.806760e+17
+  H0_anchor  = 73.2160 km/s/Mpc
+  chi2_33    = 15.7515
+  r_33       = 0.9659
+
+======================================================================
+PART 3: comparison to fitted_configurations.unconstrained_spotlighted
+======================================================================
+  quantity              my fit          stated
+  H0_anchor            73.2160         73.2200
+  chi2_33              15.7515         15.7500
+  r_33                  0.9659          0.9659
+PC1 unconstrained_spotlighted row reproduces to <1%: PASS
+NC1 perturbed Om_planck changes chi2 by >50% (sensitivity confirmed): PASS
+
+====================================================================================================
+PART A -- chi2 reproduction across ALL 7 Table II rows (own published triples)
+(Confirmed: Om_planck=0.315, H0_planck_kms=67.4 -- unchanged)
+====================================================================================================
+row                            chi2 (ours)  chi2 (stated)   rel diff
+unconstrained_spotlighted          15.7516        15.7500     0.010%
+sh0es_anchored_0pct                15.7809        15.7800     0.006%
+pct_25                             18.1357        18.1400     0.023%
+pct_50                             24.2555        24.2600     0.018%
+pct_75                             34.1357        34.1400     0.013%
+pct_90                             41.9065        41.8700     0.087%
+planck_exact_100pct                47.7714        47.7700     0.003%
+
+  Max relative difference across all 7 rows: 0.087%
+  MCID (>1%): all 7 rows reproduce -- no discrepancy
+
+====================================================================================================
+PART A2 -- independent 2D re-optimization (beta1,beta2) for the 6 FIXED-H0_anchor rows
+(closes the forward-evaluation-only gap in Part A: global search from NO starting guess)
+====================================================================================================
+row                       chi2 reopt  chi2 stated      diff  b1 shift%  b2 shift%
+sh0es_anchored_0pct          15.7808      15.7800    0.005%     0.003%     0.000%
+pct_25                       18.1357      18.1400    0.024%     0.003%     0.001%
+pct_50                       24.2555      24.2600    0.018%     0.002%     0.001%
+pct_75                       34.1357      34.1400    0.013%     0.001%     0.000%
+pct_90                       41.9065      41.8700    0.087%     0.019%     0.022%
+planck_exact_100pct          47.7713      47.7700    0.003%     0.003%     0.001%
+
+  Max chi2 relative difference across all 6 independently-reoptimized rows: 0.087%
+  MCID (>1%): all 6 rows independently re-optimize to published values -- no discrepancy
+
+====================================================================================================
+PART B -- global search (differential_evolution, not local Nelder-Mead), MULTI-SEED
+bounds (2-3 orders of magnitude, EXPLICIT, per Step 8a skeptic point 2): beta_1 in (1000000000.0, 100000000000.0), beta_2 in (1e+16, 1e+19), H0_anchor in (55.0, 90.0)
+seeds: (20260906, 1, 2)
+====================================================================================================
+  seed=  20260906: beta_1=1.433479e+10  beta_2=7.806760e+17  H0_anchor=73.2160  chi2=15.7515
+  seed=         1: beta_1=1.433479e+10  beta_2=7.806760e+17  H0_anchor=73.2160  chi2=15.7515
+  seed=         2: beta_1=1.433479e+10  beta_2=7.806761e+17  H0_anchor=73.2160  chi2=15.7515
+
+  chi2 spread across 3 seeds: min=15.7515  max=15.7515
+  best-of-seeds: beta_1=1.433479e+10, beta_2=7.806760e+17, H0_anchor=73.2160, chi2=15.7515
+  published chi2 = 15.7500
+  delta = +0.0015
+  MCID (global chi2 more than 1 unit BELOW published): not material -- no better fit found in the wide, multi-seed search
+
+  Global-optimum (beta_1,beta_2) vs published: 0.00% / 0.00% away
+  (a large % shift here with chi2 still close to published would flag a genuinely
+   DISTINCT degenerate solution -- consistent with the beta1-beta2 near-degeneracy
+   FINDING_P176 already established, not a red flag by itself.)
