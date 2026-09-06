@@ -181,9 +181,11 @@ already caught elsewhere.
 
 ## 6. What this does NOT establish
 
-1. **Not that the four pairs are harmless** — only that a missing citation
-   is uninformative at a 6% base rate. `P190`↮`P161` and `P163`↮`P53` are
-   *unchecked*, not cleared.
+1. ~~**Not that the four pairs are harmless** — only that a missing
+   citation is uninformative at a 6% base rate. `P190`↮`P161` and
+   `P163`↮`P53` are *unchecked*, not cleared.~~
+   **CLOSED same day — both pairs positively CLEARED, not merely
+   unchecked (§7).**
 2. **Not that `P52`'s CONDITIONAL verdict is correct** — inherited
    unchanged, including its KG2 (form invariance ≠ value determination),
    which remains the genuinely open question behind bottleneck 3/wall 4.
@@ -193,3 +195,34 @@ already caught elsewhere.
    for those two findings. The behavioural half — searching across
    parallel chains before writing — is untouched, and at a 6% citation
    rate there is no evidence it has ever been practised here.
+
+## 7. Loose end closed — both withdrawn pairs are CLEARED, not just unchecked
+
+§6.1 originally left `P190`↮`P161` and `P163`↮`P53` as *unchecked*. Both
+were then read directly. Neither is a disconnect:
+
+**`P190` ↮ `P161` — different structural objects.** `P161`'s verdict is
+`LOCALLY-JOINTLY-IDENTIFIABLE-AT-LEADING-ORDER`, with
+`det(J)=11492·G²k0³r0³/(375·d0⁹m0) ≠ 0` proven symbolically for
+`(β1, β2, H0,anchor)` **at leading order**. `P190` asks whether a
+near-null direction in `(β1, β2)` is an **exact** symmetry of v82's full
+`H²(z)` **for all z simultaneously**, continuing `FINDING_P176`'s own
+stated open item. A leading-order determinant does not settle a
+full-`z` symmetry question, so `P190`'s silence on `P161` is correct
+practice, not an oversight. The two are complementary halves of one
+picture: identifiable in principle (`P161`), ill-conditioned in practice
+(`P190`).
+
+**`P163` ↮ `P53` — the number is reused, not re-derived, and the caveat
+survives.** `P163` §97-100 carries `A·g²≲8.39×10⁻¹²` sourced to
+`FINDING_P22`, and reproduces the **"soft ceiling"** qualifier verbatim.
+`P53`'s own text states that qualifier "was already present as a caveat
+inherited from `FINDING_P22`'s own §3" — so `P163`, by citing `P22`,
+inherits it through the same route `P53` did. No duplicated derivation,
+no dropped caveat.
+
+**This strengthens §2 rather than weakening it.** Two pairs that looked
+like disconnects on a title-plus-missing-citation reading turned out, on
+direct reading, to be correct practice. That is exactly what a 6%
+citation base rate predicts, and it is the second independent
+confirmation in this file that a missing citation carries no signal here.
