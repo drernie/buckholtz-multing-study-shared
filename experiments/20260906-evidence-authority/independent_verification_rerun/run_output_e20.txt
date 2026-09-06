@@ -1,0 +1,39 @@
+PC1 [TRIVIAL-BY-CONSTRUCTION] T(pivot mass) recovers T0 exactly for both fits: PASS
+
+====================================================================================================
+Kettula et al. 2014 (arXiv:1410.8769), Table 2, M500-Tx -- REAL weak-lensing-calibrated relation
+Pivot: M0=5.0e+14 Msun, T0=5.0 keV (the paper's own stated pivot)
+====================================================================================================
+  all_data_uncorrected    : alpha=1.68, log10(N)=+0.08  ->  T(M=6.0e+14 Msun) = 4.994 keV
+  bias_corrected          : alpha=1.52, log10(N)=+0.05  ->  T(M=6.0e+14 Msun) = 5.226 keV
+
+====================================================================================================
+Three-way comparison at v82's own M0 = 6e14 Msun
+====================================================================================================
+  v82's own T0 (this project, independently verified, FINDING_T0_is_not_free): 3.716 keV
+  TJB's own assumptions.yaml quoted comparison figure (previously [UNKNOWN] source): ~7.0 keV
+  Kettula+2014 REAL weak-lensing-calibrated M500-Tx, bias-corrected:     5.226 keV
+  Kettula+2014 REAL weak-lensing-calibrated M500-Tx, uncorrected:        4.994 keV
+
+  v82_T0 / Kettula_bias_corrected  = 0.711   (v82 is LOWER)
+  TJB_quoted(~7) / Kettula_bias_corrected = 1.339   (TJB's own quoted figure is HIGHER than this real relation)
+
+====================================================================================================
+PART D -- real intrinsic scatter, propagated [added per Step 8a skeptic point 4:
+the original draft reported a bare point estimate with no uncertainty band]
+====================================================================================================
+  Kettula+2014's own quoted intrinsic scatter (bias-corrected M500-Tx): sigma_log(A|B)=0.07 dex = factor 1.175
+  T(6e14) point estimate: 5.226 keV; +/-1 intrinsic-scatter band: [4.45, 6.14] keV
+  v82's own T0=3.716 keV sits OUTSIDE (below) this +/-1-intrinsic-scatter band.
+
+====================================================================================================
+Interpretation [corrected after Step 8a skeptic, WEAKENED, 5 points -- see FINDING_E20's
+own Response Matrix. Headline 'materially narrows the tension' WITHDRAWN as unlicensed.]
+====================================================================================================
+  A REAL, genuinely weak-lensing-calibrated M-T relation (Kettula+2014, Delta=500) gives T~5.23 keV (bias-corrected) at a MASS OF THE SAME NUMBER as v82's own M0 -- but see the CAVEAT below before treating this as a direct physical comparison.
+
+  CAVEAT [decisive check, per Step 8a skeptic point 2]: v82's own archive text (assumptions.yaml, M0_note) states M0 is: "Node mass normalization M(z=0). Theoretical input; not independently data-grounded." -- NOT explicitly stated to be an M500 in the observational, weak-lensing-measurable sense Kettula's relation is calibrated on. v82's R_of_z does use a Delta=500 RADIUS convention internally, but that alone does not establish M0 itself is meant as an external, WL-comparable M500. This category-identity question is UNRESOLVED here, not resolved in either direction.
+
+  CAVEAT [per Step 8a skeptic point 3]: only ONE paper (2 sub-variants of the same fit) was checked, out of a real literature with genuine paper-to-paper dispersion in M-T normalization (Mahdavi+2013, Hoekstra+2015, von der Linden+2014, and others were found in the same search but not cross-checked). Whether the published range of REAL WL-calibrated M-T relations at this mass spans up to TJB's own quoted ~7 keV is NOT established here -- a real, named, unclosed gap, not a settled comparison.
+
+  What IS established, conditional on the M0-identity caveat above: IF v82's M0 is read as an M500 in Kettula's sense, this one real relation predicts T~5.23 keV (+/-1 intrinsic scatter: [4.45,6.14] keV) -- below TJB's own quoted ~7 keV, and v82's own T0=3.72 keV sits outside this band on the low side. This narrows, but does NOT close, the gap between v82's own T0 and this one specific, real, external relation -- subject to the two caveats above, neither resolved.
