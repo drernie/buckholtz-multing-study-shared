@@ -154,3 +154,15 @@ separately as a real, notable side-finding, not folded into the MCID.
 3. `NO_AUTHOR_ERROR` — measuring a real published scatter for a
    theoretical input v82 itself labels "retained-theoretical," not a
    claim about v82's own correctness.
+
+## `[Added by FINDING_E17_ADDENDUM_validated_against_correa2015.md]`
+
+This project's own `M0=6.0×10^14 M_☉` is `6×` above Duffy et al. (2008)'s
+own stated calibration ceiling (`10^14 M_☉`) for the concentration-mass
+relation this claim's Monte Carlo depends on. `A_cosmo=798` and the
+`Ωm/ΩΛ` choice are both confirmed correct/negligible; this specific
+extrapolation is not. Concentrated at high `z` (`z=2.00, 2.33`, per
+Correa's own model-comparison discussion) — exactly where the Jensen
+correction was found `MATERIAL`. Magnitudes at those two points carry
+more uncertainty than the Monte Carlo convergence check alone showed;
+direction and the `z≤0.25` points are less affected.

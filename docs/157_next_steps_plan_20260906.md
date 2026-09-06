@@ -104,16 +104,25 @@ physics work above.
 
 ## Recommended priority, if any physics step is authorized next
 
-**Item 3 (E15 propagation) is DONE — see `FINDING_E16` above.** Its own
-Pearl Registry follow-up (measuring `M(z)`'s own population scatter) is
-**also DONE — `FINDING_E17`**, same day, explicit go-ahead given. Took two
-Step 8a skeptic rounds (`FALSIFIED` then `WEAKENED`, both fixed in place):
-the Jensen correction for `F0`/`F_accretion` is real and MATERIAL at
-`z≥1`, but smaller than `F1,F2`'s own; a large, separate systematic
-offset between v82's own assumed `M(z)` law and a real MAH model was
-found as a side-effect and logged, un-validated against the source
-paper, as its own Pearl Registry Caveat Gate entry. Item **4** (E10/Taylor)
-has unknown cost until the source is actually checked. Items 1/2 are
+**Items 3, 4, and `E16`'s own Pearl Registry follow-up are ALL DONE.**
+`E16` (item 3): closed-form identity. `E17` (`E16`'s Pearl follow-up):
+Jensen correction MATERIAL at `z≥1`, smaller than `F1,F2`'s own; a large
+separate offset finding logged. `E17` itself then validated against
+Correa+2015's own published values (`FINDING_E17_ADDENDUM`): `A_cosmo`
+confirmed exact; cosmology choice confirmed negligible; but this
+project's own `M0=6e14 M☉` found `6×` above Duffy+2008's own stated
+calibration ceiling — a real, disclosed extrapolation risk concentrated
+at exactly the high-`z` points the Jensen correction was `MATERIAL` at.
+`E10` (item 4): unblocked via Taylor+2023 — modern fitter-shift risk
+`~100×` smaller than the 2009-era citation `E6` first used. Items 1/2 are
 closed and should stay closed absent new input. Item 5 (the letter) is
 orthogonal to all of the above and can be decided independently at any
 time.
+
+**What's actually left, if anyone picks any of it up:** (a) a
+cluster-scale-calibrated concentration-mass relation to replace
+`E17`'s Duffy-extrapolation at high `z` (named in the addendum, not
+attempted); (b) bottleneck-1 `ρ` coverage to `z≥1.07`
+(`docs/156`→`P195`); (c) `P202`'s cluster-proxy meta-analysis; (d) the
+TJB reply draft's send decision. None authorized without a fresh
+explicit go-ahead.

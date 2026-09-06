@@ -15,6 +15,14 @@ Reuses, not reimplements:
 See CLAIM_E17_mass_scatter_for_F0_Faccretion.md -- MCID pre-registered
 before this file was run.
 
+[Added by FINDING_E17_ADDENDUM_validated_against_correa2015.md] M0_MSUN
+(~6.0e14) is 6x above Duffy et al. (2008)'s own stated calibration
+ceiling (1e14 Msun) for the concentration-mass relation this file's
+Monte Carlo depends on -- A_COSMO_PLANCK=798 confirmed exact against
+Correa+2015's own text; this specific extrapolation is not validated.
+Concentrated at high z (z=2.00, 2.33), exactly where the Jensen
+correction was found MATERIAL -- see the addendum for detail.
+
 NOT_VALIDATION * NOT_REFUTATION * OUR_RECONSTRUCTION * NO_AUTHOR_ERROR
 """
 
