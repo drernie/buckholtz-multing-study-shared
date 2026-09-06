@@ -229,6 +229,20 @@ this file is the slower-moving strategic layer above it).
   Exploratory wider scan (`σ=30-100%`, no `z~12-16` program exists on
   any roadmap): factor grows monotonically to `1.24-1.29×` by `σ=100%`
   — `E8`'s correction matters *more*, not less, at realistic precision.
+  **`E12`** (does the `E8c` sign-flip reflect a real CC inter-group
+  tension?): Moresco's 15 vs the other 16 give `H₀=66.8` vs `72.4` —
+  visually large, but joint 2-param test gives `Δχ²=0.65` (threshold
+  `6.18`) — **not material**, ordinary small-sample scatter, not a
+  documented inconsistency. **`E13`** (option B, one of `E9`'s six
+  `UNQUANTIFIED` deps measured): v82's gas-mass/thermal-energy input
+  (Eq.13-14, cited to Ramos-Ceja+2025) carries a real `σ=0.49` ln-normal
+  scatter (`-39%/+63%`, `4-7×` larger than `E5`'s CC finding), never
+  quoted by v82, and — v82.md:332 — feeds directly into the same
+  dipole/quadrupole (`β₁`,`β₂`) terms `E8`/`E11` already flagged.
+  **`E14`** (novelty check on `E6`): `closely related`, not novel —
+  Doboszewski & Elder (2025) already publish a richer 5-strategy
+  taxonomy for exactly this problem; this project's own contribution is
+  the concrete measurements (`E5`, `E13`), not the classification idea.
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
