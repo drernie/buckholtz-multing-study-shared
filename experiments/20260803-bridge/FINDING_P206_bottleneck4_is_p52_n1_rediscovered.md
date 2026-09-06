@@ -175,3 +175,27 @@ for the cross-repo case, now observed **intra-repo**. The cheap
 generalization to test: when a new finding computes a rank or a null
 space, grep prior findings for *rank/nullspace/redundancy/invariant*
 rather than for the claim's own words.
+
+### 7.1 That prediction was tested immediately, and it fired
+
+Run on this finding itself (`grep -rliE "nullspace|null space|null
+vector|rank\(J\)|identifiab|redundanc"` over `experiments/*/FINDING_*.md`):
+**22 findings**, including two the claim-vocabulary search preceding §6
+had missed:
+
+- **`FINDING_P53`** (2026-08-17) — *"a soft/conditional external scale
+  constraint on P52's `Ag²` invariant already existed in this project."*
+  This is directly about §6.2's own caveat. It does **not** dissolve that
+  caveat — P53 constrains the **invariant** `Ag²` under an explicit,
+  unverified mapping, which does not pin `A` separately — but the caveat
+  as first written implied nobody had looked, and somebody had. The
+  registry row is amended accordingly, and the surviving question is
+  narrowed to an anchor on **`φ`'s normalization**, starting from P53.
+- **`FINDING_P165`/`FINDING_P161`** — explicitly "the same
+  identifiability machinery," a lineage `P206` reached independently.
+
+**Status: partially confirmed at n=1.** One instance is not a validated
+rule, and the `next_check` stands. But the first thing the heuristic did
+was catch an omission in the very file proposing it — which is the
+strongest available evidence that the failure mode is structural rather
+than a one-off.
