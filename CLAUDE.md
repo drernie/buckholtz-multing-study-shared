@@ -7,7 +7,7 @@
 - **Goal:** epistemic audit / reconstruction of Dr. Thomas J. Buckholtz's
   IDM/MULTING cosmological framework — falsifiable claims, honest negative
   results, no overclaiming. NOT a validation or refutation of MULTING itself.
-- **Tests:** `pytest tests/ -q` (939 passing, 2026-09-06) · `ruff check .`
+- **Tests:** `pytest tests/ -q` (943 passing, 2026-09-06) · `ruff check .`
   (clean) · `mypy src` (0 errors, blocking in CI, verified 2026-09-05).
 
 ## CANONICAL CONTEXT — read in this order at session start
