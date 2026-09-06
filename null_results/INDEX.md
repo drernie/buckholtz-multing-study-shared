@@ -4,6 +4,16 @@
 **Rule:** Do NOT retry a REJECT entry without fundamentally different approach.  
 **Extended:** Each entry includes `## Mechanistic Insight` — what the failure reveals about the mechanism.
 
+
+**Two NULL-but-not-REJECT entries added 2026-09-07 (`FINDING_P207`).** `NR-022`
+and `NR-023` are not falsified claims: one is an exhausted search, one a test that
+failed to discriminate. The registry's own *"do NOT retry without a fundamentally
+different approach"* rule therefore does **not** apply to them in the same way —
+each carries its own re-entry condition in the linked finding. They are listed here
+because they previously existed only as `FINDING_*.md` files and were invisible to
+the prescribed pre-work check (`grep -i "keyword" null_results/INDEX.md`), which
+reads only this index. That gap is the finding; these rows are the fix.
+
 ---
 
 | ID | Date | Slug | Verdict | Why falsified (10 words) |
@@ -28,6 +38,8 @@
 | NR-019 | 2026-08-17 | lie-group-numerology-eq32-mechanism-consolidated | REJECT (consolidated, 3 attempts) | S³ (NR-009), F₄/G₂/J₃(O) (f4-eq32-synthesis C10), SM-gauge-dim (pearl 06-24) all post-hoc relabel {4/3,12}; no single invariant gives both, no independent prediction; Eq.32 itself survives unexplained |
 | NR-020 | 2026-09-02 | eq32-numerology-negative-space-mining | REJECT (H1 timing-axis, skeptic-falsified) | Balmer 1885 counter-example kills a-priori/post-hoc timing rule; DoF-based fallback survives, unattacked, applied to Eq.32 |
 | NR-021 | 2026-09-02 | h1prime-formalization-data-collection | REJECT/INCONCLUSIVE (real N=11 not 60, DoF-ratio not reliably codeable) | Blind inter-rater check: DoF-ratio estimates diverge 2-6x between coders; regression point estimate runs OPPOSITE H1's predicted direction (not significant, N too small) |
+| NR-022 | 2026-08-24 | 4th-observable-literature-search | **NULL (search exhaustion — NOT a REJECT)** | No class-(i) monomial found; P206 later showed none can exist |
+| NR-023 | 2026-08-26 | completion-positivity-non-discriminating | **NULL (non-discriminating — NOT a REJECT)** | BOTH-SAFE on this trajectory range; test separates nothing |
 
 ---
 
@@ -51,3 +63,5 @@
 - [NR-019: Lie-group numerology Eq.32 mechanism, consolidated — rejected](20260817-nr019-lie-group-numerology-eq32-mechanism-consolidated.md)
 - [NR-020: Eq.32 numerology negative-space-mining — H1 falsified, DoF fallback](20260902-nr020-eq32-numerology-negative-space-mining.md)
 - [NR-021: H1' formalization data collection — real N=11, coding-reliability problem](20260902-nr021-h1prime-formalization-data-collection.md)
+- [NR-022: 4th-observable literature search — NULL, search exhausted, structurally superseded by P206](../experiments/20260803-bridge/FINDING_P137_bottleneck3_literature_search.md)
+- [NR-023: completion positivity — NULL, BOTH-SAFE, test does not discriminate](../experiments/20260803-bridge/FINDING_P140_completion_positivity_check.md)
