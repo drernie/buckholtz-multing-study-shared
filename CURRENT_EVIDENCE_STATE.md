@@ -220,7 +220,15 @@ this file is the slower-moving strategic layer above it).
   to Kessler's own mechanism), and no `m_B` exists to reconstruct it;
   stays a citation (`w=−0.76` vs `−0.96`, Kessler+2009). The near-miss
   (a wrong number with the right sign) was caught by reading the column
-  definition — same discipline that caught `E3` and `E5`.
+  definition — same discipline that caught `E3` and `E5`. **`E11`
+  (rerun `P191`-`P194` against `E8`'s baseline):** at `σ_synth≤10%`
+  (their own grid), forecasts are numerically robust (factor `~1.001`,
+  ranking unchanged) — but a skeptic pass showed this is ONE mechanism
+  (synthetic Fisher information dominates the baseline `100-10,000×`),
+  not two confirmations, and does NOT undercut `E8` — different regime.
+  Exploratory wider scan (`σ=30-100%`, no `z~12-16` program exists on
+  any roadmap): factor grows monotonically to `1.24-1.29×` by `σ=100%`
+  — `E8`'s correction matters *more*, not less, at realistic precision.
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
