@@ -52,8 +52,11 @@ chain = Chain(
             incurs=(
                 Dependency(
                     name="X-ray mass-temperature scaling-relation calibration",
-                    magnitude_pct=None,  # v82 grounds it in real data; budget not quantified there
-                    source="v82.md:327,427 -- stated as data-grounded, no error budget given",
+                    magnitude_pct=63.0,  # FINDING_E13: source's own sigma_{Mgas|T}=0.49 (ln-normal)
+                    in_quoted_sigma=False,  # v82 quotes B,C (Eq.13) but never this scatter
+                    correlated_across_bins=False,  # not stated either way in the source; not claimed
+                    source="FINDING_E13; Ramos-Ceja+2025 arXiv:2511.14356 Sec.4.4, +1sigma side of "
+                    "the ln-normal range [-39%,+63%]; asymmetric, this float is a representative bound",
                 ),
             ),
         ),
@@ -63,8 +66,11 @@ chain = Chain(
             incurs=(
                 Dependency(
                     name="X-ray mass-temperature scaling-relation calibration",
-                    magnitude_pct=None,
-                    source="v82.md:327,566-569 -- upgradeable to Class I 'if grounded in directly measured' relations",
+                    magnitude_pct=63.0,  # same source as gas mass: k_X = (3/2)(M_gas/mu_mol m_p) T_X
+                    in_quoted_sigma=False,
+                    correlated_across_bins=False,
+                    source="FINDING_E13; feeds through Eq.14 from the same M_gas,X(z) as above -- "
+                    "v82.md:332 states this sets the dipole/quadrupole (beta1/beta2) force terms",
                 ),
             ),
         ),
