@@ -127,6 +127,16 @@ narrative about that specific (handicapped) comparison. This confirms
 the AIC/BIC formulas are implemented correctly, independent of anything
 about the fairer benchmarks above.
 
+**Wording note (added 2026-09-07, external review of the TJB letter that
+quotes these numbers):** this file writes "Burnham-Anderson: <2 →
+statistically indistinguishable." That is loose — AIC is not a
+significance test and does not license the phrase "statistically
+indistinguishable." Burnham & Anderson's own rule of thumb is that
+models within `Δ<2` both retain *substantial empirical support*. The
+numbers are unaffected; only the gloss was imprecise, and the letter
+(`correspondence/draft_tjb_reply_ernest_critique_full_20260906.md` v3)
+uses the corrected wording.
+
 ## 3. Interpretation
 
 On the two comparisons TJB himself identifies as the meaningful, fair
