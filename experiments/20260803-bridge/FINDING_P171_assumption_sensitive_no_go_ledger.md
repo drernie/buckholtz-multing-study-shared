@@ -139,6 +139,22 @@ questions and the table keeps them in separate columns on purpose.
 | 6 | Linear (classical) response | Implicit — `docs/130`/`docs/131` work in classical field theory | **NO** | One-loop quantum-gravity correlation/fluctuation forces (Casimir-Polder-type) | **CHECKED** — `FINDING_P162` §4 (prior session): real literature exists (Ford-Hertzberg-Karouby, PRL 116, 151301, 2016), attractive for similar-composition bodies, the one known repulsive channel explicitly subdominant for identical polarizabilities, and quantum-loop-suppressed (astronomically negligible at cluster scales) | **CHECKED AND NEGATIVE** — wrong-signed AND too small; the one row where "dropping alone" was genuinely tested and genuinely fails |
 | 8 | Single point-particle per node | Implicit in `docs/130`/`docs/131`'s own constructions | **NO** | Many-body / statistical (mean-field) node ontology | **CHECKED** — `FINDING_P162` §4: mean-field averaging over many EP-respecting particles reduces to the identical `ρ+3P/c²` mechanism already tested, not a new escape route | **CHECKED AND NEGATIVE** |
 
+**Row 9 — added 2026-09-07 by `FINDING_P204`, the ledger was not
+complete.** This row was absent from the 8 above and turned out to be
+the one the whole `CANDIDATE-L1` question hinges on. Verified absent
+before adding: `grep -i "inter-node|between the nodes|vacuum|empty"`
+over this file returned a single hit, in an unrelated Ostrogradski
+context.
+
+| # | Assumption | Used in stated hypothesis set? | Dropping ALONE opens a channel? | If relaxed → theory class | Checked? | Verdict |
+|---|---|---|---|---|---|---|
+| 9 | **The node's dipole is a BODY-level moment attached to a worldline** (so Racine–Flanagan Eqs. 71/82 apply and it is pure gauge) | Implicit and unexamined in `docs/130`/`docs/131` — their "polarizable **point particle**" presupposes it | **YES** — this is the one assumption whose relaxation demonstrably opens the channel | Fluid-level **polarization field** with no worldline (Blanchet–Le Tiec's actual object): the mass-dipole gauge argument does not apply to a dipole-per-unit-volume | **CHECKED, `FINDING_P204`** — `[VERIFIED-arXiv 0804.3518]` B-LT's dipole is a medium polarization, not a body moment; `docs/131` compressed it to a point particle and thereby destroyed the property that evaded R&F | **OPEN AND LOAD-BEARING** — the only row so far whose relaxation is both untested here and known to work in a real published theory |
+
+**Consequence for §3's synthesis below:** it was written against an
+8-row ledger believed complete. Row 9 does not overturn `docs/131`'s
+FAIL, but it does mean the no-go was never tested against the one
+formulation in which the parent theory actually lives.
+
 ## 3. Synthesis (corrected — skeptic-caught overclaim)
 
 **This does not sharpen `FINDING_P162` as much as the first draft

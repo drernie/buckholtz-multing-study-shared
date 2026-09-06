@@ -330,6 +330,18 @@ a metric theory.
    requires as input. The specification gap is not news; what is new
    is knowing exactly why it is load-bearing.
 
+> **[SUPERSEDED 2026-09-07 by `FINDING_P204`, twice over — read that
+> file's Corrections 1-3 before using anything in this paragraph.]** The
+> "non-GR vacuum sector" wording below is wrong twice: (a) Racine &
+> Flanagan require the inter-body region to be **vacuum**, not gravity
+> to be GR — so a GR-gravity theory with a filled region also evades
+> them; and (b) more importantly, filling the region is **not** the
+> operative mechanism at all. R&F's mass-dipole argument (Eqs. 71/82) is
+> a **kinematic** identity that does not require vacuum. The real escape
+> is that a dipole can be a **fluid-level polarization with no
+> worldline**, to which the gauge argument simply does not apply.
+> Left in place unedited rather than rewritten, per no-silent-correction.
+
 **The sharp, transferable consequence for the completion programme:**
 combining Racine–Flanagan's universality footnote with (1) above —
 **any covariant completion of MULTING that supplies a GR-matching
