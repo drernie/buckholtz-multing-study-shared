@@ -44,21 +44,21 @@ explicit revival conditions in `parked/`.
 **Next step:** none recommended unless a `parked/` revival condition fires.
 
 ### 3. Propagate `E15`'s Jensen's-gap correction through a real β1/β2 re-fit
+**Status: DONE 2026-09-06, `experiments/20260906-evidence-authority/
+FINDING_E16_e15_propagated_through_refit.md`.** Turned out to be a
+closed-form identity (chi2 minimum invariant under the reparametrization),
+not a numerical re-fit — corrected this doc's own prior speculation.
+Step 8a skeptic: `CONFIRMED-REAL` on the algebra, `WEAKENED` on the
+"identifiability degeneracy" framing (it's a hidden-nuisance-parameter
+structure, resolvable once σ is known — not a flat-valley degeneracy like
+`(A,g,κ)`/`(β1,β2)`). Skeptic also found a real, un-checked scope gap:
+`F0`/`F_accretion` are also nonlinear in `M(z)` and would carry their own
+Jensen corrections, not absorbed by this claim's `β1,β2`-only scope —
+logged in `pearl_registry/INDEX.md` (Caveat Gate).
+
 **EstimandOps L0:** Descriptive/characterization — "how does this specific
 already-published fit's parameters change under a stated, real correction
 to one input's treatment," not a causal claim about MULTING's physics.
-**Status:** named, not done. `E15` computed the force-TERM-level
-correction (+12.8%/+61.6%) but explicitly declined to claim a β1/β2 shift,
-since `H(z)` is nonlinear in `F_total` and `E8`/`E11` already found a real
-(β1,β2) near-degeneracy — a naive per-term rescale would not respect it.
-**Next step (cheapest form):** reuse `E8`'s own `hessian_small_eig_and_slope`
-machinery, but replace the point-evaluated `F1,F2` inside `H_of_z_kms`
-with population-averaged versions (multiply by `exp(σ²/2)`/`exp(2σ²)`
-respectively, at `E13`'s real σ=0.49) BEFORE optimizing, then re-run
-`E8b`'s own re-optimization. Bounded, well-specified, reuses only existing
-tested machinery — no new physics assumption beyond what `E15` already
-flagged as open (Reading A vs B of "representative value").
-**Estimated cost:** small — one new script following the `E8b` pattern.
 
 ### 4. Unblock `E10` (second SNe-Ia example) via Taylor et al. 2023 SALT2/SALT3
 **EstimandOps L0:** Descriptive — comparing two published fitter outputs
@@ -94,11 +94,11 @@ physics work above.
 
 ## Recommended priority, if any physics step is authorized next
 
-Per the Cheapest Differentiating Test Protocol (`falsification-ladder.md`):
-item **3** (E15 propagation) is the cheapest and most differentiating — it
-reuses only already-tested machinery, has a fully bounded scope, and
-directly closes a gap this project itself named twice (`E15`'s own "next
-step, named not done"). Item **4** (E10/Taylor) has unknown cost until the
-source is actually checked. Items 1/2 are closed and should stay closed
-absent new input. Item 5 (the letter) is orthogonal to all of the above and
-can be decided independently at any time.
+**Item 3 (E15 propagation) is DONE — see `FINDING_E16` above.** Its own
+Pearl Registry follow-up (measuring `M(z)`'s own population scatter, to
+check `F0`/`F_accretion`'s un-scoped Jensen corrections) is now the
+cheapest next item in that specific thread, if anyone picks it up. Item
+**4** (E10/Taylor) has unknown cost until the source is actually checked.
+Items 1/2 are closed and should stay closed absent new input. Item 5 (the
+letter) is orthogonal to all of the above and can be decided independently
+at any time.
