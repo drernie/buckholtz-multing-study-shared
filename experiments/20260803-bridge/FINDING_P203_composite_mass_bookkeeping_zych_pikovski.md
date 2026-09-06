@@ -155,13 +155,59 @@ open question P172 already narrowed from the exotic side.
    (ordinary GR bookkeeping; spontaneous scalarization) supplies one
    "for free" at cluster scale.
 
+## Addendum (2026-09-07) — the two-body/mutual generalization exists,
+## but in a different, older literature, and is only checked at
+## abstract level here — not a full read
+
+Searched for it directly (arXiv `search_papers` + Semantic Scholar
+citation-graph of `1808.05831` itself). Result:
+
+- **None of `1808.05831`'s own 40 citing papers** (checked in full,
+  Semantic Scholar) do this — that citation tree is entirely quantum-
+  information-flavored follow-on (atomic clocks, decoherence, quantum
+  time dilation, Unruh-DeWitt detectors), still single-composite-body-
+  in-an-external-field, never extended to mutual N-body.
+- **A separate, older, more mature literature already solves the real
+  N-body/mutual case**: the **DSX formalism** (Damour, Soffel & Xu,
+  1991-1994 — already in `1808.05831`'s own reference list, [40]-[42],
+  but not built on there) derives post-Newtonian equations of motion
+  for `N` **mutually-interacting, arbitrarily-structured, including
+  strongly self-gravitating**, extended bodies, each with its own full
+  set of mass and spin multipole moments. Real, verified extensions
+  `[VERIFIED-arXiv, abstract-level]`: Damour & Vokrouhlicky (`gr-qc/
+  9503041`, 1995, conservation laws); Racine & Flanagan (`gr-qc/
+  0404101`, 2004, explicit translational equations of motion, extends
+  DSX to strongly self-gravitating bodies); Kopeikin (`1810.11713`,
+  2018, and `2006.08029`, 2020, arbitrary mass+spin multipoles, using
+  the Blanchet-Damour multipole formalism — the SAME formalism this
+  project's own `docs/123` solution-space already cites for `F_oP`);
+  Mitchell & Will (`0704.2243`, 2007, binary systems, finite-sized
+  bodies, explicitly studies "contributions of the internal structure"
+  to the strong equivalence principle at 2PN).
+- The relevant classical-GR name for the underlying question is the
+  **effacing principle** — whether a body's equations of motion depend
+  on its internal structure beyond a handful of multipole moments.
+  Kopeikin & Vlasov (`gr-qc/0612017`, 2006) address this directly for
+  `N`-body systems.
+
+**Honest limit of this addendum**: only abstracts were read, not the
+derivations. It is `[INFERRED, not verified]` — not yet checked — that
+these frameworks reach the SAME conclusion Zych–Rudnicki–Pikovski did
+(internal energy of any kind, thermal included, contributing through
+exactly one channel, no separate long-range term) rather than a
+weaker, purely-geometric-multipole-only statement that leaves thermal/
+kinetic internal energy's own coupling unaddressed. Confirming that
+requires actually reading Racine–Flanagan and/or Kopeikin's derivations
+— a real, scoped next step, not attempted here.
+
 ## Pearl Registry / next step
 
-A real, specific, cheap next step if this thread is picked up again:
-check whether the two-body generalization of Zych–Rudnicki–Pikovski's
-own method (two extended sources, each with its own local rest frame,
-mutually interacting rather than one system in an externally-fixed
-field) has been done anywhere in the literature — their own Discussion
-(§IV) does not claim it, and a quick targeted search (`"composite
-gravitational mass" mutual OR "two-body" post-Newtonian`) was not
-attempted here, out of this FINDING's own scope.
+The two-body/mutual generalization this FINDING originally flagged as
+unexamined **does exist** (DSX/Racine-Flanagan/Kopeikin/effacing-
+principle line, above) — the open step is now narrower: read at least
+one of these derivations (Racine & Flanagan, `gr-qc/0404101`, is the
+most directly relevant — explicit equations of motion, extends DSX to
+strongly self-gravitating bodies) to confirm whether THERMAL/KINETIC
+internal energy specifically (not just geometric shape multipoles)
+gets the same single-channel treatment there, closing this FINDING's
+own scope-limit #1.
