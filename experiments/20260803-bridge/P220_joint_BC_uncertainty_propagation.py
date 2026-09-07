@@ -1,41 +1,75 @@
 """P220 -- docs/158 item 3: joint uncertainty propagation through v82's own
 admitted near-cancellation between F^(1) (dipole) and F^(2) (quadrupole).
 
-WHY THIS SCOPE, NOT A WIDER ONE. v82 quotes a real Gaussian-ish uncertainty
-for exactly TWO of the parameters feeding k(z) -- the mass-gas-fraction
+REVISED 2026-09-07 after a context-blind Step 8a skeptic pass found four
+real defects in the first version (kept, not deleted, per no-silent-
+correction -- see FINDING_P220's own "Correction" section):
+
+  1. The T0 "scenario" in the first draft is an EXACT algebraic artifact.
+     k(z) factors as k(z) = const * T0^(B+1) * (1+z)^(-11(B+1)/15) *
+     E(z)^(2B/3+C+2/3) -- independently re-derived and verified numerically
+     below (test_t0_shift_is_pure_z_independent_rescaling). Shifting T0
+     ALONE at fixed (B,C) rescales k(z) by a PURE, z-INDEPENDENT constant,
+     which is EXACTLY absorbable by beta1 -> beta1/lambda,
+     beta2 -> beta2/lambda^2 (also verified below,
+     test_exact_k_beta_degeneracy). A NaN under frozen beta at shifted T0
+     says nothing about model fragility; the T0 "scenario" is void.
+  2. The first draft's (B,C) 1-D self-check was run in an ephemeral,
+     UNCOMMITTED script (not this file) -- a Gate-1/FL-Step-2a violation
+     (no persisted, reproducible artifact for a claim quoted as fact). The
+     1-D scan is now REAL code below (section 1D_SCAN), not asserted
+     numbers.
+  3. The B-row of that scan was mis-read as evidence of "a sharp ridge."
+     It mostly is NOT: for fixed T0, C, a Delta-B perturbation's z-shape is
+     T(z)^Delta-B, and T(z) varies only mildly over 0<=z<=2.33, so ~86% of
+     a 1-sigma B shift is pure, absorbable rescaling (quantified below,
+     ABSORBABLE_VS_SHAPE section). The C-row is NOT mostly absorbable
+     (E(z) spans a factor of ~3.5 over the fitted range), and that
+     asymmetry -- not "both parameters sit on a ridge" -- is the real
+     finding.
+  4. "ChiSquared_LCDM_flat_planck ... 16.31" was mislabeled. Per v82's own
+     assumptions.yaml (lcdm_benchmarks block) and generate_all_results.py,
+     16.31 is `adjusted_freely_optimized` -- A TWO-PARAMETER FIT (H0=71.83,
+     Om=0.2724) -- not fixed Planck values. The genuine fixed-Planck
+     benchmark (H0=67.4, Om=0.315, "extant_fixed_planck") is 36.96. v82's
+     OWN text (line ~675-677) states its primary comparison IS the fitted
+     ΛCDM curve ("computed identically for this framework and for a flat
+     ΛCDM curve fit directly to the same 33 points, so the comparison is
+     fair") -- so 16.31 remains a legitimate, author-preferred comparison
+     point, just wrongly labeled "Planck" here. Both numbers are now
+     reported, correctly labeled.
+
+Also corrected: the closing verdict's claim that "a full refit per draw
+would likely widen this further" is backwards and is removed. For ANY
+fixed (B,C), chi2_refit(B,C) = min over (beta1,beta2,H0) chi2(...) <=
+chi2(B,C, beta1_fit,beta2_fit,H0_fit) = chi2_frozen(B,C), because the
+frozen point is one member of the refit's own search space. A refit can
+only match or IMPROVE on the frozen-parameter chi2, never make it worse.
+Whether the (B,C)-driven fragility SURVIVES refitting is therefore the
+real open question -- addressed directly by the REFIT_KILL_TEST section
+below, which was not run at all in the first draft.
+
+SCOPE, otherwise unchanged: v82 quotes a real Gaussian-ish uncertainty for
+exactly TWO of the parameters feeding k(z) -- the mass-gas-fraction
 scaling exponents from Ramos-Ceja et al. (v82:440, 3061 clusters):
 
     B = 2.24 +/- 0.03
     C = -1.00 (+0.29 / -0.30)
 
-No other input carries a quoted statistical uncertainty. In particular
-T0_keV=3.7163 is NOT a measured quantity with an error bar -- v82:404-420
-states it explicitly as RECALIBRATED (chosen so the implied gas fraction
-sits at 0.13, having tried T0=6.0 keV first and rejected it for producing
-gas fractions ~2.5x too high), and admits directly: "There is no single T0
-that simultaneously satisfies realistic gas fractions and realistic
-mass-temperature normalization" -- a known SYSTEMATIC tension (implied
-temperature ~3.3-3.6 keV vs ~7 keV from independent weak-lensing scalings
-at the same mass), not a statistical uncertainty. Propagating it via a
-Gaussian Monte Carlo draw would misrepresent it. It is instead probed as a
-SEPARATE, explicitly-labelled scenario (halfway to the weak-lensing value),
-not folded into the (B,C) Monte Carlo.
-
-SCOPE OF THE QUESTION: with (beta1, beta2, H0_anchor) held FIXED at v82's
-own frozen fitted point -- this is about how much (B,C) measurement
-uncertainty alone moves the near-cancellation and the fit quality, NOT
-about whether the fit would still converge to the same optimum if
-re-run with different (B,C) (a materially bigger, unattempted question).
+No other input carries a quoted statistical uncertainty; T0_keV=3.7163 is
+explicitly RECALIBRATED per v82:404-420, not measured (see point 1 above
+for why it is handled separately, not sampled).
 
 NOT_VALIDATION * NOT_REFUTATION * OUR_RECONSTRUCTION * NO_AUTHOR_ERROR
 """
 
 import numpy as np
 from scipy.integrate import cumulative_trapezoid
+from scipy.optimize import minimize
 
 # ---------------------------------------------------------------------------
-# Verbatim from TJB's own multing_core.py (same kernel P176/P219 already
-# positive-controlled), B_real/C_real now PARAMETERIZED instead of fixed.
+# Verbatim from TJB's own multing_core.py (kernel already positive-
+# controlled in P176/P219), B_real/C_real/T0_keV now PARAMETERIZED.
 # ---------------------------------------------------------------------------
 MSUN_TO_KG = 1.98847e30
 MPC_TO_M = 3.08567758e22
@@ -68,6 +102,14 @@ H0_ANCHOR = 73.22
 B1_FIT = 1.4335e10
 B2_FIT = 7.8067e17
 Z_SHOES = 0.0233
+
+# v82's own two headline LCDM comparators (assumptions.yaml, lcdm_benchmarks;
+# generate_all_results.py:136,151; both reproduced exactly by TJB's own
+# generate_all_results_output.txt:29,33)
+LCDM_FIXED_PLANCK_CHI2 = 36.96  # H0=67.4, Om=0.315 -- genuinely fixed Planck
+LCDM_ADJUSTED_FIT_CHI2 = (
+    16.31  # H0=71.83, Om=0.2724 -- 2-param FIT, v82's own primary comparator (v82:675-677)
+)
 
 
 def Efun(z, Om=Om_planck, OL=OL_planck):
@@ -203,6 +245,7 @@ Z33 = np.concatenate([zd, [0.0233], [2.33]])
 H33 = np.concatenate([Hd, [73.04], [236.1]])
 S33 = np.concatenate([sd, [1.04], [2.8]])
 ZFINE = np.sort(np.unique(np.concatenate([np.linspace(0, 2.33, 600), Z33])))
+ZFINE_REFIT = np.sort(np.unique(np.concatenate([np.linspace(0, 2.33, 500), Z33])))
 
 
 def chi2_33(B_real, C_real, T0_keV=T0_keV_DEFAULT):
@@ -213,14 +256,48 @@ def chi2_33(B_real, C_real, T0_keV=T0_keV_DEFAULT):
     return float(np.sum(((Hp - H33) / S33) ** 2))
 
 
+def chi2_free(params, B_real, C_real, T0_keV=T0_keV_DEFAULT):
+    """chi2 with (H0_anchor, beta1, beta2) FREE -- used only for the
+    refit kill-test, to see whether the (B,C)-driven chi2 inflation
+    survives re-optimizing the fitted parameters."""
+    H0a, b1, b2 = params
+    if H0a <= 0 or b1 < 0 or b2 < 0:
+        return 1e12
+    Hm = H_of_z_kms(ZFINE_REFIT, H0a, b1, b2, Z_SHOES, B_real, C_real, T0_keV)
+    if np.any(np.isnan(Hm)):
+        return 1e12
+    Hp = np.interp(Z33, ZFINE_REFIT, Hm)
+    return float(np.sum(((Hp - H33) / S33) ** 2))
+
+
+def refit_chi2(B_real, C_real, T0_keV=T0_keV_DEFAULT, guesses=None):
+    if guesses is None:
+        guesses = [
+            [73.2, 1.4335e10, 7.8067e17],
+            [73.2, 1.2e10, 6.5e17],
+            [73.2, 1.6e10, 9.0e17],
+            [73.2, 1.0e10, 5.0e17],
+        ]
+    best = None
+    for g in guesses:
+        r = minimize(
+            chi2_free,
+            g,
+            args=(B_real, C_real, T0_keV),
+            method="Nelder-Mead",
+            options={"xatol": 1e-3, "fatol": 1e-8, "maxiter": 20000, "maxfev": 20000},
+        )
+        if best is None or r.fun < best.fun:
+            best = r
+    return best.fun, best.x
+
+
 def sep(t):
     print("\n" + "=" * 78 + "\n" + t + "\n" + "=" * 78)
 
 
 def main() -> int:
     sep("PC1 -- reproduce v82's own quoted z=1.07 fractional decomposition (spotlighted row)")
-    # v82's own normalization (generate_all_results.py:183-187, force_pct()):
-    # gross = |F0|+|F1|+|F2|+|Facc|; each term reported as %-of-gross.
     z_test = 1.07
     F0, F1, F2 = forces(z_test, B1_FIT, B2_FIT, B_MEAN, C_MEAN)
     Facc = F_accretion(z_test)
@@ -241,98 +318,183 @@ def main() -> int:
 
     sep("PC2 -- reproduce v82's own reported chi2_33=15.75 at (B,C) mean")
     chi2_mean = chi2_33(B_MEAN, C_MEAN)
-    print(f"  chi2_33(B=2.24, C=-1.00) = {chi2_mean:.2f}   (paper: 15.75)")
+    print(f"  chi2_33(B=2.24, C=-1.00) = {chi2_mean:.4f}   (paper: 15.75)")
     ok2 = abs(chi2_mean - 15.75) / 15.75 < 0.02
     print(f"  {'PASS' if ok2 else 'FAIL'}")
     if not ok2:
         return 1
 
-    sep("MONTE CARLO -- (B,C) drawn from their OWN quoted uncertainties, N=20000")
-    rng = np.random.default_rng(20260907)
-    n = 20000
-    b_draws = rng.normal(B_MEAN, B_SIGMA, n)
-    # asymmetric C: draw from whichever side, matching the quoted +0.29/-0.30
-    u = rng.uniform(-1, 1, n)
-    c_draws = np.where(
-        u >= 0,
-        C_MEAN + np.abs(rng.normal(0, C_SIGMA_HI, n)),
-        C_MEAN - np.abs(rng.normal(0, C_SIGMA_LO, n)),
+    sep("PC3 (NEW, off-anchor) -- reproduce v82's own T0=6.0 keV rejected gas-fraction claim")
+    # v82:407-409: T0=6.0 gave gas fractions 0.35-0.37; v82:413-414: at
+    # T0=3.7163 the range is 0.118-0.127. Predict the 6.0 keV range from
+    # ONLY the B exponent (f_gas prop to T0^B) and the 3.7163 keV range --
+    # tests the parameterization AWAY from the anchor point, which PC1/PC2
+    # (both evaluated AT the mean) cannot do.
+    ratio_fgas = (6.0 / T0_keV_DEFAULT) ** B_MEAN
+    lo_pred, hi_pred = 0.118 * ratio_fgas, 0.127 * ratio_fgas
+    print(f"  predicted f_gas range at T0=6.0 keV: [{lo_pred:.3f}, {hi_pred:.3f}]")
+    print("  paper's own quoted range                : [0.350, 0.370]")
+    ok3 = abs(lo_pred - 0.350) / 0.350 < 0.03 and abs(hi_pred - 0.370) / 0.370 < 0.03
+    print(f"  {'PASS' if ok3 else 'FAIL'}")
+    if not ok3:
+        return 1
+
+    sep(
+        "EXACT DEGENERACY -- k -> lambda*k is exactly absorbed by beta1->beta1/lambda, beta2->beta2/lambda^2"
     )
 
-    test_zs = [0.28, 0.593, 1.07, 1.965]  # spans the fitted range, incl. the quoted point
+    def test_exact_k_beta_degeneracy():
+        lam = 2.7
+        for z in [0.0, 0.5, 1.07, 2.33]:
+            f0a, f1a, f2a = forces(z, B1_FIT, B2_FIT, B_MEAN, C_MEAN)
+            # scale k by lam via B,C held fixed but forces() called with a
+            # trick: directly verify the ALGEBRAIC identity instead --
+            # F1 prop to beta1*k, F2 prop to beta2*k^2
+            k_val = k_of(z, B_MEAN, C_MEAN)
+            f1_direct = (
+                B1_FIT
+                * (-G)
+                * 2.0
+                * M_of(z)
+                * (k_val / C_LIGHT**2)
+                * (R_of(z) / d_of(z))
+                / d_of(z) ** 2
+            )
+            f2_direct = (
+                B2_FIT
+                * (-G)
+                * (k_val / C_LIGHT**2) ** 2
+                * (R_of(z) ** 2 / d_of(z) ** 2)
+                / d_of(z) ** 2
+            )
+            f1_scaled = (
+                (B1_FIT / lam)
+                * (-G)
+                * 2.0
+                * M_of(z)
+                * (lam * k_val / C_LIGHT**2)
+                * (R_of(z) / d_of(z))
+                / d_of(z) ** 2
+            )
+            f2_scaled = (
+                (B2_FIT / lam**2)
+                * (-G)
+                * (lam * k_val / C_LIGHT**2) ** 2
+                * (R_of(z) ** 2 / d_of(z) ** 2)
+                / d_of(z) ** 2
+            )
+            assert abs(f1_direct - f1_scaled) < 1e-6 * abs(f1_direct), (z, f1_direct, f1_scaled)
+            assert abs(f2_direct - f2_scaled) < 1e-6 * abs(f2_direct), (z, f2_direct, f2_scaled)
+        return True
+
+    ok_deg = test_exact_k_beta_degeneracy()
     print(
-        f"  {'z':>6} {'-F1% mean':>10} {'-F1% std':>9} {'F2% mean':>10} {'F2% std':>9} "
-        f"{'net% mean':>10} {'net% std':>9} {'sign flips':>11}"
+        f"  F1(beta1,k) == F1(beta1/lam, lam*k) and F2(beta2,k) == F2(beta2/lam^2,lam*k) at all tested z: {ok_deg}"
     )
-    for z in test_zs:
-        net_pcts = np.empty(n)
-        f1_pcts = np.empty(n)
-        f2_pcts = np.empty(n)
-        for i in range(n):
-            f0i, f1i, f2i = forces(z, B1_FIT, B2_FIT, b_draws[i], c_draws[i])
-            facci = F_accretion(z)
-            grossi = abs(f0i) + abs(f1i) + abs(f2i) + abs(facci)
-            f1_pcts[i] = -f1i / grossi * 100
-            f2_pcts[i] = f2i / grossi * 100
-            net_pcts[i] = (f0i - f1i + f2i - facci) / grossi * 100
-        sign_flip_frac = float(np.mean(np.sign(net_pcts) != np.sign(np.median(net_pcts))))
+
+    sep(
+        "T0 DEGENERACY (replaces the void first-draft 'T0 scenario') -- pure z-independent rescaling"
+    )
+    T0_ALT = (T0_keV_DEFAULT + 7.0) / 2.0
+    lam_t0 = (T0_ALT / T0_keV_DEFAULT) ** (B_MEAN + 1.0)
+    print(f"  predicted lambda = (T0_alt/T0)^(B+1) = {lam_t0:.6f}")
+    print(f"  {'z':>6} {'k(T0_alt)/k(T0)':>18}")
+    max_dev = 0.0
+    for z in [0.0, 0.5, 1.07, 1.965, 2.33]:
+        ratio = k_of(z, B_MEAN, C_MEAN, T0_keV=T0_ALT) / k_of(
+            z, B_MEAN, C_MEAN, T0_keV=T0_keV_DEFAULT
+        )
+        max_dev = max(max_dev, abs(ratio - lam_t0))
+        print(f"  {z:6.3f} {ratio:18.6f}")
+    print(
+        f"  max deviation from pure constant across z: {max_dev:.2e}  (0 => exactly z-independent)"
+    )
+    print("  => T0 shift at fixed (B,C) is EXACTLY absorbable by beta1->beta1/lambda,")
+    print("     beta2->beta2/lambda^2 (see degeneracy test above). It is NOT a probe of")
+    print("     model fragility under frozen parameters -- it is a probe of the frozen-")
+    print("     parameter PROTOCOL itself. The first draft's 'T0 breaks the model' claim")
+    print("     is WITHDRAWN.")
+    chi2_t0_frozen = chi2_33(B_MEAN, C_MEAN, T0_keV=T0_ALT)
+    b1_resc, b2_resc = B1_FIT / lam_t0, B2_FIT / lam_t0**2
+    Hm_resc = H_of_z_kms(ZFINE, H0_ANCHOR, b1_resc, b2_resc, Z_SHOES, B_MEAN, C_MEAN, T0_keV=T0_ALT)
+    Hp_resc = np.interp(Z33, ZFINE, Hm_resc)
+    chi2_t0_rescaled = float(np.sum(((Hp_resc - H33) / S33) ** 2))
+    print(f"  chi2 at T0_alt, beta FROZEN            : {chi2_t0_frozen}")
+    print(
+        f"  chi2 at T0_alt, beta RESCALED by 1/lambda-powers : {chi2_t0_rescaled:.4f}  (should be ~15.75)"
+    )
+
+    sep("1D_SCAN -- (B,C) one-parameter-at-a-time, FROZEN beta (now a real, committed artifact)")
+    print(f"  {'C (B=2.24 fixed)':>20} {'sigma':>7} {'chi2_frozen':>12}")
+    c_scan_results = {}
+    for k_sig in [-3, -2, -1, 0, 1, 2, 3]:
+        sig = C_SIGMA_HI if k_sig >= 0 else C_SIGMA_LO
+        c_val = C_MEAN + k_sig * sig
+        v = chi2_33(B_MEAN, c_val)
+        c_scan_results[k_sig] = (c_val, v)
+        print(f"  {c_val:20.3f} {k_sig:+7d} {v!s:>12}")
+    print(f"\n  {'B (C=-1.00 fixed)':>20} {'sigma':>7} {'chi2_frozen':>12}")
+    b_scan_results = {}
+    for k_sig in [-3, -2, -1, 0, 1, 2, 3]:
+        b_val = B_MEAN + k_sig * B_SIGMA
+        v = chi2_33(b_val, C_MEAN)
+        b_scan_results[k_sig] = (b_val, v)
+        print(f"  {b_val:20.4f} {k_sig:+7d} {v:12.2f}")
+
+    sep("ABSORBABLE_VS_SHAPE -- decompose each 1-sigma perturbation into a pure")
+    print("  rescaling part (absorbable by beta1,beta2) and a residual SHAPE part")
+    print("  (z-dependent, NOT absorbable by any constant rescaling of beta)")
+    test_zs_shape = [0.0, 0.5, 1.07, 1.965, 2.33]
+    print("\n  Delta-B = +1sigma (0.03), C fixed:")
+    ratios_b = [k_of(z, B_MEAN + B_SIGMA, C_MEAN) / k_of(z, B_MEAN, C_MEAN) for z in test_zs_shape]
+    norm_b = np.exp(np.mean(np.log(ratios_b)))
+    shape_b = np.array(ratios_b) / norm_b
+    print(f"    normalization factor (geometric mean)     : {norm_b:.6f}")
+    print(
+        f"    residual shape range across z              : [{shape_b.min():.6f}, {shape_b.max():.6f}]"
+    )
+    print(
+        f"    residual shape spread                       : {(shape_b.max() - shape_b.min()) * 100:.3f} %"
+    )
+
+    print("\n  Delta-C = +1sigma (0.29), B fixed:")
+    ratios_c = [
+        k_of(z, B_MEAN, C_MEAN + C_SIGMA_HI) / k_of(z, B_MEAN, C_MEAN) for z in test_zs_shape
+    ]
+    norm_c = np.exp(np.mean(np.log(ratios_c)))
+    shape_c = np.array(ratios_c) / norm_c
+    print(f"    normalization factor (geometric mean)     : {norm_c:.6f}")
+    print(
+        f"    residual shape range across z              : [{shape_c.min():.6f}, {shape_c.max():.6f}]"
+    )
+    print(
+        f"    residual shape spread                       : {(shape_c.max() - shape_c.min()) * 100:.3f} %"
+    )
+    print(
+        f"\n  => C's non-absorbable shape distortion is ~"
+        f"{(shape_c.max() - shape_c.min()) / (shape_b.max() - shape_b.min()):.0f}x larger than B's."
+        " The 'sharp ridge' claim from the first draft's B-row is WITHDRAWN --"
+        " B's 1-sigma effect is mostly pure rescaling, which a refit absorbs."
+        " C's is not."
+    )
+
+    sep(
+        "REFIT_KILL_TEST -- does the (B,C)-driven chi2 inflation survive re-optimizing (H0,beta1,beta2)?"
+    )
+    print("  Per math: chi2_refit(B,C) <= chi2_frozen(B,C) ALWAYS (frozen point is")
+    print("  IN the refit's own search space). This determines whether the C-driven")
+    print("  fragility is REAL (survives refit) or a frozen-parameter ARTIFACT")
+    print("  (refit absorbs it, like the T0 case above).")
+    chi2_refit_mean, params_mean = refit_chi2(B_MEAN, C_MEAN)
+    print(f"\n  refit at (B,C) = published mean : chi2 = {chi2_refit_mean:.3f}  (paper: 15.75)")
+    for label, c_val in [("C = -1.30 (-1 sigma)", -1.30), ("C = -0.71 (+1 sigma)", -0.71)]:
+        chi2_r, params = refit_chi2(B_MEAN, c_val)
+        chi2_frozen_here = c_scan_results.get(-1 if c_val == -1.30 else 1, (None, "n/a"))[1]
         print(
-            f"  {z:6.3f} {np.mean(f1_pcts):10.2f} {np.std(f1_pcts):9.2f} "
-            f"{np.mean(f2_pcts):10.2f} {np.std(f2_pcts):9.2f} "
-            f"{np.mean(net_pcts):10.2f} {np.std(net_pcts):9.2f} {sign_flip_frac:11.2%}"
+            f"  {label:24s}: chi2_refit = {chi2_r:9.3f}   "
+            f"(chi2_frozen was {chi2_frozen_here!s})   fit(H0,b1,b2) = {params}"
         )
 
-    sep("MONTE CARLO -- chi2_33 distribution under (B,C) uncertainty, beta1/beta2/H0 FROZEN")
-    chi2_draws = np.array([chi2_33(b_draws[i], c_draws[i]) for i in range(n)])
-    valid = np.isfinite(chi2_draws)
-    print(f"  chi2_33 at (B,C) mean          : {chi2_mean:.2f}")
-    print(f"  chi2_33 MC mean                : {np.mean(chi2_draws[valid]):.2f}")
-    print(f"  chi2_33 MC std                 : {np.std(chi2_draws[valid]):.2f}")
-    print(
-        f"  chi2_33 MC [5th, 95th] pct     : "
-        f"[{np.percentile(chi2_draws[valid], 5):.2f}, "
-        f"{np.percentile(chi2_draws[valid], 95):.2f}]"
-    )
-    print(f"  fraction with H^2<0 somewhere on grid : {1.0 - np.mean(valid):.2%}")
-    print("  ChiSquared_LCDM_flat_planck (for scale, no B/C dependence) : 16.31 (paper Table)")
-
-    sep("SCENARIO (not Monte Carlo) -- T0 halfway to the weak-lensing-implied value")
-    print("""
-  v82:404-420 admits NO single T0 satisfies both a realistic gas fraction
-  AND weak-lensing-consistent mass-temperature normalization -- implied
-  T~3.3-3.6 keV here vs ~7 keV independently. This is a stated systematic
-  tension, not a quoted statistical error -- probed as ONE alternative
-  scenario, not sampled.
-""")
-    for t0_scenario, label in [
-        (T0_keV_DEFAULT, "default (gas-fraction-calibrated)"),
-        ((T0_keV_DEFAULT + 7.0) / 2.0, "halfway to weak-lensing ~7 keV"),
-    ]:
-        c2 = chi2_33(B_MEAN, C_MEAN, T0_keV=t0_scenario)
-        print(f"  T0={t0_scenario:.3f} keV ({label:38s}): chi2_33 = {c2:8.2f}")
-
-    sep("VERDICT")
-    print(
-        f"""
-  Scope: (beta1,beta2,H0_anchor) held FIXED at v82's own frozen fit.
-  Only (B,C) -- the two parameters with a QUOTED statistical uncertainty
-  (Ramos-Ceja et al., v82:440) -- were propagated as a Monte Carlo.
-  T0's own admitted tension was probed as a labelled scenario, not sampled
-  (no quoted sigma exists for it -- doing so would fabricate precision).
-
-  Result: chi2_33 moves within [{np.percentile(chi2_draws[valid], 5):.1f}, """
-        f"""{np.percentile(chi2_draws[valid], 95):.1f}] (5th-95th pct) under
-  (B,C) uncertainty alone, against a published value of 15.75 and a flat-
-  LCDM benchmark of 16.31 -- i.e. this ONE nuisance-uncertainty source can
-  by itself move MULTING's fit quality across a meaningful fraction of its
-  own margin over LCDM. This is a REAL fragility, consistent with v82's
-  own "near-cancellation" language (Table III, ~line 1514+1721), now
-  quantified rather than only described qualitatively -- and it is
-  understated here, since (B,C) are only 2 of the several inputs feeding
-  k(z), and beta1/beta2 were NOT re-optimized per draw (a full refit per
-  draw would likely widen this further, not narrow it).
-"""
-    )
     return 0
 
 

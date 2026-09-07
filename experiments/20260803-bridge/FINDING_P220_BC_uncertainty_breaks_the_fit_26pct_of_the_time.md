@@ -1,3 +1,25 @@
+> # [RETRACTED 2026-09-07] DO NOT CITE
+>
+> Falsified in its headline claim by a context-blind Step 8a skeptic pass
+> the same day, independently re-verified by me (three claims by exact
+> algebraic re-derivation confirmed to 6 decimal places, one against
+> source, one via the skeptic's own proposed refit kill-test, run twice).
+>
+> **The "26% NaN, chi2 in [24,2194]" result is a FROZEN-PARAMETER
+> ARTIFACT.** Refitting (beta1,beta2,H0_anchor) -- mathematically
+> guaranteed to help, never hurt -- brings chi2 from 930.3 to **14.08**
+> (BETTER than published) at C=-1sigma, and from NaN to **41.67** (inside
+> v82's own Table II range) at C=+1sigma. The T0 "scenario" (S5) is an
+> EXACT algebraic degeneracy (k -> lambda*k, absorbed by beta1->beta1/
+> lambda, beta2->beta2/lambda^2) -- proven, not a real fragility. The
+> "16.31 flat-Planck benchmark" is mislabeled -- it is a 2-parameter FIT;
+> genuine fixed Planck is 36.96.
+>
+> Full record: `FINDING_P220_RETRACTION_after_step8a.md`. Text below kept
+> verbatim, not edited (no-silent-correction).
+
+---
+
 # FINDING P220 — propagating v82's own two QUOTED nuisance uncertainties
 # (B, C) through the frozen fit makes the model undefined (H² < 0 somewhere
 # on the grid) in 26% of draws, and moves χ²₃₃ across a range that dwarfs
