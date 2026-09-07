@@ -1,9 +1,11 @@
 # Current Evidence State — buckholtz-idm-multing-mvp
 
-**Date:** 2026-09-03, quality snapshot refreshed 2026-09-05, then again
-after an external review's fix round the same day (see
-`docs/155_engineering_debt_cleanup_20260905.md` for the full cleanup
-report and its own addendum) · **Verified:** `pytest tests/` 908 passed,
+**Date:** 2026-09-03; quality snapshot refreshed 2026-09-05, and
+substantially revised **2026-09-07** (37 commits: bottleneck 3 dissolved,
+KG2 answered, H1b parked and its criterion repaired — see §7) ·
+**Verified 2026-09-07:** `pytest tests/` **995 tests across 68 files,
+exit 0, zero failures**, `mypy src` **0 errors / 39 files**;
+earlier snapshot read `pytest` 908 passed,
 `ruff check .` clean, `ruff format --check src tests` clean, `mypy src`
 0 errors/38 files, coverage 91% (`src/double_inversion_plots.py` 100%,
 `src/cluster_data_pipeline.py` 93% — the remaining 7% is `_vizier_
@@ -325,8 +327,8 @@ this file is the slower-moving strategic layer above it).
 | # | Bottleneck | Status | What would move it |
 |---|---|---|---|
 | 1 | F→H_MULT(z) bridge | BLOCKED (restated 2026-09-01, `docs/153`); `docs/153`'s own literal next-step disproven as buildable, `docs/156` (2026-09-05) — mechanically-correct alternative line (`P157`→`P158`→`ADDENDUM2`→`P195`) gives a real, narrow, `z≤0.5`-only, magnitude-uncertain result | `z≥1` (or `z≥1.07` on this alternative line) needs nonlinear-bias/N-body work, not another analytic substitution — same conclusion reached independently on two separate lines of attack |
-| 2 | Unique completion | Untouched, `docs/134` | — |
-| 3 | Absolute scale / observable mapping | STRUCTURALLY BLOCKED, quantified buildable path exists and CONFIRMED stronger further from baseline (P191→P193), within a known domain limit (P192: z<16.957); P194 mapped the full information profile across the window and found the "further is better" mechanism is entangled (not resolved) between 3 co-varying candidates | A real high-z H(z) survey — z∈{12,14,16} (P193) is competitive but not uniformly better than a denser greedy set (P194); precision-dependent — see §5 |
+| 2 | Unique completion | Untouched, `docs/134`. **2026-09-07:** `/hypothesis-arbiter` on the dipole's ontology (`H_body` / `H_fluid` / `H_avg`) returned only the LEAST falsifiable survivor and recommended **stopping** structural computation rather than iterating. Recommendation taken. | A genuinely new input, not another variant |
+| 3 | Absolute scale / observable mapping | **DISSOLVED 2026-09-07 (`FINDING_P206`)** — it was never a measurement gap. `P133`'s rank-2 result IS the one-dimensional **field-normalization redundancy** `FINDING_P52` had already derived on 2026-08-16; `P133` renamed it 8 days later and made it a bottleneck without connecting the two. `L := 2a−b−c` is the field-rescaling weight, the null direction `(−1, ½, ½)` is the `φ→λφ̄` generator, so rank 2 is **complete**: 3 coordinates, 1 redundancy, 2 physical d.o.f., all determined. Step 8a run twice with reworded prompts, both CONFIRMED-REAL. *(Prior text, kept: "STRUCTURALLY BLOCKED, quantified buildable path exists…" — the P191-P194 Fisher-forecast line is unaffected and still stands on its own terms.)* | Nothing — the question as posed had no solution and needed none. **What remains open is `P52`'s own KG2**, answered as far as data allows on 2026-09-07 (`P208`/`P209`, §7): both physical invariants are unmeasurable, each for a *different* structural reason |
 | 4 | IC-sensitivity | CLOSED (campaign exhausted, question genuinely open) | A genuinely new mechanism class, not a 6th variant of the 5 already excluded |
 
 ## 5. One next differentiating test
@@ -417,6 +419,82 @@ lesson, and the confirmed-pearl chain P191→P193).
   assumed precision is achievable, or that bottleneck 3 is resolved —
   it only shows a quantified, in-principle path exists (see §5).
 
+## 7. Session of 2026-09-07 — what changed (37 commits)
+
+### 7.1 Bottleneck 3 dissolved, and it was our own result
+
+`FINDING_P206`. See §4 row 3. The headline for a reader who reads nothing
+else: **the project spent weeks treating as a measurement gap something it
+had already derived and documented.** `P52` (08-16) computed the
+redundancy; `P133` (08-24) recomputed the same structure under different
+vocabulary and made it a bottleneck. Neither cites the other.
+
+### 7.2 KG2 answered — `P208` + `P209`
+
+`P52`'s residue ("form invariance ≠ value determined"). The physical space
+is two-dimensional and **neither invariant is a number, for different
+structural reasons**:
+
+| invariant | why there is no number |
+|---|---|
+| `A g²` | **degenerate with `G`** — universal coupling ∝ mass plus an effectively massless mediator gives exactly Newtonian `1/r²`, absorbed into the measured Newton constant (`P23`, `P149`). Its one existing figure, `≲8.39×10⁻¹²` SI = **12.6% of G**, is called by `P53` itself *"not a direct experimental bound on MULTING's own Ag²"* |
+| `η = κ/g` | enters observables **only as a product** with an unknown composition contrast |
+
+**New, and the first external number ever to bear on `η`:** reducing
+`P25`'s exact Eötvös expression gives `η_E = 2η·|Δψ|/r` with
+`ψᵢ = Kᵢrᵢ/(Mᵢc²)`, and MICROSCOPE **[VERIFIED-arXiv 2209.15487]**
+(`η(Ti,Pt) = [−1.5 ± 2.3 ± 1.5]×10⁻¹⁵`) yields
+
+```
+η · |Δψ|  ≤  2.5×10⁻⁸ m      [~2σ, quadrature convention]
+```
+
+`FINDING_P24` had explicitly given `η` no numeric value. This bounds a
+**product**, not `η`: `Δψ` is the `k_A,k_P` row `MODEL_SPEC_AUDIT.md`
+flags OPEN.
+
+**Verdict: KG2 is blocked MODEL-side, not data-side.** The best
+equivalence-principle experiment ever flown is already sharp enough to
+bite; what stops it biting is a postulate the model never made definite.
+
+### 7.3 H1 is not dead — its only real test never ran
+
+`docs/159`, `parked/H1b-whim-thermal-mass-bias.md`. Every killed H1 arm
+(H1a `NR-010`, H1c `NR-012`, H1d `NR-011`, H1e `NR-014`) used the
+**cluster-interior ICM**. **H1b — the only WHIM arm, *"the actual filament
+gas TJB refers to"*** — was designed and pre-registered on 2026-07-17 and
+**never executed**, blocked 68 days on TNG-300 access. Now parked with
+three measurable revival conditions, and the `decision.md` it had lacked.
+
+**TNG access probed 2026-09-07, with a control: unanswerable anonymously.**
+Site `200`, `/data/` `200`, `/api/` **403 at the root**, `/api/TNG300-1/`
+`403`. So it is an authentication requirement, not a block on us — and a
+`403` looks identical whether the July registration was approved or not.
+**One login by the account holder settles it; nothing short of that does.**
+
+**H1b's criterion was repaired before any data exists** (`P210`→`P212`,
+`claim.md` AMENDMENTS 1 and 2, additive — originals not rewritten):
+`KILL` had a dead band that *widened* with `N`, the middle `0.15–0.30` was
+undefined, and a strongly negative result filed indistinguishably from
+"no effect". Now a complete three-way partition with a sign-reversed
+subtype (`U₉₅ < −0.30`), plus a **frozen structural-floor algorithm** whose
+stratification is fixed deterministically by `N` alone. Noise floor
+checked and clean; **the structural floor is still unknown** and must be
+the first thing the data touches.
+
+### 7.4 A measured fact about this repository
+
+Citation among the 22 structure-word findings is **14/231 = 6%**
+(`FINDING_P207`). *"Does not cite X" is the default in 94% of cases and
+carries almost no information* — a base-rate control that withdrew three
+quarters of that finding's own first draft. **Consequence: the citation
+graph is not a retrieval mechanism here.** Indexes are, which is why both
+broken ones were fixed the same day (`null_results/INDEX.md` did not index
+NULL-verdict findings; `docs/INDEX.md` had been stale since 2026-07-12
+with 40 docs missing). All 22 `NR-*` entries are now classified —
+**`theory_killed` = 0 of 22**: MULTING's core claim has never been
+directly tested.
+
 ## Exclusion zone (do not start without a new triggering fact)
 
 New numerology searches on Eq.32 beyond what NR-019/020/021 already
@@ -438,6 +516,18 @@ the reasoning and its addendum for why the first pass's 29% was too
 conservative); `.claude/memory/goals.md`'s 43 stale duplicate entries
 removed and archived; a real authorization ambiguity around the
 Fisher-forecast test fixed (see docs/155 addendum).
+
+**Closed 2026-09-07 (three debts, each of whose stated premise had to be
+corrected first):** 13 lapsed `pearl_registry` `next_check` rows triaged —
+5 were already ANSWERED by later work and simply never marked; `docs/INDEX.md` resynced, 40 docs (122-159) added, and **four number
+collisions found while indexing (122/132/133/134 each used twice; doc 121
+does not exist)** — cite by filename past 121; `source_provenance.py` /
+`conflict_resolver.py` **PARKED** (`docs/158`) rather than wired —
+`docs/157`'s proposed join was a category error (chain level vs value
+level), and that module's docstring had the dependency arrow backwards.
+Also corrected: two false *"no API key needed"* claims in
+`scripts/illustris_tng_k_a.py` (the API 403s at its root). Provenance
+checked before reporting — nothing downstream had cited it.
 
 **Still open:** `pyproject.toml` version frozen at `0.3.0` since the MVP
 era (a release decision, out of scope for engineering-hygiene passes).
