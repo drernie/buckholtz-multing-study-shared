@@ -41,9 +41,8 @@ reads only this index. That gap is the finding; these rows are the fix.
 | NR-022 | 2026-08-24 | 4th-observable-literature-search | **NULL (search exhaustion — NOT a REJECT)** | No class-(i) monomial found; P206 later showed none can exist |
 | NR-023 | 2026-08-26 | completion-positivity-non-discriminating | **NULL (non-discriminating — NOT a REJECT)** | BOTH-SAFE on this trajectory range; test separates nothing |
 
----
-
 **Files:**
+
 - [NR-009: S³ geometry as Eq.32 mechanism — rejected](20260623-nr009-s3-geometry-eq32-mechanism.md)
 - [NR-001/NR-002: constant-eps and powerlaw bridge](20260612-bridge-candidates-fail.md)
 - [NR-003: PS comoving density Model A](20260612-ps-comoving-model-a-fail.md)
@@ -65,3 +64,74 @@ reads only this index. That gap is the finding; these rows are the fix.
 - [NR-021: H1' formalization data collection — real N=11, coding-reliability problem](20260902-nr021-h1prime-formalization-data-collection.md)
 - [NR-022: 4th-observable literature search — NULL, search exhausted, structurally superseded by P206](../experiments/20260803-bridge/FINDING_P137_bottleneck3_literature_search.md)
 - [NR-023: completion positivity — NULL, BOTH-SAFE, test does not discriminate](../experiments/20260803-bridge/FINDING_P140_completion_positivity_check.md)
+
+---
+
+## Duhem–Quine Classification (all 22 entries, 2026-09-07)
+
+**Why this exists.** Every row above says a claim was rejected. None of
+them said *what kind of thing* was rejected — a whole theory, one bridge
+form, one parameterization, or just a test that could not discriminate.
+That distinction is the difference between "stop" and "try another form",
+and it was carried only in prose. `pearl_registry` row 97 (2026-07-18)
+proposed the vocabulary and classified 8 entries; this completes the other
+14. Its own rule is followed here: **an entry that resists clean
+classification is informative, not a nuisance** — two do, and both are
+recorded as resisting rather than forced into a box.
+
+### The headline, unchanged and now complete
+
+**`theory_killed`: ZERO entries out of 22.** MULTING's actual core claim
+(`F_m − F_d + F_q` with TJB's own undisclosed `k_A(z)`/`D(z)` schedule) has
+never been directly tested. Every rejection above kills a *reconstructed*
+form, a mediating mechanism, a parameterization, or a test — never the
+theory. Row 97 established this for its 8; it survives the full set.
+
+### Per-entry
+
+| ID | class | note |
+|---|---|---|
+| NR-001 | `bridge_family_killed` | constant bridge FORM (row 97) |
+| NR-002 | `bridge_family_killed` | power-law bridge FORM (row 97) |
+| NR-003 | `bridge_family_killed` | Press–Schechter `k_A(z)` schedule (row 97) |
+| NR-004 | `bridge_family_killed` | virial `k_A(z)` schedule (row 97) |
+| NR-005 | `bridge_family_killed` | **partial** — `f_sel` sub-component survives (row 97) |
+| NR-007 | `specification_missing` | the derivation was never specified: author "might suggest" only, 5 required mechanisms all absent. Nothing was tested and failed — there was nothing to test |
+| NR-008 | `bridge_family_killed` | + informative byproduct: revealed the two-hump `ε(z)` structure, which is not itself a kill (row 97) |
+| NR-009 | `mechanism_killed` | S³-geometry for Eq.32 — a DIFFERENT track, targets Eq.32's coefficients, not a bridge candidate (row 97) |
+| NR-010 | **`signature_absent`** ⚠️ *new class* | the proposed correlation is simply not in the data (`r=0.021`, `p=0.88`) and its direction is reversed. Not a mechanism kill — the base signature never appeared |
+| NR-011 | `mechanism_killed` | mass threshold does not mediate — **but see NR-015** |
+| NR-012 | `mechanism_killed` | morphology does not mediate — **but see NR-015** |
+| NR-013 | `parameterization_killed` | `β_d`/`β_q` profiling inside a given force ansatz (row 97) |
+| NR-014 | `mechanism_killed` | AGN feedback does not mediate — **but see NR-015** |
+| NR-015 | `test_inconclusive` | its own verdict is "mechanism unresolved": the signal vanishes once `T_X` is controlled (`r=−0.08`, `p=0.58`), and `T_X` alone is stronger (`r=−0.81`) than the quantity under study |
+| NR-016 | `bridge_family_killed` | Shtanov–Sahni naive mapping: `φ=V/(m_A m_P)` is not a universal kernel |
+| NR-017 | `mechanism_killed` | RG-running boundary condition — `tan²θ_W` already exceeds the target at `m_Z` and runs monotonically away |
+| NR-018 | `bridge_family_killed` | pair-fluid virial mapping gives `w=n/3`, so no dark-energy EoS from that form |
+| NR-019 | `mechanism_killed` | consolidated, 3 attempts (S³, F₄/G₂/J₃(O), SM-gauge-dim) — all post-hoc relabelling; **Eq.32 itself survives unexplained** |
+| NR-020 | **RESISTS** ⚠️ | kills a *meta-criterion* (the a-priori/post-hoc timing rule, via the Balmer 1885 counter-example), not a physics claim. No class in this vocabulary is about methodology. Its DoF-based fallback survives, unattacked |
+| NR-021 | **RESISTS** ⚠️ | **conflates two kills in one experiment** — exactly what row 97 predicted resistance would reveal. It is `dataset_inadequate` (real `N=11`, not 60) *and* an instrument failure (DoF-ratio estimates diverge 2–6× between blind coders). Either alone would end the test; the entry does not separate them |
+| NR-022 | **`search_exhausted`** ⚠️ *new class* | a literature search returned nothing. Since 2026-09-07 `FINDING_P206` upgrades this for class (i) specifically: no such monomial *can* exist while remaining rescaling-invariant, so the null is structural, not a matter of search coverage |
+| NR-023 | `test_inconclusive` | BOTH-SAFE: positivity does not discriminate the two completions on this trajectory range. Row 97's own category, matched exactly |
+
+### What the classification surfaced that the prose did not
+
+1. **`NR-011`/`012`/`014` rest on a signal `NR-015` says is not there.** They
+   killed three candidate *mediators*; `NR-015` then found the correlation
+   they were mediating vanishes once `T_X` is controlled, and explicitly
+   *"reclassifies NR-011/012/014's 'robust to 4 confounds' framing as
+   overclaim."* Their `mechanism_killed` tags stand as recorded, but the
+   premise under them is weakened. Read `NR-015` before citing any of them.
+2. **Three classes were missing from the proposed six.** Row 97 already had
+   to add `mechanism_killed` for `NR-009`. Completing the set needed two
+   more — `signature_absent` (a predicted correlation simply absent) and
+   `search_exhausted` (a search returned nothing) — plus two entries that
+   fit nothing. A vocabulary that needs 3 extensions and leaves 2 residuals
+   over 22 entries is useful but not complete; treat it as a working
+   taxonomy, not a closed one.
+3. **The Eq.32 track is a separate arc.** `NR-009`, `NR-017`, `NR-019`,
+   `NR-020` all target Eq.32's coefficients, not the F→H(z) bridge. Four of
+   22 entries belong to a different question and were only ever grouped
+   with the rest by filing order.
+
+
