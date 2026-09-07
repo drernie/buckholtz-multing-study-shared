@@ -1,6 +1,6 @@
 # Documentation Index — Buckholtz IDM/MULTING Audit
 
-**Last updated:** 2026-07-12
+**Last updated:** 2026-09-07 (docs 122-157 indexed; previously stale since 2026-07-12)
 **Total documents:** 96 markdown files
 
 **Note:** This index was regenerated 2026-07-12 after removing author-facing correspondence,
@@ -213,6 +213,80 @@ Technical evidence-lock checkpoints — pending/resolved status of specific veri
 
 ---
 
+### Bridge Solution Space & Closure (docs 122–128)
+
+- [122_bridge_solution_space.md](122_bridge_solution_space.md) — solution space for a continuous reproducible `H_MULT(z)`
+- [122_bottleneck_synthesis_cosmological_branch_verdict.md](122_bottleneck_synthesis_cosmological_branch_verdict.md) — bottleneck synthesis, cosmological-branch verdict ⚠️ *number collision, see note below*
+- [123_f_to_hz_bridge_solution_space.md](123_f_to_hz_bridge_solution_space.md) — F→H(z) bridge solution space (deep mode)
+- [124_shtanov_bridge_applied_to_F_oP.md](124_shtanov_bridge_applied_to_F_oP.md) — Shtanov & Sahni (2010) bridge applied to `F_oP` — **FALSIFIED** (naive mapping; `null_results` NR-016)
+- [125_factorization_gate_result.md](125_factorization_gate_result.md) — P1 universality/factorization gate result *(still load-bearing; referenced through P158)*
+- [126_nonuniqueness_of_closure_lemma.md](126_nonuniqueness_of_closure_lemma.md) — non-uniqueness of cosmological closure for `F_oP` (scoped lemma)
+- [127_p2_deltaH_result.md](127_p2_deltaH_result.md) — P2 constructive test, `ΔH(a)` result *(read `FINDING_P157` first — it superseded this framing)*
+- [128_p3_fsigma8_result.md](128_p3_fsigma8_result.md) — P3 `fσ8` test: broad claim **FALSIFIED**, narrow claim survives
+
+### Lagrangian & CANDIDATE-L1 (docs 129–131)
+
+- [129_q006_multing_lagrangian.md](129_q006_multing_lagrangian.md) — Q006: constructing the MULTING Lagrangian *(addressed 2026-09-07: `/hypothesis-arbiter` → unresolvable on current information)*
+- [130_candidate_L1_evaluation.md](130_candidate_L1_evaluation.md) — CANDIDATE-L1 covariant reconstruction: evaluation + step-1 kill-test *(answered by `FINDING_P204`)*
+- [131_L1_weakfield_matching_result.md](131_L1_weakfield_matching_result.md) — CANDIDATE-L1 weak-field matching *(⚠️ `FINDING_P204`: this doc is internally inconsistent about what its own `ξ_A` is)*
+
+### kSZ Empirical Test (docs 132–134)
+
+- [132_ksz_force_law_constraint.md](132_ksz_force_law_constraint.md) — first direct empirical test of the MULTING force layer (kSZ)
+- [132_open_bottlenecks_task_backlog.md](132_open_bottlenecks_task_backlog.md) — open bottlenecks task backlog ⚠️ *number collision*
+- [133_c1_source_to_prediction_closure.md](133_c1_source_to_prediction_closure.md) — C1 source-to-prediction closure trace
+- [133_statistical_decision_record.md](133_statistical_decision_record.md) — statistical decision record, kSZ dipole limit ⚠️ *number collision*
+- [134_claim_registry_ksz.md](134_claim_registry_ksz.md) — claim registry, kSZ dipole constraint
+
+### Audit Trilogy (docs 134–136)
+
+- [134_definitions_units_provenance_audit.md](134_definitions_units_provenance_audit.md) — Audit 2: definitions, units, source-of-truth provenance ⚠️ *number collision*
+- [135_audit3_fair_model_comparison.md](135_audit3_fair_model_comparison.md) — Audit 3: independent end-to-end reproduction + fair model comparison
+- [136_trilogy_verdict_and_decisions.md](136_trilogy_verdict_and_decisions.md) — trilogy verdict & decision log (Audits 1+2+3)
+
+### TJB-Facing Tiers (docs 137–139)
+
+- [137_tjb_immediate_help_brief.md](137_tjb_immediate_help_brief.md) — immediate help brief (GREEN tier)
+- [138_tjb_optional_technical_modules.md](138_tjb_optional_technical_modules.md) — optional technical modules (AMBER tier)
+- [139_internal_null_and_hypothesis_registry.md](139_internal_null_and_hypothesis_registry.md) — internal null/hypothesis registry (RED tier — **not author-facing**)
+
+### Clean-Room & External Verification (docs 140–144)
+
+- [140_v25_atomizer_source_map_and_clean_room_attempt.md](140_v25_atomizer_source_map_and_clean_room_attempt.md) — v25 source map, status mapping, clean-room reimplementation attempt
+- [141_external_verification_desi_planck_moresco.md](141_external_verification_desi_planck_moresco.md) — external verification: DESI/Planck/Moresco
+- [142_low_z_uptick_robustness_and_anchoring_reconfirmation.md](142_low_z_uptick_robustness_and_anchoring_reconfirmation.md) — low-z "uptick" robustness + anchoring-parity reconfirmation
+- [143_reply_draft_reddit_headline.md](143_reply_draft_reddit_headline.md) — reply to TJB re: Reddit headline (2026-08-12)
+- [144_new_multing_preprint_sh0es_fit_provenance.md](144_new_multing_preprint_sh0es_fit_provenance.md) — new preprint (202608.0943): SH0ES is a **fitted point**, not a held-out one
+
+### Meta-Audit, Taxonomy, Stop-Rule (docs 145–148)
+
+- [145_research_audit_and_harvest_report_20260817.md](145_research_audit_and_harvest_report_20260817.md) — project meta-audit: harvest scan + research audit *(source of truth for "what has this project established")*
+- [146_failure_mode_taxonomy.md](146_failure_mode_taxonomy.md) — failure-mode taxonomy, 11 categories with real historical examples
+- [147_campaign_stop_rule.md](147_campaign_stop_rule.md) — explicit stop-rule for the bridge campaign, the 4 named bottlenecks + reopen conditions
+- [148_ic_sensitivity_inverse_problem.md](148_ic_sensitivity_inverse_problem.md) — IC-sensitivity inverse problem
+
+### v82 Study Line (docs 149–154)
+
+- [149_v82_preprint_study.md](149_v82_preprint_study.md) — v82 preprint study *(TJB's current work; cite v82 for anything new, v6 for anything already built)*
+- [150_v82_vs_our_reconstruction_comparison.md](150_v82_vs_our_reconstruction_comparison.md) — systematic v82 vs. this project's reconstruction
+- [151_status_separation_rule.md](151_status_separation_rule.md) — **status separation rule**: empirical ⊥ interpretation ⊥ causal, never collapsed
+- [152_evidence_authority_deconflation_mapping.md](152_evidence_authority_deconflation_mapping.md) — "de-conflating evidence and authority" mapping
+- [153_bottleneck1_reopen_gate_decision.md](153_bottleneck1_reopen_gate_decision.md) — bottleneck 1 (F→H_MULT(z)) reopen gate decision
+- [154_eq32_numerology_literature_bibliography.md](154_eq32_numerology_literature_bibliography.md) — bibliography of historical "numerical coincidence" physics
+
+### Most Recent (docs 155–157)
+
+- [155_engineering_debt_cleanup_20260905.md](155_engineering_debt_cleanup_20260905.md) — engineering debt cleanup (mypy 24→0, CI-enforced)
+- [156_bottleneck1_precondition_check_20260905.md](156_bottleneck1_precondition_check_20260905.md) — bottleneck 1 precondition check (`docs/153` §3a)
+- [157_next_steps_plan_20260906.md](157_next_steps_plan_20260906.md) — next-steps plan; items 1-2 CLOSED per stop-rule, 3-5 DONE
+
+> **⚠️ Number collisions in this range.** Four numbers are used twice:
+> **122**, **132**, **133**, **134**. The docs are distinct and all are
+> listed above, but the sequence is not a unique key past 121 — cite by
+> full filename, never by number alone, for anything in 122–134.
+> Doc **121 does not exist**.
+
+
 ### Meta / Audit (named docs)
 
 - [GITHUB_SHOWCASE_AUDIT.md](GITHUB_SHOWCASE_AUDIT.md)
@@ -281,4 +355,4 @@ Some doc numbers are missing (e.g., 09, 12, 19–22, 26, 31, 44–45, 49, 56–5
 
 ---
 
-**Last updated:** 2026-07-12
+**Last updated:** 2026-09-07 (docs 122-157 indexed; previously stale since 2026-07-12)
