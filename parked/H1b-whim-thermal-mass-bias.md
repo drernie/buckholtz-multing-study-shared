@@ -237,6 +237,51 @@ first.
 **Still not settled:** the structural floor's *value*. Only the procedure
 is fixed.
 
+## TNG access PROBED 2026-09-07 — question is UNANSWERABLE anonymously
+
+Checked, with a control. Result: **the probe cannot settle it, and that is
+itself the finding.**
+
+| endpoint | HTTP |
+|---|---|
+| `https://www.tng-project.org/` (control) | **200** |
+| `https://www.tng-project.org/data/` (control) | **200** |
+| `https://www.tng-project.org/api/` | **403** |
+| `https://www.tng-project.org/api/TNG100-1/` | **403** |
+| `https://www.tng-project.org/api/TNG300-1/` (H1b's target) | **403** |
+
+The controls matter: the site answers 200 while the API answers 403, so
+this is an **authentication requirement, not a block on us**. Had the site
+also 403'd, the API result would have carried no information.
+
+**Consequence: `403` is returned to an anonymous caller whether the
+registration was approved or not.** "Access granted but no key configured"
+and "still pending" are indistinguishable from outside. Only a request
+carrying the key separates them — and obtaining or using credentials is
+out of scope here.
+
+So the earlier next-action stands, now backed by evidence rather than
+assumption: **one login by the account holder settles it, and nothing
+short of that does.**
+
+No API key exists anywhere in this repository (checked: no `.env`, no
+config carrying a TNG token, no key-shaped variable in any tracked file).
+
+### Side finding, corrected in place
+
+`scripts/illustris_tng_k_a.py` claimed in two places that the API needs no
+key for top-level info — *"public, no API key needed for summary"* and
+*"does not require API key for top-level info"*. **Both are false**: the
+root itself 403s. So `try_fetch_tng_api()` has always taken its HTTPError
+branch and that script has always used its analytical fallback.
+
+Provenance checked before reporting: `main()` computes from
+`kinetic_energy_proxy_tng` / `merger_rate_proxy`, never from the API
+response, and **no `.md` in the repo cites that script**. So nothing
+downstream ever claimed TNG data from it. A documentation defect, not a
+contaminated result. Corrected in the file, with the old claim quoted
+rather than deleted.
+
 ## Standing caveat on the July bypass search
 
 The Option B/C survey is dated **July 2026** and is now two months stale.

@@ -11,7 +11,15 @@ Approach:
   3. Compare k_A^{TNG}(z) shape with ε(z) from Table A1
 
 Data source:
-  - Illustris-TNG TNG100-1 group catalog (public, no API key needed for summary)
+  - Illustris-TNG TNG100-1 group catalog
+    [CORRECTED 2026-09-07] This line previously read "(public, no API key
+    needed for summary)". That is FALSE. Probed anonymously on 2026-09-07:
+    https://www.tng-project.org/api/ returns HTTP 403 at the ROOT, as do
+    /api/TNG100-1/ and /api/TNG300-1/. Control run the same minute: the
+    plain site and /data/ both return 200, so this is an API-auth
+    requirement, not a block on us. try_fetch_tng_api() therefore always
+    returns HTTP_ERROR 403 and this script always uses the analytical
+    fallback below. No result here has ever come from the TNG API.
   - Published kinetic energy estimates from Nelson et al. 2019 (TNG release paper)
   - Fallback: analytical k_A from TNG-calibrated sigma(M,z) relations
 
@@ -211,9 +219,18 @@ def is_monotone(values: list[float]) -> tuple[bool, int]:
 
 # ── Attempt TNG API (no auth required for public metadata) ───────────────────
 def try_fetch_tng_api() -> dict:
-    """
-    Attempt to fetch TNG100-1 public API metadata.
-    Returns status dict — does not require API key for top-level info.
+    """Attempt to fetch TNG100-1 API metadata.
+
+    [CORRECTED 2026-09-07] The previous docstring claimed this "does not
+    require API key for top-level info". Verified false: the endpoint
+    returns 403 even at the API root. This function is now, in practice,
+    an ACCESS PROBE -- it reports whether a key would be needed, and
+    always takes the HTTPError branch while none is supplied.
+
+    NOTE for H1b: a 403 here does NOT distinguish "registration still
+    pending" from "access granted but no key configured". Both look
+    identical anonymously. Only a request carrying a key can tell them
+    apart. See docs/159 and parked/H1b-whim-thermal-mass-bias.md.
     """
     try:
         url = "https://www.tng-project.org/api/TNG100-1/"

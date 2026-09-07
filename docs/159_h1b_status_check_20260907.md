@@ -84,9 +84,13 @@ and its conclusion should not be carried forward as current.
 
 ## 5. Next actions, in order of cost
 
-1. **Check whether TNG-300 access was granted** and nobody noticed. This
-   needs the account holder — it cannot be checked from here, and creating
-   or authenticating an account is out of scope. One login answers it.
+1. ~~**Check whether TNG-300 access was granted**~~ **PROBED 2026-09-07 —
+   unanswerable anonymously, now with evidence.** `/api/` returns **403 at
+   the root**, `/api/TNG300-1/` likewise, while the plain site and `/data/`
+   both return **200** — so it is an auth requirement, not a block on us.
+   A 403 looks identical whether the registration was approved or not.
+   **One login by the account holder settles it; nothing short of that
+   does.** No API key exists anywhere in the repo.
 2. **Re-run the bypass search** when a literature tool is available. Two
    months of new work is a real chance for a dataset pairing hydrostatic
    masses with WHIM/outskirts gas.
