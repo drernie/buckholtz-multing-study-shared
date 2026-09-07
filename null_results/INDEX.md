@@ -100,11 +100,11 @@ theory. Row 97 established this for its 8; it survives the full set.
 | NR-008 | `bridge_family_killed` | + informative byproduct: revealed the two-hump `ε(z)` structure, which is not itself a kill (row 97) |
 | NR-009 | `mechanism_killed` | S³-geometry for Eq.32 — a DIFFERENT track, targets Eq.32's coefficients, not a bridge candidate (row 97) |
 | NR-010 | **`signature_absent`** ⚠️ *new class* | the proposed correlation is simply not in the data (`r=0.021`, `p=0.88`) and its direction is reversed. Not a mechanism kill — the base signature never appeared |
-| NR-011 | `mechanism_killed` | mass threshold does not mediate — **but see NR-015** |
-| NR-012 | `mechanism_killed` | morphology does not mediate — **but see NR-015** |
+| NR-011 | `mechanism_killed` | mass threshold does not mediate. Verdict **unaffected** by NR-015; see the framing note below |
+| NR-012 | `mechanism_killed` | morphology does not mediate. Verdict **unaffected** by NR-015; see the framing note below |
 | NR-013 | `parameterization_killed` | `β_d`/`β_q` profiling inside a given force ansatz (row 97) |
-| NR-014 | `mechanism_killed` | AGN feedback does not mediate — **but see NR-015** |
-| NR-015 | `test_inconclusive` | its own verdict is "mechanism unresolved": the signal vanishes once `T_X` is controlled (`r=−0.08`, `p=0.58`), and `T_X` alone is stronger (`r=−0.81`) than the quantity under study |
+| NR-014 | `mechanism_killed` | AGN feedback/K0 does not mediate. Its own addendum: *"NR-014's own KILL verdict ... is unaffected — K0 genuinely does not explain the correlation"* |
+| NR-015 | **`signature_absent`** (retagged 2026-09-07, see correction below) | the pre-registered claim — that `M_gas` has a `T_X`-**independent** contribution with abs(r) above 0.40 — is cleanly falsified: `r=-0.08`, `p=0.58`, bootstrap 95% CI `[-0.39, 0.27]` never reaches 0.40. The test DID discriminate, so NOT `test_inconclusive`. Its *mechanism* is separately unresolved |
 | NR-016 | `bridge_family_killed` | Shtanov–Sahni naive mapping: `φ=V/(m_A m_P)` is not a universal kernel |
 | NR-017 | `mechanism_killed` | RG-running boundary condition — `tan²θ_W` already exceeds the target at `m_Z` and runs monotonically away |
 | NR-018 | `bridge_family_killed` | pair-fluid virial mapping gives `w=n/3`, so no dark-energy EoS from that form |
@@ -116,12 +116,43 @@ theory. Row 97 established this for its 8; it survives the full set.
 
 ### What the classification surfaced that the prose did not
 
-1. **`NR-011`/`012`/`014` rest on a signal `NR-015` says is not there.** They
-   killed three candidate *mediators*; `NR-015` then found the correlation
-   they were mediating vanishes once `T_X` is controlled, and explicitly
-   *"reclassifies NR-011/012/014's 'robust to 4 confounds' framing as
-   overclaim."* Their `mechanism_killed` tags stand as recorded, but the
-   premise under them is weakened. Read `NR-015` before citing any of them.
+1. **`NR-011`/`012`/`014`: verdicts stand, the AGGREGATE framing does not.**
+   ⚠️ **Correction, 2026-09-07 (same day).** The first version of this
+   section said they *"rest on a signal `NR-015` says is not there."*
+   **That was wrong**, and it was wrong because it was written from this
+   index's own one-line summary of `NR-015` instead of from the file. The
+   file says something narrower. Reading the summary rather than the
+   source is the exact failure this classification exists to prevent, so
+   it is recorded rather than quietly fixed.
+
+   What `NR-015` actually establishes: the pre-registered claim that
+   `M_gas` carries a `T_X`-**independent** contribution is falsified
+   (`r=-0.08`). It **reproduced** the base correlation the three files
+   studied (`r(delta_M, E_ICM | M_WL) = -0.7008`), and it explicitly
+   **declines** to establish the artifact mechanism — its own
+   "ARTIFACT-CONFIRMED" label was *retired* after skeptic review and the
+   file forbids citing it.
+
+   `NR-014`'s own addendum is the authority here: *"NR-014's own KILL
+   verdict (AGN feedback/K0 does not mediate) is unaffected — K0 genuinely
+   does not explain the correlation."* All three `mechanism_killed` tags
+   are therefore **correct and unchanged**.
+
+   What IS superseded is the inference *"4/4 standard-physics alternatives
+   killed, therefore the correlation is unexplained by standard physics."*
+   **None of the four controlled for `T_X`**, and `T_X` alone is the
+   strongest predictor in the whole program (`r(delta_M, T_X | M_WL) =
+   -0.81`, stronger than the `E_ICM` proxy the tests were built on). `T_X`
+   is a **live, unresolved fifth candidate** with two readings a skeptic
+   found the test cannot separate: a definitional artifact (HSE mass needs
+   the temperature profile, so `T_X` sits on both sides) versus cluster
+   dynamical state as a genuine common driver.
+
+   Forward pointer from the same addendum: **H1b is structurally immune**
+   to this concern (WHIM is a different gas phase and radius range from the
+   interior `T_X` used in `M_hydro`) and is named there as the sole
+   remaining real test of H1.
+
 2. **Three classes were missing from the proposed six.** Row 97 already had
    to add `mechanism_killed` for `NR-009`. Completing the set needed two
    more — `signature_absent` (a predicted correlation simply absent) and
