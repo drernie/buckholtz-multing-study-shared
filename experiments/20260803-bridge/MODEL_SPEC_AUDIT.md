@@ -136,6 +136,22 @@ detectable).**
 
 ## 5. The single load-bearing open question
 
+> **[CORRECTED 2026-09-07 — `FINDING_P214`]** This section's "single
+> load-bearing open question" **was a v6/v82 conflation, and it is ours.**
+> v82 defines `k` explicitly in its own symbol table, line 207:
+> *"`k_A` is the thermal energy that associates with the ICM of node-A."*
+> The broad "kinetic energy of sub-objects" phrasing this section matched
+> is **v6's** (v6 line 91; "thermal" appears **2** times in v6 vs **34**
+> in v82, and v82 adds a section motivating *"why thermal rather than
+> bulk"*). The author sharpened the definition between versions; this
+> project read two documents as one corpus. Original text kept below,
+> unedited, per no-silent-correction. **Consequences:** the `6.8e8` fork
+> of `P213` resolves to the narrow branch; MICROSCOPE stops usefully
+> bounding `η`; the periastron bound `β_d < 1.2e-5` rests on v6's reading
+> and does not reach v82. This is a **loss of testable content**, not a
+> win. See `FINDING_P214_k_is_defined_in_v82_the_fork_was_version_conflation.md`.
+
+
 **Every unresolved row above terminates at the same place: what is `k`?**
 
 | Reading | Consequence | Consistency |

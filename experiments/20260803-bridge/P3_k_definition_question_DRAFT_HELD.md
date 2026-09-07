@@ -1,3 +1,12 @@
+> **[SUPERSEDED 2026-09-07 — `FINDING_P214`] THE QUESTION AS POSED IS
+> ANSWERED BY v82 ITSELF.** Line 207 of v82's own symbol table:
+> *"`k_A` is the thermal energy that associates with the ICM of node-A."*
+> The ambiguity this draft was written to resolve came from reading v6's
+> broader phrasing alongside v82's code. **Do not send this as written.**
+> If any question survives, it is much narrower — whether `k` extends to
+> objects with no ICM at all — and v82 already says MULTING *"does not
+> (yet) adequately discuss"* such cases. Draft kept below unedited.
+
 # P3 — the k-definition question for TJB
 
 **Status: DRAFT, HELD.** Not sent. TJB asked for a pause until his preprint
