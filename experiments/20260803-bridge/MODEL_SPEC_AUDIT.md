@@ -151,6 +151,26 @@ detectable).**
 > and does not reach v82. This is a **loss of testable content**, not a
 > win. See `FINDING_P214_k_is_defined_in_v82_the_fork_was_version_conflation.md`.
 
+> **[BANNER ABOVE WITHDRAWN 2026-09-07 — `FINDING_P214_RETRACTION_after_step8a`]**
+> The P214 banner immediately above is **itself wrong** and is withdrawn, kept
+> only so the retraction is visible. A Step 8a skeptic pass, independently
+> re-verified line by line, falsified four of its five claims: the two-level
+> structure (general definition + cluster-thermal specialization) is present in
+> **BOTH** versions (v6:640 general, v6:671-675 thermal; v82:207 thermal,
+> v82:1354-1355 and 1449-1452 object-level), so it was **not** a version
+> conflation. **§5's question stands.**
+>
+> But §5's own enumeration of the broad reading — "binding, rotational,
+> degeneracy" — matches **neither** document: binding is excluded by both
+> (v6:601-602, v82:1381-1383), rotational is excluded by v6's own definition
+> ("energies of **linear motion**", v6:640), degeneracy appears nowhere.
+>
+> What is real and stronger: **v82 states the scope of the same Eqs. (1)-(4)
+> inconsistently** — node at line 188, object at 1354-1355 and 1449-1452 — and
+> the genuine version change is in **β's** universality (v6:680-681 time
+> constraint vs v82:215-216 node constraint), not in `k`.
+
+
 
 **Every unresolved row above terminates at the same place: what is `k`?**
 
