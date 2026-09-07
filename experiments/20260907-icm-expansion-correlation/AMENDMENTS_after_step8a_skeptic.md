@@ -247,3 +247,43 @@ with it the conclusion follows properly rather than by assertion:
 
 **Net:** of the nine repairs, FIX 5 is now closed on the smooth-spectrum
 branch and open on the BAO branch. The other eight stand as committed.
+
+---
+
+## FIX 4 / FIX 5 — the BAO branch is now CLOSED `[VERIFIED-run]`
+
+`stage3d_bao_wiggle_signchanges.py` implements what `FIX 4` removed as an
+empty promise, by two independent routes: the full Eisenstein & Hu 1998
+transfer function with wiggles (W1) and a tunable BAO template (W2).
+
+**W1 controls:** `T(k→0) = 1.00000`; wiggle amplitude `3.28%` (right order
+for real BAO); `14` sign changes of `T_full/T_nowiggle` about its mean, so
+the oscillatory structure is genuine and not a transcription artifact.
+
+**Result — every spectrum, 1 sign change in `ξ`, 0 in `δ̄`, no `R_comp`:**
+
+| spectrum | #sign(ξ) | `R_xi0` [Mpc] | `R_comp` |
+|---|---|---|---|
+| no-wiggle baseline | 1 | 180.2 | NONE |
+| **W1 full EH98 wiggles** | **1** | 172.8 | NONE |
+| W2 `A=0.05` realistic | 1 | 188.9 | NONE |
+| W2 `A=0.20` | 1 | 203.2 | NONE |
+| W2 `A=0.60` | 1 | 220.0 | NONE |
+| W2 `A=0.95` (~19× real) | 1 | 227.3 | NONE |
+
+W1 and W2 **agree on the count** while **disagreeing on the direction** of
+the `R_xi0` shift (W1 down, W2 up) — which is what makes the agreement an
+independent cross-check rather than two views of one object. `R_xi0`
+spans 31% across the table, so the wiggle is doing something; the *count*
+is what is invariant.
+
+**Consequence:** C4's conclusion survives the one case `FIX 4` named as
+capable of breaking it. The `FIX 5` counterexample still stands for
+*narrow-band* spectra — BAO is a broad damped modulation, which is why it
+does not break the premise.
+
+**Status of the nine repairs: eight closed, FIX 4/5 now closed too.**
+One item remains open across the whole pass: `stage3c`'s convergence block
+still varies only `damp`, never `kmin`/`kmax`/`nk`/`rmax`.
+
+Full detail: `FINDING_stage3d_bao_does_not_break_the_premise.md`.
