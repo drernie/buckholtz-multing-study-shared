@@ -120,11 +120,28 @@ on a question that must be answered **before** any run:
 > What correlation does a null model containing **no MULTING at all**
 > already produce between `E_th` and local expansion?
 
-Standard structure formation supplies an unavoidable path:
+**`[CORRECTED 2026-09-07, external review]` — the first draft of this
+section asserted a single "unavoidable path" and implied its sign. That
+was stronger than anything shown. Original wording kept here so the
+correction is visible: *"Standard structure formation supplies an
+unavoidable path: `E_th ↑ ⇐ M ↑ ⇒ denser environment ⇒ stronger infall
+⇒ local expansion ↓`."*
+
+Correct status: that chain is **one plausible competing hypothesis**, not
+an established floor. At least five distinct paths connect the two sides,
+and they do not obviously share a sign:**
 
 ```
-E_th ↑  ⇐  M ↑  ⇒  denser environment  ⇒  stronger infall  ⇒  local expansion ↓
+M → T_X                       (mass–temperature scaling)
+M → v_pec                     (massive haloes sit in stronger flows)
+environment → T_X, v_pec      (density field drives both)
+merger state → T_X, v_pec     (disturbed systems inflate both)
+selection + estimator effects  (catalog cuts, proxy construction)
 ```
+
+**Therefore: `sign(astrophysical floor) = UNKNOWN`.** It has to be
+*derived or measured*, not assumed — and doing so is its own task, not a
+paragraph in this file.
 
 Two possibilities, with opposite consequences:
 
@@ -183,8 +200,17 @@ terminates at the same place: what is `k`?"* — the question already
 drafted for the author and **held**
 (`P3_k_definition_question_DRAFT_HELD.md`).
 
-The two items presented to the user this session as independent live
-directions are **the same item**.
+**`[CORRECTED 2026-09-07, external review]`** The first draft said the
+two items *"are the same item"* — too strong, and kept here rather than
+deleted. Precise statement:
+
+> They are **two distinct observational branches sharing one upstream
+> bottleneck.**
+
+MICROSCOPE and the local-expansion test still require **different
+observable mappings and different data**; what they share is that neither
+predicate can be written down until `k` is defined. Fixing `k` unblocks
+both, but does not merge them into one experiment.
 
 ---
 
