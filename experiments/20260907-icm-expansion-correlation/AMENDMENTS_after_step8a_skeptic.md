@@ -287,3 +287,47 @@ One item remains open across the whole pass: `stage3c`'s convergence block
 still varies only `damp`, never `kmin`/`kmax`/`nk`/`rmax`.
 
 Full detail: `FINDING_stage3d_bao_does_not_break_the_premise.md`.
+
+---
+
+## LAST OPEN ITEM CLOSED — convergence + oracle + integrator `[VERIFIED-run]`
+
+`stage3e_convergence_and_oracle.py`. This closes the single item that
+remained open across the whole skeptic pass.
+
+**Withdrawn:** `stage3d`'s *"14 alternating signs is not a transcription
+accident"* — too strong. A typo can keep the oscillation while moving
+phase, acoustic scale, damping or the baryon/CDM ratio. Honest status:
+**not obviously broken**, not proven. Replaced by a **partial** external
+anchor: `z_eq` +1.34%, `z_d` −3.70%, sound horizon `150.865` vs `147.1`
+Mpc = **+2.56%**, which is EH98's own known ~2–3% fitting bias — right
+sign, right size. Does not verify `α_c`/`β_c`/`α_b`/`β_b`/`β_node`/Silk.
+
+**Independent integrator added** (the criticism that W1/W2 share the
+downstream chain): linear-grid Simpson vs log-grid trapezoid, different
+`k`-range, worst relative difference **7.4e-04** across four orders of
+magnitude in `ξ` and on both sides of the zero.
+
+**Convergence sweep, kill criterion pre-registered in the docstring:**
+26 of 26 points (13 configs × 2 spectra) give `(n_xi, n_db) = (1, 0)` and
+`R_comp = NONE`. `COUNT STABLE: True` for both spectra.
+
+**VALIDATION CONTROL — do not skip when re-reading.** `R_xi0` did not move
+by one digit across all 26 configs, which is suspicious enough to demand a
+mutation test. Parameters were deliberately broken:
+
+| mutation | `R_xi0` | #sign(ξ) |
+|---|---|---|
+| baseline | 172.8008 | **1** |
+| `kmax=0.5` | 110.8817 | **51** |
+| `nk=300` | 72.8082 | **147** |
+| `nk=2000` | 169.9060 | **279** |
+
+The parameters are wired. The stability is convergence, **not a dead
+parameter** — recorded here so a later reader does not reach the opposite
+conclusion from the uniformity alone.
+
+**Status:** `C4-NUMERICALLY-CLOSED-WITHIN-THIS-LINEAR-FAMILY`.
+
+**All items of this amendment pass are now closed.** Full detail:
+`FINDING_stage3e_convergence_closed.md`.

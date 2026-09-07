@@ -495,6 +495,45 @@ with 40 docs missing). All 22 `NR-*` entries are now classified —
 **`theory_killed` = 0 of 22**: MULTING's core claim has never been
 directly tested.
 
+### 7.5 ICM/local-expansion branch — CLOSED 2026-09-07, verdict REFUSE
+
+Ernest Prabhakar (06.09) named local-expansion-vs-intracluster-thermal-
+energy as "the only place I see you having an asymmetric advantage".
+Worked end to end. **Verdict: `REFUSE(no_falsifiable_predicate_yet)`,
+and the branch is stopped.**
+
+Both versions of the test are closed, by independent mechanisms:
+
+| test | verdict | mechanism |
+|---|---|---|
+| monotone sign | `CRITERION_INVALID` | the astrophysical floor shares the sign |
+| shape (reversal) | no reversal in the model | `Q(z) > 1` globally |
+
+**Strongest surviving physics statement:** at TJB's own published fit the
+thermal-source response of pair fractional acceleration is negative,
+`∂(ä/a)/∂k < 0`, at every epoch the construction can represent.
+**NOT established:** `∂H_local/∂E_th < 0` — that is a different quantity
+(s⁻¹ vs s⁻²) and needs a dynamical bridge `δ(ä/a) → δH_local(t)` that
+does not exist. Any sentence of the form "more thermal energy means less
+local expansion" is WITHDRAWN.
+
+**Comparator side, now numerically closed:**
+`C4-NUMERICALLY-CLOSED-WITHIN-THIS-LINEAR-FAMILY` — linear ΛCDM has no
+finite compensation radius; survived smooth spectra, full EH98 wiggles,
+independent BAO template to ~19× amplitude, and a `kmin`/`kmax`/`nk`/
+`rmax`/`n_r` convergence sweep (26/26 points identical), with a
+destructive mutation test proving the swept parameters are wired.
+
+A Step 8a context-blind skeptic ran on the branch; nine repairs applied,
+all independently re-verified by tool. See
+`experiments/20260907-icm-expansion-correlation/` —
+`AMENDMENTS_after_step8a_skeptic.md` first.
+
+**Reopen condition:** unblock condition 1 of that folder's `claim.md` §8 —
+a fixed reading of `k`, or a first-principles `β`. Both change `β₂/β₁`,
+which is the only thing that could move `Q` below 1.
+
+
 ## Exclusion zone (do not start without a new triggering fact)
 
 New numerology searches on Eq.32 beyond what NR-019/020/021 already
