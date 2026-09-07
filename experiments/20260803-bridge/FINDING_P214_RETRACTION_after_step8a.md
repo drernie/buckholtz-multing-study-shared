@@ -113,6 +113,8 @@ own source was not re-read, so *which* energy it substituted for `u_NS`
 (binding vs degenerate-kinetic) is unverified here. Binding is excluded by
 both documents; degenerate **kinetic** energy is not.
 
+**[2026-09-07] ANSWERED — `FINDING_P215_periastron_survives_on_degenerate_energy.md`.** The finding used *binding* (`f=0.105`) and *rotational* (`P=22.7 ms`); degeneracy was named in its conclusion and never computed. It has been: `β_d < 2.2e-5 – 3.0e-5`, i.e. the bound **survives** on the one internal energy the corpus admits, 5.2–5.3 orders below Table A1's fitted 4.5. Both original rows reproduced as positive controls.
+
 ## 5. P5 — FALSIFIED as unconditional `[VERIFIED-source]`
 
 v82 **adds** testable content around `k`, it does not remove it:
@@ -142,11 +144,15 @@ morphology-insensitive one.
 
 ### 7.1 A real, citable internal scope inconsistency in published v82
 
+**[2026-09-07] Now recorded on its own as `FINDING_P216_v82_internal_scope_inconsistency.md`** — including a third scope asymmetry found afterwards (`β₁` per-node vs `β₂` per-pair, v82:213-218).
+
 `v82:188` (node) against `v82:1354-1355` and `v82:1449-1452` (object), for
 the **same Eqs. (1)–(4)**. This needs no version comparison and no
 inference. It is the honest form of what P214 was reaching for.
 
 ### 7.2 The genuine version change is in **β**, not `k` `[VERIFIED-source]`
+
+**[2026-09-07] Now recorded on its own as `FINDING_P217_beta_universality_axis_swapped_between_versions.md`, which CORRECTS the word "narrowing" used below.** Re-reading both sources showed the universality claim was not narrowed along one axis but **moved to a different axis**: v6 constrains `β` across *time* and is silent on object-class; v82 constrains it across *nodes* and is silent on time (v82 has no `β` time-invariance statement at all — `[VERIFIED-grep]`). Neither statement implies the other. The sentence below is kept verbatim, not edited, per no-silent-correction.
 
 | | universality claim |
 |---|---|

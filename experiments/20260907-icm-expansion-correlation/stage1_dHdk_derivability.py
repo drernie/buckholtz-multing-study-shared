@@ -84,6 +84,14 @@ def q_discriminant(z, b1, b2, k):
         actual = -1.4215e-90  ->  '-'
 
     So: sign is POSITIVE iff Q < 1 **AND b1 > 0**.
+
+    [2026-09-07, P217] The b1 > 0 side-condition is NOT sourced, by either
+    version -- checked, do not remove it. v82:213 says "beta_1 is a POSITIVE
+    number", but v82:652 constrains its own fit "subject only to beta_1 >= 0,
+    beta_2 >= 0", readmitting the excluded case; v6:679-680 says
+    "nonnegative" outright. beta_d = 0 is exactly the case that raises
+    below, so this guard and sign_of_response() are both load-bearing. See
+    experiments/20260803-bridge/FINDING_P217_beta_universality_axis_swapped_between_versions.md
     """
     if b1 == 0.0:
         raise ValueError("Q is undefined at b1 = 0; use sign_of_response() instead")

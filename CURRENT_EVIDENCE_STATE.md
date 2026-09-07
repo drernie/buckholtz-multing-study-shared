@@ -534,6 +534,44 @@ a fixed reading of `k`, or a first-principles `β`. Both change `β₂/β₁`,
 which is the only thing that could move `Q` below 1.
 
 
+### 7.6 The `k` question — resolution claimed, then RETRACTED; three findings survive
+
+`P214` claimed §5's `k` fork was a v6/v82 conflation and was answered.
+A Step 8a pass **falsified 4 of its 5 claims**; every finding was re-read
+from source by me before acceptance. `FINDING_P214_...md` carries a
+DO-NOT-CITE header; `FINDING_P214_RETRACTION_after_step8a.md` is the record.
+**The `k` question STANDS, and is sharper than before.** Three results came
+out of the wreckage, each now with its own finding:
+
+| id | result | status |
+|---|---|---|
+| **`P215`** | The double-pulsar periastron bound **survives** on degenerate kinetic energy — the one internal energy neither version excludes (binding is excluded by both, rotational by v6's "linear motion"). `β_d < 2.2e-5 – 3.0e-5`, **5.2–5.3 orders below Table A1's fitted 4.5.** Both pre-existing rows reproduced as positive controls (`1.15e3 m`/`1.2e-5` to 3 digits). | new, gated |
+| **`P216`** | v82 states the scope of Eqs. (1)–(4) at **two levels**: `node` (188) vs `object` (1354-1355, 1449-1452). Internal to v82, needs no version comparison. v82:1453-1456's exclusion is about **collisions**, not compact objects — `P214` read it backwards. | new, gated |
+| **`P217`** | The `β` universality claim was **not narrowed between versions — it moved axis.** v6: invariant *across time*, silent on object-class. v82: invariant *across nodes*, and contains **no** `β` time-invariance statement at all (`[VERIFIED-grep]`). Neither implies the other. | new, gated |
+
+**Two consequences of `P217` that touch live results:**
+1. `P216`'s pattern has a **second instance**, found while hardening
+   `P217`'s own negative grep: v82 says `β₁` is *"a **positive** number"*
+   (213) and constrains its own fit *"subject only to **β₁ ≥ 0, β₂ ≥ 0**"*
+   (652). Definition excludes `β=0`, procedure admits it. **So the ICM
+   branch's `b1 > 0` side-condition is NOT discharged** — its existing
+   handling (raise at `b1=0`, separate `sign_of_response()` valid for any
+   `b1`) was correct, not over-cautious. `P217` §2a records this as a
+   correction to its own first draft, made before commit.
+2. `β` **constant in `z`** — built into v82's own `multing_core.py`
+   (scalars applied across the whole `zgrid`) and asserted textually only
+   by **v6**. Our fitted pair `1.4335e10 / 7.8067e17` therefore rests, under
+   v82 alone, on the *code*, not the *text*.
+
+**Methodological note, recorded:** `P214`'s zero-hit greps were run
+singular-only — `internalenergy` 0 vs `internalenergies` 1, and the single
+hit was the very line quoted as an example of word-gluing while reporting
+its concept absent. **A space-insensitive search is not a
+morphology-insensitive one.** The same trap nearly recurred in `P217` §3:
+a raw `grep -c -i node` on v6 returns 2, both from `neutri`**`nod`**`ensities`
+— v6 uses "node" as a term **zero** times.
+
+
 ## Exclusion zone (do not start without a new triggering fact)
 
 New numerology searches on Eq.32 beyond what NR-019/020/021 already
