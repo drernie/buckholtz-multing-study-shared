@@ -1,6 +1,15 @@
 # FINDING — Stage 3b: the standard picture's "reversal" is a **different
 # derivative**, and MULTING's own lands outside its own construction
 
+> **[AMENDED 2026-09-07 — Step 8a skeptic]** Nine corrections were applied
+> to this branch after a context-blind skeptic pass, all independently
+> re-verified by tool before acceptance. **Read
+> `AMENDMENTS_after_step8a_skeptic.md` before quoting anything below.**
+> Load-bearing among them: any sentence of the form *"more thermal energy
+> means less local EXPANSION"* is **WITHDRAWN** — the computed quantity is
+> the response of ACCELERATION (s^-2), and no statement about `H` (s^-1)
+> follows without integrating over history. No claim was killed.
+
 **Date:** 2026-09-07
 **Artifact:** `stage3b_standard_web_reversal_scale.py`
 **Labels:** `NOT_VALIDATION` · `NOT_REFUTATION` · `OUR_RECONSTRUCTION` ·

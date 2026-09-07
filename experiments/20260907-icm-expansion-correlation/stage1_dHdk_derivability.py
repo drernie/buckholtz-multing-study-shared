@@ -20,6 +20,8 @@ NOT_VALIDATION * NOT_REFUTATION * OUR_RECONSTRUCTION * NO_AUTHOR_ERROR
 import sys
 from pathlib import Path
 
+import numpy as np
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "20260803-bridge"))
 
 from _v82_shared_physics import (  # noqa: E402
@@ -64,9 +66,39 @@ def d_addot_dk_analytic(z, b1, b2, k):
 
 
 def q_discriminant(z, b1, b2, k):
-    """Sign is POSITIVE iff Q < 1, where Q := (b2/b1) * k R / (M c^2 d)."""
+    """Q := (b2/b1) * k R / (M c^2 d).
+
+    FIX 1 (Step 8a skeptic, 2026-09-07). The original docstring read
+    "Sign is POSITIVE iff Q < 1" with no condition. That is FALSE for
+    b1 < 0 and UNDEFINED for b1 = 0. Original wording kept here so the
+    correction is visible.
+
+    The exact statement is
+
+        d(addot/a)/dk = [4G R/(c^2 d^4)] * ( b1 - b2 k R/(M c^2 d) )
+        => sign = sign( b1 - b2 k R/(M c^2 d) ),  NOT sign(1 - Q)
+
+    and the two coincide only for b1 > 0. Verified counterexample, z=0,
+    b1 = -1.4335e10, b2 = +7.8067e17:
+        Q      = -2.0594  (so Q < 1, the old wording predicts '+')
+        actual = -1.4215e-90  ->  '-'
+
+    So: sign is POSITIVE iff Q < 1 **AND b1 > 0**.
+    """
+    if b1 == 0.0:
+        raise ValueError("Q is undefined at b1 = 0; use sign_of_response() instead")
     M, R, d = M_of(z), R_of(z), d_of(z)
     return (b2 / b1) * k * R / (M * c**2 * d)
+
+
+def sign_of_response(z, b1, b2, k):
+    """Sign of d(addot/a)/dk, valid for ANY b1 including 0 and negative.
+
+    Added by FIX 1 -- this is what q_discriminant should have been, and
+    what any caller outside the fitted b1>0 regime must use.
+    """
+    M, R, d = M_of(z), R_of(z), d_of(z)
+    return float(np.sign(b1 - b2 * k * R / (M * c**2 * d)))
 
 
 ZS = [0.0, 0.07, 0.25, 0.5, 1.0, 1.5, 1.965, 2.33]
@@ -126,6 +158,14 @@ def main() -> int:
 
     print("\n" + "=" * 74)
     print("RADIAL LAW -- d treated as a free variable, not d_of(z)")
+    print("  *** THIS SECTION IS OUR EXTENSION, NOT THE MODEL (FIX 6) ***")
+    print("  Stage 4 later claimed 'd is not a free variable in this")
+    print("  construction'. The skeptic correctly pointed out that THIS")
+    print("  very block treats it as free, and that the 92.67 Mpc figure")
+    print("  comes from here. Both are true and not in conflict once")
+    print("  stated properly: the MODEL never varies d independently;")
+    print("  WE do, here, as a labelled extension. Numbers below are")
+    print("  ours, not MULTING's.")
     print("=" * 74)
     print("  dipole contribution  ~ b1 R / d^4      (slope -4)")
     print("  quad   contribution  ~ b2 k R^2 / d^5  (slope -5)")
@@ -149,6 +189,24 @@ def main() -> int:
     print("  MAGNITUDE   : needs b1, b2 absolutely             -> NOT free")
     print("\n  All three inherit the beta-calibration. The response is NOT")
     print("  structurally determined; it is a fitted quantity.")
+    print()
+    print("  FIX 2 (Step 8a skeptic) -- WHAT THIS RESPONSE IS, AND IS NOT:")
+    print("  d(addot/a)/dk has units s^-2 per Joule. It is the response of")
+    print("  ACCELERATION. Any sentence of the form 'more thermal energy")
+    print("  means less local EXPANSION' is about H (s^-1) and DOES NOT")
+    print("  FOLLOW without integrating over history and initial")
+    print("  conditions. That inference is WITHDRAWN wherever this")
+    print("  experiment made it. stage3b calls this exact move a CATEGORY")
+    print("  ERROR for a different pair of quantities -- it is the same")
+    print("  move here, in the opposite direction.")
+    print()
+    print("  FIX 3 -- PARTIAL vs TOTAL. Everything above is the PARTIAL")
+    print("  derivative at fixed M, R, d. Inside the construction k cannot")
+    print("  move alone, so the realisable quantity is the TOTAL derivative")
+    print("  along the trajectory. Measured at z=0:")
+    print("      partial = -4.9224e-91      total = -9.3492e-92")
+    print("      ratio   = 5.265x           same sign")
+    print("  The DIRECTION survives; the MAGNITUDE quoted must say which.")
     return 0
 
 

@@ -25,12 +25,36 @@ Also computed, because they are different scales often confused with it:
     R_xi0  -- first zero of xi(r) itself (NOT the compensation radius)
     r_ta   -- turnaround radius (Stage 3b, a different derivative again)
 
-VARIANTS (the user asked for all possible ones):
+VARIANTS:
     T1  BBKS (Bardeen+ 1986) with Sugiyama (1995) baryon correction
     T2  Eisenstein & Hu (1998) "no-wiggle" shape
-    T3  T2 with a BAO-suppressed / enhanced baryon fraction, to bracket
-        the wiggle's influence on the zero
     plus a cosmology scan over Om, Ob, ns, h.
+
+FIX 4 (Step 8a skeptic, 2026-09-07) -- THE DOCSTRING OVERCLAIMED.
+It previously listed a third variant:
+    "T3  T2 with a BAO-suppressed / enhanced baryon fraction, to bracket
+     the wiggle's influence on the zero"
+That was never implemented. TRANSFERS holds exactly two entries, BOTH
+STRICTLY SMOOTH, and varying Ob only reshapes the smooth envelope via
+s, alpha and gamma_eff -- it cannot generate oscillations. So the one
+spectrum class where xi is guaranteed NOT monotone (the baryon acoustic
+peak near 105 Mpc/h) was named and skipped, while the conclusion says
+"decays monotonically". The promise is removed rather than quietly kept;
+implementing a genuine wiggle spectrum remains OPEN.
+
+FIX 5 -- THE ARGUMENT'S PREMISE IS NOW CHECKED, NOT ASSUMED.
+The conclusion rested on "P(0)=0 for n_s>0, so the integral approaches
+zero FROM ABOVE and never crosses." That is NOT an implication. It needs
+the extra premise that xi has EXACTLY ONE sign change. Counterexample,
+verified numerically: a band-limited spectrum with n_s>0 and P(0)=0
+exactly gives xi ~ sin(k0 r)/(k0 r), whose delta_bar reaches -0.0862 --
+it does cross. count_sign_changes() below now measures the premise
+instead of assuming it.
+
+STILL OPEN, stated rather than hidden: the convergence block varies only
+`damp` (0.10/0.15/0.25 Mpc/h of Gaussian smoothing), three orders below
+the ~130 Mpc/h scale of interest. kmin, kmax, nk and rmax are never
+varied, despite xi_of_r's own docstring promising a convergence check.
 
 NOT_VALIDATION * NOT_REFUTATION * OUR_RECONSTRUCTION * NO_AUTHOR_ERROR
 """
@@ -136,6 +160,25 @@ def first_zero(rgrid, y, skip=1):
     return None
 
 
+def count_sign_changes(y, skip=1):
+    """Number of genuine sign changes in y. Added by FIX 5.
+
+    The whole "delta_bar never crosses zero" argument needs xi to have
+    EXACTLY ONE sign change. Nothing in this file measured that before;
+    it was assumed. Now it is counted and printed.
+    """
+    y = np.asarray(y)[skip:]
+    n = 0
+    last = 0.0
+    for v in y:
+        if v == 0.0:
+            continue
+        if last != 0.0 and v * last < 0.0:
+            n += 1
+        last = v
+    return n
+
+
 def compensation_radius(pk, rmax=400.0, n=800, damp=1.5):
     """R_comp = first zero of delta_bar(r) = 3/r^3 Int_0^r xi s^2 ds.
 
@@ -221,6 +264,26 @@ def main() -> int:
     print()
     print(f"first zero of xi        : {rz:.2f} Mpc/h = {rz / H_LITTLE:.2f} Mpc")
     print(f"  first zero of delta_bar : {rc if rc is None else round(rc, 2)}")
+
+    print()
+    print("=" * 76)
+    print("FIX 5 -- MEASURE the premise the argument rests on")
+    print("=" * 76)
+    n_xi = count_sign_changes(xi)
+    n_db = count_sign_changes(dbar)
+    print(f"  sign changes in xi(r)        : {n_xi}")
+    print(f"  sign changes in delta_bar(r) : {n_db}")
+    print("""
+  The 'never crosses zero' conclusion is only supported when xi has
+  EXACTLY ONE sign change. If the count above is 1, the premise holds
+  FOR THESE SMOOTH SPECTRA and the conclusion follows. It says nothing
+  about a spectrum with baryon acoustic oscillations, which is not
+  implemented here (see FIX 4 in the module docstring).
+
+  Counterexample proving the premise is REQUIRED, not decorative:
+  band-limited P(k) = k^0.965 exp(-(k-k0)^2/2s^2) has n_s>0 and
+  P(0)=0 exactly, yet xi ~ sin(k0 r)/(k0 r) gives delta_bar reaching
+  -0.0862 -- it crosses. So P(0)=0 alone is NOT sufficient.""")
 
     print("\n" + "=" * 76)
     print("RESULT -- compensation scale, all transfer variants")

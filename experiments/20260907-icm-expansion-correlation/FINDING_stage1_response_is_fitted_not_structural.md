@@ -1,6 +1,15 @@
 # FINDING — Stage 1+2: the thermal-energy response is **fitted, not
 # structural** — and at TJB's own fit its sign is **negative**
 
+> **[AMENDED 2026-09-07 — Step 8a skeptic]** Nine corrections were applied
+> to this branch after a context-blind skeptic pass, all independently
+> re-verified by tool before acceptance. **Read
+> `AMENDMENTS_after_step8a_skeptic.md` before quoting anything below.**
+> Load-bearing among them: any sentence of the form *"more thermal energy
+> means less local EXPANSION"* is **WITHDRAWN** — the computed quantity is
+> the response of ACCELERATION (s^-2), and no statement about `H` (s^-1)
+> follows without integrating over history. No claim was killed.
+
 **Date:** 2026-09-07
 **Artifact:** `stage1_dHdk_derivability.py`
 **Labels:** `NOT_VALIDATION` · `NOT_REFUTATION` · `OUR_RECONSTRUCTION` ·

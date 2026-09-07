@@ -4,11 +4,15 @@ Stage 3b flagged d_flip/d0 = 2.06 as "outside the construction" but left
 that as a qualitative objection. This resolves it exactly.
 
 The key fact: inside v82's own construction `d` is NOT a free variable.
-It is d_of(z) = d0/(1+z) with d0 = 45 Mpc. So the model samples only
+It is d_of(z) = d0/(1+z) with d0 = 45 Mpc.
 
-    d in (0, 45] Mpc   for z >= 0
-
-and d_flip = 92.67 Mpc may simply not be in the reachable set.
+[SUPERSEDED BY FIX 7, kept so the correction is visible] This docstring
+originally continued: "So the model samples only d in (0, 45] Mpc for
+z >= 0, and d_flip = 92.67 Mpc may simply not be in the reachable set."
+That reachability argument is WRONG and is withdrawn: this script itself
+scans down to z = -0.95, where d_of = 900 Mpc, so 92.67 Mpc IS reached,
+at z = -0.5144. The conclusion survives for a different reason -- see
+below and FIX 7 in the output.
 
 Equivalently, and this is the cleaner statement: Q(z) is a function of z
 ALONE inside the construction (M, R, k, d are all fixed functions of z),
@@ -87,6 +91,17 @@ def main() -> int:
 
     below = zs[q < 1.0]
     print(f"\n  Q(z) minimum over the scanned range : {q.min():.4f} at z={zs[np.argmin(q)]:.3f}")
+    print("  ^ FIX 8: that location is a GRID NODE artifact. np.linspace(0,3,80)")
+    print("    has step 3/79 = 0.0379747 and node 38 lands on 1.44304.")
+    print("    Closed form: Q ~ u^-0.6426667 * (0.315u^3+0.685)^0.2466667,")
+    print("    dQ/du = 0 at u^3 = 14.35834 => u* = 2.430533, z* = 1.430533.")
+    print("    Independently confirmed by scipy minimize_scalar: z = 1.430532.")
+    print("    The VALUE is unaffected (1.74835 vs 1.7484, sixth digit) --")
+    print("    only the reported location moves by dz = 0.0125.")
+    print("  ^ FIX 9: Q -> +inf at BOTH ends (u^-0.6427 as u->0+, u^+0.0973")
+    print("    as u->inf) with a single stationary point, so 1.7484 is the")
+    print("    GLOBAL minimum on all of (-1, inf) -- not merely on the")
+    print("    scanned window. The claim was WEAKER than its own code shows.")
     print(f"  Q(z) < 1 anywhere?                  : {'YES' if len(below) else 'NO'}")
     if len(below):
         print(f"    first such z = {below.min():.4f}")
@@ -102,23 +117,49 @@ def main() -> int:
     print(f"  d_flip = {D_FLIP_MPC} Mpc requires z = {zneed:.3f} -- a FUTURE epoch,")
     print(f"  scale factor a = {1 / (1 + zneed):.3f}. Note a equals d_flip/d0 exactly,")
     print("  since d ~ a. Not a coincidence: the same 2.06 as Q(0).")
+    print()
+    print("  " + "-" * 68)
+    print("  FIX 7 (Step 8a skeptic) -- THE ABOVE FRAMING WAS INCONSISTENT")
+    print("  " + "-" * 68)
+    print("  'Only d in (0, 45]' is true for z >= 0, but THIS SCRIPT scans")
+    print("  down to z = -0.95, where d_of = 45/0.05 = 900 Mpc. Over its own")
+    print("  scan the reachable set is (0, 900] Mpc, so d = 92.67 Mpc IS")
+    print(f"  reachable, at z = {zneed:.4f}. The unreachability argument fails.")
+    print()
+    print("  THE REAL REASON, which does hold: at that very epoch")
+    print(f"      Q({zneed:.4f}) = {Q_of_z(zneed):.4f}  >>  1")
+    print("  because k, R and M moved along with d. So 'd_flip is not")
+    print("  derivable' follows from Q(z) > 1 EVERYWHERE -- not from d")
+    print("  being unreachable. The original 'so' was a non sequitur:")
+    print("  the conclusion was right, the stated reason was not.")
 
     print("\n" + "=" * 74)
     print("VERDICT")
     print("=" * 74)
-    reachable = bool(len(below))
+    flips = bool(len(below))
     print(f"""  Inside the single-pair construction, d is NOT free: d = d0/(1+z).
 
-  Q(z) > 1 at every redshift scanned, from z = -0.95 to z = 16.9
-  (minimum {q.min():.4f}). The response d(addot/a)/dk is therefore
-  NEGATIVE at every epoch the construction can represent, including
-  the future branch and up to P192's own H^2<0 boundary at z={Z_H2_NEG}.
+  Q(z) > 1 at EVERY z where the model is defined -- global minimum
+  {q.min():.4f}, not merely a scanned-window minimum (FIX 9). So the
+  ACCELERATION response d(addot/a)/dk is negative at every epoch the
+  construction can represent, including the future branch and up to
+  P192's own H^2<0 boundary at z={Z_H2_NEG}.
 
-  The reversal is NOT reachable: {"REACHABLE" if reachable else "NOT REACHABLE"}.
+  Sign ever flips inside the model: {"YES" if flips else "NO"}.
 
   So d_flip is not a prediction of the model as constructed. It is an
   artifact of OUR extension -- treating d as a free population variable,
-  which FINDING_P157 already established v82 does not do.""")
+  which FINDING_P157 already established v82 does not do.
+
+  FIX 7 restates WHY, because the original reason was wrong: not because
+  d = 92.67 Mpc is unreachable (it is reachable, at z = -0.5144), but
+  because Q > 1 THERE TOO -- k, R and M move with d. The conclusion held;
+  the argument for it did not.
+
+  FIX 2 restates WHAT: this is the response of ACCELERATION (s^-2 J^-1).
+  No statement about the EXPANSION RATE H follows from it without
+  integrating over history. Sentences of the form 'more thermal energy
+  means less expansion' are withdrawn from this experiment.""")
     return 0
 
 
