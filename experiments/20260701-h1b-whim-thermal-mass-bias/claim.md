@@ -81,3 +81,99 @@ collaboration") — data request drafted and **SENT 2026-07-17** [USER-REPORTED]
 to [third-party email redacted]. Now awaiting reply (no fixed next_check date
 yet; check back in ~2-3 weeks if silent). Otherwise: await TNG API approval
 (16+ days unresolved, no action pending on that front).
+
+---
+
+# AMENDMENT 1 — 2026-09-07 — decision bands repaired
+
+**The original criteria above are NOT rewritten.** They stand as the
+2026-07-17 record. This section supersedes them for execution, and states
+why that is legitimate.
+
+## Why amending is allowed here
+
+Changing a decision rule *after* seeing a result is p-hacking. Changing
+one *before any data exists* is repairing a broken instrument.
+
+**H1b has produced no data.** Its folder holds `claim.md`, `estimand.md`
+and `decision.md` — no metrics, no controls, no results. That is
+checkable by `ls`, and it is the whole basis for this amendment being
+clean. If any result had existed, the correct move would have been to
+report the defective criterion alongside the result, not to fix it.
+
+## What was wrong (`scripts/p210_h1b_floor_check.py`)
+
+1. **`KILL` had a dead band that widened with N.** It required
+   `r < 0.15` **AND** `p > 0.20`, but `p = 0.20` corresponds to
+   `r = 0.131 / 0.111 / 0.092 / 0.074` at `N = 100 / 138 / 200 / 300` —
+   all *below* 0.15. A result in `[that value, 0.15)` satisfied the
+   r-clause, failed the p-clause, and was neither killed nor promoted.
+   More data made the band **wider**, which is backwards.
+2. **The middle was undefined.** Nothing was specified for
+   `0.15 ≤ r ≤ 0.30`, roughly 1.5–3σ wide — precisely where a real but
+   modest effect would land.
+3. Minor: `PROMOTE`'s `p < 0.10` never binds at any planned `N`. It reads
+   as a second safeguard and is not one.
+
+## The repaired rule (`scripts/p211_h1b_criterion_repair.py`)
+
+Both original numbers are kept. The hypothesis is directional
+(*"correlates POSITIVELY"*), so bounds are one-sided at 95%, on the
+Fisher-z scale with `se = 1/√(N−k−3)`, `k = 2` controls:
+
+```
+KILL          upper 95% one-sided bound on r   <  0.15
+PROMOTE       lower 95% one-sided bound on r   >  0.30
+INCONCLUSIVE  otherwise
+```
+
+Verified over a 3801-point grid of `r ∈ [−0.95, 0.95]` at
+`N = 100, 138, 200, 300, 500`: **every possible result maps to exactly one
+verdict; `KILL` and `PROMOTE` never overlap; there is no gap.** Behaviour
+is now monotone in `N` — more data makes a decisive verdict *more*
+reachable.
+
+## A required sample size the original design never derived
+
+| N | `KILL` reachable? | max observed `r` still giving `KILL` | min observed `r` giving `PROMOTE` |
+|---|---|---|---|
+| 100 | **NO** | unattainable | 0.4449 |
+| 138 | yes | 0.0085 | 0.4237 |
+| 200 | yes | 0.0330 | 0.4031 |
+| 300 | yes | 0.0550 | 0.3845 |
+| 500 | yes | 0.0770 | 0.3657 |
+
+**`KILL` is unattainable below `N = 124`, even for a perfectly null
+`r = 0`** — at `N = 100` the best achievable upper bound is `0.1672`.
+The original design specified only *"N > 100"*, which **cannot deliver a
+`KILL`**. A test that can only return `PROMOTE` or `INCONCLUSIVE` is not a
+test of the claim.
+
+**Binding requirement added: `N ≥ 124`.** If the eventual sample cannot
+reach it, say so *before* running.
+
+## One choice deliberately NOT made here
+
+`KILL` at 0.15 means *"we can rule out an effect as large as `r = 0.15`."*
+How large that bar should be is a judgement about what counts as "no
+effect" — scientific, not statistical — and is **left open**. Its cost:
+
+| `KILL` bar | min `N` for `KILL` |
+|---|---|
+| 0.10 | 274 |
+| **0.15 (current)** | **124** |
+| 0.20 | 71 |
+| 0.25 | 47 |
+| 0.30 | 34 |
+
+Relaxing the bar to 0.20 makes `KILL` reachable at `N ≥ 71`, at the cost
+of a weaker claim when it fires. **Not changed unilaterally.**
+
+## Still open, and unaffected by this amendment
+
+The **structural floor**. Everything above concerns the *noise* floor. A
+WHIM-free but structurally correlated predictor could still clear
+`PROMOTE` through covariance alone — `NR-010`, on real cluster data, went
+from raw `r = 0.021` to partial `r = −0.701` once `M_WL` was controlled.
+Testing that needs the data and must be the **first** thing the data
+touches, before the primary result is computed.

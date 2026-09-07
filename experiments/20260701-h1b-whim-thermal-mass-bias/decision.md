@@ -163,6 +163,40 @@ the fix is unfalsifiable. Concretely: make `KILL` a single clause
 explicitly what an outcome in `0.15-0.30` means. Then run the structural
 floor as the first thing the data touches.
 
+## Bands REPAIRED 2026-09-07 — `claim.md` AMENDMENT 1
+
+The two defects P210 found are fixed, additively and before any data
+exists (`scripts/p211_h1b_criterion_repair.py`). The original criteria are
+NOT rewritten; `claim.md` carries a dated AMENDMENT 1 that supersedes them
+for execution.
+
+**New rule** — one-sided 95% bounds, Fisher-z, `k = 2` controls, both
+original numbers kept:
+
+```
+KILL          upper bound on r  <  0.15
+PROMOTE       lower bound on r  >  0.30
+INCONCLUSIVE  otherwise
+```
+
+Verified complete and disjoint over 3801 values of `r` at
+`N = 100/138/200/300/500`. Dead band gone, middle defined, behaviour now
+monotone in `N`.
+
+**New binding requirement: `N >= 124`.** The repair exposed that `KILL` is
+unattainable below that even for a perfectly null `r = 0` — at `N = 100`
+the best achievable upper bound is `0.1672 > 0.15`. The design's own
+`"N > 100"` cannot deliver a `KILL`, and a test that can only return
+`PROMOTE` or `INCONCLUSIVE` is not a test of the claim.
+
+**Deliberately left open:** how large the `KILL` bar should be is a
+scientific judgement, not a statistical one. Its cost is tabulated in the
+amendment (bar 0.20 -> `N >= 71`; bar 0.10 -> `N >= 274`). Not changed
+unilaterally.
+
+**Unaffected:** the structural floor. Still needs the data, still must run
+first.
+
 ## Standing caveat
 
 The July bypass survey is two months stale. A refresh on 2026-09-07 could
