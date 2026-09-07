@@ -90,10 +90,16 @@ and its conclusion should not be carried forward as current.
 2. **Re-run the bypass search** when a literature tool is available. Two
    months of new work is a real chance for a dataset pairing hydrostatic
    masses with WHIM/outskirts gas.
-3. If access is still refused after 68 days, treat it as a standing
-   external block and record H1b in `parked/` with an explicit revival
-   condition, rather than leaving it as an experiment folder that looks
-   in-progress but is inert.
+3. ~~If access is still refused after 68 days, record H1b in `parked/`~~
+   **DONE same day** — `parked/H1b-whim-thermal-mass-bias.md`, with three
+   measurable revival conditions, plus the `decision.md` the folder had
+   been missing since 2026-07-17.
+4. **Added while parking, and it is not bookkeeping:** H1b's thresholds
+   were frozen 2026-07-17, before FL Step 4a existed, so they have
+   **never been checked against a floor**. `NR-010` in this very dataset
+   went from raw `r=0.021` to partial `r=-0.701` on structure alone — so
+   whether a WHIM-free null model already clears `PROMOTE: r>0.30` is an
+   open question. Step 4a must run BEFORE the test on revival.
 
 ## 6. What this does NOT establish
 
