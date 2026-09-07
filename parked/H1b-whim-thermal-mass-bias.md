@@ -111,6 +111,75 @@ Stop conditions, resolved **before** any result is generated:
 None of the three is evidence against H1 — they say the experiment could
 not have been informative as designed.
 
+## Step 4a RESULT — run 2026-09-07, `scripts/p210_h1b_floor_check.py`
+
+The noise half of the floor check has now been done. It does **not** clear
+H1b, but it settles one of the two ways the criterion could be invalid,
+and it turned up two design defects that are fixable before any data
+arrives.
+
+### Noise floor: CLEAN
+
+95th percentile of the null partial correlation vs the PROMOTE threshold,
+Monte Carlo (20k trials) agreeing with `1/sqrt(N-k-3)` to under 5 percent:
+
+| N | null SD | 95th pct of null abs(r) | PROMOTE 0.30 sits at | reachable by noise? |
+|---|---|---|---|---|
+| 100 | 0.1026 | 0.197 | 2.9 sigma | no |
+| 138 | 0.0867 | 0.166 | 3.5 sigma | no |
+| 200 | 0.0716 | 0.138 | 4.2 sigma | no |
+| 300 | 0.0582 | 0.115 | 5.2 sigma | no |
+
+A random predictor does not reach `r > 0.30` at any planned sample size.
+The `PROMOTE` bar is not passable by chance — the H1 failure the ceiling
+gate warns about (a null model beating the threshold ~7x) does **not**
+repeat here on the noise axis.
+
+### Defect 1 — `KILL` has a dead band, and it widens with N
+
+`KILL` requires `r < 0.15` **AND** `p > 0.20`. Those two clauses do not
+fire together. The `r` giving exactly `p = 0.20` is:
+
+| N | r at p=0.20 | KILL's r-clause | dead band where KILL cannot fire |
+|---|---|---|---|
+| 100 | 0.1306 | 0.15 | `0.131 <= r < 0.15` |
+| 138 | 0.1106 | 0.15 | `0.111 <= r < 0.15` |
+| 200 | 0.0915 | 0.15 | `0.092 <= r < 0.15` |
+| 300 | 0.0744 | 0.15 | `0.074 <= r < 0.15` |
+
+A result landing in that band satisfies the r-clause, fails the p-clause,
+and is therefore neither killed nor promoted. **The pre-registration does
+not say what happens to it**, and the larger the sample, the wider the
+band — the opposite of the intended behaviour.
+
+### Defect 2 — the undefined middle
+
+Nothing at all is specified for `0.15 <= r <= 0.30`. At these sample sizes
+that is roughly 1.5 to 3 sigma wide: precisely where a real but modest
+effect would land. Combined with defect 1, the criterion is only decisive
+at the two extremes.
+
+(Minor, harmless: `PROMOTE`'s `p < 0.10` clause is redundant — any
+`r > 0.30` already has `p` far below it at every planned N. It reads like
+a second safeguard and is not one.)
+
+### Still NOT cleared: the structural floor
+
+This check used random predictors. It says nothing about a **WHIM-free but
+structurally correlated** predictor — which is exactly what bit before:
+`NR-010` went from raw `r = 0.021` to partial `r = -0.701` once `M_WL` was
+controlled, purely from covariance structure. That floor needs the data
+(shuffle `E_WHIM` preserving its marginal, or predict `delta_M` from
+`M_true` and dynamical state alone) and remains open.
+
+### Consequence for revival
+
+Fix the bands **before** running, not after seeing a result — otherwise
+the fix is unfalsifiable. Concretely: make `KILL` a single clause
+(`p > 0.20` alone, or `r` below the N-dependent value above), and state
+explicitly what an outcome in `0.15-0.30` means. Then run the structural
+floor as the first thing the data touches.
+
 ## Standing caveat on the July bypass search
 
 The Option B/C survey is dated **July 2026** and is now two months stale.
