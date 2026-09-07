@@ -98,6 +98,34 @@ parameter-identifiable ≠ causally identifiable.
 - `NO_AUTHOR_ERROR`: every finding is about this project's own
   reconstruction, never a claim about Dr. Buckholtz's own unpublished theory.
 
+## PROCESS RULES — added 2026-09-07 after 4 same-day retractions (P215/P216/P217, and P214 earlier)
+All four shared one root cause: a one-sided search reported as a two-sided
+comparison, plus reading the applied sections of a source before its
+self-limiting ones. See `experiments/20260803-bridge/
+FINDING_P215_P216_P217_RETRACTION_after_step8a.md` §4 for the full account.
+
+1. **Step -3 pre-work check is MANDATORY on this project's OWN directories**,
+   not just external literature. Before writing a new `FINDING_P<n>` under
+   `experiments/20260803-bridge/`, `grep` that same folder for the topic
+   first — `FINDING_P7` already held the answer to `P215`'s question and was
+   never checked (`ls experiments/20260803-bridge/FINDING_P*` +
+   `grep -l <topic>` first, always).
+2. **Grep the CLEAN extraction, not the glued one.** `data/source_material/
+   buckholtz_preprints202511.0598.v6_pymupdf-clean.md` is the preferred
+   search target (its own header line 10 says so) — the older `.md` glues
+   words together and produces false negatives (`grep -c -i node` on it
+   returned 2, both from "neutrinodensities"; zero on the clean file too,
+   but for the right reason).
+3. **Read a source's self-limiting sections BEFORE its applied ones**, when
+   both exist. v82 has one titled "Circumstances where this framework
+   should not be expected to be accurate" (§IV.H) and a fitting-protocol
+   retrospective (§IV.S, ~line 1716) — both contained the sentence that
+   falsified a same-day finding, and both were read last, not first.
+4. **A comparative claim about two documents requires a search run on
+   BOTH**, not one document swept and the other assumed silent. `P217`
+   swept `β` in v82 only and stated a conclusion about the v6↔v82
+   relationship; the same sweep on v6 dissolved it in a minute.
+
 ## NEVER
 - Reconstruct F→H_MULT(z) by fitting against Table A1 (`NO_BRIDGE_FITTING`).
 - Treat a `docs/145`/`docs/147` "unchanged" carry-forward number as freshly
