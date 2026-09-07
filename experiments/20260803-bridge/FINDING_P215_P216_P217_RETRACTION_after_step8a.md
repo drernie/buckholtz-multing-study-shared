@@ -312,3 +312,44 @@ less clever formulation was the accurate one.
 - `CURRENT_EVIDENCE_STATE.md` §7.6 is rewritten to match.
 - The `k` question **still stands**, and the corpus leans further against
   the compact-object reading than any of these three files claimed.
+
+---
+
+## 6. Addendum, same day — a fourth defect, found via an external re-reading
+
+An external independent pass over v82 raised the alarm that Sec. 2.3's
+printed rule — integrate `2(ä/a)/(1+z)` to get `H² − H₀²` — is kinematically
+inconsistent, since from `A ≡ ä/a`, `H = ȧ/a` and `dz/dt = −(1+z)H` one gets
+`A = H² − (1+z)HH'`, hence `d(H²)/dz = 2(H² − A)/(1+z)`. I re-derived that
+identity independently and it is correct; v82's own Eq. (18)
+(`q = (1+z)H'/H − 1`, with `q = −A/H²`) reproduces the same identity, not the
+printed rule.
+
+**But the alarm resolves in v82's favour, and the code says so itself.**
+`multing_core.py:150-158`:
+
+> *"Specific force term used to build H(z)… **Equal to `-dH/dt`** (NOT
+> `ddot{s}/s` — see paper Sec. IV.R… for the distinction between this
+> quantity and the true `ddot{s}/s = H^2 - addot_over_a`)"*
+
+With integrand `A_code ≡ −Ḣ`, the published routine gives
+`d(H²)/dz = −2Ḣ/(1+z) = 2HH'` — **exactly right.** The construction is
+kinematically consistent; only a name is misleading.
+
+**The defect this exposes is ours.** `experiments/20260907-icm-expansion-
+correlation/stage1_dHdk_derivability.py` copied the expression
+`[F0−F1+F2−F_acc]·2/(M d)` **and its misleading name**, then computed and
+labelled `∂(ä/a)/∂k` throughout. It was computing `∂(−Ḣ)/∂k`. The true
+`∂(ä/a)/∂k` carries an extra `∂(H²)/∂k`, never computed there, because `H²`
+depends on `k` through the integral itself.
+
+Branch verdict is unaffected — it was already `REFUSE(no_falsifiable_
+predicate_yet)`, and its FIX 2 had already withdrawn the one sentence that
+read the quantity as an expansion rate. But the labels are wrong and no
+number from that branch may be quoted as an acceleration response. Noted in
+the file itself.
+
+**Method note:** this is the third time today a defect was found by reading
+a *docstring or a self-limiting section* rather than the equations —
+`v82:1028`, `v82:1719`, and now `multing_core.py:150-158`. All three were in
+plain sight and none was in the part of the source the analysis was looking at.

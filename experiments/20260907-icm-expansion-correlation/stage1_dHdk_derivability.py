@@ -1,5 +1,23 @@
 """Stage 1 -- is d(addot/a)/dk derivable without resolving bottleneck 1?
 
+[NAMING DEFECT, found 2026-09-07 -- READ BEFORE USING ANY NUMBER HERE]
+The quantity computed throughout this file is NOT addot/a. TJB's own
+supplemental multing_core.py:150-158 documents its own function:
+
+    "Specific force term used to build H(z) ... Equal to -dH/dt (NOT
+     ddot{s}/s -- ... the true ddot{s}/s = H^2 - addot_over_a)"
+
+We copied the expression [F0-F1+F2-F_acc]*2/(M d) AND its misleading name.
+So every "d(addot/a)/dk" below is really d(-Hdot)/dk. The true
+d(addot/a)/dk carries an extra d(H^2)/dk term that this file never
+computed, because H^2 itself depends on k through the integral.
+
+This does NOT change the branch verdict -- it was REFUSE(no_falsifiable_
+predicate_yet), and FIX 2 had already withdrawn the one sentence that
+read the quantity as an expansion rate. It DOES mean the labels here are
+wrong and no number may be quoted as an acceleration response.
+
+
 The claim.md verdict was REFUSE(no_falsifiable_predicate_yet): MULTING's
 corpus states no quantitative version of "local expansion responds to
 thermal energy." This script asks the narrower, cheaper question that
