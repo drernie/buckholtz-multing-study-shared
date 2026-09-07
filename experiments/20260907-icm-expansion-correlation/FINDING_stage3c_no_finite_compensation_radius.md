@@ -194,3 +194,29 @@ choice inside it could have produced one.
   §4 rests on the analytic argument; the scan only shows the code obeys it.
 - `R_xi0`'s 142–223 Mpc range is reported because it is the number people
   reach for by mistake. **It is still not the compensation scale.**
+
+
+---
+
+## 9. PREMISE MEASURED (post-skeptic, `[VERIFIED-run]`)
+
+Section 4's argument was found by the Step 8a skeptic to be an invalid
+implication as stated: `P(0)=0` alone does **not** give "approached from
+above, never crossing" — it needs `ξ` to have **exactly one sign change**,
+which nothing in this file measured.
+
+`count_sign_changes()` was added and the corrected script re-run:
+
+```
+sign changes in xi(r)        : 1
+sign changes in delta_bar(r) : 0
+```
+
+**The premise holds for these smooth spectra**, so §4's conclusion is now
+properly founded rather than asserted. The gap was in the argument, not in
+the answer.
+
+**Unchanged and still open:** the BAO case (this file's removed T3 — see
+`AMENDMENTS_after_step8a_skeptic.md` FIX 4), which is exactly where `ξ` is
+not guaranteed to have one sign change; and the convergence block, which
+varies only `damp`.

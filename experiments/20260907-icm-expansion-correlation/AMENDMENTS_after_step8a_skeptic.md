@@ -213,3 +213,37 @@ construction can represent, globally, with no crossover.
 **What it may not claim:** anything about the expansion rate `H` (FIX 2),
 and the compensation result's *reason* is conditional on a premise now
 measured for smooth spectra only, with the BAO case open (FIX 4/5).
+
+---
+
+## FIX 5 — the measurement landed `[VERIFIED-run]`
+
+Appended after the corrected `stage3c` finished (`exit 0`). The premise
+the C4 argument rests on is no longer assumed — it is measured:
+
+```
+sign changes in xi(r)        : 1
+sign changes in delta_bar(r) : 0
+```
+
+**Exactly one sign change in `ξ`.** So for these two smooth spectra the
+premise the skeptic correctly identified as missing **does hold**, and
+with it the conclusion follows properly rather than by assertion:
+`δ̄` never crosses zero, `R_comp` does not exist, 0 sign changes measured.
+
+**What this does and does not settle:**
+
+- **Settles:** C4's conclusion is now *founded*, not merely *stated*. The
+  gap the skeptic found was in the argument, not in the answer — the
+  answer survives with a real premise under it.
+- **Does NOT settle:** anything about a spectrum with baryon acoustic
+  oscillations. That is FIX 4's removed T3, still **OPEN**, and it is
+  precisely the case where `ξ` is not guaranteed to have one sign change.
+  The counterexample of FIX 5 (band-limited, `δ̄` reaching `−0.0862`)
+  remains the standing proof that the premise is load-bearing rather than
+  decorative.
+- **Also still open:** the convergence block varies only `damp`;
+  `kmin`, `kmax`, `nk`, `rmax` remain untested.
+
+**Net:** of the nine repairs, FIX 5 is now closed on the smooth-spectrum
+branch and open on the BAO branch. The other eight stand as committed.
