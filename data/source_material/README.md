@@ -84,3 +84,33 @@ the test suite or CI. This is reference material, not analysis input.
 Storing the source here does **not** change any analysis status: no validation, no
 refutation, no MCMC, no outreach. It only makes the primary source available for
 careful reference during the reproducibility work.
+
+
+## Freeze-date provenance: v82 vs DESI-DR1 cosmic chronometers `[VERIFIED-api 2026-09-07]`
+
+Checked via the Zenodo API after an external reading proposed scoring v82
+against arXiv:2608.13178 as a **post-freeze prospective test**.
+
+| UTC | event | source |
+|---|---|---|
+| 2026-08-08 12:35 | PDF's own internal stamp | filename `260808 1235 to_MULT_260717_0525_v82.pdf` |
+| 2026-08-08 18:44 | supplemental archive created | rec. 21204955 `created` |
+| **2026-08-11 08:34** | supplemental archive **last updated** (`zenodo_archive_v17.zip`) | rec. 21204955 `updated` |
+| **2026-08-13** | **DESI-DR1 CC on arXiv, 2608.13178**, `0.3<z<1.2` | arXiv |
+| **2026-08-19 00:47** | v82 preprint on Zenodo (record is v2) | rec. 22004287 `publication_date` |
+
+preprints.org `10.20944/preprints202608.0943.v1` posting date: `[UNKNOWN]`.
+
+**POST-FREEZE NOT ESTABLISHED.** +2 days against the code archive, **−6 days**
+against the preprint's posting. Do not label a DESI-CC comparison a frozen
+prediction.
+
+**Genuinely OUT-OF-SAMPLE, though.** Rec. 22004287's abstract names the fitted
+set: *"31 Cosmic Chronometer H(z) measurements (0<z<1.97), SH0ES, and a
+**DESI DR2 Lyman-alpha** measurement at z=2.33"*. The fit's DESI point is
+Ly-α BAO, not chronometers.
+
+**But out-of-sample ≠ independent.** The 31 fitted CC points span `0<z<1.97`,
+fully containing `0.3<z<1.2`, and share the CC method's systematics. Only the
+galaxy sample is independent. Full covariance required (cf. the +6.80% shift
+measured 2026-09-03).
