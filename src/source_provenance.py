@@ -10,9 +10,24 @@ DESIGN:
 - ProvenanceRegistry: central registry of all tagged values
 - Automatic conflict detection when multiple values exist for same symbol
 
-INTEGRATION:
-- beta_provenance.py uses this system for beta values
-- Future: extend to all physical constants, parameters, equations
+INTEGRATION [CORRECTED 2026-09-07 — the arrow was backwards]:
+- This module imports `beta_provenance`, not the other way round.
+  `beta_provenance.py` does not import anything from here (verified: its
+  only imports are `dataclasses` and `typing`). The original line claimed
+  "beta_provenance.py uses this system for beta values", which was never
+  true in code.
+- `beta_provenance` itself IS live and well-wired: `beta_definitions.py`,
+  `report.py`, this module, two tests and `scripts/brai_beta.py` use it.
+- This module and `conflict_resolver.py` sit ON TOP of it and nothing
+  above them uses either. Status: PARKED, see `docs/158`. Do NOT wire
+  into `provenance_audit.py` — that module works at the CHAIN level
+  (which assumption a step incurs), while this one works at the VALUE
+  level (which number a symbol carries). They are different concerns.
+- Known non-fit if revived for symbol-MEANING collisions (the live
+  problem: `A` as field normalization vs `A` as a body subscript; `eta`
+  as kappa/g vs `eta_q`): `ProvenanceTag` keys on (symbol, value) and so
+  reads a collision as two competing VALUES of one quantity. It would
+  need a namespace/meaning field it does not have.
 """
 
 from dataclasses import dataclass, field

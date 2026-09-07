@@ -274,11 +274,12 @@ Technical evidence-lock checkpoints — pending/resolved status of specific veri
 - [153_bottleneck1_reopen_gate_decision.md](153_bottleneck1_reopen_gate_decision.md) — bottleneck 1 (F→H_MULT(z)) reopen gate decision
 - [154_eq32_numerology_literature_bibliography.md](154_eq32_numerology_literature_bibliography.md) — bibliography of historical "numerical coincidence" physics
 
-### Most Recent (docs 155–157)
+### Most Recent (docs 155–158)
 
 - [155_engineering_debt_cleanup_20260905.md](155_engineering_debt_cleanup_20260905.md) — engineering debt cleanup (mypy 24→0, CI-enforced)
 - [156_bottleneck1_precondition_check_20260905.md](156_bottleneck1_precondition_check_20260905.md) — bottleneck 1 precondition check (`docs/153` §3a)
 - [157_next_steps_plan_20260906.md](157_next_steps_plan_20260906.md) — next-steps plan; items 1-2 CLOSED per stop-rule, 3-5 DONE
+- [158_provenance_modules_park_decision_20260907.md](158_provenance_modules_park_decision_20260907.md) — `source_provenance`/`conflict_resolver` **PARKED**; `docs/157`'s proposed wiring was a category error (value level vs chain level)
 
 > **⚠️ Number collisions in this range.** Four numbers are used twice:
 > **122**, **132**, **133**, **134**. The docs are distinct and all are
