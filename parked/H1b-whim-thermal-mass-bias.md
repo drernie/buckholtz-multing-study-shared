@@ -298,3 +298,42 @@ conclusion forward as current** when evaluating revival condition 2.
 3. **Not that no bypass exists** — see the standing caveat above.
 4. **Nothing about MULTING** (`NO_AUTHOR_ERROR`). H1 is this project's own
    reconstruction of a testable consequence, not TJB's own text.
+
+---
+
+## TNG ACCESS — REQUESTED 2026-09-07, awaiting admin approval
+
+**Status change on Revival Condition 1**, from *not attempted* to
+*submitted, pending*.
+
+Sergey submitted an account request at `tng-project.org`. The site's own
+reply: the request needs administrator approval ("a few minutes, though
+outside US-Eastern business hours it may take several hours"), after
+which a confirmation email with an activation link is sent.
+
+**Re-probed the same day, before the request:**
+
+| endpoint | status |
+|---|---|
+| `https://www.tng-project.org/` | **200** — site up, network fine |
+| `https://www.tng-project.org/api/` | **403** |
+| `https://www.tng-project.org/api/TNG300-1/` (H1b's target) | **403** |
+| `https://www.tng-project.org/api/TNG100-1/` | **403** |
+
+`200` on the root against `403` on the API is a precise diagnosis: not a
+network or outage problem, an authorisation refusal. Also checked and
+absent: any `TNG*`/`ILLUSTRIS*` environment variable, `~/.tng`,
+`~/.tng_api_key`, `~/.config/tng`, and any key-shaped variable in the
+repo.
+
+**Do not re-submit a second request** — one is already in the queue.
+
+**When the activation email arrives**, the key goes into an environment
+variable (`TNG_API_KEY`) or a file outside the repository — never into a
+chat message and never into a tracked file. Verifying it then costs one
+command: `403 → 200` on `/api/TNG300-1/`.
+
+**Unchanged by this:** Revival Condition 1 is satisfied only when access
+is actually *granted*, not when it is requested. And the pre-condition
+above stands regardless — **Step 4a (floor–ceiling) runs BEFORE the test,
+not after.**
