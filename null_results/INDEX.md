@@ -99,7 +99,7 @@ theory. Row 97 established this for its 8; it survives the full set.
 | NR-007 | `specification_missing` | the derivation was never specified: author "might suggest" only, 5 required mechanisms all absent. Nothing was tested and failed — there was nothing to test |
 | NR-008 | `bridge_family_killed` | + informative byproduct: revealed the two-hump `ε(z)` structure, which is not itself a kill (row 97) |
 | NR-009 | `mechanism_killed` | S³-geometry for Eq.32 — a DIFFERENT track, targets Eq.32's coefficients, not a bridge candidate (row 97) |
-| NR-010 | **`signature_absent`** ⚠️ *new class* | the proposed correlation is simply not in the data (`r=0.021`, `p=0.88`) and its direction is reversed. Not a mechanism kill — the base signature never appeared |
+| NR-010 | **`signature_absent`** (new class) | H1a's predicted signature is absent: raw `r=0.021`, `p=0.883`. Sharper than 'merely null' — controlling `M_WL` DOES give a strong partial `r=-0.701`, but with the **reversed sign**, so the file's own words are that it *"does not rescue H1a"*. That partial correlation became its own separate puzzle (H1c/d/e probed it, NR-015 traced it to `T_X`) |
 | NR-011 | `mechanism_killed` | mass threshold does not mediate. Verdict **unaffected** by NR-015; see the framing note below |
 | NR-012 | `mechanism_killed` | morphology does not mediate. Verdict **unaffected** by NR-015; see the framing note below |
 | NR-013 | `parameterization_killed` | `β_d`/`β_q` profiling inside a given force ansatz (row 97) |
