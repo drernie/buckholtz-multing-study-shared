@@ -214,6 +214,29 @@ unilaterally.
 **Unaffected:** the structural floor. Still needs the data, still must run
 first.
 
+## AMENDMENT 2 — 2026-09-07 — bar relaxed, sign subtype, null models frozen
+
+`scripts/p212_h1b_amendment2.py`. Additive again; nothing rewritten.
+
+- **`KILL` bar 0.15 -> 0.20** (user decision — a judgement about the
+  smallest meaningful effect, not a statistical one). **Minimum `N` for a
+  reachable `KILL` drops 124 -> 71**, so the design's own "N > 100" is now
+  sufficient where under AMENDMENT 1 it was not.
+- **New subtype `KILL — opposite-sign signal`**, trigger `U₉₅(r) < −0.30`
+  — the mirror of `PROMOTE`. A strongly negative result is no longer
+  filed indistinguishably from "no effect". The weaker trigger `L₉₅ < 0`
+  was rejected: at `N=138` even `r = −0.01` would have fired it.
+- **Structural-floor ALGORITHM frozen** (not its value): `M0-1` permutes
+  `E_WHIM` within `(M_true, z, dynamical state)` strata, 10 000 draws,
+  with the stratification fixed **deterministically by `N` alone** (finest
+  scheme keeping >= 5 units/stratum: 2x2x2 / 3x3x2 / 3x3x3 / 4x4x3);
+  `M0-2` predicts `δM` from controls with no WHIM term. **Binding order:
+  compute `p(r | M0)` FIRST, unblind the real pairing after.** This
+  removes the freedom to pick a permutation scheme after seeing structure.
+
+**Still not settled:** the structural floor's *value*. Only the procedure
+is fixed.
+
 ## Standing caveat on the July bypass search
 
 The Option B/C survey is dated **July 2026** and is now two months stale.

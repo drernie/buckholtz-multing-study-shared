@@ -177,3 +177,111 @@ WHIM-free but structurally correlated predictor could still clear
 from raw `r = 0.021` to partial `r = −0.701` once `M_WL` was controlled.
 Testing that needs the data and must be the **first** thing the data
 touches, before the primary result is computed.
+
+---
+
+# AMENDMENT 2 — 2026-09-07 — KILL bar, sign subtype, frozen null models
+
+Additive, like AMENDMENT 1. Nothing above is rewritten. Still before any
+data exists. Artifact: `scripts/p212_h1b_amendment2.py`.
+
+## 2.1 `KILL` bar relaxed 0.15 → 0.20
+
+User decision. This is a judgement about the smallest effect worth calling
+"not nothing" — scientific, not statistical. AMENDMENT 1 tabulated the
+cost; this applies it.
+
+**Consequence: minimum `N` for a reachable `KILL` drops 124 → 71.** The
+design's own *"N > 100"* is now sufficient, where under AMENDMENT 1 it
+was not.
+
+| N | max observed `r` still giving `KILL` | min observed `r` giving `PROMOTE` |
+|---|---|---|
+| 71 | 0.0009 | 0.5065 |
+| 100 | 0.0500 | 0.4449 |
+| 124 | 0.0700 | 0.4162 |
+| 138 | 0.0600* | 0.4237 |
+| 200 | 0.0900 | 0.4031 |
+| 300 | 0.1100 | 0.3845 |
+
+\* values read off a 3801-point grid; see the script for exact figures.
+
+**What `KILL` now asserts, stated plainly:** *even allowing for statistical
+uncertainty, the effect is smaller than `r = 0.20`.* That is an
+equivalence claim, not "we failed to reach significance."
+
+## 2.2 New subtype — `KILL — opposite-sign signal`
+
+The hypothesis is directional (positive), so one-sided bounds put a
+strongly **negative** result into `KILL`. Formally correct — the positive
+claim is refuted — but it collapses two different worlds, and a bare
+`H1b KILLED` read six months later would not distinguish `r ≈ 0` from
+`r ≪ 0`. For any causal reading those are not the same finding.
+
+**Proposed trigger `L₉₅ < 0` was rejected as too weak.** At `N = 138` even
+`r = −0.01` gives `L₉₅ = −0.151 < 0`, so the subtype would fire on noise.
+
+**Adopted trigger — the mirror of `PROMOTE`:**
+
+```
+KILL — opposite-sign   <=>   U₉₅(r) < −0.30
+```
+
+Exactly as demanding on the negative side as `PROMOTE` is on the positive,
+and a strict **subset** of `KILL`, not a fourth verdict. Verified on a
+3801-point grid at `N = 71…300`: the subtype never escapes `KILL`,
+`KILL` and `PROMOTE` never co-fire, no gap.
+
+**Full decision rule now:**
+
+```
+U₉₅(r) < −0.30   ->  KILL — opposite-sign signal
+U₉₅(r) <  0.20   ->  KILL
+L₉₅(r) >  0.30   ->  PROMOTE
+otherwise        ->  INCONCLUSIVE
+```
+
+## 2.3 Structural-floor null models — ALGORITHM frozen now, not the number
+
+The structural floor cannot be computed without data. The *procedure*
+can, and freezing it now removes a real degree of freedom: seeing the
+data first would allow choosing the permutation scheme that makes the
+observed result look most unusual.
+
+**`M0-1` — stratified permutation.** Permute `E_WHIM` across clusters
+*within* strata of `(M_true, z, dynamical state)`, preserving its
+marginal. Recompute the partial correlation. 10 000 permutations.
+
+**Stratification is fixed deterministically by `N` alone** — never by the
+data's structure. Take the finest scheme that keeps `≥ 5` units per
+stratum:
+
+| N | scheme | units/stratum |
+|---|---|---|
+| 71 | 2×2×2 | 8.9 |
+| 100–137 | 3×3×2 | 5.6–7.6 |
+| 138–299 | 3×3×3 | 5.1–11.1 |
+| ≥ 300 | 4×4×3 | 6.2+ |
+
+(Splits are on quantiles of `M_true` and `z`, and on the dynamical-state
+classifier already named in `estimand.md`.)
+
+**`M0-2` — WHIM-free predictor.** Fit `δM` from `M_true`, `z` and
+dynamical state with **no WHIM term at all**; take the resulting partial
+correlation as the floor.
+
+**Order of operations, binding:** compute `p(r | M0)` for both null models
+**first**, then unblind the real `E_WHIM ↔ δM` pairing. Report
+`efficiency = (observed − floor) / (ceiling − floor)`.
+
+**Stop conditions unchanged from FL Step 4a:** if `PROMOTE`'s threshold
+lies at or below the structural floor → `CRITERION_INVALID`, and the
+experiment stops there. None of the Step 4a stop outcomes is evidence
+against H1.
+
+## 2.4 What is still NOT settled
+
+The structural floor's **value**. Only its algorithm is fixed. `NR-010`,
+on real cluster data, went from raw `r = 0.021` to partial `r = −0.701`
+once `M_WL` was controlled — entirely from covariance structure. Whether
+anything like that happens here is unknown until the data exists.
