@@ -129,3 +129,59 @@ MULTING, not to the floor.**
    *compensation* does not produce one. Other mechanisms (selection,
    sample definition, redshift-space distortion) are untested here.
 4. **Nothing about MULTING's correctness** (`NO_AUTHOR_ERROR`).
+
+---
+
+## 8. ADDENDUM — the full variant scan completed (same run, `exit 0`)
+
+Written after the background scan finished. The analytic argument of §4
+predicted the outcome in advance; this records whether it held.
+
+**It held: 27 of 27 combinations, 100%, no finite compensation radius.**
+
+### 8.1 Transfer functions
+
+| variant | `R_xi0` [Mpc/h] | `R_comp` |
+|---|---|---|
+| BBKS + Sugiyama | 103.42 | **NONE** |
+| EH98 no-wiggle | 121.45 | **NONE** |
+
+A 17% spread between the two on `R_xi0` (153.4 vs 180.2 Mpc) — and **no
+effect at all** on `R_comp`, which does not exist in either.
+
+### 8.2 Baryon-fraction bracket (EH98 no-wiggle)
+
+| `Ω_b` | `R_xi0` [Mpc] | `R_comp` |
+|---|---|---|
+| 0.0300 | 159.97 | **NONE** |
+| 0.0493 | 180.19 | **NONE** |
+| 0.0700 | 192.39 | **NONE** |
+
+### 8.3 Cosmology scan — `Ω_m × h × n_s`, 27 combinations
+
+`Ω_m ∈ {0.27, 0.315, 0.36}` × `h ∈ {0.65, 0.674, 0.70}` ×
+`n_s ∈ {0.94, 0.965, 0.99}`.
+
+| | |
+|---|---|
+| combinations tested | **27** |
+| with **no** finite compensation | **27 (100%)** |
+| `R_xi0` range | **142.0 – 223.4 Mpc** |
+
+`R_xi0` moves by a factor 1.57 across the scan — it is genuinely
+cosmology-dependent. `R_comp` moves not at all, because it does not
+exist: the `P(0)=0` argument holds for every `n_s > 0` in the grid, so no
+choice inside it could have produced one.
+
+### 8.4 What the scan does and does not add
+
+- **Adds:** the numerics agree with §4's analytic prediction across a
+  wide parameter box, including two structurally different transfer
+  functions. Had a single combination produced a finite `R_comp`, that
+  would have falsified §4 and been the more interesting result.
+- **Does not add:** independence. Every row shares the same linear-theory
+  assumption and the same `P(0)=0` premise. This is a **consistency**
+  check on the implementation, not 27 independent tests. Confidence in
+  §4 rests on the analytic argument; the scan only shows the code obeys it.
+- `R_xi0`'s 142–223 Mpc range is reported because it is the number people
+  reach for by mistake. **It is still not the compensation scale.**
