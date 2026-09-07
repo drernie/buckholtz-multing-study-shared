@@ -1,3 +1,13 @@
+> # [RETRACTED 2026-09-07] DO NOT CITE
+>
+> Falsified by a context-blind Step 8a skeptic pass the same day, independently re-verified against source by me.
+>
+> **Core claim FALSIFIED**: both versions assert BOTH properties, in swapped REGISTERS — v6 constrains beta across objects in its equations (807-810, same `betad` for A and P), v82 constrains it across time in its procedure (647-652, 707-709). §2a/§5a are dead: v6 itself uses both "positive" (2214) and "non-negative" (2313), so it is the author's idiom, not a v82 inconsistency. `b1 > 0` IS sourced by v82:213 — the first draft was right and the correction made it worse.
+>
+> Full record: `FINDING_P215_P216_P217_RETRACTION_after_step8a.md`. Text below kept verbatim, not edited (no-silent-correction).
+
+---
+
 # FINDING P217 — between v6 and v82 the universality claim for `β` was not
 # narrowed, it was moved to a **different axis**: v6 constrains `β` across
 # **time** and says nothing about across objects; v82 constrains it across

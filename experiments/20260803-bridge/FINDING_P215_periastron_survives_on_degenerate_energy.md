@@ -1,3 +1,13 @@
+> # [RETRACTED 2026-09-07] DO NOT CITE
+>
+> Falsified by a context-blind Step 8a skeptic pass the same day, independently re-verified against source by me.
+>
+> **Conclusion INVERTED**: v6:652-675 defines `k` as the excess over the GROUND STATE, and a cold Fermi sea IS the ground state, so `k_deg = 0`. Degeneracy is the most EXCLUDED candidate, not the least. Also: a factor-of-2 error this project already found on 2026-08-11 (`FINDING_P7:23`), a zero-dof control that cannot fail, and a row that `FINDING_P7:160-166` had already computed. The physics of the Fermi gas is fine; everything built on it is not.
+>
+> Full record: `FINDING_P215_P216_P217_RETRACTION_after_step8a.md`. Text below kept verbatim, not edited (no-silent-correction).
+
+---
+
 # FINDING P215 — the periastron bound **survives** on the one internal
 # energy the corpus actually admits: degenerate kinetic energy
 

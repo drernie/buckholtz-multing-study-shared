@@ -1,3 +1,13 @@
+> # [RETRACTED 2026-09-07] DO NOT CITE
+>
+> Falsified by a context-blind Step 8a skeptic pass the same day, independently re-verified against source by me.
+>
+> **Core claim FALSIFIED**: v82:1028 — "This framework treats each NODE as a single, typical OBJECT" — the two are nested, not competing scope levels. v82:1350-1355 is a matched pair about the OBSERVER, not about scope. Only the beta1/beta2 asymmetry (§5) survives.
+>
+> Full record: `FINDING_P215_P216_P217_RETRACTION_after_step8a.md`. Text below kept verbatim, not edited (no-silent-correction).
+
+---
+
 # FINDING P216 — v82 states the scope of Eqs. (1)–(4) at two different
 # levels: **node** in the symbol-definition section, **object** twice in
 # the discussion. Internal, citable, needs no version comparison.

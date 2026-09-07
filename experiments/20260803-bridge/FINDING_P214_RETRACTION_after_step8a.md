@@ -68,6 +68,8 @@ the definition's breadth.
 
 ## 3. The enumeration in `MODEL_SPEC_AUDIT` §5 matches **neither** document
 
+**[WITHDRAWN 2026-09-07 — see `FINDING_P215_P216_P217_RETRACTION_after_step8a.md` §1.2.]** Two of the three rows below are wrong. **Rotational is NOT excluded**: v6:790 says *"Suppose that `kA` associates only with the **rotation of a uniform ring of mass**"*, with a lever-arm estimate, and v6:798 sets that aside **only for protoclusters and clusters**. **Degeneracy IS addressed**, structurally: v6:652-675 defines `k` as the excess over the ground state. The section below is kept verbatim, not edited.
+
 §5's broad reading was *"binding, rotational, degeneracy"*. Checked:
 
 - **binding — excluded by BOTH.** v6:601-602: *"Modeling does not need to

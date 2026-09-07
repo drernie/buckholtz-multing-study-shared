@@ -534,42 +534,46 @@ a fixed reading of `k`, or a first-principles `β`. Both change `β₂/β₁`,
 which is the only thing that could move `Q` below 1.
 
 
-### 7.6 The `k` question — resolution claimed, then RETRACTED; three findings survive
+### 7.6 The `k` question — THREE attempts, ALL retracted the same day
 
-`P214` claimed §5's `k` fork was a v6/v82 conflation and was answered.
-A Step 8a pass **falsified 4 of its 5 claims**; every finding was re-read
-from source by me before acceptance. `FINDING_P214_...md` carries a
-DO-NOT-CITE header; `FINDING_P214_RETRACTION_after_step8a.md` is the record.
-**The `k` question STANDS, and is sharper than before.** Three results came
-out of the wreckage, each now with its own finding:
+`P214` claimed the fork was answered → Step 8a falsified 4 of 5 claims.
+`P215`/`P216`/`P217` were then written from what survived → **three
+independent Step 8a passes falsified all three.** Every killing citation was
+re-read from source by me before acceptance. Record:
+`FINDING_P215_P216_P217_RETRACTION_after_step8a.md`.
 
-| id | result | status |
-|---|---|---|
-| **`P215`** | The double-pulsar periastron bound **survives** on degenerate kinetic energy — the one internal energy neither version excludes (binding is excluded by both, rotational by v6's "linear motion"). `β_d < 2.2e-5 – 3.0e-5`, **5.2–5.3 orders below Table A1's fitted 4.5.** Both pre-existing rows reproduced as positive controls (`1.15e3 m`/`1.2e-5` to 3 digits). | new, gated |
-| **`P216`** | v82 states the scope of Eqs. (1)–(4) at **two levels**: `node` (188) vs `object` (1354-1355, 1449-1452). Internal to v82, needs no version comparison. v82:1453-1456's exclusion is about **collisions**, not compact objects — `P214` read it backwards. | new, gated |
-| **`P217`** | The `β` universality claim was **not narrowed between versions — it moved axis.** v6: invariant *across time*, silent on object-class. v82: invariant *across nodes*, and contains **no** `β` time-invariance statement at all (`[VERIFIED-grep]`). Neither implies the other. | new, gated |
+| id | why it died |
+|---|---|
+| **P215** | **Conclusion inverted.** v6:652-675 defines `k = EoA − E00,oA`, an excess over the **ground state**; a cold Fermi sea **is** the ground state ⇒ `k_deg = 0`. Degeneracy is the most **excluded** candidate, not the least. Also reproduced a factor-of-2 error `FINDING_P7:23` had flagged on 2026-08-11, on a row `P7:160-166` had already computed, against a target (`Table A1`) `CLAUDE.md` forbids. |
+| **P216** | v82:1028 — *"This framework treats each **node** as a single, typical **object**"*. Nested, not competing. v82:1350-1355 is a matched pair about the **observer**. |
+| **P217** | Both versions assert **both** properties, in swapped **registers**: v6 constrains `β` across objects in its equations (807-810, one `βd` for A and P), v82 constrains it across time in its procedure (647-652, 707-709). v6 itself uses *"positive"* (2214) **and** *"non-negative"* (2313) — the author's idiom, not a v82 inconsistency. |
 
-**Two consequences of `P217` that touch live results:**
-1. `P216`'s pattern has a **second instance**, found while hardening
-   `P217`'s own negative grep: v82 says `β₁` is *"a **positive** number"*
-   (213) and constrains its own fit *"subject only to **β₁ ≥ 0, β₂ ≥ 0**"*
-   (652). Definition excludes `β=0`, procedure admits it. **So the ICM
-   branch's `b1 > 0` side-condition is NOT discharged** — its existing
-   handling (raise at `b1=0`, separate `sign_of_response()` valid for any
-   `b1`) was correct, not over-cautious. `P217` §2a records this as a
-   correction to its own first draft, made before commit.
-2. `β` **constant in `z`** — built into v82's own `multing_core.py`
-   (scalars applied across the whole `zgrid`) and asserted textually only
-   by **v6**. Our fitted pair `1.4335e10 / 7.8067e17` therefore rests, under
-   v82 alone, on the *code*, not the *text*.
+**Root cause, all three: a one-sided search reported as a two-sided
+comparison.** `P217` swept `β` in v82 only, then concluded about the v6↔v82
+*relationship*. `P215` never ran the FL Step -3 pre-work check on its own
+directory, where `FINDING_P7` already held the answer. `P216` cited only
+sections where the theory is *applied*, none where it *bounds itself* — both
+killing lines sit in sections named exactly that. And all three grepped the
+**older, glued** v6 extraction while the sibling file's own header line 10
+says it is the **PREFERRED text for grep/search**.
 
-**Methodological note, recorded:** `P214`'s zero-hit greps were run
-singular-only — `internalenergy` 0 vs `internalenergies` 1, and the single
-hit was the very line quoted as an example of word-gluing while reporting
-its concept absent. **A space-insensitive search is not a
-morphology-insensitive one.** The same trap nearly recurred in `P217` §3:
-a raw `grep -c -i node` on v6 returns 2, both from `neutri`**`nod`**`ensities`
-— v6 uses "node" as a term **zero** times.
+**Two "improvements" made mid-session both moved away from the sources:**
+`"a real narrowing"` → `"axis substitution"`, and `"b1 > 0 is sourced"` →
+`"not discharged"`. The earlier, less clever formulation was right both times.
+
+**What actually survives from the whole `k` episode:**
+- The `β₁` per-node / `β₂` per-pair asymmetry (`P216` §5) — accurate, standalone.
+- The relativistic Fermi-gas physics in `P215` — independently confirmed,
+  including a Jensen proof that uniform density is genuinely conservative.
+- v82:1453 + 1461-1463: v82 declines a GR analog and assigns **binary pulsar
+  timing** to GR's jurisdiction explicitly. External compact-object bounds
+  test a hypothetical extension, not a claim v82 makes.
+- **A live, propagating defect:** the `ℓ_d = 2β_d(u_A+u_P)` factor of 2,
+  contradicting v6 Eq. (15) as derived. Open since 2026-08-11 (`P7:143-150`),
+  now in a second file. Needs fixing at the source.
+
+**The `k` question stands, and the corpus leans further against the
+compact-object reading than any of these files claimed.**
 
 
 ## Exclusion zone (do not start without a new triggering fact)
