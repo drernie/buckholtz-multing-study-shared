@@ -401,10 +401,32 @@ exactly the shape Revival Condition 3 (above) already anticipated
 
 **Consequence:** H1b stays parked. This is a real, specific,
 better-than-before lead — worth a `pearl_registry` row with a
-`next_check` — not yet a revival. Next cheap step, if picked up: resolve
-the data-portal URL (try `www.the300-project.org`, or search for a
-mirror/Zenodo deposit) and open both papers' supplementary tables to
-check for a shared cluster-ID column, before touching `claim.md`.
+`next_check` — not yet a revival.
+
+### Portal search, 2026-09-09 — six channels tried, bounded, all failed for stated reasons
+
+| channel | result |
+|---|---|
+| `the300-project.org` (root) | DNS `getaddrinfo ENOTFOUND` |
+| `www.the300-project.org` | DNS `getaddrinfo ENOTFOUND` |
+| `weiguangcui.github.io/the300/` (co-author's own page) | reachable, no data page, itself points to `the300-project.org` |
+| `nottingham.ac.uk/astronomy/The300/` | reachable, no data page, same pointer, plus a PBworks wiki link explicitly requiring permission |
+| `web.archive.org` | tool-level block — cannot fetch this host at all from this environment |
+| VizieR (`vizier.cds.unistra.fr`) | blocked the request itself, anti-bot protection ("Anubis") |
+
+Two independent, authoritative sources (a paper co-author's own page, a
+university astronomy department page) both confirm `the300-project.org`
+IS the correct canonical address — this is not a wrong-URL problem, the
+domain itself did not resolve from this session across two hostname
+variants. **Not established** whether this is a real outage or an
+environment-specific restriction — genuinely unknown, not guessed
+either way.
+
+**Next cheap step, if picked up:** try the same URL from an unrestricted
+browser (outside this session's sandbox), or contact the paper's authors
+directly, before assuming the data is unreachable. Do not re-attempt the
+same six channels blind — they are logged here with their exact failure
+reasons.
 
 ---
 
