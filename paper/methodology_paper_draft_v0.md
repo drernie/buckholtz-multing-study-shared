@@ -4,7 +4,7 @@
 below is `[VERIFIED]` against this project's own committed record (commit
 hashes and file paths given throughout) — nothing is invented for the
 draft. What has **not** happened yet: a context-blind skeptic pass on this
-document itself, the ≥9-item pre-submission checklist, a text↔figure
+document itself, the per-claim `[VERIFIED]`-marker checklist, a text↔figure
 consistency check, or the mandatory 24-hour cooling-off period
 (`~/.claude/rules/integrity.md` § Submission Gate). Do not quote, cite, or
 send this document externally until all four have run and a human has
@@ -409,8 +409,33 @@ studies rather than instead of them.
       limitation rather than hidden.
 - [ ] Figures: none yet. Any added must pass the text↔figure consistency
       check before Submission Gate.
-- [ ] A context-blind skeptic pass on **this document itself**.
-- [ ] The ≥9-item pre-submission `[VERIFIED]` checklist.
+- [~] A context-blind skeptic pass on **this document itself** —
+      **dispatched 2026-09-07, result pending.** `integrity.md` Gate 1.
+      Not yet incorporated into this draft; do not treat the checklist
+      below as final until it returns.
+- [~] Per-claim `[VERIFIED]`-marker checklist (`integrity.md` Gate 2 —
+      *"every claim in the artifact carries an Evidence Marker"*; no
+      fixed count is specified there. **Correction, made while assembling
+      this list:** an earlier version of this checklist item said
+      "≥9-item," a specific number that does not appear anywhere in
+      `integrity.md` itself — traced to a session hook's own paraphrase
+      of the rule, copied into this draft without checking it against
+      the primary source. Fixed above and here; this is itself a small,
+      in-the-wild instance of `docs/146` Category 11
+      [provenance/attribution error], caught by the same discipline this
+      paper argues for):
+
+  | claim | status |
+  |---|---|
+  | Six case studies exist, each found defective per §4.0's definition | `[VERIFIED]` against the three retraction files — **pending re-check**: skeptic pass above is specifically attacking whether "six" is accurate or inflated (P220 split into 2 rows) |
+  | `docs/146` has 11 pre-existing categories | `[VERIFIED]` — direct `grep` against the file, reproduced in §3 |
+  | AVB pilot: `N=16`, McNemar `p=1.0` | `[VERIFIED]` against `result_summary.md` |
+  | Refit numbers `14.08` / `41.67` (Case 6) | `[VERIFIED]` — re-ran `P220_joint_BC_uncertainty_propagation.py` myself, matched |
+  | "Refit mathematically guaranteed to help, never hurt" | `[INFERRED]` — the **inequality** is a mathematical fact (frozen point ∈ refit's search space); whether the **specific reported numbers** (`14.08`/`41.67`) are the true optimum depends on the optimizer actually converging — **not independently re-verified**, and specifically flagged for the skeptic pass above |
+  | §7 related-work citations | `[VERIFIED]` — each re-checked against arXiv/Semantic Scholar today, one (`FLAWS`) removed as `[SOURCE_NOT_FOUND]` |
+  | "Context-blind: reviewer had no access to session reasoning" | `[INFERRED]` — describes this session's own actual process; not independently checkable by a reader without the raw dispatch prompts, and specifically flagged for the skeptic pass above |
+  | §4.3's "5 of 6 share one root cause" | `[INFERRED]`, narrative synthesis — explicitly the highest-overclaim-risk sentence in the draft (structurally the same shape as `docs/146` Category 10, recomposition overclaim); flagged for the skeptic pass above |
+
 - [ ] 24-hour cooling-off after the draft is next declared "ready" —
       not before this list is otherwise complete.
 - [ ] Explicit venue decision (arXiv cs.AI/cs.SE per `docs/158`, or
