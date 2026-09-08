@@ -245,7 +245,25 @@ Z33 = np.concatenate([zd, [0.0233], [2.33]])
 H33 = np.concatenate([Hd, [73.04], [236.1]])
 S33 = np.concatenate([sd, [1.04], [2.8]])
 ZFINE = np.sort(np.unique(np.concatenate([np.linspace(0, 2.33, 600), Z33])))
-ZFINE_REFIT = np.sort(np.unique(np.concatenate([np.linspace(0, 2.33, 500), Z33])))
+
+# [FIXED 2026-09-08, Step 8a skeptic pass on the PAPER DRAFT that cites
+# this script's numbers -- see paper/METHODOLOGY_PAPER_DRAFT_CORRECTIONS_
+# after_step8a.md Test 5. Two real bugs, both independently re-verified
+# by grep before this fix:
+#   (i) chi2_33 (frozen) integrated on a 600-point grid (ZFINE) while
+#       chi2_free (refit) integrated on a DIFFERENT 500-point grid
+#       (formerly ZFINE_REFIT) -- the two chi2 values being compared
+#       ("14.08 beats the published 15.75") were not the same objective.
+#       Fixed: both now use ZFINE.
+#   (ii) refit_chi2's Nelder-Mead used an ABSOLUTE xatol=1e-3 against a
+#       parameter (b2 ~ 7.8e17) where float64 spacing is ~1e2 -- that
+#       tolerance is unreachable in raw units, so termination was by
+#       maxfev/maxiter, not convergence, and r.success was never even
+#       checked. Fixed: optimize in RESCALED coordinates (x = params /
+#       fit values, all ~O(1)), the same convention already used and
+#       verified in FINDING_P176's own Hessian work; xatol=1e-3 is now
+#       meaningful; r.success is checked and reported.
+NORM = np.array([73.2, 1.4335e10, 7.8067e17])  # same order as [H0, b1, b2]
 
 
 def chi2_33(B_real, C_real, T0_keV=T0_keV_DEFAULT):
@@ -256,40 +274,48 @@ def chi2_33(B_real, C_real, T0_keV=T0_keV_DEFAULT):
     return float(np.sum(((Hp - H33) / S33) ** 2))
 
 
-def chi2_free(params, B_real, C_real, T0_keV=T0_keV_DEFAULT):
-    """chi2 with (H0_anchor, beta1, beta2) FREE -- used only for the
-    refit kill-test, to see whether the (B,C)-driven chi2 inflation
-    survives re-optimizing the fitted parameters."""
-    H0a, b1, b2 = params
+def chi2_free_normalized(x_norm, B_real, C_real, T0_keV=T0_keV_DEFAULT):
+    """chi2 with (H0_anchor, beta1, beta2) FREE, in RESCALED coordinates
+    (x_norm ~ O(1) at the published optimum) -- used only for the refit
+    kill-test, to see whether the (B,C)-driven chi2 inflation survives
+    re-optimizing the fitted parameters. Uses the SAME grid (ZFINE) as
+    chi2_33, so the two are directly comparable."""
+    H0a, b1, b2 = x_norm * NORM
     if H0a <= 0 or b1 < 0 or b2 < 0:
         return 1e12
-    Hm = H_of_z_kms(ZFINE_REFIT, H0a, b1, b2, Z_SHOES, B_real, C_real, T0_keV)
+    Hm = H_of_z_kms(ZFINE, H0a, b1, b2, Z_SHOES, B_real, C_real, T0_keV)
     if np.any(np.isnan(Hm)):
         return 1e12
-    Hp = np.interp(Z33, ZFINE_REFIT, Hm)
+    Hp = np.interp(Z33, ZFINE, Hm)
     return float(np.sum(((Hp - H33) / S33) ** 2))
 
 
 def refit_chi2(B_real, C_real, T0_keV=T0_keV_DEFAULT, guesses=None):
+    """Returns (best_chi2, best_params_raw, all_converged: bool)."""
     if guesses is None:
         guesses = [
-            [73.2, 1.4335e10, 7.8067e17],
-            [73.2, 1.2e10, 6.5e17],
-            [73.2, 1.6e10, 9.0e17],
-            [73.2, 1.0e10, 5.0e17],
+            [1.0, 1.0, 1.0],  # the published optimum itself, in norm. coords
+            [1.0, 0.85, 0.83],
+            [1.0, 1.10, 1.15],
+            [1.0, 0.70, 0.64],
+            [0.95, 1.0, 1.0],
+            [1.05, 1.0, 1.0],
         ]
     best = None
+    any_success = False
     for g in guesses:
         r = minimize(
-            chi2_free,
+            chi2_free_normalized,
             g,
             args=(B_real, C_real, T0_keV),
             method="Nelder-Mead",
-            options={"xatol": 1e-3, "fatol": 1e-8, "maxiter": 20000, "maxfev": 20000},
+            options={"xatol": 1e-6, "fatol": 1e-10, "maxiter": 20000, "maxfev": 20000},
         )
+        if r.success:
+            any_success = True
         if best is None or r.fun < best.fun:
             best = r
-    return best.fun, best.x
+    return best.fun, best.x * NORM, any_success
 
 
 def sep(t):
@@ -485,14 +511,28 @@ def main() -> int:
     print("  IN the refit's own search space). This determines whether the C-driven")
     print("  fragility is REAL (survives refit) or a frozen-parameter ARTIFACT")
     print("  (refit absorbs it, like the T0 case above).")
-    chi2_refit_mean, params_mean = refit_chi2(B_MEAN, C_MEAN)
-    print(f"\n  refit at (B,C) = published mean : chi2 = {chi2_refit_mean:.3f}  (paper: 15.75)")
+    print("  Both objectives now use the SAME grid (ZFINE); optimizer runs in")
+    print("  rescaled coordinates so xatol is meaningful; r.success is checked.")
+    # The one direct check the skeptic pass on the paper draft named as
+    # missing: chi2_free evaluated AT the published point must equal
+    # chi2_33 exactly, now that both share ZFINE.
+    chi2_free_at_published = chi2_free_normalized(np.array([1.0, 1.0, 1.0]), B_MEAN, C_MEAN)
+    print(
+        f"\n  chi2_free(at published point) = {chi2_free_at_published:.6f}  "
+        f"vs chi2_33(mean) = {chi2_33(B_MEAN, C_MEAN):.6f}  (must match exactly now)"
+    )
+    chi2_refit_mean, params_mean, ok_mean = refit_chi2(B_MEAN, C_MEAN)
+    print(
+        f"\n  refit at (B,C) = published mean : chi2 = {chi2_refit_mean:.4f}  "
+        f"(paper: 15.75)  any_start_converged={ok_mean}"
+    )
     for label, c_val in [("C = -1.30 (-1 sigma)", -1.30), ("C = -0.71 (+1 sigma)", -0.71)]:
-        chi2_r, params = refit_chi2(B_MEAN, c_val)
+        chi2_r, params, ok = refit_chi2(B_MEAN, c_val)
         chi2_frozen_here = c_scan_results.get(-1 if c_val == -1.30 else 1, (None, "n/a"))[1]
         print(
-            f"  {label:24s}: chi2_refit = {chi2_r:9.3f}   "
-            f"(chi2_frozen was {chi2_frozen_here!s})   fit(H0,b1,b2) = {params}"
+            f"  {label:24s}: chi2_refit = {chi2_r:9.4f}   "
+            f"(chi2_frozen was {chi2_frozen_here!s})   any_start_converged={ok}\n"
+            f"    fit(H0,b1,b2) = {params}"
         )
 
     return 0

@@ -1,14 +1,19 @@
-# DRAFT v0 · NOT_FOR_SUBMISSION · has NOT passed the Submission Gate
+# DRAFT v0.1 · NOT_FOR_SUBMISSION · has NOT passed the Submission Gate
 
-**Status:** first structural draft, written 2026-09-07. Every factual claim
-below is `[VERIFIED]` against this project's own committed record (commit
-hashes and file paths given throughout) — nothing is invented for the
-draft. What has **not** happened yet: a context-blind skeptic pass on this
-document itself, the per-claim `[VERIFIED]`-marker checklist, a text↔figure
-consistency check, or the mandatory 24-hour cooling-off period
-(`~/.claude/rules/integrity.md` § Submission Gate). Do not quote, cite, or
-send this document externally until all four have run and a human has
-said so explicitly.
+**Status:** revised 2026-09-08 after a context-blind Step 8a skeptic pass
+on the v0 draft itself found nine real, independently-verified defects
+(one severe enough to change the headline claim) and one technical
+challenge that was investigated and resolved in the draft's favor. Full
+record: `paper/METHODOLOGY_PAPER_DRAFT_CORRECTIONS_after_step8a.md` — read
+it alongside this file; it is not superseded by these edits, it is the
+record of why they were made. File paths below are given; **no commit
+hashes are given in this file**, correcting a false claim the v0 status
+line made. What has **not** happened yet: a second skeptic pass on this
+revision, the per-claim `[VERIFIED]`-marker checklist for the *changed*
+sections, a text↔figure consistency check, or the mandatory 24-hour
+cooling-off period (`~/.claude/rules/integrity.md` § Submission Gate). Do
+not quote, cite, or send this document externally until those have run and
+a human has said so explicitly.
 
 ---
 
@@ -22,22 +27,29 @@ research workflow that (a) runs a structured falsification protocol
 adversarial review step before any result is promoted) and (b) keeps a
 permanent, append-only record of every retraction, with root causes
 classified against a pre-existing taxonomy. Over a single working session
-(2026-09-07), the same protocol applied to six independently-produced
-research artifacts caught defects in all six, later confirmed by
-independent, tool-based re-verification of every load-bearing claim in
-each defect report. We characterize the defects by root cause, find that
-four of the observed failure modes are not covered by our own
-pre-existing 11-category taxonomy and propose extensions, and report a
-separate, pre-registered pilot benchmark (`N=16`) comparing this protocol
-against an ambient-default baseline, whose result was **inconclusive**
-(McNemar `p=1.0`, underpowered as pre-registered) — reported honestly as a
-negative/null pilot result, not omitted. We argue the case-study evidence
-and the pilot's null result are not in tension: the case studies show the
-protocol catches defects when applied; the pilot shows a `12`-task
-comparison cannot detect the effect size, which is exactly what its own
-pre-registration predicted before any data existed. We position this as a
-methodology contribution independent of the physics domain (cosmological
-model reconstruction) in which it was produced.
+(2026-09-07), the same protocol found and confirmed defects in **five
+research artifacts across two lineages** — one root claim and three
+findings independently derived from that claim's own retraction, plus one
+unrelated artifact — later confirmed by independent, tool-based
+re-verification of every load-bearing claim in each defect report.
+**Three of those five are not independent samples of the protocol's
+effectiveness; they are downstream residue of the fourth's own review
+step**, a fact this draft's own first version initially missed and a
+second, context-blind review of the draft itself caught (§4, §8) — which
+we report as part of the evidence, not as an embarrassment to edit around.
+We characterize the defects by root cause, find that one observed failure
+mode is a plausible extension to our own pre-existing 11-category
+taxonomy (three others we initially proposed as new turned out, on
+inspection prompted by the same review step, to already be instances of
+an existing category), and report a separate, pre-registered pilot
+benchmark comparing this protocol against an ambient-default baseline,
+whose result was **inconclusive** on every reading, including the
+original, less favorable one, which we report alongside the corrected one
+rather than in its place. We position this as a methodology contribution
+independent of the physics domain (cosmological model reconstruction) in
+which it was produced — and, doubly so, as its own worked example: a
+review pass with no access to why the first draft was written caught
+errors the writing process itself could not.
 
 ## 1. Introduction
 
@@ -60,17 +72,30 @@ cause in a permanent, git-committed record.
 
 ### 1.3 Contribution
 
-1. A same-day, same-project record of **six** independent artifacts, all
-   caught by the identical protocol, with **every** root cause
-   independently re-verified by tool (not accepted on the reviewing
-   agent's word) before being counted.
+1. A same-day, same-project record of **five** artifacts across **two
+   lineages** (not six independent ones — see §4, §8), caught by the
+   identical protocol, with **every** root cause independently
+   re-verified by tool (not accepted on the reviewing agent's word)
+   before being counted.
 2. A refined failure-mode taxonomy: our own pre-existing 11-category
-   taxonomy (`docs/146`) accounted for most observed defects, but four
-   observed patterns are not covered and are proposed as extensions
-   (§4.4).
+   taxonomy (`docs/146`) accounted for most observed defects. **One**
+   observed pattern (selective section reading, §4.4.2) is proposed as a
+   genuinely new extension; three others we initially drafted as new were
+   found, under the same review discipline this paper argues for, to
+   already be instances of existing Category 4 — reported as a correction
+   (§4.4, §8), not silently dropped.
 3. An honest, pre-registered pilot benchmark of the protocol against a
-   naive baseline, reported as **inconclusive**, with the specific
-   statistical reason stated rather than suppressed (§5).
+   naive baseline, reported as **inconclusive on every reading** —
+   including the original, pre-correction reading in which the treatment
+   arm *underperformed* the baseline, reported alongside the corrected
+   reading rather than in its place (§5).
+4. A worked demonstration, inside the writing of this paper itself: a
+   second, context-blind review pass on the v0 draft — using the same
+   protocol §4 describes — found nine real defects in the draft's own
+   claims, including the inflated artifact count in item 1 above. The
+   correction record is `paper/METHODOLOGY_PAPER_DRAFT_CORRECTIONS_
+   after_step8a.md`. We treat this as evidence for the paper's thesis, not
+   noise to be edited away before a reader sees it.
 
 ## 2. Protocol (frozen)
 
@@ -83,26 +108,43 @@ The full protocol is the union of:
 - `~/.claude/rules/estimand-ops.md` (L0 gate: descriptive / predictive /
   causal classification before any claim work begins)
 
-Every one of the six case studies in §4 followed this exact sequence:
-(1) write the claim with positive controls, (2) dispatch a **fresh**
-review agent with no access to the session's reasoning history — only the
-claim document and the artifact, verbatim — instructed to attempt
-falsification, not confirmation, (3) independently re-verify every
-load-bearing citation the reviewer returned, by direct tool use (`grep`,
-re-derivation, re-running code), before accepting or rejecting anything,
-(4) if falsified, write a retraction that keeps the original text verbatim
-(no silent correction) and states the specific defect and its root cause.
+Every one of the five case studies in §4 followed this sequence:
+(1) write the claim, **with positive controls where the claim was
+computational** (true for 2 of 5 — the two purely textual findings had
+none, see §4's own note), (2) dispatch a **fresh** review agent with no
+access to the session's reasoning history — only the claim document,
+plus source file paths — instructed to attempt falsification, not
+confirmation, (3) independently re-verify every load-bearing citation the
+reviewer returned, by direct tool use (`grep`, re-derivation, re-running
+code), before accepting or rejecting anything, (4) if falsified, write a
+retraction that keeps the original text verbatim (no silent correction)
+and states the specific defect and its root cause.
 
 **Context asymmetry is the load-bearing design choice.** The reviewing
 agent never sees why the claim was written, only what it says and what it
 rests on — this is what separates step (2) from a second pass by the same
 reasoning process that produced the claim.
 
+**The protocol was not followed without deviation, even within this
+session, and we disclose the deviations rather than smooth them over.**
+Two of the five artifacts record, in their own text, that they had no
+Step 8a pass at the time they were written (added afterward, in the
+retraction pass). One artifact's own script docstring records a
+documented Substrate Gate (Step 2a) violation — an early self-check ran
+in an uncommitted, ephemeral script rather than a persisted, re-runnable
+one, a gap fixed only after a *second* review pass caught it (see this
+paper's own correction record). We read this as consistent with, not
+contrary to, the paper's thesis: deviations from a stated protocol get
+caught and fixed under continued adversarial review, rather than
+accumulating silently.
+
 ## 3. Taxonomy (existing)
 
-`docs/146_failure_mode_taxonomy.md` enumerates 11 categories, each with
-≥2 real historical incidents from this project, established before the
-session reported here:
+`docs/146_failure_mode_taxonomy.md` enumerates 11 categories, most with ≥2
+real historical incidents from this project (one, Category 8, has exactly
+one — corrected here after propagating `docs/146`'s own imprecise
+self-description without checking it), established before the session
+reported here:
 
 1. Coincidence without mechanism (post-hoc numerology)
 2. Tautological control (cannot fail by construction)
@@ -118,7 +160,16 @@ session reported here:
 11. Provenance/attribution error (stale, swapped, or silently changed
     value)
 
-## 4. Case studies (this session, 2026-09-07)
+## 4. Case studies (this session, 2026-09-07 to 2026-09-08)
+
+**Revised 2026-09-08.** The first version of this section counted six
+artifacts and proposed four new taxonomy categories. A context-blind
+Step 8a review of the draft itself (§8, and the standalone correction
+record `paper/METHODOLOGY_PAPER_DRAFT_CORRECTIONS_after_step8a.md`) found
+both counts inflated, for reasons given below. This section states the
+corrected counts directly rather than presenting the original ones and
+correcting them inline — the original claims and the full reasoning for
+each correction are preserved in the correction record, not deleted.
 
 ### 4.0 Definitions (stated before the table, not reconstructed after it)
 
@@ -126,10 +177,7 @@ session reported here:
 in an artifact's headline or verdict that is either (a) contradicted by a
 verbatim primary source the artifact itself cites or should have cited,
 or (b) contradicted by an independent recomputation using the artifact's
-own stated inputs and formulas. A wording imprecision that does not change
-the artifact's headline verdict does not count as a defect under this
-definition (§4.2's "Case 4" note on `κ`-notation is an example of the
-latter, and is not counted in the six).
+own stated inputs and formulas.
 
 **Catch**, for purposes of this section: the review step (§2, step 2)
 returns a specific claim, quote, or computation that meets the Defect
@@ -140,38 +188,47 @@ definition — this is why every row in §4.1 required my own tool-based
 re-check, not just the reviewing agent's report, before being listed.
 
 **Both definitions were written retrospectively for this draft**, after
-the six case studies happened, not pre-registered before the session
-began. This is stated plainly as a limitation (§6) rather than presented
-as if it were pre-registered — a genuinely pre-registered version of
-these definitions is future work, not a claim made here.
+the case studies happened, not pre-registered before the session began.
+This is stated plainly as a limitation (§6) rather than presented as if
+it were pre-registered — a genuinely pre-registered version of these
+definitions is future work, not a claim made here.
 
-All six artifacts below were produced, reviewed, and — in every case —
-found defective under the definition above, inside one working day, by
-the identical protocol. Every row is `[VERIFIED]`: I independently
-re-checked the reviewer's own citations against source before accepting
-any of them (per `audit-verification-gate.md`).
+### 4.1 Summary table — five artifacts, two lineages
 
-### 4.1 Summary table
+**Not six independent artifacts.** `P215`, `P216`, and `P217` are not
+independent samples — each is explicitly derived from `P214`'s own
+retraction (`FINDING_P216_...md:18-22`: *"extracted from `FINDING_P214_
+RETRACTION_after_step8a.md` §7.1"*; `FINDING_P217_...md:19-21`: near-
+identical language for §7.2; `FINDING_P215_...md:18-20`: *"Answers: the
+`NEEDS-REAL-DATA` item raised by the Step 8a skeptic on `P214`"*). The
+honest count is **five artifacts in two lineages**: one root claim
+(`P214`) and three findings drawn from its own retraction, plus one
+unrelated artifact (`P220`).
 
 | # | artifact | headline claim | verdict | dominant taxonomy category |
 |---|---|---|---|---|
-| 1 | `P214` | a version-comparison question was resolved | 4/5 sub-claims falsified | **new** (§4.4.1) |
-| 2 | `P215` | an external physical bound "survives" | conclusion inverted | Cat. 2 (tautological control) + Cat. 6 (reused known bug) |
-| 3 | `P216` | an internal scope inconsistency in a source document | falsified — hierarchy misread as conflict | **new** (§4.4.2) |
-| 4 | `P217` | a cross-version parameter comparison | falsified — one-sided search | **new** (§4.4.3) |
-| 5 | `P220` (T0 sub-claim) | a nuisance-parameter "scenario" breaks a model | void — exact algebraic degeneracy | **new** (§4.4.4, protocol-vs-target) |
-| 6 | `P220` (headline `χ²` claim) | frozen-parameter perturbation "dwarfs" the model's margin | frozen-parameter artifact; real effect ~40x smaller after the field's own kill-test | **new** (§4.4.4, protocol-vs-target) |
+| 1 | `P214` (root of lineage A) | a version-comparison question was resolved | 4/5 sub-claims falsified | Cat. 9 (numerical/search artifact — singular-only grep) |
+| 2 | `P215` (from `P214` §7's survivors) | an external physical bound "survives" | conclusion inverted | Cat. 2 (tautological control) + Cat. 6 (reused known bug) |
+| 3 | `P216` (from `P214` §7.1) | an internal scope inconsistency in a source document | falsified — hierarchy misread as conflict | Cat. 8 (heuristic applied without checking the mechanism) |
+| 4 | `P217` (from `P214` §7.2) | a cross-version parameter comparison | falsified — one-sided search | Cat. 3 (false independence, applied to a search itself) |
+| 5 | `P220` (separate lineage) | multiple, see below | four real defects found, two of four survived scrutiny | Cat. 4 (parameter silently held fixed), Cat. 11 (a mislabeled comparator) |
 
-Note on cases 4 vs 5-6: both are "new" patterns, but distinct mechanisms.
-Case 4's defect is a **search asymmetry** -- one document swept, the other
-assumed silent, for a claim that is inherently about the relationship
-*between* two documents. Cases 5-6's defect is a **parameter-freezing
-artifact** -- a fully self-contained property of one model's own
-degeneracy structure, uninvolving any comparison across documents. An
-earlier version of this table conflated the two under one label; caught
-during the pre-commit read-through, corrected here (kept as a note rather
-than silently fixed, since it is itself a small illustration of section
-4.3's point about symmetric checking).
+Row 5 needs its own note. `FINDING_P220_RETRACTION_after_step8a.md`
+records **four** distinct defects, not the two the first draft of this
+table selectively reported: (i) a nuisance-parameter "T0 scenario" that
+is void — an exact algebraic degeneracy, absorbed by refitting; (ii) a
+headline `χ²`-inflation claim that is a frozen-parameter artifact,
+substantially reduced (not eliminated) once the frozen parameters are
+allowed to refit; (iii) a one-dimensional sensitivity scan whose `B`-row
+was misread as evidence of "a sharp ridge" when it is mostly ordinary,
+absorbable rescaling; (iv) a comparison benchmark (`16.31`) mislabeled
+"flat-ΛCDM, Planck values" when it is a two-parameter *fit*, not fixed
+Planck values (the true fixed comparator is `36.96`). The first draft of
+this table counted only (i) and (ii) — the two it could route to a
+category it called new — and dropped (iii) and (iv), one of which
+(iv) is a clean instance of existing Category 11. Counting all four
+against one artifact is the accurate accounting; splitting the artifact
+into as many rows as convenient is not.
 
 ### 4.2 Root-cause detail (three worked examples)
 
@@ -183,73 +240,91 @@ same directory** (`FINDING_P7`, dated one month earlier) had already
 flagged as open. The Step -3 pre-work check (search this project's own
 prior work before writing a new claim) was not run.
 
-**Case 4 (`P217`), new pattern.** The claim swept one parameter's mentions
-across one of two source documents, then stated a conclusion about the
+**Case 4 (`P217`).** The claim swept one parameter's mentions across one
+of two source documents, then stated a conclusion about the
 **relationship between the two documents**. The same sweep on the second
 document, when eventually run, dissolved the claimed asymmetry within
 minutes. The defect is not in either individual observation — both were
 accurate — but in treating an asymmetry in **search effort** as if it were
 an asymmetry in the **sources**.
 
-**Case 6 (`P220` headline), new pattern.** A claim froze three fitted
-parameters and perturbed two others within their own quoted uncertainty,
-reporting the resulting output instability as a property of the model. A
-kill-test — re-optimizing the frozen parameters at each perturbed point,
-which is mathematically guaranteed to help, never hurt, since the frozen
-point is one member of the re-optimization's own search space — reduced
-the claimed effect by roughly two orders of magnitude at one test point
-and *reversed its sign* at another (the re-optimized fit was **better**
-than the original published value). The defect is conflating the
-sensitivity of an analysis **protocol** (parameters held fixed) with the
-sensitivity of the **target system** (parameters free to compensate).
+**Case 5 (`P220`), defect (ii).** A claim froze three fitted parameters
+and perturbed two others within their own quoted uncertainty, reporting
+the resulting output instability as a property of the model. A kill-test
+— re-optimizing the frozen parameters at each perturbed point, which is
+mathematically guaranteed to help, never hurt in the exact optimum, since
+the frozen point is one member of the re-optimization's own search space
+— reduced the claimed effect from a `χ²` of `930.3`/undefined down to
+`14.08`/`41.67` at the two tested draws (one of which is now *better*
+than the original published value). **Both draws' reduction happens at
+the same draw pair, not "one point… and another"** as an earlier version
+of this paragraph stated — the correction record has the exact
+attribution. A second-order technical concern (whether the specific
+reported numbers `14.08`/`41.67` reflected a true, converged optimum, or
+an artifact of mismatched numerical grids and an unreached optimizer
+tolerance) was itself raised by the same review pass that caught this
+paper's other errors, investigated, and resolved: both bugs were real,
+both are now fixed, and the corrected numbers are within 0.01 of the
+originals with an explicit convergence check attached (correction record
+§8). The underlying defect is conflating the sensitivity of an analysis
+**protocol** (parameters held fixed) with the sensitivity of the
+**target system** (parameters free to compensate) — and is, on
+inspection, the same mechanism as existing Category 4 (§4.4).
 
-### 4.3 What made all six catchable by the same mechanism
+### 4.3 What the four-artifact lineage shared, and what `P220` did not
 
-Despite differing content, five of the six shared a structural root:
-**a one-sided procedure reported as a two-sided fact** — a search run on
-one document and not its counterpart (Case 4), a control with zero
-degrees of freedom presented as discriminating (Case 2), a parameter held
-fixed and its resulting instability presented as intrinsic (Cases 5, 6),
-a citation drawn from a document's applied section without checking its
-self-limiting section (Cases 1, 3, 5). None of these five required new
+**Scoped correction:** the original version of this section claimed "five
+of the six" shared one root cause while its own enumeration named all six
+artifacts (with one counted twice under two different mechanisms) — a
+self-contradiction, caught by the same review pass. The corrected claim is
+narrower and accurate: **the four artifacts in lineage A** (`P214`,
+`P215`, `P216`, `P217`) share a structural root — **a one-sided procedure
+reported as a two-sided or absolute fact**: a search run on one document
+and not its counterpart (`P217`), a control with zero degrees of freedom
+presented as discriminating (`P215`), a citation drawn from a document's
+applied section without checking its self-limiting section (`P216`), and
+a search pattern that structurally excluded a morphological variant,
+reported as a confirmed absence (`P214`). None of these four required new
 data to catch — each was caught by re-running the **same available
 information** more symmetrically.
 
-### 4.4 Proposed taxonomy extensions
+`P220`'s defects are a **different** mechanism — parameter-freezing
+artifacts under partial degeneracy (§4.2, Case 5) — and this paper does
+not claim they share lineage A's root cause. No project record before
+this correction attributed `P220` to the search-asymmetry pattern; only
+this paper's uncorrected first draft did, and only by miscounting the
+sample.
 
-**4.4.1 Non-exhaustive search reported as confirmed absence.** A `grep`
-or equivalent search that misses a real occurrence (through morphology,
-word-gluing in a text extraction, or an unsearched synonym) is reported as
-"absent," when it is actually "not found by this search." Distinct from
-existing Category 9 (a *computed* artifact mistaken for a *physical*
-result) — here the failure is in the search's completeness, not in a
-downstream computation.
+### 4.4 Taxonomy: one plausible extension, three withdrawn
 
-**4.4.2 Selective section reading.** A source document containing both an
-applied section (where a framework or claim is used) and a self-limiting
-section (where the same document states where it does not apply, or
-retracts an earlier framing) is read from the first and not the second,
-even when the first explicitly cross-references the second.
+The first draft of this section proposed four "new" categories. On the
+same review discipline this paper argues for, three do not survive
+comparison against `docs/146`'s own existing Category 4 ("a parameter
+silently held fixed instead of fully scanned"), whose own worked example
+(`docs/146:139-160`) is structurally the same as `P220`'s Case 5: a
+"collapse" claimed while one parameter sits frozen, dissolved once an
+external reviewer asks whether it was actually re-profiled, exactly the
+mechanism named in this paper's own §4.2. What the first draft called
+protocol-vs-target sensitivity (former §4.4.4) **is** Category 4. What it
+called non-exhaustive search reported as confirmed absence (former
+§4.4.1) and asymmetric verification effort (former §4.4.3) were never
+shown to be distinct from Category 4's own second worked example (a
+box-constrained search range whose null result was an artifact of the
+box, `docs/146:154-160`) or from each other — both are, at different
+scales (a word's morphology vs. a whole second document), "a region of
+the available evidence was never checked, and its silence was read as a
+finding."
 
-**4.4.3 Asymmetric verification effort mistaken for comparative evidence.**
-A claim about the relationship between two sources (documents, versions,
-datasets) is supported by a search or check run thoroughly on one source
-and only assumed, not run, on the other. The individual observation on
-the checked source can be entirely accurate; the defect is in treating an
-asymmetry in *how much verification effort was spent on each side* as if
-it were an asymmetry *in the sources themselves*. Detectable by running
-the identical check on the previously-unchecked side before finalizing
-any comparative claim — in the one case observed this session, doing so
-took under a minute and reversed the claim.
-
-**4.4.4 Protocol sensitivity mistaken for target sensitivity.** Freezing
-a subset of a model's parameters and perturbing the rest produces an
-apparent fragility that is an artifact of the freezing choice, not a
-property of the model, whenever the frozen and perturbed parameters are
-partially or fully degenerate. Detectable only by a kill-test that lets
-the frozen parameters respond — merely re-running the same frozen
-protocol more times (a larger Monte Carlo) does not detect it, since every
-draw shares the same freezing artifact.
+**One extension survives:** **selective section reading** — a source
+document containing both an applied section (where a framework or claim
+is used) and a self-limiting section (where the same document states
+where it does not apply) is read from the first and not the second, even
+when the first explicitly cross-references the second (`P216`'s case).
+This is not yet shown to be fully distinct from existing Category 6
+(reusing a result at a strength its own qualifier withdrew) either — a
+genuinely careful distinctness argument is future work, not settled
+here. It is reported as the paper's single plausible taxonomy
+contribution, down from four, because that is what survived scrutiny.
 
 ## 5. A companion pilot benchmark — reported honestly as inconclusive
 
@@ -263,58 +338,79 @@ ambient channel could not be fully suppressed, a limitation the
 pre-registration documents explicitly) on a fixed task corpus with
 seeded, known defects.
 
-**Result:** `N=16` (reduced from a pre-registered `N=32` for session-budget
-reasons, committed before the run), both arms detected `12/12` seeded
-defects once a scoring-rubric gap was fixed (`Addendum 3`: a correctly
-hedged, appropriately uncertain output was previously scored identically
-to a confidently wrong one). McNemar's exact test: `0` discordant pairs,
-`p = 1.0` **by construction**. This is exactly the underpowered/
-inconclusive outcome the pre-registration's own power analysis predicted
-before any data existed (`§3.1`: *"at n=26 [here n=12-13], adequately
-powered only for a moderate-or-larger effect… a smaller true effect will
-read as inconclusive and must be reported as inconclusive, not as
-evidence of no effect"*). Kill criterion `K1` (detection rates converge)
-is formally met.
+**Result, both readings — corrected 2026-09-08, the first version of this
+paragraph reported only the favorable one.** `N=16` (reduced from a
+pre-registered `N=32` for session-budget reasons, committed before the
+run). **Original scoring:** baseline `13/13=100%` vs. treatment
+`12/13=92.3%` — **treatment underperformed baseline** on this reading.
+**Corrected scoring**, after a post-hoc (`Addendum 3`, applied
+*after* seeing Run 3's results) fix to a scoring-rubric gap — a correctly
+hedged, appropriately uncertain output had been scored identically to a
+confidently wrong one — both arms detected `12/12`. McNemar's exact test
+on the corrected reading: `0` discordant pairs, `p = 1.0` **by
+construction**. This is consistent with the underpowered/inconclusive
+outcome the pre-registration's own power analysis predicted before any
+data existed (`PREREGISTRATION.md`, verbatim: *"A smaller true effect
+reads as inconclusive, and must be reported as inconclusive — never as
+evidence of no effect"* — quoted directly from the primary source here,
+correcting a paraphrase in the first draft of this paragraph that had
+drifted from it). **Kill criterion `K1` is not formally met on either
+reading, and the first draft's claim that it was is withdrawn**: `K1`
+requires *both* `p≥0.05` *and* a discordant ratio between `0.67` and
+`1.5` (`PREREGISTRATION.md:188`); with `0` discordant pairs the ratio is
+`0/0`, undefined, not inside that band.
 
-**We report this without softening it.** The pilot does not confirm the
-protocol's value; it also does not refute it — it was underpowered by its
-own design, on a scale set for session-budget reasons, and it says so.
-The case studies in §4 are not a substitute statistical test; they are a
-different kind of evidence (existence proof of real catches, with root
-causes), and the paper's contribution rests on both being reported
-together, honestly labelled, rather than only the flattering one being
+**We report both readings, not only the corrected one — the omission of
+the original reading was itself a defect this draft's earlier version
+had, caught by the same review discipline it describes.** The pilot does
+not confirm the protocol's value; it also does not refute it — it was
+underpowered by its own design, on a scale set for session-budget
+reasons, and it says so before any data existed. The case studies in §4
+are not a substitute statistical test; they are a different kind of
+evidence (existence proof of real catches, with root causes), and the
+paper's contribution rests on both being reported together, honestly
+labelled — including the parts of each that turned out to need
+correcting — rather than only the flattering reading of either being
 kept.
+
+**Open, not resolved here:** the project's own canonical files give at
+least three different values for this pilot's sample size in different
+places (`N=16`, `N=25`, `N=32`), the larger figures associated with a
+reproducibility step (`K5`) that other project records describe as not
+yet executed at `N=16`. This is an inconsistency upstream of this paper,
+in the project's own state tracking, not resolved by this correction
+pass — flagged rather than silently picked one way.
 
 ## 6. Limitations (draft, incomplete)
 
-1. **Single project, single domain.** All six case studies and the pilot
+1. **Single project, single domain.** All five case studies and the pilot
    corpus derive from one cosmology-reconstruction project. Generalization
    to other domains is untested.
 2. **Independent verification strength.** Per this project's own
    Independent Verification Strength Ladder, the review agent used
    throughout is "same model, isolated context" — the weakest tier that
    still counts as independent. No cross-model or human replication has
-   been run on any of the six case studies.
-3. **Sample size.** Six case studies in one day is suggestive, not
+   been run on any of the five case studies. This is sharper than it looks: three of the five are not independent of a fourth (§4.1), so the effective sample for anything claiming breadth of coverage is closer to two independent lineages, not five.
+3. **Sample size.** Five case studies in two lineages, in one day, is suggestive, not
    statistical. The pilot benchmark is the attempt at a statistical test
    and is reported as inconclusive (§5).
-4. **Author-verifier is the same person across all six re-verifications**
+4. **Author-verifier is the same person across all re-verifications**
    in §4 — I (the primary agent) independently re-checked the reviewing
    agent's citations in every case, but I am not independent of the
    overall session. A stronger design would use a different verifier for
    this re-check step too.
-5. **Selection into the record.** All six case studies are claims that
+5. **Selection into the record.** All five case studies are claims that
    this project itself produced and then reviewed — there is no
    claims-that-were-never-reviewed comparison group, so we cannot report
-   a "catch rate" as a fraction of all claims made, only that six for six
-   reviewed claims were found defective.
+   a "catch rate" as a fraction of all claims made, only that five for five reviewed claims were found defective.
 6. **The §4.0 definitions of "defect" and "catch" are retrospective, not
-   pre-registered.** They were written after all six case studies had
+   pre-registered.** They were written after the case studies had
    already concluded, to make the summary table in §4.1 auditable — which
    is a real improvement over stating no definition at all, but is not
    the same evidentiary standard as a definition fixed before the data
    existed. A stronger version of this work would state the definitions
    first, then run the protocol forward against them.
+7. **This draft itself needed a correction pass** (§8) — the v0 version overstated its own sample size and taxonomy-novelty claims in exactly the shapes this paper catalogs. We count this as supporting evidence for the thesis, but a reader should weigh that the authors' own first attempt at objectively counting their own results was itself inflated, and ask what that implies about claims in this paper that have not yet had a second review pass.
 
 ## 7. Related work
 
@@ -398,7 +494,46 @@ before being counted, and (d) an honestly-reported null result from a
 companion quantitative pilot presented alongside the qualitative case
 studies rather than instead of them.
 
-## 8. What this draft still needs before Submission Gate
+## 8. This draft's own Step 8a pass — reported as evidence, not hidden
+
+The v0 draft of this paper was itself given a context-blind Step 8a
+review, using the identical protocol §2 describes: a fresh review agent,
+the draft's text plus source paths only, no access to why any sentence
+was written, instructed to attempt falsification. It found nine real
+defects, independently re-verified by me by direct tool use before
+acceptance, and one technical challenge to a numerical claim that was
+investigated and — unlike the nine — resolved in the draft's favor after
+a genuine code fix. Full record: `paper/METHODOLOGY_PAPER_DRAFT_
+CORRECTIONS_after_step8a.md`.
+
+The defects found were, in outline: the "six independent artifacts"
+claim (three were downstream of a fourth's own retraction, §4.1); a
+self-contradictory sentence in the original §4.3 (naming "five of six"
+while enumerating all six, with one counted twice); two of four proposed
+taxonomy extensions found to already exist under a different name in
+`docs/146` (§4.4); an artifact-count inflation in §4.1 (one artifact
+split into two rows to route it to a "new" category, dropping two of its
+four real defects, one of which was itself an instance of an existing
+category); the omission of an unfavorable statistical reading in the
+original §5 (§5); a kill-criterion claimed as formally met when its own
+stated threshold was not satisfied on either reading (§5); a misquote of
+a primary source, copied from an already-altered secondary paraphrase
+instead of the primary document (§5); a phantom internal cross-reference
+to content that does not exist (§4.0); and a false claim, in this draft's
+own status header, that commit hashes were given throughout the text —
+none were.
+
+**We are reporting this rather than quietly fixing it and presenting a
+clean v0.1 as if it had been correct from the start**, for the same
+reason the case studies in §4 are reported with their own defects intact
+in the correction record rather than silently rewritten: a paper whose
+central claim is that adversarial review catches real errors is not
+credible if it hides the errors adversarial review found in itself. This
+section is, in effect, a seventh case study — one the paper's authors
+did not choose, produced by the same mechanism §4 describes, on the
+paper describing that mechanism.
+
+## 9. What this draft still needs before Submission Gate
 
 - [x] Fill §7 with verified citations (DOI/arXiv IDs), not from memory —
       done 2026-09-07; one candidate (`FLAWS`) did not survive the check
@@ -409,32 +544,28 @@ studies rather than instead of them.
       limitation rather than hidden.
 - [ ] Figures: none yet. Any added must pass the text↔figure consistency
       check before Submission Gate.
-- [~] A context-blind skeptic pass on **this document itself** —
-      **dispatched 2026-09-07, result pending.** `integrity.md` Gate 1.
-      Not yet incorporated into this draft; do not treat the checklist
-      below as final until it returns.
-- [~] Per-claim `[VERIFIED]`-marker checklist (`integrity.md` Gate 2 —
+- [x] A context-blind skeptic pass on **this document itself** —
+      **dispatched 2026-09-07, returned and fully incorporated
+      2026-09-08.** `integrity.md` Gate 1. Nine defects confirmed real
+      and corrected (§8, correction record); one technical challenge
+      investigated and resolved without a text change (correction
+      record §8). **This checklist item is done, but its own completion
+      changed §1, §4, and §5 substantially — this is not a pass that
+      left the surrounding text untouched.**
+- [x] Per-claim `[VERIFIED]`-marker checklist (`integrity.md` Gate 2 —
       *"every claim in the artifact carries an Evidence Marker"*; no
-      fixed count is specified there. **Correction, made while assembling
-      this list:** an earlier version of this checklist item said
-      "≥9-item," a specific number that does not appear anywhere in
-      `integrity.md` itself — traced to a session hook's own paraphrase
-      of the rule, copied into this draft without checking it against
-      the primary source. Fixed above and here; this is itself a small,
-      in-the-wild instance of `docs/146` Category 11
-      [provenance/attribution error], caught by the same discipline this
-      paper argues for):
+      fixed count is specified there):
 
   | claim | status |
   |---|---|
-  | Six case studies exist, each found defective per §4.0's definition | `[VERIFIED]` against the three retraction files — **pending re-check**: skeptic pass above is specifically attacking whether "six" is accurate or inflated (P220 split into 2 rows) |
-  | `docs/146` has 11 pre-existing categories | `[VERIFIED]` — direct `grep` against the file, reproduced in §3 |
-  | AVB pilot: `N=16`, McNemar `p=1.0` | `[VERIFIED]` against `result_summary.md` |
-  | Refit numbers `14.08` / `41.67` (Case 6) | `[VERIFIED]` — re-ran `P220_joint_BC_uncertainty_propagation.py` myself, matched |
-  | "Refit mathematically guaranteed to help, never hurt" | `[INFERRED]` — the **inequality** is a mathematical fact (frozen point ∈ refit's search space); whether the **specific reported numbers** (`14.08`/`41.67`) are the true optimum depends on the optimizer actually converging — **not independently re-verified**, and specifically flagged for the skeptic pass above |
-  | §7 related-work citations | `[VERIFIED]` — each re-checked against arXiv/Semantic Scholar today, one (`FLAWS`) removed as `[SOURCE_NOT_FOUND]` |
-  | "Context-blind: reviewer had no access to session reasoning" | `[INFERRED]` — describes this session's own actual process; not independently checkable by a reader without the raw dispatch prompts, and specifically flagged for the skeptic pass above |
-  | §4.3's "5 of 6 share one root cause" | `[INFERRED]`, narrative synthesis — explicitly the highest-overclaim-risk sentence in the draft (structurally the same shape as `docs/146` Category 10, recomposition overclaim); flagged for the skeptic pass above |
+  | Five artifacts exist across two lineages, each found defective per §4.0's definition | `[VERIFIED]` against the three retraction files, re-checked after the skeptic pass corrected the count from six |
+  | `docs/146` has 11 pre-existing categories, most (not all) with ≥2 incidents | `[VERIFIED]` — direct `grep`, Category 8 has exactly 1 |
+  | AVB pilot: original 13/13 vs 12/13, corrected 12/12, `N` inconsistent across project files | `[VERIFIED]` against `result_summary.md`, `PREREGISTRATION.md`; `N` inconsistency `[VERIFIED]` and left open (§5) |
+  | Refit numbers `14.08` / `41.67` (§4.2 Case 5) | `[VERIFIED]` — re-ran the corrected `P220_joint_BC_uncertainty_propagation.py` (unified grid, checked convergence) myself, both hold with `any_start_converged=True` |
+  | "Refit mathematically guaranteed to help, never hurt" (in the exact optimum) | `[VERIFIED]` for the inequality itself; the specific reported numbers are now backed by an explicit convergence check, which they were not before |
+  | §7 related-work citations | `[VERIFIED]` — each re-checked against arXiv/Semantic Scholar, one (`FLAWS`) removed as `[SOURCE_NOT_FOUND]` |
+  | §4.4's taxonomy-extension count | `[VERIFIED]` — corrected from 4 claimed to 1 surviving, against direct comparison with `docs/146` Category 4's own worked examples |
+  | §4.3's root-cause scope | `[VERIFIED]` — corrected from "5 of 6" (self-contradictory, all 6 enumerated) to "4 of 5, `P220` excluded" |
 
 - [ ] 24-hour cooling-off after the draft is next declared "ready" —
       not before this list is otherwise complete.
