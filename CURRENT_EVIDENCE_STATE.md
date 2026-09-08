@@ -419,7 +419,67 @@ lesson, and the confirmed-pearl chain P191→P193).
   assumed precision is achievable, or that bottleneck 3 is resolved —
   it only shows a quantified, in-principle path exists (see §5).
 
-## 7. Session of 2026-09-07 — what changed (37 commits)
+## 6a. Ernest Prabhakar's 6-point critique — answered in full, sent,
+## acknowledged — real, committed work missing from this file until
+## 2026-09-09 (`[VERIFIED-BASH]`, found via `git log -- experiments/
+## 20260906-evidence-authority/` and `correspondence/`, not guessed)
+
+**Why this section exists:** the events below are dated 2026-09-06/07 —
+chronologically BEFORE §7's own 2026-09-07 items — but were never added
+to this file's own narrative when it was "substantially revised
+2026-09-07." §7.6 ("the k question") is a downstream continuation of
+TJB's 09-07 reply to the letter described here, but the letter itself,
+the 21-item E-series that built it, and TJB's acknowledgment were never
+summarized here. This is the same "real result sitting disconnected from
+its index" pattern this project's own 2026-09-08 skill audit found
+repeatedly elsewhere (`NR-024`/`CLAUDE.md` citation gap, `docs/114`↔
+`docs/132`, `docs/158`'s wrong citation) — an instance inside this file
+itself, found while looking for it deliberately (`/boyko-project-radar`
++ `/estimand-bridge`, 2026-09-09).
+
+**What happened:** Ernest Prabhakar's 6-point critique (forwarded by TJB,
+2026-09-06) paused a MULTING press release. This project answered all
+six items, real computation each time, Step 8a skeptic pass on every
+substantive one:
+
+| item | question | answered by | verdict |
+|---|---|---|---|
+| 1 | AIC/BIC penalty | `FINDING_P166` (2026-08-30, pre-dates the critique — already existed) | `ΔAIC≈+1.2 to +1.4` (indistinguishable, Burnham-Anderson), `ΔBIC≈+2.7 to +2.9` (mild, not decisive, favor ΛCDM) — computed on v82's own two "fairer" benchmarks, in TJB's own words |
+| 2 | node-radius circularity | `FINDING_E9`/`P199` (pre-dates the critique) | `CIRCULAR=2` (both TJB's own self-diagnosed), confirmed not new |
+| 3 | "phantom turn" is extrapolation-only, untestable | `FINDING_E19` | WEAKENED after skeptic (6 real corrections) — minimum sits just past the 2nd-lowest sampled CC point (not future-extrapolated, Ernest's own follow-up already conceded this), but the dip is `8-13×` below the two nearest real points' own quoted 1σ — untestable TODAY at real precision, confirming Ernest's own corrected (not original) framing |
+| 4 | no falsifiable prediction anywhere | `FINDING_E21` | WEAKENED after skeptic — 9 of 12 result groups are unambiguous fit re-expressions (substantially confirms Ernest), but 2-3 (`q(0)=-1.416`; `z=3.09/3.95` divergence points) are genuine, currently-untestable-but-real candidate predictions, not indistinguishable from the untestable extreme extrapolations the original draft lumped them with |
+| 5 | `T0` implies `~3.7` keV vs `~7` keV from WL-calibrated M-T relations | `FINDING_E20` | WEAKENED after skeptic — one real relation (Kettula+2014) gives `T=5.23±0.7` keV at v82's own mass; v82's `T0` sits outside that band low-side; conditional on an unresolved mass-definition assumption (`M0` vs `M500`), only one paper checked |
+| 6 | can Sergey independently reproduce the fit | `FINDING_E18` | WEAKENED after skeptic (4 real framing corrections) — re-executes and extends TJB's own already-independently-implemented script (not a from-scratch re-derivation); all 7 rows independently re-optimize to `<0.09%`; wide 2-3-orders-of-magnitude multi-seed global search finds no missed minimum |
+
+**Supporting chain (E13, E15-E17, not critique items themselves but the
+real computational work items 3-6 needed):** `E13` measured a real
+`σ=0.49` scatter in v82's own cited `M_gas`-`T` source (never quoted by
+v82 itself); `E15` sized its force-term effect (`+13%`/`+62%` on
+`F1`/`F2`); `E16` found the correction is a closed-form reparametrization
+of `(β1,β2)`, not a new degeneracy; `E17` (two skeptic rounds) separated
+a real Jensen correction for `F0`/`F_accretion` from a large, unrelated
+`M(z)`-vs-real-MAH systematic offset (up to `~5×` at `z=2.33`) that the
+original ask never intended to surface.
+
+**The letter:** drafted, red-team reviewed internally, sent for external
+review (4 of 5 points accepted, 3 further self-caught edits, `v2→v3`),
+**SENT 2026-09-07** (`e8b400b`, confirmed by Sergey). **TJB replied the
+same day, 19:19** (`9987452`, `correspondence/tjb_reply_20260907_1919.md`):
+*"Sergey did (indeed) send me a much-appreciated email that addresses
+Ernie's 6 points..."* — four of the six items on TJB's own follow-up
+revision list trace directly to material this project sent (verified by
+re-reading his verbatim English original, not the auto-translation —
+two wordings and one attribution were caught and corrected in that
+file's own §3). **No reply required or sent** — his message asked
+nothing; standing correspondence rules already correctly recognized this
+(§ Standing Constraints, below, is accurate, not stale).
+
+**What this does NOT mean:** none of items 1-6 establish MULTING is
+correct or incorrect (`NO_AUTHOR_ERROR` — every verdict above is
+WEAKENED/mixed, not a clean win for either side); the letter answers
+Ernest's specific questions, it is not a general validation.
+
+### 7. Session of 2026-09-07 — what changed (37 commits)
 
 ### 7.1 Bottleneck 3 dissolved, and it was our own result
 
