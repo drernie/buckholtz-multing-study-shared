@@ -274,3 +274,136 @@ elsewhere says was "not yet executed" at `N=16`; a third location cites
 **upstream of the paper** — not something to silently resolve by picking
 one. Flagged here; needs a separate pass on the project's own state files,
 out of scope for this correction document.
+
+**Corrected 2026-09-08 (same day, follow-up pass — see §11 below): this
+was not actually an inconsistency, and it was resolvable, and it did not
+require a separate pass on the project's own state files. It required
+reading two files that already existed.** Section 10 above is preserved
+verbatim, per this document's own no-silent-correction discipline — it
+was an honest statement of what had been checked at the time it was
+written, and it undersold how easily the gap actually closed.
+
+---
+
+## 11. Follow-up pass, 2026-09-08 (separate from Pass 1 above): a second
+## context-blind skeptic review, and the N=16/25/32 resolution
+
+**This section documents work done AFTER §§1-10 above, in a later turn
+of the same day.** It is not part of the original Step 8a pass this
+document's header describes — it combines two separate things: (a) a
+genuinely second, independent context-blind Step 8a pass on the *v0.1*
+draft (the one produced by §§1-10's corrections), dispatched fresh with
+no access to what §§1-10 found; and (b) a self-directed follow-up on
+this document's own §10, which had flagged the `N` question as
+"upstream… out of scope" without actually checking whether it was.
+
+### 11a. The N=16/25/32 "inconsistency" was not upstream, and was not an
+### inconsistency
+
+Following up on §10's own flag, `Grep` for `N=16`/`N=25`/`N=32` across
+the project surfaced two files neither the original paper draft nor §10
+above had read: `experiments/adversarial-verification-benchmark/
+result_summary_extension.md` and `experiments/adversarial-verification-
+benchmark/independent_verification_report.md`, **both dated 2026-09-02**
+— six days before this paper's v0 draft was first written. Reading them
+in full:
+
+- `result_summary.md` (`N=16`) is the **first** batch.
+- `result_summary_extension.md` (`N=16`) is a **second** batch
+  (`manifest2.json`, tasks 012-031) that **completes** the originally
+  pre-registered `N=32` design — its own opening line: *"This document
+  covers the SECOND 16-task batch… that completes the originally
+  pre-registered 32-task corpus. It does not edit or supersede
+  `result_summary.md`… both stand, and a combined reading is given at
+  the end of this file."*
+- The combined reading (`result_summary_extension.md` §"Combined
+  reading," `independent_verification_report.md` in full) reports
+  `n=25` non-hedged defect pairs (`N=32` minus 6 clean-control tasks
+  minus 1 appropriately-hedged pair excluded per the first batch's own
+  `Addendum 3` precedent), baseline `24/25=96.0%`, treatment
+  `25/25=100%`, `1` discordant pair, McNemar `p=1.0` — and `K5`
+  reproducibility **was run and passed** (`95%`, `19/20`) on this
+  extension batch, contrary to what `CURRENT_EVIDENCE_STATE.md`'s
+  phrasing (quoted, out of context, in §10 above) could be read as
+  implying.
+
+**`N=16`, `N=25`, and `N=32` are not three competing values for one
+quantity — they are three different, correctly-labelled quantities**
+(a single batch's size; the non-hedged-pair count; the total design
+size). §10's framing ("at least three different values… in different
+places") was accurate about the raw grep result and wrong about what it
+meant — a real example, inside this paper's own correction history, of
+mistaking "I found conflicting-looking numbers" for "the numbers
+conflict" without reading far enough to check. **Fix applied:** §5 of
+the paper was rewritten to report the completed `N=32` design, the
+combined `n=25` primary comparison, the passed `K5` check, and — the
+most substantively interesting part of the whole pilot, previously
+absent from the paper entirely — the reproduced finding that `0` of `6`
+clean-control tasks were found actually clean across both independent
+batches. §1.3 (contribution 3) and the abstract were updated to match.
+
+**Why this counts as a real finding for this paper's own thesis, not
+just a paperwork fix:** the gap here was not a defect an adversarial
+reviewer had to catch — it was a completeness gap this paper's own
+authors introduced by not checking whether a flagged "inconsistency"
+was actually one before flagging it as unresolved. It is reported here
+with the same discipline §§1-10 use for the Step 8a defects, because
+the discipline should not apply only to errors an external pass finds.
+
+### 11b. Second Step 8a pass on v0.1 — `WEAKENED`, four minor defects
+
+A fresh context-blind Step 8a review was dispatched on the v0.1 draft
+(the output of §§1-10's corrections), given only the document and its
+cited source paths, instructed to attempt falsification with no framing
+suggesting a prior pass had already happened. Verdict: **`WEAKENED`** —
+four defects found, all internal-consistency or wording issues, none
+overturning a headline claim. Eleven separate falsification attempts
+against other claims (lineage-derivation citations, refit numbers, the
+verbatim `PREREGISTRATION.md` quote, the `K1` reasoning, Category 8's
+count, docs/146's Category-4 citation, the five-artifacts/two-lineages
+count) did not break the paper — recorded as such, per this project's
+own skeptic protocol, not omitted.
+
+**Defect 1 — §8 said "two of four" while §1.3, §4.4, and §9 all say
+"three of four."** `[VERIFIED]` by direct re-read of all four locations
+in the then-current text. §8's outline paragraph was the outlier; fixed
+to "three of four," matching the rest of the paper.
+
+**Defect 2 — §4.1 row 5's "two of four survived scrutiny" contradicted
+its own accompanying paragraph**, which states all four of `P220`'s
+defects are accurate ("Counting all four against one artifact is the
+accurate accounting"). `[VERIFIED]` — the phrase was a leftover from an
+earlier draft state and did not describe anything the current text
+actually argues. Fixed to remove the unsupported fraction.
+
+**Defect 3 — §4.2 Case 5's "Both draws' reduction happens at the same
+draw pair" was confusing to the point of being misleading.** Only one
+draw (`C=−1.30`) has a computable reduction at all; the other
+(`C=−0.71`) goes from an undefined frozen-parameter `NaN` to a real,
+converged `41.67` — not a "reduction," since there is nothing at that
+draw to reduce *from*. `[VERIFIED]` against `FINDING_P220_RETRACTION_
+after_step8a.md`'s own table. Fixed to state the two draws' outcomes
+separately and correctly.
+
+**Defect 4 — §8's own "nine defects" outline was itself incomplete.**
+Three fixes that Pass 1 actually made and that are visible in the
+current text — the Category 8 incident-count correction (§3), the
+disclosure that `Addendum 3` was post-hoc (§5), and the `~40x`-vs-
+`two orders of magnitude` fix (§4.2) — were never named in §8's
+summary paragraph. `[VERIFIED]` by cross-checking §8's list against
+§§1-10 of this document. Fixed by adding an explicit note in §8 that
+its own outline is a summary, not an exhaustive inventory, naming the
+three omitted items and pointing to this document as the complete
+record.
+
+**None of the four changes a number, a verdict, or a headline claim
+anywhere in the paper.** All four are now fixed in the current text of
+`methodology_paper_draft_v0.md`.
+
+### 11c. Evaluator-Optimizer Guard status
+
+Per `~/.claude/CLAUDE.md`'s Evaluator-Optimizer Guard (reviewer↔builder
+cycles capped at 3): this is the **second** of at most three cycles
+(Pass 1 → fix → Pass 2 → fix, now complete). A third pass is not run
+here — it would need a specific reason (a further self-directed finding,
+or a user request), not run reflexively up to the cap.

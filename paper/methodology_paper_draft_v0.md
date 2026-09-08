@@ -1,19 +1,29 @@
-# DRAFT v0.1 · NOT_FOR_SUBMISSION · has NOT passed the Submission Gate
+# DRAFT v0.2 · NOT_FOR_SUBMISSION · has NOT passed the Submission Gate
 
-**Status:** revised 2026-09-08 after a context-blind Step 8a skeptic pass
-on the v0 draft itself found nine real, independently-verified defects
-(one severe enough to change the headline claim) and one technical
-challenge that was investigated and resolved in the draft's favor. Full
-record: `paper/METHODOLOGY_PAPER_DRAFT_CORRECTIONS_after_step8a.md` — read
-it alongside this file; it is not superseded by these edits, it is the
-record of why they were made. File paths below are given; **no commit
-hashes are given in this file**, correcting a false claim the v0 status
-line made. What has **not** happened yet: a second skeptic pass on this
-revision, the per-claim `[VERIFIED]`-marker checklist for the *changed*
-sections, a text↔figure consistency check, or the mandatory 24-hour
-cooling-off period (`~/.claude/rules/integrity.md` § Submission Gate). Do
-not quote, cite, or send this document externally until those have run and
-a human has said so explicitly.
+**Status:** revised twice on 2026-09-08. **Pass 1** — a context-blind
+Step 8a skeptic pass on the v0 draft found nine real, independently
+re-verified defects (one severe enough to change the headline claim) and
+one technical challenge, investigated and resolved in the draft's favor.
+**Pass 2** — a second, independent context-blind Step 8a pass on the
+resulting v0.1, run without access to Pass 1's findings, returned a
+`WEAKENED` verdict: four minor internal-consistency/wording defects, all
+independently re-verified and fixed, none changing a headline claim.
+**Separately**, this same revision also resolves a gap Pass 1 had left
+open (§5): the project's own `N=16`/`N=25`/`N=32` figures for its
+adversarial-verification pilot were not actually inconsistent — a second
+pilot batch completing the pre-registered `N=32` design, and its combined
+write-up, already existed in the project's files and had simply not been
+incorporated into this paper. Full records: `paper/METHODOLOGY_PAPER_
+DRAFT_CORRECTIONS_after_step8a.md` (Pass 1) and this file's own §5/§8 for
+Pass 2 and the N-resolution — read them alongside this file; neither is
+superseded by these edits, they are the record of why the edits were
+made. File paths are given; **no commit hashes are given in this file**.
+What has **not** happened yet: the per-claim `[VERIFIED]`-marker
+checklist re-run for the sections changed in this revision, a
+text↔figure consistency check, or the mandatory 24-hour cooling-off
+period (`~/.claude/rules/integrity.md` § Submission Gate). Do not quote,
+cite, or send this document externally until those have run and a human
+has said so explicitly.
 
 ---
 
@@ -42,10 +52,14 @@ mode is a plausible extension to our own pre-existing 11-category
 taxonomy (three others we initially proposed as new turned out, on
 inspection prompted by the same review step, to already be instances of
 an existing category), and report a separate, pre-registered pilot
-benchmark comparing this protocol against an ambient-default baseline,
-whose result was **inconclusive** on every reading, including the
-original, less favorable one, which we report alongside the corrected one
-rather than in its place. We position this as a methodology contribution
+benchmark, now run to its full pre-registered scale across two batches,
+comparing this protocol against an ambient-default baseline. Its primary
+comparison was **inconclusive** on every reading, including the
+original, less favorable one, which we report alongside the corrected
+one rather than in its place — but the same pilot's secondary result is
+not inconclusive at all: a reproduced, two-batch-confirmed finding that
+none of its six clean-control tasks were actually clean. We position this
+as a methodology contribution
 independent of the physics domain (cosmological model reconstruction) in
 which it was produced — and, doubly so, as its own worked example: a
 review pass with no access to why the first draft was written caught
@@ -85,10 +99,16 @@ cause in a permanent, git-committed record.
    already be instances of existing Category 4 — reported as a correction
    (§4.4, §8), not silently dropped.
 3. An honest, pre-registered pilot benchmark of the protocol against a
-   naive baseline, reported as **inconclusive on every reading** —
-   including the original, pre-correction reading in which the treatment
-   arm *underperformed* the baseline, reported alongside the corrected
-   reading rather than in its place (§5).
+   naive baseline, now complete at its full pre-registered `N=32` scale
+   across two batches (`n=25` non-hedged defect pairs), reported as
+   **inconclusive on its primary comparison on every reading** — including
+   the original, pre-correction reading in which the treatment arm
+   *underperformed* the baseline, reported alongside the corrected reading
+   rather than in its place — and whose most substantively interesting
+   result turned out not to be the primary comparison at all, but a
+   reproduced defect in the corpus's own clean-control construction (`0`
+   of `6` clean tasks were found actually clean, confirmed across both
+   independent batches) (§5).
 4. A worked demonstration, inside the writing of this paper itself: a
    second, context-blind review pass on the v0 draft — using the same
    protocol §4 describes — found nine real defects in the draft's own
@@ -211,7 +231,7 @@ unrelated artifact (`P220`).
 | 2 | `P215` (from `P214` §7's survivors) | an external physical bound "survives" | conclusion inverted | Cat. 2 (tautological control) + Cat. 6 (reused known bug) |
 | 3 | `P216` (from `P214` §7.1) | an internal scope inconsistency in a source document | falsified — hierarchy misread as conflict | Cat. 8 (heuristic applied without checking the mechanism) |
 | 4 | `P217` (from `P214` §7.2) | a cross-version parameter comparison | falsified — one-sided search | Cat. 3 (false independence, applied to a search itself) |
-| 5 | `P220` (separate lineage) | multiple, see below | four real defects found, two of four survived scrutiny | Cat. 4 (parameter silently held fixed), Cat. 11 (a mislabeled comparator) |
+| 5 | `P220` (separate lineage) | multiple, see below | four real defects found, all four counted (see note below) | Cat. 4 (parameter silently held fixed), Cat. 11 (a mislabeled comparator) |
 
 Row 5 needs its own note. `FINDING_P220_RETRACTION_after_step8a.md`
 records **four** distinct defects, not the two the first draft of this
@@ -256,10 +276,16 @@ mathematically guaranteed to help, never hurt in the exact optimum, since
 the frozen point is one member of the re-optimization's own search space
 — reduced the claimed effect from a `χ²` of `930.3`/undefined down to
 `14.08`/`41.67` at the two tested draws (one of which is now *better*
-than the original published value). **Both draws' reduction happens at
-the same draw pair, not "one point… and another"** as an earlier version
-of this paragraph stated — the correction record has the exact
-attribution. A second-order technical concern (whether the specific
+than the original published value). **Corrected 2026-09-08, a second
+Step 8a pass caught that the previous sentence here was itself confusing:
+only one draw (`C=−1.30`) actually has a computable reduction — the
+`930.3 → 14.08` drop and the "better than published" comparison both
+happen at that same single draw, not at two different draws as an
+earlier version of this paragraph implied.** The other draw (`C=−0.71`)
+went from an undefined, frozen-parameter `NaN` to a real, converged
+`41.67` — that is a fix from undefined to defined, not a "reduction," and
+there is no frozen-parameter value at that draw to compute a ratio
+against. A second-order technical concern (whether the specific
 reported numbers `14.08`/`41.67` reflected a true, converged optimum, or
 an artifact of mismatched numerical grids and an unreached optimizer
 tolerance) was itself raised by the same review pass that caught this
@@ -326,7 +352,7 @@ genuinely careful distinctness argument is future work, not settled
 here. It is reported as the paper's single plausible taxonomy
 contribution, down from four, because that is what survived scrutiny.
 
-## 5. A companion pilot benchmark — reported honestly as inconclusive
+## 5. A companion pilot benchmark — now complete at N=32, still inconclusive on its primary axis, more informative on a secondary one
 
 Independent of the case studies above, this project separately ran a
 **pre-registered** pilot (`experiments/adversarial-verification-
@@ -338,48 +364,90 @@ ambient channel could not be fully suppressed, a limitation the
 pre-registration documents explicitly) on a fixed task corpus with
 seeded, known defects.
 
-**Result, both readings — corrected 2026-09-08, the first version of this
-paragraph reported only the favorable one.** `N=16` (reduced from a
-pre-registered `N=32` for session-budget reasons, committed before the
-run). **Original scoring:** baseline `13/13=100%` vs. treatment
-`12/13=92.3%` — **treatment underperformed baseline** on this reading.
-**Corrected scoring**, after a post-hoc (`Addendum 3`, applied
-*after* seeing Run 3's results) fix to a scoring-rubric gap — a correctly
-hedged, appropriately uncertain output had been scored identically to a
-confidently wrong one — both arms detected `12/12`. McNemar's exact test
-on the corrected reading: `0` discordant pairs, `p = 1.0` **by
-construction**. This is consistent with the underpowered/inconclusive
-outcome the pre-registration's own power analysis predicted before any
-data existed (`PREREGISTRATION.md`, verbatim: *"A smaller true effect
-reads as inconclusive, and must be reported as inconclusive — never as
-evidence of no effect"* — quoted directly from the primary source here,
-correcting a paraphrase in the first draft of this paragraph that had
-drifted from it). **Kill criterion `K1` is not formally met on either
-reading, and the first draft's claim that it was is withdrawn**: `K1`
-requires *both* `p≥0.05` *and* a discordant ratio between `0.67` and
-`1.5` (`PREREGISTRATION.md:188`); with `0` discordant pairs the ratio is
-`0/0`, undefined, not inside that band.
+**Corrected again, 2026-09-08 (second pass, independent of the Step 8a
+review in §8): the previous version of this section described only the
+first of two N=16 batches, and treated the project's own `N=16`/`N=25`/
+`N=32` figures as an unresolved inconsistency (see the withdrawn
+paragraph this replaces, preserved in the correction record). They were
+never actually inconsistent — a second, N=16 extension batch completing
+the pre-registered N=32 design, and a combined-reading write-up, already
+existed in the project's files (`result_summary_extension.md`,
+`independent_verification_report.md`, both dated 2026-09-02, six days
+before this paper's first draft) — this was a gap in what the paper
+incorporated, not a gap in the project's own record.**
 
-**We report both readings, not only the corrected one — the omission of
-the original reading was itself a defect this draft's earlier version
-had, caught by the same review discipline it describes.** The pilot does
-not confirm the protocol's value; it also does not refute it — it was
-underpowered by its own design, on a scale set for session-budget
-reasons, and it says so before any data existed. The case studies in §4
-are not a substitute statistical test; they are a different kind of
-evidence (existence proof of real catches, with root causes), and the
-paper's contribution rests on both being reported together, honestly
+| Quantity | Value | What it is |
+|---|---:|---|
+| First batch | `N=16` | original run, `result_summary.md` |
+| Extension batch | `N=16` | second batch (`manifest2.json`), completing the design |
+| Total pre-registered design | `N=32` | both batches, as `PREREGISTRATION.md` originally specified |
+| Non-hedged defect pairs | `n=25` | `N=32` minus 6 clean-control tasks minus 1 appropriately-hedged pair (`task_004`, excluded per the first batch's own `Addendum 3`) — the actual denominator of the primary comparison below |
+
+**First batch, both readings.** **Original scoring:** baseline
+`13/13=100%` vs. treatment `12/13=92.3%` — treatment *underperformed*
+baseline on this reading. **Corrected scoring**, after a post-hoc
+(`Addendum 3`, applied *after* seeing Run 3's results) fix to a
+scoring-rubric gap — a correctly hedged, appropriately uncertain output
+had been scored identically to a confidently wrong one — both arms
+detected `12/12`, `0` discordant pairs.
+
+**Extension batch (13 defect pairs, `task_004` excluded above already
+counted in the first batch, no further exclusions in this batch):**
+baseline `12/13=92.3%`, treatment `13/13=100%` — one discordant pair
+(`task_025`, treatment partially caught a seeded defect baseline missed
+entirely), zero in the other direction.
+
+**Combined primary comparison, `n=25` non-hedged defect pairs across
+both batches:** baseline `24/25=96.0%`, treatment `25/25=100%`. One
+total discordant pair (favoring treatment), zero in the other direction.
+McNemar's exact test on `b=0, c=1`: **p = 1.0** — with a single
+discordant observation, no configuration of the data reaches
+significance, exactly the underpowered-by-design outcome the
+pre-registration's own power analysis predicted before any data existed
+(`PREREGISTRATION.md`, verbatim: *"A smaller true effect reads as
+inconclusive, and must be reported as inconclusive — never as evidence
+of no effect"*). **Kill criterion `K1`'s first condition (`p≥0.05`) is
+met; its second condition (a discordant ratio between `0.67` and `1.5`)
+does not apply cleanly to a `0/1` split — reported as
+underpowered-inconclusive, not a clean `K1` kill,** the same reasoning
+the first batch's own analysis already used.
+
+**`K5` reproducibility: run, and passed — the first version of this
+section implied it had not been.** Because the first batch's 32 raw
+solving-arm output files no longer exist on disk (confirmed by
+exhaustive search, a documented deviation), `K5` was run on a
+20-of-32 subsample restricted to the extension batch's own outputs
+(seed `20260902`, two independent evaluator passes): `95%` full-row
+exact-match reproducibility (`19/20`); the two decision-relevant fields
+(`defect_correctly_identified`, `verdict_type`) show `100%` agreement.
+`K5` passes its own `≥90%` threshold.
+
+**The more substantively interesting result is not the primary
+comparison at all.** Across both batches' clean-control task sets (6
+tasks total: `027`, `028`, `029`, `030`, `031`, `032`), **0 of 6 were
+found actually clean** by any solving agent that ran against them — both
+arms, independently, in both batches, raised specific, code-checked
+defect-shaped concerns that the corpus's own answer keys explicitly rule
+out as non-defects. This is a reproduced, two-batch-confirmed finding
+about this corpus's own clean-control construction, independent of the
+benchmark's primary hypothesis. Per this project's own
+`perelman-audit.md` "infinite surgery" anti-pattern, it is logged here as
+a structural finding rather than chased into a further patch-and-reverify
+cycle on the corpus itself — and it is, on the current evidence, better
+supported than the primary comparison is.
+
+**We report all of this — the completed `N=32` design, the still-
+inconclusive primary comparison, and the corpus-integrity finding —
+rather than the partial picture an earlier version of this section gave.**
+The pilot does not confirm the protocol's value on its primary axis; it
+also does not refute it — the comparison is underpowered by its own
+pre-registered design, and says so before any data existed. The case
+studies in §4 are not a substitute statistical test; they are a different
+kind of evidence (existence proof of real catches, with root causes), and
+the paper's contribution rests on both being reported together, honestly
 labelled — including the parts of each that turned out to need
-correcting — rather than only the flattering reading of either being
-kept.
-
-**Open, not resolved here:** the project's own canonical files give at
-least three different values for this pilot's sample size in different
-places (`N=16`, `N=25`, `N=32`), the larger figures associated with a
-reproducibility step (`K5`) that other project records describe as not
-yet executed at `N=16`. This is an inconsistency upstream of this paper,
-in the project's own state tracking, not resolved by this correction
-pass — flagged rather than silently picked one way.
+correcting more than once — rather than only the flattering reading of
+either being kept.
 
 ## 6. Limitations (draft, incomplete)
 
@@ -509,7 +577,7 @@ CORRECTIONS_after_step8a.md`.
 The defects found were, in outline: the "six independent artifacts"
 claim (three were downstream of a fourth's own retraction, §4.1); a
 self-contradictory sentence in the original §4.3 (naming "five of six"
-while enumerating all six, with one counted twice); two of four proposed
+while enumerating all six, with one counted twice); three of four proposed
 taxonomy extensions found to already exist under a different name in
 `docs/146` (§4.4); an artifact-count inflation in §4.1 (one artifact
 split into two rows to route it to a "new" category, dropping two of its
@@ -522,6 +590,19 @@ instead of the primary document (§5); a phantom internal cross-reference
 to content that does not exist (§4.0); and a false claim, in this draft's
 own status header, that commit hashes were given throughout the text —
 none were.
+
+**This outline is itself incomplete, and a second, independent Step 8a
+pass caught that too (2026-09-08) — it is not exhaustive of what the
+correction record actually documents.** Left out of the paragraph above:
+the Category 8 incident-count fix (§3), the disclosure that `Addendum 3`
+was applied post-hoc (§5), and the `~40x`-vs-`two orders of magnitude`
+inconsistency fix (§4.2) — all three were found and fixed by the same
+pass, all three are visible in the current text of §3/§5/§4.2, and none
+of the three were named in this section's own summary of what that pass
+found. The full, itemized list is
+`paper/METHODOLOGY_PAPER_DRAFT_CORRECTIONS_after_step8a.md` §§1-9; this
+paragraph is a summary of it, not a substitute for it, and should not be
+read as a complete inventory.
 
 **We are reporting this rather than quietly fixing it and presenting a
 clean v0.1 as if it had been correct from the start**, for the same
@@ -545,26 +626,39 @@ paper describing that mechanism.
 - [ ] Figures: none yet. Any added must pass the text↔figure consistency
       check before Submission Gate.
 - [x] A context-blind skeptic pass on **this document itself** —
-      **dispatched 2026-09-07, returned and fully incorporated
+      **Pass 1 dispatched 2026-09-07, returned and fully incorporated
       2026-09-08.** `integrity.md` Gate 1. Nine defects confirmed real
-      and corrected (§8, correction record); one technical challenge
+      and corrected (correction record); one technical challenge
       investigated and resolved without a text change (correction
-      record §8). **This checklist item is done, but its own completion
-      changed §1, §4, and §5 substantially — this is not a pass that
-      left the surrounding text untouched.**
+      record §8).
+- [x] **A second, independent context-blind skeptic pass on the resulting
+      v0.1** — dispatched 2026-09-08 with no access to Pass 1's findings
+      (fresh falsification attempt, not a "check the corrections" prompt,
+      per the Context Asymmetry Rule). Verdict `WEAKENED`: four internal-
+      consistency/wording defects found (§8's "two of four" vs. the rest
+      of the paper's "three of four"; §4.1 row 5's confusing "two of four
+      survived scrutiny" phrasing; §4.2 Case 5's confusing "same draw
+      pair" sentence; §8's own defect list being incomplete relative to
+      the correction record). All four independently re-verified by me
+      against the current text before being fixed — none changed a
+      headline claim. **This checklist item is now done twice; the
+      Evaluator-Optimizer Guard (cap of 3 cycles) has used 2 of 3.**
+- [ ] Figures: none yet. Any added must pass the text↔figure consistency
+      check before Submission Gate.
 - [x] Per-claim `[VERIFIED]`-marker checklist (`integrity.md` Gate 2 —
       *"every claim in the artifact carries an Evidence Marker"*; no
-      fixed count is specified there):
+      fixed count is specified there), updated after both passes:
 
   | claim | status |
   |---|---|
-  | Five artifacts exist across two lineages, each found defective per §4.0's definition | `[VERIFIED]` against the three retraction files, re-checked after the skeptic pass corrected the count from six |
+  | Five artifacts exist across two lineages, each found defective per §4.0's definition | `[VERIFIED]` against the three retraction files, re-checked after Pass 1 corrected the count from six |
   | `docs/146` has 11 pre-existing categories, most (not all) with ≥2 incidents | `[VERIFIED]` — direct `grep`, Category 8 has exactly 1 |
-  | AVB pilot: original 13/13 vs 12/13, corrected 12/12, `N` inconsistent across project files | `[VERIFIED]` against `result_summary.md`, `PREREGISTRATION.md`; `N` inconsistency `[VERIFIED]` and left open (§5) |
+  | AVB pilot: `N=16`+`N=16`=`N=32` (two batches), `n=25` non-hedged defect pairs, McNemar `p=1.0`, `K5` passed | `[VERIFIED]` against `result_summary.md`, `result_summary_extension.md`, `independent_verification_report.md`, `PREREGISTRATION.md` — the earlier "N inconsistency, unresolved" note is withdrawn: both batches and the combined reading already existed on disk, dated 2026-09-02, before this paper's first draft |
+  | AVB pilot's clean-control finding: `0` of `6` clean tasks found actually clean, both batches | `[VERIFIED]` against `result_summary.md` and `result_summary_extension.md`; newly incorporated into this paper in this revision (§5, abstract, §1.3) — absent from every prior version |
   | Refit numbers `14.08` / `41.67` (§4.2 Case 5) | `[VERIFIED]` — re-ran the corrected `P220_joint_BC_uncertainty_propagation.py` (unified grid, checked convergence) myself, both hold with `any_start_converged=True` |
   | "Refit mathematically guaranteed to help, never hurt" (in the exact optimum) | `[VERIFIED]` for the inequality itself; the specific reported numbers are now backed by an explicit convergence check, which they were not before |
   | §7 related-work citations | `[VERIFIED]` — each re-checked against arXiv/Semantic Scholar, one (`FLAWS`) removed as `[SOURCE_NOT_FOUND]` |
-  | §4.4's taxonomy-extension count | `[VERIFIED]` — corrected from 4 claimed to 1 surviving, against direct comparison with `docs/146` Category 4's own worked examples |
+  | §4.4's taxonomy-extension count | `[VERIFIED]` — corrected from 4 claimed to 1 surviving (three withdrawn, not two — fixed in Pass 2), against direct comparison with `docs/146` Category 4's own worked examples |
   | §4.3's root-cause scope | `[VERIFIED]` — corrected from "5 of 6" (self-contradictory, all 6 enumerated) to "4 of 5, `P220` excluded" |
 
 - [ ] 24-hour cooling-off after the draft is next declared "ready" —
