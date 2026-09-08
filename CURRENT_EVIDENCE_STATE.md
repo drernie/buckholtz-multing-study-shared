@@ -326,7 +326,7 @@ this file is the slower-moving strategic layer above it).
 
 | # | Bottleneck | Status | What would move it |
 |---|---|---|---|
-| 1 | F→H_MULT(z) bridge | BLOCKED (restated 2026-09-01, `docs/153`); `docs/153`'s own literal next-step disproven as buildable, `docs/156` (2026-09-05) — mechanically-correct alternative line (`P157`→`P158`→`ADDENDUM2`→`P195`) gives a real, narrow, `z≤0.5`-only, magnitude-uncertain result | `z≥1` (or `z≥1.07` on this alternative line) needs nonlinear-bias/N-body work, not another analytic substitution — same conclusion reached independently on two separate lines of attack |
+| 1 | F→H_MULT(z) bridge | BLOCKED (restated 2026-09-01, `docs/153`); `docs/153`'s own literal next-step disproven as buildable, `docs/156` (2026-09-05) — mechanically-correct alternative line (`P157`→`P158`→`ADDENDUM2`→`P195`) gives a real, narrow, `z≤0.5`-only, magnitude-uncertain result. **The `z≥1.07` extension was ALREADY ATTEMPTED 2026-09-06** (`FINDING_P195_ADDENDUM_high_z_bias_literature_search.md`, bounded 2-query arXiv search, `SOURCE_NOT_FOUND`) — v82's own `z≥1.07` target points sit at peak height `ν≈10.6-50`, structurally beyond what any finite-volume N-body suite (Tinker+2010, Aemulus IV) can calibrate — a real physical reason, not just an unlucky search | Genuinely stalled on this line without new input: either a more exhaustive literature search (N-body pair-statistics papers, not bias fits) or an explicit decision to attempt a specialized N-body calculation outside this project's own tooling — **do not re-attempt the same literature-search pattern without a new candidate paper named first** (Adaptive Iteration Branch Rule) |
 | 2 | Unique completion | Untouched, `docs/134`. **2026-09-07:** `/hypothesis-arbiter` on the dipole's ontology (`H_body` / `H_fluid` / `H_avg`) returned only the LEAST falsifiable survivor and recommended **stopping** structural computation rather than iterating. Recommendation taken. | A genuinely new input, not another variant |
 | 3 | Absolute scale / observable mapping | **DISSOLVED 2026-09-07 (`FINDING_P206`)** — it was never a measurement gap. `P133`'s rank-2 result IS the one-dimensional **field-normalization redundancy** `FINDING_P52` had already derived on 2026-08-16; `P133` renamed it 8 days later and made it a bottleneck without connecting the two. `L := 2a−b−c` is the field-rescaling weight, the null direction `(−1, ½, ½)` is the `φ→λφ̄` generator, so rank 2 is **complete**: 3 coordinates, 1 redundancy, 2 physical d.o.f., all determined. Step 8a run twice with reworded prompts, both CONFIRMED-REAL. *(Prior text, kept: "STRUCTURALLY BLOCKED, quantified buildable path exists…" — the P191-P194 Fisher-forecast line is unaffected and still stands on its own terms.)* | Nothing — the question as posed had no solution and needed none. **What remains open is `P52`'s own KG2**, answered as far as data allows on 2026-09-07 (`P208`/`P209`, §7): both physical invariants are unmeasurable, each for a *different* structural reason |
 | 4 | IC-sensitivity | CLOSED (campaign exhausted, question genuinely open) | A genuinely new mechanism class, not a 6th variant of the 5 already excluded |
@@ -384,11 +384,21 @@ go-ahead** ("начни финитно-r/single-pair расчёт по docs/153 
 `docs/156` + `FINDING_P195`. `docs/153`'s literal proposed calculation
 is not buildable; the mechanically-correct alternative line
 (`P157`→`P158`→`ADDENDUM2`→`P195`) gives a real, sign-robust,
-magnitude-uncertain `z≤0.5`-only result. **RECOMMENDED, NOT AUTHORIZED,
-next candidate for this line**: extending trustworthy `ρ` coverage to
-`z≥1.07` would require nonlinear halo-bias or direct N-body pair
-statistics — a materially larger, more specialized undertaking than
-anything attempted so far on this line, not a quick follow-up.
+magnitude-uncertain `z≤0.5`-only result. **[UPDATED 2026-09-09] ALREADY ATTEMPTED, NULL, NOT A LIVE NEXT CANDIDATE**
+— this file previously called the `z≥1.07` extension "recommended, not
+authorized." It was in fact attempted the very next day, 2026-09-06
+(`FINDING_P195_ADDENDUM_high_z_bias_literature_search.md`): a bounded,
+real arXiv search for a validated nonlinear/high-peak-height halo-bias
+treatment covering v82's own `ν≈10.6-50` target range returned
+`SOURCE_NOT_FOUND`, with a real structural reason (exponentially rare
+peaks, beyond any finite-volume N-body suite's calibration reach — not
+merely an unlucky search). This section's own "recommended" framing was
+stale for 3 days before being corrected here — found deliberately during
+a 2026-09-09 bridge-search session, same failure class as `§6a`. **Do
+not re-run the same literature-search pattern without a new candidate
+paper or an explicit decision to attempt a specialized N-body
+calculation** — that would be exactly the "5th variant of the
+bottleneck-1 bridge shortcut" `CLAUDE.md`'s own exclusion zone forbids.
 
 **RECOMMENDED, NOT AUTHORIZED, next candidate**: none named yet for
 bottleneck 3 — P191→P194 has mapped the buildable path and its
