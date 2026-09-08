@@ -416,17 +416,28 @@ better-than-before lead — worth a `pearl_registry` row with a
 
 Two independent, authoritative sources (a paper co-author's own page, a
 university astronomy department page) both confirm `the300-project.org`
-IS the correct canonical address — this is not a wrong-URL problem, the
-domain itself did not resolve from this session across two hostname
-variants. **Not established** whether this is a real outage or an
-environment-specific restriction — genuinely unknown, not guessed
-either way.
+IS the correct canonical address — this is not a wrong-URL problem.
 
-**Next cheap step, if picked up:** try the same URL from an unrestricted
-browser (outside this session's sandbox), or contact the paper's authors
-directly, before assuming the data is unreachable. Do not re-attempt the
-same six channels blind — they are logged here with their exact failure
-reasons.
+**[UPDATED 2026-09-09] Confirmed via the user's own Chrome, real
+network — not a sandbox artifact.** `the300-project.org` (https and
+http both) returns a genuine browser error page from a real, unrestricted
+browser too. **Control test, same browser, same network:**
+`weiguangcui.github.io/the300/` (a co-author's mirror page) loads fine
+immediately after. This isolates the failure to the domain itself —
+the canonical portal appears to be genuinely down at this point in time
+(2026-09-09), not blocked by this session's sandbox.
+
+**Working substitute found**, read in full: `https://weiguangcui.github.io/
+the300/` — confirms 324 clusters, the intro paper (Cui et al. 2018) and 3
+follow-up papers, restates "all simulations and derived data products are
+publicly available" **without a direct download link**, and points to two
+workshop pages not yet checked: `popia.ft.uam.es/CrystalClearClusters/`
+and `popia.ft.uam.es/GlenfiddlingGalaxyClusters/`.
+
+**Next cheap step, if picked up:** check the two workshop pages above, or
+retry `the300-project.org` later (domains do come back), or contact the
+paper's authors directly. Do not re-attempt the same channels blind —
+logged here with exact failure/success per channel.
 
 ---
 
