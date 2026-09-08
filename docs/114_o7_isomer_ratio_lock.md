@@ -145,6 +145,16 @@ Do NOT retry O7 without:
 Current blocker: M7-C (active), propagates to O7.
 ```
 
+**Cross-reference added 2026-09-08 (process-gap fix, `/research-audit` +
+`/boyko-why-ladder`):** a later, independent thread — `docs/132`'s T5/T6
+(2026-07-22), consolidated at `parked/T5T6-cogenesis-5to1-isomer-
+structure.md` — reaches a sharper version of this same REJECT: no
+surveyed cogenesis mechanism (thermal, non-thermal, or transfer-based)
+produces IDM's *specific* five-**identical**-equal-density-sector
+structure, independent of the M7-C thermal-history blocker named above.
+That file's own verdict is **OPEN**, not REJECT — read it alongside this
+gate, not as a duplicate of it.
+
 ---
 
 ## 8. Evidence Block

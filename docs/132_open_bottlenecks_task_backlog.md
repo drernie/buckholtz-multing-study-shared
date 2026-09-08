@@ -161,6 +161,15 @@ activeContext; recommended order: T8.1 → T1.1+T9.1 → T3.1 → T5.1+T6.1.
   sentence removed, the sharper "no known mechanism produces this specific structure" conclusion
   substituted, citing easa2022. Artifact: scripts/t5t6_cogenesis_estimate.py + boyko_T5_T6_cogenesis.md.
 
+  **Provenance note added 2026-09-08 (`/research-audit` process-gap scan):** `boyko_T5_report.md`,
+  `boyko_T6_report.md`, and `boyko_T5_T6_cogenesis.md` — cited above and elsewhere in this
+  section as the human-readable rationale artifacts — do **not** exist in this repository
+  (`find . -iname "boyko_T*"` → 0 results). `git log -S"boyko_T"` traces this to commit
+  `26499de`'s own message: "Reports in session scratchpad... never committed." The numeric
+  results survive (the `.py` scripts are present and runnable); the prose rationale chain that
+  produced the summaries in this file does not exist as a re-readable artifact. Now formally
+  indexed, with this gap stated explicitly, at `parked/T5T6-cogenesis-5to1-isomer-structure.md`.
+
 ### T7 — The distinguishing 2nd-order signature: does Euclid DR1 already decide? (Blanchet Window A)
 - **Context:** Dipolar DM = ΛCDM at 1st order; distinguishable only at 2nd order (CMB
   bispectrum / non-linear LSS growth / cluster-scale). Planck already constrains the primordial

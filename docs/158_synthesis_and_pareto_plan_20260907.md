@@ -32,7 +32,7 @@ in them re-verified below or marked `[UNKNOWN]`), TJB's `multing_core.py`.
 
 | # | result | where | status |
 |---|---|---|---|
-| 1 | `F_oP` bilinear structure; **alternating-sign rule derived as a theorem**, not postulated | `docs/125`, `P1` | `[VERIFIED]` |
+| 1 | `F_oP` bilinear structure; **alternating-sign rule derived as a theorem**, not postulated | `experiments/20260803-bridge/FINDING_two_charge_completion.md` (§2, binomial-expansion proof — corrected 2026-09-08, `/research-audit`: `docs/125` is the factorization-gate/Shtanov-Sahni result, a different file, and does not contain this derivation) | `[VERIFIED]` |
 | 2 | Isotropic-average `k`-sector **= 0 exactly** at force level and S–S background level, any `q(a)` | double-layer theorem | `[VERIFIED]`, ~1e-16 |
 | 3 | Eq.32 numerical match **0.0135%** (PDG 2024) | `CONSILIENCE_eq32.md` | match `[VERIFIED]`; mechanism hunt **exhausted, 5 niches**; Belle II m_τ gives **1.84σ tension** — ambiguous |
 | 4 | Bottleneck 3 **dissolved**: `P133`'s rank-2 = `P52`'s field-normalization redundancy; rank 2 is complete | `P206`, `P52` | Step 8a ×2, both CONFIRMED-REAL |

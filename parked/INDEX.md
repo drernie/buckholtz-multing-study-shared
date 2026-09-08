@@ -13,6 +13,7 @@
 | P170 | 2026-08-31 | weak-lensing-decisive-test | ARCHIVE (method missing, not data) | (a) a PT/N-body method for embedding a discrete pairwise multipole force into a power-spectrum calc is designed **OR** (b) TJB's own future work computes it **OR** (c) an existing tool for a structurally similar discrete-pairwise force is found |
 | E3-ksz | 2026-09-06 | ksz-h0-anchor-grounding | ARCHIVE (circularity relocated, not removed; wrong home turf) | (a) a published kSZ analysis reports cluster pairwise velocities **without** conditioning separations or mass-observable calibration on a fiducial `H0` **OR** (b) TJB's own future work takes up `H0,anchor` grounding again **OR** (c) a different technique appears that is scale-matched to `~30-60 Mpc` AND whose FULL pipeline (not merely its named signal channel) is free of an assumed expansion rate |
 | H1b | 2026-09-07 | whim-thermal-mass-bias | **PARKED — BLOCKED-INFRASTRUCTURE, not archived on merit; never ran** | (a) TNG-300 API access granted (one login answers it) **OR** (b) a published dataset pairs hydrostatic masses / `b_HSE` with WHIM-outskirts gas for N>100 clusters **OR** (c) another public suite supplies `M_true`, `M_HE` and `R_200-3R_200` gas together |
+| T5T6-cogenesis | 2026-07-22 (indexed 2026-09-08) | cogenesis-5to1-isomer-structure | ARCHIVE (OPEN, not REJECT — corrects a same-day mischaracterization) | (a) TJB supplies an isomer-level relic derivation **OR** (b) a published cogenesis mechanism is found reaching five IDENTICAL equal-density sectors specifically, not merely a comparable total ratio |
 
 ---
 
@@ -22,3 +23,4 @@
 - [P170: MULTING pairwise-force power-spectrum / ΔS8 decisive test](P170-weak-lensing-decisive-test.md)
 - [E3-ksz: can kSZ ground H0,anchor without the diagnosed circularity?](E3-ksz-h0-anchor-grounding.md)
 - [H1b: WHIM filament thermal energy vs cluster mass bias — **never ran**, sole remaining real test of H1](H1b-whim-thermal-mass-bias.md)
+- [T5T6-cogenesis: does any mechanism produce IDM's exact 5-equal-sector structure — OPEN, corrects a REJECT mischaracterization](T5T6-cogenesis-5to1-isomer-structure.md)
