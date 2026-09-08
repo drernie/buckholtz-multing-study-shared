@@ -1,7 +1,10 @@
 # H1b — WHIM filament thermal energy vs cluster mass bias
 
 **Parked:** 2026-09-07
-**Verdict:** **PARKED — `BLOCKED-INFRASTRUCTURE`, not archived on merit.**
+**Verdict:** **STILL PARKED — `BLOCKED-INFRASTRUCTURE` resolved 2026-09-09
+(TNG access granted), but a second, more specific data gap took its
+place immediately on revival attempt. Not archived on merit — see the
+2026-09-09 section below before assuming this is now runnable.**
 **Source experiment:** `experiments/20260701-h1b-whim-thermal-mass-bias/`
 (`claim.md`, `estimand.md`, both 2026-07-17; `decision.md` added 2026-09-07)
 **Status check that produced this:** `docs/159`
@@ -298,6 +301,64 @@ conclusion forward as current** when evaluating revival condition 2.
 3. **Not that no bypass exists** — see the standing caveat above.
 4. **Nothing about MULTING** (`NO_AUTHOR_ERROR`). H1 is this project's own
    reconstruction of a testable consequence, not TJB's own text.
+
+---
+
+## TNG ACCESS GRANTED 2026-09-09 — revival attempted, blocked on a
+## DIFFERENT, more specific reason than before
+
+**Status change on Revival Condition 1**, from *pending* to *granted and
+verified*. Approval email (`[third-party email redacted]`, 2026-09-08 19:25
+UTC) followed same session; account active, real API key obtained,
+stored at `~/.secrets/tng_api_key.env` (outside repo, never in chat/
+tracked files per this file's own standing instruction).
+
+**Live API checks, `[VERIFIED-BASH]` against the real TNG-300 group
+catalog (snapshot 99, halo 0 as a control):**
+- `Group_M_Crit200` **is** directly available (`104034.4 * 1e10/h M_sun`
+  for the box's most massive halo) — this covers `M_true` in the
+  estimand.
+- **No hydrostatic-mass field exists anywhere in the raw group
+  catalog** (`GroupBHMass`, `GroupMass`, `GroupMassType`,
+  `Group_M_Crit200/500`, `Group_M_Mean200`, `Group_M_TopHat200` — full
+  field dump checked, no `M_HE`-equivalent). Confirms, by direct
+  inspection rather than inference, what the July bypass note already
+  suspected: TNG's own catalog does not carry an observationally-styled
+  hydrostatic mass.
+
+**New idea tried, and killed with a specific reason:** compute `E_WHIM`
+directly from real TNG-300 gas-particle cutouts (the API supports this —
+confirmed via the official docs' cutout example), and cross-match against
+Barnes et al. (2020)'s own published `b_HSE` **per cluster**, rather than
+treating Option B as fully dead. This would have filled both halves of
+H1b's estimand using two independent, real sources.
+
+**Killed by direct full-text check of `arXiv:2001.11508`, not
+inference:** three separate searches for a per-object data release —
+`"data availability"`, `"public"`/`"github"`, `"individual cluster"` —
+**zero hits, all three.** Every quantitative result in the paper (Figs.
+3, 5, 6, 7) is reported as a **median trend and scatter band binned by
+mass** (*"median ratio... where the number of clusters in a bin of width
+Δlog₁₀(M)=0.1 is less than 10"*) — population-level statistics, not a
+per-halo table with TNG IDs. There is nothing to cross-match against.
+
+**Consequence:** Revival Condition 1 (TNG access) is now satisfied, but
+this does not revive H1b as pre-registered. The blocker has moved from
+"no data access" to "the specific missing ingredient — a real,
+per-cluster hydrostatic mass estimate — still does not exist anywhere
+public," exactly as the original bypass survey (Options B/C) found in
+July, now confirmed with live access rather than assumed from an
+abstract. Building `M_HE` from scratch means implementing a genuine
+synthetic-X-ray/HSE pipeline (Mock-X's own actual method, not just its
+headline number) — the "materially larger, more specialized undertaking"
+this file has named twice now. **Not attempted here** — out of scope for
+a single session, and not authorized as its own separate undertaking.
+
+**Revival Condition 2, updated:** still open. A future paper or data
+release pairing per-cluster `M_HE` (or `b_HSE`) with per-cluster outskirts
+gas properties, for `N≥71` TNG-300 clusters, would revive this
+immediately with no redesign — same standing condition as before, now
+narrowed by knowing exactly what Barnes+2020 does NOT provide.
 
 ---
 
