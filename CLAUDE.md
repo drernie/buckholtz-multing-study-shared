@@ -80,10 +80,20 @@ parameter-identifiable ≠ causally identifiable.
   mechanism class (not equivalent to pole/early-transient/horizon-crossing/
   gauge/mode-projection), a new verified external fact, or explicit user
   override.
-- Eq.32's (4/3) coefficient mechanism-hunt — exhausted across 5 independent
-  niches (`null_results/20260817-nr019-...md` + `docs/145` §24 of the v6
-  report). The 0.0135% numerical match itself is `[VERIFIED]` and unaffected;
-  only the *mechanism search* is exhausted.
+- Eq.32's (4/3) coefficient mechanism-hunt — exhausted across two
+  complementary searches, correctly cited: **internal** group-theoretic
+  attempts (`null_results/20260817-nr019-...md`, 3 attempts: S³, F₄/G₂/J₃(𝕆),
+  SM-gauge-dim) and **external** literature niches
+  (`null_results/20260908-nr024-...md`, 5 niches: SU(3)-flavour,
+  geometric-Koide, Dirac-LNH, classical-EM 4/3-problem, strong-gravity/
+  electron-mass). **Correction, 2026-09-08:** this line previously cited only
+  `NR-019` for the 5-niche claim — `NR-019` does not cover it; `NR-024` was
+  written specifically to close that citation gap (found by a
+  `/boyko-bridge-ladder` verification pass). 3 of `NR-024`'s 5 niche-verdicts
+  are `[MEMORY]`-tier (reconstructed from cross-session notes, not
+  re-derived this session) — see that file for exact confidence per niche.
+  The 0.0135% numerical match itself is `[VERIFIED]` and unaffected by any
+  of this; only the *mechanism search* is exhausted.
 
 ## STANDING CONSTRAINTS
 - **TJB correspondence: active as of 2026-08-30**, superseding the
