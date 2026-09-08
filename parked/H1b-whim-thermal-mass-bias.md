@@ -453,13 +453,65 @@ of trying, from the collaboration's own infrastructure being
 unreachable, control-tested across two tools and (for the main portal)
 two independent networks.
 
-**Next cheap step, if picked up:** contact the paper's authors directly
-(Ansarifard, Cui, or Li — all have institutional emails in their papers),
-or retry these same three URLs weeks/months later in case of a
-temporary outage, or search for the data via a channel not yet tried
-(e.g. a GitHub org for the collaboration, ADS's own data-links feature).
-Do not re-attempt the exact same URLs again without a stated reason to
-expect a different result.
+### Round 2, 2026-09-09 — 3 more channels tried, all closed
+
+- **Published journal version** (A&A 634, A113, `doi:10.1051/0004-6361/
+  201936742` — the paper is A&A, not MNRAS as this file's own AMENDMENT 2
+  section header once assumed; corrected here) — read in full via a real
+  browser (WebFetch itself hit a `403` on this host, matching the
+  VizieR block pattern above). Full-text grep for `data availability`,
+  `CDS`, `VizieR`, `cdsarc`, `zenodo`, `available at http` —
+  **zero matches, all patterns.** The published version carries no data
+  deposit statement either.
+- **`github.com/weiguangcui/pymsz`** — a real, live repository (unlike
+  the dead web portals), but confirmed pure analysis/mock-observation
+  code (SZ-map generation), no data catalog, no mention of The Three
+  Hundred's own cluster properties.
+- **ADS** (`mcp__astroquery__ads_*`, checks for a paper's own "data
+  links" tab, which sometimes surfaces linked datasets a web search
+  misses) — `BLOCKED-INFRASTRUCTURE`: no ADS API token configured in
+  this environment (`API_DEV_KEY` unset). Not a null result — the
+  channel itself could not be tried.
+
+**Consequence:** every channel triable without a human step (a
+collaboration website, a GitHub org, a journal's own supplementary
+material, VizieR, ADS) is now either dead, empty, or blocked by missing
+credentials. **The remaining paths all require a human**: contact the
+authors directly (Ansarifard, Cui, or Li — institutional emails are in
+the papers themselves), configure an ADS API token
+(`https://ui.adsabs.harvard.edu/user/settings/token`) and retry that one
+channel, or retry the three dead URLs weeks/months later.
+
+Do not re-attempt any of the now-9 checked channels (3 web portals + A&A
++ VizieR + pymsz + TNG catalog + Barnes+2020 full-text + ADS) again
+without a stated, specific reason to expect a different result this
+time.
+
+### Primary-source confirmation, same day — user supplied the actual PDF
+
+The user provided `aa36742-19.pdf` (the published article) directly.
+Read Appendices A/B/C and both reference-list pages in full, not via
+search. **Confirms the null result first-hand, not by inference:**
+
+- Tables B.1, B.2, C.1 are all class-level summaries (median/σ/skewness,
+  Spearman-ρ per morphology class) — no per-cluster rows.
+- **Fig. A.1** ("Hydrostatic mass bias vs. cluster mass at R500") plots
+  individual clusters as scatter points ("each point refers to a single
+  cluster") — so per-object values exist and were used internally — but
+  **the points carry no ID label and are not tabulated.** Even
+  digitizing this figure (a real, available technique — see
+  `~/.claude/rules/artifact-provenance-gates.md` Gate 3) would not help:
+  a digitized (mass, bias) pair still cannot be matched to a specific
+  cluster's WHIM properties in Li+2025 without an ID, which the plot
+  does not carry.
+- No data-availability/CDS/Zenodo language anywhere in the
+  Acknowledgements or References — matches the earlier full-text search
+  exactly, now confirmed by reading the actual published pages.
+
+**This closes the search for this specific paper definitively** — not
+"not found by search," but "read the primary source directly, the
+per-cluster key does not exist in it, structurally (unlabeled scatter
+points), not just administratively (no stated data release)."
 
 ---
 
