@@ -360,6 +360,52 @@ gas properties, for `N≥71` TNG-300 clusters, would revive this
 immediately with no redesign — same standing condition as before, now
 narrowed by knowing exactly what Barnes+2020 does NOT provide.
 
+## Revival Condition 3 — a PROMISING, UNCONFIRMED lead found 2026-09-09,
+## logged honestly at the state it was left in, not chased further
+
+Widened the search past TNG-specific papers. Two real papers from the
+**same collaboration**, on the **same fixed sample of 324 clusters**
+("The Three Hundred Project," Cui et al. 2018, `arXiv:1811.11810`):
+
+- `arXiv:1911.07878` (Ansarifard et al. 2019) — per-cluster hydrostatic
+  mass bias, correlated against per-cluster X-ray diagnostics (azimuthal
+  scatter, gas ellipticity) for **>300 individual simulated clusters** —
+  this reads as genuinely per-object, not binned-median-only (contrast
+  with Barnes+2020 above).
+- `arXiv:2503.05011` (Li et al. 2025) — WHIM gas properties
+  (`10⁵<T<10⁷K`) around the **same 324-cluster sample**, two physics runs
+  (GIZMO-SIMBA, Gadget-X).
+
+If both papers' underlying data are keyed to the same standard 324
+cluster IDs (very plausible — same collaboration, same fixed sample,
+routine practice for this group), this fills H1b's own estimand for a
+**different simulation suite** than the one originally registered —
+exactly the shape Revival Condition 3 (above) already anticipated
+("a different simulation suite... supplies both quantities").
+
+**Not confirmed, and stopped here deliberately:**
+1. The collaboration's own data portal, `the300-project.org` (cited
+   inside `arXiv:1911.07878` itself), does not resolve from this
+   session's network (`getaddrinfo ENOTFOUND`) — could be a stale URL,
+   a real outage, or a sandbox network restriction; not established
+   which.
+2. Neither paper's per-cluster table has actually been opened and
+   checked for a shared ID column — the "per-object, not binned"
+   reading above is from abstract-level and section-level text only
+   (`search_paper_text`, not a downloaded table).
+3. Using a different simulation suite than TNG-300 is a real
+   re-scoping of H1b's own pre-registered `claim.md`/`estimand.md`
+   (`experiments/20260701-h1b-whim-thermal-mass-bias/`) — this needs
+   its own dated AMENDMENT (same discipline as AMENDMENT 1/2 for the
+   criteria), not a silent substitution, before any test runs.
+
+**Consequence:** H1b stays parked. This is a real, specific,
+better-than-before lead — worth a `pearl_registry` row with a
+`next_check` — not yet a revival. Next cheap step, if picked up: resolve
+the data-portal URL (try `www.the300-project.org`, or search for a
+mirror/Zenodo deposit) and open both papers' supplementary tables to
+check for a shared cluster-ID column, before touching `claim.md`.
+
 ---
 
 ## TNG ACCESS — REQUESTED 2026-09-07, awaiting admin approval
