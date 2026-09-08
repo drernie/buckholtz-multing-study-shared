@@ -646,6 +646,63 @@ says it is the **PREFERRED text for grep/search**.
 compact-object reading than any of these files claimed.**
 
 
+## 7a. Session of 2026-09-08 — a full skill-audit day, missing from this
+## file until 2026-09-09 (found via the same deliberate "what's
+## disconnected" search that produced §6a and §5's bottleneck-1 fix)
+
+Four skills run in sequence, user-directed, each producing real findings
+— none previously summarized here:
+
+**`/boyko-bridge-ladder`** (whole-theory map + verification agents) —
+found `CLAUDE.md`'s own Eq.32 stop-rule cited the wrong file (`NR-019`
+does not cover the 5-niche *external* literature search); fixed via a
+new `null_results/20260908-nr024-...md` written specifically to close
+the citation gap.
+
+**`/boyko-why-ladder` + `/research-audit` + `/harvest`** (same day) —
+found: `docs/114`'s O7 gate was circular on one step, already
+independently fixed by `docs/132`'s T5/T6 finding but never cross-cited;
+the `boyko_T*_report.md` files `docs/132` cites do not exist in the repo
+(a session scratchpad reference, never committed); `docs/158:35` cited
+the wrong file for the sign-rule theorem; `p∝size(G)^0.95` (harvest
+score 16/20) sat unpromoted for 3 weeks. **Also corrected the same
+day:** both this project's own synthesis AND a separately pasted
+external AI analysis had mischaracterized `docs/132`'s T5/T6 finding as
+"REJECT" — the source's own explicit verdict is `OPEN`; fixed via
+`parked/T5T6-cogenesis-5to1-isomer-structure.md`.
+
+**`p∝size(G)^0.95` mini-project** — read the primary source
+(`FINDING_null_d_grammar.md`) before building anything: it already
+forbids the exact cross-relation comparison a `pearl_registry` row had
+proposed. Re-scoped to the 2 portable, non-comparative checklist parts,
+applied to Eq.32's own harmonised grammar
+(`experiments/20260810-eq32-look-elsewhere/
+FINDING_eq32_checklist_second_application.md`): p-vs-size exponent
+0.999 (11% residual, reproduces expected density-scaling diagnostic,
+**not** a newly-discovered law); D2/D1 isolation test negative (1.50 vs
+null median 2.01). `pearl_registry` row 107 corrected in place.
+
+**`/hypothesis-arbiter` on a same-day unverified claim, real kill-test
+— a claim withdrawn the same day it was made.** Earlier that day, this
+project's own bridge-ladder synthesis had attributed `FINDING_E8`'s
+4.0-7.6× Hessian eigenvalue sensitivity to a near-cancellation
+amplification factor `C≈15` computed from TJB's own Table III at
+z=1.07. `why-ladder` flagged this as an unverified Mechanism Claim (same
+pattern already `REJECT`ed in `NR-019`) and delegated it. The arbiter
+cycle (`FINDING_P221_hypothesis_arbiter_C_vs_E8.md`, positive control
+exact against `generate_all_results.py`'s own headline_cases) computed
+`C(z)` at all 33 real data points: range **14.9–747.4** (median 22.4) —
+z=1.07 sits near the dataset's own *minimum*, not representative.
+**H1 (C is a stable diagnostic) killed; the same-day C-vs-E8 claim is
+withdrawn.** `docs/158`'s own G3 (weighted joint Monte Carlo) remains
+the real decisive test if this thread is pursued further.
+
+**What this does NOT mean:** none of the four skill runs found or
+refuted anything about MULTING's own physics (`NO_AUTHOR_ERROR`) — all
+four are process/self-consistency findings about this project's own
+reconstruction and its own citation hygiene.
+
+
 ## Exclusion zone (do not start without a new triggering fact)
 
 New numerology searches on Eq.32 beyond what NR-019/020/021 already
