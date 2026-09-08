@@ -19,8 +19,10 @@
 1. `.claude/memory/activeContext.md` — live, updated per commit. Source of
    truth for "what are we doing right now."
 2. `docs/145_research_audit_and_harvest_report_20260817.md` — comprehensive
-   meta-audit, updated through Part 8 (2026-08-26). Source of truth for
-   "what has this project established, and how well."
+   meta-audit, updated through Part 9 (2026-09-09, a portable meta-pattern:
+   "real work disconnected from its own index," found 5× in 2 days —
+   see Part 9 itself for the worked cases; Parts 1-8 unchanged). Source of
+   truth for "what has this project established, and how well."
 3. `docs/147_campaign_stop_rule.md` — the 4 named bottlenecks
    (F→H_MULT(z) / Unique completion / Absolute scale / IC-sensitivity), their
    current status, and the explicit reopen conditions for each. **[2026-09-01]
