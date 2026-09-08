@@ -434,10 +434,32 @@ publicly available" **without a direct download link**, and points to two
 workshop pages not yet checked: `popia.ft.uam.es/CrystalClearClusters/`
 and `popia.ft.uam.es/GlenfiddlingGalaxyClusters/`.
 
-**Next cheap step, if picked up:** check the two workshop pages above, or
-retry `the300-project.org` later (domains do come back), or contact the
-paper's authors directly. Do not re-attempt the same channels blind —
-logged here with exact failure/success per channel.
+**[UPDATED 2026-09-09] Both workshop pages checked — also dead.** Both
+`popia.ft.uam.es/CrystalClearClusters/Home.html` and `.../
+GlenfiddlingGalaxyClusters/Home.html` fail identically, by two
+independent methods: `WebFetch` gets `ECONNREFUSED` on the host itself
+(not a missing page — the host refuses the connection), and a real,
+unrestricted Chrome browser shows a generic connection error on both
+URLs. Same host, two paths, two tools, same result — the university
+server behind this 2018-era workshop domain (`popia.ft.uam.es`) appears
+to no longer be running at all, not just this one page moved.
+
+**Consequence:** every web lead from the co-author's own mirror page has
+now been checked and is dead. Three of three "The Three Hundred"-hosted
+addresses (main portal, workshop 1, workshop 2) are down; only the
+co-author's static GitHub Pages mirror survives, and it carries no data
+link. **Genuinely blocked on this specific search path** — not from lack
+of trying, from the collaboration's own infrastructure being
+unreachable, control-tested across two tools and (for the main portal)
+two independent networks.
+
+**Next cheap step, if picked up:** contact the paper's authors directly
+(Ansarifard, Cui, or Li — all have institutional emails in their papers),
+or retry these same three URLs weeks/months later in case of a
+temporary outage, or search for the data via a channel not yet tried
+(e.g. a GitHub org for the collaboration, ADS's own data-links feature).
+Do not re-attempt the exact same URLs again without a stated reason to
+expect a different result.
 
 ---
 
