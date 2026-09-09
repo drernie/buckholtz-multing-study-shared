@@ -317,15 +317,33 @@ INDEX.md`, independent of H1b itself. Mean WHIM% (33.4%) sits well below
 Li+2025's own reported ~70% plateau — a real, now N=71-quantified
 discrepancy with 3 named candidate explanations, none yet resolved.
 
-**Still unchanged: the actual H1b test cannot run.** `M_true`,
-WHIM-fraction, and a raw substructure-count proxy (`group_nsubs`,
-collected but not yet analyzed as a real confound control) are now
-computable for any qualifying TNG-300 cluster — but hydrostatic mass
-(`M_HE`/`delta_M`) remains external, and that letter is still not sent
-(user's own explicit choice). This batch does not move H1b's own
-correlation test forward by itself — it removes the "can we even
-compute our half" uncertainty and means zero rework is needed once/if
-the missing half arrives.
+**Still unchanged: the actual H1b test cannot run.** `M_true` and
+WHIM-fraction are now computable for any qualifying TNG-300 cluster —
+but hydrostatic mass (`M_HE`/`delta_M`) remains external, and that letter
+is still not sent (user's own explicit choice). This batch does not move
+H1b's own correlation test forward by itself — it removes the "can we
+even compute our half" uncertainty and means zero rework is needed
+once/if the missing half arrives.
+
+**Update, same day — the dynamical-state confound proxy IS now analyzed,
+twice, both null.** The line above ("collected but not yet analyzed")
+was live for under an hour. `group_nsubs`
+(`experiments/20260909-tng-whim-pilot/check_nsubs_confound.py`, commit
+`2244fb4`): collinear with mass (`r(logM,logNsubs)=0.596, p<0.001`), and
+the mass-detrended residual has no relation to WHIM%
+(`r=0.074, n.s.`) — not usable as an independent confound control.
+CM/potential-minimum offset (`check_cm_offset_confound.py`, commit
+`449ce63`, a second, independently-motivated standard proxy — Mohr et
+al. 1993): same pattern, `r(logM,offset)=-0.543, p<0.001` collinear,
+mass-detrended residual `r=-0.083, n.s.`, robust to its one outlier
+(`r=-0.057` with halo 38 excluded). **Two different standard dynamical-
+state proxies both come back null at N=71** — real information (neither
+is a usable confound control at this sample size with these proxies),
+not proof dynamical state is irrelevant. A velocity-dispersion-based
+proxy is the one named, untested candidate if this sub-question is
+picked up again. Full detail in each script's own commit and
+`experiments/20260909-tng-whim-pilot/FINDING_stage2_batch_n71.md`'s two
+addenda.
 
 ## TNG ACCESS GRANTED 2026-09-09 — revival attempted, blocked on a
 ## DIFFERENT, more specific reason than before
