@@ -110,12 +110,52 @@ smaller follow-up, not resolved.
    pre-registered design requires controlling for dynamical state
    before any `E_WHIM → delta_M` correlation counts.
 
+## Addendum, same day — `group_nsubs` checked, NOT a usable dynamical-
+## state proxy (a real, honest negative result)
+
+**Question:** does substructure count (`GroupNsubs`) carry real,
+mass-independent dynamical-state information usable for H1b's own
+confound control, or is it just a diluted echo of mass?
+
+**Method:** (1) correlate `log(Nsubs)` against `log(M200)` directly;
+(2) fit and remove the mass trend (OLS in log-log space), leaving a
+residual — clusters with *more* substructure than their mass alone
+predicts are candidate unrelaxed/merging systems, *fewer* candidate
+relaxed ones; (3) correlate that mass-independent residual against
+WHIM%, separately from raw `Nsubs` against WHIM%.
+
+**Result:**
+```
+r(log M200, log Nsubs)        =  0.596  (p<0.001) -- substantially collinear with mass
+r(log Nsubs, WHIM%)           = -0.187  (n.s.)     -- weaker echo of the mass-WHIM link
+r(nsubs residual, WHIM%)      =  0.074  (n.s.)     -- ~zero once mass is removed
+```
+
+**Verdict: `GroupNsubs` is NOT a usable dynamical-state confound
+control here.** It is moderately collinear with mass (bigger halos
+trivially host more subhalos, independent of dynamical state), and once
+the mass trend is removed, the residual carries no detectable relation
+to WHIM% (`r≈0.07`, not significant at `N=71`). Using raw `Nsubs` as a
+"dynamical state" variable would have silently re-tested the mass
+correlation under a different name — caught here before that mistake
+was made, not after.
+
+**What this does NOT establish:** that dynamical state has no real
+effect on WHIM% — only that this specific, cheap, catalog-native proxy
+does not capture it. Ansarifard et al. 2019's own dynamical-state
+indicators (VR/R/IR/VI morphological class, azimuthal scatter `σ_A`)
+require synthetic X-ray imaging this project does not have a pipeline
+for — a real, substantial undertaking, not attempted here.
+
 ## Next step, named not done
 
-1. **Analyze `group_nsubs` as a dynamical-state proxy** against both
-   mass and WHIM% — does substructure count add information beyond
-   mass alone, or is it fully collinear with mass (in which case a
-   different proxy is needed for real confound control)?
+1. ~~Analyze `group_nsubs` as a dynamical-state proxy~~ — **done above,
+   real negative result.** A genuinely independent dynamical-state
+   proxy (e.g., center-of-mass vs. potential-minimum offset, or
+   velocity-dispersion-based relaxation indicator, both computable from
+   already-available particle data without a full mock-X-ray pipeline)
+   remains an open, not-yet-attempted candidate if this line is pursued
+   further.
 2. **Wait for or pursue the external hydrostatic-mass data** — the
    actual bottleneck for H1b itself.
 3. If the Three Hundred data arrives for a comparable cluster sample,
