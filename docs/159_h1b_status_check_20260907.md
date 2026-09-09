@@ -9,6 +9,21 @@ addendum.
 pre-registered, **never executed**. Blocked 68 days on external data
 access. Per the Gate's own hard rule, this is **not evidence against H1**.
 
+**Update 2026-09-09 — the blocker named in §5.1 is resolved; this doc's own
+title ("never run") is now stale for half of H1b.** TNG-300 access was
+granted and an API key obtained. `E_WHIM` (the WHIM half of H1b) has now
+run for real, at H1b's own pre-registered `N≥71`:
+`experiments/20260909-tng-whim-pilot/FINDING_stage2_batch_n71.md` — real
+`r(M200,WHIM%)=-0.429, p<0.001`, plus two dynamical-state confound proxies
+tested and both null. **H1b itself (the `E_WHIM → delta_M` correlation)
+still has not run** — the 4th ingredient, hydrostatic mass bias (`M_HE`),
+has no public per-cluster catalog; a 9-channel search closed that
+question definitively (see `parked/H1b-whim-thermal-mass-bias.md` and
+`CURRENT_EVIDENCE_STATE.md` §7.3). §5 item 4's own warning (check against
+a floor before trusting a revival) still applies once `M_HE` exists.
+Left below unedited as the dated record of what was true 2026-09-07 —
+see `research-methodology.md` § Hindsight Distortion Gap Heuristic.
+
 ---
 
 ## 1. The headline

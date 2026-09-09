@@ -3,6 +3,9 @@
 **Date:** 2026-09-03; quality snapshot refreshed 2026-09-05, and
 substantially revised **2026-09-07** (37 commits: bottleneck 3 dissolved,
 KG2 answered, H1b parked and its criterion repaired — see §7) ·
+**§7.3 updated 2026-09-09:** TNG-300 access granted; H1b's WHIM half
+(`E_WHIM`) executed at real `N=71` (`r=-0.429, p<0.001`, mass vs. WHIM%);
+`M_HE` (4th ingredient) still external, search closed across 9 channels ·
 **Verified 2026-09-07:** `pytest tests/` **995 tests across 68 files,
 exit 0, zero failures**, `mypy src` **0 errors / 39 files**;
 earlier snapshot read `pytest` 908 passed,
@@ -551,6 +554,38 @@ subtype (`U₉₅ < −0.30`), plus a **frozen structural-floor algorithm** whos
 stratification is fixed deterministically by `N` alone. Noise floor
 checked and clean; **the structural floor is still unknown** and must be
 the first thing the data touches.
+
+**Update 2026-09-09 — TNG-300 access GRANTED, and H1b's WHIM half has now
+actually run.** The "one login settles it" line above is resolved: the
+account holder logged in, an API key was obtained (kept outside the repo,
+`~/.secrets/tng_api_key.env`). This is the first time any H1b ingredient
+has been computed on real data, not just designed. `experiments/20260909-
+tng-whim-pilot/`: a controlled pipeline (2 real positive controls per
+cluster — gas-mass conservation, inner-ICM temperature — both pass 71/71)
+measured `E_WHIM` (WHIM mass fraction in the `R200`-`3×R200` annulus) for
+`N=71` real TNG-300 clusters, meeting H1b's own pre-registered minimum
+sample size. Real, significant result: `r(M200,WHIM%)=-0.429, p<0.001` —
+more massive clusters have systematically lower WHIM fraction — and a
+quantified discrepancy against Li et al. 2025's own reported ~70% plateau
+(this sample's mean: 33.4%). Two independent dynamical-state confound
+proxies (`GroupNsubs`; CM/potential-minimum offset) were tested against
+this residual and both came back null (`r≈0.07` and `r≈-0.08` after
+de-trending mass, neither significant at `N=71`) — full detail in
+`experiments/20260909-tng-whim-pilot/FINDING_stage2_batch_n71.md`.
+
+**H1b itself — the `E_WHIM → delta_M` correlation — still has not run.**
+The 4th ingredient, hydrostatic mass bias (`M_HE`), has no public
+per-cluster catalog for TNG (confirmed by direct search of
+`arXiv:2001.11508`'s own data-availability text — zero hits). A wider
+search across 9 channels (TNG-native, then "The Three Hundred Project"
+web portal ×3, GitHub, VizieR, ADS, and the source PDF's own appendices)
+closed definitively: no published, per-cluster, ID-keyed `M_HE` table
+exists anywhere checked. A data-request letter to that paper's authors is
+drafted (`correspondence/draft_three_hundred_data_request_20260909.md`)
+but deliberately **not sent** — the user's own call, pending personal
+review. `NO_AUTHOR_ERROR`: none of this bears on MULTING or TJB's own
+claims — it is this project's own infrastructure for a test that has not
+yet run.
 
 ### 7.4 A measured fact about this repository
 
