@@ -161,6 +161,86 @@ reconstruction. Either way, **nothing found here suggests a route to
 `rho < -0.5`** — the ordering-reversal regime `FINDING_P158` names stays
 unreached under every reading tried.
 
+## Correction, same day, both open questions at once — v82's own text
+## checked directly: "40-45 Mpc" does not appear in it, and v82 itself
+## already names the exact ambiguity this whole file investigates
+
+**Checked by direct grep of `data/source_material/
+buckholtz_202608.0943v1.v82.md`** (not memory, not a prior file's
+citation of a citation), before proposing a next step for this open
+question:
+
+**1. "40-45 Mpc" is not in v82's own text.** A regex search for any
+number in the 40-45 range near "Mpc" returns zero matches anywhere in
+the 40-page document. This project has cited "v82's own ~40-45 Mpc node
+separation" since `FINDING_P156` (2026-08-30, carried forward into
+`docs/153` and this file's own Part 1) — no derivation for that specific
+figure was found in any of this project's own files either. What v82's
+own text DOES say (§IV.M, p.22): it explicitly attempted to ground its
+characteristic separation `s₀` observationally, using the **cluster-
+cluster correlation length, `s₀ ~ 30 Mpc` (ref. [91])** — and explicitly
+**rejected** that grounding, because combining it with independently-
+measured cluster pairwise-velocity data gives `H₀,anchor ~ 11 km/s/Mpc`,
+"not a plausible Hubble constant by any measure." v82 also separately
+notes the systematic component of cluster pairwise velocity "is reported
+to fade toward zero by the ~30-60 Mpc separations relevant here" (same
+section). **`s₀=30 Mpc` is the one real number v82's own text
+associates with a characteristic node separation — and v82 itself
+declines to use it.**
+
+**2. v82's own `H₀,anchor` is structurally a RATIO, not a separation
+value at all.** Eq. (22): `H₀,anchor ≡ ṡ₀/s₀` — v82's text is explicit
+that only this ratio is fit; the individual numerator and denominator
+(`ṡ₀`, `s₀`) are never separately determined or needed by the
+construction. There is, strictly, no single "v82's own node separation"
+number to test `rho` at — the premise both this file's Part 1 and its
+predecessors (`FINDING_P156`, `docs/153`) share is a category
+simplification, not a value error alone. **Re-using this project's own
+already-collected separation-vs-correlation table (Part 1's own 5 Mpc
+bins, no new computation needed) at the number v82 actually cites but
+rejects, `s₀~30 Mpc` (the 25-30 Mpc bin): `r=0.436, p<0.001`** —
+qualitatively the same flat, positive pattern found at every other
+separation tested, so this correction does not change Part 1's
+qualitative conclusion, but it does mean "at v82's own characteristic
+node separation" was never a well-posed instruction to begin with.
+
+**3. v82's own §IV.H ("Circumstances where this framework should not be
+expected to be accurate") independently confirms this file's whole
+investigation targets a real, self-acknowledged gap, not an invented
+question.** Two of its named limitations map directly onto today's two
+open unknowns:
+- *"Proximity of more than two nodes"*: v82's force law is "derived, and
+  summed, pairwise... one neighbor at a time," but its own text states
+  nodes "typically connect to κ~2-5 filaments... having several
+  neighbors at a comparable characteristic separation is, by this same
+  evidence, **closer to typical than exceptional**," and calls this "one
+  of the more consequential items on this list, precisely because it may
+  apply to most nodes rather than only to unusual configurations." This
+  directly supports today's own nearest-neighbor-check finding: real
+  structure (whether TNG-300 halos or v82's own cited filament
+  connectivity statistics) typically has MULTIPLE comparable neighbors,
+  not one — v82 knows this about its own idealization and has not
+  resolved it either.
+- *"Typical objects, not distributions"*: v82's text states plainly that
+  "every quantity in Sec. IID is a single, representative value at each
+  redshift, not a scattered population of node properties... evaluating
+  it at a representative value is not generally the same as averaging it
+  over the distribution; **we have not attempted to quantify this
+  difference.**" This is, verbatim, `FINDING_P157`/`P158`'s own Jensen's-
+  gap question — v82's own text already names it as open and unquantified.
+
+**What this does NOT establish:** a corrected numeric value of `rho` at
+"the" right separation (there is no single right separation per point 2
+above — the 25-30 Mpc reading is offered as the closest available
+substitute for v82's own rejected `s₀~30 Mpc`, not a definitive
+replacement); that v82's own construction is wrong for using a
+representative value or a pairwise sum (v82 names these as known
+simplifications itself, `NO_AUTHOR_ERROR`); anything about which of
+today's `rho` readings (all-pairs vs. nearest-neighbor) is "the" correct
+one — v82's own §IV.H, if anything, suggests the all-pairs / multi-
+neighbor reading is closer to what real structure typically looks like,
+but does not commit to a resolution.
+
 ## Part 2 — Mass-observable scatter (`sigma_lnm`)
 
 Reused the already-collected N=71 WHIM-pilot sample (no new API calls;

@@ -227,6 +227,19 @@ in a way `docs/127`'s own G_eff=0 result would consider a violation?"
 calculation named by FINDING_P156's own FINITE-R-ANISOTROPIC-REGIME-
 REMAINS-OPEN tag: a finite-r, non-averaged, single-pair version of
 the closure calculation this project has not yet built.
+
+**Correction 2026-09-09:** "~40-45 Mpc" above is not sourced from v82's
+own text (checked by direct grep this session — zero matches anywhere
+in the document; full account in `FINDING_P156`'s own same-day
+correction and `experiments/20260909-tng-mass-assortativity/
+FINDING_mass_assortativity_and_scatter.md`). v82's own text names, then
+explicitly rejects, `s₀~30 Mpc` (cluster-cluster correlation length) as
+an observational anchor; its actually-fitted quantity, `H₀,anchor≡
+ṡ₀/s₀` (Eq. 22), is a ratio that never separately pins down a
+separation value. The qualitative bottleneck framing (finite-separation
+single-pair vs. isotropic-population-average) is unaffected; the
+specific Mpc figure is not load-bearing anywhere in this document and is
+flagged here so it is not carried forward uncritically.
 ```
 
 **The two tags above must always be read together, never the first

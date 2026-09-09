@@ -162,6 +162,22 @@ eventually check. It is not checked here; checking it would require a
 finite-r, non-averaged, single-pair calculation this project has not
 built.
 
+**Correction 2026-09-09:** the `~40-45 Mpc` figure above does not appear
+anywhere in v82's own text (checked by direct grep this session, see
+`experiments/20260909-tng-mass-assortativity/
+FINDING_mass_assortativity_and_scatter.md`'s own correction section for
+the full account) — no derivation for it was found in this file either,
+originally. What v82's text (§IV.M) actually says: it attempted to
+ground its characteristic separation observationally at `s₀~30 Mpc`
+(cluster-cluster correlation length) and explicitly REJECTED that
+grounding as giving an implausible `H₀,anchor~11 km/s/Mpc`. v82's own
+`H₀,anchor≡ṡ₀/s₀` (Eq. 22) is a fitted ratio — the individual separation
+value is never separately pinned down by the construction at all. This
+finding's own qualitative claim (a finite-separation, single-pair,
+externally-oriented construction, as opposed to an isotropically-
+averaged population) stands unaffected — only the specific `~40-45 Mpc`
+figure is corrected/withdrawn as unsourced.
+
 ## 4. Verdict and disposition
 
 `TIER-STRUCTURE-MATCHES` — real, `[VERIFIED-PDF]` + `[VERIFIED-sympy]`.

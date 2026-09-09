@@ -308,3 +308,14 @@ they disagree sharply on effect size and on whether `rho`'s positivity
 reflects large-scale bias (all-pairs) or genuine pairwise coupling
 (nearest-neighbor, weak/absent here). Full account: linked FINDING's
 own "Nearest-neighbor-restricted check" section.
+
+**Third correction, same day:** "40-45 Mpc" itself is not sourced from
+v82's own text — checked by direct grep, zero matches. v82 names, then
+explicitly rejects, `s₀~30 Mpc` (cluster-cluster correlation length) as
+an observational anchor, and its actually-fitted `H₀,anchor≡ṡ₀/s₀`
+(Eq. 22) is a ratio that never separately pins down a real-world
+separation value at all — there is, strictly, no single "v82's own node
+separation" to test `rho` at. Full account, including a same-data
+re-check at the number v82 actually cites (`s₀~30 Mpc`, giving
+`r=0.436, p<0.001` — qualitatively unchanged): linked FINDING's own
+correction section.
