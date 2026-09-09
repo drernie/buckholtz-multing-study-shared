@@ -319,10 +319,14 @@ discrepancy with 3 named candidate explanations, none yet resolved.
 
 **Still unchanged: the actual H1b test cannot run.** `M_true` and
 WHIM-fraction are now computable for any qualifying TNG-300 cluster —
-but hydrostatic mass (`M_HE`/`delta_M`) remains external, and that letter
-is still not sent (user's own explicit choice). This batch does not move
-H1b's own correlation test forward by itself — it removes the "can we
-even compute our half" uncertainty and means zero rework is needed
+but hydrostatic mass (`M_HE`/`delta_M`) remains external. **Update
+2026-09-09, later same day: the data-request letter WAS sent**, to all
+4 authors (Ansarifard/Rasia/Cui/Li), real verified addresses, via
+browser automation after the Gmail MCP send tool failed systemically —
+see `correspondence/draft_three_hundred_data_request_20260909.md`'s own
+"Sent" section for the full account. No reply yet. This batch does not
+move H1b's own correlation test forward by itself — it removes the "can
+we even compute our half" uncertainty and means zero rework is needed
 once/if the missing half arrives.
 
 **Update, same day — the dynamical-state confound proxy IS now analyzed,
