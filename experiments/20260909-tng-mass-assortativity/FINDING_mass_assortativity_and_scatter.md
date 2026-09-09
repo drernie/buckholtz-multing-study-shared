@@ -1,0 +1,158 @@
+# FINDING — Direct TNG-300 measurement of the two open unknowns named in
+# FINDING_P158_jensen_mass_averaging_v82_force_terms.md
+
+**Date:** 2026-09-09
+**Scripts:** `pair_mass_correlation.py` → `top_halos_pos_mass.csv`,
+`mass_observable_scatter.py` (reuses `../20260909-tng-whim-pilot/
+whim_n71_results.csv`, no new API calls)
+**Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·
+NO_AUTHOR_ERROR · L0 descriptive
+**Answers, directly from TNG-300 data:** the two open unknowns
+`FINDING_P158_jensen_mass_averaging_v82_force_terms.md` named and left
+unchecked — (1) the sign/magnitude of `rho`, the log-mass correlation
+between paired nodes ("mass assortativity"), and (2) `sigma_lnm`, cluster
+mass-observable scatter at v82's own target mass range. Both were
+previously scoped as a literature-grounding step (`docs/153` plan); this
+measures them directly instead.
+
+## Part 1 — Mass assortativity (`rho`)
+
+### Design
+
+Fetched `info.json` for the top 1500 halo IDs (== top 1500 halos by
+total FOF mass, TNG's own catalog sort key — chosen specifically because
+this project already discovered 2026-09-09 that `Group_M_Crit200` is
+**not** strictly monotonic in ID; a contiguous top-ID slice sidesteps
+that without assuming monotonicity). 1461/1500 usable (39 dropped to
+transient network errors or a missing/zero `M_Crit200`). Computed all
+pairwise 3D separations (periodic-corrected, box=205 Mpc/h), binned by
+separation, and measured Pearson `r(log M1, log M2)` per bin.
+
+### Result
+
+```
+N usable halos = 1461, mass range 8.39e12 - 1.54e15 Msun (median 4.66e13)
+N pairs total  = 1,066,530
+
+Headline (40-45 Mpc, v82's own node separation):
+  N pairs = 4694
+  r(log M1, log M2) = 0.3827  (t=28.37, p<0.001)
+
+Negative control (masses shuffled, same target-band pairs):
+  r = 0.0277  (~0, as expected -- confirms no spurious pipeline correlation)
+
+Positive control (<5 Mpc separation):
+  N pairs = 104, r = 0.3334  (p<0.001)
+```
+
+**Full separation-bin table (5 Mpc bins, 0-100 Mpc), all p<0.001:**
+
+| bin (Mpc) | N pairs | r |
+|---|---|---|
+| 0-5 | 104 | 0.333 |
+| 5-10 | 517 | 0.434 |
+| 10-15 | 772 | 0.421 |
+| 15-20 | 1199 | 0.392 |
+| 20-25 | 1679 | 0.382 |
+| 25-30 | 2263 | 0.436 |
+| 30-35 | 2881 | 0.386 |
+| 35-40 | 3649 | 0.403 |
+| **40-45** | **4694** | **0.383** |
+| 45-50 | 5909 | 0.397 |
+| 50-100 (remaining bins) | 121,616 | 0.382-0.401 |
+
+**Headline answer to P158: `rho ≈ 0.38` (positive, real, p<0.001) at
+v82's own characteristic node separation.** Per P158's own conditional
+result, a population-averaging Jensen's-gap correction to `F^(2)`
+(quadrupole) relative to `F^(1)` (dipole) is boosted **more** than
+`F^(1)` precisely when `rho > -0.5` — this measured value (`+0.38`) sits
+well inside that regime, not near the `-0.5` threshold that would flip
+the ordering.
+
+### An honest, load-bearing caveat: the correlation is nearly FLAT across
+### 0-100 Mpc, not specific to the 40-45 Mpc band
+
+The table above shows `r` staying in a narrow `0.33-0.44` range across
+the ENTIRE separation range tested, with no visible decay. This was not
+predicted going in and is worth stating plainly rather than only
+reporting the headline number in isolation. Two honest readings:
+
+1. **Real, and physically explicable, not an artifact** (per the negative
+   control's own `r≈0.03`, the signal is not spurious): the top-1500
+   sample is a highly-biased tracer population (the most massive ~0.01%
+   of halos in the box). Halo mass is known to correlate with the
+   large-scale density field, and that field is itself correlated over
+   tens-to-hundreds of Mpc — so almost any two halos drawn from this
+   biased tail can show correlated mass through shared large-scale
+   environment, not only through being a genuine "close pair."
+2. **A real methodological gap for matching v82's own construction**:
+   v82's own bridge treats a **specific pair** (nearest-neighbor-like,
+   not "any two halos that happen to be ~40 Mpc apart amid 1500 other
+   massive halos"). This measurement does not restrict to nearest-
+   neighbor pairs — it uses every pair in the separation band, which
+   likely over-counts halos that are *also* close to several other
+   massive neighbors. A nearest-neighbor-restricted version would answer
+   the more precisely-matched question and was **not built here** (scope
+   decision, not an oversight — this already answers P158's binary
+   question of *sign*, which is what its own conditional result needed).
+
+**What this does NOT establish:** that `rho` is exactly `0.38` for
+"the" pair construction v82 itself uses; that the assortativity is
+short-range-specific rather than a broad large-scale-bias effect; or
+anything about MULTING's own correctness (`NO_AUTHOR_ERROR`).
+
+**What this DOES establish, robustly:** `rho` is **positive** at v82's
+own characteristic separation, by a wide, statistically overwhelming
+margin over the shuffled-mass floor, across every separation bin tested
+from 0 to 100 Mpc. P158's conditional "if rho > -0.5" branch is the one
+that applies; nothing here suggests a plausible route to `rho < -0.5`.
+
+## Part 2 — Mass-observable scatter (`sigma_lnm`)
+
+Reused the already-collected N=71 WHIM-pilot sample (no new API calls;
+mass range 1.28e14-7.34e14 Msun sits close to v82's own targeted range).
+Observable proxy: richness (`GroupNsubs`), a real proxy astronomers use
+(e.g. redMaPPer-style richness-mass relations). Fit
+`log(M_true) = a + b*log(N_richness)`, matching the literature convention
+of reporting scatter of TRUE mass at fixed observable, not the inverse.
+
+```
+N = 71
+Fit: log10(M_true) = 11.966 + 0.762 * log10(N_richness)
+r(log N_richness, log M_true) = 0.596
+
+sigma_logM|richness = 0.127 dex
+sigma_lnM|richness  = 0.293  (natural-log units)
+```
+
+**Sanity check (rough, not a load-bearing claim):** published richness-
+mass scatter for real cluster-finders (e.g. redMaPPer-class estimators)
+is commonly quoted in the `sigma_lnM ~ 0.2-0.3` range — this project's
+own direct N=71 measurement (`0.293`) sits inside that ballpark, though
+this is a `[MEMORY]`-tier comparison (the exact published figures were
+not re-verified live this session) and richness-in-a-simulation is not
+identical to redshift-space richness from a real survey.
+
+**What this does NOT establish:** that `0.293` is THE scatter value
+relevant to v82's own mass variable — richness is one specific proxy
+among several a real analysis could use, and this is this project's own
+first, direct measurement on a modest N=71 sample, not a definitive
+literature-quality value.
+
+## Combined bottom line for `docs/153` bottleneck-1 planning
+
+Both of P158's named open unknowns now have a real, direct, TNG-native
+answer instead of an unresolved literature-search gap:
+
+```
+rho (mass assortativity, 40-45 Mpc)   = +0.38  (p<0.001, positive control clean)
+sigma_lnM (richness proxy, N=71)      =  0.293 (natural-log units)
+```
+
+Per P158's own conditional result, `rho > -0.5` means the population-
+averaging correction (if it were applied) would boost the quadrupole
+term `F^(2)` MORE than the dipole `F^(1)` — the ordering P158 flagged as
+possible only below `rho=-0.5` does not apply at this measured value.
+This is a real, if still narrowly-scoped (all-pairs not nearest-neighbor;
+one observable proxy not several), contribution toward `docs/153`'s own
+bottleneck-1 pre-conditions — not a resolution of bottleneck 1 itself.

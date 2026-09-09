@@ -260,3 +260,27 @@ from `P157`'s own corrected `docs/124` discussion).
 6. **Does not close `docs/150` §6 item 2 or the pearl_registry row.** Both
    remain open — this sharpens the open question with a concrete,
    verified mechanism and direction, not a resolution.
+
+## Addendum 2026-09-09 — both open unknowns above (`rho` and `sigma_lnm`)
+## now have a real, direct TNG-300 measurement, not just a literature-gap
+
+`experiments/20260909-tng-mass-assortativity/
+FINDING_mass_assortativity_and_scatter.md` (real TNG-300 data, N=1461
+halos / 1.07M pairs for `rho`, N=71 for `sigma_lnm`, negative control
+via mass-shuffle):
+
+```
+rho (mass assortativity, 40-45 Mpc, v82's own node separation) = +0.38  (p<0.001)
+sigma_lnM (richness proxy, N=71)                                =  0.293
+```
+
+**`rho > -0.5` is directly confirmed** — this file's own §2.1 threshold
+for the directional claim to hold is satisfied at the measured value,
+not near the flip point. Read the linked FINDING's own honest caveat
+before treating `rho=0.38` as precise: the correlation measured nearly
+flat across 0-100 Mpc in this project's own top-1500-halo sample, likely
+reflecting broad large-scale bias in a highly-mass-selected tracer
+population rather than a short-range-specific effect, and the pairs used
+are NOT restricted to nearest-neighbors the way v82's own construction
+implies — this answers the *sign* question §2.1 needed, not a precision
+value for further calculation without caveat.
