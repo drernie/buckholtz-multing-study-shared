@@ -191,17 +191,84 @@ what mass explains, at least via these two proxies, or (b) both proxies
 are individually too coarse/noisy to detect a real but modest effect at
 `N=71`. Not distinguished here.
 
+## Third addendum, same day — DM velocity dispersion within R200 checked,
+## THIRD dynamical-state proxy also null (positive control confirms the
+## pipeline itself is sound)
+
+**Question:** does DM particle velocity dispersion within R200 (relative
+to the group's own bulk velocity, `GroupVel`) — a real, standard
+dynamical-state indicator closely tracking the M-sigma relation — carry
+mass-independent information about WHIM%?
+
+**Design note:** a subhalo/galaxy-based sigma_v would match real
+observational practice more closely, but a live probe first (not assumed
+from memory) showed individual clusters carry hundreds of subhalos (halo
+200: `GroupNsubs=859`) with no bulk velocity field-selection available on
+the subhalo search endpoint — that route would need one API call PER
+SUBHALO, tens of thousands total across the sample. Switched to a DM
+particle cutout per cluster (`Coordinates,Velocities`, same pattern as
+the gas cutouts) instead — one request per cluster, tractable.
+`experiments/20260909-tng-whim-pilot/velocity_dispersion_confound.py` →
+`whim_n71_with_vdisp.csv`.
+
+**Built-in positive control, and it passed cleanly:** sigma_v is expected
+to be strongly, positively collinear with M200 (the M-sigma relation is
+one of the tightest scaling relations in cluster physics) — confirmed:
+`r(log M200, log sigma_v) = 0.938` (`p<0.001`, N=71). A single-cluster
+sanity check (halo 200, M200~1.2e14 Msun) gave `sigma_v=440` km/s,
+consistent in order of magnitude with the Evrard et al. 2008-type M-sigma
+relation (`[MEMORY]`-tier coefficients, not re-verified live — a rough
+consistency check, not a precise one).
+
+**Result:**
+```
+r(log M200, log sigma_v), raw           =  0.938  (p<0.001) -- positive control, as expected
+r(log sigma_v, WHIM%), raw              = -0.380  (p<0.01)  -- echoes the mass-WHIM link
+r(mass-detrended sigma_v residual, WHIM%)=  0.020  (n.s.)    -- ~zero once mass is removed
+```
+
+Two clusters were dropped from the 71 during checkpointed collection due
+to a transient server-side degradation (11 consecutive halo IDs failing
+`info.json` in a row, mid-run — `BLOCKED-INFRASTRUCTURE` per the
+Substrate Gate, not evidence about those clusters) and successfully
+recovered on retry; final N=71, no clusters permanently missing.
+
+**Verdict: a third, independent, standard dynamical-state proxy also
+fails to show a mass-independent relation to WHIM%.** Combined with
+`GroupNsubs` and CM/potential-minimum offset, **three different,
+physically-motivated confound-control candidates now all come back
+null** at N=71. Unlike the first two (which were only moderately
+collinear with mass, `r≈0.5-0.6`), velocity dispersion is *very* strongly
+collinear with mass (`r=0.938`) — its own positive control is one of the
+cleanest results in this whole experiment, which makes the null residual
+result correspondingly more trustworthy: the measurement pipeline
+demonstrably CAN detect a strong real signal (mass itself, via sigma_v)
+and still finds nothing left over for WHIM% once that signal is removed.
+
+**What this does NOT establish:** with three different proxy types now
+null, it becomes more plausible (not proven) that dynamical state, at
+least as captured by these catalog-native and particle-level proxies,
+is not a major independent driver of this sample's WHIM% — but a
+synthetic-X-ray-based morphological indicator (Ansarifard+2019's own
+VR/R/IR/VI classes, azimuthal scatter) remains untested and is a
+methodologically different class of proxy, not covered by any of the
+three tried here.
+
 ## Next step, named not done
 
 1. ~~Analyze `group_nsubs` as a dynamical-state proxy~~ — **done, real
    negative result** (see Addendum above).
 2. ~~Analyze CM/potential-minimum offset~~ — **done, second real
    negative result, robust to the one outlier** (see Second Addendum
-   above). A velocity-dispersion-based relaxation indicator remains the
-   one named-but-untested candidate if this specific sub-question is
-   pursued further — not attempted here.
-3. **Wait for or pursue the external hydrostatic-mass data** — the
+   above).
+3. ~~Analyze DM velocity dispersion within R200~~ — **done, third real
+   negative result, positive control confirms the pipeline itself is
+   sound** (see Third Addendum above). No further catalog/particle-level
+   dynamical-state proxy is currently named as untested; a
+   synthetic-X-ray morphological indicator would need a pipeline this
+   project does not have.
+4. **Wait for or pursue the external hydrostatic-mass data** — the
    actual bottleneck for H1b itself.
-4. If the Three Hundred data arrives for a comparable cluster sample,
+5. If the Three Hundred data arrives for a comparable cluster sample,
    this batch's own 71 WHIM measurements are immediately reusable — no
    rework needed on this half.

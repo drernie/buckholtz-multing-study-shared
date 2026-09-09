@@ -336,13 +336,17 @@ CM/potential-minimum offset (`check_cm_offset_confound.py`, commit
 `449ce63`, a second, independently-motivated standard proxy — Mohr et
 al. 1993): same pattern, `r(logM,offset)=-0.543, p<0.001` collinear,
 mass-detrended residual `r=-0.083, n.s.`, robust to its one outlier
-(`r=-0.057` with halo 38 excluded). **Two different standard dynamical-
-state proxies both come back null at N=71** — real information (neither
-is a usable confound control at this sample size with these proxies),
-not proof dynamical state is irrelevant. A velocity-dispersion-based
-proxy is the one named, untested candidate if this sub-question is
-picked up again. Full detail in each script's own commit and
-`experiments/20260909-tng-whim-pilot/FINDING_stage2_batch_n71.md`'s two
+(`r=-0.057` with halo 38 excluded). DM velocity dispersion within R200
+(`velocity_dispersion_confound.py`, third and most tightly-collinear
+proxy — `r(logM,log_sigma_v)=0.938, p<0.001`, a clean M-sigma-relation
+positive control): mass-detrended residual `r=0.020, n.s.` — also null.
+**Three different standard dynamical-state proxies now all come back
+null at N=71** — real information (none is a usable confound control at
+this sample size with these proxies), not proof dynamical state is
+irrelevant. A synthetic-X-ray morphological classifier (Ansarifard+2019-
+style) is the one remaining, methodologically different, untested
+candidate. Full detail in each script's own commit and
+`experiments/20260909-tng-whim-pilot/FINDING_stage2_batch_n71.md`'s three
 addenda.
 
 ## TNG ACCESS GRANTED 2026-09-09 — revival attempted, blocked on a
