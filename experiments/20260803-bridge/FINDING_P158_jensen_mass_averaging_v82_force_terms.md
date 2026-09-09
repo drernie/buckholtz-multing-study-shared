@@ -271,7 +271,7 @@ via mass-shuffle):
 
 ```
 rho (mass assortativity, 40-45 Mpc, v82's own node separation) = +0.38  (p<0.001)
-sigma_lnM (richness proxy, N=71)                                =  0.293
+sigma_lnM (unconditional population scatter, N=71 v82-adjacent sample) = 0.368
 ```
 
 **`rho > -0.5` is directly confirmed** — this file's own §2.1 threshold
@@ -284,3 +284,14 @@ population rather than a short-range-specific effect, and the pairs used
 are NOT restricted to nearest-neighbors the way v82's own construction
 implies — this answers the *sign* question §2.1 needed, not a precision
 value for further calculation without caveat.
+
+**Correction, same day:** the linked FINDING's original `sigma_lnM=
+0.293` answered a category-error question (mass scatter conditional on
+a richness proxy, not the unconditional population scatter this file's
+own `R(p)=⟨m^p⟩/⟨m⟩^p` formula and Monte Carlo script actually use — the
+same class of mistake a 2026-09-02 literature-grounding attempt was
+independently caught making, see `FINDING_P158_ADDENDUM_literature_
+grounding.md`). Corrected value: `0.368` (N=71), but real and
+substantial across population-scope choices (`0.23-0.74` depending on
+which mass range is assumed for v82's own node population) — see the
+linked FINDING's own "Correction" section for the full account.

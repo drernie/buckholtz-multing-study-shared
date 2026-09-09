@@ -139,6 +139,50 @@ among several a real analysis could use, and this is this project's own
 first, direct measurement on a modest N=71 sample, not a definitive
 literature-quality value.
 
+## Correction, same day — Part 2's `sigma_lnM|richness` answers the
+## WRONG question; the actually-needed quantity is simpler and was sitting
+## in the same dataset unused
+
+**Caught by re-reading `P158_jensen_mass_averaging_v82_force_terms.py`
+directly** (not by a skeptic pass — a plain second look while drafting
+this file's own "what's next" summary), the same category-error class a
+prior 2026-09-02 literature-grounding attempt was independently caught
+making by a Step 8a skeptic (`FINDING_P158_ADDENDUM_literature_
+grounding.md` — REJECTED for using measurement-*technique*-disagreement
+scatter, WL vs. HE, when the formula needed population mass scatter).
+Part 2 above made a different but same-*class* mistake: it computed
+`Var[log M_true | richness]` — the scatter of true mass **conditional
+on** an observable proxy, after de-trending a mass-richness relation.
+
+**What `R(p) = ⟨m^p⟩/⟨m⟩^p` in `FINDING_P158`'s own §2 actually needs**
+(confirmed directly from the script, `sigma_lnm` is the parameter of a
+raw `m = exp(Normal(0, sigma_lnm))` draw — see `monte_carlo_cross_check`,
+line 91-92): the **unconditional** population scatter of the node's own
+`log(mass)` — no observable proxy involved at all. TNG-300 gives the
+TRUE mass directly, so the correct quantity needs no proxy step:
+
+```
+sigma_lnM (N=71, 1.28e14-7.34e14 Msun, v82-adjacent range) = 0.368
+sigma_lnM (N=1461, 8.39e12-1.54e15 Msun, this file's broader Part 1 sample) = 0.743
+sigma_lnM (N=40 sub-slice, 3e14-8e14 Msun, tightest around v82's ~5-6e14 target) = 0.229
+```
+
+**Honest population-scope sensitivity, not resolved here:** these three
+real numbers span `0.23-0.74` depending purely on which population of
+"nodes" is assumed to be entering v82's own force-average — a question
+this project's reconstruction does not pin down precisely. This
+sensitivity is itself the more informative finding: `sigma_lnm` is not a
+single well-defined number until the node population is specified, and
+narrower mass windows (closer to v82's own stated target) give smaller
+scatter than the full massive-halo tail.
+
+**`0.293` (Part 2 above) is not deleted, just downgraded**: it remains a
+real, correctly-computed richness-mass conditional scatter (a legitimate
+quantity in its own right, coincidentally close in magnitude to the
+correct N=71 unconditional value 0.368) — it is simply not what `FINDING_
+P158`'s own formula asks for. Left in place above per the Hindsight
+Distortion Gap Heuristic (correct with a dated addendum, don't rewrite).
+
 ## Combined bottom line for `docs/153` bottleneck-1 planning
 
 Both of P158's named open unknowns now have a real, direct, TNG-native
@@ -146,13 +190,15 @@ answer instead of an unresolved literature-search gap:
 
 ```
 rho (mass assortativity, 40-45 Mpc)   = +0.38  (p<0.001, positive control clean)
-sigma_lnM (richness proxy, N=71)      =  0.293 (natural-log units)
+sigma_lnM (unconditional, population scope-dependent) = 0.23-0.74,
+  see Correction above — N=71 v82-adjacent sample: 0.368
 ```
 
 Per P158's own conditional result, `rho > -0.5` means the population-
 averaging correction (if it were applied) would boost the quadrupole
 term `F^(2)` MORE than the dipole `F^(1)` — the ordering P158 flagged as
 possible only below `rho=-0.5` does not apply at this measured value.
-This is a real, if still narrowly-scoped (all-pairs not nearest-neighbor;
-one observable proxy not several), contribution toward `docs/153`'s own
-bottleneck-1 pre-conditions — not a resolution of bottleneck 1 itself.
+This is a real, if still narrowly-scoped (all-pairs not nearest-neighbor
+for `rho`; population scope unresolved for `sigma_lnM`), contribution
+toward `docs/153`'s own bottleneck-1 pre-conditions — not a resolution
+of bottleneck 1 itself.

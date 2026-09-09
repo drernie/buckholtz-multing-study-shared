@@ -63,6 +63,22 @@ def main() -> None:
         "TNG300-1's own N=71 sample, not a claim about which proxy TJB's model implies."
     )
 
+    # Correction (added same day): FINDING_P158's own R(p) formula needs the
+    # UNCONDITIONAL population scatter of log(mass) -- no observable proxy at
+    # all (confirmed directly from P158_jensen_mass_averaging_v82_force_
+    # terms.py's own monte_carlo_cross_check: m = exp(Normal(0, sigma_lnm))).
+    # The richness-conditional value above answers a different question.
+    # log_m above is log10, not natural log -- convert (same ln(10) factor
+    # used for sigma_lnM|richness above; caught by re-running and comparing
+    # against an independent scratch computation, not assumed correct).
+    sigma_lnM_unconditional = st.stdev(log_m) * math.log(10)
+    print("\n=== Correction: unconditional sigma_lnM (what P158 actually needs) ===")
+    print(f"sigma_lnM (unconditional, N={n}) = {sigma_lnM_unconditional:.4f}")
+    print(
+        "See FINDING_mass_assortativity_and_scatter.md's own 'Correction' "
+        "section for population-scope sensitivity (0.23-0.74 across samples)."
+    )
+
 
 if __name__ == "__main__":
     main()
