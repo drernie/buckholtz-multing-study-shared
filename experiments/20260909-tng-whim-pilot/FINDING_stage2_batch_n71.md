@@ -304,6 +304,37 @@ other mass-dependent heating process with the same radial signature;
 anything about MULTING (`NO_AUTHOR_ERROR` — this is standard ICM/WHIM
 astrophysics in a public simulation, unrelated to v82's own claims).
 
+## Fifth addendum, same day — the Fourth Addendum's own suggested
+## follow-up (hot vs. WHIM fraction, mass-controlled) turns out to be
+## a near-tautology, not new information
+
+**Question, named as a cheap follow-up in the pearl_registry row for
+the Fourth Addendum:** does `hot_fraction` predict `WHIM_fraction`
+beyond what mass alone already explains?
+
+**Caught before over-interpreting it:** `cold_fraction + WHIM_fraction
++ hot_fraction = 100%` EXACTLY for every cluster — they are a 3-way
+split of the same fixed annulus mass, not three independent
+measurements. `hot_vs_whim_partial_correlation.py` computed the raw
+correlation (`r=-0.984, p<0.001`) and then, explicitly, the correlation
+implied by the arithmetic alone if `cold_fraction` were exactly zero
+(`r=-0.986`) — the two are nearly identical. **The near-perfect
+anti-correlation is a structural consequence of the closed 3-part
+composition (`cold_fraction` is small, ~1.9% ± 1.1%, so
+`WHIM≈100−hot`), not new physical evidence that hot and WHIM gas trade
+off for a reason beyond arithmetic.** Mass-detrending both sides first
+does not escape this (`r=-0.984` again) — the compositional constraint
+holds regardless of mass.
+
+**Verdict:** this specific follow-up, as originally scoped, does not
+add information beyond the Fourth Addendum's own hot-fraction-vs-mass
+result. A genuinely independent test of "does hot gas trade off against
+WHIM gas for a real physical reason" would need a measure that is NOT
+mechanically complementary — e.g. absolute WHIM mass (not fraction) vs.
+absolute hot mass, or a comparison across radius rather than across
+temperature bins at fixed radius. Not attempted here — named as the
+corrected version of this follow-up, not built.
+
 ## Next step, named not done
 
 1. ~~Analyze `group_nsubs` as a dynamical-state proxy~~ — **done, real
