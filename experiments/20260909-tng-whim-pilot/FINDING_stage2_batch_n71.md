@@ -254,6 +254,56 @@ VR/R/IR/VI classes, azimuthal scatter) remains untested and is a
 methodologically different class of proxy, not covered by any of the
 three tried here.
 
+## Fourth addendum, same day — temperature-profile mechanism test: a
+## real POSITIVE finding, not another null
+
+**Question:** does the candidate mechanism named above ("more massive
+clusters have deeper potential wells producing more extended already-
+shock-heated (>10⁷K) gas past R200, shrinking the WHIM-temperature-
+window's captured fraction") actually hold, checked directly against
+the temperature profile shape instead of just the binary WHIM split?
+
+**Method:** `temperature_profile_vs_mass.py` re-fetched gas cutouts for
+the same 71 known-good clusters (deleted after the original batch;
+same fields, same formula) and split annulus gas into three bins —
+cold (`T<1e5K`), WHIM (`1e5-1e7K`), hot (`T>1e7K`) — instead of the
+original binary split, plus a radial sub-split (inner `1.0-2.0×R200`
+vs. outer `2.0-3.0×R200`).
+
+**Positive control passed exactly:** recomputed WHIM% matches the
+original CSV's own value to `0.0000` percentage points for all 71
+clusters — same formula, same fields, confirms this is a real
+re-measurement, not a different pipeline giving a different answer by
+accident.
+
+**Result — the candidate mechanism is supported, and its own radial
+signature confirms WHERE:**
+```
+r(log M200, hot_fraction_pct)                      =  0.386  (N=71, p<0.001)
+r(log M200, hot_fraction_inner [1.0-2.0 R200])      =  0.503  (N=71, p<0.001)
+r(log M200, hot_fraction_outer [2.0-3.0 R200])      = -0.177  (N=70, n.s.)
+```
+
+More massive clusters DO have a significantly larger fraction of
+`T>1e7K` ("hot," non-WHIM) gas in their annulus — and this effect is
+concentrated in the INNER half of the annulus (`1.0-2.0×R200`, where
+shock-heated gas driven by a deeper potential well would physically be
+expected to sit), not spread out to the outer edge near `3×R200`, where
+the correlation with mass vanishes. This is internally consistent with
+the named mechanism, not just a restatement of the original WHIM-mass
+anticorrelation under a different name — the radial split is new
+information the original binary WHIM/non-WHIM measurement could not
+show.
+
+**What this does NOT establish:** that this is the ONLY mechanism
+behind the Li+2025 discrepancy — the other two named candidates
+(different sim physics, different radial-binning convention) remain
+untested; that the effect is causal in the sense of confirming the
+"deeper potential well" physical story specifically, as opposed to some
+other mass-dependent heating process with the same radial signature;
+anything about MULTING (`NO_AUTHOR_ERROR` — this is standard ICM/WHIM
+astrophysics in a public simulation, unrelated to v82's own claims).
+
 ## Next step, named not done
 
 1. ~~Analyze `group_nsubs` as a dynamical-state proxy~~ — **done, real
@@ -267,6 +317,12 @@ three tried here.
    dynamical-state proxy is currently named as untested; a
    synthetic-X-ray morphological indicator would need a pipeline this
    project does not have.
+3a. ~~Check the full temperature profile shape vs mass~~ — **done, real
+    POSITIVE result: hot-gas fraction increases with mass, concentrated
+    in the inner annulus** (see Fourth Addendum above). One of the three
+    named candidate explanations for the Li+2025 discrepancy is now
+    supported; the other two (sim physics, radial-binning convention)
+    remain untested.
 4. **Wait for or pursue the external hydrostatic-mass data** — the
    actual bottleneck for H1b itself.
 5. If the Three Hundred data arrives for a comparable cluster sample,
