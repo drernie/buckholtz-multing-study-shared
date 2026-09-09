@@ -91,21 +91,75 @@ reporting the headline number in isolation. Two honest readings:
    massive halos"). This measurement does not restrict to nearest-
    neighbor pairs — it uses every pair in the separation band, which
    likely over-counts halos that are *also* close to several other
-   massive neighbors. A nearest-neighbor-restricted version would answer
-   the more precisely-matched question and was **not built here** (scope
-   decision, not an oversight — this already answers P158's binary
-   question of *sign*, which is what its own conditional result needed).
+   massive neighbors. **Now built — see "Nearest-neighbor-restricted
+   check" below, and the result changes the picture substantially.**
+
+### Nearest-neighbor-restricted check, same day — the 40-45 Mpc band
+### contains ZERO true nearest-neighbor pairs in this sample
+
+`nearest_neighbor_assortativity.py`, reusing `top_halos_pos_mass.csv`
+(no new API calls). For each of the 1461 halos, found its single nearest
+neighbor (not "any pair in a band") among the same sample.
+
+```
+Nearest-neighbor separation distribution (N=1461):
+  min=2.36  max=37.92  median=9.19  mean=10.65 Mpc
+
+Mass correlation among ALL nearest-neighbor pairs (any separation):
+  r(log M_self, log M_neighbor) = 0.0192  (t=0.73, n.s.)
+
+Nearest-neighbor pairs whose separation falls in 40-45 Mpc:
+  N = 0 (of 1461)
+```
+
+**This is a genuinely important correction, not a minor scope note.**
+The maximum nearest-neighbor separation across the ENTIRE top-1500-
+most-massive-halo sample is 37.9 Mpc — no halo in this population has
+its true nearest neighbor at 40-45 Mpc at all. Every pair contributing
+to the earlier `rho=+0.38` headline at that separation is, by
+construction, NOT a nearest-neighbor pair for either halo in it — each
+member has a genuinely closer, more massive-correlated neighbor
+elsewhere (median 9.2 Mpc away) that the all-pairs measurement ignored.
+And restricted to genuine nearest-neighbor pairs at ANY separation, the
+mass correlation is **not significant** (`r=0.019`, essentially zero) —
+a much weaker result than the flat `~0.38` the all-pairs approach found
+everywhere.
+
+**Reading:** the original all-pairs `rho=+0.38` reflects broad
+large-scale bias/clustering of a sparse, highly mass-selected tracer
+population (reading 1, above) — confirmed, not just suspected. It is
+NOT evidence of assortativity between the SPECIFIC pairs a node would
+actually be "paired with" under a nearest-neighbor reading of v82's own
+construction; that specific question now has its own, much weaker,
+non-significant answer (`r=0.019`). **Which reading applies to v82's
+own physical intent is not resolved here** — if "the pair" in v82's
+sense is not literally "nearest spatial neighbor" but something else
+(a characteristic scale from a different physical argument, not halo-
+catalog nearest-neighbor statistics), neither number above may be the
+right one to use, and that ambiguity is itself worth naming rather than
+silently picking one answer.
 
 **What this does NOT establish:** that `rho` is exactly `0.38` for
 "the" pair construction v82 itself uses; that the assortativity is
-short-range-specific rather than a broad large-scale-bias effect; or
-anything about MULTING's own correctness (`NO_AUTHOR_ERROR`).
+short-range-specific rather than a broad large-scale-bias effect
+(now positively confirmed to be the latter, not just suspected — see
+the nearest-neighbor check above); or anything about MULTING's own
+correctness (`NO_AUTHOR_ERROR`).
 
-**What this DOES establish, robustly:** `rho` is **positive** at v82's
-own characteristic separation, by a wide, statistically overwhelming
-margin over the shuffled-mass floor, across every separation bin tested
-from 0 to 100 Mpc. P158's conditional "if rho > -0.5" branch is the one
-that applies; nothing here suggests a plausible route to `rho < -0.5`.
+**What this DOES establish, robustly — revised after the nearest-
+neighbor check:** at least ONE well-defined reading of `rho` at v82's
+own characteristic separation is **positive and highly significant**
+(`+0.38`, all-pairs, reflecting large-scale bias, not proximity per se).
+A DIFFERENT, arguably more construction-faithful reading (mass
+correlation between a halo and its literal nearest neighbor) is
+**consistent with zero** (`r=0.019, n.s.`), and — more fundamentally —
+**no halo in this sample has a true nearest neighbor at 40-45 Mpc at
+all**. Both are real, both survive their own negative controls; they
+simply answer different questions, and which one v82's own physical
+construction actually asks is not settled by this project's
+reconstruction. Either way, **nothing found here suggests a route to
+`rho < -0.5`** — the ordering-reversal regime `FINDING_P158` names stays
+unreached under every reading tried.
 
 ## Part 2 — Mass-observable scatter (`sigma_lnm`)
 
@@ -186,19 +240,30 @@ Distortion Gap Heuristic (correct with a dated addendum, don't rewrite).
 ## Combined bottom line for `docs/153` bottleneck-1 planning
 
 Both of P158's named open unknowns now have a real, direct, TNG-native
-answer instead of an unresolved literature-search gap:
+answer instead of an unresolved literature-search gap — **and both
+answers turned out to need a second, corrective pass the same day**,
+which is itself worth noting as a pattern (both mistakes were the same
+species: assuming an available, easy-to-compute quantity was the one
+actually needed, without re-deriving the target formula's exact
+requirement first):
 
 ```
-rho (mass assortativity, 40-45 Mpc)   = +0.38  (p<0.001, positive control clean)
+rho: two internally-consistent readings, not one number
+  all-pairs (any halo pair in the 40-45 Mpc band)     = +0.38 (p<0.001)
+  nearest-neighbor-restricted (the halo's true NN)    = N=0 pairs in that band;
+                                                          r=0.019 (n.s.) at ANY separation
 sigma_lnM (unconditional, population scope-dependent) = 0.23-0.74,
   see Correction above — N=71 v82-adjacent sample: 0.368
 ```
 
 Per P158's own conditional result, `rho > -0.5` means the population-
 averaging correction (if it were applied) would boost the quadrupole
-term `F^(2)` MORE than the dipole `F^(1)` — the ordering P158 flagged as
-possible only below `rho=-0.5` does not apply at this measured value.
-This is a real, if still narrowly-scoped (all-pairs not nearest-neighbor
-for `rho`; population scope unresolved for `sigma_lnM`), contribution
-toward `docs/153`'s own bottleneck-1 pre-conditions — not a resolution
-of bottleneck 1 itself.
+term `F^(2)` MORE than the dipole `F^(1)`. **Both readings of `rho`
+above satisfy `rho > -0.5`** — the ordering-reversal regime is unreached
+either way — but they disagree sharply on how large and how physically
+grounded the effect is (a robust `+0.38` vs. an essentially-null
+`0.019`), and only a clearer statement of what "the pair" means in
+v82's own construction would resolve which one is the right number to
+use. This is a real, honest contribution toward `docs/153`'s own
+bottleneck-1 pre-conditions — not a resolution of bottleneck 1 itself,
+and less conclusive than this file's own first-pass version claimed.

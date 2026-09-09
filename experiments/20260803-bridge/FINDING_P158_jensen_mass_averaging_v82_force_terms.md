@@ -295,3 +295,16 @@ grounding.md`). Corrected value: `0.368` (N=71), but real and
 substantial across population-scope choices (`0.23-0.74` depending on
 which mass range is assumed for v82's own node population) — see the
 linked FINDING's own "Correction" section for the full account.
+
+**Second correction, same day:** `rho=0.38` above is the ALL-PAIRS
+reading. A nearest-neighbor-restricted check (the more construction-
+faithful reading of "the pair") found **zero** halos in the same
+N=1461 sample whose true nearest neighbor sits at 40-45 Mpc at all —
+median true nearest-neighbor separation is 9.2 Mpc — and the mass
+correlation among genuine nearest-neighbor pairs at any separation is
+essentially null (`r=0.019, n.s.`). Both readings still satisfy `rho >
+-0.5` (the ordering-reversal threshold stays unreached either way), but
+they disagree sharply on effect size and on whether `rho`'s positivity
+reflects large-scale bias (all-pairs) or genuine pairwise coupling
+(nearest-neighbor, weak/absent here). Full account: linked FINDING's
+own "Nearest-neighbor-restricted check" section.
