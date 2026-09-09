@@ -147,17 +147,61 @@ indicators (VR/R/IR/VI morphological class, azimuthal scatter `σ_A`)
 require synthetic X-ray imaging this project does not have a pipeline
 for — a real, substantial undertaking, not attempted here.
 
+## Second addendum, same day — CM/potential-minimum offset checked,
+## ALSO not a usable dynamical-state proxy for WHIM% (second real
+## negative result)
+
+**Question:** is the offset between `GroupCM` (mass-weighted center)
+and `GroupPos` (potential minimum / most bound particle) — a real,
+standard cluster-relaxation indicator (Mohr et al. 1993; the same
+physical idea behind Ansarifard+2019's own 2D "centroid shift," here in
+a simpler, directly-available 3D catalog form) — related to WHIM%, once
+mass is controlled for?
+
+**Method:** `check_cm_offset_confound.py` re-fetched each cluster's
+`info.json` (light, no gas cutout needed — the Stage-2 batch's own
+cutouts were already deleted), computed the periodic-corrected 3D
+offset normalized by `R200`, then ran the same collinearity + de-trend
++ residual-correlation procedure as the `GroupNsubs` check above.
+
+**Result:**
+```
+Offset/R200: min=0.027  max=2.807  mean=0.405  median=0.213  stdev=0.502
+r(log M200, offset/R200)             = -0.543  (p<0.001) -- more massive
+                                        clusters in this sample have
+                                        systematically SMALLER offset
+r(offset/R200, WHIM%), raw           =  0.154  (n.s.)
+r(mass-detrended offset resid, WHIM%)= -0.083  (n.s.)
+```
+
+**Robustness check on the single most extreme point** (halo 38,
+offset=2.81×R200 — flagged as a real outlier before trusting the full
+sample, not silently included): excluding it, `r(logM,offset)=-0.480`
+(still `p<0.001`) and the mass-detrended residual correlation becomes
+`-0.057` (still not significant) — **the null result is not an
+artifact of one extreme point.**
+
+**Verdict: a second, independent, standard dynamical-state proxy also
+fails to show a mass-independent relation to WHIM%** in this N=71
+sample. Combined with the `GroupNsubs` result above, two real,
+different, physically-motivated confound-control candidates both come
+back null — worth taking as a real (if still limited-N) signal that
+either (a) dynamical state genuinely does not drive WHIM% much beyond
+what mass explains, at least via these two proxies, or (b) both proxies
+are individually too coarse/noisy to detect a real but modest effect at
+`N=71`. Not distinguished here.
+
 ## Next step, named not done
 
-1. ~~Analyze `group_nsubs` as a dynamical-state proxy~~ — **done above,
-   real negative result.** A genuinely independent dynamical-state
-   proxy (e.g., center-of-mass vs. potential-minimum offset, or
-   velocity-dispersion-based relaxation indicator, both computable from
-   already-available particle data without a full mock-X-ray pipeline)
-   remains an open, not-yet-attempted candidate if this line is pursued
-   further.
-2. **Wait for or pursue the external hydrostatic-mass data** — the
+1. ~~Analyze `group_nsubs` as a dynamical-state proxy~~ — **done, real
+   negative result** (see Addendum above).
+2. ~~Analyze CM/potential-minimum offset~~ — **done, second real
+   negative result, robust to the one outlier** (see Second Addendum
+   above). A velocity-dispersion-based relaxation indicator remains the
+   one named-but-untested candidate if this specific sub-question is
+   pursued further — not attempted here.
+3. **Wait for or pursue the external hydrostatic-mass data** — the
    actual bottleneck for H1b itself.
-3. If the Three Hundred data arrives for a comparable cluster sample,
+4. If the Three Hundred data arrives for a comparable cluster sample,
    this batch's own 71 WHIM measurements are immediately reusable — no
    rework needed on this half.
