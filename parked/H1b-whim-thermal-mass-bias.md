@@ -304,6 +304,29 @@ conclusion forward as current** when evaluating revival condition 2.
 
 ---
 
+## Stage 2 DONE 2026-09-09 — 3 of 4 ingredients now computable at full
+## scale (N=71), a real side-finding surfaced, 4th ingredient still
+## external
+
+`experiments/20260909-tng-whim-pilot/whim_batch_n71.py` →
+`FINDING_stage2_batch_n71.md`. 71 real TNG300-1 clusters, 71/71 controls
+pass, 65.3 min wall time. Real, statistically significant (p<0.001)
+anticorrelation found between cluster mass and WHIM mass fraction
+(`r=-0.429`) — a genuine side-finding, logged in `pearl_registry/
+INDEX.md`, independent of H1b itself. Mean WHIM% (33.4%) sits well below
+Li+2025's own reported ~70% plateau — a real, now N=71-quantified
+discrepancy with 3 named candidate explanations, none yet resolved.
+
+**Still unchanged: the actual H1b test cannot run.** `M_true`,
+WHIM-fraction, and a raw substructure-count proxy (`group_nsubs`,
+collected but not yet analyzed as a real confound control) are now
+computable for any qualifying TNG-300 cluster — but hydrostatic mass
+(`M_HE`/`delta_M`) remains external, and that letter is still not sent
+(user's own explicit choice). This batch does not move H1b's own
+correlation test forward by itself — it removes the "can we even
+compute our half" uncertainty and means zero rework is needed once/if
+the missing half arrives.
+
 ## TNG ACCESS GRANTED 2026-09-09 — revival attempted, blocked on a
 ## DIFFERENT, more specific reason than before
 
