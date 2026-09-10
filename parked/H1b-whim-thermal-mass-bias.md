@@ -600,3 +600,42 @@ command: `403 → 200` on `/api/TNG300-1/`.
 is actually *granted*, not when it is requested. And the pre-condition
 above stands regardless — **Step 4a (floor–ceiling) runs BEFORE the test,
 not after.**
+
+## 2026-09-10 — real, useful context found, not a data shortcut
+
+`[VERIFIED-PDF]` de Andres, Cui, Yepes et al. (2024), *"The three hundred
+project: mapping the matter distribution in galaxy clusters via deep
+learning from multiview simulated observations,"* MNRAS 528, 1517-1530
+(`doi:10.1093/mnras/stae071`) — read in full (user-supplied PDF).
+**Weiguang Cui is a co-author** — one of the 4 recipients of the
+2026-09-09 data-request letter.
+
+**What it is:** a U-Net trained on The Three Hundred's own hydrodynamical
+simulations (GADGET-X, GIZMO-SIMBA) to infer projected total-mass-density
+maps from simulated SZ/X-ray/stellar-density observations, evaluated
+against true simulated mass (bias `~1%`, scatter `~3%` for the best
+multiview model).
+
+**Data Availability statement (verbatim):** *"The results shown in this
+work use data from The Three Hundred galaxy clusters sample. The data is
+freely available upon request following the guidelines of The Three
+Hundred collaboration, at https://www.the300-project.org."* — confirms
+the request-based route already taken (09-09 letter) is the correct,
+only path; no public catalog bypass exists.
+
+**Real, usable context (not a data source):**
+1. Cui's group is actively building ML tooling for exactly this class of
+   question (observable-proxy-inferred mass vs true mass) — strengthens
+   confidence he is a well-matched, currently-engaged contact for the
+   pending request, not a passive co-author.
+2. Their own bias quantity (ML-predicted total mass map vs true mass,
+   `b_ρ = (M̂_ρ-M_ρ)/M_ρ`) is conceptually adjacent to but NOT the same
+   as H1b's target `B_hydro = 1-M_HE/M_true` (classical hydrostatic-
+   equilibrium mass, not an ML image-to-mass inference) — not a plug-in
+   replacement.
+3. Does not touch WHIM/filament gas at all — all apertures are `R200`/
+   `R500` (cluster interior), not the `2-3×R200` region H1b's other half
+   needs.
+
+**Net effect on H1b's own blocked status: unchanged.** No new data
+channel opened; real, useful context for interpreting a future reply.
