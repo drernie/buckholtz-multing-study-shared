@@ -269,7 +269,22 @@ this file is the slower-moving strategic layer above it).
   counterpart, both covariance-structure variants tested). The MATERIAL/
   NOT-MATERIAL crux was never about diagonal-vs-covariance error
   treatment; it is entirely about whether the 2 flagged excursion points
-  are trusted. See `FINDING_moresco_table_sensitivity.md`.
+  are trusted. **Same day, closed:** traced the caveat's real source via
+  the BC03 table's own `reference` column to Moresco et al. 2012
+  (`[VERIFIED-arXiv:1201.3609]`), not the 2020 covariance paper. Read its
+  method sections directly: one fitting procedure applied identically to
+  both compared models ("BC03"/"MaStro" — numerically confirmed to be the
+  model later renamed "M11," matching the CCcovariance repo's values to
+  3 sig figs), no z-dependent switching. The paper self-reports, verbatim:
+  "agreement with a mean difference of 0.5±0.4σ, except for the last
+  point where there is a difference of 1.6σ" — independently recomputed
+  from its own Table 1, `z=1.037` gives `1.64σ` (exact match to its own
+  flagged outlier), `z=0.7812` gives `~1.04σ`. **Verdict: not a
+  fit-method confound — real, author-acknowledged SPS sensitivity
+  concentrated at the highest-`z`, smallest-sample point.** Full-15 vs
+  clean-13 is "complete dataset" vs "authors' own tightest-agreement
+  subset," both legitimate; this closes `E5`'s caveat without picking one
+  reading as "correct." See `FINDING_moresco_table_sensitivity.md`.
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms

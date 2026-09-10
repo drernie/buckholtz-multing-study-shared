@@ -160,3 +160,17 @@ roughly the size of the point errors themselves.**
 4. Does not resolve the two high-`z` excursions' attribution.
 5. `NO_AUTHOR_ERROR` — the failure to propagate is documented here for
    **this project's own code first**, where it is directly fixable.
+
+## ADDENDUM (2026-09-10) — item 4 above is now resolved
+
+Traced via the BC03 table's own `reference` column to the real source,
+Moresco et al. 2012 (`[VERIFIED-arXiv:1201.3609]`) — not this file's own
+2020 covariance paper. The 2012 paper's own text: *"performing the
+analysis separately with the MaStro and the BC03 model, the values
+obtained are in agreement with a mean difference of `0.5±0.4σ`, except
+for the last point where there is a difference of `1.6σ`."* Both
+excursion points are real, author-acknowledged BC03-vs-MaStro(=M11,
+confirmed numerically) sensitivity, not a fit-method confound — see
+`experiments/20260910-moresco-bc03-vs-m11-refit/
+FINDING_moresco_table_sensitivity.md` Result 5 for the full trace and an
+independent re-derivation of the `1.6σ` figure.

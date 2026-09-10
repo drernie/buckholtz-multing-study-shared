@@ -1,6 +1,8 @@
-# FINDING — Moresco BC03-vs-M11 table swap: MATERIAL by chi2, but almost
-# entirely driven by 2 of 15 points FINDING_E5 already flagged as carrying
-# an unverified confound; H0,anchor itself barely moves either way
+# FINDING — Moresco BC03-vs-M11 table swap: MATERIAL by chi2 on the full
+# 15-point dataset, NOT MATERIAL on its 13 tightest-agreeing points; the
+# split traces to Moresco et al. 2012's own self-flagged 1.6-sigma
+# BC03-vs-M11 point, real data not a confound; H0,anchor barely moves
+# either way; survives full-covariance propagation unchanged
 
 **Date:** 2026-09-10
 **Continues:** `FINDING_E5_class_I_carries_quantified_model_dependence.md`
@@ -184,11 +186,71 @@ diagonal-vs-covariance error treatment — it is almost entirely about
 whether the 2 excursion points (`z=0.7812`, `z=1.037`) are trusted at face
 value, exactly as Result 3 already found. Propagating the correlated
 systematic budget (this section's own new work) does not change that
-picture in either direction. The one still-open, still-unrun check that
-would actually move this needle is the same one named in Result 3 and in
-`FINDING_E5` itself: reading Moresco et al. 2020 (arXiv:2003.07362) §3-4
-to check whether the BC03/M11 re-analysis held a fixed fit method at
-`z>0.7`.
+picture in either direction.
+
+## Result 5 — the still-open caveat is now closed: read Moresco et al. 2020
+## (arXiv:2003.07362) §3-4, then traced the real chain back to Moresco et
+## al. 2012 (arXiv:1201.3609), the actual originating paper for both
+## excursion points
+
+`FINDING_E5`'s own named caveat was never actually about the 2020
+covariance paper itself — §3-4 there (`[VERIFIED-arXiv:2003.07362]`, read
+in full) builds a THEORETICAL bias budget across many candidate SPS
+models (confirming the `8.91%` mean/`3.90-15.86%` range figures used
+throughout this thread) and does not describe how the specific published
+`HzTable_MM_BC03.dat`/`HzTable_MM_M11.dat` values were derived. The real
+provenance sits elsewhere: the BC03 table's own `reference` column
+(`[VERIFIED-BASH]`, fetched live — a 4th/5th/6th column this project had
+not looked at before today) names the source paper per point directly.
+Both excursion points trace to **Moresco et al. 2012**
+(`[VERIFIED-arXiv:1201.3609]`, read `§3.3`/`§4`/`§5` in full):
+
+- `z=0.7812` and `z=1.037` are both sourced to `Moresco et al. (2012)` —
+  along with 5 other, non-excursion points from the same paper
+  (`z=0.18, 0.20, 0.59, 0.68, 0.88`), so the paper-of-origin alone does
+  not explain the excursion; something specific to these 2 points does.
+- §3.3/§4 (`[VERIFIED-arXiv]`) describe ONE fitting procedure (the
+  `D4000_n`-age calibration, `A(Z)` slope-interpolation) applied
+  identically to BOTH stellar-population models compared in that paper —
+  **"BC03" and "MaStro"** — with no redshift-dependent or model-dependent
+  switching described anywhere in the method sections. This directly
+  answers the open half of `FINDING_E5`'s caveat: **the fit method was
+  held fixed.**
+- **"MaStro" in the 2012 paper and "M11" in the CCcovariance repository
+  are the same model**, confirmed numerically, not by name alone: Table
+  1 of the 2012 paper (`§5`) reports BC03/MaStro values of `105/88` at
+  `z=0.7812` and `154/113` at `z=1.037` — matching today's live-fetched
+  `HzTable_MM_BC03.dat`/`HzTable_MM_M11.dat` values (`104.5/88.04` and
+  `153.7/113.0`) to within rounding.
+- **The 2012 paper self-reports the exact discrepancy this thread found,
+  in its own words**, quoted verbatim: *"The measurements of H(z) have
+  proven to be extremely robust even changing between completely
+  different stellar population synthesis models: performing the analysis
+  separately with the MaStro and the BC03 model, the values obtained are
+  in agreement with a mean difference of `0.5±0.4σ`, except for the last
+  point where there is a difference of `1.6σ`."* Recomputing that
+  significance directly from their own Table 1 (`105±12` vs `88±11` at
+  `z=0.7812`; `154±20` vs `113±15` at `z=1.037`, quadrature-combined
+  errors): `z=1.037` gives `1.64σ` — an exact match to their own quoted
+  `1.6σ` "last point" outlier, confirming this IS the self-flagged point.
+  `z=0.7812` gives `~1.04σ`, elevated relative to the paper's own
+  `0.5±0.4σ` typical band but not individually singled out in their text.
+- The paper's own explanation for why the discrepancy grows at higher
+  `z`: *"At higher redshifts, the error increases because of the smaller
+  number of observed galaxies in the samples"* — a real, structural,
+  sample-size reason, not a hidden methodology change.
+
+**Verdict on `FINDING_E5`'s caveat: CLOSED, not a confound.** The 2
+excursion points are not a fit-method inconsistency — they are the
+original authors' own real, self-documented BC03-vs-MaStro/M11 sensitivity,
+concentrated at their highest-`z`, smallest-sample point (`z=1.037`,
+explicitly flagged by them at `1.6σ`). This means today's Result 2 vs
+Result 3 split is not "trustworthy data vs a data artifact" — it is
+"the full, real dataset including its most SPS-sensitive point" vs "the
+subset the original authors themselves would recognize as their most
+tightly-agreeing points." Both readings are legitimate; neither is more
+"correct" than the other, and this finding does not adjudicate between
+them — it only establishes that the split is real, not spurious.
 
 ## What this establishes
 
@@ -202,24 +264,38 @@ to check whether the BC03/M11 re-analysis held a fixed fit method at
    own headline framing — is essentially unchanged either way
    (`+0.04` to `+0.13 km/s/Mpc`, against a fitted value of `~73.2`).
 3. `[VERIFIED-REAL]` The chi2-based "is this material" verdict is NOT
-   robust to the 2 points `FINDING_E5` already flagged as carrying an
-   unverified confound — it is MATERIAL if those 2 points are trusted at
-   face value, NOT MATERIAL if they are set aside pending the still-unrun
-   check named in `FINDING_E5` (§3-4 of Moresco et al. 2020, arXiv:
-   2003.07362, on whether the BC03/M11 re-analysis held the same fit
-   method at `z>0.7`).
+   robust to the 2 points `FINDING_E5` already flagged — it is MATERIAL
+   if those 2 points are trusted at face value, NOT MATERIAL if they are
+   set aside. **[UPDATED, Result 5]** Those 2 points are now confirmed
+   real, author-acknowledged data (Moresco et al. 2012's own `1.6σ`
+   self-flagged BC03-vs-MaStro/M11 discrepancy at their highest-`z`,
+   smallest-sample point), not a fit-method confound — so this split is
+   "full dataset vs. the original authors' own tightest-agreement
+   subset," a legitimate choice either way, not "clean data vs. a
+   suspect artifact."
 4. `[VERIFIED-REAL]` Result 4: this crux is NOT an artifact of using
    diagonal instead of correlated errors. Propagating Moresco's own full
    systematic covariance (`Cov_model`, `spsooo+imf`, both his-15-only and
    all-31-correlated structures) reproduces the same MATERIAL/NOT MATERIAL
    split, within ~3% of the diagonal-only Delta chi2 values in every case.
+5. `[VERIFIED-REAL]` Result 5: `FINDING_E5`'s own named caveat is CLOSED.
+   Traced to the real source (Moresco et al. 2012, arXiv:1201.3609, via
+   the BC03 table's own `reference` column) rather than the 2020
+   covariance paper it was originally attributed to. The fit method
+   (`D4000_n`-age calibration) was held fixed across BC03/MaStro(=M11)
+   and across redshift — confirmed by reading the 2012 paper's own
+   method sections directly, and by an independent recomputation of the
+   `1.6σ` figure from its own published Table 1, matching to 3
+   significant figures.
 
 ## What this does NOT establish
 
-1. Does not resolve `FINDING_E5`'s own open caveat on the 2 excursion
-   points — that check (reading §3-4 of arXiv:2003.07362) is still unrun.
-   This finding narrows why it matters (it flips the chi2 materiality
-   verdict) but does not run it.
+1. **[CLOSED, Result 5]** Previously: "does not resolve `FINDING_E5`'s
+   own open caveat." Now resolved — see Result 5. What remains open: this
+   finding does not adjudicate whether the 13-clean-point or the full
+   15-point reading is the "right" one to use going forward — both are
+   legitimate, real data; that choice is a modelling decision, not
+   something this finding can settle.
 2. Does not show v82's own published results are wrong, right, or
    sensitive — this is entirely this project's own reconstruction
    (`chi2_fixed_h0anchor`, `TABLE_II`), never checked against v82's
