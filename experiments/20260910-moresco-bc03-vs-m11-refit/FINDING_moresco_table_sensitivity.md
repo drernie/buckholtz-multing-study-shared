@@ -141,6 +141,55 @@ degeneracy in `chi2_fixed_h0anchor` (named directly in `P176`'s own
 filename, "hessian degeneracy") — a flat direction in parameter space lets
 `beta1`/`beta2` move substantially for very little chi2 cost.
 
+## Result 4 — same two checks re-run under Moresco's own FULL, correlated
+## systematic covariance (not just diagonal sigma_Hz): verdict unchanged
+## either way
+
+Diagonal `sigma_Hz` (used in Results 1-3) is known, per `FINDING_E5`, to
+exclude the SPS/modelling systematic entirely — Moresco's own README calls
+that component "fully correlated across redshift" and it lives only in
+`Cov_model`, not in the quoted error column. This re-runs both the full
+15-point swap and the 13-clean-point robustness check using the actual
+`Cov_model` recipe (`spsooo+imf` components, Moresco's own default),
+reusing the already positive-control-verified machinery from
+`experiments/20260906-evidence-authority/E8_full_covariance_propagation.py`
+and `E8b_reoptimize_under_covariance.py` verbatim
+(`full_covariance_bc03_vs_m11.py`, `full_covariance_robustness_exclude_
+excursions.py`). Two covariance variants tested, matching E8's own
+convention: correlated only among the 15 Moresco points, vs correlated
+across all 31 of TJB's CC points.
+
+| | Diagonal (Results 1-3) | Full cov, his-15-correlated | Full cov, all-31-correlated |
+|---|---|---|---|
+| **Full 15-point swap** Delta chi2 | `-5.910` | `-6.066` | `-5.943` |
+| verdict | MATERIAL | MATERIAL | MATERIAL |
+| **13-clean-points-only** Delta chi2 | `-0.585` | `-0.628` | `-0.602` |
+| verdict | NOT MATERIAL | NOT MATERIAL | NOT MATERIAL |
+
+**The full-covariance treatment changes almost nothing about the qualitative
+picture.** Every Delta chi2 above sits within ~3% of its diagonal-only
+counterpart; every verdict (MATERIAL / NOT MATERIAL) is unchanged by
+switching from diagonal to full covariance, in both covariance-structure
+variants tested. `Delta H0_anchor` stays small throughout (`+0.05` to
+`+0.14 km/s/Mpc`); `beta1`/`beta2` shifts stay in the same `13-26%` band.
+Positive controls: diagonal chi2 at TJB's own optimum still reproduces his
+published `15.75` (`15.7516`, this run); Cholesky factorization of the
+full covariance matrix succeeds (SPD) in every variant; convergence checked
+across the same 3 independent `TABLE_II` starting rows as Results 1-3, all
+converged (`ok`) — matching E8b's own convergence convention.
+
+**What this establishes, concretely:** the crux of whether today's Moresco
+sensitivity check reads MATERIAL or NOT MATERIAL was never really about
+diagonal-vs-covariance error treatment — it is almost entirely about
+whether the 2 excursion points (`z=0.7812`, `z=1.037`) are trusted at face
+value, exactly as Result 3 already found. Propagating the correlated
+systematic budget (this section's own new work) does not change that
+picture in either direction. The one still-open, still-unrun check that
+would actually move this needle is the same one named in Result 3 and in
+`FINDING_E5` itself: reading Moresco et al. 2020 (arXiv:2003.07362) §3-4
+to check whether the BC03/M11 re-analysis held a fixed fit method at
+`z>0.7`.
+
 ## What this establishes
 
 1. `[VERIFIED-REAL]` A real, live, previously-unrun computation: this
@@ -159,6 +208,11 @@ filename, "hessian degeneracy") — a flat direction in parameter space lets
    check named in `FINDING_E5` (§3-4 of Moresco et al. 2020, arXiv:
    2003.07362, on whether the BC03/M11 re-analysis held the same fit
    method at `z>0.7`).
+4. `[VERIFIED-REAL]` Result 4: this crux is NOT an artifact of using
+   diagonal instead of correlated errors. Propagating Moresco's own full
+   systematic covariance (`Cov_model`, `spsooo+imf`, both his-15-only and
+   all-31-correlated structures) reproduces the same MATERIAL/NOT MATERIAL
+   split, within ~3% of the diagonal-only Delta chi2 values in every case.
 
 ## What this does NOT establish
 
@@ -170,13 +224,12 @@ filename, "hessian degeneracy") — a flat direction in parameter space lets
    sensitive — this is entirely this project's own reconstruction
    (`chi2_fixed_h0anchor`, `TABLE_II`), never checked against v82's
    actual, unpublished fitting code.
-3. Does not propagate Moresco's own full covariance (`Cov_model`,
-   `100%`-correlated across `z`) — only substitutes central `H(z)` values,
-   keeping `sigma_Hz` from BC03's own quoted column. `FINDING_E5` already
-   showed that column excludes the SPS systematic by construction; a
-   covariance-aware refit is a separate, still-unrun computation (partial
-   groundwork exists in `E8_full_covariance_propagation.py`/
-   `E8b_reoptimize_under_covariance.py`, not connected to this swap).
+3. **[UPDATED, Result 4]** Full covariance propagation IS now done (both
+   swap variants, both correlation structures) — this item previously said
+   it was unrun; it no longer is. What remains genuinely untested: whether
+   M11 itself warrants a *different* covariance recipe than BC03's (this
+   script reuses one shared matrix for both, per Result 4's own stated
+   design choice) — a separate, harder question this work does not attempt.
 4. Does not establish which table (BC03 or M11) is "more correct" — both
    are real, published, peer-reviewed choices; this finding is silent on
    that question by design.
@@ -188,6 +241,10 @@ filename, "hessian degeneracy") — a flat direction in parameter space lets
 
 - `moresco_bc03_vs_m11_refit.py` — main refit (Result 1-2).
 - `robustness_exclude_excursions.py` — Result 3 robustness check.
-- Both `ruff check` clean; full project test suite (`pytest tests/ -q`)
+- `full_covariance_bc03_vs_m11.py` — Result 4, full 15-point swap under
+  Moresco's own correlated systematic covariance.
+- `full_covariance_robustness_exclude_excursions.py` — Result 4, the same
+  13-clean-point robustness check under full covariance.
+- All `ruff check` clean; full project test suite (`pytest tests/ -q`)
   unaffected, run before and after this work (all passing, one pre-existing
   unrelated `RuntimeWarning` in an unrelated test file).

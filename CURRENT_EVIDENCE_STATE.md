@@ -261,8 +261,15 @@ this file is the slower-moving strategic layer above it).
   MATERIAL. `H0_anchor` barely moves either way (`+0.04` to
   `+0.13 km/s/Mpc`); `β1`/`β2` shift `18-26%` in both versions,
   consistent with (not new proof of) the project's own known `β1`/`β2`-
-  vs-`H0_anchor` degeneracy (`P176`). See
-  `FINDING_moresco_table_sensitivity.md`.
+  vs-`H0_anchor` degeneracy (`P176`). **Same day, follow-up:** re-ran both
+  the full swap and the 13-clean-point check under Moresco's own full
+  correlated systematic covariance (reusing `E8`/`E8b`'s own positive-
+  control-verified machinery) instead of diagonal `σ_Hz` — verdict
+  unchanged either way (every `Δχ²` within ~3% of its diagonal
+  counterpart, both covariance-structure variants tested). The MATERIAL/
+  NOT-MATERIAL crux was never about diagonal-vs-covariance error
+  treatment; it is entirely about whether the 2 flagged excursion points
+  are trusted. See `FINDING_moresco_table_sensitivity.md`.
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
