@@ -248,6 +248,21 @@ this file is the slower-moving strategic layer above it).
   Doboszewski & Elder (2025) already publish a richer 5-strategy
   taxonomy for exactly this problem; this project's own contribution is
   the concrete measurements (`E5`, `E13`), not the classification idea.
+  **`experiments/20260910-moresco-bc03-vs-m11-refit/` (2026-09-10, runs
+  `E5`'s own named-unrun computation, directly answers TJB's 2026-09-09
+  question about table-switch sensitivity):** propagated the BC03↔M11
+  table swap through this project's own `chi2_fixed_h0anchor`
+  reconstruction (positive control PASS, reproduces TJB's Table II to
+  `<=0.01` in χ²). Full 15-point swap: `Δχ²=-5.91` — MATERIAL by this
+  project's own `MCID=2.0`. But that verdict is carried almost entirely
+  by 2 of 15 points `E5` itself already flagged as carrying an
+  *unverified* confound (method difference vs SPS choice at `z>0.7`,
+  still unchecked) — excluding just those 2 points, `Δχ²=-0.585`: NOT
+  MATERIAL. `H0_anchor` barely moves either way (`+0.04` to
+  `+0.13 km/s/Mpc`); `β1`/`β2` shift `18-26%` in both versions,
+  consistent with (not new proof of) the project's own known `β1`/`β2`-
+  vs-`H0_anchor` degeneracy (`P176`). See
+  `FINDING_moresco_table_sensitivity.md`.
 - **P194: a dense information-profile scan of the (10,16.957) window**
   confirms `CLAIM_P194`'s falsifiable predicate (monotonic rise toward
   the boundary, 16.24%→75.12% shrinkage at σ=10%) and directly confirms
