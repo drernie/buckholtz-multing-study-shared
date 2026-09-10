@@ -595,12 +595,18 @@ per-cluster catalog for TNG (confirmed by direct search of
 search across 9 channels (TNG-native, then "The Three Hundred Project"
 web portal ×3, GitHub, VizieR, ADS, and the source PDF's own appendices)
 closed definitively: no published, per-cluster, ID-keyed `M_HE` table
-exists anywhere checked. A data-request letter to that paper's authors is
-drafted (`correspondence/draft_three_hundred_data_request_20260909.md`)
-but deliberately **not sent** — the user's own call, pending personal
-review. `NO_AUTHOR_ERROR`: none of this bears on MULTING or TJB's own
-claims — it is this project's own infrastructure for a test that has not
-yet run.
+exists anywhere checked. A data-request letter to that paper's authors
+was drafted and **[VERIFIED-BASH] SENT 2026-09-09**
+(`correspondence/draft_three_hundred_data_request_20260909.md`, real
+verified recipient addresses, via browser automation after the Gmail
+MCP send tool failed systemically). **Corrected 2026-09-10** — this
+section previously read "deliberately not sent," stale since before the
+send; caught live while checking for new correspondence, the same
+"index-disconnected work" pattern named elsewhere in this file. Ball is
+with the authors, `next_check` 2026-12-01; no reply as of 2026-09-10
+(checked live). `NO_AUTHOR_ERROR`: none of this bears on MULTING or
+TJB's own claims — it is this project's own infrastructure for a test
+that has not yet run.
 
 ### 7.4 A measured fact about this repository
 
