@@ -158,3 +158,28 @@ to the whole T_X question and should not wait on this branch's resolution.
 review, not FALSIFIED.*
 *Full analysis script: `experiments/20260701-h1c-morphology-mass-bias/artifacts/h1c_p001_mgas_only_retest.py`.*
 *NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION*
+
+## Addendum (2026-09-10) — the Relaxation Map's own "cheapest, correct
+## next direction" (row 2) was run: reading (1) is now favored, not
+## eliminated
+
+`experiments/20260910-nr015-cc-ncc-stratification/decision.md` ran the
+CC/NCC stratification this file named. Positive control PASS (reproduces
+this file's own `-0.7008`/`-0.8108` numbers exactly). The pre-registered
+`K0` split itself was underpowered on this sample (only `6/45` clusters
+are cool-core) — a real finding about this X-ray-selected sample, not a
+test failure — but two independent dynamical-state proxies already in
+the same dataset (`wX` centroid shift, `P3P0` power ratio), each with a
+well-powered `~22`-vs-`23` median split, both show `r(delta_M, T_X |
+M_WL)` at comparable strength in relaxed AND disturbed clusters (`wX`:
+`-0.866` vs `-0.843`, Fisher `z=-0.265, p=0.791`; `P3P0`: `-0.763` vs
+`-0.861`, `z=+0.912, p=0.362`) — neither shows reading (2)'s own
+predicted signature (concentration in disturbed clusters). **Reading (1)
+(definitional-artifact) is now favored over reading (2) (common-physical-
+driver) by this test — not proven to its exclusion**, since a null
+difference-test at `N=22/23` per bin has real but limited power, and the
+literature-only leverage check (this file's own Relaxation Map row 1,
+still unrun) would test the mechanism more directly. Do not cite this
+addendum as eliminating reading (2) — cite it as "reading (1) favored,
+cross-validated by two independent proxies, reading (2) not observed but
+not excluded."
