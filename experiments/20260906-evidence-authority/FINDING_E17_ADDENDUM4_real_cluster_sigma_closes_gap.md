@@ -106,3 +106,12 @@ positive-control-verified `sigma_sweep()`/`divergence()` unchanged)
 - `E17_addendum4_real_cluster_sigma.py` — reuses `ADDENDUM3`'s own
   `sigma_sweep()`/`divergence()` unchanged, evaluates at the real
   values above. `ruff check` clean.
+
+**[UPDATED same day] See `FINDING_E17_ADDENDUM5_chexmate2026_material_
+shift.md`** — a real, more current (2026), homogeneous single-survey
+weak-lensing measurement (Umetsu et al., CHEX-MATE/AMALGAM,
+`arXiv:2606.24142`) gives `σ=0.22`, MATERIALLY different from every
+anchor point in this file (`−28%` at `z=2.33`) — this addendum's own
+"validates the prior default" framing holds only for the X-ray-method
+comparison specifically, not as a general conclusion about the σ
+question overall.
