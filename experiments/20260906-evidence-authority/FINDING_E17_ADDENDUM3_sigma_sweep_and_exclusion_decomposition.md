@@ -114,3 +114,11 @@ estimates — worth a Pearl Registry row naming the open need (a real,
 cluster-scale-specific `σ(log10 c)` value, not found in this session's
 bounded search) as a concrete, checkable follow-up if this thread is
 ever revisited.
+
+**[CLOSED 2026-09-10]** See `FINDING_E17_ADDENDUM4_real_cluster_sigma_
+closes_gap.md` — a real value was found (Groener, Goldberg & Sereno
+2015, arXiv:1510.01961, Table 2, read from the actual PDF after the
+LaTeX-extraction tool failed three separate ways). The X-ray-method
+value (`σ=0.160`, closest match to this line's own Mahdavi-2013 basis)
+gives a divergence within `5%` of the Duffy-2008 default this thread had
+been using — validating, not overturning, the prior default.
