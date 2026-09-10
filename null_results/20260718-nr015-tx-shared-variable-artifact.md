@@ -183,3 +183,29 @@ still unrun) would test the mechanism more directly. Do not cite this
 addendum as eliminating reading (2) — cite it as "reading (1) favored,
 cross-validated by two independent proxies, reading (2) not observed but
 not excluded."
+
+## Addendum 2 (2026-09-10) — Relaxation Map row 1 run: no analytic
+## leverage exists in Mahdavi et al. 2013's own pipeline
+
+`experiments/20260910-nr015-cc-ncc-stratification/FINDING_mahdavi2013_
+tx_leverage.md`. Read the real source paper (arXiv:1210.3689) §2.5-2.6
+directly: `M_hydro` is NOT computed from a separately-measured `T(r)`
+via an algebraic HSE formula in this pipeline — `T(r)` is an explicit
+"dummy" intermediate, self-consistently derived jointly with `M_hydro`
+from one MCMC fit (gas density + NFW mass + metallicity profiles) to the
+X-ray spectra. So the originally-imagined `∂ln M_hydro/∂ln T_X`
+coefficient does not exist as a fixed formula-derived number for this
+pipeline — `T_X` and `M_hydro` are correlated projections of the SAME
+joint fit, an even more direct shared-origin relationship than the
+simple-substitution story this file originally hypothesized. Computed
+the closest available answer instead: the empirical log-log scaling in
+the real `N=50` catalog (positive control: `Abell2390` `M_hydro=11.0`
+matches the paper's own Table 1 exactly). Raw `γ=1.385±0.118`
+(`r=0.861`), statistically consistent with standard self-similar cluster
+scaling (`γ=1.5` Kaiser 1986, `p=0.330`); `M_WL`-controlled
+`γ=1.088±0.135` (`r_partial=0.759`) — still strong and highly
+significant. This does not distinguish reading (1) from a genuine
+self-similar physical scaling (the two are not mutually exclusive in
+this pipeline), but establishes the relationship is strong and
+well-quantified, consistent with why the original partial correlation
+was as large as observed.
