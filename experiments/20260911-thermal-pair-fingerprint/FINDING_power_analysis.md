@@ -326,3 +326,19 @@ real, non-approximated sample size behind it; (3) the synthetic
 four-world identifiability battery (`estimand.md`'s own hard gate)
 remains unbuilt and is not affected by this update — it is orthogonal
 to sample size.
+
+**[UPDATED 2026-09-11, 3rd pass] Item (2) above is now moot — the
+window-width question is RESOLVED (negative), see
+`FINDING_window_width_resolution.md`.** Power is monotonic in width
+(no interior optimum, `N≳15`), and the real two-point correlation
+`1+ξ(s)` computed directly from this catalog shows no local feature at
+`s=45` Mpc — it is a smoothly declining function, and `[40,50)` is not
+even a local maximum among its own neighboring bins. `s=45` Mpc has no
+independent support from real cluster clustering; it remains solely
+`v82`'s own model-internal initial condition. **The fixed-window count
+test design itself is REJECTED** (`null_results/INDEX.md` NR-025) — not
+the underlying MULTING mechanism, which survives untested by this
+specific design. A genuinely different test (fit `S_M`'s predicted
+`s`-dependence against each real pair's own separation, not a window
+count) remains a live, un-adopted option requiring an `estimand.md`
+amendment before any code.

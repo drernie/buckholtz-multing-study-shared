@@ -41,9 +41,11 @@ reads only this index. That gap is the finding; these rows are the fix.
 | NR-022 | 2026-08-24 | 4th-observable-literature-search | **NULL (search exhaustion — NOT a REJECT)** | No class-(i) monomial found; P206 later showed none can exist |
 | NR-023 | 2026-08-26 | completion-positivity-non-discriminating | **NULL (non-discriminating — NOT a REJECT)** | BOTH-SAFE on this trajectory range; test separates nothing |
 | NR-024 | 2026-09-08 | eq32-4-3-coefficient-5-external-niche-literature-search | REJECT (retroactive consolidation, 5 niches) | SU(3)-flavour, geometric-Koide, Dirac-LNH, classical-EM 4/3-problem (2 arXiv papers re-verified live), strong-gravity/electron-mass — none derives Eq.32's 4/3; 3 of 5 verdicts carry only `[MEMORY]`-tier confidence, not re-derived this session |
+| NR-025 | 2026-09-11 | thermal-pair-fingerprint-fixed-window-test-design | REJECT (test design, NOT the underlying physical idea) | Real Exact Pair Census: power(width) monotonic (no interior optimum, N>~15); real 1+xi(s) smoothly declining, s=45 Mpc not even a local max among neighbors — no principled window width exists |
 
 **Files:**
 
+- [NR-025: thermal-pair-fingerprint fixed-window test design — rejected](20260911-nr025-thermal-pair-fingerprint-fixed-window-test-design.md)
 - [NR-009: S³ geometry as Eq.32 mechanism — rejected](20260623-nr009-s3-geometry-eq32-mechanism.md)
 - [NR-001/NR-002: constant-eps and powerlaw bridge](20260612-bridge-candidates-fail.md)
 - [NR-003: PS comoving density Model A](20260612-ps-comoving-model-a-fail.md)

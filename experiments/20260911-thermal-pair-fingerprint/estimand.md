@@ -174,6 +174,26 @@ will be lower. The area-scaling from ACT-DR5's full footprint to the
 DESI-DR1/eRASS1 cross-match — that four-way exact overlap is the one
 remaining open item before this MCID can move past "conditional."
 
+**[UPDATED 2026-09-11, 3rd pass] The window-WIDTH question above is now
+RESOLVED — negatively — see `FINDING_window_width_resolution.md` and
+`null_results/INDEX.md` NR-025.** Power is monotonic in width under the
+current model (no interior optimum for `N≳15`); the real two-point
+correlation `1+ξ(s)`, computed directly from this catalog's own real
+positions, shows no local feature at `s=45` Mpc — a smoothly declining
+function in which `[40,50)` is not even a local maximum among its
+neighbors. `d0=45` Mpc has no independent support from real clustering
+statistics; it remains solely `v82`'s own model-internal initial
+condition. **The fixed-window pair-count test design is REJECTED** — the
+underlying MULTING mechanism is not, it survives untested by this
+specific design. The Population/Endpoint framing above ("pairs near
+v82's characteristic separation") therefore has no defensible
+operationalization as a window count. A genuinely different Endpoint —
+fitting `S_M`'s predicted `ξ∝1/s` dependence against each real pair's
+own separation, rather than counting pairs in a window — remains a
+live, un-adopted option, and would require amending this section
+(Population/Endpoint/Summary Measure) before any code, not a numeric
+rerun of the current design.
+
 - **PROMOTE** candidate region: MULTING's fixed-form model beats both the
   null and the free-linear alternative by a pre-registered `ΔAIC`
   margin, **and** the highest-`ξ` stratum shows sign consistent with the
