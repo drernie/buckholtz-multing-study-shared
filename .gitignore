@@ -120,3 +120,8 @@ paper/.claude/
 
 # /graphify skill output cache (regenerable AST cache, not source)
 graphify-out/
+
+# Private correspondence with the author and third parties -- kept locally
+# only, never tracked. Verbatim emails also live in the Obsidian vault
+# archive. Untracked 2026-09-11 before preparing a shareable repo copy.
+correspondence/
