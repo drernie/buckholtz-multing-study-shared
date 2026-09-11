@@ -791,6 +791,46 @@ four are process/self-consistency findings about this project's own
 reconstruction and its own citation hygiene.
 
 
+## 8. Thermal-pair kSZ fingerprint — from audit to a real observational
+## test design (`20260911-thermal-pair-fingerprint`, full synthesis in
+## `docs/161`)
+
+**The single biggest strategic move of this entire project:** moved off
+"fit `H(z)` better" (too integrated, weakly discriminating) onto a
+concrete **pair-level** MULTING fingerprint — `ξ=KR/(Mc²s)`, evaluated
+per real cluster pair from the real ACT-DR5 MCMF catalog, not a mock.
+23-step journey, `docs/161` has the full table; headline items:
+
+- **Killed the fixed-window design** (`NR-025`) — real cluster
+  clustering does not single out ~45 Mpc as a special scale; the idea
+  was not rescued by re-tuning the window, it was replaced by a
+  continuous per-pair `ξ_pred(z,s)` design instead.
+- **A real, load-bearing SUTVA bug found and fixed**: 43.2% of the old
+  sampled pairs shared a cluster (halo reuse across "independent"
+  pairs). Corrected via cluster-disjoint matching; corrected synthetic
+  power ≈ **59.1%** at N=449, 3× noise (down from an uncorrected,
+  WITHDRAWN 59.9%).
+- **Synthetic four-world identifiability battery ADEQUATE**: MULTING,
+  optical-depth-confounded, merger-confounded, and null worlds are
+  distinguished by the pipeline; false-promotion of rival worlds ≈0.
+  This closed the last named hard pre-data gate.
+- **Fork 1a (data request) sent** 2026-09-11 to Gong/Bean, awaiting
+  reply. **Fork 1b Phase 1 (own classical pairwise-kSZ estimator, Hand
+  et al. 2012) built and validated on synthetic data same day** —
+  independent context-blind review CONFIRMED, no sign/index bugs.
+  Phase 2 (real ACT DR6 map + real DESI DR1 cross-match) not started.
+
+**Where this stands on the idea→proof ladder:** between "falsifiable
+test" and "synthetic validation" — immediately before a real
+observational test, not yet at one. A positive thermal-pair result
+would support this specific frozen MULTING force fingerprint over the
+alternatives tested — it would **not** by itself validate the full IDM
+construction, the isomers, the cosmological bridge, or `β₁,β₂`'s
+fundamental origin (`docs/151` status-separation rule applies in full).
+Full detail, novelty assessment (project-level yes, methodological
+likely, priority-claim not yet checked), and the remaining real-data
+steps: **`docs/161`**.
+
 ## Exclusion zone (do not start without a new triggering fact)
 
 New numerology searches on Eq.32 beyond what NR-019/020/021 already
