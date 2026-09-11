@@ -1,0 +1,87 @@
+Fetching top 1500 halos by ID (== top 1500 by total FOF mass)...
+  ...0/1500
+  ...200/1500
+  halo 391: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  ...400/1500
+  halo 408: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 423: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 426: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 475: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 488: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 546: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 547: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 570: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 571: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 580: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 581: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 582: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  ...600/1500
+  halo 602: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 677: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 678: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 700: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 717: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 729: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 735: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 756: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 764: fetch failed (503), skip
+  halo 765: fetch failed (503), skip
+  halo 766: fetch failed (503), skip
+  halo 767: fetch failed (503), skip
+  halo 768: fetch failed (503), skip
+  halo 769: fetch failed (503), skip
+  halo 770: fetch failed (503), skip
+  halo 771: fetch failed (503), skip
+  halo 772: fetch failed (503), skip
+  halo 773: fetch failed (503), skip
+  ...800/1500
+  halo 832: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 878: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 896: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 898: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 902: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 903: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  halo 919: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  ...1000/1500
+  ...1200/1500
+  halo 1297: request error HTTPSConnectionPool(host='data-eu.tng-project.org', port=443): Read timed out. (read timeout=30), skip
+  ...1400/1500
+Total usable halos: 1461
+
+Total pairs: 1066530
+
+=== Assortativity vs separation (5 Mpc bins, 0-100 Mpc) ===
+   bin (Mpc) |  N pairs |  r(logM1,logM2) |        p
+    0-5     |      104 |          0.3334 |   <0.001
+    5-10    |      517 |          0.4336 |   <0.001
+   10-15    |      772 |          0.4214 |   <0.001
+   15-20    |     1199 |          0.3918 |   <0.001
+   20-25    |     1679 |          0.3818 |   <0.001
+   25-30    |     2263 |          0.4357 |   <0.001
+   30-35    |     2881 |          0.3859 |   <0.001
+   35-40    |     3649 |          0.4030 |   <0.001
+   40-45    |     4694 |          0.3827 |   <0.001
+   45-50    |     5909 |          0.3972 |   <0.001
+   50-55    |     7065 |          0.3937 |   <0.001
+   55-60    |     8288 |          0.3820 |   <0.001
+   60-65    |     9748 |          0.3895 |   <0.001
+   65-70    |    11187 |          0.3947 |   <0.001
+   70-75    |    12934 |          0.4007 |   <0.001
+   75-80    |    14610 |          0.3928 |   <0.001
+   80-85    |    16204 |          0.3855 |   <0.001
+   85-90    |    18134 |          0.3882 |   <0.001
+   90-95    |    20627 |          0.3820 |   <0.001
+   95-100   |    23015 |          0.3954 |   <0.001
+
+=== Headline: 40.0-45.0 Mpc band (v82's own node separation) ===
+N pairs = 4694
+r(log M1, log M2) = 0.3827  (t=28.37, p<0.001)
+
+=== Positive control: <5 Mpc separation (should show strong positive assortativity) ===
+N pairs = 104, r = 0.3334 (t=3.57, p<0.001)
+
+=== Negative control / floor: shuffle masses, recompute on the SAME target-band pairs ===
+Shuffled-mass r (target band) = 0.0277  (expected ~0)
+
+=== Mass range of the N_TOP sample ===
+min=8.388e+12  max=1.536e+15  median=4.661e+13 Msun
