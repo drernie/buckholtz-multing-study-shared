@@ -1,0 +1,171 @@
+"""run_real_data_phase2.py -- first end-to-end real-data pass, Fork 1b
+Phase 2: real ACT DR6 f150 GHz temperature map + real ACT-DR5 MCMF
+cluster positions -> `pairwise_ksz_estimator.py`'s own validated
+estimator math.
+
+NOT_VALIDATION - NOT_REFUTATION - OUR_RECONSTRUCTION - NO_AUTHOR_ERROR
+
+**THIS IS AN ENGINEERING SHAKEOUT RUN, NOT THE PRE-REGISTERED TEST.**
+`FINDING_pairwise_ksz_estimator_phase1.md`'s own remaining-work list
+(item 4) requires freezing code and criteria BEFORE looking at any
+result -- that freeze has NOT happened yet. This script's job is to
+confirm the pipeline runs end-to-end on real data and to look honestly
+at what the numbers look like, not to produce a claim about MULTING.
+Concretely missing before any real claim would be licensed:
+
+  - No beam convolution / repixelization to Hand et al. 2012's own
+    0.0625' subpixel grid -- `real_map_extraction.py` averages raw map
+    pixels within the aperture, not beam-matched ones.
+  - No point-source masking. Hand et al. 2012 explicitly excluded
+    galaxies within 1' of a radio source (FIRST catalog cross-match) --
+    not done here. A bright unmasked point source at a cluster position
+    would bias that cluster's T_i arbitrarily.
+  - No tau-weighting (this project's basic estimator does not need it
+    for a detection statistic, per `pairwise_ksz_estimator.py`'s own
+    module docstring -- but it means every cluster is weighted equally
+    regardless of mass, losing real SNR a mass-weighted version would
+    have).
+  - N_kSZ (the T<->momentum normalization) is UNKNOWN -- results below
+    are reported in raw temperature-difference units (uK), never
+    converted to a physical velocity or compared to a physical
+    threshold.
+
+Any number this script prints is `[VERIFIED-SYNTHETIC-PIPELINE, REAL-
+DATA-INPUT]` in the sense that the CODE ran on real data, not that the
+result has been vetted as a real measurement -- see
+`~/.claude/rules/skeptic-triggers.md` on why a clean-looking first
+number on real data is exactly the shape of claim that needs a
+skeptic pass before it means anything.
+"""
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+import numpy as np
+from exact_pair_census import Z_HIGH, Z_LOW, load_catalog, radec_z_to_cartesian_mpc
+from pairwise_ksz_estimator import MIN_PAIRS_PER_BIN, core_pairwise_estimator
+from real_map_extraction import extract_cluster_temperatures
+
+RNG_SEED = 20260911
+DATA_CACHE = Path(__file__).resolve().parent / "data_cache"
+ACT_MAP_PATH = DATA_CACHE / "act_dr4dr6_coadd_AA_night_f150_map.fits"
+
+
+def _load_real_cluster_positions() -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Real ACT-DR5 MCMF (RA, Dec, z), z-restricted per this
+    experiment's own established Z_LOW/Z_HIGH convention -- returns
+    (ra, dec, z, pos_mpc), no subsampling (real-data run uses the full
+    restricted shell, unlike Phase 1's N=300 synthetic-signal
+    validation, which subsampled only for jackknife wall-clock cost)."""
+    ra, dec, z = load_catalog()
+    ra = np.asarray(ra, dtype=float)
+    dec = np.asarray(dec, dtype=float)
+    z = np.asarray(z, dtype=float)
+    ok = np.isfinite(ra) & np.isfinite(dec) & np.isfinite(z) & (z >= Z_LOW) & (z <= Z_HIGH)
+    ra, dec, z = ra[ok], dec[ok], z[ok]
+    pos_mpc = radec_z_to_cartesian_mpc(ra, dec, z)
+    return ra, dec, z, pos_mpc
+
+
+def main() -> None:
+    if not ACT_MAP_PATH.exists():
+        print(f"ACT map not found at {ACT_MAP_PATH} -- download not finished yet. Aborting.")
+        sys.exit(1)
+    size_gb = ACT_MAP_PATH.stat().st_size / 1e9
+    print(f"STEP 0: real ACT DR6.02 f150 GHz map found, {size_gb:.3f} GB on disk")
+    if size_gb < 5.0:
+        print(
+            "  WARNING: file is smaller than the verified 5.35 GB Content-Length -- "
+            "download may be incomplete. Proceeding anyway; extraction will report "
+            "off_map=True for anything beyond the truncated data."
+        )
+
+    print(f"\nSTEP 1: real ACT-DR5 MCMF cluster positions, z in [{Z_LOW:.1f},{Z_HIGH:.1f}]")
+    ra, dec, z, pos_mpc = _load_real_cluster_positions()
+    n_clusters = len(ra)
+    print(f"  {n_clusters} real clusters")
+
+    print("\nSTEP 2: real per-cluster temperature extraction from the ACT map")
+    print(
+        "  (raw aperture mean, 1' radius, NO beam convolution, NO point-source mask -- see module docstring)"
+    )
+    extraction = extract_cluster_temperatures(
+        str(ACT_MAP_PATH), ra, dec, aperture_radius_arcmin=1.0
+    )
+    n_off_map = int(np.sum(extraction.off_map))
+    n_ok = n_clusters - n_off_map
+    print(
+        f"  {n_ok}/{n_clusters} clusters land inside the map footprint; {n_off_map} off-map (outside ACT's ~19,000 deg^2 coverage or too close to its edge)"
+    )
+    if n_ok < MIN_PAIRS_PER_BIN:
+        print("  Too few clusters land on the map to run the estimator meaningfully. Stopping.")
+        sys.exit(1)
+
+    valid = ~extraction.off_map & np.isfinite(extraction.temperature_uk)
+    pos_v = pos_mpc[valid]
+    temp_v = extraction.temperature_uk[valid]
+    print(f"  {len(temp_v)} clusters with a finite extracted temperature")
+    print(
+        f"  raw T distribution: mean={np.mean(temp_v):+.3f} uK, "
+        f"std={np.std(temp_v):.3f} uK, min={np.min(temp_v):+.2f}, max={np.max(temp_v):+.2f}"
+    )
+
+    print("\nSTEP 2b: robust outlier flag (PARTIAL point-source mitigation, NOT a real mask)")
+    print(
+        "  No real point-source cross-match exists yet (Hand et al. 2012's own FIRST-catalog"
+        " exclusion, not built) -- this only catches the WORST case, a single bright"
+        " unmasked source dominating one cluster's raw aperture mean. Real masking remains"
+        " a named, separate to-do."
+    )
+    med = np.median(temp_v)
+    mad = np.median(np.abs(temp_v - med)) * 1.4826  # normal-consistent robust sigma
+    clip_threshold = 8.0  # deliberately generous -- this is a safety net, not a real cut
+    outlier = mad > 0 and np.abs(temp_v - med) > clip_threshold * mad
+    n_outlier = int(np.sum(outlier))
+    print(
+        f"  robust median={med:+.3f} uK, robust sigma (MAD-based)={mad:.3f} uK, "
+        f"{n_outlier} cluster(s) beyond {clip_threshold} robust-sigma flagged and excluded"
+    )
+    if n_outlier > 0:
+        pos_v = pos_v[~outlier]
+        temp_v = temp_v[~outlier]
+
+    print("\nSTEP 3: pairwise-momentum estimator on REAL extracted temperatures")
+    print("  (q = -T directly, N_kSZ=1 -- raw temperature-difference units, not physical velocity)")
+    n_bins_target = 7
+    n_v = len(pos_v)
+    diff = pos_v[:, None, :] - pos_v[None, :, :]
+    s_ij = np.linalg.norm(diff, axis=2)
+    iu0, ju0 = np.triu_indices(n_v, k=1)
+    r_bins = np.quantile(s_ij[iu0, ju0], np.linspace(0.0, 1.0, n_bins_target + 1))
+    r_bins[0] = 0.0
+
+    q = -temp_v  # q_i = -T_i / N_kSZ, N_kSZ=1 (see module docstring)
+    res = core_pairwise_estimator(pos_v, q, r_bins)
+
+    print(f"  {'r (Mpc)':>10} {'p_pair (uK)':>14} {'+/- err':>10} {'z':>8} {'n_pairs':>9}")
+    any_trusted = False
+    for rc, p, e, npair in zip(res.r_centers, res.p_pair, res.p_pair_err, res.n_pairs, strict=True):
+        trusted = npair >= MIN_PAIRS_PER_BIN
+        z_score = p / e if e > 0 else np.nan
+        flag = "" if trusted else f"  [SKIP: n_pairs<{MIN_PAIRS_PER_BIN}]"
+        if trusted:
+            any_trusted = True
+        print(f"  {rc:10.1f} {p:14.4f} {e:10.4f} {z_score:8.2f} {npair:9d}{flag}")
+
+    print("\nHONEST SUMMARY -- read this before drawing any conclusion")
+    print("  This is a first-pass engineering shakeout, not the pre-registered")
+    print("  real-data test. Missing before any claim: beam matching, point-source")
+    print("  masking, tau-weighting, and an actual freeze-then-look protocol.")
+    print("  A signal (or non-signal) here says the PIPELINE runs end-to-end on")
+    print("  real data -- it does NOT yet say anything trustworthy about MULTING.")
+    if not any_trusted:
+        print(
+            "  No bin reached MIN_PAIRS_PER_BIN -- no usable real-data signal to even discuss yet."
+        )
+
+
+if __name__ == "__main__":
+    main()
