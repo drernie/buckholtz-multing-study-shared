@@ -528,6 +528,18 @@ minimum-`s` cut informed by the real angular separation at each pair's
 `z` (not a fixed comoving number), checked against the source pipeline's
 own stated resolution limit before any pair below it is trusted.
 
+**[UPDATED 2026-09-11, 6th pass — partially checked, see
+`FINDING_beam_blending_check.md`.]** The 5 pairs driving the Positivity
+result (§ Positivity below) are individually CLEARED — real angular
+separation `5.6×-10.7×` ACT's own `2.2` arcmin beam FWHM
+(`[VERIFIED-arXiv:2406.14754]`), computed from their real RA/Dec, not
+assumed from `s` alone. **But the threat is not cleared in general**:
+`~18-23%` of the real population at `s≤11` Mpc has real angular
+separation below `2×` the beam — genuine blending-risk pairs exist in
+this regime, they simply were not among the 5 illustrated pairs. The
+full `306`-pair set behind the `3.978%` Positivity fraction has not
+been individually checked.
+
 ### 2. Positivity
 
 **Not yet verified — an assumption, flagged as such.** Requires that,
@@ -559,11 +571,16 @@ see `FINDING_power_analysis_s_dependent.md` §2.]** `3.978%` of real
 pairs (`306/7693`) have deterministic `ξ_pred(z,s) > ξ_crossing`, zero
 scatter needed — the closest five span a real `z` range (`0.277` to
 `0.574`), not one coincidence. **Positivity is materially stronger than
-before.** Not yet fully resolved: the driving pairs sit at
-`s≈10.5-11.6` Mpc, immediately against § Consistency (d)'s
-`S_MIN_VALID=10` Mpc small-`s` instrumental cut — this specific result
-is exactly where a CMB-beam blending artifact would first show up as a
-false Positivity success, and that check has not been run.
+before.** **[UPDATED 2026-09-11, 6th pass — checked for the 5 named pairs, see
+`FINDING_beam_blending_check.md`.]** The 5 pairs printed above are
+individually SAFE — real angular separation `5.6×-10.7×` the ACT beam
+FWHM, computed from their own real RA/Dec (their small 3D `s` is mostly
+genuine ON-SKY separation, not a near-radial alignment that only looks
+close in 3D). **Not a blanket clearance**: `~18-23%` of the wider real
+population at `s≤11` Mpc DOES sit below `2×` beam FWHM — real blending
+risk exists in this regime generally, and the full `306`-pair set
+behind the `3.978%` fraction has not been individually re-checked
+against it.
 
 ### 3. Exchangeability
 
@@ -805,10 +822,16 @@ right against the small-`s` instrumental cut named in § Consistency
 (d) — that check must resolve before the Positivity result is trusted,
 not treated as a formality.
 
-**Next, in order, none built yet:** (1) the real angular-separation-vs-
-beam-size check for § Consistency (d), specifically re-examining
-whether the Positivity result's own closest pairs survive it; (2) the
-sign-near-crossing PROMOTE sub-check (not implemented in the power
-analysis's own `promote()`); (3) only then, the synthetic four-world
-battery's own concrete design for THIS Endpoint; (4) only then, code
-touching real kSZ/tSZ data. No such code exists in this folder.
+**[UPDATED 2026-09-11, 6th pass] Item (1) below is now partly done, see
+`FINDING_beam_blending_check.md`:** the 5 named Positivity pairs pass
+the beam-blending check cleanly (`5.6×-10.7×` beam FWHM); the wider
+`s≤11` Mpc population does not uniformly pass (`~18-23%` at real risk),
+and the full `306`-pair Positivity set remains individually unchecked.
+
+**Next, in order:** (1a, optional follow-up) extend the beam-blending
+check to all `306` real pairs behind the Positivity fraction, not just
+the 5 illustrated ones; (2) the sign-near-crossing PROMOTE sub-check
+(not implemented in the power analysis's own `promote()`); (3) only
+then, the synthetic four-world battery's own concrete design for THIS
+Endpoint; (4) only then, code touching real kSZ/tSZ data. No such code
+exists in this folder.
