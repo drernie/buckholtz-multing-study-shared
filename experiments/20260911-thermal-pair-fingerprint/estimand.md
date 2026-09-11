@@ -353,6 +353,28 @@ power analysis for THIS design — required before any code touches real
 kSZ/tSZ data, per this branch's own standing discipline. Not built in
 this amendment.**
 
+**[UPDATED 2026-09-11, 5th pass — built, see
+`FINDING_power_analysis_s_dependent.md`.]** `power_analysis_s_
+dependent.py` ran the real mock power analysis this section named: real
+`(z,s)` bootstrap-resampled from the full 7693-pair census pool, the
+same two-part PROMOTE bar as § Summary Measure. **At `N≈449` (Fork-2
+mid footprint), power = `98.6%` @3x noise, `0.2%` false-promote** —
+comparable to the old design's own `N=449` number, with a strictly
+harder pass bar (beat both Model 0 and Model 2, not just Model 0). A
+full power curve now exists from `N=10` to `N=2000` — the real payoff
+is not a higher per-pair efficiency, it is that this design has **no
+window-width ceiling**: it can use the full real population directly,
+unlike the old design NR-025 showed had no principled way past
+`18-53` pairs. Also ran § Positivity's own named cheap check for the
+first time: `3.978%` of real pairs (`306/7693`) already have
+deterministic `ξ_pred>ξ_crossing`, **with no scatter assumption at
+all** — a materially stronger Positivity basis than the old mass-
+scatter-only plausibility argument, though flagged against a real,
+not-yet-checked risk (the closest such pairs sit at `s≈10.5-11.6` Mpc,
+right against the `S_MIN_VALID=10` Mpc cut meant to exclude small-`s`
+instrumental artifacts — Consistency (d) needs to resolve this before
+the Positivity result is trusted outright).
+
 - **PROMOTE** candidate region: MULTING's fixed-form model beats both the
   null and the free-linear alternative by a pre-registered `ΔAIC`
   margin, **and** the highest-`ξ` stratum shows sign consistent with the
@@ -531,6 +553,17 @@ builds the new mock-catalog power analysis (§ MCID): load `Q(z)`
 alongside the real `(z,s)` census values, compute `ξ_pred` for the
 closest 1% of real pairs, and report directly whether any exceed
 `ξ_crossing` before relying on scatter to get there.
+
+**[UPDATED 2026-09-11, 5th pass — now CONFIRMED, not just checkable,
+see `FINDING_power_analysis_s_dependent.md` §2.]** `3.978%` of real
+pairs (`306/7693`) have deterministic `ξ_pred(z,s) > ξ_crossing`, zero
+scatter needed — the closest five span a real `z` range (`0.277` to
+`0.574`), not one coincidence. **Positivity is materially stronger than
+before.** Not yet fully resolved: the driving pairs sit at
+`s≈10.5-11.6` Mpc, immediately against § Consistency (d)'s
+`S_MIN_VALID=10` Mpc small-`s` instrumental cut — this specific result
+is exactly where a CMB-beam blending artifact would first show up as a
+false Positivity success, and that check has not been run.
 
 ### 3. Exchangeability
 
@@ -761,11 +794,21 @@ Summary Measure` now use each real pair's own `(z,s)` continuously via
 physics. One new DAG-adjacent identifiability threat named (§
 Consistency (d), small-`s` blending/deblending) and one existing check
 (§ Positivity) is now directly checkable rather than merely plausible.
-**Next, in order, none built yet:** (1) the cheap real-data check named
-in § Positivity (do any real close pairs' `ξ_pred` already approach or
-exceed crossing, with no scatter assumption needed); (2) a new mock-
-catalog power analysis for this design (§ MCID) — cannot reuse `power_
-analysis_mock_catalog.py`'s `one_trial()` unmodified, needs a new mock-
-data generator over real `(z,s)`; (3) only then, the synthetic four-
-world battery's own concrete design for THIS Endpoint; (4) only then,
-code. No code exists for the s-dependent design in this folder.
+**[UPDATED 2026-09-11, 5th pass] Items (1) and (2) below are now DONE,
+see `FINDING_power_analysis_s_dependent.md`:** the Positivity check
+came back CONFIRMED (`3.978%` of real pairs already deterministically
+above crossing) and the power analysis gives `98.6%` power at `N≈449`
+(3x noise, two-part bar), with a full, uncapped power curve from
+`N=10` to `2000`. **One real, un-closed risk surfaced by doing this
+work, not before it:** the Positivity result's own driving pairs sit
+right against the small-`s` instrumental cut named in § Consistency
+(d) — that check must resolve before the Positivity result is trusted,
+not treated as a formality.
+
+**Next, in order, none built yet:** (1) the real angular-separation-vs-
+beam-size check for § Consistency (d), specifically re-examining
+whether the Positivity result's own closest pairs survive it; (2) the
+sign-near-crossing PROMOTE sub-check (not implemented in the power
+analysis's own `promote()`); (3) only then, the synthetic four-world
+battery's own concrete design for THIS Endpoint; (4) only then, code
+touching real kSZ/tSZ data. No such code exists in this folder.
