@@ -137,18 +137,29 @@ should not).
 
 ## MCID
 
-**[UPDATED 2026-09-11] Computed, not placeholder — but conditional on an
-unresolved population-definition decision.** See `FINDING_power_
-analysis.md` for the full Monte Carlo (real code, `[VERIFIED-run]`).
-Headline: **the choice of separation window changes `N_pairs` by 30x**
-(585 at the general kSZ-literature 20-160 Mpc convention vs. 12 at v82's
-own weakly-sourced `s0~30 Mpc` scale) and correspondingly changes power
-from near-100% (broad window, realistic noise) to near-zero (narrow
-window, `5.9%` at 3x noise — barely above the false-promote floor). This
-is now the single most consequential open decision in this branch,
-larger in effect than the data-acquisition cost itself. **All numbers
-below are best-case, confounder-free upper bounds** — the synthetic
-four-world battery has not run; real power will be lower.
+**[UPDATED 2026-09-11, corrected same day after external critique —
+verified before applying, see `FINDING_power_analysis.md` §2] Computed,
+not placeholder — conditional on an unresolved window-*width* choice, no
+longer on a wrong window *center*.** The first version of this section
+used a window sourced from `pearl_registry`'s `s0~30 Mpc` note; that
+number is v82's own *rejected* `H0,anchor` grounding attempt, not its
+frozen pair-separation IC. Checked directly against v82's own text
+(`s(0)=d0=45` Mpc, physical) and against this project's own already-
+verified `FINDING_stage4` table (`d(z)=d0/(1+z)`) — both confirm `d0=45`,
+giving a **constant 45 Mpc comoving** characteristic separation at every
+`z` (not a redshift-dependent range).
+
+Headline, corrected: broad kSZ-literature window (585 pairs) still gives
+~100% power at 3x noise; the corrected narrow window, centered on the
+verified 45 Mpc but with its *width* still undetermined, gives **18-48
+pairs and 8-30% power** — real but weak, neither dead nor adequately
+powered. The window-width choice remains the single most consequential
+open decision in this branch. **All numbers are best-case, confounder-
+free upper bounds** — the synthetic four-world battery has not run; real
+power will be lower. Next: the Exact Pair Census (`FINDING_power_
+analysis.md` §4a) — real catalog positions, not a Poisson-volume model —
+to resolve the width question directly instead of guessing among window
+choices.
 
 - **PROMOTE** candidate region: MULTING's fixed-form model beats both the
   null and the free-linear alternative by a pre-registered `ΔAIC`

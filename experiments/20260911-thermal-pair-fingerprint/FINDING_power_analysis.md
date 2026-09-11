@@ -28,28 +28,56 @@ lower than every number below.
 
 ---
 
-## 2. The decisive finding: "the pair" definition changes N_pairs by 30x
+## 2. The decisive finding: "the pair" definition changes N_pairs, and
+## the narrow-window number was WRONG until corrected
 
-Two honest ways to define the separation window: the real kSZ-literature
-bin (`20-160 Mpc`, the general pairwise-kSZ convention this project's
-`claim.md`/`estimand.md` inherited from `arXiv:2511.23417`) vs. v82's own
-characteristic node scale (`s0~30 Mpc`, `pearl_registry`'s 2026-09-09
-entry — itself only weakly sourced, v82's own text names it and then
-rejects it):
+**[AMENDED 2026-09-11 — external critique, independently verified before
+applying, not accepted on its word.]** The original version of this
+section used `20-45 Mpc PHYSICAL`, sourced from `pearl_registry`'s
+2026-09-09 note calling `s0~30 Mpc` "v82's own characteristic node
+separation." **That was a real provenance error, the same class this
+project's own `docs/146` Category 11 already names**: `s0~30 Mpc` is a
+*different* number with a *different status* — it is the cluster-
+cluster-correlation-length value v82 *tried and explicitly rejected* as
+an external grounding for `H0,anchor` (v82's own §IV.M). It is not v82's
+own frozen initial condition for the pair separation itself.
 
-| Window | N_pairs (Fork-2 mid footprint, 775 deg², LOWER BOUND) |
-|---|---|
-| 20-160 Mpc (kSZ literature convention) | **~585** |
-| 20-45 Mpc (v82's own `s0~30 Mpc` region) | **~12** |
+**Checked directly against v82's own text before correcting anything:**
+`data/source_material/buckholtz_202608.0943v1.v82.md:58-59`: *"the
+physical distance vector `s(t)` between distinct nodes evolves
+proportionally with the cosmic scale factor `a(t)` via `s(t)=a(t)x`."*
+Line `:318`: *"`s(0) = d0 = 45`"* [Mpc]. **This project's own
+`experiments/20260907-icm-expansion-correlation/FINDING_stage4_...md`
+(read in full earlier this session, before this correction) already used
+exactly `d(z)=d0/(1+z)`, `d0=45`** — its own table gives `d(z=0)=45.00`,
+`d(z=0.5)=30.00` (`=45/1.5`, exactly) — independently re-confirming the
+critique's correction from a file this project had already verified,
+not merely from the critique's own say-so.
 
-Both are computed the same way — a real `astropy.cosmology` comoving-
-volume calculation applied to the real ACT-DR5 MCMF cluster density
-(`6237` clusters, `[VERIFIED-arXiv:2406.14754]`) — not two different
-methods giving different answers by accident. **The difference is purely
-which physical separation range "the pair" is taken to mean**, and
-`estimand.md`'s own Population section already flagged this as unresolved
-(deferring to the source paper's own convention) without yet knowing it
-carried a 30x cost.
+**The consequence for the separation window, worked through precisely,
+not just corrected in direction:** since `x = d(z)·(1+z) = d0` is FIXED
+by this formula, v82's own "spotlighted" background trajectory has a
+**constant 45 Mpc COMOVING separation at every redshift** — not `20-45
+Mpc physical` (the original error) and not the critique's own proposed
+`32-71 Mpc comoving` either (that conversion applied `physical×(1+z)` to
+an already-mismatched `20-45 Mpc` physical premise; the project's own
+`d(z)=d0/(1+z)` formula gives a cleaner, different answer: a *constant*
+45 Mpc comoving, not a redshift-dependent range).
+
+| Window | N_pairs (Fork-2 mid footprint, 775 deg², LOWER BOUND) | Power @ 3x noise |
+|---|---|---|
+| 20-160 Mpc comoving (kSZ literature convention) | **~585** | 100% |
+| ~~20-45 Mpc physical (WRONG — see above)~~ | ~~12~~ | ~~5.9%~~ |
+| **[35,55] Mpc comoving (±10 Mpc around the verified 45 Mpc)** | **~17.7** | **8.4%** |
+| **[20,70] Mpc comoving (±25 Mpc around the verified 45 Mpc)** | **~47.9** | **29.8%** |
+
+**Verdict on the branch, corrected: neither "dead" nor "clearly viable."**
+The corrected narrow-window numbers (18-48 pairs, 8-30% power depending
+on the still-undetermined window *width*) are better than the erroneous
+12-pair/5.9% result, but still well short of adequate power at any
+reasonable significance target. **The window's center is now fixed
+(45 Mpc comoving, verified); its width is not, and that remaining
+free choice still swings power by a factor of ~3.5x (8.4% to 29.8%).**
 
 ---
 
@@ -110,6 +138,47 @@ branch — more consequential than the data-acquisition cost itself.**
 
 ---
 
+## 4a. [ADDED 2026-09-11] Two more critique items, checked and adopted
+
+**Clustering bias direction, named precisely.** §3's own comoving-volume
+pair count is a Poisson/unclustered lower bound, already flagged as such
+before this amendment — real clusters are positively biased tracers
+(`ξ_cc(r,z) > 0` at these scales), so the true close-pair count is
+higher. This pulls in the *opposite* direction from downstream X-ray/
+lensing/morphology selection cuts (which only remove objects). The two
+effects were not combined into one number here — reported separately,
+per the critique's own point that they should not be netted against each
+other without a real calculation of both.
+
+**Noise-model calibration — logged as an explicit, unverified
+assumption, not implicitly inherited.** This script's Monte Carlo uses a
+*relative* noise framing (1x/3x/10x the signal's own population RMS)
+specifically because `data_acquisition_plan.md`'s Fork 1 already found
+the source paper's own per-object noise budget is not public — the
+9.3σ headline result comes from `913,286` DESI LRGs, not a few hundred
+ACT clusters, and nothing in this script assumes that large-sample
+optimism transfers to a cluster-scale sample. Named as a formal open
+item regardless, per the critique's own suggested ledger convention:
+
+```
+A_noise: sigma_mock is adequate for a REAL cluster-scale kSZ estimator
+         (not the large-N LRG sample the 9.3-sigma headline used)
+STATUS: NOT VERIFIED. Bracketed (1x/3x/10x), not calibrated.
+```
+
+**Recommended next step, adopted from the critique, not yet built:**
+before spending the multi-GB/multi-week effort `data_acquisition_plan.md`
+costs for the full kSZ pipeline, run a much cheaper **Exact Pair Census**
+— real `(RA, Dec, z)` triples from the actual ACT-DR5 MCMF catalog (or an
+equivalent real, downloadable object list), real angular-to-comoving
+conversion per pair, real `s_physical = r_comoving/(1+z_pair)` using
+v82's own now-verified convention, and a real histogram `N_pair(s, z)` —
+**no tSZ map, no kSZ map, no mass reconstruction needed for this step.**
+This replaces the Poisson-volume model in §2/§4 with an exact count on
+real positions, and would resolve the window-*width* ambiguity this
+section's own table still carries. Not attempted in this pass — named as
+the concrete next artifact.
+
 ## 5. What this does NOT establish
 
 1. Not a real power number — a best-case, confounder-free upper bound.
@@ -126,11 +195,32 @@ branch — more consequential than the data-acquisition cost itself.**
 
 ## Status
 
-**Computed, not decided.** Next: either (a) resolve the pair-definition
-question (re-read `arXiv:2511.23417`'s own methods section for how it
-defines pairs, and separately try to pin down v82's own intended
-separation more precisely than the `s0~30 Mpc` proxy), or (b) proceed
-provisionally under the broad-window definition, explicitly labeled as
-such, while the narrow-window result stays on record as the honest
-alternative. No code beyond this power-analysis script exists in this
-folder; the synthetic four-world battery is still unbuilt.
+**[UPDATED 2026-09-11] Computed, corrected once, still not decided —
+and correctly so.** Per the critique's own suggested status ledger,
+adopted here:
+
+```
+Data availability (per-object kSZ table): CONFIRMED NOT PUBLIC
+ACT source density (6237, arXiv:2406.14754):           VERIFIED
+DES-Y3 x DESI-DR1 overlap (851.3 deg^2):                VERIFIED
+ACT/eRASS1 four-way EXACT overlap:                      OPEN
+Broad-window pairs (~585, 20-160 Mpc comoving):         MODEL-DERIVED
+v82's own separation, d0=45 Mpc physical, s(0):         VERIFIED (corrected
+                                                          from an earlier,
+                                                          wrong s0~30 Mpc)
+Narrow-window pairs (18-48, comoving, width TBD):       MODEL-DERIVED,
+                                                          CENTER fixed,
+                                                          WIDTH open
+Noise model (A_noise, relative-noise bracketing):       NOT VERIFIED
+"Narrow branch is dead":                                WITHDRAWN --
+                                                          was based on the
+                                                          wrong separation
+"Narrow branch is viable":                              NOT YET ISSUED --
+                                                          8-30% power is
+                                                          real but weak
+```
+
+Next: the Exact Pair Census (§4a) — cheap, real-catalog-based, resolves
+both the window-width ambiguity and replaces the Poisson-volume model
+with an exact count. No code beyond this power-analysis script exists in
+this folder; the synthetic four-world battery is still unbuilt.

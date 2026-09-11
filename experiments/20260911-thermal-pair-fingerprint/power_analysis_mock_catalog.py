@@ -307,3 +307,51 @@ for rel_noise in rel_noise_scan:
 print(f"\n  n={n_narrow} is small enough that even the IDEALIZED, "
       f"no-confounder power number above should be read with caution -- "
       f"asymptotic z/AIC approximations are less reliable at this N.")
+
+# ---- STEP 3c [AMENDED 2026-09-11, external critique verified before
+# applying]: the narrow window used 20-45 Mpc PHYSICAL, sourced from
+# pearl_registry's "s0~30 Mpc" note. That note is about a DIFFERENT
+# number: v82's own text (data/source_material/buckholtz_202608.0943v1.
+# v82.md:58-59, :318) defines the physical separation s(t)=a(t)x with
+# s(0)=d0=45 Mpc -- the actual frozen IC, not the rejected s0~30 Mpc
+# correlation-length grounding attempt. This project's OWN closed-branch
+# code (FINDING_stage4, already read this session) already used exactly
+# d(z)=d0/(1+z), d0=45 -- confirmed here again directly, not re-derived.
+# Since x = d(z)*(1+z) = d0 is FIXED by this formula, the comoving
+# separation of v82's own "spotlighted" background trajectory is a
+# CONSTANT 45 Mpc at every z -- not something needing a (1+z) conversion
+# applied to an already-physical window (that was the critique's own
+# proposed fix, and it is closer than the original error but still
+# doesn't match this project's own already-verified formula exactly).
+print("\n" + "=" * 78)
+print("STEP 3c -- CORRECTED characteristic separation, verified against "
+      "v82's own text + this project's own FINDING_stage4 formula")
+print("=" * 78)
+D0_PHYSICAL_Z0 = 45.0  # [VERIFIED] v82.md lines 58-59, 318
+print(f"  v82's own d(z) = d0/(1+z), d0={D0_PHYSICAL_Z0} Mpc PHYSICAL at z=0")
+print(f"  => comoving x = d(z)*(1+z) = {D0_PHYSICAL_Z0} Mpc, CONSTANT at all z")
+for z_check in [0.0, 0.5, 1.0]:
+    print(f"     sanity check z={z_check}: d(z)={D0_PHYSICAL_Z0/(1+z_check):.2f} "
+          f"Mpc physical (matches FINDING_stage4's own table)")
+
+for label, (s_lo, s_hi) in [("narrow, +-10 Mpc", (35.0, 55.0)),
+                             ("wide, +-25 Mpc", (20.0, 70.0))]:
+    def pair_count_corrected(n_clusters, area_deg2, s_lo=s_lo, s_hi=s_hi):
+        v_low = cosmo.comoving_volume(Z_LOW).to(u.Mpc**3).value * (area_deg2 / 41253.0)
+        v_high = cosmo.comoving_volume(Z_HIGH).to(u.Mpc**3).value * (area_deg2 / 41253.0)
+        n_density = n_clusters / (v_high - v_low)
+        shell_vol = (4.0 / 3.0) * np.pi * (s_hi**3 - s_lo**3)
+        return 0.5 * n_clusters * n_density * shell_vol
+
+    n_pairs_corr = pair_count_corrected(N_clusters_mid, FOOTPRINT_MID)
+    print(f"\n  window [{s_lo:.0f},{s_hi:.0f}] Mpc comoving ({label}, "
+          f"centered on the VERIFIED 45 Mpc): N_pairs~{n_pairs_corr:.1f}")
+
+    # power at this corrected N
+    n_corr_int = max(int(round(n_pairs_corr)), 2)
+    for rel_noise in [3.0]:
+        promote_hm = sum(
+            1 for _ in range(N_MC)
+            if (lambda z, d: abs(z) > 1.96 and d > DELTA_AIC_PROMOTE)(*one_trial(n_corr_int, rel_noise, True))
+        )
+        print(f"    power at N={n_corr_int}, 3x noise: {promote_hm / N_MC * 100:.1f}%")
