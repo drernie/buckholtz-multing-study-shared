@@ -137,12 +137,18 @@ should not).
 
 ## MCID
 
-**Not yet numeric.** Per `estimand-ops.md`'s own Data Requirements
-discipline and this project's own repeated practice (`FINDING_P191`-
-`P194`), the threshold is set by a **power analysis on mock catalogs
-matching the real sample's expected size and `ξ`-scatter**, run before
-the real data is touched — not asserted here from intuition. Placeholder
-structure only:
+**[UPDATED 2026-09-11] Computed, not placeholder — but conditional on an
+unresolved population-definition decision.** See `FINDING_power_
+analysis.md` for the full Monte Carlo (real code, `[VERIFIED-run]`).
+Headline: **the choice of separation window changes `N_pairs` by 30x**
+(585 at the general kSZ-literature 20-160 Mpc convention vs. 12 at v82's
+own weakly-sourced `s0~30 Mpc` scale) and correspondingly changes power
+from near-100% (broad window, realistic noise) to near-zero (narrow
+window, `5.9%` at 3x noise — barely above the false-promote floor). This
+is now the single most consequential open decision in this branch,
+larger in effect than the data-acquisition cost itself. **All numbers
+below are best-case, confounder-free upper bounds** — the synthetic
+four-world battery has not run; real power will be lower.
 
 - **PROMOTE** candidate region: MULTING's fixed-form model beats both the
   null and the free-linear alternative by a pre-registered `ΔAIC`
