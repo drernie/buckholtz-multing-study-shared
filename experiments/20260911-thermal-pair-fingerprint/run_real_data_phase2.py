@@ -16,10 +16,19 @@ Concretely missing before any real claim would be licensed:
   - No beam convolution / repixelization to Hand et al. 2012's own
     0.0625' subpixel grid -- `real_map_extraction.py` averages raw map
     pixels within the aperture, not beam-matched ones.
-  - No point-source masking. Hand et al. 2012 explicitly excluded
-    galaxies within 1' of a radio source (FIRST catalog cross-match) --
-    not done here. A bright unmasked point source at a cluster position
-    would bias that cluster's T_i arbitrarily.
+  - **[RESOLVED 2026-09-12]** Point-source handling: Hand et al. 2012
+    excluded galaxies within 1' of a FIRST-catalog radio source. No
+    equivalent DR6 point-source catalog is publicly released yet
+    (Vargas et al., the dedicated DR6 point-source paper cited by the
+    DR6 Maps paper itself, arXiv:2503.14451, is listed there as "2025,
+    in preparation" -- checked directly in that paper's own reference
+    list, not assumed). Used ACT's own `map_srcfree` product instead --
+    the same DR6.02 coadd with all >=5-sigma point sources already
+    subtracted by the ACT pipeline itself (median flux limit 8.4 mJy at
+    f150, per the Maps paper's own Table in section V). This is a
+    real, better-than-DIY-masking fix: no cluster is dropped, and the
+    subtraction was done by the survey team with full knowledge of
+    their own beam/noise properties.
   - No tau-weighting (this project's basic estimator does not need it
     for a detection statistic, per `pairwise_ksz_estimator.py`'s own
     module docstring -- but it means every cluster is weighted equally
@@ -50,7 +59,10 @@ from real_map_extraction import extract_cluster_temperatures
 
 RNG_SEED = 20260911
 DATA_CACHE = Path(__file__).resolve().parent / "data_cache"
-ACT_MAP_PATH = DATA_CACHE / "act_dr4dr6_coadd_AA_night_f150_map.fits"
+# srcfree = ACT's own point-source-subtracted variant (see module
+# docstring's 2026-09-12 resolution note) -- preferred over the raw
+# map now that both are available.
+ACT_MAP_PATH = DATA_CACHE / "act_dr4dr6_coadd_AA_night_f150_map_srcfree.fits"
 
 
 def _load_real_cluster_positions() -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
