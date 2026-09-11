@@ -17,9 +17,14 @@ code until the claim is written down.
 **STATUS OF THIS DOCUMENT: gate check only. Zero-Signal Gate PASSES
 (§3) — unlike the adjacent, already-REFUSE'd branch this extends
 (`experiments/20260907-icm-expansion-correlation`). That does NOT mean
-code may start. `estimand.md` with a DAG and the four causal
-identifiability checks is the next mandatory artifact (§2, §8) and does
-not yet exist. No script in this folder yet.**
+code may start. [UPDATED 2026-09-11] `estimand.md` now exists — DAG +
+four identifiability checks written, all four carry a named, unresolved
+residual threat (none marked satisfied). Consistency (via `τ_ML`'s own
+simulation-trained construction) and Exchangeability (via `Dyn`-mediated
+confounding) are the two weakest. Next: a costed data-acquisition plan
+(`claim.md` §8 item 2) and the mock-catalog power analysis
+`estimand.md`'s own MCID section requires. No script in this folder
+yet.**
 
 ---
 
