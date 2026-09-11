@@ -97,6 +97,25 @@ parameter-identifiable ≠ causally identifiable.
   The 0.0135% numerical match itself is `[VERIFIED]` and unaffected by any
   of this; only the *mechanism search* is exhausted.
 
+## TWO REPOSITORIES — this one is the only one you ever edit (added 2026-09-11)
+
+| | this repo | the reviewer copy |
+|---|---|---|
+| remote | `sergeeey/buckholtz-idm-multing-study` | `sergeeey/buckholtz-multing-study-shared` |
+| path | `buckholtz-idm-multing-mvp/` | `../buckholtz-multing-shared/` |
+| role | **source of truth.** All work happens here. History contains private correspondence; never share it. | **purely derived.** Private letters and `.claude/` stripped from every commit. Given to one external reviewer. |
+
+**Hard rule:** never edit the copy by hand — regenerate it with
+`bash scripts/refresh_shared_repo.sh` (add `--push` when satisfied). If you
+catch yourself editing a file under `buckholtz-multing-shared/`, stop: the
+change belongs here, and the copy should be rebuilt from it. The script keeps
+exactly two copy-only deltas (the CI badge, which 404s for an outside reader,
+and the clone directory name) and verifies afterwards that nothing private
+survived.
+
+`correspondence/` is git-ignored here as of 2026-09-11: the letters stay on
+disk and in the Obsidian vault archive, but never re-enter git.
+
 ## STANDING CONSTRAINTS
 - **TJB correspondence: active as of 2026-08-30**, superseding the
   2026-08-14 "no correspondence" note (that note is historical — the user

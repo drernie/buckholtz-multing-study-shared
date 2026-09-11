@@ -4,13 +4,49 @@
 ![python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
-<sub>Quality snapshot (verified 2026-09-05, local py3.13): **908 tests pass · 0 skipped · 0 failed · coverage 91% · ruff clean · mypy clean (0 errors, blocking in CI)**. The CI badge above is the authoritative live status; this line is a dated snapshot, not a self-updating metric.</sub>
+<sub>**Status, re-measured 2026-09-11 on this tree** (the previous line here read "908 tests … mypy clean (0 errors, blocking in CI)" and was wrong on both counts — corrected rather than quietly refreshed): `pytest --co` collects **991 tests across 67 files**; a 68th file, `tests/test_e15_jensen_gap_real_scatter.py`, **does not collect from a clean clone** — it imports the author's supplemental code, which `data/source_material/*` deliberately git-ignores (fetch from [Zenodo](https://zenodo.org/records/22004287) to run it). `mypy src` → clean, 39 files, **locally**. `ruff check .` → clean. **The CI badge above is red**, and has been since 2026-09-08: CI fails at the `mypy` step, so the test job never runs — an unresolved discrepancy between CI and local, not a known source defect. Treat the badge as live truth and this line as a dated local measurement.</sub>
 
-**For "what is the current state of this project," start at
-[`CURRENT_EVIDENCE_STATE.md`](CURRENT_EVIDENCE_STATE.md)** — a 2-page
-canonical snapshot (reproduced / refuted / open bottlenecks / next test /
-what cannot be claimed publicly). `PROJECT_STATUS.md` below is an older,
-explicitly-superseded snapshot kept for history only.
+---
+
+## START HERE if you are reviewing this as a physicist
+
+**The framing, first, because the internal vocabulary is blunter than the intent.**
+This repository's own working language — `null_results/`, "failure-mode taxonomy",
+"adversarial", `docs/119` ("what critics could raise") — is the machinery of a
+falsification-discipline applied by the author of *this repository* to *his own
+reconstruction* of MULTING. Every finding carries the label `NO_AUTHOR_ERROR`:
+it is a statement about this reconstruction, never a claim that Dr. Buckholtz
+erred. Where a result runs against the framework, it is reported plainly; where
+it runs for it, likewise. Nothing here is an audit *of him*.
+
+**Fifteen-minute path:**
+
+1. [`CURRENT_EVIDENCE_STATE.md`](CURRENT_EVIDENCE_STATE.md) — what is reproduced,
+   what is refuted or weakened, the open bottlenecks, and an explicit list of
+   what cannot be claimed publicly. (`PROJECT_STATUS.md` further down is an
+   older, explicitly-superseded snapshot kept for history only.)
+2. [`docs/151_status_separation_rule.md`](docs/151_status_separation_rule.md) —
+   the rule every verdict here obeys: empirical status, ontological
+   interpretation, and causal claim are three separate fields, never collapsed.
+3. [`null_results/INDEX.md`](null_results/INDEX.md) — 21 registered dead ends.
+   These are the point, not an embarrassment: the register exists so a killed
+   direction cannot quietly return.
+
+**If you came with two specific questions, these are the two files:**
+
+| Question | File |
+|---|---|
+| Is there a falsifiable prediction? | [`PREREGISTRATION_v82_prospective_tests.md`](PREREGISTRATION_v82_prospective_tests.md) — three predictions frozen 2026-09-07 with PASS/FAIL thresholds, each graded for discriminating power by its own author (two of three: *weak*) |
+| Best-fit vs best-fit, not against published values? | [`FINDING_P166`](experiments/20260803-bridge/FINDING_P166_aic_bic_from_v82_own_table_ii.md) — AIC/BIC on the preprint's *own* two re-fitted ΛCDM benchmarks; and [`FINDING_E8`](experiments/20260906-evidence-authority/FINDING_E8_full_covariance_propagation.md) — every defensible `\|Δχ²\|` lands in `[−1.27, +2.64]`, i.e. the 33-point dataset does not discriminate in either direction |
+
+**Source material is not redistributed here.** `data/source_material/` is
+git-ignored: the preprints and the author's supplemental code live on
+[Zenodo](https://zenodo.org/records/22004287) and
+[preprints.org](https://doi.org/10.20944/preprints202608.0943.v1), and must be
+fetched from there to re-run everything. That is why one test file does not
+collect from a clean clone.
+
+---
 
 **Personal study notes and reproducibility scaffolding for understanding Thomas J. Buckholtz's IDM/MULTING framework.**
 
@@ -125,7 +161,7 @@ pytest tests/test_eq15_constants.py -v
 ```
 buckholtz-idm-multing-mvp/
 ├── src/              # 38 core modules — epistemic registry, beta provenance, bridge candidates, force-law records
-├── tests/            # 49 test files (867 tests) — invariants, controls, dimensional checks, reverse-engineering
+├── tests/            # 68 test files (991 collected; 1 file needs the non-redistributed source material) — invariants, controls, dimensional checks, reverse-engineering
 ├── code/             # standalone verified scripts — eq32_verify, chi2_idm, beta_cv, beta_rescaling
 ├── scripts/          # 54 pipeline/report scripts — recompute_n4_aic, jeans_nfw_multing, build_report_ru
 ├── audit/            # self-consistency diagnostics
@@ -166,7 +202,9 @@ Every claim, parameter, and equation is marked with one of these statuses:
 
 ## Test Suite
 
-*The full suite is **49 test files / 867 tests (0 skipped, 0 failed)** — run `pytest`. The six below
+*The full suite is **68 test files, 991 tests collected** (measured 2026-09-11). One file,
+`tests/test_e15_jensen_gap_real_scatter.py`, will not collect until the author's supplemental code is
+fetched from Zenodo; run `pytest --ignore=tests/test_e15_jensen_gap_real_scatter.py` without it. The six below
 are representative of the core invariants, not the complete list; see `tests/` for all.*
 
 ### Core Tests
