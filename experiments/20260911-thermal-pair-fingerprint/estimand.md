@@ -528,17 +528,18 @@ minimum-`s` cut informed by the real angular separation at each pair's
 `z` (not a fixed comoving number), checked against the source pipeline's
 own stated resolution limit before any pair below it is trusted.
 
-**[UPDATED 2026-09-11, 6th pass — partially checked, see
-`FINDING_beam_blending_check.md`.]** The 5 pairs driving the Positivity
-result (§ Positivity below) are individually CLEARED — real angular
-separation `5.6×-10.7×` ACT's own `2.2` arcmin beam FWHM
-(`[VERIFIED-arXiv:2406.14754]`), computed from their real RA/Dec, not
-assumed from `s` alone. **But the threat is not cleared in general**:
-`~18-23%` of the real population at `s≤11` Mpc has real angular
-separation below `2×` the beam — genuine blending-risk pairs exist in
-this regime, they simply were not among the 5 illustrated pairs. The
-full `306`-pair set behind the `3.978%` Positivity fraction has not
-been individually checked.
+**[UPDATED 2026-09-11, 7th pass — checked directly for all 306 real
+Positivity pairs, see `FINDING_beam_blending_check.md` §3a.]** All 306
+real pairs behind the `3.978%` Positivity fraction now have their real
+angular separation computed directly (not estimated from a base rate):
+`5/306` (`1.6%`) sit at or near real blending risk (`<2×` beam FWHM),
+`3/306` (`1.0%`) genuinely below the beam FWHM itself. Excluding all
+`5` at-risk pairs moves the Positivity fraction only from `3.978%` to
+`3.913%` — a `1.6%` relative reduction, not a collapse. **Consistency
+(d) is now a quantified, small correction, not an open unknown** — no
+further action on this specific threat is required before the
+sign-near-crossing PROMOTE sub-check and the synthetic four-world
+battery.
 
 ### 2. Positivity
 
@@ -571,16 +572,15 @@ see `FINDING_power_analysis_s_dependent.md` §2.]** `3.978%` of real
 pairs (`306/7693`) have deterministic `ξ_pred(z,s) > ξ_crossing`, zero
 scatter needed — the closest five span a real `z` range (`0.277` to
 `0.574`), not one coincidence. **Positivity is materially stronger than
-before.** **[UPDATED 2026-09-11, 6th pass — checked for the 5 named pairs, see
-`FINDING_beam_blending_check.md`.]** The 5 pairs printed above are
-individually SAFE — real angular separation `5.6×-10.7×` the ACT beam
-FWHM, computed from their own real RA/Dec (their small 3D `s` is mostly
-genuine ON-SKY separation, not a near-radial alignment that only looks
-close in 3D). **Not a blanket clearance**: `~18-23%` of the wider real
-population at `s≤11` Mpc DOES sit below `2×` beam FWHM — real blending
-risk exists in this regime generally, and the full `306`-pair set
-behind the `3.978%` fraction has not been individually re-checked
-against it.
+before.** **[UPDATED 2026-09-11, 7th pass — resolved for all 306, see
+`FINDING_beam_blending_check.md` §3a.]** Direct check of the full
+`306`-pair Positivity set (internal consistency confirmed:
+`306/7693=3.978%`, exact match to the number above) finds `301/306`
+(`98.4%`) at `≥2×` beam FWHM, `286/306` (`93.5%`) comfortably resolved
+at `≥5×`. Only `5` pairs (`1.6%`) are genuinely at risk. Excluding them
+gives a blending-risk-excluded Positivity fraction of `301/7693=
+3.913%` — **the Positivity result survives this check essentially
+intact**, not merely for the 5 originally-illustrated pairs.
 
 ### 3. Exchangeability
 
@@ -822,16 +822,15 @@ right against the small-`s` instrumental cut named in § Consistency
 (d) — that check must resolve before the Positivity result is trusted,
 not treated as a formality.
 
-**[UPDATED 2026-09-11, 6th pass] Item (1) below is now partly done, see
-`FINDING_beam_blending_check.md`:** the 5 named Positivity pairs pass
-the beam-blending check cleanly (`5.6×-10.7×` beam FWHM); the wider
-`s≤11` Mpc population does not uniformly pass (`~18-23%` at real risk),
-and the full `306`-pair Positivity set remains individually unchecked.
+**[UPDATED 2026-09-11, 7th pass] Item (1) below is now fully done, see
+`FINDING_beam_blending_check.md` §3a:** all 306 real pairs behind the
+Positivity fraction directly checked (not just the 5 illustrated ones)
+— `301/306` (`98.4%`) clear `≥2×` beam FWHM; the blending-risk-excluded
+Positivity fraction is `3.913%` vs. the original `3.978%`. Consistency
+(d) is now a quantified, small correction, not an open threat.
 
-**Next, in order:** (1a, optional follow-up) extend the beam-blending
-check to all `306` real pairs behind the Positivity fraction, not just
-the 5 illustrated ones; (2) the sign-near-crossing PROMOTE sub-check
-(not implemented in the power analysis's own `promote()`); (3) only
-then, the synthetic four-world battery's own concrete design for THIS
-Endpoint; (4) only then, code touching real kSZ/tSZ data. No such code
+**Next, in order:** (1) the sign-near-crossing PROMOTE sub-check (not
+implemented in the power analysis's own `promote()`); (2) only then,
+the synthetic four-world battery's own concrete design for THIS
+Endpoint; (3) only then, code touching real kSZ/tSZ data. No such code
 exists in this folder.

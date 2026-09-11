@@ -26,14 +26,37 @@ worse-resolution) bound.
 
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
 import numpy as np
 from exact_pair_census import Z_HIGH, Z_LOW, load_catalog
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "20260907-icm-expansion-correlation"))
+from stage4_is_dflip_reachable import Q_of_z  # noqa: E402  [VERIFIED-run, reused live]
 
 BEAM_FWHM_ARCMIN_98GHZ = 2.2  # [VERIFIED-arXiv:2406.14754], conservative bound
 BEAM_FWHM_ARCMIN_150GHZ = 1.4  # [VERIFIED-arXiv:2406.14754], optimistic bound
 
 S_CHECK_MAX_MPC = 20.0  # covers S_MIN_VALID=10 from power_analysis_s_dependent.py
 # plus enough margin above it to see how the picture evolves with s
+
+# Same frozen constants as power_analysis_s_dependent.py, for STEP 5's
+# reconstruction of the exact 306-pair Positivity set.
+BETA1 = 1.433479e10
+BETA2 = 7.806760e17
+XI_CROSSING = 3.668913e-08
+D0_MPC = 45.0
+S_MIN_VALID = 10.0
+S_POPULATION_MAX_MPC = 160.0  # matches power_analysis_s_dependent.py's own
+# broad population window -- NOT the same as this file's own S_CHECK_MAX_MPC
+# (20 Mpc), used only for STEPS 1-4's close-pair illustration
+
+
+def xi_pred(z_arr: np.ndarray, s_arr: np.ndarray) -> np.ndarray:
+    q = np.array([Q_of_z(zi, b1=BETA1, b2=BETA2) for zi in z_arr])
+    return (BETA1 / BETA2) * q * (D0_MPC / s_arr)
+
 
 # The 5 pairs FINDING_power_analysis_s_dependent.md Sec2 actually named,
 # identified by (z, s) to the precision printed there -- re-matched below
@@ -171,6 +194,98 @@ def main() -> None:
             f"  z={z_pair[i]:.3f} s={seps[i]:.2f} Mpc: real ang.sep="
             f"{ang_sep[i]:.3f}' vs purely-transverse-equivalent "
             f"{purely_transverse_arcmin[i]:.3f}'  (ratio={frac_of_max[i]:.3f})"
+        )
+
+    print()
+    print("=" * 78)
+    print(
+        "STEP 5 -- ALL real pairs behind the 3.978% Positivity fraction "
+        "(not just the 5 illustrated), full beam-blending check"
+    )
+    print("=" * 78)
+    # Rebuild the pool at the FULL population window (matches
+    # power_analysis_s_dependent.py's own S_MIN_VALID=10, S_MAX_MPC=160)
+    # -- independent of STEPS 1-4's own S_CHECK_MAX_MPC=20 cap, which
+    # cannot see pairs at s>20 Mpc that still exceed xi_crossing at
+    # favorable z.
+    sdm_full = tree.sparse_distance_matrix(
+        tree, max_distance=S_POPULATION_MAX_MPC, output_type="coo_matrix"
+    )
+    upper_full = sdm_full.row < sdm_full.col
+    row_f, col_f, seps_f = (
+        sdm_full.row[upper_full],
+        sdm_full.col[upper_full],
+        np.asarray(sdm_full.data[upper_full]),
+    )
+    in_pop = (seps_f >= S_MIN_VALID) & (seps_f <= S_POPULATION_MAX_MPC)
+    row_f, col_f, seps_f = row_f[in_pop], col_f[in_pop], seps_f[in_pop]
+    z_pair_f = 0.5 * (z_u[row_f] + z_u[col_f])
+    print(
+        f"  Full population pool (s in [{S_MIN_VALID:.0f},{S_POPULATION_MAX_MPC:.0f}] Mpc): "
+        f"{len(seps_f)} real pairs"
+    )
+
+    xi_f = xi_pred(z_pair_f, seps_f)
+    above = xi_f > XI_CROSSING
+    n_above = int(above.sum())
+    print(
+        f"  Pairs with xi_pred > xi_crossing (the Positivity set): {n_above} "
+        f"({100 * n_above / len(seps_f):.3f}% of the pool -- "
+        f"cross-check against FINDING_power_analysis_s_dependent.md's own 3.978%)"
+    )
+
+    row_p, col_p, seps_p, z_pair_p, xi_p = (
+        row_f[above],
+        col_f[above],
+        seps_f[above],
+        z_pair_f[above],
+        xi_f[above],
+    )
+    ang_sep_p = angular_sep_arcmin(ra_u[row_p], dec_u[row_p], ra_u[col_p], dec_u[col_p])
+
+    n_resolved_2x = int(np.sum(ang_sep_p >= 2.0 * BEAM_FWHM_ARCMIN_98GHZ))
+    n_resolved_5x = int(np.sum(ang_sep_p >= 5.0 * BEAM_FWHM_ARCMIN_98GHZ))
+    n_risk_1x = int(np.sum(ang_sep_p < BEAM_FWHM_ARCMIN_98GHZ))
+    n_risk_2x = int(np.sum(ang_sep_p < 2.0 * BEAM_FWHM_ARCMIN_98GHZ))
+    print(f"\n  Among these {n_above} Positivity pairs:")
+    print(
+        f"    angular sep: min={ang_sep_p.min():.3f}'  median={np.median(ang_sep_p):.3f}'  "
+        f"max={ang_sep_p.max():.3f}'"
+    )
+    print(
+        f"    < 1x beam (2.2', genuine blending risk): {n_risk_1x} "
+        f"({100 * n_risk_1x / n_above:.1f}%)"
+    )
+    print(
+        f"    < 2x beam (marginal or worse):           {n_risk_2x} "
+        f"({100 * n_risk_2x / n_above:.1f}%)"
+    )
+    print(
+        f"    >=2x beam (resolved or marginal-safe):   {n_resolved_2x} "
+        f"({100 * n_resolved_2x / n_above:.1f}%)"
+    )
+    print(
+        f"    >=5x beam (comfortably resolved):        {n_resolved_5x} "
+        f"({100 * n_resolved_5x / n_above:.1f}%)"
+    )
+
+    print(
+        f"\n  BLENDING-RISK-EXCLUDED Positivity fraction (xi_pred>crossing AND "
+        f">=2x beam): {n_resolved_2x}/{len(seps_f)} = "
+        f"{100 * n_resolved_2x / len(seps_f):.3f}% "
+        f"(vs. the original, unfiltered 3.978%)"
+    )
+
+    print(
+        "\n  The 10 CLOSEST-TO-BEAM (highest blending risk) pairs among the "
+        f"{n_above} Positivity set:"
+    )
+    order = np.argsort(ang_sep_p)[:10]
+    print(f"  {'z':>7} {'s (Mpc)':>9} {'xi_pred':>11} {'ang.sep (arcmin)':>17} {'/2.2arcmin':>11}")
+    for i in order:
+        print(
+            f"  {z_pair_p[i]:>7.3f} {seps_p[i]:>9.2f} {xi_p[i]:>11.3e} "
+            f"{ang_sep_p[i]:>17.3f} {ang_sep_p[i] / BEAM_FWHM_ARCMIN_98GHZ:>11.2f}"
         )
 
 

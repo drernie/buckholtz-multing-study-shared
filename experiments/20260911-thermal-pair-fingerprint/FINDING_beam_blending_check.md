@@ -1,6 +1,6 @@
-# FINDING — beam-blending check (estimand.md Consistency (d)): the 5
-# named Positivity-driving pairs are safe; the broader population is not
-# fully cleared
+# FINDING — beam-blending check (estimand.md Consistency (d)): checked
+# for all 306 real Positivity pairs, not just the 5 illustrated ones —
+# the threat is real but small (5/306 pairs, fraction moves 3.978%→3.913%)
 
 **Date:** 2026-09-11
 **Labels:** `NOT_VALIDATION` · `NOT_REFUTATION` · `OUR_RECONSTRUCTION` ·
@@ -50,11 +50,12 @@ separated on the sky by `10-11` Mpc worth of real transverse distance,
 which subtends tens of arcminutes at `z~0.3-0.6`, comfortably above the
 beam.
 
-## 3. The broader population: NOT fully cleared, stated honestly
+## 3. The nearby population base rate (§3 of the script) — a real,
+## if slightly misleading, first look
 
-This is not a blanket result — it is specific to the 5 illustrative
-pairs. The real population at small `s` tells a different, more mixed
-story:
+Before checking all 306 pairs directly (§3a below), the script first
+looked at the base rate among ALL real pairs at small `s` (not
+restricted to the Positivity set) — a different, more mixed picture:
 
 | `s` cut | N pairs | median ang. sep | min ang. sep | frac. `<1×` beam | frac. `<2×` beam |
 |---|---|---|---|---|---|
@@ -63,50 +64,98 @@ story:
 | ≤15 Mpc | 40 | 13.98' | 1.43' | 12.5% | 15.0% |
 | ≤20 Mpc | 63 | 15.96' | 1.43' | 9.5% | 11.1% |
 
-**Roughly 1-in-5 real pairs at `s≤11` Mpc has a real angular
-separation below the beam FWHM** — genuine blending-risk pairs DO exist
-in this regime; they simply were not among the 5 pairs the earlier
-report happened to print (which were selected by highest `ξ_pred`, not
-checked against this threat at the time). `FINDING_power_analysis_s_
-dependent.md`'s own `3.978%` Positivity fraction (`306` real pairs
-total, not just 5) has **not** been individually vetted against this
-check — this script covers the 5 named illustrative pairs plus the
-population-level base rate, not all 306.
+**~1-in-5 real pairs at `s≤11` Mpc has real angular separation below
+the beam FWHM.** This base rate is real, but — as §3a below shows
+directly — it substantially OVERSTATES the risk to the actual
+Positivity set, because it only looks at small `s`, and `s` alone
+(as §4 already showed for the 5 illustrated pairs) does not determine
+angular separation: many small-`s` pairs are mostly radial, not
+transverse, and so pose no blending risk despite small `s`.
+
+## 3a. [ADDED, full check] All 306 real pairs behind the Positivity
+## fraction — checked directly, not estimated from a base rate
+
+Rebuilt the exact `306`-pair Positivity set (`xi_pred(z,s) > ξ_crossing`,
+full `s∈[10,160]` Mpc population, `7693`-pair pool) and computed real
+angular separation for **every one of them**, not the 5 illustrated
+ones — internal consistency check passed first: **`306/7693 = 3.978%`,
+exactly matching `FINDING_power_analysis_s_dependent.md`'s own number.**
+
+| | count | fraction of the 306 |
+|---|---|---|
+| angular sep `< 1×` beam (genuine blending risk) | 3 | 1.0% |
+| angular sep `< 2×` beam (marginal or worse) | 5 | 1.6% |
+| angular sep `≥ 2×` beam (resolved/marginal-safe) | 301 | 98.4% |
+| angular sep `≥ 5×` beam (comfortably resolved) | 286 | 93.5% |
+
+Angular separation across the 306: `min=1.804'`, `median=44.329'`,
+`max=157.410'`.
+
+**Blending-risk-excluded Positivity fraction: `301/7693 = 3.913%`**
+(dropping pairs below `2×` beam) — versus the original, unfiltered
+`3.978%`. **A `1.6%` relative reduction, not a collapse.** The
+beam-blending threat is real (`5` real at-risk pairs exist) but small
+in its actual effect on the headline Positivity result — the earlier
+population base-rate (§3, `~18-23%`) was a real but substantially
+over-pessimistic proxy, because it did not account for the
+radial-vs-transverse split §4 (5-pair version) already demonstrated.
+
+**The 10 closest-to-beam pairs among the 306**, for direct inspection:
+
+| z | s (Mpc) | `ξ_pred` | ang.sep (arcmin) | / 2.2' beam |
+|---|---|---|---|---|
+| 0.450 | 16.19 | `9.362e-8` | 1.804 | 0.82 |
+| 0.427 | 14.47 | `1.051e-7` | 1.933 | 0.88 |
+| 0.399 | 29.14 | `5.241e-8` | 2.090 | 0.95 |
+| 0.276 | 38.38 | `4.075e-8` | 2.998 | 1.36 |
+| 0.490 | 37.17 | `4.055e-8` | 3.218 | 1.46 |
+| 0.568 | 36.16 | `4.129e-8` | 5.232 | 2.38 |
+| 0.599 | 15.54 | `9.577e-8` | 5.491 | 2.50 |
+| 0.319 | 14.59 | `1.062e-7` | 7.035 | 3.20 |
+| 0.547 | 34.93 | `4.284e-8` | 7.368 | 3.35 |
+| 0.792 | 24.47 | `5.990e-8` | 7.399 | 3.36 |
+
+Note the 3 genuinely at-risk pairs (ratio `<1`) are **not** among the 5
+illustrated in §2 — the "5 closest by `ξ_pred`" and the "closest to
+beam" sets are different, exactly because `ξ_pred` is driven by 3D `s`
+alone while blending risk is driven by the angular (transverse-only)
+component.
 
 ## 4. What this does NOT establish
 
-1. Does **not** clear `estimand.md`'s Consistency (d) threat in
-   general — it resolves it for the 5 specific pairs already printed
-   elsewhere, and gives a real base rate (`~9-18%` risk fraction
-   depending on the `s` cutoff) for the wider small-`s` population.
-2. Does **not** re-run the Positivity fraction with blending-risk pairs
-   excluded — the `3.978%`/`306` number in `FINDING_power_analysis_s_
-   dependent.md` still includes an unknown number of pairs that this
-   check would flag if run on the full set.
-3. Is a real angular-separation check, not a simulated CMB-map check —
+1. `estimand.md`'s Consistency (d) threat is now checked directly
+   against all 306 real pairs behind the Positivity fraction, not
+   estimated from a base rate — but "checked" is not "zero risk": 5 of
+   306 pairs (1.6%) remain genuinely at or near blending risk, and
+   removing them changes the headline fraction only slightly
+   (`3.978%→3.913%`).
+2. Is a real angular-separation check, not a simulated CMB-map check —
    it establishes GEOMETRIC proximity to the beam scale, not that
    blending actually corrupts the source paper's own `τ_ML`/velocity
    pipeline at that separation (that pipeline's own handling of close
    pairs, if any, has not been read).
-4. Not a claim about MULTING (`NO_AUTHOR_ERROR`) — entirely about
+3. Not a claim about MULTING (`NO_AUTHOR_ERROR`) — entirely about
    whether this project's own real-position analysis is contaminated by
    an instrumental effect.
 
 ## Status
 
-**Partial resolution — the specific risk named is cleared for the
-illustrative pairs, not for the full Positivity population:**
+**Fully checked, not just partially — the threat is real but small:**
 
 ```
-5 named Positivity-driving pairs: CLEARED, 5.6x-10.7x beam FWHM
-Population at s<=11 Mpc:          ~18-23% at real blending risk (<2x beam)
-Full 306-pair Positivity set:     NOT individually checked
+5 named Positivity-driving pairs:  CLEARED, 5.6x-10.7x beam FWHM
+Population base rate at s<=11 Mpc: ~18-23% at real risk (over-pessimistic
+                                     proxy, does not account for radial
+                                     vs. transverse split)
+Full 306-pair Positivity set:      CHECKED directly -- 5/306 (1.6%) at
+                                     real risk (<2x beam), 3/306 (1.0%)
+                                     genuinely below beam FWHM
+Blending-risk-excluded fraction:   301/7693 = 3.913% (was 3.978%) --
+                                     a 1.6% relative reduction, not a
+                                     collapse of the Positivity result
 ```
 
-Next, if this branch continues: extend this exact script (its
-`angular_sep_arcmin` function is already general) to all `306` real
-pairs behind the `3.978%` Positivity fraction, and report a
-blending-risk-excluded Positivity number directly, rather than the
-current base-rate estimate. Not done here — the user's request was the
-named closest pairs specifically, and this file answers that request in
-full.
+Next, if this branch continues: no further action on THIS threat is
+required before the sign-near-crossing PROMOTE sub-check and the
+synthetic four-world battery — Consistency (d) is now a quantified,
+small correction, not an open unknown.
