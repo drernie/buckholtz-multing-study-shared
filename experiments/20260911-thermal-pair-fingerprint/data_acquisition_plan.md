@@ -54,7 +54,7 @@ technical path (H1b again).
 | # | Ingredient | Verdict | Access | Real cost |
 |---|---|---|---|---|
 | 1 | `K` via tSZ (Compton-`y`) | `[VERIFIED-REAL]` | `lambda.gsfc.nasa.gov` — direct file `ilc_actplanck_ymap.fits`, **1.78 GB**, plus mask + beam files. No login. **Correction to `estimand.md`'s own assumption**: this is **Plate Carrée (CAR) projection, ~0.5 arcmin pixels**, not native HEALPix. | Download: minutes. Per-cluster `Y` extraction (aperture photometry at each cluster position, background-subtracted): **new code, ~1-2 days**, not a downloadable column — this project has no existing tSZ-extraction script. |
-| 2 | pairwise dynamics (kSZ) | `[VERIFIED-REAL, Fork 1b]` | Same `y`-map (#1) + DESI DR1 spectroscopic catalog, public at `data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/`. | **The largest real cost in this plan.** Re-implementing a pairwise-momentum kSZ estimator (stacking, optical-depth weighting, covariance via jackknife/bootstrap) is a **multi-day-to-multi-week** undertaking, not a data pull — flagged honestly rather than folded into "download time." No existing code for this in this repo. |
+| 2 | pairwise dynamics (kSZ) | `[VERIFIED-REAL, Fork 1b]` | **[CORRECTED 2026-09-11]** NOT the `y`-map (#1) — Hand et al. 2012 (arXiv:1203.4219, read directly) use the ACT **148 GHz brightness TEMPERATURE map**, since kSZ is a frequency-independent temperature distortion, distinct from tSZ's spectral (y-map) signature; the pairwise-difference statistic (Eq. 2) is insensitive to tSZ/dust by construction, no y-map subtraction needed. Real-data phase needs ACT DR6's coadded temperature-map product, not `ilc_actplanck_ymap.fits`. Plus DESI DR1 spectroscopic catalog, public at `data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/`. | **The largest real cost in this plan.** Re-implementing a pairwise-momentum kSZ estimator (stacking, optical-depth weighting, covariance via jackknife/bootstrap) is a **multi-day-to-multi-week** undertaking, not a data pull. **Phase 1 (estimator math, synthetic data) built and validated 2026-09-11** — see `pairwise_ksz_estimator.py` + `FINDING_pairwise_ksz_estimator_phase1.md`. **Phase 2 (real ACT DR6 temperature map + real DESI DR1 catalog + full-scale jackknife) not started** — this is the part of the original "no existing code" estimate that remains. |
 | 3 | `M` via weak lensing | `[VERIFIED-REAL, PARTIAL — real bottleneck found]` | DES Y3 redMaPPer catalog public (`desdr-server.ncsa.illinois.edu`, FITS, λ>20, >21,000 clusters) — but its **native product is richness `λ`, not a per-cluster mass column**; a separate, published richness–mass calibration is needed. **Sky-overlap constraint, computed not assumed**: DES-Y3 ∩ DESI-DR1 footprint = **851.3 deg²** — small against ACT DR6's ~13,000 deg². | Download: minutes. Richness→mass conversion: reuses a published scaling relation (not built from scratch), **~1 day**. **The 851 deg² overlap is the real limiter on final sample size — must be computed against the other footprints (§ Fork 2) before the sample-size line in this plan means anything.** |
 | 4 | X-ray cross-check (`T_X`) | `[VERIFIED-REAL]` | `erosita.mpe.mpg.de/dr1/.../erass1cl_main_v3.2.fits`, **~48 MB**, direct download, no registration. Column `KT` (+ `KT_L`/`KT_H` uncertainties) — **usable directly**, no separate spectral modeling needed. | Download + column read: **hours**, not days. |
 | 5 | large-scale environment | `[VERIFIED-REAL for inputs / SOURCE_NOT_FOUND for a ready product]` | DESI DR1 LSS catalogs (galaxies + matched randoms + systematic weights) public at `data.desi.lbl.gov`. **No pre-built density-field product found.** | Must be **built from scratch** (counts-in-cells against the public randoms) — standard, well-precedented technique, but new code: **~2-3 days**. |
@@ -146,8 +146,30 @@ battery (`estimand.md`'s own hard pre-data gate) or any real data pull.
 
 ## Status
 
-**Costed. Not authorized to proceed.** Next, in order: (1) Fork 2's cheap
-footprint-intersection check, (2) a user decision on Fork 1 (build 1b,
-send 1a, or both in parallel — this project's own H1b precedent favors
-both), (3) only then the mock-catalog power analysis, (4) only then the
-synthetic four-world battery's own concrete design, (5) only then code.
+**[UPDATED 2026-09-11]** Both parallel paths from Fork 1 are now active,
+matching this file's own recommendation to run them together:
+- **Fork 1a (data request):** sent 2026-09-11 to Yulin Gong + Rachel
+  Bean, awaiting reply — `correspondence/draft_gong_bean_data_request_
+  20260911.md`.
+- **Fork 1b (classical estimator), Phase 1 — DONE:** the estimator math
+  itself (Hand et al. 2012 Eqs. 1-3) is built and validated on synthetic
+  data with real (RA,Dec,z) positions — positive control (toy infall)
+  recovers the correct sign in all bins, negative control (pure noise)
+  is clean, T<->q sign-convention wrapper verified against the paper's
+  own stated relation by an independent context-blind code review
+  (CONFIRMED, no sign/index bugs). See `pairwise_ksz_estimator.py` and
+  `FINDING_pairwise_ksz_estimator_phase1.md`.
+- **Fork 1b, Phase 2 — NOT started:** real ACT DR6 temperature-map
+  download + per-cluster extraction, real DESI DR1 catalog cross-match,
+  full-scale jackknife covariance. This is the genuinely multi-day-to-
+  multi-week remainder this file originally costed for "item 2" as a
+  whole — Phase 1 de-risked the math, Phase 2 is the real-data
+  engineering. Not authorized to proceed without a separate go-ahead
+  (multi-GB downloads, real compute time).
+
+Original ordering (superseded by the above): (1) Fork 2's cheap
+footprint-intersection check — done, bounded not exact (see Fork 2
+section above); (2) user decision on Fork 1 — made, both in parallel;
+(3)/(4) mock-catalog power analysis + synthetic four-world battery —
+both done in `estimand.md`'s own thread, independent of Fork 1b; (5)
+code — Phase 1 done as of today, Phase 2 remains.
