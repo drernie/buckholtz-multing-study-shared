@@ -62,23 +62,54 @@ technical path (H1b again).
 
 ---
 
-## Fork 2 — the sample-size question, not yet answered
+## Fork 2 — the sample-size question, attempted 2026-09-11, NOT pixel-exact
 
-**Real footprint intersection has not been computed.** The usable sample
-is the intersection of: ACT DR6 `y`-map coverage (~13,000 deg²), DESI DR1
-spectroscopic footprint, DES-Y3 lensing footprint (851.3 deg² with DESI
-alone), and eRASS1 coverage (western Galactic hemisphere, large but not
-yet cross-checked against the other three numerically). **The 851 deg²
-DES-Y3∩DESI-DR1 number is the tightest constraint found so far** and
-likely dominates the final N — but the actual multi-way intersection
-must be computed (a real, cheap GIS/footprint calculation, not a new
-data acquisition) **before** the mock-catalog power analysis
-(`estimand.md`'s own MCID section) can be run, since that analysis needs
-a real target N, not an assumed one.
+**What was actually tried:** `healpy`/`astropy_healpix`/`mocpy` are not
+installed and `healpy` fails to build in this environment (no `pkg-config`
+on Windows — a real, checked blocker, not skipped). The ACT DR6 mask
+itself is **1.78 GB** (same size as the map — confirmed via `WebFetch` on
+the LAMBDA product page, not assumed), making a pixel-exact download-
+and-intersect infeasible inside this session. Fell back to real,
+individually-sourced published numbers instead of a guess:
 
-**This is the next concrete task, and it is cheap** (hours, using
-already-downloaded footprint/mask files from items 1-4) — recommended as
-the actual next step, ahead of any of the multi-day builds above.
+| Pair | Value | Source |
+|---|---|---|
+| DES-Y3 ∩ DESI-DR1 | **851.3 deg²** | found via real paper/press coverage, prior pass |
+| eRASS1 ∩ DESI Legacy Survey DR10 | **12,791 deg²** | `[VERIFIED-arXiv:2402.08452]`, Bulbul et al. 2024, quoted directly: *"the 12,791 deg² common footprint of eRASS1 and the DESI Legacy Survey DR10"* |
+| eRASS1 total | 13,116 deg², western Galactic hemisphere, `179.9442°<l<359.9442°` | `[VERIFIED-arXiv:2402.08452]`, same paper |
+| ACT DR6 total | "~1/3 of the sky" (≈13,750 deg²) | `[VERIFIED-REAL]`, LAMBDA info page's own stated figure — not a precise polygon |
+
+**Reading these together, not just listing them:** eRASS1 already covers
+**97.5% of its own area (12,791/13,116 deg²) in common with the DESI
+Legacy footprint** — it barely restricts DESI at all. ACT DR6's own
+footprint (~13,750 deg², Chile-based, the same general southern
+extragalactic sky DES/DESI/eROSITA jointly target — this is the explicit
+science motivation behind all of these surveys existing in the same sky
+region, not a coincidence) is comparably large. **Reasoned, not
+pixel-verified, conclusion: the 851.3 deg² `DES-Y3∩DESI-DR1` figure is
+very likely close to the true 4-way number**, since neither ACT nor
+eRASS1 has been found to be a tighter constraint than DESI or DES-Y3
+already are.
+
+**What this is NOT:** a computed number. It is a bounded, sourced
+estimate: **upper bound 851.3 deg², plausible working range
+~700-850 deg²**, honestly short of a pixel-exact figure. Getting an
+exact number requires either (a) the 3.56 GB ACT mask+map download and a
+from-scratch equal-area-grid intersection (no `healpy` needed — a plain
+`numpy` RA/sin(Dec) grid works, but reading/rasterizing 1.78 GB of
+HEALPix FITS without `healpy` needs a manually implemented pixel→(RA,Dec)
+conversion, itself a source of bugs to control for), or (b) finding an
+existing 4-way cross-match paper that already did this (plausible given
+how common ACT×DES×DESI×eROSITA joint science is, not found in this
+pass — worth a dedicated literature search before spending compute on
+(a)).
+
+**Recommendation, stated plainly:** do not spend the multi-hour/GB
+effort on pixel-exact precision **yet** — 851.3 deg² (or the ~700-850
+working range) is precise enough to decide whether Fork 1 is worth
+pursuing at all. Revisit for exact precision only once the mock-catalog
+power analysis shows the result is sensitive to the exact N in that
+range.
 
 ---
 
