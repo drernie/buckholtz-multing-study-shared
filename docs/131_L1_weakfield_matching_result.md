@@ -98,6 +98,59 @@ the preprint's definition); a genuinely exotic ghost-free vector/antisymmetric s
 engineered to give static `1/r³` repulsion (not known to exist); a driven
 non-equilibrium theory (not a static force law). None is in the corpus.
 
+## ADDENDUM (2026-09-10) — the conservative (non-driven) branch of "driven
+## anti-aligned state" checked explicitly: also FAILS, closing that escape hatch
+
+**Continues:** this file's own "(4) driven anti-aligned state [CONFIRMED
+fails]" item above, which dismissed the escape only for a NON-conservative,
+externally-pumped mechanism ("needs an external pump and a non-conservative
+term"). The CONSERVATIVE variant — give `ξ_A` genuine rotational inertia
+(a moment of inertia `I` about axes ⟂ its own symmetry axis) instead of the
+purely potential-based, adiabatic/auxiliary treatment `U_S(θ)` above
+implicitly uses (no kinetic term for `ξ̇_A` was ever written down in this
+file) — was never checked. A conserved azimuthal angular momentum `L`
+(Noether charge of `U_S(θ)`'s own axial symmetry) then gives the standard
+heavy-symmetric-top ("Lagrange top") reduced effective potential:
+
+```
+U_eff(θ; L) = U_S(θ) + L² / (2 I sin²θ)         [docs/131's own U_S, unchanged]
+```
+
+**Result** (`scripts/l1_gyroscopic_stabilization_test.py`, symbolic series
+near `θ=π/2` + independent numerical minimization + a 100,000-point
+brute-force grid scan, all three agreeing to 5-6 significant figures —
+`[VERIFIED-BASH]`): the centrifugal barrier (which diverges at BOTH poles
+for any `L>0`, excluding `θ=0` and `θ=π` as candidates) drags the stable
+equilibrium away from `θ=0` — but only ever **toward** `θ=π/2`
+(`cos θ_eq → 0`, i.e. the net radial dipole force weakens toward zero), for
+every tested `L` up to `L̂=10⁶`. It never reaches, let alone crosses,
+`θ=π/2` into the repulsive half. Closed form matches the numeric result
+exactly (`θ_eq ≈ π/2 − A·I/L²` for large `L`, i.e. `cos θ_eq ≈ A·I/L²` —
+verified: `L̂=10→cos≈0.01`, `L̂=50→cos≈0.0004`, `L̂=1000→cos≈10⁻⁶`, all
+exact matches to the closed form).
+
+**Honest note on the script itself:** `sympy.solve` failed to extract the
+symbolic root of the perturbative series automatically (returned `[]`) —
+a cosmetic tooling gap, not a substantive one; the printed series
+(`A·φ + L²φ²/(2I) + const`) makes the root `φ_min = −AI/L²` readable by
+inspection, and the independent numeric optimizer + brute-force grid scan
+(no symbolic solving involved) reproduce this exact closed form to high
+precision, so the conclusion does not rest on the failed `solve` call.
+
+**Verdict: the conservative/angular-momentum variant of "driven
+anti-aligned state" also FAILS — a second, independent confirmation of
+this file's own FAIL verdict, not merely the same one restated.** Both the
+non-conservative (already dismissed above) and the conservative
+(this addendum) routes to a physically-accessible repulsive configuration
+are now closed. docs/131's own list of residual open branches is updated:
+"driven anti-aligned state" is no longer residual — CLOSED, for both its
+sub-cases.
+
+`REGRESSION/TESTS: script runs clean; ruff check scripts/l1_gyroscopic_
+stabilization_test.py passes (2 issues found and fixed — ambiguous
+variable name I -> I_mom, an f-string without placeholders — result
+re-verified unchanged after both fixes).`
+
 ## Consequence — the covariant program (CANDIDATE-L1) FAILS matching
 
 CANDIDATE-L1 fails weak-field matching on the repulsive sign, for a precise, physical,

@@ -281,6 +281,7 @@ Technical evidence-lock checkpoints — pending/resolved status of specific veri
 - [157_next_steps_plan_20260906.md](157_next_steps_plan_20260906.md) — next-steps plan; items 1-2 CLOSED per stop-rule, 3-5 DONE
 - [158_provenance_modules_park_decision_20260907.md](158_provenance_modules_park_decision_20260907.md) — `source_provenance`/`conflict_resolver` **PARKED**; `docs/157`'s proposed wiring was a category error (value level vs chain level)
 - [159_h1b_status_check_20260907.md](159_h1b_status_check_20260907.md) — H1b's WHIM half never ran as of this doc's own date (`BLOCKED-INFRASTRUCTURE`, 68 days on TNG-300 access); **superseded 2026-09-09** — access granted, `E_WHIM` now executed at real N=71 (see doc's own Update block + `CURRENT_EVIDENCE_STATE.md` §7.3); H1b itself still blocked on external `M_HE` data
+- [160_weaknesses_referee_map_delta_20260910.md](160_weaknesses_referee_map_delta_20260910.md) — `docs/119`'s ~26 weaknesses, item-by-item status delta June→September; 5 structural drivers (v82, Table A1 forensics, IDM/MULTING split, χ² pivot, P196-P202) account for most movement; honest untouched list: A-6, D-2..D-5, E-1, E-3, F-2..F-4
 
 > **⚠️ Number collisions in this range.** Four numbers are used twice:
 > **122**, **132**, **133**, **134**. The docs are distinct and all are

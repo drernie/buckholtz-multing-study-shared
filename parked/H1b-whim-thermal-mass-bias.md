@@ -639,3 +639,201 @@ only path; no public catalog bypass exists.
 
 **Net effect on H1b's own blocked status: unchanged.** No new data
 channel opened; real, useful context for interpreting a future reply.
+
+## 2026-09-10 (second entry) — three more real papers, still no data
+## shortcut; one genuinely new baseline number, one reusable methodology
+
+User supplied 3 PDFs plus one pasted-text paper (verified via
+`mcp__arxiv__get_abstract`). All four are real, on The Three Hundred,
+and all confirm rather than change the blocked status.
+
+**`[VERIFIED-PDF]` Gianfagna, Rasia, Cui, De Petris, Yepes,
+Contreras-Santos & Knebe (2021), MNRAS 502, 5115** (`arXiv:2211.08372`)
++ its `EPJ Web Conf. 257, 00020` proceedings summary (same authors,
+same content, no new information) — full hydrostatic-bias study on
+~300 Three Hundred clusters, 9 redshifts (`z=0.07-1.32`). **Genuinely
+new information not previously in this file:** real, published baseline
+numbers for H1b's own outcome variable in this exact cluster sample —
+median `b_X`/`b_SZ` ≈ 0.10-0.20 at R500, **no significant dependence on
+mass or redshift**, disturbed clusters carry nearly all the scatter, and
+bias goes **negative** (mass *over*-estimated) for ~1 dynamical time
+right after a major-merger peak before recovering. Useful as a prior for
+interpreting any future per-cluster result: since our own TNG-300 WHIM
+finding (`r=-0.429` in `FINDING_stage2_batch_n71.md`) is mass-dependent,
+a WHIM-driven bias mechanism would have to act mainly through the
+disturbed/merger-scatter channel, not a smooth mass trend — this paper's
+own null mass/z result on the bias side makes that distinction sharper
+than before. **Data Availability (verbatim):** *"shared on request to
+The Three Hundred Collaboration, at https://www.the300-project.org"* —
+same portal already confirmed dead in the 2026-09-09 section above.
+Tables 5-7 report only binned top/bottom-50 statistics (by concentration,
+mass growth, `χ_DS`), not per-cluster IDs — no bypass here either.
+
+**`[VERIFIED-arXiv]` Rost, Nuza, Stasyszyn, Kuchner, Hoeft, Welker,
+Pearce, Gray, Knebe, Cui & Yepes (2023), `arXiv:2310.12245`** — confirmed
+real via `mcp__arxiv__get_abstract` (title/authors/abstract match the
+user-pasted text exactly). Filament thermodynamics/WHIM on The Three
+Hundred's own 324 clusters (not TNG) — density/temperature/entropy/Mach
+profiles via DisPerSe filament-finding + `2×R200` halo excision,
+`WHIM ≡ 10⁵<T<10⁷K, n_H<10⁻⁴h²cm⁻³`. **Real, reusable methodological
+template** if/when the data request succeeds: this collaboration already
+has an established, published WHIM-extraction pipeline on their own
+simulation, so a future H1b-equivalent run on Three Hundred (rather than
+TNG-300) would not need to invent one from scratch — align with theirs
+for direct comparability. Confirms filaments genuinely isolate cooler,
+lower-entropy WHIM gas near the spine (`θ≈0` WHIM fraction → 1) and that
+this WHIM is efficiently dragged toward the cluster, both independent of
+and consistent in spirit with our own TNG-300 mass-anticorrelation
+finding. **Data Availability (verbatim):** *"shared on reasonable
+request to the corresponding author"* — again request-only, no bypass.
+No hydrostatic-mass comparison anywhere in this paper — does not touch
+H1b's other half.
+
+**`arXiv:1911.07878` (Ansarifard et al. 2019/2020) re-confirmed, not
+new.** This is the arXiv preprint of the paper already definitively
+closed in the "Primary-source confirmation" section above (2026-09-09,
+using the published `aa36742-19.pdf`). Read the preprint's own Appendix
+A/B/C directly this time: identical structure — Fig. A.1 individual
+scatter points with no ID labels, Tables B.1/B.2/C.1 class-level only,
+no data-availability statement anywhere in the visible pages. Same dead
+end, now confirmed from a second copy of the same paper — no new
+information, standing closure unchanged.
+
+**Net synthesis:** all 4 documents (5 counting the proceedings twin) are
+real, all confirm the request-based route (letter sent 2026-09-09) is
+the only channel and none leak a bypass, and — as with `stae071` the day
+before — 3 of the 4 papers here (Gianfagna, Rost, and the already-closed
+Ansarifard) carry **Weiguang Cui and/or Gustavo Yepes** as co-authors,
+reinforcing again that the request went to people actively, currently
+working on precisely this intersection (hydrostatic bias AND filament
+WHIM, both on the same 324-cluster sample). No change to H1b's blocked
+status. Two genuinely new, real, citable pieces of context worth keeping:
+the Gianfagna baseline-bias numbers (for interpreting a future result)
+and the Rost et al. WHIM-extraction methodology (for executing on Three
+Hundred data without redesign, if/when it arrives).
+
+## CORRECTION, same day — my own TIP (Mach-number comparison, previous
+## entry above) rested on a pasted external "report" that misstates its
+## own sources; direct verification finds a real disagreement, not the
+## clean confirmation implied
+
+Immediately after the entry above, I suggested comparing stacked
+Mach-number distributions around filaments in The Three Hundred (Rost)
+vs. TNG-300 as an unblocked, literature-only check. The user brought
+back a pasted "research report" claiming this was already doable and
+citing 3 sources. Per this session's standing discipline (verify every
+external/pasted claim directly, never trust a pasted "AI report" at face
+value — already exercised repeatedly this session), checked all three
+via `mcp__arxiv__get_abstract`, `mcp__scholarly-lookup__find_by_doi`, and
+`mcp__arxiv__search_papers`. Two of the three claims do not hold up.
+
+**`[VERIFIED-arXiv]` Pastén, Gouin, Aghanim & Sorce (2026),
+`arXiv:2604.24852`** — real, N=415 TNG-300 clusters, `z=0`, exactly the
+filament-accretion topic needed. **But the pasted text's characterization
+is backwards.** Its own abstract, verbatim: *"While virial shocks tend to
+be observed near the cluster boundary, especially at the
+filament-cluster interface. **We do not find strong evidence of
+accretion shocks around filaments**, suggesting slow thermalization of
+filament gas..."* — the pasted claim ("прямо фиксирует... более сильные
+аккреционные удары M~100... воспроизводя картину Molnar/Baxter") states
+the opposite of this paper's own headline finding for the filament
+region specifically.
+
+**This is a real tension worth keeping, not a wasted lead.** Rost et al.
+(already read in full above) reports a genuine **shocked envelope
+wrapping filaments** at intermediate angles (`10°≲θ≲30°`), distinct from
+both the (unshocked) spine and the far void — their own Fig. 6/7 and
+§4.2.1 text. Pastén et al. 2026, a different simulation and a different,
+larger (N=415) cluster sample, explicitly does **not** find that
+envelope. Two recent, real papers, looking at conceptually the same
+question, disagree. That is a more interesting and more honest starting
+point for the comparison than confirmed agreement would have been — but
+it means any future write-up must say "these two pictures disagree,"
+not "these two pictures match."
+
+**`[VERIFIED-arXiv]` Łokas (2023), `arXiv:2304.13585`, "Merging galaxy
+clusters in IllustrisTNG," A&A** (confirmed real via
+`find_by_doi` on `10.1051/0004-6361/202345984`, then the arXiv full
+abstract). The "median Mach ≈2" figure in the pasted text traces to a
+real sentence here (*"the median Mach numbers of these gas cells are
+around two"* — the pasted ".03" decimal is not in the source, false
+precision). **But this paper is about something else entirely**: 10
+examples of Bullet-Cluster-style **cluster-cluster merger bow shocks**
+in the 200 most massive TNG-300 haloes — not filament accretion shocks,
+not WHIM, no radial/angular profile around filaments at all. Citing it
+as the "TNG-side" filament-Mach comparison point is a category error —
+real paper, wrong phenomenon.
+
+**`[VERIFIED-OUP]` Schaal, Springel, Pakmor et al. (2016), MNRAS 461,
+4441** (fetched directly, quotes confirmed) — real, and its numbers are
+close to but measurably inflated in the pasted text: paper says typical
+accretion-shock Mach `≈2` (pasted text said "`~10`"), extreme cases
+"several hundred" (pasted text said "up to `~1000`"). Detection threshold
+`M≈1.3` **is** accurate as quoted.
+
+**Consequence for the unblocked Mach-comparison sub-task named in the
+entry above:** still genuinely unblocked (no data-portal dependency,
+both real profiles are already published) — but the honest framing is
+"Rost (Three Hundred) reports a filament-wrapping shock envelope; Pastén
+2026 (TNG-300, N=415) explicitly does not find one — a real,
+unreconciled disagreement between two 2023/2026 papers" — not a
+confirmation exercise. Worth a `pearl_registry` row if pursued further;
+not pursued in this session beyond verification. Łokas 2023 is not a
+usable comparison point for this specific sub-task.
+
+### Follow-up, same day — checked whether Rost and Pastén use the same
+### shock-detection threshold. They don't; they use different KINDS of
+### method entirely, which may itself explain part of the disagreement
+
+`[VERIFIED-arXiv]` Downloaded and read `2604.24852` directly (not just
+its abstract) — `mcp__arxiv__list_paper_latex_sections` +
+`mcp__arxiv__get_paper_latex_section` + `search_paper_text`.
+
+**Rost et al., §2.3** (already quoted in full above): a formal,
+per-particle, **multi-criterion** shock finder following Nuza et al.
+2012/2017 — convergent flow (negative velocity divergence) **and**
+density increase **and** entropy increase downstream, all three
+required; Mach number is computed via Rankine-Hugoniot only *after* a
+particle already qualifies, taking the minimum of 3 derived values as a
+conservative estimate. **No numeric Mach threshold appears anywhere in
+this criterion** — detection is qualitative (3 physical conditions),
+not a cutoff.
+
+**Pastén et al., checked directly:** §3.1 ("Methodology") does not
+mention Mach number or shocks at all — it only defines the isotropic/
+anisotropic radial-profile machinery for `T`/`S`/`P`/`ρ`. The paper has
+**no dedicated shock-finding section**. The Mach-number discussion
+appears only in §6.2 ("Shock signatures..."), where a shock front is
+identified **visually**, by inspecting a Mach-number map and reporting
+where an elevated region sits ("we clearly observe a shock front near
+`R_200` with `M∼2` in most of the clusters") — no stated detection
+algorithm or threshold at all, and (`search_paper_text` for "shock
+finder"/"sound speed": 0 hits both) apparently no formal one exists in
+this paper.
+
+**Neither paper uses Schaal et al. 2016's `M≈1.3` jump criterion** —
+that comparison point (suggested as a next check in the entry above)
+turned out not to apply to either source; dropped.
+
+**Refines, does not overturn, the disagreement noted above.** Reading
+Pastén's full text (not just its abstract) sharpens where the
+disagreement actually sits: they **do** confirm a virial shock
+(`M∼2` near `R_200`, "in most of the clusters") — roughly the same
+radius as part of Rost's own "shocked envelope." They do **not** confirm
+the stronger, further-out accretion shocks (`M∼100`, Molnar 2009/Baxter
+2021) at `2-4R_200`. Rost's own filament-wrapping shocked-envelope
+finding is specifically reported at `3-4R_200` (§4.2.1: "a large shocked
+region centred at approximately 60°" in that same range) — so the real
+disagreement is localized to the far zone, not the whole profile; the
+earlier entry's blanket framing ("Rost finds one, Pastén finds none")
+was itself slightly too coarse, now corrected. The pasted text's
+original error stands as diagnosed: it merged the confirmed virial-shock
+result with the unconfirmed far accretion-shock result into one blanket
+"reproduces Molnar/Baxter" claim.
+
+**Practical upshot:** a future quantitative comparison between these two
+papers' Mach profiles would need to control for this methodological gap
+(formal multi-criterion particle detector vs. visual Mach-map reading)
+before treating any numeric disagreement as physical — the two papers
+may not be measuring the same operational definition of "shocked" at
+all. Not pursued further this session.

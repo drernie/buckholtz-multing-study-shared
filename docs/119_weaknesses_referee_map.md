@@ -3,6 +3,13 @@
 # Scope: препринт TJB v6 + наша реконструкция
 # NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION
 # Цель: pre-mortem перед отправкой в журнал
+#
+# **[2026-09-10] STATUS DELTA: see `docs/160_weaknesses_referee_map_delta_
+# 20260910.md`** — item-by-item what changed since this file was written
+# (v82's publication, Table A1 forensics, IDM/MULTING decoupling, and the
+# Pearson-r→χ² pivot supersede/deepen most of A/B/C/F below; D/E/F-2..F-4
+# remain genuinely untouched). This file itself is kept as-is, unedited —
+# it is the June baseline the delta measures against.
 
 ---
 
