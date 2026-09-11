@@ -5,6 +5,18 @@ data acquisition or code). Read `claim.md` first — this file does not
 repeat its Step -3/-2/-5 gates.
 **Labels:** `NOT_VALIDATION` · `NOT_REFUTATION` · `OUR_RECONSTRUCTION` ·
 `NO_AUTHOR_ERROR`
+**[AMENDED 2026-09-11 — external critique, independently verified before
+applying: one load-bearing citation (astro-ph/0502226) checked directly
+against its own abstract and found to be about tSZ-mass scaling only —
+no mention of kSZ or optical-depth/velocity degeneracy; the underlying
+physics claim it was attached to is nonetheless real and independently
+corroborated by this file's own § Measurement-Validity finding below,
+already present before this amendment. Applied: a new DAG node (`G`),
+a new § Temporal Structure item, a mandatory pre-data synthetic
+identifiability battery (§ below), and a sharper negative-control design.
+Not applied: "Causal DAG: MISSING" — the DAG below already existed at
+the time of that critique; what was accurate in it is that the DAG was
+**incomplete**, not absent.**
 
 ---
 
@@ -173,43 +185,66 @@ wrote its own 5-path confound list in prose).
 **Nodes:**
 `M` (gravitating/lensing mass) · `z` (redshift) · `Env` (large-scale
 density field) · `Dyn` (dynamical/merger state) · `K` (true thermal
-energy) · `R` (characteristic radius) · `s` (pair separation) ·
+energy) · `G` (electron/gas density distribution — **[ADDED 2026-09-11]**,
+see below) · `R` (characteristic radius) · `s` (pair separation) ·
 `ξ = f(K,M,R,s)` (the deterministic exposure) · `V_true` (real pairwise
-peculiar velocity, latent — never directly observed) · `τ_ML` (the
-kSZ pipeline's ML-inferred optical depth per object) · `V_kSZ` (the
-**measured** outcome, a function of `V_true` **and** `τ_ML`) · `Sel`
-(catalog selection/construction) · `MULTING-force` (the hypothesized
-causal mechanism under test, dashed = not assumed to exist).
+peculiar velocity, latent — never directly observed) · `τ` (true electron
+optical depth, a physical property of `G`) · `τ_ML` (the kSZ pipeline's
+ML-**inferred** estimate of `τ`, not `τ` itself) · `V_kSZ` (the
+**measured** outcome, a function of `V_true` **and** `τ_ML`) · `Y_tSZ`
+(the measured tSZ signal, from which `K` is inferred) · `Sel` (catalog
+selection/construction) · `MULTING-force` (the hypothesized causal
+mechanism under test, dashed = not assumed to exist).
 
 **Edges:**
 
 ```
-M ──────────────→ K                (mass-temperature/thermal scaling)
+M ──────────────→ K, G             (mass-temperature scaling; mass sets gas reservoir)
 M ──────────────→ V_true           (standard gravity: mass sets local dynamics)
 z ──────────────→ K                (thermal-history evolution)
 z ──────────────→ V_true           (Hubble-flow / growth-factor evolution)
-Env ────────────→ K                (external pressure / accretion heating -- v82's own text)
+Env ────────────→ K, G             (external pressure / accretion heating -- v82's own text)
 Env ────────────→ V_true           (large-scale tidal/flow field)
-Dyn ────────────→ K                (mergers shock-heat gas at fixed M)
+Dyn ────────────→ K, G             (mergers shock-heat AND redistribute gas at fixed M)
 Dyn ────────────→ V_true           (disturbed systems: anomalous peculiar velocities)
+G ──────────────→ K                (thermal content is a property of the gas distribution)
+G ──────────────→ τ                (optical depth IS an integral over the same electron gas)
+G ──────────────→ Y_tSZ            (tSZ is also an integral over the same electron gas, weighted by T_e)
+K ──────────────→ Y_tSZ            (K is inferred FROM Y_tSZ -- near-definitional, not independent)
 K, M, R, s ─────→ ξ                (deterministic, by definition)
 ξ ┄┄┄┄[MULTING-force]┄┄┄→ V_true   (THE HYPOTHESIZED PATH -- dashed, not assumed)
 V_true ─────────→ V_kSZ            (real signal enters the measurement)
-τ_ML ───────────→ V_kSZ            (measurement CONSTRUCTION, not a physical cause of V_true)
-[sim-trained gravity model] → τ_ML (τ_ML's own training assumes standard gravity)
+τ ──────────────→ V_kSZ            (true optical depth enters the real kSZ signal physically)
+τ_ML ───────────→ V_kSZ            (the PIPELINE'S ESTIMATE of tau -- what the analysis actually uses)
+[sim-trained gravity model] → τ_ML (tau_ML's own training assumes standard gravity)
 Sel ────────────→ {which (M,z,Env,Dyn,K) combinations enter the catalog at all}
 ```
 
 **The confounding structure, stated plainly:** `M`, `z`, `Env`, `Dyn` each
 have arrows into **both** `K` (hence `ξ`) and `V_true` — classic
 confounders, all four must be conditioned on for any `ξ`–`V_kSZ`
-association to be interpretable. `τ_ML` is **not** a confounder in the
-classical sense (nothing causes both it and `ξ`) — it is a threat to
-**measurement validity**: `V_kSZ` is not `V_true` observed with
-independent noise, it is `V_true` observed through a filter trained under
-an assumption (standard gravity in the training simulations) that could
-be false in exactly the regime being tested. This is the single largest
-open risk this estimand carries forward from `claim.md` §5.
+association to be interpretable.
+
+**[AMENDED 2026-09-11] Two distinct threats live in the measurement
+tract, not one — conflated in this file's first version:**
+
+1. **`τ_ML` vs. `τ`** — a **model-specification** threat: the ML
+   estimate of optical depth is trained on simulations that assume
+   standard gravity, so any discrepancy between `τ_ML` and true `τ` could
+   itself correlate with the very effect being tested.
+2. **`G → τ, Y_tSZ` (the newly added backdoor path
+   `K ← G → τ → V_kSZ`)** — a **shared-physics** threat, independent of
+   any modeling choice: tSZ and kSZ are both integrals over the *same*
+   electron column (`Y_tSZ ∝ ∫n_e T_e dl`, `τ ∝ ∫n_e dl`), so stratifying
+   pairs by thermal signal mechanically stratifies by electron column
+   too — capable of producing a `K`–`V_kSZ` association through shared
+   `n_e`, with **zero** gravitational content. This path exists even with
+   a *perfect*, bias-free `τ_ML`.
+
+Neither is a classical confounder (nothing common-causes both `ξ` and an
+independent draw of `V_kSZ`'s noise) — both are threats to **Consistency**
+(§ below), restated to keep them from being treated as a single,
+already-handled item.
 
 ---
 
@@ -217,18 +252,31 @@ open risk this estimand carries forward from `claim.md` §5.
 
 ### 1. Consistency
 
-**Threat, not yet resolved.** `Y^ξ` (the pairwise-dynamics outcome under
-exposure level `ξ`) is well-defined only if (a) `ξ` itself is computed
-identically for every pair — requires fixing the pair-definition
-ambiguity (§ Population, above) once, not per-analysis — and (b) `V_kSZ`
-means the same thing across the sample, which is doubtful given `τ_ML`'s
-own dependence on a gravity-model-trained pipeline (DAG, above).
-**Partial mitigation, not a fix:** using the SAME kSZ pipeline/ML model
-throughout at least makes any distortion **systematic and shared**
-across the `ξ`-range, rather than differential — which is why the
-free-linear intermediate model (§ Summary Measure) matters: a shared,
-`ξ`-independent distortion would bias the intercept/normalization, not
-manufacture the specific sign-crossing shape.
+**Threat, not yet resolved — now two named sub-threats, per the DAG
+amendment above.** `Y^ξ` (the pairwise-dynamics outcome under exposure
+level `ξ`) is well-defined only if (a) `ξ` itself is computed identically
+for every pair — requires fixing the pair-definition ambiguity
+(§ Population, above) once, not per-analysis; (b) the model-specification
+threat: `V_kSZ` risks meaning something systematically different from
+`V_true` because `τ_ML` is trained assuming standard gravity; and
+**(c) [ADDED 2026-09-11] the shared-physics threat: `K` and `τ` are both
+integrals over the same electron gas `G`, so a `K`–`V_kSZ` association
+can appear even with a perfect `τ_ML` and zero MULTING effect** — this
+was previously folded into (b) and is now kept separate because its
+mitigation is different (it needs an *independent* thermal-content proxy,
+not a better velocity pipeline).
+
+**Partial mitigations, neither a fix:**
+- For (b): using the SAME kSZ pipeline/ML model throughout at least makes
+  that distortion **systematic and shared** across the `ξ`-range rather
+  than differential — the free-linear intermediate model (§ Summary
+  Measure) would absorb a shared, `ξ`-independent bias into the
+  intercept, not manufacture the specific sign-crossing shape.
+- For (c): the § Endpoint "Path B" (X-ray `T`+`M_gas` instead of tSZ) is
+  the direct answer — `T` and `M_gas` do not share `G`'s optical-depth
+  integral the way `Y_tSZ` and `τ` do, so an effect surviving in Path B
+  alone is not explained by this specific backdoor path (though it may
+  still have its own).
 
 ### 2. Positivity
 
@@ -269,6 +317,67 @@ correlated `V_true` residuals across "independent" pairs — this needs a
 real check against the environment proxy already required for matching,
 not a separate new dataset.
 
+### 5. [ADDED 2026-09-11] Temporal Structure — not one of the classical
+### four, but required here and previously missing
+
+**MULTING's force law is instantaneous; kSZ gives an integrated
+quantity.** `a = a(K(t),M(t),R(t),s(t))`, but
+`v(t) = v(t₀) + ∫_{t₀}^{t} a\,dt'`. A regression of today's `V_kSZ` on
+today's `ξ` implicitly assumes today's `ξ` is a reasonable proxy for the
+pair's `ξ`-history — which fails specifically when merger history moves
+`K` and `V_true` together over the same interval (the `Dyn` path already
+in the DAG), **and** more generally whenever a pair's `ξ` has not been
+roughly constant over the dynamical time relevant to building up `v`.
+**This is not resolved by conditioning on `Dyn`** (a present-epoch
+proxy) — it requires either (a) restricting to pairs with independent
+evidence of a stable recent history (e.g. `Dyn`-relaxed for a
+resolvable look-back window), accepting the resulting selection is a
+genuine restriction of the estimand's own population, not a nuisance to
+average over; or (b) the `λ_M`-in-a-forward-model reformulation named
+below, which requires machinery this project has not built (§ Open
+Design Item).
+
+**Open design item, not resolved here:** a proper causal answer needs a
+forward/temporal dynamics model — `a = a_baseline + λ_M · a_MULTING(...)`,
+testing `H_M: λ_M=1` against `H_0: λ_M=0` inside that model — rather
+than a direct regression of `v` on instantaneous `ξ`. Building that
+model is the same undertaking `claim.md`'s own external-proposal review
+flagged as unverified (§5, many-body/N-body/BBGKY derivation) — this
+estimand does not assume that work exists or will be done; C1 (§ below)
+is deliberately scoped to avoid needing it, and is weaker precisely
+because of that.
+
+---
+
+## Pre-Data Requirement: Synthetic Identifiability Battery
+## [ADDED 2026-09-11 — adopted from external critique, matches this
+## project's own Oracle Adequacy Gate applied to this specific estimator]
+
+**Before any real catalog is touched, this project's own
+`falsification-ladder.md` Step 2b (Oracle Adequacy Gate) requires
+checking that the evaluator — here, the estimator/regression pipeline
+itself — can actually distinguish the states it claims to distinguish.**
+Concretely: construct four synthetic mock worlds, matched in sample size
+and marginal `(M,z,Env,Dyn)` distributions to the real target catalog:
+
+1. **World `MULTING`** — mock pairs generated with the frozen `(β₁,β₂)`
+   force law actually sourcing the dynamics.
+2. **World `optical-depth-confounded`** — no MULTING effect; `K`–`V_kSZ`
+   association injected purely through the `G→τ→V_kSZ` backdoor path
+   (§ DAG amendment above), zero true gravitational dependence on `K`.
+3. **World `merger-confounded`** — no MULTING effect; `Dyn` drives both
+   `K` and `V_true` independently, no `K→V_true` causal path at all.
+4. **World `null`** — no MULTING effect, no confounding-induced
+   association either.
+
+**Pass condition:** the full analysis pipeline (matching, the C1 `S_M`
+kill-test, and — if attempted — the C2 causal estimator) must correctly
+classify all four worlds, including **not** producing a false PROMOTE in
+worlds 2 or 3. **A pipeline that cannot pass this battery on synthetic
+data is `ORACLE_INADEQUATE` per this project's own gate and is
+prohibited from running on real data until fixed** — this is a hard
+gate, not a recommended step.
+
 ---
 
 ## Identification Strategy
@@ -285,14 +394,18 @@ external reproduction.
 
 ## Sensitivity Analyses (≥2 required, Full-Ladder)
 
-1. **Permutation / shuffle negative control.** Within each matched
-   stratum, randomly reassign `K` among pairs and re-run the regression.
-   Direct precedent already in this project:
-   `experiments/20260909-tng-mass-assortativity` used exactly this
-   design (mass-shuffle gave `r=0.028≈0`) as its own negative control.
-   Expected here: near-zero, `ξ`-independent result under shuffling: a
-   real signal must vanish under this permutation; a pipeline artifact
-   (e.g., from `τ_ML`) might not.
+1. **Permutation / shuffle negative control — [SHARPENED 2026-09-11].**
+   Within each matched stratum, randomly reassign `K` among pairs
+   **while holding `M`, `z`, `s`, and each pair's own `τ_ML`/`Y_tSZ`
+   fixed** (not a plain shuffle of all columns together) — this is the
+   design that actually isolates the question: does the association
+   survive breaking the *correct* `K`-to-pair linkage while leaving the
+   measurement chain (and its `G→τ` backdoor) untouched? A plain
+   full-shuffle, by contrast, could accidentally also break the
+   `G→τ→V_kSZ` path and falsely appear to pass. Direct precedent for the
+   general method in this project: `experiments/20260909-tng-mass-
+   assortativity` (mass-shuffle gave `r=0.028≈0`); the refinement above
+   is new here, not inherited from that precedent as-is.
 2. **Path A vs. Path B independence** (§ Endpoint) — an effect appearing
    only in the tSZ+kSZ chain and not in the independent X-ray+alternative-
    velocity-estimator chain is presumptively a shared-pipeline systematic,
@@ -338,10 +451,18 @@ external reproduction.
 
 ## Status
 
-**Estimand written, all four identifiability checks named with their
-concrete residual threats stated (none dismissed as satisfied). No data
-pulled. No code exists in this folder.** Per `claim.md` §8: the next
-artifact is a costed data-acquisition plan naming exact catalog columns,
-access mechanism, and sample-size estimate — followed by the mock-catalog
-power analysis this file's own MCID section requires before any real
-number is frozen.
+**[UPDATED 2026-09-11]** Estimand written, DAG now includes the `G`
+(shared-electron-gas) backdoor path and a fifth, non-classical Temporal
+Structure item, alongside the original four identifiability checks —
+none dismissed as satisfied. `claim.md` now separates a cheaper,
+non-causal C1 kill-test (does the frozen `S_M` shape appear at all) from
+the full causal C2 mechanism claim this file's DAG serves. **A synthetic
+four-world identifiability battery is now a hard pre-data gate** — the
+pipeline must be shown not to false-PROMOTE on optical-depth-confounded
+or merger-confounded mock data before it may touch anything real.
+
+No data pulled. No code exists in this folder. Per `claim.md` §8 as
+amended: next is (1) the synthetic battery's own design and pass/fail
+criteria (not yet written — this file only mandates that it happen), (2)
+a costed data-acquisition plan, (3) the mock-catalog power analysis this
+file's own MCID section requires. Code remains gated behind all three.

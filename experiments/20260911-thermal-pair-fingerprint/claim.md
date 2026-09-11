@@ -213,12 +213,72 @@ family of tests.
    `experiments/20260907-icm-expansion-correlation`.** That branch's own
    `REFUSE` stands for its own predicate (`H_local`, model's own mean
    trajectory). This is a structurally distinct branch, per §1.2.
+3a. **[AMENDED 2026-09-11 — external critique, cross-checked before
+    applying, not accepted on its word] Not that "real cluster-pair
+    scatter reaches the crossing" is established.** §4's plausibility
+    argument used the **marginal** `M_gas–T` scatter (`σ=0.49`) as
+    evidence that the **joint** distribution of `(K,M,R,s)` plausibly
+    reaches `ξ_crossing`. That inference is not valid without the joint
+    covariance structure — a marginal scatter in one input does not by
+    itself bound the scatter of a ratio combining four. §4's own wording
+    ("plausibly," "comfortably covers... for a non-trivial tail") was
+    already hedged as a plausibility argument, not asserted as
+    established fact — but the underlying gap (no direct measurement of
+    `ξ`'s own real-population scatter) stands and is now `estimand.md`'s
+    § Population-`xi`-Scatter open item, not a footnote.
+3b. **Not that today's `K` is the right variable to correlate with
+    today's `v`.** MULTING's force law is instantaneous
+    (`a = a(K(t),M(t),R(t),s(t))`); kSZ gives a velocity, which is
+    `v(t) = v(t₀) + ∫a dt'` — an integral over the pair's entire dynamical
+    history, not a snapshot. A correlation between present-day `ξ` and
+    present-day `v` is diluted by this integration even in a world with
+    zero confounding, and merger history changes `K` and `v` together
+    over the same interval, which is a distinct problem from (though it
+    compounds) the `Dyn`-confounding already named in `estimand.md`'s
+    Exchangeability check. This is now `estimand.md`'s own § Temporal
+    Structure item — genuinely new, not previously in this file.
 4. **Not a claim that the external pasted proposal was reliable as a
    whole.** Two of its citations were caught mischaracterizing their
    sources (DESI DR2 Lyα direction; scope of the cited symbolic-
    regression paper) — see `pearl_registry/INDEX.md`. Only the parts that
    survived independent verification are carried into this file.
 5. **Not yet a DAG, not yet an identifiability check, not yet code.**
+
+---
+
+## 7a. [AMENDED 2026-09-11] Split into C1 (fingerprint, not causal) and
+## C2 (mechanism, causal) — adopted from external critique, verified
+## valuable independent of its citation/framing problems
+
+Sections 1-7 above described one claim at causal L0. Splitting it lowers
+the evidentiary bar for a first, cheaper gate, matching this project's
+own `docs/151_status_separation_rule.md` (empirical/interpretation/causal
+kept as separate fields, never collapsed):
+
+**C1 — fingerprint claim, L0 = predictive, not causal.** For each real
+pair, freeze `S_M = β₁(ξ_A+ξ_B) − β₂·ξ_A·ξ_B` (reduces to `claim.md` §4's
+own `2β₁ξ−β₂ξ²` for identical nodes) from the same frozen `(β₁,β₂)`.
+Question: does a pre-registered, held-out-data test find the specific
+`S_M`-shaped dependence in the pairwise-dynamics statistic that rival
+(non-MULTING) models do not produce? **A null result here already kills
+the current parameterization** — it does not require the DAG or the
+identifiability checks below, because it makes no claim about *why* any
+pattern exists, only whether the specific frozen shape is present. This
+is the cheaper, faster gate — run it before, not instead of, C2.
+
+**C2 — mechanism claim, L0 = causal.** The original §1-§7 content,
+unchanged: does an intervention-equivalent change in thermal content,
+holding the matching set fixed, change pairwise dynamics **per** the
+frozen force law. Requires the full DAG and identifiability apparatus
+(`estimand.md`).
+
+**Consequence for `estimand.md`:** its Endpoint/Summary-Measure sections
+as written already describe something closer to C1 (a nested-model
+comparison against held-out-style structure) than to C2's full causal
+apparatus — this is now made explicit rather than left implicit. The DAG
+and four identifiability checks remain necessary for C2's verdict to
+count as mechanism evidence; they are not necessary for C1's own,
+narrower kill-test to run.
 
 ---
 
