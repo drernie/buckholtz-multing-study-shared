@@ -193,34 +193,136 @@ the concrete next artifact.
    whether *this project's own reconstruction* of a test is statistically
    viable.
 
+## 6. Exact Pair Census — real catalog result [ADDED 2026-09-11]
+
+**Continues §4a's own named next step.** `exact_pair_census.py` replaces
+§2's Poisson-volume model with an exact pairwise-separation count on
+**real** `(RA, Dec, z)` positions — the ACT-DR5 MCMF catalog (Klein, Mohr
+& Davies 2024, `arXiv:2406.14754`), downloaded directly from CDS
+(`cdsarc.cds.unistra.fr/ftp/J/A+A/690/A322/`, public, no login). **6237
+rows — `[VERIFIED]` matches the paper's own abstract count exactly.**
+`4390` clusters survive the same `z∈[0.2,0.8]` cut used throughout this
+branch. The catalog's own `fcont1C` contamination column is already
+capped at `<0.2` in the public table (`max=0.19988`, checked directly,
+not assumed) — no separate purity cut needed on top of the catalog's own
+default selection.
+
+**Method:** real `(RA,Dec,z)`→Cartesian comoving-Mpc conversion via
+`astropy.cosmology.Planck18` (same cosmology as §2-§3c), a `scipy`
+`cKDTree` sparse-distance-matrix pairwise search (no `N²` loop, no
+`healpy` needed — this sidesteps the Fork-2 footprint-intersection
+blocker entirely, since exact positions make an assumed-area Poisson
+model unnecessary for the pair COUNT itself), and a direct histogram of
+the `14200` real pairs found within `200` Mpc comoving.
+
+**Exact counts, full ACT-DR5 MCMF footprint (`13211 deg²`,
+`[VERIFIED-arXiv:2406.14754]`, corrects §1's own `13750` deg² ACT-DR6
+proxy), `z∈[0.2,0.8]`:**
+
+| Window | Real exact count (full footprint) | Real, area-scaled to Fork-2 mid (775 deg²) | Step 3c's Poisson-model number (same footprint) |
+|---|---|---|---|
+| broad `[20,160]` Mpc | 7651 | **449** | 585 |
+| narrow-25 `[20,70]` Mpc | 910 | **53** | 48 |
+| narrow-10 `[35,55]` Mpc | 374 | **22** | 18 |
+
+**Two separate real effects are visible here, not one — kept distinct
+per this project's own `feedback_verdict_attribution.md` discipline
+(don't merge two independent causes into one number):**
+
+1. **Real clustering pulls the narrow-window ratio UP**, exactly the
+   direction `§4a`'s own clustering-bias note predicted: real
+   `narrow-10/broad = 0.0489` vs. the idealized Poisson model's
+   `0.0303` (narrow-25 similarly: `0.1189` vs `0.0819`). Real clusters
+   really are positively-clustered tracers, not a Poisson field.
+2. **A separate, newly-found provenance gap in §1's own density
+   input**: `density_per_deg2` there was computed from the FULL catalog
+   (`6237` clusters, all `z∈[0.04,2]`) divided by area, then applied as
+   if that were the density *within* the `z∈[0.2,0.8]` shell — but only
+   `4390/6237` (`70.4%`) of real clusters actually fall in that shell.
+   This inflated §2's `N_clusters_mid` input by a factor of `~1.42×`,
+   which — since pair count scales roughly as `N²` at fixed volume —
+   substantially inflated the broad-window Poisson estimate specifically
+   (`585` vs. the real, clustering-corrected `449`). This is the same
+   class of error `docs/146` Category 11 already names (a stale/
+   mismatched-scope input silently reused), caught here by direct
+   comparison against real data, not by a pasted critique.
+
+**Power, re-run with `one_trial()` (identical Monte Carlo methodology,
+`N_MC=4000`, `ΔAIC>6` + `|z|>1.96`, `power_analysis_mock_catalog.py`
+Step 3d) at the real, area-scaled counts:**
+
+| Window | low (700deg²) | mid (775deg²) | high (850deg²) |
+|---|---|---|---|
+| narrow-10, N=20/22/24 | 9.4% | 10.7% | 11.5% |
+| narrow-25, N=48/53/59 | 29.7% | 34.0% | 37.9% |
+| broad, N=405/449/492 | 100.0% | 100.0% | 100.0% |
+
+**Reading:** real clustering gives a real but modest power improvement
+over Step 3c's idealized numbers (narrow-10: `8.4%→10.7%` at mid
+footprint; narrow-25: `29.8%→34.0%`) — roughly `+2 to +4` percentage
+points, not a qualitative change. **The branch's own verdict is
+unchanged: "weak, not dead."** The window-*width* choice remains the
+free, undetermined parameter (`10.7%` vs `34.0%` is still a `~3×`
+swing). The area-scaling from the full ACT-DR5 footprint to the
+`700-850 deg²` Fork-2 target is still a first-order **linear**
+approximation, explicitly flagged in `exact_pair_census.py` itself — it
+assumes uniform cluster density and clustering statistics across the
+sky, which the real DES-Y3/DESI-DR1/eRASS1 cross-match (still not done)
+could push in either direction. This step answers the *shape* question
+(§4a's own framing) honestly; it does not close Fork 2.
+
 ## Status
 
-**[UPDATED 2026-09-11] Computed, corrected once, still not decided —
-and correctly so.** Per the critique's own suggested status ledger,
-adopted here:
+**[UPDATED 2026-09-11, 2nd pass] Exact Pair Census run — narrow-window
+pairs upgraded from MODEL-DERIVED to VERIFIED (real positions); the
+window-WIDTH question remains open, correctly so.**
 
 ```
 Data availability (per-object kSZ table): CONFIRMED NOT PUBLIC
 ACT source density (6237, arXiv:2406.14754):           VERIFIED
 DES-Y3 x DESI-DR1 overlap (851.3 deg^2):                VERIFIED
-ACT/eRASS1 four-way EXACT overlap:                      OPEN
-Broad-window pairs (~585, 20-160 Mpc comoving):         MODEL-DERIVED
-v82's own separation, d0=45 Mpc physical, s(0):         VERIFIED (corrected
-                                                          from an earlier,
-                                                          wrong s0~30 Mpc)
-Narrow-window pairs (18-48, comoving, width TBD):       MODEL-DERIVED,
-                                                          CENTER fixed,
-                                                          WIDTH open
+ACT/eRASS1 four-way EXACT overlap:                      OPEN --
+                                                          still not
+                                                          resolved by
+                                                          the Exact Pair
+                                                          Census (that
+                                                          used ACT-DR5
+                                                          MCMF alone,
+                                                          linearly
+                                                          area-scaled)
+Broad-window pairs (20-160 Mpc comoving):               VERIFIED (real
+                                                          census: 449 @
+                                                          mid footprint,
+                                                          not 585 --
+                                                          see SS6)
+v82's own separation, d0=45 Mpc physical, s(0):         VERIFIED
+Narrow-window pairs (comoving, width TBD):              VERIFIED (real
+                                                          census, SS6):
+                                                          22 (+-10 Mpc),
+                                                          53 (+-25 Mpc)
+                                                          @ mid footprint.
+                                                          WIDTH still open.
 Noise model (A_noise, relative-noise bracketing):       NOT VERIFIED
-"Narrow branch is dead":                                WITHDRAWN --
-                                                          was based on the
-                                                          wrong separation
+Area-scaling to Fork-2 target (linear, ACT-wide->775deg^2): NOT VERIFIED,
+                                                          flagged
+                                                          explicitly as
+                                                          first-order
+"Narrow branch is dead":                                WITHDRAWN
 "Narrow branch is viable":                              NOT YET ISSUED --
-                                                          8-30% power is
-                                                          real but weak
+                                                          10.7%-34.0%
+                                                          power (real
+                                                          census) is
+                                                          real but weak,
+                                                          modestly better
+                                                          than the
+                                                          idealized model
 ```
 
-Next: the Exact Pair Census (§4a) — cheap, real-catalog-based, resolves
-both the window-width ambiguity and replaces the Poisson-volume model
-with an exact count. No code beyond this power-analysis script exists in
-this folder; the synthetic four-world battery is still unbuilt.
+Next, in order: (1) resolve the ACT/eRASS1/DES/DESI four-way exact
+footprint (replaces the linear area-scaling caveat with a real
+cross-match — the one remaining open item from `data_acquisition_
+plan.md`'s Fork 2); (2) only then does a window-WIDTH decision have a
+real, non-approximated sample size behind it; (3) the synthetic
+four-world identifiability battery (`estimand.md`'s own hard gate)
+remains unbuilt and is not affected by this update — it is orthogonal
+to sample size.

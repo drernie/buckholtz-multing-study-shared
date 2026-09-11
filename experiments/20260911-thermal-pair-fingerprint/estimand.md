@@ -149,17 +149,30 @@ verified `FINDING_stage4` table (`d(z)=d0/(1+z)`) — both confirm `d0=45`,
 giving a **constant 45 Mpc comoving** characteristic separation at every
 `z` (not a redshift-dependent range).
 
-Headline, corrected: broad kSZ-literature window (585 pairs) still gives
-~100% power at 3x noise; the corrected narrow window, centered on the
-verified 45 Mpc but with its *width* still undetermined, gives **18-48
-pairs and 8-30% power** — real but weak, neither dead nor adequately
-powered. The window-width choice remains the single most consequential
-open decision in this branch. **All numbers are best-case, confounder-
-free upper bounds** — the synthetic four-world battery has not run; real
-power will be lower. Next: the Exact Pair Census (`FINDING_power_
-analysis.md` §4a) — real catalog positions, not a Poisson-volume model —
-to resolve the width question directly instead of guessing among window
-choices.
+**[UPDATED 2026-09-11, 2nd pass — Exact Pair Census run, see
+`FINDING_power_analysis.md` §6]** The Poisson-volume model above is now
+superseded by a real count on real `(RA,Dec,z)` positions from the
+ACT-DR5 MCMF catalog (`arXiv:2406.14754`, 6237 clusters, `[VERIFIED]`
+matches the paper exactly). Real clustering pushes narrow-window pair
+counts **up** relative to the idealized model, as predicted
+(`FINDING_power_analysis.md` §4a's own clustering-bias note) — but a
+separate, previously-unflagged density-provenance gap in the old model
+(applying the full-catalog density to a redshift-restricted shell)
+pushed the broad-window count in the opposite direction. Net, real,
+area-scaled-to-775deg² counts: broad=449 (100% power), narrow-25
+(`[20,70]` Mpc)=53 (34.0% power), narrow-10 (`[35,55]` Mpc)=22 (10.7%
+power) — a real but modest (`+2` to `+4` percentage points) improvement
+over the withdrawn 8-30% range, not a qualitative change. **Still real
+but weak; still neither dead nor adequately powered.** The window-width
+choice remains the single most consequential open decision in this
+branch — the Exact Pair Census answered the *shape* question, not the
+width choice itself. **All numbers are best-case, confounder-free upper
+bounds** — the synthetic four-world battery has not run; real power
+will be lower. The area-scaling from ACT-DR5's full footprint to the
+`700-850 deg²` Fork-2 target is a first-order linear approximation
+(`exact_pair_census.py`'s own explicit caveat), not a real DES-Y3/
+DESI-DR1/eRASS1 cross-match — that four-way exact overlap is the one
+remaining open item before this MCID can move past "conditional."
 
 - **PROMOTE** candidate region: MULTING's fixed-form model beats both the
   null and the free-linear alternative by a pre-registered `ΔAIC`
@@ -459,9 +472,13 @@ external reproduction.
    population level — this estimand is about one specific, narrow
    mechanism signature, not a global model comparison (that question is
    `FINDING_P166`'s, already answered separately).
-4. Does **not** yet have a numeric MCID — `estimand-ops.md`'s own
-   discipline requires a mock-catalog power analysis before that number
-   is set, not an intuition-based threshold.
+4. **[UPDATED 2026-09-11]** Now has a computed, `[VERIFIED-run]` MCID
+   candidate range (8.4%-34.0% power depending on window width and
+   footprint — see the MCID section above and `FINDING_power_analysis.md`
+   §6) rather than an intuition-based threshold, per `estimand-ops.md`'s
+   own discipline. Does **not** yet have a single, final number — the
+   window-width choice is still open, and every number quoted is a
+   best-case upper bound pending the synthetic four-world battery.
 5. Is **not** a data-acquisition plan. `claim.md` §8 item 2 (costed
    acquisition) still comes after this file, and code still comes after
    that.
@@ -478,8 +495,16 @@ four-world identifiability battery is now a hard pre-data gate** — the
 pipeline must be shown not to false-PROMOTE on optical-depth-confounded
 or merger-confounded mock data before it may touch anything real.
 
-No data pulled. No code exists in this folder. Per `claim.md` §8 as
-amended: next is (1) the synthetic battery's own design and pass/fail
-criteria (not yet written — this file only mandates that it happen), (2)
-a costed data-acquisition plan, (3) the mock-catalog power analysis this
-file's own MCID section requires. Code remains gated behind all three.
+**[UPDATED 2026-09-11]** `claim.md` §8's own ordered list is now partly
+done: (2) the costed data-acquisition plan (`data_acquisition_plan.md`)
+and (3) the mock-catalog power analysis (`power_analysis_mock_catalog.py`,
+`FINDING_power_analysis.md`, now including a real Exact Pair Census on
+real ACT-DR5 MCMF positions, §6 of that file) both exist and are
+`[VERIFIED-run]`. **(1), the synthetic four-world battery's own design
+and pass/fail criteria, is still not written — this remains the hard
+gate before any real kSZ/tSZ pipeline code (Fork 1b) may touch real
+data.** The Exact Pair Census pulled real cluster catalog positions
+(public, no login, `[VERIFIED]` row count) for pair-counting only — it
+did not pull any kSZ/tSZ map or build any estimator, and is not itself
+gated by the synthetic battery for that reason (no MULTING-relevant
+statistic was computed from real measurement data, only geometry).

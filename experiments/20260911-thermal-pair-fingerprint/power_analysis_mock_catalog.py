@@ -39,9 +39,9 @@ Pipeline:
 
 from __future__ import annotations
 
+import astropy.units as u
 import numpy as np
 from astropy.cosmology import Planck18 as cosmo
-import astropy.units as u
 
 rng = np.random.default_rng(20260911)
 
@@ -247,7 +247,7 @@ def one_trial(n_pairs: int, rel_noise: float, h_m_true: bool) -> tuple[float, fl
 
 
 print("\n" + "=" * 78)
-print("STEP 4-5 -- Monte Carlo power analysis (N_MC=%d per cell)" % N_MC)
+print(f"STEP 4-5 -- Monte Carlo power analysis (N_MC={N_MC} per cell)")
 print("=" * 78)
 print(f"{'N_pairs':>8} {'rel_noise':>10} {'P(promote|H_M)':>16} {'P(false_promote|H_0)':>22}")
 
@@ -295,18 +295,26 @@ for rel_noise in rel_noise_scan:
     promote_hm = sum(
         1
         for _ in range(N_MC)
-        if (lambda z, d: abs(z) > 1.96 and d > DELTA_AIC_PROMOTE)(*one_trial(n_narrow, rel_noise, True))
+        if (lambda z, d: abs(z) > 1.96 and d > DELTA_AIC_PROMOTE)(
+            *one_trial(n_narrow, rel_noise, True)
+        )
     )
     promote_h0 = sum(
         1
         for _ in range(N_MC)
-        if (lambda z, d: abs(z) > 1.96 and d > DELTA_AIC_PROMOTE)(*one_trial(n_narrow, rel_noise, False))
+        if (lambda z, d: abs(z) > 1.96 and d > DELTA_AIC_PROMOTE)(
+            *one_trial(n_narrow, rel_noise, False)
+        )
     )
-    print(f"  N_pairs={n_narrow} (narrow window), rel_noise={rel_noise:.1f}x: "
-          f"power={promote_hm / N_MC * 100:.1f}%, false-promote={promote_h0 / N_MC * 100:.1f}%")
-print(f"\n  n={n_narrow} is small enough that even the IDEALIZED, "
-      f"no-confounder power number above should be read with caution -- "
-      f"asymptotic z/AIC approximations are less reliable at this N.")
+    print(
+        f"  N_pairs={n_narrow} (narrow window), rel_noise={rel_noise:.1f}x: "
+        f"power={promote_hm / N_MC * 100:.1f}%, false-promote={promote_h0 / N_MC * 100:.1f}%"
+    )
+print(
+    f"\n  n={n_narrow} is small enough that even the IDEALIZED, "
+    f"no-confounder power number above should be read with caution -- "
+    f"asymptotic z/AIC approximations are less reliable at this N."
+)
 
 # ---- STEP 3c [AMENDED 2026-09-11, external critique verified before
 # applying]: the narrow window used 20-45 Mpc PHYSICAL, sourced from
@@ -324,18 +332,22 @@ print(f"\n  n={n_narrow} is small enough that even the IDEALIZED, "
 # proposed fix, and it is closer than the original error but still
 # doesn't match this project's own already-verified formula exactly).
 print("\n" + "=" * 78)
-print("STEP 3c -- CORRECTED characteristic separation, verified against "
-      "v82's own text + this project's own FINDING_stage4 formula")
+print(
+    "STEP 3c -- CORRECTED characteristic separation, verified against "
+    "v82's own text + this project's own FINDING_stage4 formula"
+)
 print("=" * 78)
 D0_PHYSICAL_Z0 = 45.0  # [VERIFIED] v82.md lines 58-59, 318
 print(f"  v82's own d(z) = d0/(1+z), d0={D0_PHYSICAL_Z0} Mpc PHYSICAL at z=0")
 print(f"  => comoving x = d(z)*(1+z) = {D0_PHYSICAL_Z0} Mpc, CONSTANT at all z")
 for z_check in [0.0, 0.5, 1.0]:
-    print(f"     sanity check z={z_check}: d(z)={D0_PHYSICAL_Z0/(1+z_check):.2f} "
-          f"Mpc physical (matches FINDING_stage4's own table)")
+    print(
+        f"     sanity check z={z_check}: d(z)={D0_PHYSICAL_Z0 / (1 + z_check):.2f} "
+        f"Mpc physical (matches FINDING_stage4's own table)"
+    )
 
-for label, (s_lo, s_hi) in [("narrow, +-10 Mpc", (35.0, 55.0)),
-                             ("wide, +-25 Mpc", (20.0, 70.0))]:
+for label, (s_lo, s_hi) in [("narrow, +-10 Mpc", (35.0, 55.0)), ("wide, +-25 Mpc", (20.0, 70.0))]:
+
     def pair_count_corrected(n_clusters, area_deg2, s_lo=s_lo, s_hi=s_hi):
         v_low = cosmo.comoving_volume(Z_LOW).to(u.Mpc**3).value * (area_deg2 / 41253.0)
         v_high = cosmo.comoving_volume(Z_HIGH).to(u.Mpc**3).value * (area_deg2 / 41253.0)
@@ -344,14 +356,84 @@ for label, (s_lo, s_hi) in [("narrow, +-10 Mpc", (35.0, 55.0)),
         return 0.5 * n_clusters * n_density * shell_vol
 
     n_pairs_corr = pair_count_corrected(N_clusters_mid, FOOTPRINT_MID)
-    print(f"\n  window [{s_lo:.0f},{s_hi:.0f}] Mpc comoving ({label}, "
-          f"centered on the VERIFIED 45 Mpc): N_pairs~{n_pairs_corr:.1f}")
+    print(
+        f"\n  window [{s_lo:.0f},{s_hi:.0f}] Mpc comoving ({label}, "
+        f"centered on the VERIFIED 45 Mpc): N_pairs~{n_pairs_corr:.1f}"
+    )
 
     # power at this corrected N
     n_corr_int = max(int(round(n_pairs_corr)), 2)
     for rel_noise in [3.0]:
         promote_hm = sum(
-            1 for _ in range(N_MC)
-            if (lambda z, d: abs(z) > 1.96 and d > DELTA_AIC_PROMOTE)(*one_trial(n_corr_int, rel_noise, True))
+            1
+            for _ in range(N_MC)
+            if (lambda z, d: abs(z) > 1.96 and d > DELTA_AIC_PROMOTE)(
+                *one_trial(n_corr_int, rel_noise, True)
+            )
         )
         print(f"    power at N={n_corr_int}, 3x noise: {promote_hm / N_MC * 100:.1f}%")
+
+# ---- STEP 3d [ADDED 2026-09-11] -- power at the REAL Exact Pair Census
+# counts, replacing Step 3c's own Poisson-volume-model N with a real count
+# from real ACT-DR5 MCMF positions (exact_pair_census.py, [VERIFIED-run]).
+# These numbers are hardcoded here, not re-derived, deliberately: they
+# come from a real astropy/scipy pairwise-distance computation on 4390
+# real (RA,Dec,z) rows, not a formula this script could reproduce inline
+# without re-downloading the catalog. Re-run exact_pair_census.py directly
+# to reproduce them.
+print("\n" + "=" * 78)
+print(
+    "STEP 3d -- power at the REAL Exact Pair Census counts (exact_pair_census.py, [VERIFIED-run])"
+)
+print("=" * 78)
+
+# exact_pair_census.py output, full ACT-DR5 MCMF footprint (13211 deg^2,
+# [VERIFIED-arXiv:2406.14754]), z in [0.2,0.8], N=4390 real clusters,
+# area-scaled LINEARLY (first-order, not a real cross-match -- see that
+# script's own Step 4 caveat) to the Fork-2 target footprint:
+REAL_CENSUS = {
+    "narrow-10 [35,55] Mpc": {"low": 19.82, "mid": 21.94, "high": 24.06},
+    "narrow-25 [20,70] Mpc": {"low": 48.22, "mid": 53.38, "high": 58.55},
+    "broad [20,160] Mpc": {"low": 405.4, "mid": 448.8, "high": 492.3},
+}
+# For reference, Step 3c's own Poisson-volume-model numbers at mid
+# footprint were: narrow-10=17.7 (8.4% power @3x), narrow-25=47.9
+# (29.8% power @3x), matching approximately the "low" real-census entries
+# above rather than "mid" -- the real broad-window count differs from
+# Step 2's own N_pairs_mid=584.9 for a SEPARATE, identified reason: Step 1's
+# density_per_deg2 used the FULL catalog (all z, 6237/13750) as if that
+# density applied uniformly inside the z=0.2-0.8 shell, when only 4390/6237
+# (70.4%) of real clusters actually fall in that shell -- an unflagged
+# provenance gap in Step 1, distinct from the already-flagged Poisson-vs-
+# clustered undercount. Both real effects are visible in the real-vs-mock
+# ratio check inside exact_pair_census.py's own Step 3.
+
+for window_label, counts in REAL_CENSUS.items():
+    print(f"\n  {window_label}:")
+    for footprint_label, n_pairs_real in counts.items():
+        n_int = max(int(round(n_pairs_real)), 2)
+        for rel_noise in [3.0]:
+            promote_hm = sum(
+                1
+                for _ in range(N_MC)
+                if (lambda z, d: abs(z) > 1.96 and d > DELTA_AIC_PROMOTE)(
+                    *one_trial(n_int, rel_noise, True)
+                )
+            )
+            print(
+                f"    {footprint_label:>4} footprint, N={n_int:>4} "
+                f"(real, area-scaled): power @3x noise = "
+                f"{promote_hm / N_MC * 100:.1f}%"
+            )
+
+print(
+    "\n  Reading: the real Exact Pair Census, at the SAME footprint-area "
+    "target as Step 3c, gives narrow-window pair counts ~20-25% HIGHER "
+    "than the idealized Poisson-volume model predicted for the narrow-10 "
+    "window (real clustering pulling in the direction FINDING_power_"
+    "analysis.md SS4a already named) -- a real, modest, not dramatic "
+    "improvement. This does not resolve the window-WIDTH choice itself "
+    "(still open), and the area-scaling from the full ACT-DR5 footprint "
+    "to the 700-850 deg^2 Fork-2 target remains a first-order "
+    "approximation, not a real DES/DESI/eROSITA cross-match."
+)
