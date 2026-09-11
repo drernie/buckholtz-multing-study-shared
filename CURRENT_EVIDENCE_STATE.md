@@ -32,8 +32,18 @@ this file is the slower-moving strategic layer above it).
 - **Isotropic-average k-sector = exactly zero** at force level
   (double-layer theorem, ~1e-16 numerically) and at Shtanov-Sahni
   background-coupling level, for any q(a).
-- **Eq.32 numerical match** (0.0135%, PDG 2024) — `[VERIFIED]`, unaffected
-  by everything below; only its *interpretation* is contested.
+- **Eq.32 numerical match** (**0.0608%, 1.00σ, PDG 2024 m_τ=1776.93±0.09** —
+  corrected 2026-09-11, this line previously read `0.0135%`, a value this
+  project's own `code/eq32_verify.py` stopped using on 2026-07-11 when it
+  fixed a PDG-2022 value that had been mislabeled "PDG 2024"; the fix
+  propagated to `README.md`/`docs/CLAIM_PROOFS.md`/`docs/BOOK/*` at the
+  time but never reached this file, created 6 weeks later — the exact
+  provenance/status-drift failure this project's own `docs/146` Category 11
+  already names, now recurring a second time, this time in this file
+  itself. Caught by an external RDR-style audit of the public reviewer
+  copy, re-verified here by running `code/eq32_verify.py` directly)
+  — `[VERIFIED-BASH]`, unaffected by everything below; only its
+  *interpretation* is contested.
 - **AVB benchmark solving arm** — N=32 corpus, both arms, full pipeline
   (skeptic + blind Run-3 + K5 reproducibility) — real bug found+fixed in
   a global hook (`agent_tool_scope_guard.py`) along the way.
