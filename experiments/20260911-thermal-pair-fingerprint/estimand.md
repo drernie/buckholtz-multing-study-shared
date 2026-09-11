@@ -18,6 +18,23 @@ Not applied: "Causal DAG: MISSING" — the DAG below already existed at
 the time of that critique; what was accurate in it is that the DAG was
 **incomplete**, not absent.**
 
+**[AMENDED 2026-09-11, 4th pass — the fixed-window Endpoint is
+SUPERSEDED, per `null_results/INDEX.md` NR-025.]** The Exact Pair
+Census + window-width scan (`FINDING_window_width_resolution.md`)
+showed that a fixed-separation-window pair count has no defensible
+width: power is monotonic in width (no interior optimum for `N≳15`, so
+"wider" is trivially always better), and the real two-point correlation
+`1+ξ(s)` computed from real cluster positions has **no local feature at
+`s=45` Mpc** — that number is `v82`'s own model-internal initial
+condition, not a scale singled out by real large-scale-structure
+clustering. **§ Endpoint and § Summary Measure below are rewritten** to
+use each real pair's own separation `s` continuously, rather than
+sorting pairs into a window — this removes the width choice from the
+design entirely instead of trying to justify one. The old, window-based
+text is kept, struck through in spirit but not deleted (project
+convention: mark superseded, do not erase), immediately below the new
+text in each section.
+
 ---
 
 ## EstimandOps L0 Classification
@@ -99,7 +116,87 @@ including entering net-repulsive behavior above `ξ=3.669×10⁻⁸`.
 
 ## Endpoint
 
-**Primary:** a pairwise-dynamics statistic constructed the same way as
+**[AMENDED 2026-09-11, 4th pass] Primary, s-dependent design (replaces
+the window-based Primary Endpoint below).**
+
+**The core move:** instead of assigning every pair the SAME `ξ` (drawn
+i.i.d. from one population distribution, `claim.md` §3a's own flagged
+marginal `HYPOTHESIS`), give each real pair its OWN model-predicted `ξ`,
+computed from its OWN measured `z` and `s` — reusing, not re-deriving,
+two pieces of already-verified prior work:
+
+```
+ξ_pred(z, s) = (β₁/β₂) · Q(z) · (d₀ / s)
+```
+
+- `Q(z) = (β₂/β₁)·K(z)R(z)/(M(z)c²·d(z))` — `v82`'s own smooth mean
+  `z`-trajectory, already tabulated at every `z` from `-0.95` to `16.9`
+  by the CLOSED branch `experiments/20260907-icm-expansion-correlation/
+  FINDING_stage4_dflip_is_not_derivable_in_the_construction.md`
+  (`[VERIFIED]`, re-used here unchanged, not recomputed). Solving that
+  file's own definition for `ξ` gives `ξ_trajectory(z) = (β₁/β₂)·Q(z)` —
+  checked directly against the one published cross-reference point:
+  `Q(z=1.443)=1.7484` gives `(β₁/β₂)·1.7484 = 1.8358×10⁻⁸×1.7484 =
+  3.210×10⁻⁸`, exactly `claim.md` §4's own `ξ(z=1.443)` value. This is
+  arithmetic identity, not a new assumption.
+- `d₀ = 45` Mpc comoving, `[VERIFIED]` v82.md:58-59,318, constant at
+  every `z` (already established, `FINDING_power_analysis.md` §2) — the
+  separation at which the trajectory's own `Q(z)`/`ξ(z)` was computed.
+- `s` — the real pair's own measured comoving separation, from a real
+  catalog (`exact_pair_census.py`'s own real positions, or the eventual
+  real kSZ-tracked catalog once pulled) — **not** a window boundary.
+
+`ξ∝1/s` is not a new physical claim: it falls directly out of `ξ =
+(K/(Mc²))(R/s)`'s own already-verified definition (`claim.md` §4).
+Applying it per-pair, using each pair's own `s` instead of the
+trajectory's own `d(z)`, is the ONLY change — `K(z), R(z), M(z)` are
+still taken from `v82`'s own trajectory at the pair's `z` (the same C1
+"fingerprint" assumption already in force: real per-cluster physical
+`K, R, M` are NOT substituted in, that remains the separate, unresolved
+C2 causal question `claim.md` §7a already named).
+
+**A real, checkable consequence, not yet checked (name it, don't
+assume it): a real pair with `s < 45` Mpc gets a BOOSTED `ξ_pred`
+relative to the trajectory's own value at that `z`, purely
+geometrically** — independent of `FINDING_E13`'s `σ=0.49` mass
+scatter, which `claim.md` §4 already leaned on to close the trajectory's
+own `14%` gap to crossing. Close real pairs may approach or cross
+`ξ_crossing=3.669×10⁻⁸` through separation alone. Whether this actually
+happens for real pairs in the real `z` range used here is a five-minute
+check once `Q(z)` is loaded alongside the real Exact-Pair-Census `(z,s)`
+values — flagged as the FIRST cheap validity check for whoever builds
+this next (§ MCID below), not computed in this prose amendment.
+
+Per member of a pair, real intrinsic scatter is still applied exactly
+as before (`claim.md` §3a's own flagged substitution, unchanged in
+status): `ξ_A, ξ_B ~ Lognormal(mean=ξ_pred(z,s), σ_ln=0.49)`,
+independently drawn — `ξ_pred(z,s)` is the pair-level deterministic
+center, not a claim that both members share one exact value.
+
+**Same outcome variable as before** — a pairwise-dynamics statistic
+constructed the same way as `arXiv:2511.23417`'s own pairwise-kSZ
+velocity estimator — now regressed against each pair's own `ξ_pred(z,s)`
+(§ Summary Measure below), not against a window-averaged constant.
+
+**Population consequence:** the window-based inclusion criterion on `s`
+(narrow band around `45` Mpc) is DROPPED. The relevant `s`-range
+restriction is now purely the ALREADY-EXISTING § Population criterion —
+"pair separation `s` inside a range where the pairwise-kSZ estimator
+itself is validated" — which was always there and now does the only
+`s`-restriction work needed. **A new lower-`s` caveat, not previously
+needed:** `exact_pair_census.py`'s own histogram (`FINDING_window_width_
+resolution.md` §3) showed a large, suspicious excess at `s<10` Mpc,
+almost certainly catalog near-duplicate/deblending contamination, not a
+real close-pair population — real, validated small-`s` pairs will need
+their own explicit vetting before inclusion, separate from and in
+addition to the kSZ estimator's own validated range.
+
+---
+
+**Superseded (window-based) Primary, kept per this project's own
+mark-don't-erase convention — do not build against this version:**
+
+A pairwise-dynamics statistic constructed the same way as
 `arXiv:2511.23417`'s own pairwise-kSZ velocity estimator, for the subset
 of that catalog's pairs falling in this estimand's population, regressed
 against `ξ` after conditioning on the matching set below.
@@ -122,6 +219,50 @@ centroid shift `w500`, with X-ray concentration `c_SB` as a documented
 substitute when `w500` is unavailable. Reused here, not reinvented.
 
 ## Summary Measure
+
+**[AMENDED 2026-09-11, 4th pass] s-dependent redesign — same nested-
+model logic, same `FINDING_P166`/`FINDING_P167` AIC/BIC convention,
+different regressor.** Three models, fit per pair `i` using its own
+`(z_i, s_i)`, not a window-constant:
+
+- **Model 0 (null):** `y_i = c` — matching covariates only, no `ξ`-
+  dependence of any kind.
+- **Model 1 (MULTING, fixed shape):** `y_i = c + λ·S_M(z_i,s_i)`, where
+  `S_M(z_i,s_i) = β₁·(ξ_{A,i}+ξ_{B,i}) − β₂·ξ_{A,i}·ξ_{B,i}` using the
+  per-pair `ξ_pred(z_i,s_i)` (§ Endpoint) as each member's scatter
+  center. `β₁:β₂` ratio is fixed (not fitted — same discipline as
+  before); `λ` is the one free amplitude, absorbing the unknown overall
+  proportionality between a two-node force-law quantity and an observed
+  pairwise-velocity residual. **This is the load-bearing change**: `S_M`
+  now varies smoothly across the FULL real sample via each pair's own
+  `z,s` — not a single value repeated across `N` i.i.d. draws.
+- **Model 2 (free, generic alternative):** `y_i = c + μ·ξ_pred(z_i,s_i)`
+  — a free-slope **linear** term in the SAME regressor `ξ_pred(z_i,s_i)`
+  Model 1 uses, still required, not optional, and still doing the same
+  job as before: separating "some monotonic trend in the model's own
+  predicted `ξ` profile exists" (which ordinary mass-proxy leakage into
+  `K` could produce, without MULTING) from "the specific quadratic,
+  sign-crossing shape exists" (Model 1), which ordinary leakage should
+  not produce.
+
+**PROMOTE / REJECT / INCONCLUSIVE regions unchanged in spirit** (below)
+— Model 1 must beat both Model 0 and Model 2 by the pre-registered
+`ΔAIC` margin, AND the closest-to-crossing real pairs (now identifiable
+directly by their own small `s` and/or high-`z` combination, not by
+falling in an arbitrary window) must show sign consistent with the
+predicted crossing.
+
+**Optional, named but not adopted as primary (robustness only,
+§ Sensitivity Analyses):** a free-form spline/polynomial directly in
+`s` (bypassing `ξ_pred`/`Q(z)` entirely) would be a more agnostic
+negative-control-style alternative, catching any `s`-dependence not
+captured by the `ξ` formula at all — costs more free parameters, hence
+power, so kept as a secondary check, not the primary Model 2.
+
+---
+
+**Superseded (window-based) Summary Measure, kept per this project's
+own mark-don't-erase convention — do not build against this version:**
 
 Nested model comparison, the same convention this project already used
 for `FINDING_P166`/`FINDING_P167` (AIC/BIC on real fitted models, not a
@@ -193,6 +334,24 @@ own separation, rather than counting pairs in a window — remains a
 live, un-adopted option, and would require amending this section
 (Population/Endpoint/Summary Measure) before any code, not a numeric
 rerun of the current design.
+
+**[UPDATED 2026-09-11, 4th pass — the option named above is now
+adopted; § Endpoint and § Summary Measure above are amended.] The
+window-based MCID numbers above (8.4%-34.0%) do NOT carry over to the
+s-dependent design and must not be quoted for it.** The new design uses
+the FULL real sample (no window), so its power will generically be
+higher — likely closer to the broad-window number (`N≈449`, `100%`
+power) than the narrow one — but this is a plausibility expectation,
+not a computed value: the new Model 1/Model 2 regressors are different
+quantities than the old i.i.d.-window `ξ`, so `power_analysis_mock_
+catalog.py`'s own `one_trial()` cannot simply be re-pointed at a new
+`N`; it needs a new mock-data generator that draws `(z,s)` from the
+real census (or an equivalent real-catalog resampling) and computes
+`ξ_pred(z,s)` per mock pair, THEN applies the same scatter/noise/AIC
+machinery. **This is the concrete next artifact — a new mock-catalog
+power analysis for THIS design — required before any code touches real
+kSZ/tSZ data, per this branch's own standing discipline. Not built in
+this amendment.**
 
 - **PROMOTE** candidate region: MULTING's fixed-form model beats both the
   null and the free-linear alternative by a pre-registered `ΔAIC`
@@ -328,6 +487,25 @@ not a better velocity pipeline).
   alone is not explained by this specific backdoor path (though it may
   still have its own).
 
+**(d) [ADDED 2026-09-11, 4th pass] New, design-specific threat: small-`s`
+blending/deblending.** The s-dependent redesign (§ Endpoint) uses the
+FULL validated `s`-range instead of a window that happened to sit well
+inside it — meaning genuinely small-`s` real pairs, previously excluded
+by construction, now enter the sample. Two real clusters close enough on
+the sky risk (i) CMB-map-level signal blending given ACT's own beam size
+(`~1.4-2.2` arcmin FWHM), and (ii) contaminating each other's
+independently-fit per-object `τ_ML`/velocity estimate. This is DIFFERENT
+from threats (b)/(c) above — it is instrumental/geometric, not a shared-
+physics or model-specification issue — and is NOT resolved by the
+already-existing Population criterion "pair separation `s` inside a
+range where the pairwise-kSZ estimator itself is validated," since that
+criterion bounds validity for a SINGLE typical pair, not specifically
+for the smallest, most MULTING-informative separations this redesign
+now deliberately wants to reach. Mitigation, not yet built: an explicit
+minimum-`s` cut informed by the real angular separation at each pair's
+`z` (not a fixed comoving number), checked against the source pipeline's
+own stated resolution limit before any pair below it is trusted.
+
 ### 2. Positivity
 
 **Not yet verified — an assumption, flagged as such.** Requires that,
@@ -338,6 +516,21 @@ the `3.669×10⁻⁸` crossing than the model's own mean trajectory (`claim.md`
 makes this *plausible*, not *confirmed* — this must be checked empirically
 on the real pulled catalog (a simple histogram of `ξ` per stratum) before
 any regression is trusted, and reported even if it fails.
+
+**[ADDED 2026-09-11, 4th pass] Now directly checkable, not just
+plausible, thanks to the s-dependent redesign.** Because `ξ_pred(z,s)`
+is a deterministic function of each REAL pair's own `(z,s)` (§ Endpoint),
+Positivity no longer rests only on the mass-scatter argument above —
+`ξ_pred` for the closest real pairs (already known to exist:
+`exact_pair_census.py`'s own histogram shows real pairs down to
+`s<10` Mpc, before the small-`s` vetting `§ Consistency (d)` requires)
+can be computed directly from the already-tabulated `Q(z)` and compared
+to `ξ_crossing` with no scatter assumption at all. **Not computed in
+this amendment** — named as the cheapest possible check for whoever
+builds the new mock-catalog power analysis (§ MCID): load `Q(z)`
+alongside the real `(z,s)` census values, compute `ξ_pred` for the
+closest 1% of real pairs, and report directly whether any exceed
+`ξ_crossing` before relying on scatter to get there.
 
 ### 3. Exchangeability
 
@@ -396,6 +589,19 @@ flagged as unverified (§5, many-body/N-body/BBGKY derivation) — this
 estimand does not assume that work exists or will be done; C1 (§ below)
 is deliberately scoped to avoid needing it, and is weaker precisely
 because of that.
+
+**[ADDED 2026-09-11, 4th pass] One real, untested consequence of the
+s-dependent redesign for this threat, named not resolved:** smaller
+real `s` plausibly means a shorter relevant dynamical timescale for the
+pair, which COULD make "today's `ξ`" a better proxy for the pair's own
+recent `ξ`-history at small `s` than at large `s` — i.e. this threat
+may not be uniform across the sample the redesign now spans. This is a
+plausible direction, not a checked one; it cuts the same way as
+§ Consistency (d)'s new small-`s` instrumental threat pulls the OTHER
+way (small `s` = better temporal proxy, but also more
+blending/deblending risk) — the two do not net out to anything
+knowable without real data, and are kept separate, not combined into
+one adjustment.
 
 ---
 
@@ -464,6 +670,12 @@ external reproduction.
    `w500` vs. `c_SB`, matching `H1c`'s own documented substitution
    pattern, to check the exchangeability threat is not silently carried
    by the choice of proxy alone.
+4. **[ADDED 2026-09-11, 4th pass] Free-form `s`-spline alternative** —
+   the more agnostic Model 2 named but not adopted in § Summary Measure:
+   refit with `ξ_pred`/`Q(z)` replaced by a free spline/polynomial
+   directly in `s`, to check that Model 1's win (if any) is not merely
+   "some smooth function of `s` fits better than a constant" but
+   specifically tracks the `ξ∝1/s`-shaped, sign-crossing prediction.
 
 ---
 
@@ -478,6 +690,8 @@ external reproduction.
 | `M_gas–T` intrinsic scatter `σ=0.49` (ln) | `[VERIFIED-arXiv:2511.14356]` | `FINDING_E13`, reused here for Positivity plausibility only |
 | X-ray centroid shift `w500` as a dynamical-state proxy, with `c_SB` as a documented substitute | `[VERIFIED-REAL]`, this project's own prior design | `experiments/20260701-h1c-morphology-mass-bias/estimand.md` |
 | "The pair" is ambiguous in v82's own construction (nearest-neighbor vs. all-pairs give `ρ=0.019` vs. `+0.38`) | `[VERIFIED-run]` | `pearl_registry/INDEX.md`, 2026-09-09 entry |
+| `Q(z)=(β₂/β₁)k(z)R(z)/(M(z)c²d(z))>1` at every `z∈[-0.95,16.9]`, `Q_min=1.7484` at `z=1.443` — reused here as `ξ_trajectory(z)=(β₁/β₂)Q(z)` for the s-dependent Endpoint | `[VERIFIED]`, this project's own closed prior work | `experiments/20260907-icm-expansion-correlation/FINDING_stage4_dflip_is_not_derivable_in_the_construction.md` |
+| Fixed-window pair-count design has no principled width — power monotonic in width, real `1+ξ(s)` has no local feature at `s=45` Mpc | `[VERIFIED-run]` | `FINDING_window_width_resolution.md`, `null_results/INDEX.md` NR-025 |
 
 ## What this does NOT mean
 
@@ -492,16 +706,24 @@ external reproduction.
    population level — this estimand is about one specific, narrow
    mechanism signature, not a global model comparison (that question is
    `FINDING_P166`'s, already answered separately).
-4. **[UPDATED 2026-09-11]** Now has a computed, `[VERIFIED-run]` MCID
+4. **[UPDATED 2026-09-11]** Has a computed, `[VERIFIED-run]` MCID
    candidate range (8.4%-34.0% power depending on window width and
    footprint — see the MCID section above and `FINDING_power_analysis.md`
-   §6) rather than an intuition-based threshold, per `estimand-ops.md`'s
-   own discipline. Does **not** yet have a single, final number — the
-   window-width choice is still open, and every number quoted is a
-   best-case upper bound pending the synthetic four-world battery.
+   §6) **for the now-superseded window-based design only** (item 6
+   below) — do not quote it for the s-dependent design, which does not
+   yet have its own MCID number at all.
 5. Is **not** a data-acquisition plan. `claim.md` §8 item 2 (costed
    acquisition) still comes after this file, and code still comes after
    that.
+6. **[ADDED 2026-09-11, 4th pass]** The s-dependent redesign does
+   **not** yet have its own power analysis, its own real-data Positivity
+   check, or its own small-`s` instrumental vetting — all three are
+   named as concrete next steps (§ MCID, § Consistency (d), §
+   Positivity), none built here. Does **not** claim the redesign is more
+   powerful than the old window-based design — only that it removes an
+   undecidable free parameter (window width) the old design had no way
+   to fix; whether it is MORE statistically powerful remains to be
+   computed, not assumed from the qualitative argument in § Endpoint.
 
 ## Status
 
@@ -528,3 +750,22 @@ data.** The Exact Pair Census pulled real cluster catalog positions
 did not pull any kSZ/tSZ map or build any estimator, and is not itself
 gated by the synthetic battery for that reason (no MULTING-relevant
 statistic was computed from real measurement data, only geometry).
+
+**[UPDATED 2026-09-11, 4th pass — s-dependent redesign.]** The window-
+width question named as open above is now closed: `FINDING_window_
+width_resolution.md`/NR-025 showed the fixed-window design has no
+principled width, and this amendment replaces it. `§ Endpoint` and `§
+Summary Measure` now use each real pair's own `(z,s)` continuously via
+`ξ_pred(z,s)=(β₁/β₂)Q(z)(d₀/s)` — reusing the CLOSED branch's own
+`Q(z)` trajectory table and the already-verified `d₀=45` Mpc, not new
+physics. One new DAG-adjacent identifiability threat named (§
+Consistency (d), small-`s` blending/deblending) and one existing check
+(§ Positivity) is now directly checkable rather than merely plausible.
+**Next, in order, none built yet:** (1) the cheap real-data check named
+in § Positivity (do any real close pairs' `ξ_pred` already approach or
+exceed crossing, with no scatter assumption needed); (2) a new mock-
+catalog power analysis for this design (§ MCID) — cannot reuse `power_
+analysis_mock_catalog.py`'s `one_trial()` unmodified, needs a new mock-
+data generator over real `(z,s)`; (3) only then, the synthetic four-
+world battery's own concrete design for THIS Endpoint; (4) only then,
+code. No code exists for the s-dependent design in this folder.
