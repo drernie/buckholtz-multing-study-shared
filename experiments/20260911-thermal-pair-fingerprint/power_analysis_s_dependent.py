@@ -37,6 +37,15 @@ factors exactly:
 d0=45 (the CONSTANT comoving trajectory separation), not d_of(z) --
 this is not a re-derivation, it is the same cancellation already spelled
 out in estimand.md's own Endpoint section.
+
+[AMENDED 2026-09-11, same day, after the beam-blending check] promote()
+now also implements the sign-near-crossing sub-check estimand.md's own
+PROMOTE region names ("the highest-xi stratum shows sign consistent
+with the predicted crossing") -- operationalized as a sign-near-
+REVERSAL check at XI_PEAK=BETA1/BETA2 (see that constant's own docstring
+for why XI_PEAK, not XI_CROSSING itself, is the stratification point).
+This is a real, load-bearing addition to promote(), not a comment --
+every power number in this run supersedes the earlier 2-condition run.
 """
 
 from __future__ import annotations
@@ -59,6 +68,28 @@ BETA2 = 7.806760e17
 XI_CROSSING = 3.668913e-08
 SIGMA_LN = 0.49
 D0_MPC = 45.0  # [VERIFIED] v82.md:58-59,318, constant comoving at every z
+
+# [ADDED, sign-near-crossing sub-check] S_M(xi) = 2*BETA1*xi - BETA2*xi^2
+# is a downward parabola in xi -- it RISES for xi < XI_PEAK and FALLS for
+# xi > XI_PEAK, where XI_PEAK = BETA1/BETA2 is where dS_M/dxi = 0.
+# XI_PEAK != XI_CROSSING: XI_CROSSING solves S_M(xi)=1 (where the TOTAL
+# force -1+S_M changes sign, claim.md Sec4's own root), XI_PEAK solves
+# dS_M/dxi=0 (where the CORRECTION TERM's own slope changes sign). They
+# are close (XI_PEAK=1.836e-8 vs XI_CROSSING=3.669e-8) because S_M's peak
+# value (~263) is so far above 1 that both roots of S_M=1 sit close to
+# S_M's own zero-crossings -- but they are NOT the same point, and this
+# script stratifies at XI_PEAK, not XI_CROSSING, because REAL pairs above
+# XI_CROSSING are rare (306/7693=3.98% of the pool) while REAL pairs
+# above XI_PEAK are common (1457/7693=18.9%) -- [VERIFIED] via the real
+# pool itself, not assumed -- making a per-trial stratified slope fit
+# statistically usable at realistic N. This operationalizes estimand.md's
+# "sign consistent with the predicted crossing" as "sign consistent with
+# the predicted REVERSAL" (the same qualitative non-monotonic feature
+# that produces the eventual crossing), stated as a deliberate, honest
+# choice, not a literal match to the word "crossing".
+XI_PEAK = BETA1 / BETA2
+MIN_STRATUM_N = 5  # sub-check auto-fails below this -- too few points to
+# trust a fitted sign
 
 S_MIN_MPC, S_MAX_MPC = 20.0, 160.0  # same broad population window as the
 # old design (kSZ-literature convention) -- carried forward as a
@@ -141,22 +172,56 @@ def one_trial(z_i: np.ndarray, s_i: np.ndarray, rel_noise: float, h_m_true: bool
     rss2 = float(np.sum(resid2**2))
     aic2 = _aic(rss2, n, 2)
 
+    # [ADDED] sign-near-crossing (sign-near-reversal) sub-check: fit y vs
+    # xi_center SEPARATELY within the low-xi (<=XI_PEAK) and high-xi
+    # (>XI_PEAK) strata of THIS SAME trial's pairs, and record each
+    # stratum's own fitted slope sign. MULTING predicts +1 (rising) below
+    # the peak and -1 (falling) above it -- a genuine non-monotonic
+    # reversal a purely monotonic alternative cannot produce by
+    # construction, distinct from the AIC/z-test comparisons above.
+    low_mask = xi_center <= XI_PEAK
+    high_mask = ~low_mask
+    sign_low = _stratum_slope_sign(xi_center[low_mask], y[low_mask])
+    sign_high = _stratum_slope_sign(xi_center[high_mask], y[high_mask])
+
     return {
         "z_lambda": z_lambda,
         "d_aic_01": aic0 - aic1,  # Model1 beats Model0
         "d_aic_21": aic2 - aic1,  # Model1 beats Model2
+        "sign_low": sign_low,  # None if stratum too small to fit
+        "sign_high": sign_high,
     }
 
 
+def _stratum_slope_sign(xi_stratum: np.ndarray, y_stratum: np.ndarray) -> int | None:
+    """Sign of the OLS slope of y on xi within one stratum, or None if
+    there are fewer than MIN_STRATUM_N points to trust a fitted sign."""
+    n = len(xi_stratum)
+    if n < MIN_STRATUM_N:
+        return None
+    d = np.column_stack([np.ones(n), xi_stratum])
+    coef, _, _, _ = np.linalg.lstsq(d, y_stratum, rcond=None)
+    slope = coef[1]
+    if slope == 0.0:
+        return 0
+    return 1 if slope > 0 else -1
+
+
 def promote(trial: dict) -> bool:
-    """Matches estimand.md's own two-part PROMOTE bar: Model 1 beats
-    BOTH Model 0 and Model 2 by the pre-registered margin (the sign-near-
-    crossing sub-check is NOT implemented here -- named, not silently
-    added; see the script's own closing note)."""
+    """Matches estimand.md's own two-part PROMOTE bar (Model 1 beats
+    BOTH Model 0 and Model 2 by the pre-registered margin) PLUS the
+    sign-near-crossing (operationalized as sign-near-reversal, see
+    XI_PEAK's own docstring above) sub-check: the low-xi stratum's
+    fitted slope must be positive AND the high-xi stratum's fitted slope
+    must be negative -- a DIRECTION-matched reversal, not merely "the
+    two strata disagree". Auto-fails if either stratum has too few
+    points to fit (sign is None) -- a missing check is not a passed one."""
     return (
         abs(trial["z_lambda"]) > Z_CRIT
         and trial["d_aic_01"] > DELTA_AIC_PROMOTE
         and trial["d_aic_21"] > DELTA_AIC_PROMOTE
+        and trial["sign_low"] == 1
+        and trial["sign_high"] == -1
     )
 
 
@@ -238,7 +303,8 @@ def main() -> None:
         "  Old design (power_analysis_mock_catalog.py, window-based, REJECTED\n"
         "  test design per NR-025) at the SAME footprint-scaled broad-window N:\n"
         "    N=449 (mid footprint): 100.0% power @3x noise\n"
-        "  New design (this script), same N=449, real (z,s), 2-model bar:"
+        "  New design (this script), same N=449, real (z,s), THREE-part bar\n"
+        "  (beat Model 0 AND beat Model 2 AND the sign-near-reversal check):"
     )
     row_449 = [r for r in results if r[0] == 449 and r[1] == 3.0]
     if row_449:
@@ -247,12 +313,14 @@ def main() -> None:
             f"{row_449[0][3] * 100:.1f}% false-promote"
         )
     print(
-        "  Reading: the new design's TWO-PART bar (beat null AND beat the\n"
-        "  free-linear alternative) is intentionally stricter than the old\n"
-        "  design's one-part bar (beat null only) -- a lower power number at\n"
-        "  the same N is not evidence the new design is worse, it is evidence\n"
-        "  the new design is testing a SHARPER, more specific claim, matching\n"
-        "  estimand.md's own PROMOTE region wording."
+        "  Reading: the new design's THREE-part bar (beat null AND beat the\n"
+        "  free-linear alternative AND show the direction-matched sign\n"
+        "  reversal at XI_PEAK) is intentionally, substantially stricter than\n"
+        "  the old design's one-part bar (beat null only) -- a lower power\n"
+        "  number at the same N is not evidence the new design is worse, it is\n"
+        "  the real, quantified cost of testing a SHARPER, more specific claim,\n"
+        "  matching estimand.md's own PROMOTE region wording as closely as this\n"
+        "  script operationalizes it."
     )
 
     print()
@@ -260,11 +328,11 @@ def main() -> None:
     print("What this does NOT establish")
     print("=" * 78)
     print(
-        "  1. The sign-near-crossing sub-check in estimand.md's own PROMOTE\n"
-        "     region ('the highest-xi stratum shows sign consistent with the\n"
-        "     predicted crossing') is NOT implemented in the promote() function\n"
-        "     above -- only the two ChiSq/AIC comparisons are. Named, not\n"
-        "     silently added.\n"
+        "  1. [AMENDED] The sign-near-crossing sub-check IS now implemented --\n"
+        "     but as a sign-near-REVERSAL check at XI_PEAK=beta1/beta2, not\n"
+        "     literally at XI_CROSSING (see that constant's own docstring for\n"
+        "     why). This is a documented, honest operationalization choice,\n"
+        "     not a literal match to estimand.md's exact wording.\n"
         "  2. The [20,160] Mpc population window is carried forward from the\n"
         "     old design, NOT independently re-verified against the source kSZ\n"
         "     paper's own methods section (estimand.md's own Population\n"

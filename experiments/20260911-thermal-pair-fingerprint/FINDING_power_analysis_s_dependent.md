@@ -114,30 +114,104 @@ is `7693` pairs (or `449` at the Fork-2 mid-footprint linear scaling) —
 either is directly usable, with no window-width decision to make at
 all.
 
+**[SUPERSEDED, same day, by §3a below]** The `98.6%` two-part-bar
+number above is an intermediate result, not the final one — §3a adds
+the sign-near-crossing sub-check estimand.md's own PROMOTE region
+requires, dropping `N=449`'s power to `59.9%` under the complete,
+three-part bar. Kept here, struck through in spirit not deleted, so the
+size of that specific cost is visible.
+
 ---
+
+## 3a. [ADDED, same day] The sign-near-crossing sub-check — implemented,
+## a real and substantial power cost
+
+`estimand.md`'s own PROMOTE region requires a third condition beyond
+the two AIC/`z`-test comparisons already run: *"the highest-`ξ`
+stratum shows sign consistent with the predicted crossing (not merely
+a steeper slope)."* Not implemented in §3 above — implemented here.
+
+**Operationalization, stated as a deliberate, honest choice, not a
+literal reading of "crossing":** `S_M(ξ)=2β₁ξ-β₂ξ²` is a downward
+parabola, rising for `ξ<ξ_peak` and falling for `ξ>ξ_peak`, where
+`ξ_peak=β₁/β₂=1.836×10⁻⁸`. This is close to but **not** `ξ_crossing
+=3.669×10⁻⁸` (`ξ_crossing` solves `S_M(ξ)=1`, the point the TOTAL force
+changes sign; `ξ_peak` solves `dS_M/dξ=0`, the point the CORRECTION
+TERM's own slope changes sign — they are numerically close only because
+`S_M`'s peak value, `~263`, is so far above `1` that both roots of
+`S_M=1` sit near `S_M`'s own zero-crossings). This script stratifies at
+`ξ_peak`, not `ξ_crossing`, for a real, checked reason: real pairs
+above `ξ_crossing` are rare (`306/7693=3.98%`), too few for a per-trial
+stratified slope fit at realistic `N`; real pairs above `ξ_peak` are
+common (`1457/7693=18.9%`, `[VERIFIED]` on the real pool), making the
+check statistically usable. The sub-check tests the same qualitative
+non-monotonic REVERSAL that produces the eventual crossing, not the
+literal crossing point itself.
+
+**Sanity check before trusting the full run:** a single `n=500` trial
+under `H_M` true showed `sign_low=+1, sign_high=-1` (exactly the
+predicted pattern, with `z_λ=7.79`, `ΔAIC₀₁=55.5`, `ΔAIC₂₁=12.8` — all
+strongly significant); the same check under `H_0` true showed
+`sign_low=-1, sign_high=+1` (the WRONG pattern, correctly rejected)
+with weak, insignificant AIC/`z` statistics. The check behaves as
+designed before being trusted on the full scan.
+
+**Full re-run, `N_MC=4000`, all three conditions required jointly**
+(auto-fails if either stratum has `<5` points):
+
+| N_pairs | 1x noise | 3x noise | 10x noise |
+|---|---|---|---|
+| 10 | 0.3% | 0.0% | 0.0% |
+| 20 | 12.7% | 1.1% | 0.1% |
+| 30 | 36.6% | 3.7% | 0.4% |
+| 50 | 63.4% | 12.2% | 0.5% |
+| 75 | 70.0% | 21.4% | 0.7% |
+| 100 | 73.6% | 31.0% | 1.2% |
+| 150 | 73.6% | 42.6% | 2.1% |
+| 200 | 74.3% | 51.1% | 2.7% |
+| 300 | 75.0% | 56.9% | 4.4% |
+| **449** | 77.8% | **59.9%** | 8.5% |
+| 500 | 78.1% | 60.1% | 10.2% |
+| 1000 | 82.8% | 62.2% | 26.3% |
+| 2000 | 87.9% | 66.0% | 47.7% |
+
+False-promote stayed low throughout (`0.0%-0.1%`), if anything lower
+than the two-condition run — the third condition makes the test more
+conservative on the null side too, not just harder to pass under `H_M`.
+
+**The headline comparison, updated: at `N=449` (Fork-2 mid footprint),
+3x noise, power drops from `98.6%` (two-part bar) to `59.9%`
+(three-part bar) — a real, substantial, and honestly-reported cost.**
+This is not a design flaw: the sign-near-reversal condition is a
+genuinely harder, more specific requirement (a real non-monotonic
+feature, not just an amplitude fit), and `power_analysis_mock_
+catalog.py`'s own analogous old-design number (`100.0%`) never had to
+clear anything like it. Power collapses toward `0%` at small `N`
+(`N=10`: `0.0-0.3%` across all noise levels) because the high-`ξ`
+stratum (`~19%` of the sample) rarely reaches the `5`-point minimum
+needed to fit a trustworthy sign at all — an honest, expected
+consequence of the design, not a bug.
 
 ## 4. What this does NOT establish
 
-1. The sign-near-crossing sub-check in `estimand.md`'s own PROMOTE
-   region ("the highest-`ξ` stratum shows sign consistent with the
-   predicted crossing") is **not implemented** in this script's
-   `promote()` — only the two AIC/`z`-test comparisons are. Named, not
-   silently folded in.
+1. `ξ_peak≠ξ_crossing` (§3a) — the sign-near-crossing sub-check is
+   operationalized as a sign-near-REVERSAL check at `ξ_peak`, a
+   documented, honest choice, not a literal test at `ξ_crossing`
+   itself (too few real pairs there for a per-trial stratified fit).
 2. The `[20,160]` Mpc population window is carried forward from the old
    design, **not independently re-verified** against the source kSZ
    paper's own methods section — `estimand.md`'s own Population
    criterion still names that as open.
-3. The small-`s` Consistency (d) instrumental threat (CMB-beam
-   blending/deblending) is handled here only by a blanket
-   `S_MIN_VALID=10` Mpc cut — **not** the real angular-separation-vs-
-   beam-size check `estimand.md` itself says is still needed. The
-   5 pairs driving §2's headline result sit at `s≈10.5-11.6` Mpc,
-   **close to that same cut** — worth flagging explicitly: §2's result
-   would be the first place a small-`s` instrumental artifact could
-   masquerade as a Positivity success, and this has not been checked.
+3. **[RESOLVED, same day, see `FINDING_beam_blending_check.md` §3a]**
+   The small-`s` Consistency (d) instrumental threat is now checked
+   directly for all `306` real Positivity pairs, not just the 5
+   illustrated here — `5/306` (`1.6%`) at real risk, blending-risk-
+   excluded fraction `3.913%` vs. `3.978%` unfiltered. A small, real,
+   quantified correction, not an open unknown.
 4. Real power will be lower than every number above — these are
    best-case, confounder-free upper bounds; the synthetic four-world
-   identifiability battery has not run.
+   identifiability battery has not run. This now applies on TOP of an
+   already-reduced `59.9%` (three-part bar), not the earlier `98.6%`.
 5. Not a claim about MULTING (`NO_AUTHOR_ERROR`) — entirely about
    whether this project's own reconstructed test design is statistically
    viable and whether its own Positivity assumption holds on real
@@ -145,23 +219,29 @@ all.
 
 ## Status
 
-**Computed, `[VERIFIED-run]`. Two real results, kept separate:**
+**[UPDATED, same day] Computed, `[VERIFIED-run]`. Three real results,
+kept separate:**
 
 ```
 Positivity (xi_pred > crossing, no scatter): CONFIRMED on 3.978% of
   real pairs (306/7693) -- stronger basis than the old scatter-only
-  argument, but flagged against caveat #3 above (small-s instrumental
-  risk, untested).
-Power at Fork-2 scale (N~449, 3x noise, two-part bar): 98.6% -- real,
-  comparable to the old design's own N=449 number, with a strictly
-  harder pass bar.
-Power at smaller, un-capped N (this design's real advantage): a full
-  curve now exists (10-2000 pairs) -- no window-width ceiling.
+  argument. Beam-blending checked directly for all 306 (FINDING_beam_
+  blending_check.md): only 5/306 (1.6%) at real risk, blending-risk-
+  excluded fraction 3.913% -- essentially unchanged.
+Power at Fork-2 scale (N~449, 3x noise), FINAL three-part bar (beat
+  Model 0 AND Model 2 AND the sign-near-reversal check): 59.9%, down
+  from the intermediate two-part-bar number of 98.6% -- a real,
+  substantial, honestly-quantified cost of testing the FULL promote()
+  criterion estimand.md actually specifies, not a regression.
+Power at smaller, un-capped N (this design's real advantage over the
+  window-based one): a full curve now exists (10-2000 pairs) under the
+  complete three-part bar -- no window-width ceiling, even though
+  absolute power at small N is now honestly much lower than the
+  two-part-bar numbers first suggested.
 ```
 
-Next, in order, none built yet: (1) the real angular-separation-vs-
-beam-size check for Consistency (d), specifically re-examining whether
-§2's own closest pairs survive it; (2) the sign-near-crossing PROMOTE
-sub-check; (3) the synthetic four-world identifiability battery
-(`estimand.md`'s own hard pre-data gate) — still the requirement before
-any real kSZ/tSZ data is touched.
+Next, in order, none built yet: the synthetic four-world identifiability
+battery (`estimand.md`'s own hard pre-data gate) — the last requirement
+named in this branch before any real kSZ/tSZ data is touched. Both the
+beam-blending threat and the sign-near-crossing sub-check, previously
+open, are now closed.

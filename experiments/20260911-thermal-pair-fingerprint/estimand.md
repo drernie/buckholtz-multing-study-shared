@@ -375,6 +375,22 @@ right against the `S_MIN_VALID=10` Mpc cut meant to exclude small-`s`
 instrumental artifacts — Consistency (d) needs to resolve this before
 the Positivity result is trusted outright).
 
+**[UPDATED 2026-09-11, 8th pass — the sign-near-crossing sub-check
+below is now implemented, see `FINDING_power_analysis_s_dependent.md`
+§3a.]** Operationalized as a sign-near-REVERSAL check at
+`ξ_peak=β₁/β₂=1.836×10⁻⁸` (not literally at `ξ_crossing` — real pairs
+above `ξ_crossing` are too rare, `3.98%`, for a per-trial stratified
+fit; real pairs above `ξ_peak` are common, `18.9%`, `[VERIFIED]`),
+requiring the low-`ξ` stratum's fitted slope to be positive AND the
+high-`ξ` stratum's to be negative — the genuine non-monotonic reversal
+a purely monotonic alternative cannot produce. **Real, substantial
+power cost: at `N≈449` (Fork-2 mid footprint), 3x noise, power drops
+from the two-part-bar's `98.6%` to `59.9%` under the complete,
+three-part bar** — false-promote stays low (`0.0-0.1%`). This is the
+FINAL power number for the s-dependent design's full `estimand.md`-
+specified PROMOTE criterion, superseding the intermediate `98.6%`
+figure above.
+
 - **PROMOTE** candidate region: MULTING's fixed-form model beats both the
   null and the free-linear alternative by a pre-registered `ΔAIC`
   margin, **and** the highest-`ξ` stratum shows sign consistent with the
@@ -829,8 +845,17 @@ Positivity fraction directly checked (not just the 5 illustrated ones)
 Positivity fraction is `3.913%` vs. the original `3.978%`. Consistency
 (d) is now a quantified, small correction, not an open threat.
 
-**Next, in order:** (1) the sign-near-crossing PROMOTE sub-check (not
-implemented in the power analysis's own `promote()`); (2) only then,
-the synthetic four-world battery's own concrete design for THIS
-Endpoint; (3) only then, code touching real kSZ/tSZ data. No such code
-exists in this folder.
+**[UPDATED 2026-09-11, 8th pass] Item (1) below is now also fully
+done, see `FINDING_power_analysis_s_dependent.md` §3a:** the sign-near-
+crossing sub-check is implemented (as a sign-near-REVERSAL check at
+`ξ_peak=β₁/β₂`, documented as a deliberate operationalization choice,
+not literally at `ξ_crossing`) and re-run across the full grid. **Real
+cost:** power at `N≈449`, 3x noise, drops from `98.6%` to `59.9%` under
+the complete, `estimand.md`-specified three-part PROMOTE bar — the
+FINAL power number for this design, false-promote still low
+(`0.0-0.1%`).
+
+**Next, in order:** (1) the synthetic four-world identifiability
+battery's own concrete design for THIS Endpoint — the last remaining
+hard gate named in this branch; (2) only then, code touching real
+kSZ/tSZ data. No such code exists in this folder.
