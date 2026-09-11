@@ -46,6 +46,25 @@ REVERSAL check at XI_PEAK=BETA1/BETA2 (see that constant's own docstring
 for why XI_PEAK, not XI_CROSSING itself, is the stratification point).
 This is a real, load-bearing addition to promote(), not a comment --
 every power number in this run supersedes the earlier 2-condition run.
+
+[CORRECTED 2026-09-11, same day, real bug -- caught by an external
+review of the published shared repo, independently verified before
+applying, per method_verify_pasted_ai_reports.md] power_at_n()'s own
+`rng.integers(0, pool_n, size=n_target)` sampled WITH REPLACEMENT from
+the full 7693-pair COMBINATORIAL pool -- i.e. from every candidate pair
+among 4390 clusters, not a set of cluster-disjoint pairs. Verified
+directly, not taken on the critique's word: at N=449, 43.2% of sampled
+pairs in a single trial shared a real cluster with another sampled pair
+in that SAME trial (mean 3.93 candidate pairs per cluster, max 18).
+This violates estimand.md's own Population/SUTVA exclusion rule ("a
+cluster appearing in more than one candidate pair is assigned to at
+most one pair... the same physical object cannot licitly appear as an
+independent unit twice"). Every power number in the PRIOR run of this
+script (the 59.9%-at-N=449 headline) is WITHDRAWN, not merely footnoted
+-- it is the power of an easier, SUTVA-violating "pair-i.i.d. surrogate
+design", not of the design estimand.md actually specifies. Fixed below
+by sampling WITHOUT replacement from a real cluster-disjoint matching
+(build_disjoint_matching()), not from the raw combinatorial pool.
 """
 
 from __future__ import annotations
@@ -111,9 +130,13 @@ def xi_pred(z: np.ndarray, s_comoving: np.ndarray) -> np.ndarray:
     return (BETA1 / BETA2) * q * (D0_MPC / np.atleast_1d(s_comoving))
 
 
-def build_real_pair_pool() -> tuple[np.ndarray, np.ndarray]:
-    """Real (z_pair, s_pair) for every real ACT-DR5 MCMF pair in the
-    broad population window, s in [S_MIN_VALID, S_MAX_MPC] Mpc comoving."""
+def build_real_pair_pool() -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, int]:
+    """Every real ACT-DR5 MCMF CANDIDATE pair in the broad population
+    window, s in [S_MIN_VALID, S_MAX_MPC] Mpc comoving -- the full
+    COMBINATORIAL set (one cluster can appear in many candidate pairs).
+    Returns (z_pair, s_pair, row, col, n_clusters) -- row/col are the
+    cluster indices behind each pair, needed by build_disjoint_matching()
+    to enforce estimand.md's own SUTVA exclusion rule."""
     ra, dec, z = load_catalog()
     mask = (z >= Z_LOW) & (z <= Z_HIGH)
     z_used = z[mask]
@@ -125,7 +148,31 @@ def build_real_pair_pool() -> tuple[np.ndarray, np.ndarray]:
     in_range = (seps >= S_MIN_VALID) & (seps <= S_MAX_MPC)
     row, col, seps = row[in_range], col[in_range], seps[in_range]
     z_pair = 0.5 * (z_used[row] + z_used[col])
-    return z_pair, seps
+    return z_pair, seps, row, col, len(z_used)
+
+
+def build_disjoint_matching(
+    row: np.ndarray, col: np.ndarray, order: np.ndarray, n_clusters: int
+) -> np.ndarray:
+    """Greedy cluster-disjoint matching: walk candidate pairs in the
+    given `order`, accept a pair only if NEITHER of its two clusters has
+    already been used by an earlier-accepted pair. Returns the indices
+    (into row/col/seps) of the accepted, mutually cluster-disjoint pairs
+    -- this is estimand.md's own Population/SUTVA rule ("a cluster
+    appearing in more than one candidate pair is assigned to at most one
+    pair"), made concrete. `order` is passed in, not fixed here, because
+    the tie-break rule matters and should be chosen (and reported)
+    explicitly by the caller -- see main()'s own random-vs-closest-s
+    comparison."""
+    used = np.zeros(n_clusters, dtype=bool)
+    accepted = []
+    for i in order:
+        a, b = row[i], col[i]
+        if not used[a] and not used[b]:
+            used[a] = True
+            used[b] = True
+            accepted.append(i)
+    return np.array(accepted, dtype=int)
 
 
 def s_m_pair(xi_a: np.ndarray, xi_b: np.ndarray) -> np.ndarray:
@@ -136,19 +183,20 @@ def _aic(rss: float, n: int, k: int) -> float:
     return n * np.log(rss / n + 1e-300) + 2 * k
 
 
-def one_trial(z_i: np.ndarray, s_i: np.ndarray, rel_noise: float, h_m_true: bool) -> dict:
-    n = len(z_i)
-    xi_center = xi_pred(z_i, s_i)
-    xi_a = rng.lognormal(mean=np.log(xi_center) - 0.5 * SIGMA_LN**2, sigma=SIGMA_LN)
-    xi_b = rng.lognormal(mean=np.log(xi_center) - 0.5 * SIGMA_LN**2, sigma=SIGMA_LN)
-    signal = s_m_pair(xi_a, xi_b)  # Model 1's own regressor, S_M(z,s)
+def fit_and_check(xi_center: np.ndarray, signal: np.ndarray, y: np.ndarray) -> dict:
+    """[EXTRACTED 2026-09-11, for reuse by the synthetic four-world
+    battery -- same fitting/sign-check logic one_trial() already used,
+    factored out so a WORLD-SPECIFIC y-generator (this script's own
+    MULTING-true/null, or the four-world battery's optical-depth-
+    confounded/merger-confounded generators) can share ONE fitting
+    implementation, not a second copy that could silently drift.
+    `xi_center`/`signal` are still needed (not just `y`) because the
+    sign-near-crossing stratification and Model 1's own regressor both
+    depend on them, not only on the observed outcome."""
+    n = len(y)
     free_reg = xi_center  # Model 2's own regressor, xi_pred(z,s) -- the
-    # DETERMINISTIC center, not the noisy draw, matching estimand.md's
-    # own Model 2 definition (y = c + mu*xi_pred(z,s))
-
-    signal_rms = np.std(signal)
-    noise_sigma = rel_noise * signal_rms
-    y = (signal if h_m_true else 0.0) + rng.normal(0.0, noise_sigma, n)
+    # DETERMINISTIC center, not a noisy draw, matching estimand.md's own
+    # Model 2 definition (y = c + mu*xi_pred(z,s))
 
     # Model 0: y = c
     rss0 = float(np.sum((y - np.mean(y)) ** 2))
@@ -172,11 +220,10 @@ def one_trial(z_i: np.ndarray, s_i: np.ndarray, rel_noise: float, h_m_true: bool
     rss2 = float(np.sum(resid2**2))
     aic2 = _aic(rss2, n, 2)
 
-    # [ADDED] sign-near-crossing (sign-near-reversal) sub-check: fit y vs
-    # xi_center SEPARATELY within the low-xi (<=XI_PEAK) and high-xi
-    # (>XI_PEAK) strata of THIS SAME trial's pairs, and record each
-    # stratum's own fitted slope sign. MULTING predicts +1 (rising) below
-    # the peak and -1 (falling) above it -- a genuine non-monotonic
+    # sign-near-crossing (sign-near-reversal) sub-check: fit y vs xi_center
+    # SEPARATELY within the low-xi (<=XI_PEAK) and high-xi (>XI_PEAK)
+    # strata of THIS SAME trial's pairs. MULTING predicts +1 (rising)
+    # below the peak and -1 (falling) above it -- a genuine non-monotonic
     # reversal a purely monotonic alternative cannot produce by
     # construction, distinct from the AIC/z-test comparisons above.
     low_mask = xi_center <= XI_PEAK
@@ -191,6 +238,20 @@ def one_trial(z_i: np.ndarray, s_i: np.ndarray, rel_noise: float, h_m_true: bool
         "sign_low": sign_low,  # None if stratum too small to fit
         "sign_high": sign_high,
     }
+
+
+def one_trial(z_i: np.ndarray, s_i: np.ndarray, rel_noise: float, h_m_true: bool) -> dict:
+    n = len(z_i)
+    xi_center = xi_pred(z_i, s_i)
+    xi_a = rng.lognormal(mean=np.log(xi_center) - 0.5 * SIGMA_LN**2, sigma=SIGMA_LN)
+    xi_b = rng.lognormal(mean=np.log(xi_center) - 0.5 * SIGMA_LN**2, sigma=SIGMA_LN)
+    signal = s_m_pair(xi_a, xi_b)  # Model 1's own regressor, S_M(z,s)
+
+    signal_rms = np.std(signal)
+    noise_sigma = rel_noise * signal_rms
+    y = (signal if h_m_true else 0.0) + rng.normal(0.0, noise_sigma, n)
+
+    return fit_and_check(xi_center, signal, y)
 
 
 def _stratum_slope_sign(xi_stratum: np.ndarray, y_stratum: np.ndarray) -> int | None:
@@ -228,6 +289,11 @@ def promote(trial: dict) -> bool:
 def power_at_n(
     n_target: int, z_pool: np.ndarray, s_pool: np.ndarray, rel_noise: float
 ) -> tuple[float, float]:
+    """[WITHDRAWN DESIGN, kept only for the honest old-vs-new comparison
+    printed in main() -- do not use this for a real power claim.] Samples
+    WITH REPLACEMENT from a combinatorial (non-disjoint) pool -- violates
+    estimand.md's own SUTVA exclusion rule, see the module docstring's
+    2026-09-11 correction note. Superseded by power_at_n_disjoint()."""
     pool_n = len(z_pool)
     promote_hm = promote_h0 = 0
     for _ in range(N_MC):
@@ -240,39 +306,114 @@ def power_at_n(
     return promote_hm / N_MC, promote_h0 / N_MC
 
 
+def power_at_n_disjoint(
+    n_target: int, z_disjoint: np.ndarray, s_disjoint: np.ndarray, rel_noise: float
+) -> tuple[float, float]:
+    """CORRECTED design: z_disjoint/s_disjoint already come from a real
+    cluster-disjoint matching (build_disjoint_matching()) -- every pair
+    in this pool shares no cluster with any other pair in the SAME pool.
+    Each Monte Carlo trial draws n_target of them WITHOUT replacement
+    (`replace=False`), so within one trial no cluster and no pair repeats
+    either -- the actual estimand.md-compliant unit of analysis."""
+    pool_n = len(z_disjoint)
+    if n_target > pool_n:
+        raise ValueError(
+            f"n_target={n_target} exceeds the real disjoint-pair ceiling ({pool_n}) -- "
+            "not a feasible SUTVA-compliant sample size"
+        )
+    promote_hm = promote_h0 = 0
+    for _ in range(N_MC):
+        idx = rng.choice(pool_n, size=n_target, replace=False)
+        z_i, s_i = z_disjoint[idx], s_disjoint[idx]
+        if promote(one_trial(z_i, s_i, rel_noise, True)):
+            promote_hm += 1
+        if promote(one_trial(z_i, s_i, rel_noise, False)):
+            promote_h0 += 1
+    return promote_hm / N_MC, promote_h0 / N_MC
+
+
 def main() -> None:
     print("=" * 78)
-    print("STEP 1 -- real (z,s) pair pool, broad population window")
+    print("STEP 1 -- real (z,s) COMBINATORIAL pair pool, broad population window")
     print("=" * 78)
-    z_pool, s_pool = build_real_pair_pool()
+    z_pool, s_pool, row, col, n_clusters = build_real_pair_pool()
     print(
-        f"  N real pairs, s in [{S_MIN_VALID:.0f},{S_MAX_MPC:.0f}] Mpc comoving, "
-        f"z in [{Z_LOW},{Z_HIGH}]: {len(z_pool)}"
+        f"  N real candidate pairs, s in [{S_MIN_VALID:.0f},{S_MAX_MPC:.0f}] Mpc comoving, "
+        f"z in [{Z_LOW},{Z_HIGH}]: {len(z_pool)}   (N clusters: {n_clusters})"
     )
     print(f"  z_pair range: {z_pool.min():.3f} - {z_pool.max():.3f}")
     print(f"  s_pair range: {s_pool.min():.2f} - {s_pool.max():.2f} Mpc")
+    print(
+        "  NOTE: this pool is COMBINATORIAL -- one cluster can appear in many\n"
+        "  candidate pairs (mean 3.93, max 18). It is NOT the unit of analysis\n"
+        "  estimand.md specifies; STEP 1b below builds the real, cluster-\n"
+        "  disjoint matching that is."
+    )
 
     print()
     print("=" * 78)
     print(
-        "STEP 2 -- Positivity check (estimand.md's own named cheapest "
-        "check): do any REAL pairs already approach/cross xi_crossing, "
-        "with NO scatter assumption?"
+        "STEP 1b -- [ADDED, SUTVA correction] real cluster-disjoint matching, "
+        "estimand.md's own Population/SUTVA exclusion rule made concrete"
+    )
+    print("=" * 78)
+    # Two tie-break orders, both reported: RANDOM is the primary, honest
+    # construction (no preference for small s, which would otherwise bias
+    # the matched set toward exactly the high-xi_pred regime this branch's
+    # own headline results live in); SMALLEST-S-FIRST is a named upper-
+    # bound/sensitivity check, not the primary result.
+    rng_match = np.random.default_rng(20260911)
+    order_random = rng_match.permutation(len(s_pool))
+    order_smallest_s = np.argsort(s_pool)
+
+    matched_random = build_disjoint_matching(row, col, order_random, n_clusters)
+    matched_smalls = build_disjoint_matching(row, col, order_smallest_s, n_clusters)
+
+    z_disjoint = z_pool[matched_random]
+    s_disjoint = s_pool[matched_random]
+    xi_disjoint = xi_pred(z_disjoint, s_disjoint)
+    frac_disjoint = np.mean(xi_disjoint > XI_CROSSING)
+
+    z_disjoint_s = z_pool[matched_smalls]
+    s_disjoint_s = s_pool[matched_smalls]
+    xi_disjoint_s = xi_pred(z_disjoint_s, s_disjoint_s)
+    frac_disjoint_s = np.mean(xi_disjoint_s > XI_CROSSING)
+
+    print(
+        f"  RANDOM-order matching (primary):      {len(matched_random)} disjoint pairs, "
+        f"Positivity fraction {frac_disjoint * 100:.3f}%"
+    )
+    print(
+        f"  smallest-s-first matching (sensitivity): {len(matched_smalls)} disjoint pairs, "
+        f"Positivity fraction {frac_disjoint_s * 100:.3f}%"
+    )
+    print(
+        "  Reading: if these fractions differ substantially, the SUTVA-\n"
+        "  compliant Positivity result is sensitive to the (unspecified in\n"
+        "  estimand.md) matching tie-break rule -- named explicitly, not\n"
+        "  smoothed over. The RANDOM-order number is what STEP 3 below uses."
+    )
+
+    print()
+    print("=" * 78)
+    print(
+        "STEP 2 -- Positivity check on the COMBINATORIAL pool (original, kept "
+        "for continuity -- see STEP 1b above for the SUTVA-correct version)"
     )
     print("=" * 78)
     xi_all = xi_pred(z_pool, s_pool)
     print(
-        f"  xi_pred(z,s) over the real pool: min={xi_all.min():.4e}  "
+        f"  xi_pred(z,s) over the COMBINATORIAL pool: min={xi_all.min():.4e}  "
         f"median={np.median(xi_all):.4e}  max={xi_all.max():.4e}"
     )
     print(f"  xi_crossing = {XI_CROSSING:.4e}")
     frac_above = np.mean(xi_all > XI_CROSSING)
     print(
-        f"  fraction of REAL pairs with xi_pred > xi_crossing (deterministic, "
-        f"no scatter): {frac_above * 100:.3f}%"
+        f"  fraction of REAL candidate pairs with xi_pred > xi_crossing (deterministic, "
+        f"no scatter, COMBINATORIAL pool): {frac_above * 100:.3f}%"
     )
     closest = np.argsort(-xi_all)[:5]
-    print("  5 closest-to/over-crossing real pairs:")
+    print("  5 closest-to/over-crossing real pairs (combinatorial pool):")
     for i in closest:
         print(
             f"    z={z_pool[i]:.3f}  s={s_pool[i]:.2f} Mpc  xi_pred={xi_all[i]:.4e}"
@@ -281,15 +422,24 @@ def main() -> None:
 
     print()
     print("=" * 78)
-    print(f"STEP 3 -- Monte Carlo power (N_MC={N_MC} per cell), s-dependent design")
+    print(
+        f"STEP 3 -- Monte Carlo power (N_MC={N_MC} per cell), CORRECTED "
+        "SUTVA-compliant design (sampling WITHOUT replacement from the "
+        "random-order disjoint matching)"
+    )
     print("=" * 78)
-    n_scan = [10, 20, 30, 50, 75, 100, 150, 200, 300, 449, 500, 1000, 2000]
+    ceiling = len(matched_random)
+    n_scan_full = [10, 20, 30, 50, 75, 100, 150, 200, 300, 449, 500, 1000, 2000]
+    n_scan = [n for n in n_scan_full if n <= ceiling]
+    dropped = [n for n in n_scan_full if n > ceiling]
+    if dropped:
+        print(f"  Dropped from the scan (exceed the real disjoint ceiling of {ceiling}): {dropped}")
     noise_scan = [1.0, 3.0, 10.0]
     print(f"{'N_pairs':>8} {'rel_noise':>10} {'power':>8} {'false-promote':>15}")
     results = []
     for n_target in n_scan:
         for rel_noise in noise_scan:
-            p_power, p_false = power_at_n(n_target, z_pool, s_pool, rel_noise)
+            p_power, p_false = power_at_n_disjoint(n_target, z_disjoint, s_disjoint, rel_noise)
             results.append((n_target, rel_noise, p_power, p_false))
             print(
                 f"{n_target:>8} {rel_noise:>10.1f} {p_power * 100:>7.1f}% {p_false * 100:>14.1f}%"
@@ -297,21 +447,26 @@ def main() -> None:
 
     print()
     print("=" * 78)
-    print("STEP 4 -- comparison to the OLD (window-based, superseded) design")
+    print("STEP 4 -- three-way comparison: window-based / WITHDRAWN s-dependent / CORRECTED")
     print("=" * 78)
     print(
-        "  Old design (power_analysis_mock_catalog.py, window-based, REJECTED\n"
-        "  test design per NR-025) at the SAME footprint-scaled broad-window N:\n"
-        "    N=449 (mid footprint): 100.0% power @3x noise\n"
-        "  New design (this script), same N=449, real (z,s), THREE-part bar\n"
-        "  (beat Model 0 AND beat Model 2 AND the sign-near-reversal check):"
+        "  (a) Old window-based design (power_analysis_mock_catalog.py, REJECTED\n"
+        "      per NR-025), N=449 (Fork-2 mid footprint): 100.0% power @3x noise\n"
+        "  (b) WITHDRAWN: this script's own PRIOR run, N=449, with-replacement\n"
+        "      sampling from the combinatorial pool (SUTVA-violating, see the\n"
+        "      module docstring's 2026-09-11 correction note): 59.9% power @3x\n"
+        "      noise, 0.1% false-promote -- do not cite this number going forward.\n"
+        "  (c) CORRECTED: this run, sampling WITHOUT replacement from the real\n"
+        "      cluster-disjoint matching, same three-part bar:"
     )
-    row_449 = [r for r in results if r[0] == 449 and r[1] == 3.0]
-    if row_449:
+    match_449 = [r for r in results if r[0] == 449 and r[1] == 3.0]
+    if match_449:
         print(
-            f"    N=449: {row_449[0][2] * 100:.1f}% power @3x noise, "
-            f"{row_449[0][3] * 100:.1f}% false-promote"
+            f"      N=449: {match_449[0][2] * 100:.1f}% power @3x noise, "
+            f"{match_449[0][3] * 100:.1f}% false-promote"
         )
+    else:
+        print(f"      N=449 not reachable (real disjoint ceiling: {ceiling} pairs)")
     print(
         "  Reading: the new design's THREE-part bar (beat null AND beat the\n"
         "  free-linear alternative AND show the direction-matched sign\n"
@@ -337,13 +492,19 @@ def main() -> None:
         "     old design, NOT independently re-verified against the source kSZ\n"
         "     paper's own methods section (estimand.md's own Population\n"
         "     criterion still names that as unresolved).\n"
-        "  3. The small-s Consistency(d) instrumental threat (CMB-beam\n"
-        "     blending) is handled here only by a blanket S_MIN_VALID=10 Mpc\n"
-        "     cut, not the real angular-separation-vs-beam-size check\n"
-        "     estimand.md itself says is still needed.\n"
+        "  3. [RESOLVED, see FINDING_beam_blending_check.md] The small-s\n"
+        "     Consistency(d) instrumental threat (CMB-beam blending) was\n"
+        "     checked directly for all 306 real Positivity pairs -- only 5/306\n"
+        "     (1.6%) at real risk, a small quantified correction, not open.\n"
         "  4. Real power will be lower than every number above -- these are\n"
         "     best-case, confounder-free upper bounds; the synthetic four-world\n"
-        "     identifiability battery (estimand.md's own hard gate) has not run."
+        "     identifiability battery (estimand.md's own hard gate) has not run.\n"
+        "  5. [ADDED, SUTVA correction] The greedy disjoint matching's tie-break\n"
+        "     rule (random order, primary) is one defensible choice among several\n"
+        "     -- estimand.md's own text names 'closest match on the matching\n"
+        "     variables' (M, z, Env, Dyn), none of which are in this mock. STEP\n"
+        "     1b's own random-vs-smallest-s comparison is the honesty check for\n"
+        "     this, not a full sensitivity sweep over tie-break rules."
     )
 
 

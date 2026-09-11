@@ -18,6 +18,21 @@ Not applied: "Causal DAG: MISSING" — the DAG below already existed at
 the time of that critique; what was accurate in it is that the DAG was
 **incomplete**, not absent.**
 
+**[CORRECTION, 2026-09-11, 9th pass — see `FINDING_sutva_dependency_
+correction.md`. READ THIS BEFORE TRUSTING ANY `59.9%`/`3.978%` FIGURE
+BELOW.]** An external review of the published repo found the mock power
+analysis's own sampling violated this file's OWN SUTVA exclusion rule
+(§ Population, below) — a real cluster could appear in multiple sampled
+pairs within one Monte Carlo trial (43.2% did, at `N=449`). Verified,
+fixed: real cluster-disjoint matching, sampling without replacement.
+**Corrected numbers: power at `N=449`, 3x noise: `59.1%`** (not `59.9%`
+— within Monte Carlo noise of the withdrawn figure, for a specific,
+reported reason, not by coincidence). **Positivity: `4.664%`** (not
+`3.978%` — a real, modest, `+17%` relative increase). Every `59.9%`/
+`3.978%` figure appearing further below in this file is the
+historical/withdrawn number, kept per this file's own mark-don't-erase
+convention, not the current one.
+
 **[AMENDED 2026-09-11, 4th pass — the fixed-window Endpoint is
 SUPERSEDED, per `null_results/INDEX.md` NR-025.]** The Exact Pair
 Census + window-width scan (`FINDING_window_width_resolution.md`)
@@ -700,6 +715,21 @@ data is `ORACLE_INADEQUATE` per this project's own gate and is
 prohibited from running on real data until fixed** — this is a hard
 gate, not a recommended step.
 
+**[UPDATED 2026-09-11, 10th pass — RUN, see `FINDING_synthetic_four_
+world_battery.md`.] Verdict: `ADEQUATE`.** Worlds 2 and 3 promoted at
+exactly `0.0%` across every scanned `N` (`100/449/1000`, `N_MC=4000`
+each); World 1 (MULTING) promoted at `27.0%-59.5%`, growing with `N` as
+expected; World 4 (null) stayed at `0.0-0.2%`, matching the already-
+established false-promote baseline. Built on the SUTVA-corrected
+sampling from the start (real cluster-disjoint matching, without-
+replacement draws) — never run against the withdrawn design. Worlds 2/3
+are honestly flagged as OPERATIONALIZED proxies (linear-in-`ξ_pred`;
+pure `1/s` with no `z`-dependence), not literal simulations of the real
+`G→τ→V_kSZ`/`Dyn→{K,V_true}` DAG paths — this mock has no explicit
+per-cluster `K`/`G`/`Dyn` variables to do that literally. **This is the
+last named hard gate before real kSZ/tSZ data — now passed, not
+outstanding.**
+
 ---
 
 ## Identification Strategy
@@ -855,7 +885,36 @@ the complete, `estimand.md`-specified three-part PROMOTE bar — the
 FINAL power number for this design, false-promote still low
 (`0.0-0.1%`).
 
-**Next, in order:** (1) the synthetic four-world identifiability
-battery's own concrete design for THIS Endpoint — the last remaining
-hard gate named in this branch; (2) only then, code touching real
-kSZ/tSZ data. No such code exists in this folder.
+**[UPDATED 2026-09-11, 9th pass — SUTVA correction, see `FINDING_
+sutva_dependency_correction.md`.] The `59.9%`/`3.978%` figures directly
+above are WITHDRAWN**, found by an external review of the published
+repo to come from a sampling design that violated this file's own
+SUTVA exclusion rule (a real cluster could appear in multiple sampled
+pairs per trial — verified: `43.2%` did, at `N=449`). Fixed with a real
+cluster-disjoint matching (`build_disjoint_matching()`), sampling
+without replacement. **Corrected: power at `N=449`, 3x noise = `59.1%`**
+(within Monte Carlo noise of the withdrawn number, for a specific,
+checked reason — this mock has no per-cluster shared latent variable,
+so cluster-sharing did not, in practice, correlate sampled rows).
+**Positivity = `4.664%`** (a real, modest increase from `3.978%`). A
+matching-tie-break sensitivity check (smallest-`s`-first vs. random
+order) found a real, confirmed self-serving bias in the smallest-`s`-
+first construction (`15.135%` Positivity — `3.2×` inflated) — correctly
+NOT used as the primary result.
+
+**[UPDATED 2026-09-11, 10th pass — DONE, see `FINDING_synthetic_four_
+world_battery.md`.] The synthetic four-world battery has been RUN,
+verdict `ADEQUATE`** — worlds 2/3 (confounds) promoted at exactly
+`0.0%` across every scanned `N`; World 1 (MULTING) promoted at a real,
+growing-with-`N` rate (`27.0%-59.5%`); World 4 (null) matched the
+already-established false-promote baseline. Built on the SUTVA-
+corrected sampling from the start.
+
+**Next, in order:** (1) `[DONE]` the dependency/SUTVA gate; (2) `[DONE]`
+the synthetic four-world battery — **every named hard pre-data gate in
+this branch is now closed**; (3) code touching real kSZ/tSZ data — the
+one remaining item, and a large one: `data_acquisition_plan.md`'s own
+Fork 1b (a classical pairwise-kSZ estimator, ~1-3 weeks per that plan's
+own estimate) or Fork 1a (a data request to the DESI/ACT collaboration,
+parallel, long-latency). Neither started. No such code exists in this
+folder.

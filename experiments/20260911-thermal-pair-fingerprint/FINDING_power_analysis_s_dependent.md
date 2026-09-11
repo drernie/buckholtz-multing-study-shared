@@ -11,6 +11,19 @@ Endpoint/Summary Measure), which named this exact script — a new mock-
 catalog power analysis, reusing real `(z,s)` — as the concrete next
 artifact, not built at amendment time.
 
+**[SUPERSEDED IN PART, 2026-09-11, same day, see `FINDING_sutva_
+dependency_correction.md`.]** An external review of the published repo
+found the sampling in §3 below violated `estimand.md`'s own SUTVA
+exclusion rule (a real cluster could appear in >1 sampled pair per
+trial — 43.2% did, at `N=449`). Verified, fixed (real cluster-disjoint
+matching, sampling without replacement). **The headline `59.9%` power
+number at `N=449` is WITHDRAWN — the corrected number is `59.1%`**
+(within Monte Carlo noise of the withdrawn one, for a specific, reported
+reason: this mock has no per-cluster shared latent variable). The
+Positivity fraction moved more: `3.978%→4.664%`. This file's own numbers
+below are kept for the historical record (mark-don't-erase); read the
+correction file for what actually holds now.
+
 ---
 
 ## 1. What this is, and what it is NOT
