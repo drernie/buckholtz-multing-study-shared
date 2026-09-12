@@ -255,6 +255,64 @@ now WEAKENED, pending a genuinely source-faithful estimand (2PCF-style,
 Full account: `experiments/20260803-bridge/FINDING_P230_what_
 physically_is_a_node.md`.
 
+**Twelfth entry, same day (2026-09-12) — FINAL CLOSURE of the
+computational/statistical sub-branch, following through on the mass-
+convention question the Eleventh entry raised.** Three further real
+tests, each Step 8a skeptic-reviewed:
+
+1. `FINDING_flamingo_m500c_m200c_overlap.md` — real FLAMINGO `M500c`/
+   `M200c` ratio (`mean=0.676, median=0.689`, matching standard NFW
+   range) and top-`N` overlap (`N=1200 -> 91.8%`), establishing overlap
+   and statistic-stability are different questions (new pearl_registry
+   lesson).
+2. `FINDING_flamingo_rho_nn_m200c_vs_m500c_selection.md` — direct
+   `rho_NN` recompute under both mass conventions. **At `N=1200` (the
+   branch's own "definitive global estimand," the strongest, best-
+   powered number in this entire thread), the `M200c`-vs-`M500c`
+   difference is `-0.0032` — `~15x` smaller than the real spatial-
+   jackknife `SE=0.0476`.** At `N=35`/`N=50` (matching TNG300's original
+   anomaly scale) the shift is larger but statistically ambiguous
+   (`z~0.7-1.6`).
+3. `FINDING_flamingo_rho_nn_2x2_factorial.md` — the `N=50` shift is
+   ENTANGLED (interaction term `+0.22`, comparable to or larger than
+   either individual selection- or value-convention main effect), not
+   attributable to a single driver. Step 8a: WEAKENED.
+
+**Net effect on `P158`'s own directional-safety claim: DOUBLY
+CONFIRMED, not merely unaffected.** The claim's own safety margin
+(`rho > -0.5`, established under `M200c` at `N=1200`:
+`rho=-0.0231+/-0.0476`) now holds under v82's own actual `R500`/`M500c`
+convention too, at the same robust scale (`rho=-0.0238`, statistically
+indistinguishable from the `M200c` value). **The mass-convention
+mismatch `P230` discovered — the single largest ontological finding of
+this branch — turns out NOT to threaten the branch's strongest result.**
+It matters only at the small-`N` scale that was ALREADY flagged as
+fundamentally underpowered (`n~30-50`) before the ontology question
+ever arose — mass-convention entanglement adds one more layer of
+ambiguity to an already-acknowledged open question, it does not create
+a new one.
+
+**What remains genuinely open is not a statistics question any tighter
+FLAMINGO measurement can resolve: it is an ESTIMAND-CONSTRUCTION
+question.** Per `docs/162` item 9, v82's own actual empirical route for
+"node separation" is a population-level, richness-dependent two-point-
+correlation-function amplitude, not a nearest-neighbor-distance rule at
+all — no amount of further `rho_NN` precision, on either mass
+convention, answers that mismatch. Continuing to iterate on `rho_NN`/
+`rho_band` designs would be diminishing returns on a proxy already
+known not to be source-faithful (per the Eleventh entry). **This
+branch's computational/statistical sub-branch is CLOSED for real this
+time** — the entire `rho_NN`/`rho_band`/overlap/factorial chain (this
+entry plus the Ninth through Eleventh) functioned as a genuine
+adversarial audit of both the estimand AND the mass-convention
+robustness of its strongest result, and that result survived. The next
+work is estimand CONSTRUCTION (`docs/162` item 9: a real `M500c`-based
+2PCF-style statistic), not further statistical iteration on the
+nearest-neighbor design. Full account: `experiments/20260909-tng-mass-
+assortativity/FINDING_flamingo_m500c_m200c_overlap.md`, `FINDING_
+flamingo_rho_nn_m200c_vs_m500c_selection.md`, `FINDING_flamingo_rho_nn_
+2x2_factorial.md`.
+
 **Date:** 2026-08-30
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·
 NO_AUTHOR_ERROR · L0 math (independent verification: sympy + Monte Carlo)

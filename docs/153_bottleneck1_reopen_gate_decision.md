@@ -259,6 +259,34 @@ neighbor-on-a-ranked-subsample).** Full account: `experiments/
 20260803-bridge/CLAIM_P230_what_physically_is_a_node.md` +
 `FINDING_P230_what_physically_is_a_node.md`.
 
+**Thirteenth update, same day (2026-09-12) — FINAL CLOSURE of `P158`'s
+computational/statistical sub-branch.** Following the Twelfth update's
+`R500`/`M500c` ontology discovery, three further real tests resolved
+whether the mass-convention mismatch threatens the branch's strongest
+result: `M500c`/`M200c` overlap (`~74-92%` across tested `N`), a direct
+`rho_NN` recompute under both conventions, and a `2x2` factorial
+separating selection-criterion from value-convention effects. **Result:
+the branch's "definitive global estimand" (`N=1200`) is ROBUST to the
+mass-convention choice** — `M200c`- vs. `M500c`-selection `rho_NN`
+differ by `-0.0032`, `~15x` smaller than the real jackknife
+`SE=0.0476`. `P158`'s own directional-safety claim (`rho > -0.5`) is
+now DOUBLY confirmed, not merely unaffected by the ontology finding.
+The smaller-`N` scale (matching TNG300's own anomaly) shows a real but
+entangled shift (2x2 factorial: interaction term dominates, no single
+driver) — this adds ambiguity to a scale ALREADY known to be
+underpowered, it does not open a new concern. **The computational/
+statistical sub-branch is CLOSED — no further statistical iteration on
+the nearest-neighbor design is warranted.** The remaining open item
+(`docs/162` item 9: a real, `M500c`-based, 2PCF-style population-
+clustering-amplitude estimand, replacing nearest-neighbor entirely) is
+an ESTIMAND-CONSTRUCTION question, not a statistics question — out of
+scope for `P158`'s own thread, in scope for `docs/162` item 9's own
+next step. Full account: `experiments/20260909-tng-mass-assortativity/
+FINDING_flamingo_m500c_m200c_overlap.md`, `FINDING_flamingo_rho_nn_
+m200c_vs_m500c_selection.md`, `FINDING_flamingo_rho_nn_2x2_factorial.
+md`, `experiments/20260803-bridge/FINDING_P158_jensen_mass_averaging_
+v82_force_terms.md` (Twelfth entry).
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own
