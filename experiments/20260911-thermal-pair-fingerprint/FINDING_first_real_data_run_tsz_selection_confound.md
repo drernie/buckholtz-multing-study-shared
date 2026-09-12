@@ -111,6 +111,35 @@ exactly the pairs (large-z-separation) where that trend matters most.
    principled fix (e.g. matching clusters by mass proxy instead of
    detrending temperature directly) is a legitimate future refinement.
 
+## Cross-check on `map_srcfree` (2026-09-12) — same result, confirms
+## point sources were never the driver
+
+Re-ran the identical original+detrend test on ACT's own point-source-
+subtracted map (`map_srcfree`, all ≥5σ sources removed by the survey
+team) instead of the raw map. Fresh extraction, independent cache:
+
+| | raw map (original finding) | `map_srcfree` |
+|---|---|---|
+| z at r=593 Mpc | -4.27 | -4.23 |
+| z at r=1442 Mpc | -4.11 | -4.02 |
+| z at r=1946 Mpc | -4.35 | -4.25 |
+| z at r=2458 Mpc | -3.86 | -3.72 |
+| z at r=2993 Mpc | -3.38 | -3.25 |
+| z at r=3562 Mpc | -3.03 | -2.92 |
+| z at r=4787 Mpc | -1.51 | -1.43 |
+| detrended, all bins | &#124;z&#124;<0.6 | &#124;z&#124;<0.6 |
+
+**Nearly identical, few-percent-level differences only.** This is the
+expected, confirming result: the artifact was already correctly
+diagnosed as a redshift-dependent tSZ-*selection* effect (which map
+version is used doesn't touch that), not point-source contamination —
+removing point sources was never expected to change the outcome, and
+it didn't. Point-source handling is a real, separately-necessary fix
+(a single bright unmasked source at one cluster's position would still
+be a legitimate individual-cluster risk `map_srcfree` now closes), but
+this cross-check confirms it was not silently masking the earlier
+result's own actual cause.
+
 ## Status
 
 **Confound identified, tested, and confirmed removable.** Point-source
