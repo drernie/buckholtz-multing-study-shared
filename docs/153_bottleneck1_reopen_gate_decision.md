@@ -144,6 +144,22 @@ confirms nor rules out that TNG300's own anomaly is ordinary sampling
 noise. Full account: `experiments/20260909-tng-mass-assortativity/
 FINDING_flamingo_subvolume_replication.md`.
 
+**Seventh update, same day (2026-09-12) — user-requested quantification
+of the periodic-wrap bias, run: NOT confirmed.** Compared `rho_NN`
+under periodic vs. open-boundary treatment on the same `10` already-
+selected sub-cubes. The correctly-specified test (on `|rho|`, testing
+whether periodic shrinks magnitude toward zero) gave `p=0.86` — a dead
+`5/10` split between dilution and inflation, no detectable systematic
+effect. A first, signed-mean reading (`-0.054`) had looked like
+confirmation but was itself measuring the wrong quantity (sign shift,
+not amplitude shrinkage) — caught by Step 8a skeptic before being
+written up. Open-boundary treatment is confirmed NOT to be a clean
+reference either (its own, different edge distortion). The wrap-bias
+question stays genuinely open; the real fix (a pre-cut, whole-box
+global-NN ground truth) is named, not run. Full account: `experiments/
+20260909-tng-mass-assortativity/FINDING_flamingo_subvolume_periodic_
+wrap_bias.md`.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own
