@@ -5,6 +5,9 @@ literature/sci_index/
 literature/refs_digitized/
 # Raw external catalog data (re-downloadable from CDS/VizieR via the script that fetches it; ~3.4MB, not ours to redistribute)
 experiments/20260911-thermal-pair-fingerprint/data_cache/
+# Decompressed Magneticum cluster catalog (the .gz is tracked; this is a
+# trivial `gunzip -k` byproduct, regenerate with that command)
+experiments/20260909-tng-mass-assortativity/data_cache/*.txt
 # Recovered/recolored third-party reference figures (regenerable from the
 # source PDF + digitize_figure3_v12.py; same local-only convention as above)
 experiments/20260810-zenodo-archive/refs/
