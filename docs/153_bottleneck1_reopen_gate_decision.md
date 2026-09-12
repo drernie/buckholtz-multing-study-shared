@@ -57,6 +57,21 @@ genuinely different cosmology (WMAP7 vs. `TNG`/`Uchuu`'s shared Planck
 Neither downloaded yet (a new download needs separate, per-turn
 permission). Full account, same file as above.
 
+**Second update, same day:** `Uchuu` turned out DOWN when actually
+needed (its fast-download service explicitly marked "Temporally not
+available," confirmed by a live connection timeout, not just the
+label). `Magneticum Box2_hr` real cluster data (10,493 clusters,
+880KB, permission granted and downloaded) was used for an independent
+cross-check instead — result **FALSIFIED as a resolving test** by a
+second skeptic pass: the same nested-threshold trap that killed the
+`TNG300` attempt recurred (7 positive-looking values reduce to one
+effective `~1.3-1.5 sigma` measurement once the `67-95%` sample overlap
+is accounted for), even with a proper permutation null this time. The
+magnitude/mechanism question is now independently reconfirmed
+UNDETERMINED across two different simulations, not resolved by either.
+Full account: `experiments/20260909-tng-mass-assortativity/
+FINDING_magneticum_independent_rho_check.md`.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own

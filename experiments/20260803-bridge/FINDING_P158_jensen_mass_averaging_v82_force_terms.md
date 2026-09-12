@@ -45,6 +45,25 @@ found that `rho<-0.5` at the right scale either) but removes the
 OPEN-AT-THE-RIGHT-SCALE`, with the earlier tag stating what holds at
 the scales actually measured.
 
+**Second independent cross-check, same day: a genuinely different
+simulation (Magneticum, different code/cosmology from TNG) gives the
+SAME "undetermined" answer, not a resolution either way.**
+`experiments/20260909-tng-mass-assortativity/FINDING_magneticum_
+independent_rho_check.md` — real downloaded Magneticum cluster data,
+scale-matched to v82's own target, real permutation-null statistics
+(1000 draws, not one shuffle). Raw values were consistently positive
+(`0.11-0.21` across 7 swept thresholds) and looked like corroboration
+at first — a context-blind skeptic pass caught that the 7 thresholds
+are severely nested (up to `95%` shared clusters between adjacent
+points), so properly treated as one effective measurement the result is
+`~0.16, ~1.3-1.5 sigma` from zero — not significant. **Two independent
+simulations, two independent skeptic passes, the same conclusion:
+genuinely undetermined, not merely "not yet measured."** This is a
+stronger, more robust null than either dataset alone — the scarcity of
+sufficiently massive, appropriately-separated clusters at v82's own
+target scale appears to be a real, structural small-sample problem, not
+one simulation's bad luck.
+
 **Date:** 2026-08-30
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·
 NO_AUTHOR_ERROR · L0 math (independent verification: sympy + Monte Carlo)
