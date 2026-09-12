@@ -56,12 +56,17 @@ own supporting number found in the process, detailed at item 4.
    permutation p-value (`0.028`) is the honest number to cite, not a
    derived sigma-count — consistent with this branch's own recent
    `"don't overclaim a sigma-count"` lesson (`pearl_registry`,
-   2026-09-12). **Critical, independently-checked fact**: `top-35`
-   substantially OVERLAPS `top-30` — this is NOT an independent
-   re-test of the earlier `N_sub=30` alarm, it draws from mostly the
-   SAME halos in the SAME single simulation box. A ~2σ result on
-   largely the same data as an already-falsified ~2.6σ result is not
-   new evidence.
+   2026-09-12). **Critical fact, independently verified by direct
+   halo-ID intersection (user-requested check, 2026-09-12), not
+   inferred**: `top-30` is an EXACT subset of `top-35` — `30` of `35`
+   halo IDs identical (`85.7%`), the `5` "new" halos being exactly
+   ranks `31-35` by mass (`3.573e14`-`3.696e14` Msun, the lowest-mass
+   halos in the `N=35` sample). This is NOT an independent re-test of
+   the earlier `N_sub=30` alarm — it is the SAME `30` halos plus `5`
+   more, in the SAME single simulation box. A `~2σ` result computed on
+   data that is `85.7%` identical to an already-falsified `~2.6σ`
+   result is not new evidence, by construction, not merely by
+   plausible inference.
 3. **Is `rho_band=-0.3577` (`N_pairs=3`) usable? (`FALSIFIED`.)** Three
    raw pairs (six after symmetrization) cannot support a correlation
    estimate — permutation SD (`0.497`) confirms the statistic itself
@@ -106,7 +111,8 @@ neither changing the final verdict.**
   selection protocol, is a genuinely blind (not nested-swept) single
   test — but is noise-consistent at this small `N`, and is NOT
   independent evidence separate from the already-falsified `N_sub=30`
-  point (substantial halo overlap).** Flagged as an anomaly worth
+  point (verified `85.7%` halo-ID overlap — `30/35` identical, not
+  inferred).** Flagged as an anomaly worth
   independent replication in a larger, genuinely different volume —
   not a standalone result.
 - **`rho_band` cannot be measured at TNG300's own matched `N=35`**
