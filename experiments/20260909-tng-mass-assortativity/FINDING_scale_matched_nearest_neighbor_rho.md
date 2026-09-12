@@ -175,6 +175,38 @@ its own separate data-access setup, not reachable via the existing
 `~/.secrets/tng_api_key.env`. Not attempted this session; named as the
 concrete next step if this specific question is worth pursuing further.
 
+## Addendum 2026-09-12 — MillenniumTNG checked directly: box size is
+## large enough, but no public access exists
+
+Checked live (`curl` HTTP HEAD/GET against `mtng-project.org`, not
+recalled): the box sizes would comfortably solve the volume problem —
+the hydrodynamical run uses the original Millennium `500 Mpc/h = 740
+Mpc` volume (half-side `370 Mpc`, ample room above the `40-45 Mpc`
+target), and a separate dark-matter-only run reaches a `3000 Mpc`
+volume. **But no functioning public access exists to check this
+against:**
+
+- `mtng-project.org/api/` returns **HTTP 404** — no REST API like the
+  TNG project's own (confirmed via direct HTTP request, not assumed).
+- The site's own "Data Release" section states data is **"foreseen to
+  be made fully publicly available... in 2024"** (future tense) — the
+  page's own `Last-Modified` header is `2023-04-26`, with no visible
+  update since; as of this check (2026-09-12), that release does not
+  appear to have materialized via this site.
+- The "Available Output" page documents data FORMAT (field names, file
+  layout) for future users — no download links, no access portal.
+- A recent (2025-10) paper by the project's own core team (`arXiv:
+  2510.06311`, Marinacci, Baldi, ..., Springel, Bose, Hernquist —
+  matching the team roster on `mtng-project.org` itself) using
+  MillenniumTNG data carries **no data-availability statement and no
+  mention of `mtng-project.org`** as an access route — consistent with
+  the team still working from internal-only access.
+
+**Verdict: MillenniumTNG is not a currently viable route**, despite
+having the right box size — public access has not materialized as of
+this check. Not re-checked periodically; a future session should re-run
+this same live check before assuming continued unavailability.
+
 ## Status
 
 **Genuinely UNRESOLVED — recorded honestly as such, not forced toward
