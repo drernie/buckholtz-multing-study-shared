@@ -126,6 +126,24 @@ check — descriptive only, no effect on any prior computed result.
 Full account: `experiments/20260909-tng-mass-assortativity/
 FINDING_tng300_own_population_rho_nn_and_band.md`.
 
+**Sixth update, same day (2026-09-12) — user-requested independent-
+volume replication of the `N=35` anomaly, run:** carved `27` non-
+overlapping, TNG300-sized sub-volumes out of FLAMINGO's real, much
+larger box (different code, different cosmology), applying the SAME
+blind selection protocol independently in each. `10/27` matched;
+resulting `rho_NN` distribution (`mean=0.01, SD=0.21`) reached `0/10`
+at `|rho_NN|>=0.42`. **Step 8a skeptic caught a critical correction
+before any conclusion was drawn**: `0/10` is NOT evidence — under the
+shared noise floor this test itself measures, `P(0` exceedances in
+`10` draws`)~=67%` even if `-0.42` is ordinary noise; the test is
+underpowered by roughly `7x`. Two further named, unquantified design
+biases (environmental selection of matched sub-cubes; artificial
+periodic-wrap dilution toward zero) both plausibly bias this specific
+test toward `0` regardless. Verdict: genuinely INCONCLUSIVE — neither
+confirms nor rules out that TNG300's own anomaly is ordinary sampling
+noise. Full account: `experiments/20260909-tng-mass-assortativity/
+FINDING_flamingo_subvolume_replication.md`.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own

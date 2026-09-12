@@ -118,6 +118,17 @@ reflects an observable effect or a population effect. Full account:
 `experiments/20260909-tng-mass-assortativity/FINDING_tng300_own_
 population_rho_nn_and_band.md`.
 
+**Sixth cross-check, same day (2026-09-12) — user-requested independent-
+volume replication of TNG300's own `N=35` anomaly, run: still
+INCONCLUSIVE, and a real underpowering caught before any conclusion.**
+`27` genuinely independent, TNG300-sized sub-volumes carved from
+FLAMINGO's real box, same blind protocol; `10/27` matched,
+`0/10` reached `|rho_NN|>=0.42`. Step 8a skeptic: `0/10` is NOT
+evidence (`P(0/10)~=67%` even under pure noise; the test is
+underpowered by `~7x`); two further, unquantified design biases named.
+Full account: `experiments/20260909-tng-mass-assortativity/
+FINDING_flamingo_subvolume_replication.md`.
+
 **Date:** 2026-08-30
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·
 NO_AUTHOR_ERROR · L0 math (independent verification: sympy + Monte Carlo)
