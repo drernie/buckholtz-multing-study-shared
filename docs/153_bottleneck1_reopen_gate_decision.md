@@ -232,6 +232,33 @@ jensen_mass_averaging_v82_force_terms.md` (Tenth entry), `docs/151`
 (Third worked example), `experiments/20260909-tng-mass-assortativity/
 FINDING_flamingo_definitive_global_estimand_synthesis.md`.
 
+**Twelfth update, same day (2026-09-12) — the ontological question named
+in the Eleventh update was started (user-requested): what physically is
+a v82 "node"? Real answer found; `P158` REOPENED as an estimand-
+specification question, not merely closed.** Direct primary-source read
+of v82's own text (`P230`), Step 8a skeptic pass, plus a real, external
+cross-check of the cited two-point-correlation-function paper's own
+abstract: (1) a node's measurable properties are cluster ICM physics
+(real citations, all verified); (2) v82's own mass/radius convention is
+`R500`, stated twice, NOT `R200`/`M200c` — a genuine, previously-
+unnoticed mismatch with this branch's entire prior simulation work; (3)
+v82's own cited empirical route for node separation (`s0~30 Mpc`,
+Basilakos & Plionis 2004) is a population-level, RICHNESS-DEPENDENT
+two-point-correlation-function amplitude, NOT a nearest-neighbor-
+distance rule — confirmed directly from the cited paper's own real
+results (`r0=20.7 h^-1 Mpc` richer subsample `~=` v82's own `"~30 Mpc"`
+after `h`-conversion). Skeptic caught real overclaims in three
+downstream conclusions (each inherited a stronger textual commitment
+than the source supports) — corrected framings recorded. Frozen
+specification: `docs/162_ontology_spec_v82.md`. **Net effect: prior
+`rho_NN`/`rho_band` numbers remain numerically valid but are
+reclassified from "the intended v82 test" to "a related, not source-
+faithful proxy" — pending a genuinely source-faithful estimand (2PCF-
+style, `M500c`-based, population-clustering-amplitude, not nearest-
+neighbor-on-a-ranked-subsample).** Full account: `experiments/
+20260803-bridge/CLAIM_P230_what_physically_is_a_node.md` +
+`FINDING_P230_what_physically_is_a_node.md`.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own

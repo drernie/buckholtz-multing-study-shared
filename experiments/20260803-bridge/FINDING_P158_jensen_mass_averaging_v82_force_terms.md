@@ -237,6 +237,24 @@ for v82's own "node." The next real bottleneck is ontological, not
 statistical: what, physically, counts as a "pair"/"node" in v82's own
 construction, and which observable actually corresponds to it.
 
+**Eleventh entry, same day (2026-09-12) — the "computational sub-branch
+CLOSED" status above is REOPENED as an estimand-specification question,
+following through on the "next bottleneck is ontological" note.**
+Direct primary-source reading of v82's own text (`P230`, Step 8a
+skeptic-reviewed, plus a real external check of the cited 2PCF paper)
+found: v82's own node-mass/radius convention is `R500`, not `M200c`
+(used throughout this whole branch); v82's own cited empirical route
+for node separation is a population-level, richness-dependent two-
+point-correlation-function amplitude (independently confirmed against
+the cited paper's own real results), not a nearest-neighbor-distance
+rule. **This does not mean the `rho_NN`/`rho_band` numbers above are
+wrong as computations — they remain numerically valid.** It means their
+STATUS as a source-faithful test of v82's own pair/node ontology is
+now WEAKENED, pending a genuinely source-faithful estimand (2PCF-style,
+`M500c`-based). Frozen specification: `docs/162_ontology_spec_v82.md`.
+Full account: `experiments/20260803-bridge/FINDING_P230_what_
+physically_is_a_node.md`.
+
 **Date:** 2026-08-30
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·
 NO_AUTHOR_ERROR · L0 math (independent verification: sympy + Monte Carlo)
