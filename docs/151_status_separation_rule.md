@@ -51,7 +51,7 @@ Omit a field only when it is genuinely inapplicable (a pure-math
 lemma has no ontological or causal status); never omit it because the
 answer is unflattering.
 
-## Worked example (this project's own core claim)
+## First worked example (this project's own core claim)
 
 > **Claim:** MULTING's 3-parameter curve fits 33 `H(z)` data points
 > with `χ²=15.75` (`FINDING_P166`-`P169`).
@@ -69,6 +69,58 @@ answer is unflattering.
 > not established; `FINDING_P133`'s own rank-deficiency result and
 > `FINDING_P170`'s own H(z)-vs-growth decoupling argument are both
 > directly relevant here.
+
+## Second worked example (2026-09-12 — Bottleneck 1 / P223 / P158
+## magnitude-mechanism branch)
+
+> **Claim:** this project's own S-S population closure (`docs/127`)
+> does not constrain v82's own single-pair bridge (`P223`), and v82's
+> own Jensen's-gap population-averaging correction (`P158`) is
+> directionally safe (`rho > -0.5`).
+>
+> **Empirical/Model status:** SUPPORTED, with real caveats, on two
+> separable sub-claims.
+> (a) `P223`: `H1`/`H2` CONFIRMED (v82's own literal Eqs. 1-9 keep
+> `k_A(z)`-dependence, independently verified via a positivity
+> argument, not merely asserted; `docs/127`'s own `G_alpha_beta=0` is
+> independently reproduced exactly for the same power-law shapes);
+> `H3` NARROWED after a Step 8a skeptic pass — "categorically separate
+> questions" holds only under the literal reading of v82's own Eq. 8,
+> not as an unconditional claim about all possible readings.
+> (b) `P158` magnitude/mechanism: three independent, real-data rho
+> measurements (`TNG300`, `Magneticum`, `FLAMINGO`) — the first two
+> FALSIFIED as resolving tests by two separate skeptic passes (a
+> nested-threshold look-elsewhere trap, caught twice); the third
+> (`FLAMINGO`, `N=1200`, one pre-registered threshold, `~114x TNG300`'s
+> volume) gave the first WELL-POWERED result in this thread:
+> `rho=-0.0231+/-0.0359`, excluding `rho<-0.5` at `~13 sigma`. The
+> companion claim that `rho` is LARGE and positive (`TNG300`'s own
+> `+0.38` all-pairs reading) is NOT supported for the true-nearest-
+> neighbor observable specifically — a skeptic-caught correction:
+> true-NN pairs and all-pairs-in-a-band are different observables
+> (Gate 1, Artifact Identity), not the same question at two scales.
+>
+> **Ontological/mechanistic interpretation status:** OPEN. `P223`'s
+> `H3` does not establish which (if either) construction — v82's own
+> single-pair kinematics, or this project's own S-S population closure
+> — correctly describes real cosmic structure; it only shows the two
+> are not in logical contradiction under a specific literal reading.
+> Separately, and more basically: WHICH real halo population
+> corresponds to v82's own abstract "characteristic node" is itself
+> unresolved — all three rho-check `FINDING` files name this same open
+> mapping question and none of them (nor `P223`) attempts to close it.
+> Whether the measured near-zero `rho` reflects real cosmic-structure
+> physics or an artifact of the top-N-by-mass selection procedure used
+> to reach the target scale (`pearl_registry`, 2026-09-12) is also not
+> settled.
+>
+> **Causal/cosmological claim status:** NON-IDENTIFIED. Nothing in this
+> branch establishes that v82's own bottom-up single-pair kinematics
+> *causes* the observed expansion history, nor that this project's own
+> S-S closure route causally describes real structure formation — both
+> remain formal/reconstruction-level comparisons. `NO_AUTHOR_ERROR`:
+> this status block is about this project's own reconstruction chain,
+> not a claim about v82's own physical theory.
 
 ## Integration with existing discipline
 
