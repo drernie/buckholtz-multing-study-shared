@@ -64,6 +64,27 @@ sufficiently massive, appropriately-separated clusters at v82's own
 target scale appears to be a real, structural small-sample problem, not
 one simulation's bad luck.
 
+**Third independent cross-check, same day: a THIRD simulation
+(FLAMINGO, ~114x TNG300's volume, a third distinct cosmology), with the
+nesting trap fixed by design, gives the first well-powered result in
+this thread.** `experiments/20260909-tng-mass-assortativity/FINDING_
+flamingo_independent_rho_check.md` — real data via live, no-account
+`hdfstream` access; ONE pre-registered `N=1200` (no nested sweep this
+time, closing the exact gap that falsified the first two attempts).
+Result: `rho = -0.0231 +/- 0.0359` (permutation SD), consistent with
+zero, `p=0.525`. A skeptic pass (WEAKENED, not dismissed) established:
+this decisively excludes a LARGE `rho` (`|rho| >= 0.10`, ruling out a
+`TNG300`-`+0.38`-sized effect for this observable at `~10.6 sigma`) but
+does NOT contradict `TNG300`'s own `+0.38` all-pairs reading, because
+true-nearest-neighbor pairs and all-pairs-in-a-band are structurally
+different observables (Gate 1, Artifact Identity) — not the same
+question at two scales. **Net effect on this file's own conditionality:
+`rho > -0.5` is now excluded from being violated with very high
+confidence (`~13 sigma` from this measurement's own null) — the
+strongest support yet for the safe side of `FINDING_P158`'s own
+directional prediction, though "rho is LARGE and positive" (the `+0.38`
+story) is not established for the true-NN observable specifically.**
+
 **Date:** 2026-08-30
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·
 NO_AUTHOR_ERROR · L0 math (independent verification: sympy + Monte Carlo)

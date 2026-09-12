@@ -72,6 +72,23 @@ UNDETERMINED across two different simulations, not resolved by either.
 Full account: `experiments/20260909-tng-mass-assortativity/
 FINDING_magneticum_independent_rho_check.md`.
 
+**Third update, same day:** `AbacusSummit` checked — real data, but
+access requires account creation (`/login`/`/signup` on its own
+portal), which is prohibited outright regardless of permission, so
+this route is closed. `FLAMINGO` checked and used instead — real,
+live, no-account `hdfstream` access (confirmed working) to a third
+simulation (`~114x TNG300`'s volume, a third distinct cosmology). This
+time the nested-sweep design flaw was fixed at the root: ONE
+pre-registered `N=1200` threshold, no sweep. Result: `rho=-0.0231 ±
+0.0359`, consistent with zero — the first WELL-POWERED measurement in
+this thread, decisively excluding a large `rho` for the true-nearest-
+neighbor observable (`|rho|>=0.10` ruled out at `~10.6 sigma`) and
+placing `FINDING_P158`'s own `rho>-0.5` safety threshold `~13 sigma`
+away from being violated. Does NOT contradict `TNG300`'s own all-pairs
+`+0.38` reading (a structurally different observable, per Gate 1). Full
+account: `experiments/20260909-tng-mass-assortativity/
+FINDING_flamingo_independent_rho_check.md`.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own
