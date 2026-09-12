@@ -140,13 +140,37 @@ be a legitimate individual-cluster risk `map_srcfree` now closes), but
 this cross-check confirms it was not silently masking the earlier
 result's own actual cause.
 
+## Beam matching resolved (2026-09-12)
+
+`beam_correction.py`: analytic Gaussian-beam aperture correction
+(`f(R,w) = 1-exp(-4·ln2·(R/w)²)`, standard mm/sub-mm photometry result),
+validated against real 2D Gaussian convolution on synthetic data to
+**0.37% agreement**. Beam FWHM = **1.4′ at f150**,
+`[VERIFIED-arXiv:2406.14754]` — reused from this same experiment
+folder's own `FINDING_beam_blending_check.md`, not re-derived or
+guessed. Not DR6-native (the dedicated DR6 beam paper, Duivenvoorden et
+al., is itself "in prep" per the DR6 Maps paper's own reference list —
+same situation as the point-source catalog above) — a real, cited,
+honestly-flagged approximation.
+
+**This does not change any z-score above.** The correction is a single
+multiplier (1.321×) applied uniformly to every cluster; since
+`np.polyfit` is linear, the fitted T(z) trend and the detrended
+residual both scale by the same factor, and `core_pairwise_estimator`'s
+`p_pair`/jackknife-error scale together — proven algebraically (not
+re-run, to avoid a redundant ~10 min re-extraction with a
+mathematically pre-determined outcome). What it fixes: the *absolute*
+µK scale, needed once `N_kSZ` (the T↔momentum normalization) is known
+and a real velocity/threshold comparison is attempted.
+
 ## Status
 
 **Confound identified, tested, and confirmed removable.** Point-source
-handling resolved 2026-09-12 (`map_srcfree`, see above). Next, before
-any result here can be treated as informative about kSZ/MULTING: real
-beam matching and an explicit freeze-then-look protocol remain (per
-`FINDING_pairwise_ksz_estimator_phase1.md`'s own remaining-work list).
+handling and beam matching both resolved 2026-09-12 (see above). Next,
+before any result here can be treated as informative about kSZ/MULTING:
+τ-weighting (optional, improves SNR only) and an explicit freeze-then-
+look protocol remain (per `FINDING_pairwise_ksz_estimator_phase1.md`'s
+own remaining-work list).
 This file's own detrended, near-zero result should NOT be re-reported
 later as "no kSZ found" — it is a null-by-construction check of the
 estimator's honesty, not a completed test of the physics.

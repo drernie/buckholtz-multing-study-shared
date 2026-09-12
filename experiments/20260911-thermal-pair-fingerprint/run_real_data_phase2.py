@@ -13,9 +13,15 @@ confirm the pipeline runs end-to-end on real data and to look honestly
 at what the numbers look like, not to produce a claim about MULTING.
 Concretely missing before any real claim would be licensed:
 
-  - No beam convolution / repixelization to Hand et al. 2012's own
-    0.0625' subpixel grid -- `real_map_extraction.py` averages raw map
-    pixels within the aperture, not beam-matched ones.
+  - **[RESOLVED 2026-09-12]** Beam matching: analytic aperture
+    correction (see `beam_correction.py`), validated against real 2D
+    Gaussian convolution to 0.37% agreement. Uses FWHM=1.4' at f150,
+    `[VERIFIED-arXiv:2406.14754]` (the ACT-DR5 MCMF catalog paper this
+    pipeline already relies on) -- NOT DR6-native (the dedicated DR6
+    beam paper, Duivenvoorden et al., is itself "in prep" per the DR6
+    Maps paper's own reference list, same situation as the point-source
+    catalog below). A uniform per-cluster multiplier does not change
+    any z-score/significance result, only the absolute uK scale.
   - **[RESOLVED 2026-09-12]** Point-source handling: Hand et al. 2012
     excluded galaxies within 1' of a FIRST-catalog radio source. No
     equivalent DR6 point-source catalog is publicly released yet
@@ -53,6 +59,11 @@ import sys
 from pathlib import Path
 
 import numpy as np
+from beam_correction import (
+    BEAM_FWHM_ARCMIN_F150,
+    aperture_correction_factor,
+    apply_beam_correction,
+)
 from exact_pair_census import Z_HIGH, Z_LOW, load_catalog, radec_z_to_cartesian_mpc
 from pairwise_ksz_estimator import MIN_PAIRS_PER_BIN, core_pairwise_estimator
 from real_map_extraction import extract_cluster_temperatures
@@ -101,7 +112,8 @@ def main() -> None:
 
     print("\nSTEP 2: real per-cluster temperature extraction from the ACT map")
     print(
-        "  (raw aperture mean, 1' radius, NO beam convolution, NO point-source mask -- see module docstring)"
+        "  (aperture mean, 1' radius, map_srcfree -- point sources pre-subtracted; "
+        "beam correction applied in STEP 2a below)"
     )
     extraction = extract_cluster_temperatures(
         str(ACT_MAP_PATH), ra, dec, aperture_radius_arcmin=1.0
@@ -119,17 +131,28 @@ def main() -> None:
     pos_v = pos_mpc[valid]
     temp_v = extraction.temperature_uk[valid]
     print(f"  {len(temp_v)} clusters with a finite extracted temperature")
+
+    print("\nSTEP 2a: beam (aperture) correction -- see beam_correction.py")
+    beam_f = aperture_correction_factor()
+    print(
+        f"  1' aperture / {BEAM_FWHM_ARCMIN_F150}' FWHM beam -> f={beam_f:.4f}, "
+        f"applying 1/f={1.0 / beam_f:.4f}x to every cluster uniformly"
+    )
+    temp_v = apply_beam_correction(temp_v)
+    print(
+        "  NOTE: a uniform multiplicative correction rescales p_pair AND its jackknife"
+        " error by the same factor -- it does NOT change any z-score/significance"
+        " result below, only the absolute uK scale (relevant once N_kSZ is known)."
+    )
     print(
         f"  raw T distribution: mean={np.mean(temp_v):+.3f} uK, "
         f"std={np.std(temp_v):.3f} uK, min={np.min(temp_v):+.2f}, max={np.max(temp_v):+.2f}"
     )
 
-    print("\nSTEP 2b: robust outlier flag (PARTIAL point-source mitigation, NOT a real mask)")
+    print("\nSTEP 2b: robust outlier flag (extra safety net on top of map_srcfree)")
     print(
-        "  No real point-source cross-match exists yet (Hand et al. 2012's own FIRST-catalog"
-        " exclusion, not built) -- this only catches the WORST case, a single bright"
-        " unmasked source dominating one cluster's raw aperture mean. Real masking remains"
-        " a named, separate to-do."
+        "  map_srcfree already subtracts >=5-sigma sources; this flags any surviving"
+        " extreme outlier (e.g. a source just under that threshold, or a residual)."
     )
     med = np.median(temp_v)
     mad = np.median(np.abs(temp_v - med)) * 1.4826  # normal-consistent robust sigma

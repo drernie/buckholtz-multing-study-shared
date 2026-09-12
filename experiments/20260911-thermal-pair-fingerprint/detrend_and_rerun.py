@@ -83,6 +83,15 @@ def _run_estimator(pos_mpc: np.ndarray, q: np.ndarray, label: str) -> None:
 
 
 def main() -> None:
+    # NOTE (2026-09-12): beam_correction.py's aperture correction is a
+    # UNIFORM per-cluster multiplier (1/f). Since np.polyfit is linear
+    # in T, scaling T -> T/f scales the fitted trend by the same 1/f,
+    # so the detrended residual scales by 1/f too, and p_pair/err in
+    # core_pairwise_estimator scale together -- every z-score below is
+    # therefore IDENTICAL with or without the beam correction applied
+    # here (proven algebraically, not re-run, to avoid a ~10min
+    # re-extraction that could only ever reproduce this exactly).
+    # See FINDING_first_real_data_run_tsz_selection_confound.md.
     ra, dec, z, t = _get_real_extraction()
     pos_mpc = radec_z_to_cartesian_mpc(ra, dec, z)
     print(f"  {len(t)} real clusters loaded")
