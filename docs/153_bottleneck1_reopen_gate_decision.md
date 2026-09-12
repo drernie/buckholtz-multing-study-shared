@@ -211,6 +211,27 @@ replication at n=10) — neither supersedes the other. Full account:
 `experiments/20260909-tng-mass-assortativity/FINDING_flamingo_
 definitive_global_estimand_synthesis.md`.
 
+**Eleventh update, same day (2026-09-12) — CLOSING SYNTHESIS, user-
+proposed, independently spot-checked, no discrepancy found.** The
+`P158` magnitude/mechanism computational sub-branch is now CLOSED,
+absent a new external argument specifically requiring `rho_band` or a
+different population semantics. Corrected directional-risk statement:
+"on the best available global, scale-matched FLAMINGO estimand
+(`rho_NN=-0.0231+/-0.0476`, no sub-cubes, real spatial jackknife),
+there is no evidence of the strong negative NN mass-correlation needed
+to reverse `P158`'s own directional prediction — mechanism and exact
+node-correspondence remain open." The `27`-subcube replication chain
+(four real tests) and the withdrawn `"13 sigma"`/`"0/10"`/signed-vs-
+amplitude corrections along the way are recorded as having functioned
+as a genuine adversarial audit of the estimand itself — the pre-
+existing global FLAMINGO result survived that audit better than any
+newly-constructed alternative. **Next bottleneck is ontological, not
+statistical: which real halo population corresponds to v82's own
+"node."** Full account: `experiments/20260803-bridge/FINDING_P158_
+jensen_mass_averaging_v82_force_terms.md` (Tenth entry), `docs/151`
+(Third worked example), `experiments/20260909-tng-mass-assortativity/
+FINDING_flamingo_definitive_global_estimand_synthesis.md`.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own

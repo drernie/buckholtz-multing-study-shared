@@ -144,6 +144,49 @@ walking back, not the status tag itself. Full account: `experiments/
 20260909-tng-mass-assortativity/FINDING_flamingo_addendum_jackknife_
 band_closure.md`.
 
+## Third worked example (2026-09-12 — P158 magnitude/mechanism branch,
+## CLOSING synthesis after the full FLAMINGO/subcube adversarial-audit
+## chain)
+
+User-proposed, independently spot-checked against every finding in
+the branch before being recorded. Demonstrates the rule closing a
+branch, not just tracking it mid-flight.
+
+> **Claim:** the best available global, scale-matched FLAMINGO estimand
+> shows no evidence of the strong negative NN mass-correlation P158's
+> own directional prediction would need to reverse.
+>
+> **Empirical/Model status:** SUPPORTED, well-powered.
+> `rho_NN=-0.0231+/-0.0476` (real spatial-jackknife, full `1000` Mpc
+> box, no sub-cubes) — `rho<=-0.5` STRONGLY DISFAVORED (no sigma-count
+> asserted, per the Second worked example's own correction above).
+> `rho_band` remains UNDERPOWERED/OPEN. `TNG300`'s own `-0.42` is one
+> small, non-independent (`85.7%` overlap with an earlier falsified
+> point) realization — INCONCLUSIVE, not a competing measurement. A
+> `4`-test, `27`-subcube replication effort was useful as a DIAGNOSTIC
+> of small-`N` noise/boundary behavior but INCONCLUSIVE as physics —
+> `n=10` is the binding constraint throughout.
+>
+> **Ontological/mechanistic interpretation status:** OPEN — and now
+> the actual frontier. WHICH real halo population corresponds to v82's
+> own "node" is unresolved by every finding in this branch; no test run
+> was ever positioned to close this.
+>
+> **Causal/cosmological claim status:** NON-IDENTIFIED, unchanged.
+> `NO_AUTHOR_ERROR`.
+
+**Meta-result**: the long chain of tests between the first FLAMINGO
+result and this closing entry (nested-threshold traps, a withdrawn
+sigma-count, a power-miscalibrated null, a signed-vs-amplitude framing
+error, two separate population-density confounds) resolved to "no new
+physics conclusion" — but functioned as a real adversarial audit OF
+THE ESTIMAND ITSELF, and the already-existing global result survived
+that audit better than every newly-constructed alternative. Recorded
+as a portable lesson in `pearl_registry`. Full account: `experiments/
+20260803-bridge/FINDING_P158_jensen_mass_averaging_v82_force_terms.md`
+(Tenth entry) and `experiments/20260909-tng-mass-assortativity/
+FINDING_flamingo_definitive_global_estimand_synthesis.md`.
+
 ## Integration with existing discipline
 
 This does not replace anything already in place — it names and

@@ -166,6 +166,77 @@ specific design question. Full account: `experiments/20260909-tng-
 mass-assortativity/FINDING_flamingo_definitive_global_estimand_
 synthesis.md`.
 
+**Tenth entry, same day (2026-09-12) — CLOSING SYNTHESIS of the whole
+magnitude/mechanism branch, per `docs/151`'s own three-field status-
+separation rule. User-proposed, independently spot-checked against
+every finding in this branch before being recorded — no discrepancy
+found.**
+
+> **Empirical/Model status:** SUPPORTED, with a clean, well-powered
+> anchor. The best available global, scale-matched FLAMINGO estimand
+> (`N=1200`, no sub-cubes, real spatial-jackknife uncertainty) gives
+> `rho_NN=-0.0231+/-0.0476` — consistent with zero. The dangerous
+> region `rho<=-0.5` is STRONGLY DISFAVORED by this estimand (no
+> specific sigma-count asserted, per the withdrawn `"13 sigma"`
+> lesson). `rho_band` (`+0.0271+/-0.1231`, `N_pairs=127`) remains
+> UNDERPOWERED/OPEN. `TNG300`'s own `-0.42` is now understood as one
+> small, non-independent (`85.7%` halo overlap with an earlier
+> falsified point), overlapping-realization data point — INCONCLUSIVE
+> as independent confirmation of anything, not a competing measurement
+> to be reconciled with the FLAMINGO result. The `27`-subcube
+> replication effort (four real tests: periodic / open / same-`M_cut`
+> full-box / the invalidated top-`5000` attempt) is useful as a
+> DIAGNOSTIC of noise and boundary-treatment behavior at small `N`, but
+> INCONCLUSIVE as a physics test in its own right — `n=10` is the
+> binding constraint; periodic/open/same-`M_cut` treatments are
+> statistically indistinguishable from each other. Boundary mechanism
+> itself stays OPEN, not because it matters, but because `n=10` cannot
+> resolve it either way.
+>
+> **Ontological/mechanistic interpretation status:** OPEN. WHICH real
+> halo population corresponds to v82's own abstract "characteristic
+> node" is not established by anything in this branch — every FINDING
+> file in this thread (FLAMINGO, Magneticum, TNG300, all four sub-cube
+> variants) names this same open mapping question, and none closes it.
+> This is now the actual frontier, not the statistics.
+>
+> **Causal/cosmological claim status:** NON-IDENTIFIED. Nothing in this
+> branch establishes that v82's own bottom-up single-pair/population
+> construction causally describes real structure formation — a
+> reconstruction-level question this branch was never positioned to
+> answer. `NO_AUTHOR_ERROR`: this status block is about this project's
+> own reconstruction chain, not a claim about v82's own physical
+> theory.
+
+**Corrected P158 directional-risk statement (supersedes the verdict tag
+below for framing purposes; the tag itself is left unedited per this
+project's own no-silent-rewrite convention — read this entry as the
+current authoritative summary):**
+
+> On the best available global, scale-matched FLAMINGO estimand, there
+> is no evidence of the strong negative NN mass-correlation that would
+> be needed to reverse `P158`'s own directional prediction. The
+> mechanism, and the exact correspondence between this observable and
+> v82's own "node," remain open.
+
+**Meta-result, worth recording explicitly**: the long chain of tests
+that followed the FLAMINGO addendum (nested-threshold traps, the
+withdrawn `"13 sigma"` claim, the `"0/10"` power miscalibration, the
+signed-vs-amplitude framing error, the top-`5000`/same-`M_cut`
+population-density confounds) was not wasted effort despite resolving
+to "no new physics conclusion" — it functioned as a real, adversarial
+audit OF THE ESTIMAND ITSELF, and the already-existing global FLAMINGO
+result survived that audit better than any of the newly-constructed
+alternatives. This is itself a portable methodological lesson,
+recorded in `pearl_registry`.
+
+**Branch status: computational sub-branch of `P158`'s magnitude/
+mechanism question CLOSED**, absent a new external argument that
+specifically requires `rho_band` or a different population semantics
+for v82's own "node." The next real bottleneck is ontological, not
+statistical: what, physically, counts as a "pair"/"node" in v82's own
+construction, and which observable actually corresponds to it.
+
 **Date:** 2026-08-30
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·
 NO_AUTHOR_ERROR · L0 math (independent verification: sympy + Monte Carlo)
