@@ -122,6 +122,59 @@ resolving test.
    that does not conflate rarity with mass rank) is named but not
    attempted here.
 
+## Addendum 2026-09-12 — are independent boxes actually available?
+## Checked live against the TNG API, not from memory: effectively NO
+
+Queried `https://www.tng-project.org/api/` directly (real HTTP call,
+not recalled) for the full simulation list (62 entries) and the
+`boxsize`/cosmology metadata for the 4 candidate volumes.
+
+```
+Simulation    boxsize (Mpc/h)  h       physical side (Mpc)  half-side (Mpc, max unique pair sep)  volume vs TNG300
+TNG300-1      205              0.6774  302.6                151.3                                  1.000  (already used)
+TNG100-1      75               0.6774  110.7                55.4                                   0.049
+Illustris-1   75               0.7040  106.5                53.3                                   0.044  (different cosmology: Om=0.273 vs 0.309)
+TNG50-1       35               0.6774  51.7                 25.8                                   0.005
+```
+
+**All other TNG300/TNG100/TNG50 entries in the 62-item list are NOT
+independent volumes.** `TNG300-2`, `TNG300-3`, and every `-Dark` variant
+share the SAME initial conditions/random phases as `TNG300-1`, just at
+lower particle resolution or without baryonic physics — literally the
+same simulated region, not a second draw. Same for the TNG100/TNG50
+families. The `-Subbox*` entries are small, high-time-resolution regions
+carved OUT of their own parent box, not separate volumes. `TNG-Cluster`
+is a zoom-in re-simulation of specific pre-selected massive halos, not
+an unbiased periodic volume — using it would bias the very statistic
+(mass correlation among "typical" massive pairs) this question needs.
+
+**Verdict: effectively zero usable independent boxes in the current
+public TNG/Illustris suite.**
+- `TNG100-1` and `Illustris-1` have a box side of only ~107-111 Mpc —
+  their own half-side (the maximum unique pair separation a periodic box
+  can represent) is ~53-55 Mpc, barely above the 40-45 Mpc target, with
+  essentially no room around such a pair for an unbiased large-scale
+  environment. Volume is only ~4.4-4.9% of `TNG300`'s — scaling `TNG300`'s
+  own ~30-50 halos at the relevant mass threshold by that fraction gives
+  an EXPECTED ~1-2 halos meeting the same threshold in either box — not
+  enough to form a single reliable pair statistic, let alone replicate
+  the `N_sub` sweep.
+- `TNG50-1`'s own half-side is 25.8 Mpc — SMALLER than the 40-45 Mpc
+  target separation. A pair at that distance cannot even be represented
+  without wrap-around; this box is categorically unusable for this
+  question.
+- `TNG300` itself is the only single realization large enough to matter,
+  and only one exists publicly.
+
+**What a real fix would actually require:** an entirely different,
+larger-volume simulation suite not part of the TNG project at all —
+e.g. MillenniumTNG, Magneticum Pathfinder, Uchuu, AbacusSummit, or
+FLAMINGO (Gpc-class boxes, genuinely large enough to contain many
+independent `~40-45` Mpc-separated massive-halo pairs) — each requiring
+its own separate data-access setup, not reachable via the existing
+`~/.secrets/tng_api_key.env`. Not attempted this session; named as the
+concrete next step if this specific question is worth pursuing further.
+
 ## Status
 
 **Genuinely UNRESOLVED — recorded honestly as such, not forced toward
