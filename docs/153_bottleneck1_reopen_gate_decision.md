@@ -1,5 +1,30 @@
 # docs/153 — Bottleneck 1 (F→H_MULT(z)) reopen gate decision
 
+**[2026-09-12 annotation, not a rewrite — see `FINDING_P223_finite_r_
+single_pair_closure.md`]** §3a precondition 1 ("does a finite-r analog
+of the S-S closure calculation even exist in closed form, or would it
+require a genuinely new derivation?") is now answered: **no new
+derivation was needed** — v82's own literal Eqs. (1)-(9), read directly
+from the primary source, already supply everything required. `P223`
+substituted v82's own force law into v82's own kinematic-translation
+machinery (H1, symbolically confirmed: `k_A(z)`-dependent terms survive
+in `a_ddot/a` with no internal cancellation, independently verified via
+a positivity argument, not merely asserted) and independently reproduced
+`docs/127`'s own `G_alpha_beta=0` result exactly for the same power-law
+shapes (H2). Synthesis (H3, narrowed after a Step 8a skeptic pass): read
+literally, `docs/127`'s S-S closure and v82's single-pair bridge answer
+structurally different questions about a shared force-law shape — one
+pair's own finite trajectory vs. a population's `r->infinity` tail
+contribution — so `docs/127`'s `G_eff=0` does not constrain v82's bridge
+construction, and the two are **not in contradiction**. This closes §0's
+restated causal-compatibility question under the literal-text reading;
+whether v82's own physical INTENT for `s(z)` carries additional,
+unstated population content is explicitly out of scope (Skeptic
+Objection 2, accepted). Read `FINDING_P223_finite_r_single_pair_closure.
+md` alongside this document — §0's causal-compatibility bottleneck and
+§3a's three preconditions below are now addressed, not the earlier
+"restated, OPEN" state this document originally recorded.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own
