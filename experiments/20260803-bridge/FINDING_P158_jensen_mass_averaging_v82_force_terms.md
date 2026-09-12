@@ -85,6 +85,23 @@ strongest support yet for the safe side of `FINDING_P158`'s own
 directional prediction, though "rho is LARGE and positive" (the `+0.38`
 story) is not established for the true-NN observable specifically.**
 
+**Fourth correction, same day (2026-09-12) — not a rewrite:** the
+Third-cross-check paragraph above's `"~13 sigma"` phrasing is
+**WITHDRAWN** (caught by the user, not self-caught) — it used the
+permutation-null SD (correct for testing `H0: rho=0`) as if it were the
+standard error for the distant composite hypothesis `H0: rho<=-0.5`,
+which the sampling variance of a correlation coefficient does not
+support (variance is not constant in `rho`). A follow-up addendum
+(spatial block-jackknife CI + a second `rho_band` observable on the
+SAME subsample) confirms the qualitative conclusion — `rho<=-0.5`
+excluded by a wide margin, now corroborated by three independent SE
+estimates — but retracts the specific sigma-count as unsupported this
+far into a tail on non-i.i.d. data. `rho_band` on the matched subsample
+is also small, but too underpowered (`N_pairs=127`) to say whether the
+`TNG300` `+0.38` gap is an observable effect or a population effect —
+still undetermined. Full account: `experiments/20260909-tng-mass-
+assortativity/FINDING_flamingo_addendum_jackknife_band_closure.md`.
+
 **Date:** 2026-08-30
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·
 NO_AUTHOR_ERROR · L0 math (independent verification: sympy + Monte Carlo)

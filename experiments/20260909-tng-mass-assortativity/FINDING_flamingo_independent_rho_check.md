@@ -111,6 +111,25 @@ for point 3) before accepting** (`audit-verification-gate.md`).
   reusable capability for any future test needing more statistical
   power than `TNG300` or `Magneticum` alone can offer.
 
+## [2026-09-12 correction, same day, not a rewrite — see
+## `FINDING_flamingo_addendum_jackknife_band_closure.md`]
+
+The `"rho > -0.5 ... excluded ... ~13 sigma"` sentence above (in "What
+this DOES establish") is **WITHDRAWN as originally phrased** — caught
+by the user, not self-caught. It divided the distance from the point
+estimate to `-0.5` by the permutation-null SD (`0.0359`, the spread of
+`rho_hat` under `H0: rho=0`), which is not automatically the correct
+standard error for testing the distant composite hypothesis
+`H0: rho<=-0.5` (`Var(rho_hat)` is not constant in `rho`). The
+underlying qualitative conclusion survives, now corroborated by THREE
+independent SE estimates (naive i.i.d. `0.0289`, permutation-null
+`0.0359`, block-jackknife `0.0476`) instead of resting on one borrowed
+number — but no single precise sigma-count is defensible this far into
+a tail on non-i.i.d., spatially-clustered, truncated-selection data.
+Read the addendum file for the full correction, the added `rho_band`
+observable on the same subsample, and the Step 8a skeptic Response
+Matrix.
+
 ## What this does NOT establish
 
 1. **Does NOT contradict or resolve `TNG300`'s own all-pairs `+0.38`

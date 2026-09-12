@@ -122,6 +122,26 @@ answer is unflattering.
 > this status block is about this project's own reconstruction chain,
 > not a claim about v82's own physical theory.
 
+## [2026-09-12 correction, same day, not a rewrite]
+
+The Second worked example above's `"excluding rho<-0.5 at ~13 sigma"`
+phrasing is **WITHDRAWN** — caught by the user, not self-caught. It
+divided the distance to `-0.5` by a permutation-null SD (correct for
+testing `H0: rho=0`), not the standard error the composite hypothesis
+`H0: rho<=-0.5` actually needs (sampling variance of a correlation
+coefficient is not constant in `rho`). A follow-up addendum (spatial
+block-jackknife CI, plus a second `rho_band` observable on the same
+subsample) confirms the qualitative conclusion — `rho<=-0.5` excluded
+by a wide margin, now corroborated by three independent SE estimates —
+but retracts the specific sigma-count as unsupported this far into a
+tail on non-i.i.d., spatially-clustered data. This is itself a clean
+illustration of `docs/151`'s own rule: the Empirical/Model line
+("SUPPORTED, with real caveats") was already correctly hedged before
+this correction; only the specific numeric precision inside it needed
+walking back, not the status tag itself. Full account: `experiments/
+20260909-tng-mass-assortativity/FINDING_flamingo_addendum_jackknife_
+band_closure.md`.
+
 ## Integration with existing discipline
 
 This does not replace anything already in place — it names and

@@ -89,6 +89,24 @@ away from being violated. Does NOT contradict `TNG300`'s own all-pairs
 account: `experiments/20260909-tng-mass-assortativity/
 FINDING_flamingo_independent_rho_check.md`.
 
+**Fourth update, same day (2026-09-12) — correction, not a rewrite:**
+the "Third update" paragraph above's `"~13 sigma"` / `"rho<=-0.5
+excluded"` phrasing is **WITHDRAWN** — caught by the user, not self-
+caught. That number divided the distance to `-0.5` by the permutation-
+null SD, which characterizes `H0: rho=0`, not the composite hypothesis
+`H0: rho<=-0.5` (the sampling variance of a correlation coefficient is
+not constant in `rho`). A follow-up addendum added a real spatial
+block-jackknife CI and a second observable (`rho_band`, all-pairs-in-
+band on the same subsample): the qualitative conclusion survives and is
+now corroborated by three independent SE estimates rather than one
+borrowed number, but no defensible precise sigma-count exists this far
+into the tail. The `rho_band` sub-test came out small too but is too
+underpowered (`N_pairs=127`) to discriminate whether `TNG300`'s own
+`+0.38` reflects a different observable or a different population —
+genuinely undetermined, not resolved. Full account: `experiments/
+20260909-tng-mass-assortativity/FINDING_flamingo_addendum_jackknife_
+band_closure.md`.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own
