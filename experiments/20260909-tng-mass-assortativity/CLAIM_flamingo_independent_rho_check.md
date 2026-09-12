@@ -47,6 +47,17 @@ to the `TNG300` result specifically.
 **Volume: `(1000/302.6)^3 ~ 114x` `TNG300`'s volume** — by far the
 largest of the three simulations checked.
 
+**[2026-09-12 correction, not a rewrite — caught during the TNG300
+own-population addendum, independently re-verified 3 ways before
+accepting]** `(1000/302.6)^3` actually evaluates to **`~36.1x`**, not
+`114x` — a plain arithmetic error in the original claim, not a units
+convention issue (`BOX_MPC=1000.0` was and remains correctly used in
+every actual computation; only this descriptive ratio was wrong, with
+no effect on any reported `rho`/SD/CI number in this thread).
+`~114x` propagated uncorrected into `FINDING_flamingo_independent_
+rho_check.md`, `docs/153`, `FINDING_P158`, and `docs/151` — each
+carries its own short correction pointing back here.
+
 ## Pre-registered threshold (chosen from the exploratory bracket,
 ## BEFORE this claim is used to run the decisive test)
 

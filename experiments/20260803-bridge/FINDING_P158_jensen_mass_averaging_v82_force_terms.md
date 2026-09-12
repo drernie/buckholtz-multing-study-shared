@@ -65,7 +65,10 @@ target scale appears to be a real, structural small-sample problem, not
 one simulation's bad luck.
 
 **Third independent cross-check, same day: a THIRD simulation
-(FLAMINGO, ~114x TNG300's volume, a third distinct cosmology), with the
+(FLAMINGO, ~114x [**CORRECTED 2026-09-12: actually ~36x, arithmetic
+error, no effect on any reported number — see `CLAIM_flamingo_
+independent_rho_check.md`**] TNG300's volume, a third distinct
+cosmology), with the
 nesting trap fixed by design, gives the first well-powered result in
 this thread.** `experiments/20260909-tng-mass-assortativity/FINDING_
 flamingo_independent_rho_check.md` — real data via live, no-account
@@ -101,6 +104,19 @@ is also small, but too underpowered (`N_pairs=127`) to say whether the
 `TNG300` `+0.38` gap is an observable effect or a population effect —
 still undetermined. Full account: `experiments/20260909-tng-mass-
 assortativity/FINDING_flamingo_addendum_jackknife_band_closure.md`.
+
+**Fifth cross-check, same day (2026-09-12) — user-requested: both
+`rho_NN` and `rho_band` measured on TNG300's OWN population, matched
+to FLAMINGO's selection protocol — result INCONCLUSIVE, not a fourth
+confirming or disconfirming data point.** `TNG300`'s own `N=35` gives
+`rho_NN=-0.42` (permutation `p=0.028`), but this is NOT independent of
+the already-falsified `N_sub=30` alarm (substantial halo overlap) and
+is consistent with small-`N` sampling noise (Step 8a skeptic:
+FALSIFIED as robust signal). `rho_band` unmeasurable (`N_pairs=3`).
+Does not resolve whether the historical `TNG300` `+0.38` reading
+reflects an observable effect or a population effect. Full account:
+`experiments/20260909-tng-mass-assortativity/FINDING_tng300_own_
+population_rho_nn_and_band.md`.
 
 **Date:** 2026-08-30
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·

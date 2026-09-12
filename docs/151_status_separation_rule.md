@@ -91,7 +91,9 @@ answer is unflattering.
 > measurements (`TNG300`, `Magneticum`, `FLAMINGO`) — the first two
 > FALSIFIED as resolving tests by two separate skeptic passes (a
 > nested-threshold look-elsewhere trap, caught twice); the third
-> (`FLAMINGO`, `N=1200`, one pre-registered threshold, `~114x TNG300`'s
+> (`FLAMINGO`, `N=1200`, one pre-registered threshold, `~114x` [CORRECTED
+> 2026-09-12: actually `~36x`, arithmetic error, no effect on any
+> reported number] `TNG300`'s
 > volume) gave the first WELL-POWERED result in this thread:
 > `rho=-0.0231+/-0.0359`, excluding `rho<-0.5` at `~13 sigma`. The
 > companion claim that `rho` is LARGE and positive (`TNG300`'s own

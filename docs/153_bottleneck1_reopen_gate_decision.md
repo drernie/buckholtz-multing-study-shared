@@ -77,7 +77,10 @@ access requires account creation (`/login`/`/signup` on its own
 portal), which is prohibited outright regardless of permission, so
 this route is closed. `FLAMINGO` checked and used instead — real,
 live, no-account `hdfstream` access (confirmed working) to a third
-simulation (`~114x TNG300`'s volume, a third distinct cosmology). This
+simulation (`~114x` [**CORRECTED 2026-09-12: actually `~36x`, arithmetic
+error, no effect on any reported number — see `CLAIM_flamingo_
+independent_rho_check.md`**] `TNG300`'s volume, a third distinct
+cosmology). This
 time the nested-sweep design flaw was fixed at the root: ONE
 pre-registered `N=1200` threshold, no sweep. Result: `rho=-0.0231 ±
 0.0359`, consistent with zero — the first WELL-POWERED measurement in
@@ -106,6 +109,22 @@ underpowered (`N_pairs=127`) to discriminate whether `TNG300`'s own
 genuinely undetermined, not resolved. Full account: `experiments/
 20260909-tng-mass-assortativity/FINDING_flamingo_addendum_jackknife_
 band_closure.md`.
+
+**Fifth update, same day (2026-09-12) — user-requested discriminating
+test, run:** the real next step named in the Fourth update (measure
+BOTH `rho_NN` and `rho_band` on `TNG300`'s OWN population, matched to
+FLAMINGO's selection protocol) has now been run. Result:
+**INCONCLUSIVE.** `TNG300`'s own `N=35` matched subsample gives
+`rho_NN=-0.42` (permutation `p=0.028`) — nominally an anomaly, but
+NOT independent evidence (substantially overlaps the already-falsified
+`N_sub=30` point) and consistent with small-`N` sampling noise;
+`rho_band` unmeasurable (`N_pairs=3`). Cannot discriminate observable-
+difference from population-difference. A genuine, unrelated arithmetic
+error (FLAMINGO's own volume advantage over `TNG300` is `~36x`, not
+the previously-stated `~114x`) was caught and corrected in the same
+check — descriptive only, no effect on any prior computed result.
+Full account: `experiments/20260909-tng-mass-assortativity/
+FINDING_tng300_own_population_rho_nn_and_band.md`.
 
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should

@@ -106,7 +106,10 @@ for point 3) before accepting** (`audit-verification-gate.md`).
   that specific conclusion, with real statistical power behind it for
   the first time, not merely "no evidence found yet."
 - Real, live, no-account/no-token public access to a THIRD independent
-  simulation (`FLAMINGO`, third distinct cosmology, `~114x TNG300`'s
+  simulation (`FLAMINGO`, third distinct cosmology, `~114x` [**CORRECTED
+  2026-09-12: actually `~36x`, arithmetic error, see `CLAIM_flamingo_
+  independent_rho_check.md`'s own correction note — no effect on any
+  reported number**] `TNG300`'s
   volume) confirmed working via `hdfstream` — a genuinely useful,
   reusable capability for any future test needing more statistical
   power than `TNG300` or `Magneticum` alone can offer.
