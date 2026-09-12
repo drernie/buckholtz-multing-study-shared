@@ -156,6 +156,16 @@ sample size, not boundary treatment, as the binding constraint. Full
 account: `experiments/20260909-tng-mass-assortativity/FINDING_
 flamingo_subvolume_same_mcut_global_nn.md`.
 
+**Ninth cross-check, same day (2026-09-12) — "definitive global
+FLAMINGO estimand" requested, found already established.** No new
+computation: `rho_NN=-0.0231±0.0476` (real spatial jackknife, full
+1000 Mpc box, no sub-cubes) and `rho_band=+0.0271±0.1231` were already
+on record from the FLAMINGO addendum, predating the whole 27-subcube
+replication detour. Consolidated as the closing answer to this
+specific design question. Full account: `experiments/20260909-tng-
+mass-assortativity/FINDING_flamingo_definitive_global_estimand_
+synthesis.md`.
+
 **Date:** 2026-08-30
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·
 NO_AUTHOR_ERROR · L0 math (independent verification: sympy + Monte Carlo)

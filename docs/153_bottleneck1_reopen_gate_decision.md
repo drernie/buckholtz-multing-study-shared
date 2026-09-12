@@ -196,6 +196,21 @@ n=10 is the binding constraint, not boundary treatment. Full account:
 `experiments/20260909-tng-mass-assortativity/FINDING_flamingo_
 subvolume_same_mcut_global_nn.md`.
 
+**Tenth update, same day (2026-09-12) — user requested the "definitive
+global FLAMINGO estimand" (no sub-cubes, one geometrically pre-
+registered global threshold, spatial-jackknife uncertainty); found it
+already exists.** Consolidated rather than re-run (user's own choice,
+since the numbers are deterministic): `rho_NN=-0.0231, jackknife
+SE=0.0476` (real 125-block spatial jackknife on the full 1000 Mpc box)
++ `rho_band=+0.0271, jackknife SE=0.1231` (N_pairs=127) — both already
+established in the FLAMINGO addendum, both already twice-skeptic-
+reviewed, predating the 27-subcube detour entirely. This is a
+DIFFERENT, complementary question from the subcube thread (FLAMINGO's
+own best global estimate at N=1200, vs. TNG300-sized-volume
+replication at n=10) — neither supersedes the other. Full account:
+`experiments/20260909-tng-mass-assortativity/FINDING_flamingo_
+definitive_global_estimand_synthesis.md`.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own
