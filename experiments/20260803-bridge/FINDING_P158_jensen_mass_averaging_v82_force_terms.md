@@ -23,6 +23,28 @@ question about `v82`'s own acknowledged "representative value, not a
 distribution" idealization, orthogonal to `FINDING_P223`'s separate
 comparison against `docs/127`'s S-S closure).
 
+**Further correction, same day (2026-09-12): the "confirmed" reading
+above rests on the WRONG SCALE for both existing measurements.**
+`experiments/20260909-tng-mass-assortativity/FINDING_scale_matched_
+nearest_neighbor_rho.md` found that neither the all-pairs (`+0.38`) nor
+the nearest-neighbor-restricted (`0.019`) reading was taken at a
+separation matching v82's own `s(0)=45 Mpc` — the full 1461-halo
+sample's own typical nearest-neighbor spacing is only `9.2 Mpc`. A
+dedicated scale-matched attempt (restricting to sparser, more massive
+sub-samples whose own typical spacing lands in 40-45 Mpc) was run and
+**FALSIFIED as a resolving test** by a context-blind skeptic pass (small-
+sample look-elsewhere across nested thresholds, one superficially
+alarming point — `rho=-0.5` at `N_sub=30` — that does not survive
+scrutiny). **The honest status is narrower than "conditionality
+resolved" above states: `rho>-0.5` holds at the (scale-mismatched)
+scales this project has actually measured; whether it holds at v82's
+own actual scale is genuinely UNDETERMINED, not confirmed.** This does
+not reverse the `DIRECTIONAL-PREDICTION-CONFIRMED` tag (no evidence
+found that `rho<-0.5` at the right scale either) but removes the
+"conditionality resolved" framing — read as `CONDITIONALITY-STILL-
+OPEN-AT-THE-RIGHT-SCALE`, with the earlier tag stating what holds at
+the scales actually measured.
+
 **Date:** 2026-08-30
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·
 NO_AUTHOR_ERROR · L0 math (independent verification: sympy + Monte Carlo)
