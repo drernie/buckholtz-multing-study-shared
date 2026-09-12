@@ -53,13 +53,21 @@ of the whole document: no `R200`/`M200` convention appears anywhere.**
 This is a genuine, load-bearing mismatch with this project's entire
 prior simulation work (TNG300/FLAMINGO/Magneticum all used `M200c`).
 
-`[OPEN]`: the practical size of the resulting mismatch for already-
-reported rank-based correlations — plausibly modest but NOT
-quantified (Step 8a: `M500c/M200c` is monotonic ON AVERAGE with real
-concentration-driven scatter, `~5-10%`; expected top-`N` selection
-overlap `~90-95%`, not "nearly all" — cheap, not-yet-run kill-test:
-cross-match halo IDs ranked both ways in one already-available
-snapshot).
+`[SETTLED, 2026-09-12 update — real measurement replaces the earlier
+[MEMORY]-tier estimate]`: on FLAMINGO's real SOAP catalog (`M200c` and
+`M500c` for the same halos), `M500c/M200c` ratio `mean=0.676,
+median=0.689, SD=0.0715` — matches the standard NFW-profile range
+(`~0.68-0.72`) to the third decimal. Top-`N` overlap measured directly:
+`N=35 -> 91.4%`, `N=50 -> 74.0%` (a `~2 sigma` single-point anomaly,
+mechanism undiagnosed), `N=1200 -> 91.8%`. **`[OPEN, sharpened, not
+closed]`**: overlap fraction does NOT by itself answer whether any
+already-reported correlation (`rho_NN`, `rho_band`) would shift under
+an `M500c`-based re-selection — the swap is systematically biased by a
+real physical property (dynamical state/concentration), not random,
+so overlap and statistic-stability are DIFFERENT questions. A direct
+before/after recompute of an actual correlation on both selections is
+the real next step, not yet run. Full account: `experiments/20260909-
+tng-mass-assortativity/FINDING_flamingo_m500c_m200c_overlap.md`.
 
 ## 4. What does `K` (thermal energy) mean?
 
