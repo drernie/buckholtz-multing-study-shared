@@ -1,6 +1,28 @@
 # FINDING P158 — the mechanically-correct calculation: Jensen's inequality,
 # not angular cancellation, applied to v82's own mass-derived scalar chain
 
+**[2026-09-12 annotation, not a rewrite — the verdict tag below (line
+~7) is now STALE.]** The Addendum 2026-09-09 (bottom of this file)
+already measured both open unknowns the original verdict names as
+unresolved (`rho`'s sign, `sigma_lnm`'s real value) directly from
+TNG-300 — but the top-line verdict tag was never updated to say so.
+Corrected status: **DIRECTIONAL-PREDICTION-CONFIRMED (conditionality
+resolved)** — `rho > -0.5` holds under BOTH measured readings (all-pairs
+`+0.38`; nearest-neighbor-restricted `~0.019`), not near the flip point
+either way, so `F^(2)` genuinely gets a larger population-averaging
+boost than `F^(1)`, not merely "if rho exceeds -0.5." **Not fully
+resolved to a single number**: magnitude stays population-scope-
+sensitive (`sigma_lnM = 0.23-0.74` depending on assumed node mass
+range) and the MECHANISM behind `rho`'s positivity is itself ambiguous
+(broad large-scale bias under the all-pairs reading vs. an essentially
+null, genuine pairwise effect under the nearest-neighbor reading) — see
+the Addendum's own full account before citing a specific number. This
+does not change `P158`'s own scope (still about population-averaging
+`v82`'s own mass-derived scalar chain, per `FINDING_P157`'s naming — a
+question about `v82`'s own acknowledged "representative value, not a
+distribution" idealization, orthogonal to `FINDING_P223`'s separate
+comparison against `docs/127`'s S-S closure).
+
 **Date:** 2026-08-30
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·
 NO_AUTHOR_ERROR · L0 math (independent verification: sympy + Monte Carlo)
