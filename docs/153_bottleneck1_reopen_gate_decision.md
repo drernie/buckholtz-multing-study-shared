@@ -176,6 +176,26 @@ updates remains exactly where it was left — genuinely open. Full
 account: `experiments/20260909-tng-mass-assortativity/FINDING_
 flamingo_subvolume_true_global_nn.md`.
 
+**Ninth update, same day (2026-09-12) — user-designed diagnostic
+(same-mass-cut, full-box periodic NN) run: gate PASSES, but the
+correctly-specified test finds no significant boundary-treatment
+effect.** Held each sub-cube's own implicit mass cutoff fixed while
+searching FLAMINGO's real, full 1000 Mpc periodic box instead of the
+artificial sub-cube wrap. Geometric gate (decided BEFORE any rho was
+computed, per the user's own explicit instruction): aggregate median
+NN separation = 41.16 Mpc, well inside the pre-registered [35,55] Mpc
+pass band — confirms the earlier top-5000 scale-mismatch was a
+population-density artifact, not a fundamental flaw in scale-matching
+FLAMINGO sub-volumes at all. Resulting rho_NN (mean=-0.082, 1/10
+anomalous) is statistically indistinguishable (amplitude paired test,
+p>0.5 both ways, independently re-verified) from the earlier periodic
+and open treatments. A new, real, disclosed confound: matching mass
+threshold does not match candidate-population density per cube (real
+cosmic variance). Four tests on this same 10-cube sample now converge:
+n=10 is the binding constraint, not boundary treatment. Full account:
+`experiments/20260909-tng-mass-assortativity/FINDING_flamingo_
+subvolume_same_mcut_global_nn.md`.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own

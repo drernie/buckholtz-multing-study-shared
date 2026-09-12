@@ -141,6 +141,21 @@ named, not run; the periodic-vs-open question stays open. Full
 account: `experiments/20260909-tng-mass-assortativity/FINDING_
 flamingo_subvolume_true_global_nn.md`.
 
+**Eighth cross-check, same day (2026-09-12) — user-designed diagnostic
+(same-mass-cut, full-box periodic NN): gate passes, no significant
+boundary effect found.** Fixed each sub-cube's own implicit mass
+threshold, searched FLAMINGO's real full-box periodicity instead of
+the artificial sub-cube wrap. Geometric gate (evaluated before any rho)
+confirms the target 40-45 Mpc scale is genuinely recoverable — the
+earlier top-5000 failure was a population-density artifact, not a
+deeper flaw. Resulting rho_NN is statistically indistinguishable from
+periodic/open (amplitude paired test, p>0.5 both ways). A real,
+disclosed confound (mass-threshold match ≠ density match per cube)
+remains. Four convergent tests on the same n=10 sample now point to
+sample size, not boundary treatment, as the binding constraint. Full
+account: `experiments/20260909-tng-mass-assortativity/FINDING_
+flamingo_subvolume_same_mcut_global_nn.md`.
+
 **Date:** 2026-08-30
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·
 NO_AUTHOR_ERROR · L0 math (independent verification: sympy + Monte Carlo)
