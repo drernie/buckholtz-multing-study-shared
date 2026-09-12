@@ -160,6 +160,22 @@ global-NN ground truth) is named, not run. Full account: `experiments/
 20260909-tng-mass-assortativity/FINDING_flamingo_subvolume_periodic_
 wrap_bias.md`.
 
+**Eighth update, same day (2026-09-12) — user-requested true global-NN
+ground truth, run: the attempt itself is INVALIDATED by a real, self-
+caught scale mismatch.** The "true" partner pool (top-5000-by-global-
+mass) is `~4x` denser than each sub-cube's own local selection, pulling
+"true" NN separations to `~22` Mpc median (only `5%` land in the
+original `40-45` Mpc window) — `rho_true` answers a different question
+than the one this branch cares about. Caught before any conclusion was
+written, independently confirmed by Step 8a skeptic, which also found
+a separate labeling bug (`frac_outside=75.7%` is dominated by a near-
+trivial counting identity, not a clean measure of periodic-boundary
+failure). A concrete, implementable fix (density-matched partner pool)
+is named, not run. The periodic-vs-open question from the prior two
+updates remains exactly where it was left — genuinely open. Full
+account: `experiments/20260909-tng-mass-assortativity/FINDING_
+flamingo_subvolume_true_global_nn.md`.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own

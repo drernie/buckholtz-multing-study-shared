@@ -129,6 +129,18 @@ underpowered by `~7x`); two further, unquantified design biases named.
 Full account: `experiments/20260909-tng-mass-assortativity/
 FINDING_flamingo_subvolume_replication.md`.
 
+**Seventh cross-check, same day (2026-09-12) — user-requested true
+global-NN ground truth, run: the attempt is itself invalidated by a
+scale mismatch, self-caught and independently confirmed.** The "true"
+partner pool was `~4x` denser than each sub-cube's own local selection,
+pulling measured separations to `~22` Mpc median (`5%` in the original
+`40-45` Mpc window) — not the same question this branch is asking.
+Skeptic independently confirmed and found a second bug (`frac_outside`
+dominated by a counting identity, not physics). A concrete fix is
+named, not run; the periodic-vs-open question stays open. Full
+account: `experiments/20260909-tng-mass-assortativity/FINDING_
+flamingo_subvolume_true_global_nn.md`.
+
 **Date:** 2026-08-30
 **Labels:** NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION ·
 NO_AUTHOR_ERROR · L0 math (independent verification: sympy + Monte Carlo)
