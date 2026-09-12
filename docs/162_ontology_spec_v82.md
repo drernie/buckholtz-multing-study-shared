@@ -69,6 +69,21 @@ before/after recompute of an actual correlation on both selections is
 the real next step, not yet run. Full account: `experiments/20260909-
 tng-mass-assortativity/FINDING_flamingo_m500c_m200c_overlap.md`.
 
+`[UPDATE, 2026-09-12, same day — the direct recompute was run]`: at
+`N=1200` (this branch's own "definitive global estimand"), `rho_NN`
+under `M200c`- vs. `M500c`-selection differ by only `-0.0032` — `~15x`
+smaller than the real jackknife `SE` (`0.0476`) — **the definitive
+estimand is confirmed robust to this mass-convention choice.** At
+`N=50` (matching the TNG300/subcube saga's own scale), the same
+comparison shows a larger raw shift (`0.32 -> 0.08`) but its honest
+significance is ambiguous (`z~0.7-1.6`, not a clean detection) and its
+MECHANISM (selection-effect vs. correlated-value-effect — a `2x2`
+factorial design gap, Step 8a-caught) is unresolved. **Net: the
+branch's strongest number is safe; the smaller-`N` concern remains a
+real but unconfirmed open question**, not "settled either way." Full
+account: `experiments/20260909-tng-mass-assortativity/FINDING_
+flamingo_rho_nn_m200c_vs_m500c_selection.md`.
+
 ## 4. What does `K` (thermal energy) mean?
 
 `[SETTLED]`: the total kinetic energy of nucleons and electrons
