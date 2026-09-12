@@ -84,6 +84,24 @@ real but unconfirmed open question**, not "settled either way." Full
 account: `experiments/20260909-tng-mass-assortativity/FINDING_
 flamingo_rho_nn_m200c_vs_m500c_selection.md`.
 
+`[UPDATE, 2026-09-12, same day — the 2x2 factorial gap was closed]`:
+the mechanism question above is answered, but not as "X is the
+driver." All four cells of the selection x correlated-value factorial
+were measured at `N in {35, 50, 1200}`. At `N=50`, the interaction term
+between selection-criterion and mass-convention (`+0.22`) is
+comparable to or larger than either individual main effect (range
+`0.10`-`0.34`); the value-convention effect literally flips sign
+depending on which selection is held fixed. Step 8a skeptic verdict:
+WEAKENED — the claim's own pre-registered decision rule ("if X small
+and Y large -> driver=value; reverse -> driver=selection") fires in
+neither direction. **Honest conclusion: selection-criterion and
+mass-convention are entangled at `N=50`, not separable into a single
+driver.** At `N=1200` all four cells and their differences remain tiny
+(`<=0.03`), unaffected. No added statistical power over the prior
+`z~0.7-1.6` framing (the four cells share ~74%-overlapping objects, not
+independent samples). Full account: `experiments/20260909-tng-mass-
+assortativity/FINDING_flamingo_rho_nn_2x2_factorial.md`.
+
 ## 4. What does `K` (thermal energy) mean?
 
 `[SETTLED]`: the total kinetic energy of nucleons and electrons
