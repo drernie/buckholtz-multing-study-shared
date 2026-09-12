@@ -25,6 +25,26 @@ md` alongside this document — §0's causal-compatibility bottleneck and
 §3a's three preconditions below are now addressed, not the earlier
 "restated, OPEN" state this document originally recorded.
 
+**[2026-09-12 second annotation, same day — a related but SEPARATE
+question, not one of §3a's own preconditions.]** `P223` above does not
+touch `FINDING_P158`'s own still-open magnitude/mechanism gap (which of
+two TNG-300 mass-assortativity readings is physically right for v82's
+node population — see `FINDING_P158_jensen_mass_averaging_v82_force_
+terms.md`'s own 2026-09-12 corrections). A same-day attempt to resolve
+it via a scale-matched sub-sample was **falsified as a resolving test**
+by a skeptic pass (small-sample/look-elsewhere artifact, not a real
+signal) — the question stays genuinely undetermined. A live check of
+whether another TNG box could fix this with more data found
+**effectively no independent volume is publicly available**: same-
+initial-conditions resolution/physics variants aside, the only
+genuinely different boxes (`TNG100-1`, `Illustris-1`, `TNG50-1`) are
+too small — a periodic box's own half-side bounds the maximum
+representable pair separation, and `TNG50`'s (25.8 Mpc) is smaller than
+the 40-45 Mpc target itself. A real fix needs a Gpc-class suite outside
+the TNG project entirely — not attempted. Full account:
+`experiments/20260909-tng-mass-assortativity/FINDING_scale_matched_
+nearest_neighbor_rho.md`.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own
