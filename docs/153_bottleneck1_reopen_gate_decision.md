@@ -45,6 +45,18 @@ the TNG project entirely — not attempted. Full account:
 `experiments/20260909-tng-mass-assortativity/FINDING_scale_matched_
 nearest_neighbor_rho.md`.
 
+**Update, same day:** checked live — `MillenniumTNG` has the right box
+size but no functioning public access (its own site still promises a
+"2024" release, unfulfilled; API returns 404). **`Magneticum
+Pathfinder` and `Uchuu` DO have real, currently-working public
+access**, both large enough (`Magneticum Box2`: 4.5x `TNG300`'s volume;
+`mini-Uchuu`: 7.4x) to materially improve on `TNG300`'s own marginal
+`N=30-50` statistics at the target scale. `Magneticum` also uses a
+genuinely different cosmology (WMAP7 vs. `TNG`/`Uchuu`'s shared Planck
+2015 parameters) — the stronger of the two as an independent check.
+Neither downloaded yet (a new download needs separate, per-turn
+permission). Full account, same file as above.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own

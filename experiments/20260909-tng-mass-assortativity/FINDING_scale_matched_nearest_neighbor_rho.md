@@ -207,6 +207,79 @@ having the right box size — public access has not materialized as of
 this check. Not re-checked periodically; a future session should re-run
 this same live check before assuming continued unavailability.
 
+## Addendum 2026-09-12 (second) — Magneticum and Uchuu checked live:
+## BOTH have real, currently-working public access, unlike MillenniumTNG
+
+Checked directly (HTTP + page content, not recalled) at the user's
+request.
+
+### Magneticum Pathfinder — VIABLE
+
+`magneticum.org/data.html` (page `Last-Modified: 2025-11-06` — recently
+maintained, unlike MillenniumTNG's stale 2023 page) lists real,
+currently-downloadable halo/cluster + galaxy catalogs (`.tar.gz`, sizes
+given) across multiple boxes and many redshifts, explicitly "free to
+use for scientific purpose." The newer interactive C2PAP web portal
+(`c2papcosmosim.uc.lrz.de`) timed out on this check (HTTP 504, then a
+connection timeout on retry) — but the static catalog downloads on
+`magneticum.org` itself, which is what a nearest-neighbor test actually
+needs, work independently of that portal.
+
+Box sizes (WMAP7 cosmology, `h=0.704`, `Omega_m=0.272` — confirmed on
+`simulations.html`, genuinely different cosmological parameters from
+TNG's Planck-based ones, not just a different realization):
+
+```
+Box    Lbox (Mpc/h)  physical (Mpc)  half-side (Mpc)  volume vs TNG300
+Box2      352            500.0           250.0            4.5x
+Box2b     640            909.1           454.5           27.1x
+Box1a     896           1272.7           636.4           74.4x
+Box0     2688           3818.2          1909.1         2007.9x
+```
+
+`Box2/hr` alone (the smallest, most redshift-densely-catalogued option)
+is already `4.5x` `TNG300`'s volume — an expected `~135-225` halos at
+the mass threshold this project's own sweep needed for a `40-45` Mpc
+typical spacing, a real statistical-power improvement over `TNG300`'s
+own marginal `N=30-50`.
+
+### Uchuu — VIABLE, but SAME cosmology as TNG (a real, stated caveat)
+
+`skiesanduniverses.org` (`Last-Modified: 2025-11-08`) confirms real
+public access via a dedicated download tool (`skun@IAA_RedIRIS`) or a
+hosted Jupyter/SSH analysis platform (`Uchuu-BigData@CESGA`), plus a
+public GitHub (`UchuuProject`) with the exact tools used to build the
+halo catalogs — a genuine, actively-maintained access route, not a
+promise.
+
+```
+Box          Lbox (Mpc/h)  physical (Mpc)  half-side (Mpc)  volume vs TNG300
+mini-Uchuu      400           590.5           295.3             7.4x
+Uchuu          2000          2952.5          1476.2            930.0x
+```
+
+**Real caveat, checked directly, not assumed:** Uchuu's own cosmology
+page states `Planck2015`, `Omega_m=0.3089`, `h=0.6774` — **identical**
+to `TNG`'s own cosmological parameters (same source: Planck 2015). So
+Uchuu is independent in REALIZATION (different code — GreeM, not Arepo
+— different random phases/initial conditions) and would give a
+genuinely different draw of large-scale structure, but is NOT
+independent in cosmology — a result that held only because of some
+Planck-2015-specific parameter combination would not be caught by
+comparing `TNG300` against Uchuu alone. `Magneticum`'s different
+(WMAP7) cosmology is the stronger cross-check on that specific axis.
+
+### Net update to this file's own "what a real fix would require" (above)
+
+**Two of the four originally-named candidates are real, currently
+usable public data sources** (`Magneticum`, `Uchuu`) — the "not
+attempted this session" framing above still applies (no download has
+been made), but "requires access setup" is no longer a fair description
+of the blocker for these two; both are ready to use as soon as an
+explicit go-ahead to download new data is given (per this session's own
+standing rule that any new file download needs separate, per-turn
+permission). `AbacusSummit` and `FLAMINGO` remain unchecked.
+
 ## Status
 
 **Genuinely UNRESOLVED — recorded honestly as such, not forced toward
