@@ -61,15 +61,23 @@ v2 criteria design, not smuggled into v1's own verdict.
 
 ## What INCONCLUSIVE means here, concretely
 
-This is the **same confound already diagnosed and documented**
-(`FINDING_first_real_data_run_tsz_selection_confound.md`) — the frozen
-run reproduces it almost exactly (same shape, same collapse-under-
-detrend pattern, now in beam-corrected absolute units). The frozen test
-did not discover anything numerically new; it **mechanically confirmed,
-under pre-registered rules written before this run, that this specific
-pipeline at this sample size does not yet show a real, shape-consistent
-kSZ signal** — the significant-looking raw numbers are the redshift-
-selection artifact, not evidence of pairwise infall.
+**[CORRECTED 2026-09-12, precision fix]** The frozen run reproduces the
+same shape already documented in `FINDING_first_real_data_run_tsz_
+selection_confound.md` (same monotonic-growth pattern, same collapse-
+under-detrend, now in beam-corrected absolute units). What is actually
+established: **the observed raw signal is explained well enough by a
+redshift-dependent systematic to vanish under T(z)-detrending** — this
+strongly *supports* the earlier SZ-selection-artifact hypothesis as the
+explanation, but is not itself an independent causal proof that ACT-DR5
+MCMF's own SZ-selection mechanism, specifically, is the sole cause (a
+different z-correlated systematic could in principle produce the same
+empirical signature). Status: **SUPPORTED AS EXPLANATION, not PROVED
+CAUSE** — the earlier wording here ("the significant-looking raw
+numbers ARE the redshift-selection artifact") overstated this and has
+been corrected. The frozen test did not discover anything numerically
+new; it **mechanically confirmed, under pre-registered rules written
+before this run, that this specific pipeline at this sample size does
+not yet show a real, shape-consistent kSZ signal.**
 
 ## What this does NOT establish
 
