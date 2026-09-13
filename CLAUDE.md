@@ -117,15 +117,19 @@ survived.
 disk and in the Obsidian vault archive, but never re-enter git.
 
 ## STANDING CONSTRAINTS
-- **TJB correspondence: active as of 2026-08-30**, superseding the
-  2026-08-14 "no correspondence" note (that note is historical — the user
-  sent a full progress-report email 2026-08-27, TJB replied 2026-08-29
-  proposing a video call, and the user explicitly requested a drafted
-  reply 2026-08-30). Still draft only on an explicit, current request —
-  never send unilaterally, and still follow the standing tone/content
-  rules (formal address, no evaluative-authority words, share results
-  rather than auditing, minimize questions — see global memory
-  `feedback_tjb_*` entries and `lessons_learned.md`'s 2026-08-29 entry).
+- **TJB correspondence: `WAITING_ON_EXTERNAL` as of 2026-09-13** — the
+  ball is on his/Ernest's side (last outgoing: repo-share letter,
+  2026-09-11 08:14, no reply since). **Do not initiate a new letter just
+  because research time freed up** — this is an external dependency, not
+  an active task. Return to it only if: (a) he replies, (b) a new result
+  materially changes the actual question posed to him, or (c) an
+  explicitly pre-set follow-up interval elapses (none currently set).
+  When correspondence does resume: still draft only on an explicit,
+  current request — never send unilaterally, and still follow the
+  standing tone/content rules (formal address, no evaluative-authority
+  words, share results rather than auditing, minimize questions — see
+  global memory `feedback_tjb_*` entries and `lessons_learned.md`'s
+  2026-08-29 entry).
 - `NO_AUTHOR_ERROR`: every finding is about this project's own
   reconstruction, never a claim about Dr. Buckholtz's own unpublished theory.
 
@@ -156,6 +160,25 @@ FINDING_P215_P216_P217_RETRACTION_after_step8a.md` §4 for the full account.
    BOTH**, not one document swept and the other assumed silent. `P217`
    swept `β` in v82 only and stated a conclusion about the v6↔v82
    relationship; the same sweep on v6 dissolved it in a minute.
+5. **NEXT-STEP GATE — added 2026-09-13, after a same-conversation class
+   of error (P223, `P191`, bottleneck 2 — three instances of ONE
+   defect: a stale document/label/memory outranking a fresher canonical
+   state).** Before recommending, or starting, any new research work —
+   read `CURRENT_EVIDENCE_STATE.md` in full FIRST, not `docs/147`, not
+   session memory, not a partial grep. Check explicitly: is this task
+   already done? Was it stopped by an explicit prior decision (e.g. an
+   arbiter/skeptic recommendation that was taken)? Has its upstream
+   status changed since the file you're about to cite was last updated?
+   Required order: **CURRENT STATE → OPEN DEPENDENCIES → EVI → NEXT
+   ACTION** — never "old roadmap → memory → recommendation." Concrete
+   incident: recommended running `P191`'s Fisher-forecast (done
+   2026-09-05, `P192`-`P194` too) and attacking bottleneck 2 directly
+   ("never attacked" — false, `/hypothesis-arbiter` already returned a
+   stop recommendation, taken, 2026-09-07) — both wrong because
+   `docs/147` was read without cross-checking the more current
+   `CURRENT_EVIDENCE_STATE.md`. Full account: `CURRENT_EVIDENCE_STATE.md`
+   header note (2026-09-13) and `docs/147`'s own bottleneck-1/2
+   annotations from the same date.
 
 ## NEVER
 - Reconstruct F→H_MULT(z) by fitting against Table A1 (`NO_BRIDGE_FITTING`).
