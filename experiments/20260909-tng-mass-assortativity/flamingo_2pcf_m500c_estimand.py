@@ -41,7 +41,8 @@ def compute_xi(pos: np.ndarray, box_mpc: float, bin_edges: np.ndarray) -> dict:
     shell_volume = (4.0 / 3.0) * np.pi * (bin_edges[1:] ** 3 - bin_edges[:-1] ** 3)
     rr = n_pairs_total * shell_volume / volume
     xi = dd / rr - 1.0
-    xi_sigma = np.where(dd > 0, 1.0 / np.sqrt(dd), np.nan)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        xi_sigma = np.where(dd > 0, 1.0 / np.sqrt(dd), np.nan)
     return {"dd": dd, "rr": rr, "xi": xi, "xi_sigma": xi_sigma}
 
 
@@ -80,11 +81,25 @@ def main() -> None:
         rand_pos = rng.uniform(0.0, FLAMINGO_BOX_MPC, size=(n, 3))
         result = compute_xi(rand_pos, FLAMINGO_BOX_MPC, bin_edges)
         xi = result["xi"]
+        rr = result["rr"]
         sigma = result["xi_sigma"]
-        n_within_2sigma = int(np.sum(np.abs(xi) <= 2 * np.where(np.isnan(sigma), np.inf, sigma)))
-        n_valid = int(np.sum(~np.isnan(sigma)))
-        print(f"N={n}: {n_within_2sigma}/{n_valid} bins have |xi| <= 2*sigma_Poisson")
-        print(f"  xi range: [{np.nanmin(xi):.4f}, {np.nanmax(xi):.4f}], mean={np.nanmean(xi):.4f}")
+        n_total = len(xi)
+        n_sparse = int(np.sum(rr < 1.0))
+        testable = rr >= 1.0
+        n_testable = int(testable.sum())
+        n_within_2sigma = int(np.sum((np.abs(xi) <= 2 * sigma) & testable))
+        print(
+            f"N={n}: {n_sparse}/{n_total} bins have RR<1 (too sparse for a Gaussian "
+            f"Poisson-noise check, not evidence either way)"
+        )
+        print(
+            f"  Of the remaining {n_testable} bins with RR>=1: {n_within_2sigma}/{n_testable} "
+            f"have |xi| <= 2*sigma_Poisson"
+        )
+        print(
+            f"  xi range (all bins): [{np.nanmin(xi):.4f}, {np.nanmax(xi):.4f}], "
+            f"mean={np.nanmean(xi):.4f}"
+        )
 
     print("\n=== M500c-selected FLAMINGO clusters: xi(r) and power-law fit ===")
     print(

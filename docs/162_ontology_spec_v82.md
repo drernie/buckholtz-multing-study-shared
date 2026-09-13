@@ -187,6 +187,33 @@ above jointly constrain:
   from "the intended test" to "a related but not source-faithful
   proxy."
 
+**[UPDATE, 2026-09-13 — first real computation run, not a final
+answer].** `experiments/20260909-tng-mass-assortativity/FINDING_
+flamingo_2pcf_m500c_estimand.md`: a real `xi(r)=DD(r)/RR(r)-1` two-
+point correlation function (exact analytic `RR(r)` for FLAMINGO's
+periodic box, no random catalog needed), on `M500c`-selected clusters
+(directly from the full catalog, not re-ranked from an `M200c` pool).
+Step 8a skeptic: WEAKENED. **Survives**: FLAMINGO's own clustering
+amplitude (`r0 ~ 13-24` h^-1 Mpc across `N=200`-`5000`, robust to
+outlier/weighting corrections at the `~8%` level) lands in the SAME
+ORDER OF MAGNITUDE as v82's own cited anchor (Basilakos & Plionis 2004,
+`9.7-20.7` h^-1 Mpc), and the DIRECTION of richness-dependence matches
+(richer proxy -> larger `r0`) — a genuine, previously-unchecked
+corroboration that FLAMINGO is a plausible stand-in population.
+**Does NOT survive unqualified**: the correlation-function SHAPE
+(`gamma`) is systematically steeper in FLAMINGO (`2.1-2.6`) than in the
+cited literature (`1.6-2.0`) under every fit tried (unweighted,
+outlier-excluded, Poisson-weighted) — a real, unresolved disagreement.
+Five further structural confounds (selection function, redshift,
+cluster-definition mismatch, estimator differences, unmatched fit
+range) remain unaddressed, and no mass-assortativity `rho` has been
+computed yet (this first pass measures spatial clustering amplitude
+only). **Item 9 is not closed by this** — it establishes the estimand-
+construction direction is viable, not that it is finished. Next named
+(not attempted) step: a mass-marked generalization of this same
+periodic-box estimator, to give `rho` a source-faithful 2PCF-style
+analog replacing the now-closed `rho_NN` design.
+
 ## Retrospective classification of prior work (per the user's own
 ## request: audit against this spec, do not recompute)
 
