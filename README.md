@@ -6,6 +6,8 @@
 
 <sub>**Status, re-measured 2026-09-11 on this tree** (the previous line here read "908 tests … mypy clean (0 errors, blocking in CI)" and was wrong on both counts — corrected rather than quietly refreshed): `pytest --co` collects **991 tests across 67 files**; a 68th file, `tests/test_e15_jensen_gap_real_scatter.py`, **does not collect from a clean clone** — it imports the author's supplemental code, which `data/source_material/*` deliberately git-ignores (fetch from [Zenodo](https://zenodo.org/records/22004287) to run it). `mypy src` → clean, 39 files, **locally**. `ruff check .` → clean. **The CI badge above is red**, and has been since 2026-09-08: CI fails at the `mypy` step, so the test job never runs — an unresolved discrepancy between CI and local, not a known source defect. Treat the badge as live truth and this line as a dated local measurement.</sub>
 
+<sub>**Program phase, 2026-09-13: `WAITING + CONSOLIDATION`, not active discovery.** The research campaign reached its own stop-rule end-state — all four `docs/147` bottlenecks are `CLOSED/BOUNDED`, `STOPPED/UNRESOLVED`, `DISSOLVED`+`EXHAUSTED`, or `SEARCH-CAMPAIGN-EXHAUSTED` (never "solved," see [`PROGRAM_CLOSEOUT_LEDGER.md`](PROGRAM_CLOSEOUT_LEDGER.md) for the precise, non-interchangeable vocabulary). No new physics computation is planned absent one of five explicit "new input" triggers (a new dataset, an external definition, a new publication, a found logical conflict, or a genuinely new differentiating test — never "we could still compute something"). Three external replies are pending (none received as of this date); the methodology paper is `CORRECTED, NOT RE-REVIEWED` and not yet submitted anywhere.</sub>
+
 ---
 
 ## START HERE if you are reviewing this as a physicist
@@ -21,14 +23,21 @@ it runs for it, likewise. Nothing here is an audit *of him*.
 
 **Fifteen-minute path:**
 
-1. [`CURRENT_EVIDENCE_STATE.md`](CURRENT_EVIDENCE_STATE.md) — what is reproduced,
-   what is refuted or weakened, the open bottlenecks, and an explicit list of
-   what cannot be claimed publicly. (`PROJECT_STATUS.md` further down is an
+1. [`PROGRAM_CLOSEOUT_LEDGER.md`](PROGRAM_CLOSEOUT_LEDGER.md) — the
+   fastest orientation: a 1-2 page, claim-by-claim index (13 major
+   claims, each with evidence IDs, status, strongest support, strongest
+   counterevidence, and its own explicit reopen condition), frozen as a
+   2026-09-13 baseline, plus the program's current governance mode
+   (`WAITING + CONSOLIDATION` — see the status line above).
+2. [`CURRENT_EVIDENCE_STATE.md`](CURRENT_EVIDENCE_STATE.md) — the full
+   detail behind the Ledger: what is reproduced, what is refuted or
+   weakened, the open bottlenecks, and an explicit list of what cannot
+   be claimed publicly. (`PROJECT_STATUS.md` further down is an
    older, explicitly-superseded snapshot kept for history only.)
-2. [`docs/151_status_separation_rule.md`](docs/151_status_separation_rule.md) —
+3. [`docs/151_status_separation_rule.md`](docs/151_status_separation_rule.md) —
    the rule every verdict here obeys: empirical status, ontological
    interpretation, and causal claim are three separate fields, never collapsed.
-3. [`null_results/INDEX.md`](null_results/INDEX.md) — 21 registered dead ends.
+4. [`null_results/INDEX.md`](null_results/INDEX.md) — 21 registered dead ends.
    These are the point, not an embarrassment: the register exists so a killed
    direction cannot quietly return.
 
