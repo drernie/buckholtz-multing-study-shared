@@ -150,6 +150,16 @@ reconstruction, unless a row explicitly says otherwise.
 
 ## Next step (per this Ledger's own closeout)
 
+**[Superseded by "Program governance" below, 2026-09-13 same day — not
+a rewrite.]** The claim-by-claim adversarial pass this originally named
+is DONE (paper Pass 4, commit `2f672db`; precision-corrected same day,
+commit `d0bb034`) — see `paper/methodology_paper_draft_v0.md`'s own
+header and `paper/METHODOLOGY_PAPER_DRAFT_CORRECTIONS_after_step8a.md`
+§12 for the full record. Current paper status: `CORRECTED, NOT
+RE-REVIEWED`, Evaluator-Optimizer Guard `3/3` closed. What follows next
+for the whole project (not just the paper) is stated in the governance
+section immediately below.
+
 Per the `2026-09-13` program decision: no new computation. Next action
 is a claim-by-claim adversarial pass on `paper/methodology_paper_
 draft_v0.md` (still in its 2026-09-08 cooling-off period, venue
@@ -158,5 +168,85 @@ this Ledger's own status column, old verdict labels not carried
 forward, `what was established` / `what was falsified` / `what was
 exhausted` / `what remains non-identified` kept separate, and
 "campaign stopped" never silently reworded as "question solved."
+
+---
+
+## Program governance: `WAIT + CONSOLIDATION` mode (2026-09-13)
+
+**The project is in `WAITING + CONSOLIDATION`, not `DISCOVERY`.** This
+section is the operational protocol for that mode — it governs HOW to
+act on the claims above, it does not change any claim's own status.
+User-directed, applies until a listed reopen trigger actually fires.
+
+### Four frozen tracks
+
+| Track | Current status | Next action |
+|---|---|---|
+| **Methodology paper** | `CORRECTED, NOT RE-REVIEWED`, guard `3/3` | finish cooling-off → choose venue → mechanical release gate → publication decision |
+| **TJB** | `WAITING_ON_EXTERNAL` | write nothing until he replies or a pre-set follow-up interval elapses (none currently set) |
+| **Gong/Bean / kSZ (Fork 1a)** | `WAITING_ON_EXTERNAL` | on reply: check ONLY whether it provides object-level `τ`/`v` (or equivalent) — reopen Fork 1a only then |
+| **The Three Hundred / H1b** | `WAITING_ON_EXTERNAL` | on reply: check ONLY whether `M_HE` is sufficient for the ALREADY-DEFINED H1b correlation — do not improvise a substitute measurement |
+
+### `DO NOT RETRY WITHOUT NEW INPUT` — default-forbidden list
+
+Not because any of these is impossible — because expected information
+value is currently low, per each claim's own row above:
+- Another nearest-neighbor-style test on `P158`'s own question (item 8
+  — closed for its current estimand; the `gamma` residual needs real
+  observational data, not another simulation run).
+- Another Fisher-forecast iteration on `(β1,β2)` (item 3b — exhausted;
+  no real high-z data exists to forecast against).
+- Another Eq.32 mechanism search inside the already-exhausted niches
+  (item 7 — 5 external + 3 internal attempts spent; `CLAUDE.md`
+  exclusion zone already forbids this).
+- Another attempt to "finish" Unique completion without a genuinely
+  new input (item 2 — arbiter already recommended stopping).
+- Another IC-sensitivity mechanism candidate without a specific new
+  hypothesis (item 4 — campaign exhausted, 5 candidates excluded).
+
+### External-reply trigger table (the only three live external dependencies)
+
+| Reply arrives from | Check | If check passes |
+|---|---|---|
+| TJB | does it change a specific `CLOSED`/`STOPPED` dependency listed above? | act on THAT specific dependency only |
+| Gong/Bean | does it give a real, usable measurement substrate (object-level `τ`/`v`)? | reopen Fork 1a (item 11) |
+| The Three Hundred | is `M_HE` sufficient for H1b's own pre-defined correlation? | run that pre-defined correlation, nothing improvised |
+| (no reply) | — | nothing happens; this is the expected state, not a gap |
+
+### What counts as "new input" (reopens a `DO NOT RETRY` item)
+
+At least one of:
+1. Genuinely new data that did not previously exist.
+2. An external author supplies a new definition/derivation (e.g. TJB
+   defining `Δψ` for row 3c, or v82's own intent for `s(z)` for row 1).
+3. A new publication invalidates a current dependency.
+4. A real logical conflict is found inside an already-`CLOSED` result
+   (not a re-run — a found contradiction).
+5. A new hypothesis produces a differentiating test that the already-
+   run campaign did not cover.
+
+**"We could still compute something" is explicitly NOT a reopen
+condition** — this is the operational meaning of the Ledger's own
+"not by default drift" line in its header.
+
+### Priority if multiple replies land at once
+
+1. Gong/Bean (thermal-pair kSZ, item 11) — highest priority: the
+   nearest-to-a-real-observational-test physics thread in the project,
+   blocked purely on data substrate.
+2. The Three Hundred (H1b, item 12) — second: one specific missing
+   quantity, pre-defined next test.
+3. TJB — priority set by the CONTENT of the reply, not the fact of it.
+4. If nothing replies: the paper/venue track is the best available
+   move, since it is the only track where the next action requires no
+   new scientific input.
+
+### `PROGRAM_CLOSEOUT_LEDGER.md` and `CURRENT_EVIDENCE_STATE.md` — frozen baseline discipline
+
+Both update ONLY on a new evidence/event (a reply lands, a reopen
+trigger fires, a real computation is authorized) — never on elapsed
+time alone. A session finding nothing has changed since the last read
+should report that plainly, not manufacture an update to justify the
+session.
 
 NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · NO_AUTHOR_ERROR
