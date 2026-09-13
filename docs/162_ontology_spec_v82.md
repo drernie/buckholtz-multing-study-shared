@@ -214,6 +214,30 @@ construction direction is viable, not that it is finished. Next named
 periodic-box estimator, to give `rho` a source-faithful 2PCF-style
 analog replacing the now-closed `rho_NN` design.
 
+**[UPDATE, 2026-09-13 — the mass-marked generalization was built, run,
+and skeptic-reviewed].** `experiments/20260909-tng-mass-assortativity/
+FINDING_flamingo_mark_correlation_rho_of_r.md`: `rho(r)`, the Pearson
+correlation of paired `log10(M500c)` among ALL pairs in each of 15
+separation bins (`5-150` Mpc), with a mark-shuffle permutation null and
+a cell-block positive control (closing the prior 2PCF pipeline's own
+"no canary" gap). Step 8a skeptic: WEAKENED. **Result: at `N=5000`
+(best-powered, all 15 bins testable), NO mass-assortativity signal
+detected anywhere in the range** — the one nominally-significant bin
+(`p=0.015`) is fully consistent with the multiple-comparisons noise
+floor (`1` of `33` tests, below the `1.65` expected) and sits inside
+the pipeline's own demonstrated `|z|~3` per-bin RNG noise floor (from
+the positive control's own off-target excursion). **This is a genuinely
+new, independent-methodology confirmation of the branch's already-
+established null** (`N=1200` `rho_NN~=0`), now on the source-faithful
+`M500c` convention, across the full `5-150` Mpc range, with a
+literature-standard mark-correlation design. At `N=200`/`N=1000`, many
+small-`r` bins were UNTESTABLE (too few pairs), not null — an explicit,
+disclosed distinction, not smoothed over. **This closes the direct
+P158-motivating mass-assortativity question on the strongest design
+this branch has built**, while item 9's separate spatial-clustering
+shape-mismatch caveat (`gamma` steeper than the cited literature) stays
+open.
+
 ## Retrospective classification of prior work (per the user's own
 ## request: audit against this spec, do not recompute)
 
