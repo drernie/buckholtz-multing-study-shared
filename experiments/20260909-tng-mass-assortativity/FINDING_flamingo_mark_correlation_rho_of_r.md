@@ -200,6 +200,16 @@ immaterial here since no real result is near a decision boundary.
 
 ## Status
 
+**[Correction, 2026-09-13, user-caught precision issue, not a
+rewrite]**: the wording below ("NO mass-assortativity signal anywhere
+in 5-150 Mpc") is scoped to what was actually tested and should be
+read as such — **no detectable mass-assortativity signal in this
+specific tested construction** (FLAMINGO's `z=0` `M500c`-selected
+population, `N in {200,1000,5000}`, this exact estimator and
+permutation-null design). It is not, and was never intended as, a
+universal claim that no such signal exists in nature or in every
+possible operationalization.
+
 The mass-marked generalization named as the next step in `FINDING_
 flamingo_2pcf_m500c_estimand.md` is now built, run, and skeptic-
 reviewed. At the best-powered scale (`N=5000`), it finds NO mass-

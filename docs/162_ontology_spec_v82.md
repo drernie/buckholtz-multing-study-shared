@@ -294,6 +294,20 @@ FINDINGs): `FINDING_flamingo_2pcf_m500c_estimand.md`, `FINDING_
 flamingo_mark_correlation_rho_of_r.md`, `FINDING_flamingo_2pcf_gamma_
 range_diagnostic.md`.
 
+**[Correction, 2026-09-13, user-caught precision issue on two phrases
+above, not a rewrite]**: (1) "`rho(r)` ... CLOSED. No signal detected
+anywhere in `5-150` Mpc" should be read precisely as **no detectable
+mass-assortativity signal in the TESTED FLAMINGO construction**
+(`z=0`, `M500c`-selected, this exact estimator) — not a universal
+claim about nature or about every possible operationalization. (2) The
+whole "P158 CLOSED" framing (this document and `docs/153`'s own
+updates) means **the computational branch is closed for the CURRENT
+source-faithful FLAMINGO operationalization of P158's question** — it
+does NOT mean v82's broader ontological/mechanistic interpretation is
+closed (explicitly still OPEN, per the status block above) or that
+MULTING's causal/cosmological correctness has been assessed
+(`NON-IDENTIFIED`, unchanged, `NO_AUTHOR_ERROR`).
+
 ## Retrospective classification of prior work (per the user's own
 ## request: audit against this spec, do not recompute)
 

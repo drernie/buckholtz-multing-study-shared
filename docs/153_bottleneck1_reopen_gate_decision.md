@@ -310,6 +310,15 @@ not an oversight. Full account (3 linked FINDINGs) and the docs/151
 three-field status separation: `docs/162_ontology_spec_v82.md`'s own
 "[FINAL CLOSURE, 2026-09-13]" section.
 
+**[Correction, 2026-09-13, user-caught precision issue, not a
+rewrite]**: this "closed" framing means the computational branch is
+closed for the CURRENT source-faithful FLAMINGO operationalization of
+P158's question, not that v82's broader ontological/mechanistic
+interpretation is settled (still OPEN) or that MULTING's causal
+correctness has been assessed (`NON-IDENTIFIED`, unchanged). Full
+correction text: `docs/162_ontology_spec_v82.md`'s own same-dated
+correction note.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own
