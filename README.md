@@ -1,6 +1,5 @@
 # Buckholtz IDM/MULTING Study
 
-[![CI](https://github.com/sergeeey/buckholtz-idm-multing-study/actions/workflows/ci.yml/badge.svg)](https://github.com/sergeeey/buckholtz-idm-multing-study/actions/workflows/ci.yml)
 ![python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
@@ -139,7 +138,7 @@ Strong Inference summary: H4 (empirical mass relations) ✅ · H3 (IDM as CDM) �
 
 ```bash
 # Clone or download repository
-cd buckholtz-idm-multing-mvp
+cd buckholtz-multing-study-shared
 
 # Create virtual environment
 python -m venv .venv
