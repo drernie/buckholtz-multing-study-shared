@@ -16,6 +16,16 @@
    4 open bottlenecks / one next differentiating test / what cannot be
    claimed publicly. The fast-orientation entry point; read this first,
    then go deeper via the items below as needed.
+0a. **`PROGRAM_CLOSEOUT_LEDGER.md`** (added 2026-09-13, frozen baseline
+    of the same date) — a 1-2-page claim-by-claim index (claim / evidence
+    IDs / status / support / counterevidence / reopen-if), built ONLY
+    from `CURRENT_EVIDENCE_STATE.md`. Marks the end of this project's
+    discovery campaign and the start of consolidation → publication →
+    external challenge — **no new computation** without a specific
+    reopen condition firing on a specific row. Precise status vocabulary
+    (`SOLVED`/`DISSOLVED`/`EXHAUSTED`/`STOPPED`/`CLOSED-BOUNDED`/
+    `NON-IDENTIFIED`) is not interchangeable — read the Ledger's own
+    header before using any of these words elsewhere.
 1. `.claude/memory/activeContext.md` — live, updated per commit. Source of
    truth for "what are we doing right now."
 2. `docs/145_research_audit_and_harvest_report_20260817.md` — comprehensive
