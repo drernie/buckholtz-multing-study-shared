@@ -31,7 +31,32 @@ subsample, not the full pre-registered `N=32`). **All six §7 citations
 were independently re-fetched from arXiv directly (not from memory) and
 found to match the draft's own characterization exactly — reported here
 because the protocol commits to reporting checks that came back clean,
-not just the ones that found something.** Full record: `paper/
+not just the ones that found something.**
+**[User-caught precision issue, 2026-09-13, applied immediately]** The
+four fixes Pass 4 made (§8, §1.3, §5×2) were written by me AFTER the
+skeptic dispatch, to address what the skeptic found in the PRE-fix
+text — they were never themselves seen by an independent reviewer. The
+Evaluator-Optimizer Guard's cap (3 of 3, now closed) means no further
+ordinary review cycle may check this exact wording. Precise status,
+not to be collapsed into one word:
+
+| Object | Status |
+|---|---|
+| Draft as Pass 4 received it (pre-fix) | `FALSIFIED`/`WEAKENED` per the defects Pass 4 found |
+| Those defects | fixed; the underlying FACTS behind each fix independently verified (e.g. `K5`'s subsample scope, the batch-ID split, §9's own 4-item count) |
+| Current draft text (post-fix) | `CORRECTED, NOT RE-REVIEWED` — no independent pass has seen this exact wording |
+| §7 related-work citations | `directly verified` against live arXiv — stands independent of any text edit, not affected by the above |
+| §4/§5 case-study and AVB numbers | `directly cross-checked` against source files — same independence |
+| Evaluator-Optimizer Guard | `3/3 exhausted` — closed |
+| Submission readiness | `NOT_FOR_SUBMISSION` |
+
+**No further content edits beyond obvious typo/formatting fixes until
+cooling-off and an explicit venue decision.** The next legitimate check
+on this document is a **release gate** — a mechanical verification
+(citations, numbers, status labels, the `NOT_FOR_SUBMISSION` marker,
+absence of private data), not a fourth evaluator-loop cycle — run after
+cooling-off and the venue decision, both still outstanding and both
+requiring a human. Full record: `paper/
 METHODOLOGY_PAPER_DRAFT_CORRECTIONS_after_step8a.md` §12. Full records:
 `paper/METHODOLOGY_PAPER_DRAFT_CORRECTIONS_after_step8a.md` (Pass 1) and
 this file's own §5/§8/§9 for Pass 2, the N-resolution, and the figures —

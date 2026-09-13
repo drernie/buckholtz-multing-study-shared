@@ -558,4 +558,39 @@ named as a substitution, not silently normalized) — this constraint
 itself now governs any future revision of this draft before Submission
 Gate.
 
+### 12.8 User-caught precision issue (2026-09-13, same day, applied
+### before any sync/release action): "fixed" ≠ "independently re-verified"
+
+**The issue:** §§12.1-12.5 above repeatedly say a finding was "fixed"
+without stating, each time, that the FIX TEXT ITSELF was written by me
+after the skeptic dispatch and was never seen by an independent
+reviewer — only the skeptic's ORIGINAL finding (on the pre-fix text)
+went through independent review. With the Evaluator-Optimizer Guard now
+closed (3/3), no ordinary review cycle can check this exact post-fix
+wording. This is a real distinction this project's own vocabulary
+already has words for (`CORRECTED` vs. `RE-VERIFIED`) and this document
+blurred it.
+
+**Corrected framing, applied to `methodology_paper_draft_v0.md`'s own
+header (2026-09-13 addendum) and repeated here:** the pre-fix draft's
+status is `FALSIFIED`/`WEAKENED` per the defects found; the defects'
+underlying FACTS were independently verified (§12.3's arXiv checks,
+§12.4's batch-ID split, §9's own 4-item count); the CURRENT, post-fix
+text is `CORRECTED, NOT RE-REVIEWED` — a real, narrower status, not
+collapsible into "fixed" alone. §7 citations and §4/§5 numbers remain
+`directly verified`/`directly cross-checked` regardless (those checks
+were against external sources and source files, not against my own
+edited wording, so they are unaffected by this distinction).
+
+**Consequence for next steps:** no further content edits beyond obvious
+typo/formatting fixes until cooling-off + venue decision. The next
+legitimate check is a **release gate** (mechanical: citations, numbers,
+status labels, `NOT_FOR_SUBMISSION` marker, no private data) — not a
+4th evaluator-loop cycle, which the Guard's cap correctly forbids. Per
+the same reasoning, this file and `methodology_paper_draft_v0.md` are
+**not synced to the public reviewer repository** until the release gate
+passes — the currently-public copy (frozen at the Pass-1/2/3-corrected
+state, pre-Pass-4) remains accurate and honestly labeled in the
+meantime; nothing about today's work makes it stale or misleading.
+
 NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · NO_AUTHOR_ERROR
