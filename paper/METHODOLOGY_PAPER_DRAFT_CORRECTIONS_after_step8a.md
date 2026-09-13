@@ -407,3 +407,155 @@ cycles capped at 3): this is the **second** of at most three cycles
 (Pass 1 → fix → Pass 2 → fix, now complete). A third pass is not run
 here — it would need a specific reason (a further self-directed finding,
 or a user request), not run reflexively up to the cap.
+
+## 12. Pass 4 (2026-09-13) — third and final Step 8a content-adversarial-
+## review cycle, user-requested claim-by-claim adversarial pass. Cap now
+## CLOSED (3 of 3).
+
+**Date:** 2026-09-13
+**Trigger:** explicit user request to run a "claim-by-claim adversarial
+pass" on the paper, as part of a broader program-closeout consolidation
+(`PROGRAM_CLOSEOUT_LEDGER.md`, frozen baseline 2026-09-13) — not a
+reflexive run to the Evaluator-Optimizer Guard's cap.
+**Method:** (1) direct, tool-based verification by me of a sample of the
+paper's own load-bearing claims BEFORE dispatching a skeptic (docs/146's
+11-category count and Category 8's single-incident count; Category 4's
+cited line-range content; P215/P216/P217/P220's own provenance lines;
+every §5 AVB number against `result_summary.md`/`result_summary_
+extension.md`; the two figure scripts' own assertion logic; the
+correction record's own "nine defects" header count) — all CONFIRMED
+CLEAN, zero discrepancies. (2) A fresh, context-blind Step 8a skeptic
+dispatch on the CURRENT full v0.3 text, per the identical protocol §2 of
+the paper itself describes (only the draft text + source file paths, no
+session history). (3) Independent re-verification of every finding the
+skeptic returned, including live re-fetching of external sources
+(arXiv), before accepting or rejecting anything — the same discipline
+`audit-verification-gate.md` requires for any agent's own `[VERIFIED]`.
+
+**Skeptic verdict as returned: FALSIFIED** (one load-bearing issue) +
+5 WEAKENED-level items. **Independent re-verification found the
+FALSIFIED verdict itself needed calibrating** (per this repo's own
+`audit-verification-gate.md`: a skeptic's own claim is `[INFERRED]`
+until re-checked, not accepted at face value) — see below.
+
+### 12.1 The "4 vs 3" finding — real, but not a literal contradiction
+
+**Skeptic's claim:** the status header says Pass 2 found "four minor
+internal-consistency/wording defects," but §8's own narrative paragraph
+enumerates only three ("all three were found and fixed by the same
+pass"), reading as if Pass 2 found only three in total.
+
+**Independent re-verification:** checked §9's own checklist (not quoted
+to the skeptic, since the dispatch gave the full document — but the
+skeptic's own report shows it weighted §8's narrative paragraph over
+§9's checklist). §9's checklist **does** enumerate exactly four Pass-2
+items: (1) §8's "two of four" vs. the rest of the paper's "three of
+four" phrasing, (2) §4.1 row 5's "two of four" phrasing, (3) §4.2 Case
+5's "same draw pair" sentence, (4) §8's own defect list being incomplete
+relative to the correction record. §8's "all three" sentence is
+describing the THREE SPECIFIC OMISSIONS that item (4) itself names —
+not a claim that Pass 2 found three defects in total. The header (four)
+and §9 (four items) are mutually consistent; only §8's own narrative
+paragraph fails to say so explicitly, which is why a careful reader
+(the skeptic) could reasonably misread it as a global count.
+
+**Verdict, recalibrated:** not a literal 4≠3 contradiction (both counts
+are 4, once §9 is read) — a real self-containment gap in §8: a reader
+should not need to cross-reference a checklist in a different section to
+avoid miscounting a headline number, and this paper's own standard
+(§6 item 7, and its whole thesis) is exactly this kind of undercounting.
+**Fixed** (§8's paragraph now names the true total and points to why the
+"three" is a sub-count, not the whole count) — see `methodology_paper_
+draft_v0.md` §8's own 2026-09-13 correction note.
+
+### 12.2 W1 — §1.3 item 4's "second... pass" wording
+
+**Confirmed real.** "A second, context-blind review pass on the v0
+draft" is ambiguous against the header's own Pass-1/Pass-2 numbering
+(Pass 1 is the pass ON v0; Pass 2 is on v0.1) — a reader could misread
+"second" as referring to Pass 2. **Fixed**: reworded to explicitly name
+Pass 1 and disambiguate from Pass 2.
+
+### 12.3 W2 — §7 citation suspicion — CHECKED, FULLY CLEAN, no fix needed
+
+**Skeptic's concern:** three arXiv IDs "on the high end of plausible"
+paper-numbers, plus SPOT's "≤21.1% recall / ≤6.1% precision" framed as
+an unusual reporting convention.
+
+**Independent re-verification (live arXiv fetch, all six citations, not
+just the three flagged):** all six papers exist, real, matching titles/
+authors, and every specific number or characterization the draft uses
+matches the source abstract exactly —
+- `2603.12123` (Cross-Context Review): abstract confirms "30 artifacts
+  (code, technical documents, presentation scripts) with 150 injected
+  errors, tested under four review conditions" and the SR2 finding
+  ("did not beat reviewing once (p=0.11)") verbatim.
+- `2606.31273` (The Calibration Turn): confirmed real author (Institute
+  of Science Tokyo), confirmed "Perspective-style" framework paper with
+  no empirical benchmark, matching the draft's characterization exactly.
+- `2605.30329` (SoundnessBench, the relevant one): confirmed "tests
+  whether LLMs can judge the methodological viability of research
+  ideas," matching the draft exactly.
+- `2412.03154` (SoundnessBench, the NN-verifier one): confirmed
+  unrelated, formal-methods NN-verification benchmark, matching the
+  draft's "not relevant" characterization exactly.
+- `2505.11855` (SPOT): abstract's own verbatim text is **"none surpasses
+  21.1% recall or 6.1% precision"** — mathematically identical to the
+  draft's "≤21.1%/≤6.1%" framing. The skeptic's suspicion about the `≤`
+  formatting does not survive contact with the source: this is exactly
+  how SPOT's own authors report it.
+- `2510.18003` (BadScientist): confirmed "acceptance rates up to 82.0%,"
+  matching the draft's characterization.
+
+**No fix needed.** Reported here per this paper's own stated practice
+(§7's header: "every entry... re-checked... independent of whatever
+prompted the name to be listed originally") of disclosing verification
+that came back clean, not only verification that found something —
+the same discipline `null_results/`'s own logging convention applies to
+a hypothesis that survives a real attempt to kill it.
+
+### 12.4 W3 — §5 clean-control task-ID batch split
+
+**Confirmed real ambiguity** (not a contradiction): the underlying data
+is fully coherent (`result_summary.md`: first batch's clean tasks are
+`027`/`028`/`032`; `result_summary_extension.md`: extension batch's are
+`029`/`030`/`031`), but the draft's own text lists all six as one
+undifferentiated set, leaving "both arms, in both batches" unverifiable
+from the text alone. **Fixed**: §5 now states the 3/3 split explicitly.
+
+### 12.5 W4 — §5 `K5` verdict precision
+
+**Confirmed real.** "`K5` passes its own `≥90%` threshold" is true only
+of the 20-of-32 extension-batch subsample the paragraph itself already
+discloses — but the verdict sentence itself did not repeat that scope,
+risking a reader quoting "`K5` passed" without the qualifier. **Fixed**:
+the verdict sentence now states the scope inline, not only in the
+surrounding prose.
+
+### 12.6 W5 — "two lineages" framing (P220 as a lineage of one)
+
+**Assessed, not fixed.** The skeptic's point (a lineage of one is more
+accurately a singleton) is defensible rhetorical criticism, not a
+factual error — the paper is explicit elsewhere (§4.1, §4.3) that P220
+is "one unrelated artifact," so no reader is misled about the underlying
+fact. Left as a documented, considered non-fix — a future revision may
+still choose to reword it, per the skeptic's own suggestion.
+
+**None of the six items above changes a number, a verdict, or a
+headline claim anywhere in the paper.** All are now fixed except 12.3
+(no fix needed, verification-only) and 12.6 (assessed, deliberately not
+fixed). All are now visible in the current text of `methodology_paper_
+draft_v0.md`'s status header, §1.3, §5, §8, and §9.
+
+### 12.7 Evaluator-Optimizer Guard status — CAP NOW CLOSED
+
+This was the **third** of the capped three `reviewer`-cycle passes
+(Pass 1 → fix → Pass 2 → fix → Pass 3(content) → fix, now complete).
+**No further standard `reviewer`-cycle pass may run on this content**
+without invoking `doubt-driven-development.md`'s Independent Review
+Fallback Policy (substitute `skeptic` or `sec-auditor`, explicitly
+named as a substitution, not silently normalized) — this constraint
+itself now governs any future revision of this draft before Submission
+Gate.
+
+NOT_VALIDATION · NOT_REFUTATION · OUR_RECONSTRUCTION · NO_AUTHOR_ERROR
