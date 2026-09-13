@@ -238,6 +238,62 @@ this branch has built**, while item 9's separate spatial-clustering
 shape-mismatch caveat (`gamma` steeper than the cited literature) stays
 open.
 
+**[FINAL CLOSURE, 2026-09-13 — item 9's own experimental/computational
+investigation is now complete, user-requested definitive closure]**.
+`experiments/20260909-tng-mass-assortativity/FINDING_flamingo_2pcf_
+gamma_range_diagnostic.md`: the residual `gamma`-mismatch caveat was
+investigated one more turn — re-fitting the ALREADY-RECORDED `xi(r)`
+values over alternative `r`-ranges (no new download). Step 8a skeptic:
+WEAKENED (a real but PARTIAL explanation, not "resolved" as first
+drafted). Applying `docs/151`'s three-field status separation to close
+item 9 as a whole:
+
+> **Empirical/Model status — `r0` (spatial clustering amplitude):
+> CONFIRMED, robust.** Order-of-magnitude and richness-dependence
+> direction match v82's own cited anchor (Basilakos & Plionis 2004),
+> independent of fit-range choice — the branch's most solid new result
+> under item 9.
+>
+> **Empirical/Model status — `gamma` (clustering shape): PARTIALLY
+> EXPLAINED, genuinely OPEN, out of scope for this branch's own
+> toolkit going forward.** Fit-range curvature (independently confirmed
+> real, local-slope trend `r=0.74`) explains roughly a third to half of
+> the originally-flagged gap. A `~0.5`-unit residual remains even under
+> the best-powered, range-corrected, subsample-matched comparison
+> (FLAMINGO's mass-selected sample corresponds to Basilakos & Plionis's
+> RICHER subsample, `gamma=1.6` — not the numerically-closer but
+> physically-wrong "poorer" value this branch initially compared
+> against). Closing this residual would require real observational
+> cluster data (matched selection function, redshift, cluster
+> definition) — outside what a simulation-only toolkit can resolve.
+> **Explicitly left open, not chased further** — this is the honest
+> stopping point, not an oversight.
+>
+> **Empirical/Model status — `rho(r)` (mass assortativity): CLOSED.**
+> No signal detected anywhere in `5-150` Mpc at the best-powered test
+> (`N=5000`), an independent-methodology confirmation of the branch's
+> already-established null. This directly answers the question that
+> originally motivated `P158`.
+>
+> **Ontological/mechanistic interpretation status: CLOSER, not
+> IDENTICAL, to v82's own cited empirical route.** The 2PCF-style
+> design (population-level clustering statistic, `M500c` convention) is
+> a genuinely better match to what v82's own text cites (Basilakos &
+> Plionis's 2PCF amplitude) than the earlier nearest-neighbor designs
+> — but FLAMINGO's `z=0` simulated halos are still not identical to a
+> real, redshift-averaged, selection-function-matched observational
+> cluster catalog. An approximation, not a reproduction.
+>
+> **Causal/cosmological claim status: NON-IDENTIFIED**, as with every
+> other result in this branch (`NO_AUTHOR_ERROR`) — none of this
+> establishes anything about v82's own theory being right or wrong.
+
+**Item 9 is now CLOSED as an active investigation thread.** No further
+FLAMINGO-based tests are planned for it. Full account (3 linked
+FINDINGs): `FINDING_flamingo_2pcf_m500c_estimand.md`, `FINDING_
+flamingo_mark_correlation_rho_of_r.md`, `FINDING_flamingo_2pcf_gamma_
+range_diagnostic.md`.
+
 ## Retrospective classification of prior work (per the user's own
 ## request: audit against this spec, do not recompute)
 

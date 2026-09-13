@@ -287,6 +287,29 @@ m200c_vs_m500c_selection.md`, `FINDING_flamingo_rho_nn_2x2_factorial.
 md`, `experiments/20260803-bridge/FINDING_P158_jensen_mass_averaging_
 v82_force_terms.md` (Twelfth entry).
 
+**Fourteenth update, same day (2026-09-13) — docs/162 item 9 (the
+estimand-construction follow-on named by the Thirteenth update) is now
+CLOSED as an active investigation thread, user-requested definitive
+closure.** Two further tests beyond the first 2PCF pass: a mass-marked
+`rho(r)` generalization (mark-shuffle permutation null, cell-block
+positive control) found NO mass-assortativity signal anywhere in
+`5-150` Mpc at the best-powered scale (`N=5000`) — an independent-
+methodology confirmation of this branch's already-established null,
+closing the direct `P158`-motivating question. A gamma-range diagnostic
+(re-fitting already-recorded `xi(r)` over alternative ranges, no new
+download) found the previously-flagged clustering-SHAPE mismatch is
+REAL but only PARTIALLY a fit-range artifact — Step 8a skeptic caught
+that the best-powered corrected fit still leaves a `~0.5`-unit residual
+against the physically-correct literature comparator (FLAMINGO's mass-
+selected sample matches Basilakos & Plionis's RICHER subsample,
+`gamma=1.6`, not the numerically-closer "poorer" value this branch
+first compared against). This residual is explicitly left OPEN —
+closing it would require real observational data, outside this
+branch's simulation-only toolkit; this is the honest stopping point,
+not an oversight. Full account (3 linked FINDINGs) and the docs/151
+three-field status separation: `docs/162_ontology_spec_v82.md`'s own
+"[FINAL CLOSURE, 2026-09-13]" section.
+
 **[2026-09-05 annotation, not a rewrite — see `docs/156`]** This
 document's §3a explicitly required that "a future 'go' ... should
 answer these [pre-conditions] first, not treat this document's own
