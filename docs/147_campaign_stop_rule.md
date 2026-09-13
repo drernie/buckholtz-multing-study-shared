@@ -231,6 +231,18 @@ bottleneck'ов проекта, а не просто быть выполнимы
    величина варьируется до ~30x. Статус bottleneck'а по-прежнему НЕ
    "решён" — восстановлен реальный, узкий, z<=0.5-only результат по
    другой, механически верной линии.
+
+   **[2026-09-13 annotation, not a rewrite — this section's own
+   causal-compatibility question, updated through 2026-09-05 above, is
+   now CLOSED.]** `FINDING_P223` (2026-09-12/13, commit `e421126`)
+   answered `docs/153`'s own restated question directly: this project's
+   own S-S closure and v82's finite-r single-pair bridge answer
+   structurally different questions about a shared force-law shape —
+   NOT in contradiction, under the literal-text reading. See
+   `CURRENT_EVIDENCE_STATE.md` §4 row 1 and §9 for the full account,
+   including the SEPARATE `P158`/mass-assortativity thread (a different
+   question about the same force law) that also closed via a real
+   FLAMINGO estimand, 2026-09-11→13.
 2. **Unique completion** — существует ли ЕДИНСТВЕННАЯ минимальная
    ковариантная достройка MULTING (для уже испытанных кандидатов
    linear/exponential `M(φ)`, и шире). **SEPARATE OPEN/UNDERDETERMINED
@@ -241,6 +253,20 @@ bottleneck'ов проекта, а не просто быть выполнимы
    отозвана `P79`'s собственными robustness-гейтами. **Этой веткой (P132-
    P139) НЕ атаковался напрямую** — round-2/3 работали над отдельным,
    инструментальным пунктом 4.
+
+   **[2026-09-13 annotation, not a rewrite — this section's own "not
+   attacked directly" statement is about the P132-P139 round
+   specifically, but a DIFFERENT attempt did happen after this section
+   was written and was never added here.]** 2026-09-07,
+   `/hypothesis-arbiter` on the dipole's own ontology (`H_body`/
+   `H_fluid`/`H_avg`) returned only the least falsifiable survivor and
+   recommended STOPPING structural computation rather than iterating —
+   recommendation taken. See `CURRENT_EVIDENCE_STATE.md` §4 row 2 for
+   the canonical, up-to-date status (found live 2026-09-13 after this
+   section's own "untouched" framing was mis-recalled in chat without
+   re-reading `CURRENT_EVIDENCE_STATE.md` first — the exact failure
+   this file's own canonical-context ordering, `CLAUDE.md` item 0,
+   exists to prevent).
 3. **Absolute scale / observable mapping** — `H3-NOT-IDENTIFIABLE-AS-
    CURRENTLY-POSED` (P133, 2026-08-24, `rank(J)=2<3`, символьно,
    positive-control-tested, две независимые проверки согласны).

@@ -3,6 +3,22 @@
 **Date:** 2026-09-03; quality snapshot refreshed 2026-09-05, and
 substantially revised **2026-09-07** (37 commits: bottleneck 3 dissolved,
 KG2 answered, H1b parked and its criterion repaired — see §7) ·
+**Substantially revised again 2026-09-13** (see §9): bottleneck 1's
+own restated causal-compatibility question is now closed
+(`FINDING_P223`, `e421126`); a separate `P158`/mass-assortativity
+computational thread (started 2026-09-11, unrelated to `docs/134`'s
+own "Unique completion" bottleneck) ran to completion and is closed for
+its own current estimand, with an honest, disclosed residual (`gamma`
+shape mismatch, `~0.5`-unit gap, out of this project's simulation-only
+toolkit to close further). **Also found, corrected 2026-09-13**: this
+file's own §4/§5 (bottleneck 2 "untouched"? bottleneck 3's Fisher-
+forecast "not yet run"?) were being mis-recalled in chat as still-open
+work items without re-reading this file first — both were already
+long-settled here (bottleneck 2: hypothesis-arbiter recommended
+stopping, 2026-09-07, taken; bottleneck 3's `P191`-`P194` Fisher-
+forecast line: DONE 2026-09-05, no next candidate named since). Read
+this file before recommending any "next step" — the exact failure this
+correction fixes. ·
 **§7.3 updated 2026-09-09:** TNG-300 access granted; H1b's WHIM half
 (`E_WHIM`) executed at real `N=71` (`r=-0.429, p<0.001`, mass vs. WHIM%);
 `M_HE` (4th ingredient) still external, search closed across 9 channels ·
@@ -26,6 +42,19 @@ this file is the slower-moving strategic layer above it).
 
 ## 1. What is reproduced
 
+- **`P223` (2026-09-12/13): bottleneck 1's restated causal-compatibility
+  question CLOSED** — this project's own S-S closure and v82's own
+  finite-r single-pair bridge answer structurally different questions
+  about a shared force-law shape, not in contradiction, under the
+  literal-text reading. **`P230`: v82's own node ontology is `R500`/
+  `M500c`, not `R200`/`M200c`, and its cited separation route is a 2PCF
+  clustering amplitude, not nearest-neighbor.** Following both: a real
+  FLAMINGO-based 2PCF estimand reproduces v82's own cited empirical
+  anchor's order-of-magnitude and richness-direction (`r0`); no mass-
+  assortativity signal detected (`rho(r)`, best-powered `N=5000`); a
+  real, disclosed `~0.5`-unit `gamma`-shape residual remains, outside
+  this project's simulation-only toolkit to close further. Full
+  account: **§9**.
 - **F_oP bilinear structure** (docs/125, P1) — exact 2-species form,
   alternating-sign rule derived as a theorem for the two-charge
   completion, not postulated.
@@ -376,7 +405,7 @@ this file is the slower-moving strategic layer above it).
 
 | # | Bottleneck | Status | What would move it |
 |---|---|---|---|
-| 1 | F→H_MULT(z) bridge | BLOCKED (restated 2026-09-01, `docs/153`); `docs/153`'s own literal next-step disproven as buildable, `docs/156` (2026-09-05) — mechanically-correct alternative line (`P157`→`P158`→`ADDENDUM2`→`P195`) gives a real, narrow, `z≤0.5`-only, magnitude-uncertain result. **The `z≥1.07` extension was ALREADY ATTEMPTED 2026-09-06** (`FINDING_P195_ADDENDUM_high_z_bias_literature_search.md`, bounded 2-query arXiv search, `SOURCE_NOT_FOUND`) — v82's own `z≥1.07` target points sit at peak height `ν≈10.6-50`, structurally beyond what any finite-volume N-body suite (Tinker+2010, Aemulus IV) can calibrate — a real physical reason, not just an unlucky search | Genuinely stalled on this line without new input: either a more exhaustive literature search (N-body pair-statistics papers, not bias fits) or an explicit decision to attempt a specialized N-body calculation outside this project's own tooling — **do not re-attempt the same literature-search pattern without a new candidate paper named first** (Adaptive Iteration Branch Rule) |
+| 1 | F→H_MULT(z) bridge | **CLOSED 2026-09-12/13 (`FINDING_P223`, commit `e421126`), superseding every row below.** `P223` embedded v82's own literal force law into v82's own kinematic-translation machinery (H1, symbolically confirmed: `k_A(z)`-dependent terms survive, no internal cancellation) and independently reproduced this project's own `docs/127` `G_αβ=0` result exactly for the same power-law shapes (H2). Synthesis (H3, narrowed after Step 8a): `docs/127`'s S-S closure and v82's single-pair bridge answer structurally different questions about a shared force-law shape (one pair's finite trajectory vs. a population's `r→∞` tail) — **not in contradiction**, under the literal-text reading. This closes `docs/153`'s own restated causal-compatibility question. A SEPARATE thread (`P158`'s own magnitude/mechanism question — which of `F^(1)`/`F^(2)` gets more population-averaging boost — unrelated to the causal-compatibility question P223 answers) ran 2026-09-11→13 via a real FLAMINGO-based estimand and is ALSO closed, for its own current operationalization — see §9. | Nothing pre-named — this line is closed, not stalled. Reopening either sub-question needs a genuinely new input (v82's own physical INTENT for `s(z)` carrying unstated population content is explicitly out of `P223`'s own scope, per its Skeptic Objection 2), not a re-attempt of the same literature-search pattern the row below once named |
 | 2 | Unique completion | Untouched, `docs/134`. **2026-09-07:** `/hypothesis-arbiter` on the dipole's ontology (`H_body` / `H_fluid` / `H_avg`) returned only the LEAST falsifiable survivor and recommended **stopping** structural computation rather than iterating. Recommendation taken. | A genuinely new input, not another variant |
 | 3 | Absolute scale / observable mapping | **DISSOLVED 2026-09-07 (`FINDING_P206`)** — it was never a measurement gap. `P133`'s rank-2 result IS the one-dimensional **field-normalization redundancy** `FINDING_P52` had already derived on 2026-08-16; `P133` renamed it 8 days later and made it a bottleneck without connecting the two. `L := 2a−b−c` is the field-rescaling weight, the null direction `(−1, ½, ½)` is the `φ→λφ̄` generator, so rank 2 is **complete**: 3 coordinates, 1 redundancy, 2 physical d.o.f., all determined. Step 8a run twice with reworded prompts, both CONFIRMED-REAL. *(Prior text, kept: "STRUCTURALLY BLOCKED, quantified buildable path exists…" — the P191-P194 Fisher-forecast line is unaffected and still stands on its own terms.)* | Nothing — the question as posed had no solution and needed none. **What remains open is `P52`'s own KG2**, answered as far as data allows on 2026-09-07 (`P208`/`P209`, §7): both physical invariants are unmeasurable, each for a *different* structural reason |
 | 4 | IC-sensitivity | CLOSED (campaign exhausted, question genuinely open) | A genuinely new mechanism class, not a 6th variant of the 5 already excluded |
@@ -830,6 +859,85 @@ fundamental origin (`docs/151` status-separation rule applies in full).
 Full detail, novelty assessment (project-level yes, methodological
 likely, priority-claim not yet checked), and the remaining real-data
 steps: **`docs/161`**.
+
+## 9. Bottleneck 1 closed (`P223`) + the P158/mass-assortativity branch
+## run to completion via a real FLAMINGO estimand (2026-09-11→13)
+
+**Part A — `P223`, bottleneck 1's causal-compatibility question,
+CLOSED.** See §4 row 1 for the full account. This was `docs/153`'s own
+restated bottleneck-1 question (does this project's own isotropic-
+average S-S closure say anything about v82's finite-r, single-pair
+bridge construction) — answered NOT-IN-CONTRADICTION under the literal
+text, closing a question open since 2026-09-01.
+
+**Part B — the ontological gap, `P230`.** Direct primary-source
+reading of v82's own text found: a "node"'s mass/radius convention is
+explicitly `R500`/`M500c` (stated twice), NOT `R200`/`M200c` — used
+throughout this project's entire prior simulation work (TNG300,
+FLAMINGO, Magneticum). v82's own cited empirical route for node
+separation (Basilakos & Plionis 2004) is a population-level, richness-
+dependent two-point-correlation-function amplitude, NOT a nearest-
+neighbor-distance rule. `NO_AUTHOR_ERROR`: this reclassifies this
+project's OWN prior `rho_NN`/`rho_band` tests from "the intended v82
+test" to "numerically valid but not source-faithful proxies" — it says
+nothing about v82's own theory.
+
+**Part C — the P158 magnitude/mechanism computational thread, CLOSED
+for its own current estimand.** `P158` asks a DIFFERENT question from
+`P223`: given the mass-derived scalar chain in v82's own force law,
+does population-averaging boost `F^(2)` more than `F^(1)` (Jensen's
+inequality, conditional on mass-pair correlation `rho > -0.5`)? Real
+FLAMINGO tests (`experiments/20260909-tng-mass-assortativity/`, ~15
+Step-8a-reviewed FINDINGs) established, on the best-powered available
+estimand (`N=1200`, real spatial jackknife): `rho=-0.0231±0.0476`,
+robust to the `M200c`/`M500c` convention choice (`P230`'s own finding)
+to `~15x` inside the jackknife SE. `P158`'s own `rho>-0.5` safety
+margin is DOUBLY confirmed.
+
+**Part D — following `P230`'s ontology correction, a real, source-
+faithful 2PCF-style estimand was built and run (`docs/162` item 9)**,
+replacing the earlier nearest-neighbor design entirely:
+- `r0` (spatial clustering amplitude): CONFIRMED robust — FLAMINGO's
+  own `M500c`-selected cluster population reproduces the order-of-
+  magnitude AND richness-dependence direction of v82's own cited
+  Basilakos & Plionis (2004) anchor, independent of mass convention or
+  fit range — a genuine, previously-unchecked corroboration.
+- `rho(r)` (mass-assortativity, mass-marked 2PCF generalization,
+  permutation-null-tested, positive-control-validated): no detectable
+  signal anywhere in `5-150` Mpc in the tested FLAMINGO construction at
+  the best-powered scale (`N=5000`) — an independent-methodology
+  confirmation of Part C's own null.
+- `gamma` (clustering shape): PARTIALLY explained by real `xi(r)`
+  curvature (fit-range diagnostic, independently confirmed local-slope
+  trend) but a genuine `~0.5`-unit residual remains against the
+  physically-correct literature comparator — explicitly left OPEN,
+  closing it needs real observational cluster data outside this
+  project's simulation-only toolkit. The honest stopping point, not an
+  oversight (Step 8a skeptic caught and corrected an initial
+  "substantially resolved" overclaim here).
+
+**What this branch does NOT establish**: v82's own broader ontological/
+mechanistic interpretation as a whole (still OPEN — this branch
+resolved specific sub-questions, not the whole picture); MULTING's
+causal/cosmological correctness (`NON-IDENTIFIED`, unchanged,
+`NO_AUTHOR_ERROR` throughout).
+
+Full account, all Step-8a-reviewed: `docs/162_ontology_spec_v82.md`
+("[FINAL CLOSURE, 2026-09-13]" section), `docs/153` (Thirteenth/
+Fourteenth updates), `experiments/20260803-bridge/FINDING_P223_
+finite_r_single_pair_closure.md`, `experiments/20260803-bridge/
+FINDING_P230_what_physically_is_a_node.md`, 6 FINDINGs under
+`experiments/20260909-tng-mass-assortativity/`.
+
+**New pearl_registry lessons from this branch** (all in
+`pearl_registry/INDEX.md`, `next_check` 2026-12-01/15): set-overlap ≠
+statistic-stability; diagonal-only 2x2-factorial entanglement;
+propagated arithmetic error (114x→36x); permutation-null SE ≠
+null-centered SE for a distant composite hypothesis; positive
+control's off-target region as a free noise-floor calibration; `h^-1`
+unit-mixing when converting via a different dataset's own `h`; matching
+a literature SPLIT comparator on its own selection variable, not
+whichever value is numerically closest.
 
 ## Exclusion zone (do not start without a new triggering fact)
 
