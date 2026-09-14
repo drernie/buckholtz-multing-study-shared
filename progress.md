@@ -1,5 +1,26 @@
 # Progress — Buckholtz IDM/MULTING Audit
 
+> ⚠️ **SUPERSEDED SNAPSHOT (flagged 2026-09-14, navigation pass). This file
+> reads as a live to-do list and is not one.** Its unchecked boxes were
+> accurate on its own last sync date (2026-07-18) and several have since been
+> overtaken by events:
+>
+> - **Phase 3** records TNG API access as "still pending (18+ days silent)"
+>   and the WHIM correlation as unstartable. TNG-300 access was **granted
+>   2026-09-09** and H1b's `E_WHIM` half was executed at real `N=71`
+>   (`r=-0.429, p<0.001`). H1b is now `PARKED` on a different missing
+>   ingredient (`M_HE`), not on TNG access — see
+>   `PROGRAM_CLOSEOUT_LEDGER.md` row 12 and `CURRENT_EVIDENCE_STATE.md` §7.3.
+> - **Phase 5** predates two further outgoing letters and the current
+>   `WAITING_ON_EXTERNAL` state of all three external dependencies.
+> - The pointer counts are behind (this file says 14 falsified branches;
+>   `null_results/` now holds 21).
+>
+> Kept unrewritten per the project's no-silent-correction convention. **Do not
+> pick any unchecked box below up as a task** without first checking it against
+> `CURRENT_EVIDENCE_STATE.md`, per `CLAUDE.md`'s `NEXT-STEP GATE`. Current
+> state: [`START_HERE.md`](START_HERE.md).
+
 **This is a high-level phase tracker, not the source of truth.** Detailed status lives in:
 `null_results/INDEX.md` (14 falsified branches), `pearl_registry/INDEX.md` (44 findings),
 `experiments/*/decision.md` (per-experiment verdicts), `.claude/memory/activeContext.md`

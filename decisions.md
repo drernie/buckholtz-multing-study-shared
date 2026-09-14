@@ -1,5 +1,11 @@
 # Decisions — Buckholtz IDM/MULTING Audit
 
+> ℹ️ **`PROCESS` tier — standing decisions, still binding (flagged 2026-09-14,
+> navigation pass).** This file is not a status report, so its last-modified
+> date is not staleness: a decision stays in force until explicitly revisited.
+> Read it as constraints on new work, not as a description of current findings.
+> For current findings: [`START_HERE.md`](START_HERE.md).
+
 Project-specific standing decisions not already captured in a single experiment's
 `decision.md`. Global methodology rules (FL protocol, evidence markers, audit-verification-
 gate) live in `~/.claude/rules/` and are not repeated here — this file is for decisions

@@ -14,6 +14,17 @@
 > (comprehensive audit, updated through today, Part 8) ·
 > `docs/147_campaign_stop_rule.md` (live bottleneck map) · 881 tests passing,
 > ruff clean [VERIFIED this session].
+>
+> **Appended 2026-09-14 (navigation pass), not a rewrite of the above.** Two
+> newer canonical files postdate this banner and now supersede the pointers in
+> it: [`PROGRAM_CLOSEOUT_LEDGER.md`](PROGRAM_CLOSEOUT_LEDGER.md) and
+> [`CURRENT_EVIDENCE_STATE.md`](CURRENT_EVIDENCE_STATE.md), both frozen
+> 2026-09-13. `CURRENT_EVIDENCE_STATE.md` also records that `docs/147` was
+> itself read without cross-checking it, and is now the required first read
+> before any next-step recommendation. Note too that
+> `.claude/memory/activeContext.md` is **not present in the public reviewer
+> copy** of this repository — that path resolves only in the private source
+> repo. Start at [`START_HERE.md`](START_HERE.md).
 
 **Version:** v0.3.0 (reference-grade hardening)
 **Date:** 2026-06-01

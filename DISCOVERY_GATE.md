@@ -2,6 +2,33 @@
 # (4/3)(m_τ/m_e)^12 = α_EM/α_G
 # Last updated: 2026-06-27
 
+> ⚠️ **SUPERSEDED SNAPSHOT (flagged 2026-09-14, navigation pass).** Superseded
+> on two independent points, both material:
+>
+> 1. **The headline number is a stale PDG vintage.** Every `0.0135%` /
+>    `0.17σ` figure below rests on a PDG-2022 `m_τ` that had been mislabeled
+>    "PDG 2024". `code/eq32_verify.py` stopped using it on **2026-07-11**. The
+>    current figure is **`0.0608%`, `1.00σ`, PDG 2024** (`m_τ =
+>    1776.93±0.09`). The 2026-07-11 fix propagated to `README.md`,
+>    `docs/CLAIM_PROOFS.md` and `docs/BOOK/*` at the time but never reached
+>    this file. `CURRENT_EVIDENCE_STATE.md` records the same failure reaching
+>    it late too, and names the pattern (`docs/146` Category 11).
+> 2. **The unchecked boxes are not an open task list.** "4/3 derived from
+>    F₄/J₃(O)" and the "α_G mechanism" read as work to do. That mechanism
+>    hunt is `EXHAUSTED` — 5 external literature niches
+>    (`null_results/...nr024...`) plus 3 internal group-theoretic attempts
+>    (`null_results/...nr019...`) — and sits inside `CLAUDE.md`'s explicit
+>    exclusion zone: **do not re-attempt without a genuinely new candidate.**
+>    The F₄/J₃(O) route specifically was `FALSIFIED-AS-MECHANISM` on
+>    2026-07-17.
+>
+> The gate's own verdict — `STRUCTURAL PEARL CANDIDATE`, not discovery — still
+> holds, and the arithmetic match remains real and unexplained. What changed is
+> that the *relation* is now recorded as `NOT SUPPORTED as genuine` on three
+> independent methods. Current status: `PROGRAM_CLOSEOUT_LEDGER.md` row 7.
+> Kept unrewritten per the no-silent-correction convention.
+> Current state: [`START_HERE.md`](START_HERE.md).
+
 ## Required before claiming discovery
 
 - [x] Arithmetic verification: Eq.32 holds at 0.17σ (0.0135%)

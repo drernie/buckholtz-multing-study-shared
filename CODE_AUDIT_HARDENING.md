@@ -1,5 +1,14 @@
 # CODE_AUDIT_HARDENING — buckholtz-idm-multing-mvp / 2026-09-06
 
+> ℹ️ **DATED AUDIT RECORD, not a status report (flagged 2026-09-14, navigation
+> pass).** Accurate as of 2026-09-06 and self-scoped as a **first pass over
+> load-bearing paths only** — not a review of all 39 `src/` files or all 20+
+> experiment folders. No finding here changed any numeric result; the gaps found
+> were in infrastructure and documentation currency. Two follow-ups it queued
+> are still open: wiring the unused `conflict_resolver.py` /
+> `source_provenance.py` modules, and the `docs/INDEX.md` resync. Current
+> state: [`START_HERE.md`](START_HERE.md).
+
 First run of `sci-code-audit` on this project (never run before). Scope:
 active pipelines — `src/cluster_data_pipeline.py` → `src/pearson_fit.py` →
 `src/report.py` (this project's own F→H(z) construction, used by the

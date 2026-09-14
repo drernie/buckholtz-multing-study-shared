@@ -5,6 +5,17 @@
 **Status:** ✅ FORENSIC EXTRACTION COMPLETE  
 **Tests:** 88/88 core tests passed (26 new Appendix A1 tests)
 
+> ℹ️ **HISTORICAL SNAPSHOT (flagged 2026-09-14, navigation pass) — but its
+> central finding is still load-bearing.** That the `H_MULT(z)` computational
+> formula is absent from the source, leaving the bridge under-specified, still
+> stands and is upstream of much of what followed. Two cautions on the
+> surrounding material: the version and test counts are v0.2-era, and **this
+> reads preprint v6**, whereas everything from 2026-08 onward reads the
+> substantially expanded v82 — `CLAUDE.md`'s source-version rule is "cite v6
+> for anything already established, v82 for anything new, never conflate."
+> Scope framing: `docs/WHAT_THIS_REPRODUCES.md`. Current state:
+> [`START_HERE.md`](START_HERE.md).
+
 ---
 
 ## 1. What Was Extracted

@@ -3,6 +3,12 @@
 ![python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
+### → [`START_HERE.md`](START_HERE.md) — which documents are current, and which are dated snapshots
+
+Nine of the 13 files in this repository's root are historical snapshots; two of
+those still read as live to-do lists. `START_HERE.md` is a one-screen map that
+says which is which. If you only open one file first, open that one.
+
 <sub>**Status, re-measured 2026-09-11 on this tree** (the previous line here read "908 tests … mypy clean (0 errors, blocking in CI)" and was wrong on both counts — corrected rather than quietly refreshed): `pytest --co` collects **991 tests across 67 files**; a 68th file, `tests/test_e15_jensen_gap_real_scatter.py`, **does not collect from a clean clone** — it imports the author's supplemental code, which `data/source_material/*` deliberately git-ignores (fetch from [Zenodo](https://zenodo.org/records/22004287) to run it). `mypy src` → clean, 39 files, **locally**. `ruff check .` → clean. **The CI badge above is red**, and has been since 2026-09-08: CI fails at the `mypy` step, so the test job never runs — an unresolved discrepancy between CI and local, not a known source defect. Treat the badge as live truth and this line as a dated local measurement.</sub>
 
 <sub>**Program phase, 2026-09-13: `WAITING + CONSOLIDATION`, not active discovery.** The research campaign reached its own stop-rule end-state — all four `docs/147` bottlenecks are `CLOSED/BOUNDED`, `STOPPED/UNRESOLVED`, `DISSOLVED`+`EXHAUSTED`, or `SEARCH-CAMPAIGN-EXHAUSTED` (never "solved," see [`PROGRAM_CLOSEOUT_LEDGER.md`](PROGRAM_CLOSEOUT_LEDGER.md) for the precise, non-interchangeable vocabulary). No new physics computation is planned absent one of five explicit "new input" triggers (a new dataset, an external definition, a new publication, a found logical conflict, or a genuinely new differentiating test — never "we could still compute something"). Three external replies are pending (none received as of this date); the methodology paper is `CORRECTED, NOT RE-REVIEWED` and not yet submitted anywhere.</sub>
