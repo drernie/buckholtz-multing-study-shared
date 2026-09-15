@@ -14,7 +14,11 @@
 > substantially expanded v82 — `CLAUDE.md`'s source-version rule is "cite v6
 > for anything already established, v82 for anything new, never conflate."
 > Scope framing: `docs/WHAT_THIS_REPRODUCES.md`. Current state:
-> [`START_HERE.md`](START_HERE.md).
+> [`PROGRAM_CLOSEOUT_LEDGER.md`](../../PROGRAM_CLOSEOUT_LEDGER.md).
+>
+> *Moved from the repository root to `docs/archive/` on 2026-09-14, when
+> the root was reduced to live documents only. Its former path was
+> `APPENDIX_A1_EXTRACTION_SUMMARY.md`.*
 
 ---
 

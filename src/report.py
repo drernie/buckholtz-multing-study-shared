@@ -541,10 +541,10 @@ def print_next_steps():
 def print_footer():
     """Print report footer."""
     print("=" * 70)
-    print("Documentation: See docs/ directory (15 files)")
-    print("Tests: Run 'pytest -v' to verify all 99 tests")
-    print("Full details: README.md, PROJECT_STATUS.md")
-    print("Outreach: OUTREACH_TEMPLATE.md (email template)")
+    print("Documentation: See docs/ directory (docs/INDEX.md)")
+    print("Tests: Run 'pytest -v'")
+    print("Current state: PROGRAM_CLOSEOUT_LEDGER.md, CURRENT_EVIDENCE_STATE.md")
+    print("Full details: README.md")
     print("=" * 70)
 
 

@@ -129,7 +129,7 @@ no longer exist in this repo; that is expected and not a bug.
 ### Stage 6: Safety & Audit (docs 08, CODE_AUDIT, PARANOID, SCI_EVIDENCE)
 
 - [08_supplementary_audit.md](08_supplementary_audit.md) — Supplementary audit
-- [CODE_AUDIT_HARDENING.md](CODE_AUDIT_HARDENING.md) — Code audit hardening
+- [archive/CODE_AUDIT_HARDENING.md](archive/CODE_AUDIT_HARDENING.md) — Code audit hardening (moved to `docs/archive/` 2026-09-14)
 - [PARANOID_MODE_FINAL_AUDIT.md](PARANOID_MODE_FINAL_AUDIT.md) — Paranoid mode final audit
 - [SCI_EVIDENCE_AUDIT.md](SCI_EVIDENCE_AUDIT.md) — Scientific evidence audit
 
@@ -320,7 +320,7 @@ Some doc numbers are missing (e.g., 09, 12, 19–22, 26, 31, 44–45, 49, 56–5
 ```
 
 **Special files (no number):**
-- `CODE_AUDIT_HARDENING.md` — Code audit hardening
+- `docs/archive/CODE_AUDIT_HARDENING.md` — Code audit hardening
 - `PARANOID_MODE_FINAL_AUDIT.md` — Paranoid audit
 - `SCI_EVIDENCE_AUDIT.md` — Evidence audit
 - `INDEX.md` — This file

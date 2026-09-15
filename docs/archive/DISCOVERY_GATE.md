@@ -27,7 +27,11 @@
 > that the *relation* is now recorded as `NOT SUPPORTED as genuine` on three
 > independent methods. Current status: `PROGRAM_CLOSEOUT_LEDGER.md` row 7.
 > Kept unrewritten per the no-silent-correction convention.
-> Current state: [`START_HERE.md`](START_HERE.md).
+> Current state: [`PROGRAM_CLOSEOUT_LEDGER.md`](../../PROGRAM_CLOSEOUT_LEDGER.md).
+>
+> *Moved from the repository root to `docs/archive/` on 2026-09-14, when
+> the root was reduced to live documents only. Its former path was
+> `DISCOVERY_GATE.md`.*
 
 ## Required before claiming discovery
 

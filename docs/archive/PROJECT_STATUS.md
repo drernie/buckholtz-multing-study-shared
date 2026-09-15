@@ -17,14 +17,18 @@
 >
 > **Appended 2026-09-14 (navigation pass), not a rewrite of the above.** Two
 > newer canonical files postdate this banner and now supersede the pointers in
-> it: [`PROGRAM_CLOSEOUT_LEDGER.md`](PROGRAM_CLOSEOUT_LEDGER.md) and
-> [`CURRENT_EVIDENCE_STATE.md`](CURRENT_EVIDENCE_STATE.md), both frozen
+> it: [`PROGRAM_CLOSEOUT_LEDGER.md`](../../PROGRAM_CLOSEOUT_LEDGER.md) and
+> [`CURRENT_EVIDENCE_STATE.md`](../../CURRENT_EVIDENCE_STATE.md), both frozen
 > 2026-09-13. `CURRENT_EVIDENCE_STATE.md` also records that `docs/147` was
 > itself read without cross-checking it, and is now the required first read
 > before any next-step recommendation. Note too that
 > `.claude/memory/activeContext.md` is **not present in the public reviewer
 > copy** of this repository — that path resolves only in the private source
-> repo. Start at [`START_HERE.md`](START_HERE.md).
+> repo. Start at [`PROGRAM_CLOSEOUT_LEDGER.md`](../../PROGRAM_CLOSEOUT_LEDGER.md).
+>
+> *Moved from the repository root to `docs/archive/` on 2026-09-14, when
+> the root was reduced to live documents only. Its former path was
+> `PROJECT_STATUS.md`.*
 
 **Version:** v0.3.0 (reference-grade hardening)
 **Date:** 2026-06-01

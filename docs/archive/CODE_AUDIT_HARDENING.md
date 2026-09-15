@@ -7,7 +7,11 @@
 > were in infrastructure and documentation currency. Two follow-ups it queued
 > are still open: wiring the unused `conflict_resolver.py` /
 > `source_provenance.py` modules, and the `docs/INDEX.md` resync. Current
-> state: [`START_HERE.md`](START_HERE.md).
+> state: [`PROGRAM_CLOSEOUT_LEDGER.md`](../../PROGRAM_CLOSEOUT_LEDGER.md).
+>
+> *Moved from the repository root to `docs/archive/` on 2026-09-14, when
+> the root was reduced to live documents only. Its former path was
+> `CODE_AUDIT_HARDENING.md`.*
 
 First run of `sci-code-audit` on this project (never run before). Scope:
 active pipelines — `src/cluster_data_pipeline.py` → `src/pearson_fit.py` →

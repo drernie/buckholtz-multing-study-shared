@@ -4,7 +4,11 @@
 > navigation pass).** This file is not a status report, so its last-modified
 > date is not staleness: a decision stays in force until explicitly revisited.
 > Read it as constraints on new work, not as a description of current findings.
-> For current findings: [`START_HERE.md`](START_HERE.md).
+> For current findings: [`PROGRAM_CLOSEOUT_LEDGER.md`](../../PROGRAM_CLOSEOUT_LEDGER.md).
+>
+> *Moved from the repository root to `docs/meta/` on 2026-09-14, when
+> the root was reduced to live documents only. Its former path was
+> `decisions.md`.*
 
 Project-specific standing decisions not already captured in a single experiment's
 `decision.md`. Global methodology rules (FL protocol, evidence markers, audit-verification-

@@ -47,7 +47,11 @@
    own criterion 2, but not authorized to run without a separate explicit
    go-ahead. `docs/147`'s own bottleneck-1 entry is annotated with a pointer,
    not rewritten.
-4. `PROJECT_STATUS.md` — **superseded snapshot** (v0.3, 2026-06-01). Kept for
+4. `docs/archive/PROJECT_STATUS.md` — **superseded snapshot** (v0.3, 2026-06-01).
+   [Moved out of the repository root 2026-09-14 along with five other dated
+   snapshots; see `docs/archive/README.md`. The root now holds live documents
+   only, and the standing process files are at `docs/meta/decisions.md` and
+   `docs/meta/lessons_learned.md`.] Kept for
    history, banner-flagged, not the current state. Do not treat its numbers
    (858 tests, "beta unclear" blocker) as live.
 
@@ -138,7 +142,7 @@ disk and in the Obsidian vault archive, but never re-enter git.
   current request — never send unilaterally, and still follow the
   standing tone/content rules (formal address, no evaluative-authority
   words, share results rather than auditing, minimize questions — see
-  global memory `feedback_tjb_*` entries and `lessons_learned.md`'s
+  global memory `feedback_tjb_*` entries and `docs/meta/lessons_learned.md`'s
   2026-08-29 entry).
 - `NO_AUTHOR_ERROR`: every finding is about this project's own
   reconstruction, never a claim about Dr. Buckholtz's own unpublished theory.

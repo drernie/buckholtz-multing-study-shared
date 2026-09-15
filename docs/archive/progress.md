@@ -19,7 +19,11 @@
 > Kept unrewritten per the project's no-silent-correction convention. **Do not
 > pick any unchecked box below up as a task** without first checking it against
 > `CURRENT_EVIDENCE_STATE.md`, per `CLAUDE.md`'s `NEXT-STEP GATE`. Current
-> state: [`START_HERE.md`](START_HERE.md).
+> state: [`PROGRAM_CLOSEOUT_LEDGER.md`](../../PROGRAM_CLOSEOUT_LEDGER.md).
+>
+> *Moved from the repository root to `docs/archive/` on 2026-09-14, when
+> the root was reduced to live documents only. Its former path was
+> `progress.md`.*
 
 **This is a high-level phase tracker, not the source of truth.** Detailed status lives in:
 `null_results/INDEX.md` (14 falsified branches), `pearl_registry/INDEX.md` (44 findings),
